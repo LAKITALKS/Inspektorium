@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "findings": [
+    {
+      "claim_id": "claim-1",
+      "claim_text": "The Riverside shuttle began service in 2016.",
+      "claim_start": 0,
+      "claim_end": 44,
+      "proposed_relation": "not_established",
+      "source_id": null,
+      "evidence_quote": null,
+      "evidence_start": null,
+      "evidence_end": null,
+      "rationale": "The supplied notice gives a current frequency but no original launch year.",
+      "evidence_sufficiency": "insufficient",
+      "evaluator_certainty": "high"
+    }
+  ]
+}

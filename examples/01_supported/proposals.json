@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "findings": [
+    {
+      "claim_id": "claim-1",
+      "claim_text": "The Aurora timer can store four schedules.",
+      "claim_start": 0,
+      "claim_end": 42,
+      "proposed_relation": "supported",
+      "source_id": "aurora-guide",
+      "evidence_quote": "The timer can store four schedules",
+      "evidence_start": 20,
+      "evidence_end": 54,
+      "rationale": "The guide directly states the documented schedule capacity.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high"
+    }
+  ]
+}

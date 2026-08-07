@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "answer": {
+    "answer_id": "answer",
+    "text": "The Aurora timer can store four schedules."
+  },
+  "sources": [
+    {
+      "source_id": "aurora-guide",
+      "title": "Aurora Timer Guide",
+      "text": "Aurora Timer Guide: The timer can store four schedules and runs them independently."
+    }
+  ]
+}

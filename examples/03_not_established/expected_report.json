@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "claim_end": 44,
+      "claim_id": "claim-1",
+      "claim_span_verified": true,
+      "claim_start": 0,
+      "claim_text": "The Riverside shuttle began service in 2016.",
+      "deterministic_validation_status": "passed",
+      "evaluator_certainty": "high",
+      "evidence_end": null,
+      "evidence_quote": null,
+      "evidence_span_verified": null,
+      "evidence_start": null,
+      "evidence_sufficiency": "insufficient",
+      "proposed_relation": "not_established",
+      "rationale": "The supplied notice gives a current frequency but no original launch year.",
+      "reportable_relation": "not_established",
+      "source_id": null,
+      "validation_issues": []
+    }
+  ],
+  "fingerprints": {
+    "algorithm": "sha256",
+    "answer_sha256": "18e6ddd277df5d2184ca5a29f1c298614cb7a842e8ab966f90effee833f5b5a7",
+    "canonical_bundle_sha256": "b97fac49889f11378531af66d42706ca3e82f4042a270f9f99bb1a50cf77b1c7",
+    "sources": [
+      {
+        "sha256": "5c46ea8ab6fff001cd2c1b49703b6af11e73d8c8525be5cea897647dce32270b",
+        "source_id": "riverside-notice"
+      }
+    ]
+  },
+  "generated_at": null,
+  "schema_version": "0.1",
+  "scope": {
+    "basis": "user_supplied_sources_only",
+    "limitations": [
+      "Citation validation confirms exact text and offsets, not semantic truth.",
+      "Evaluator-proposed relationships remain qualitative judgments.",
+      "The report does not assess source quality, completeness, or authority.",
+      "The report does not determine whether relevant evidence exists elsewhere.",
+      "The report does not provide domain-specific medical, legal, or safety conclusions.",
+      "The report does not assign a global score or answer-level label."
+    ],
+    "statement": "This report compares evaluator proposals with the answer and sources supplied for this inspection."
+  },
+  "summary": {
+    "citation_spans_verified": 0,
+    "claims_inspected": 1,
+    "reportable_findings": 1,
+    "validation_failures": 0
+  }
+}

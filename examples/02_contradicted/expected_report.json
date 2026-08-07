@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "claim_end": 47,
+      "claim_id": "claim-1",
+      "claim_span_verified": true,
+      "claim_start": 0,
+      "claim_text": "The Lumen desk lamp uses replaceable batteries.",
+      "deterministic_validation_status": "passed",
+      "evaluator_certainty": "high",
+      "evidence_end": 111,
+      "evidence_quote": "The lamp has a built-in rechargeable battery and does not accept replaceable batteries.",
+      "evidence_span_verified": true,
+      "evidence_start": 24,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "contradicted",
+      "rationale": "The manual describes an internal rechargeable battery and explicitly excludes replaceable batteries.",
+      "reportable_relation": "contradicted",
+      "source_id": "lumen-manual",
+      "validation_issues": []
+    }
+  ],
+  "fingerprints": {
+    "algorithm": "sha256",
+    "answer_sha256": "e36057b928c11c4d80462b156f111b651887dce959791bd0d94653b631c445aa",
+    "canonical_bundle_sha256": "c05600ebb8771f728074c02a086ed961114ba95f9bbc5db99b82350860d107d8",
+    "sources": [
+      {
+        "sha256": "b86c2416bc7b23f7a21c13fe739a24e35ab7d2241df2110c9679e9270ed1be59",
+        "source_id": "lumen-manual"
+      }
+    ]
+  },
+  "generated_at": null,
+  "schema_version": "0.1",
+  "scope": {
+    "basis": "user_supplied_sources_only",
+    "limitations": [
+      "Citation validation confirms exact text and offsets, not semantic truth.",
+      "Evaluator-proposed relationships remain qualitative judgments.",
+      "The report does not assess source quality, completeness, or authority.",
+      "The report does not determine whether relevant evidence exists elsewhere.",
+      "The report does not provide domain-specific medical, legal, or safety conclusions.",
+      "The report does not assign a global score or answer-level label."
+    ],
+    "statement": "This report compares evaluator proposals with the answer and sources supplied for this inspection."
+  },
+  "summary": {
+    "citation_spans_verified": 1,
+    "claims_inspected": 1,
+    "reportable_findings": 1,
+    "validation_failures": 0
+  }
+}

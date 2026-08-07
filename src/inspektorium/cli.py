@@ -1,0 +1,157 @@
+"""Small single-answer command-line interface."""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from collections.abc import Sequence
+from datetime import datetime
+from pathlib import Path
+
+from pydantic import ValidationError
+
+from inspektorium.core.inspection import inspect_proposals
+from inspektorium.core.models import AnswerInput, InspectionInput, SourceDocument
+from inspektorium.providers.base import ProviderError
+from inspektorium.providers.parsing import ProposalParseError, parse_proposal_json
+from inspektorium.report import render_json, render_markdown
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="inspektorium",
+        description="Evidence-bound inspection for one answer and supplied sources.",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    inspect_parser = subparsers.add_parser(
+        "inspect",
+        help="validate evaluator proposals and render one report",
+    )
+    input_group = inspect_parser.add_mutually_exclusive_group(required=True)
+    input_group.add_argument("--input", type=Path, help="InspectionInput JSON file")
+    input_group.add_argument("--answer", type=Path, help="answer text file")
+    inspect_parser.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        metavar="SOURCE_ID=PATH",
+        help="source text file; repeat for multiple sources",
+    )
+    proposal_group = inspect_parser.add_mutually_exclusive_group(required=True)
+    proposal_group.add_argument(
+        "--proposals",
+        type=Path,
+        help="precomputed ProposalBatch JSON for offline inspection",
+    )
+    proposal_group.add_argument(
+        "--provider",
+        choices=("anthropic",),
+        help="optional live evaluator provider",
+    )
+    inspect_parser.add_argument(
+        "--model",
+        help="Anthropic model identifier; required with --provider",
+    )
+    inspect_parser.add_argument(
+        "--format",
+        choices=("json", "markdown"),
+        default="markdown",
+    )
+    inspect_parser.add_argument(
+        "--output",
+        type=Path,
+        help="output file; omit to write to standard output",
+    )
+    inspect_parser.add_argument(
+        "--generated-at",
+        help="optional explicit ISO-8601 timestamp included in the report",
+    )
+    return parser
+
+
+def _read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def _load_inspection_input(args: argparse.Namespace) -> InspectionInput:
+    if args.input is not None:
+        if args.source:
+            raise ValueError("--source cannot be combined with --input")
+        return InspectionInput.model_validate_json(_read_text(args.input))
+
+    if not args.source:
+        raise ValueError("at least one --source SOURCE_ID=PATH is required")
+    sources: list[SourceDocument] = []
+    for specification in args.source:
+        if "=" not in specification:
+            raise ValueError("each --source must use SOURCE_ID=PATH")
+        source_id, path_text = specification.split("=", 1)
+        if not source_id or not path_text:
+            raise ValueError("each --source must use non-empty SOURCE_ID=PATH")
+        sources.append(
+            SourceDocument(source_id=source_id, text=_read_text(Path(path_text)))
+        )
+    return InspectionInput(
+        answer=AnswerInput(text=_read_text(args.answer)),
+        sources=tuple(sources),
+    )
+
+
+def _load_proposals(args: argparse.Namespace, inspection_input: InspectionInput):
+    if args.proposals is not None:
+        return parse_proposal_json(_read_text(args.proposals))
+    if not args.model:
+        raise ValueError("--model is required with --provider anthropic")
+    from inspektorium.providers.anthropic import AnthropicProvider
+
+    return AnthropicProvider(model=args.model).propose_findings(inspection_input)
+
+
+def _parse_generated_at(value: str | None) -> datetime | None:
+    if value is None:
+        return None
+    timestamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if timestamp.tzinfo is None or timestamp.utcoffset() is None:
+        raise ValueError("--generated-at must include a timezone offset")
+    return timestamp
+
+
+def _run_inspect(args: argparse.Namespace) -> int:
+    inspection_input = _load_inspection_input(args)
+    proposals = _load_proposals(args, inspection_input)
+    report = inspect_proposals(
+        inspection_input,
+        proposals,
+        generated_at=_parse_generated_at(args.generated_at),
+    )
+    rendered = render_json(report) if args.format == "json" else render_markdown(report)
+    if args.output is None:
+        sys.stdout.write(rendered)
+    else:
+        args.output.write_text(rendered, encoding="utf-8")
+    return 0
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    """CLI entry point returning a conventional process status."""
+
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    try:
+        if args.command == "inspect":
+            return _run_inspect(args)
+    except (
+        FileNotFoundError,
+        OSError,
+        ProposalParseError,
+        ProviderError,
+        ValidationError,
+        ValueError,
+    ) as exc:
+        print(f"inspektorium: error: {exc}", file=sys.stderr)
+        return 2
+    parser.error("unknown command")
+    return 2
+
+
+__all__ = ["build_parser", "main"]

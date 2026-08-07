@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "findings": [
+    {
+      "claim_id": "claim-1",
+      "claim_text": "Northbridge Library is open on Saturdays.",
+      "claim_start": 0,
+      "claim_end": 41,
+      "proposed_relation": "supported",
+      "source_id": "northbridge-guide",
+      "evidence_quote": "Northbridge Library is open on Saturdays from 10 a.m. to 2 p.m.",
+      "evidence_start": 0,
+      "evidence_end": 63,
+      "rationale": "The guide directly states that the library opens on Saturdays.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high"
+    },
+    {
+      "claim_id": "claim-2",
+      "claim_text": "It closes at 8 p.m. on weekdays.",
+      "claim_start": 42,
+      "claim_end": 74,
+      "proposed_relation": "supported",
+      "source_id": "northbridge-guide",
+      "evidence_quote": "On weekdays, the library closes at 8 p.m.",
+      "evidence_start": 64,
+      "evidence_end": 105,
+      "rationale": "The proposed quotation appears to state the same weekday closing time.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high"
+    },
+    {
+      "claim_id": "claim-3",
+      "claim_text": "It opened in 1998.",
+      "claim_start": 75,
+      "claim_end": 93,
+      "proposed_relation": "not_established",
+      "source_id": null,
+      "evidence_quote": null,
+      "evidence_start": null,
+      "evidence_end": null,
+      "rationale": "The supplied guide does not establish an opening year.",
+      "evidence_sufficiency": "insufficient",
+      "evaluator_certainty": "high"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "answer": {
+    "answer_id": "answer",
+    "text": "The Lumen desk lamp uses replaceable batteries."
+  },
+  "sources": [
+    {
+      "source_id": "lumen-manual",
+      "title": "Lumen Desk Lamp Manual",
+      "text": "Lumen Desk Lamp Manual: The lamp has a built-in rechargeable battery and does not accept replaceable batteries."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "answer": {
+    "answer_id": "answer",
+    "text": "The Riverside shuttle began service in 2016."
+  },
+  "sources": [
+    {
+      "source_id": "riverside-notice",
+      "title": "Riverside Transit Notice",
+      "text": "Riverside Transit Notice: The shuttle runs every 20 minutes on weekdays. This notice does not state the original launch year."
+    }
+  ]
+}

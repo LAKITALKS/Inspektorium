@@ -1,29 +1,35 @@
-"""Public package surface for the Inspektorium reference implementation."""
+"""Inspektorium: evidence-bound inspection for model outputs."""
 
+from inspektorium.core.inspection import inspect_proposals
 from inspektorium.core.models import (
     AnswerInput,
-    EvidenceRelation,
-    EvidenceSufficiency,
-    EvaluatorCertainty,
     InspectionInput,
     InspectionReport,
+    ProposalBatch,
     ProposedFinding,
     SourceDocument,
     ValidatedFinding,
-    ValidationStatus,
+)
+from inspektorium.core.relations import (
+    DeterministicValidationStatus,
+    EvaluatorCertainty,
+    EvidenceRelation,
+    EvidenceSufficiency,
 )
 
 __all__ = [
     "AnswerInput",
+    "DeterministicValidationStatus",
     "EvidenceRelation",
     "EvidenceSufficiency",
     "EvaluatorCertainty",
     "InspectionInput",
     "InspectionReport",
+    "ProposalBatch",
     "ProposedFinding",
     "SourceDocument",
     "ValidatedFinding",
-    "ValidationStatus",
+    "inspect_proposals",
 ]
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"

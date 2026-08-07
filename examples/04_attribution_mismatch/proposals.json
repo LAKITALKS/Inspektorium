@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "findings": [
+    {
+      "claim_id": "claim-1",
+      "claim_text": "The Pine Street Museum says Tuesday admission is free.",
+      "claim_start": 0,
+      "claim_end": 54,
+      "proposed_relation": "attribution_mismatch",
+      "source_id": "museum-notice",
+      "evidence_quote": "The museum is open on Tuesdays, and standard admission applies every day.",
+      "evidence_start": 35,
+      "evidence_end": 108,
+      "rationale": "The answer attributes free Tuesday admission to the notice, but the notice says standard admission applies every day.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "claim_end": 54,
+      "claim_id": "claim-1",
+      "claim_span_verified": true,
+      "claim_start": 0,
+      "claim_text": "The Pine Street Museum says Tuesday admission is free.",
+      "deterministic_validation_status": "passed",
+      "evaluator_certainty": "high",
+      "evidence_end": 108,
+      "evidence_quote": "The museum is open on Tuesdays, and standard admission applies every day.",
+      "evidence_span_verified": true,
+      "evidence_start": 35,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "attribution_mismatch",
+      "rationale": "The answer attributes free Tuesday admission to the notice, but the notice says standard admission applies every day.",
+      "reportable_relation": "attribution_mismatch",
+      "source_id": "museum-notice",
+      "validation_issues": []
+    }
+  ],
+  "fingerprints": {
+    "algorithm": "sha256",
+    "answer_sha256": "11618caa841ebcb2fe1d22163f69cbd5532c4de340d88f3a0cfb46e2a4c5bb44",
+    "canonical_bundle_sha256": "7df323b5b3d9692ee2ca49c7bb8a0767a4217ce1ea558916047dee7520534cce",
+    "sources": [
+      {
+        "sha256": "56dbda6800fa3368745cc0767aef22f9ca8260bc61e276d4653cc08154c4d5a9",
+        "source_id": "museum-notice"
+      }
+    ]
+  },
+  "generated_at": null,
+  "schema_version": "0.1",
+  "scope": {
+    "basis": "user_supplied_sources_only",
+    "limitations": [
+      "Citation validation confirms exact text and offsets, not semantic truth.",
+      "Evaluator-proposed relationships remain qualitative judgments.",
+      "The report does not assess source quality, completeness, or authority.",
+      "The report does not determine whether relevant evidence exists elsewhere.",
+      "The report does not provide domain-specific medical, legal, or safety conclusions.",
+      "The report does not assign a global score or answer-level label."
+    ],
+    "statement": "This report compares evaluator proposals with the answer and sources supplied for this inspection."
+  },
+  "summary": {
+    "citation_spans_verified": 1,
+    "claims_inspected": 1,
+    "reportable_findings": 1,
+    "validation_failures": 0
+  }
+}

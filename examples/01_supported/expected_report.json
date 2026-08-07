@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "claim_end": 42,
+      "claim_id": "claim-1",
+      "claim_span_verified": true,
+      "claim_start": 0,
+      "claim_text": "The Aurora timer can store four schedules.",
+      "deterministic_validation_status": "passed",
+      "evaluator_certainty": "high",
+      "evidence_end": 54,
+      "evidence_quote": "The timer can store four schedules",
+      "evidence_span_verified": true,
+      "evidence_start": 20,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "supported",
+      "rationale": "The guide directly states the documented schedule capacity.",
+      "reportable_relation": "supported",
+      "source_id": "aurora-guide",
+      "validation_issues": []
+    }
+  ],
+  "fingerprints": {
+    "algorithm": "sha256",
+    "answer_sha256": "624542e4ba8d84bae26bd10a4d5506564f37e7b1887176aa9f807579447d2250",
+    "canonical_bundle_sha256": "7446a5b5848018fdf50e5e35dee887d04c23a2ec58b760d90f4b5224db363fc3",
+    "sources": [
+      {
+        "sha256": "0e0f5a6d75f37d0bcfa877467fe564cbc0bacf8827d482f9ee8f4da2a335c3ce",
+        "source_id": "aurora-guide"
+      }
+    ]
+  },
+  "generated_at": null,
+  "schema_version": "0.1",
+  "scope": {
+    "basis": "user_supplied_sources_only",
+    "limitations": [
+      "Citation validation confirms exact text and offsets, not semantic truth.",
+      "Evaluator-proposed relationships remain qualitative judgments.",
+      "The report does not assess source quality, completeness, or authority.",
+      "The report does not determine whether relevant evidence exists elsewhere.",
+      "The report does not provide domain-specific medical, legal, or safety conclusions.",
+      "The report does not assign a global score or answer-level label."
+    ],
+    "statement": "This report compares evaluator proposals with the answer and sources supplied for this inspection."
+  },
+  "summary": {
+    "citation_spans_verified": 1,
+    "claims_inspected": 1,
+    "reportable_findings": 1,
+    "validation_failures": 0
+  }
+}

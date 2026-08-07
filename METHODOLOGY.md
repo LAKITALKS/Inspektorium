@@ -2,144 +2,228 @@
 
 ## Purpose
 
-Inspektorium is a reference implementation of one evaluation primitive:
-binding a model-proposed finding to source text that ordinary code can verify.
-It evaluates an answer only against documents supplied by the user. Its output
-is therefore a statement about a bounded textual relationship, not about truth
-in the world.
+Inspektorium is a reference implementation and research seed for evidence-bound
+evaluation. It focuses on one inspectable operation: an evaluator proposes how
+an answer relates to supplied sources, and deterministic code checks the exact
+textual provenance of the proposed claim and citation spans before allowing
+that proposal to remain reportable.
+
+Inspektorium grew out of broader research and engineering work on
+evidence-grounded evaluation. This public repository deliberately isolates the
+small citation-binding primitive described here.
 
 ## The auditability problem
 
-An unconstrained language-model judge can emit a fluent verdict or score
-without exposing a reproducible basis for it. Even when a response includes a
-quotation, the quotation is itself model output. It may be incomplete,
-misattributed, incorrectly transcribed, or fabricated. Treating that output as
-evidence simply moves the unsupported assertion into a more persuasive form.
+A free-floating language-model judgment can be fluent without being
+reproducible. A label or numeric score does not tell a reader which answer text
+was inspected, which source passage mattered, or whether a quoted passage
+exists. Adding a quotation does not solve the problem by itself because the
+quotation is also model output. It can be truncated, misattributed, subtly
+altered, or fabricated.
 
-Inspektorium separates generative proposal from deterministic acceptance. The
-model may identify claims and propose evidence relationships. A separate,
-non-generative validation step decides whether the referenced text exists
-exactly where the proposal says it does.
+Inspektorium therefore treats the evaluator's output as a proposal. The
+proposal is preserved, but ordinary deterministic code separately checks its
+text spans. This creates an audit boundary that a reader and a machine consumer
+can inspect.
 
-## Atomic claims before evidence binding
+## Atomic claims
 
-An answer sentence can contain several propositions with different evidential
-statuses. Binding an entire paragraph to a single quotation makes it unclear
-which proposition is being evaluated and encourages evidence that supports
-only part of the text.
+One sentence can contain several propositions with different source
+relationships. Binding a paragraph to one quotation makes it unclear which
+proposition is being assessed and can hide partial support.
 
-The claim proposal therefore identifies a specific `claim_text` and half-open
-character interval `[claim_start, claim_end)` in the answer. A later validator
-must reproduce the text exactly with `answer[claim_start:claim_end]`. Atomicity
-is a modeling objective rather than a claim that language always decomposes
-uniquely; the explicit span at least makes the chosen unit inspectable.
+Each proposal identifies an atomic `claim_text` plus a half-open character
+interval `[claim_start, claim_end)` in the canonical answer. The validator
+requires:
 
-## Evidence bindings are proposals
+```python
+answer[claim_start:claim_end] == claim_text
+```
 
-For a claim, the model proposes one of four deliberately narrow relationships:
+Atomicity is still an evaluator judgment; natural language does not have a
+single uniquely correct decomposition. The explicit span makes the chosen unit
+inspectable.
 
-- `supported`: the supplied source directly supports the claim within its
-  expressed scope;
-- `contradicted`: the supplied source directly conflicts with the claim;
-- `not_established`: the supplied material does not provide enough evidence to
-  establish the claim;
-- `attribution_mismatch`: the answer attributes a statement, result, or
-  position to a supplied source that does not state or support it.
+## Semantic proposal versus deterministic validation
 
-For an evidence-bearing relationship, the proposal names a `source_id`, quotes
-the source, and supplies a half-open character interval
-`[evidence_start, evidence_end)`. It also includes a concise rationale,
-evidence sufficiency, and evaluator certainty. These fields are proposals until
-the deterministic layer accepts their spans.
+This separation is the central design constraint.
 
-## Deterministic span validation
+The evaluator generates:
 
-The validation kernel planned for the next implementation phase applies exact
-checks:
+- an atomic claim;
+- `proposed_relation`;
+- a proposed source identifier, quotation, and offsets;
+- evidence sufficiency;
+- evaluator certainty;
+- a concise rationale.
 
-1. The proposed claim offsets must be within the answer and reproduce
-   `claim_text` exactly.
-2. The proposed source identifier must name one of the supplied documents.
-3. The evidence offsets must be within that source and reproduce
-   `evidence_quote` exactly.
-4. A relationship that requires evidence cannot be verified when any required
-   check fails.
+Deterministic code checks:
 
-Matching is intentionally exact in v0.1. The validator does not search for a
-similar passage, repair a quotation, normalize wording, or replace the model's
-evidence with a different span. Those behaviors could conceal the very failure
-the report is meant to reveal.
+- whether the claim equals the proposed answer span;
+- whether the named source exists in the supplied input;
+- whether the evidence offsets are valid;
+- whether the source span equals the proposed quotation exactly;
+- whether mandatory evidence fields are complete.
 
-The report preserves the original `relation` as an auditable proposal and adds
-`verified_relation`. A passed finding repeats the accepted relation there. A
-failed finding sets it to null and emits a visible validation warning. This
-distinction is essential for machine consumers as well as readers.
+If mandatory guards pass, the unchanged proposal may appear as
+`reportable_relation`. That field means only that the proposal cleared the
+mechanical reporting guard. It does not mean that deterministic code proved the
+semantic relationship, the evaluator's interpretation, or the truth of the
+claim.
+
+## Public source relationships
+
+The evaluator uses exactly four source-bounded relationships:
+
+- `supported`: supplied source material is judged to directly support the
+  claim within its expressed scope;
+- `contradicted`: supplied source material is judged to directly conflict with
+  the claim;
+- `not_established`: supplied material is judged not to establish the claim;
+- `attribution_mismatch`: the answer is judged to attribute a statement,
+  result, or position to a source that does not state or support it.
+
+These definitions describe evaluator-proposed relationships to the supplied
+source set. They are not comprehensive truth or claim-forensics labels.
+
+## Why exact quotation validation matters
+
+Plausible fabricated quotations are especially difficult to notice in a
+polished report. v0.1 uses exact matching rather than fuzzy recovery:
+
+```python
+source[evidence_start:evidence_end] == evidence_quote
+```
+
+If this condition fails, Inspektorium preserves the quotation and proposed
+offsets as failed input, assigns a finite failure code, and makes the proposal
+non-reportable. It never searches for similar wording, changes offsets, chooses
+another source, repairs the quotation, or changes the proposed relationship.
+
+The mixed example intentionally proposes an `8 p.m.` quotation where the source
+says `6 p.m.`. The failed quotation remains visible in both JSON and Markdown,
+while an unrelated valid finding in the same report survives.
+
+## The special case of `not_established`
+
+Absence of a citation does not prove absence of support. `not_established` is a
+semantic evaluator judgment and may be proposed with all evidence fields null
+so the schema does not encourage fabricated evidence.
+
+The deterministic guard can confirm the claim span and structural integrity,
+but it does not prove source insufficiency. If an evaluator optionally supplies
+a passage to explain the limitation, that passage must pass the same exact
+citation checks. A failed optional citation makes the proposal non-reportable.
+
+## Canonical text and offset contract
+
+The same canonical representation is used for provider-visible text, offsets,
+validation, fingerprints, and reports:
+
+1. Convert CRLF and bare CR newlines to LF.
+2. Apply Unicode NFC normalization.
+3. Preserve all other whitespace exactly.
+4. Use Python string character indices with half-open intervals.
+5. Encode canonical text as UTF-8 only when hashing or serializing.
+
+Offsets are character indices, not byte offsets. Normalization occurs when the
+inspection input is parsed, before proposals are requested or validated. Model-
+produced quotations are not normalized or repaired after generation.
+
+## Validation outcomes and failure codes
+
+Each finding preserves:
+
+- `claim_span_verified`;
+- `evidence_span_verified` (`true`, `false`, or `null` when none was proposed);
+- `deterministic_validation_status`;
+- `proposed_relation`;
+- `reportable_relation` or null;
+- `validation_issues` with a small finite code vocabulary.
+
+The public failure codes are:
+
+- `claim_span_mismatch`;
+- `unknown_source`;
+- `invalid_evidence_offsets`;
+- `evidence_span_mismatch`;
+- `incomplete_evidence_reference`;
+- `malformed_proposal` for parsing-layer failures.
+
+Provider JSON that is malformed or violates the strict schema fails before
+finding validation. No prose extraction or schema repair is attempted.
 
 ## Evidence sufficiency and evaluator certainty
 
 The two qualitative descriptors answer different questions.
 
-`evidence_sufficiency` describes the relationship between the supplied text
-and the claim: whether the evidence is `sufficient`, `partial`, or
-`insufficient` for the proposed finding.
+`evidence_sufficiency` describes the evaluator's view of how fully the supplied
+text addresses the claim: `sufficient`, `partial`, or `insufficient`.
 
-`evaluator_certainty` describes how confidently the evaluator made its
-interpretive proposal: `high`, `medium`, or `low`.
+`evaluator_certainty` describes the evaluator's confidence in its own proposal:
+`high`, `medium`, or `low`.
 
-A clear but incomplete source can yield high evaluator certainty and
-insufficient evidence. Conversely, a potentially relevant passage can be
-available while its interpretation remains uncertain. Neither vocabulary is a
-probability scale, and Inspektorium does not aggregate either into a number.
+A source can clearly omit required information, yielding high evaluator
+certainty and insufficient evidence. Conversely, potentially useful text can
+exist while its interpretation remains uncertain. Neither vocabulary is an
+empirically calibrated probability, and neither is converted into a number.
+
+## Fingerprinting and provenance
+
+Inspektorium computes SHA-256 over the canonical UTF-8 answer text and each
+canonical source. It also hashes a canonical JSON bundle of this form:
+
+```json
+{"answer":"<canonical answer>","sources":[{"source_id":"<id>","text":"<canonical source>"}]}
+```
+
+Object keys are sorted, separators contain no optional spaces, Unicode is not
+ASCII-escaped, and sources are sorted by `source_id`. Display titles and
+timestamps are excluded. Therefore semantically identical source sets have the
+same bundle digest regardless of input order. The hash identifies bytes; it
+does not establish authorship or source quality.
+
+## Deterministic reports
+
+JSON rendering uses sorted keys, fixed indentation, UTF-8-compatible Unicode,
+and one terminal newline. Markdown is assembled from the validated report
+object with fixed section order and wording. Neither renderer reads the system
+clock. `generated_at` is absent by default and can appear only when supplied as
+explicit timezone-aware input metadata.
+
+The report visually labels evaluator-generated semantic content separately
+from deterministic checks. A citation-validated quotation is identified as
+such; a failed proposal is labeled unvalidated and repeated in the warning
+section.
 
 ## Why there is no global score
 
-A single score would collapse distinct claims, evidence conditions, and
-validation failures into an apparently comparable quantity. v0.1 has no
-empirical basis for such weighting and does not imply one. Findings remain
-discrete and inspectable; there is no answer-level label, severity hierarchy,
-rank, or trust score.
+A single number would collapse heterogeneous claims, semantic judgments, and
+mechanical failures into apparent precision without an empirical basis for the
+weighting. v0.1 therefore has no aggregate quality score, trust score, severity
+weight, rank, probability, or answer-level label. Findings remain discrete and
+inspectable.
 
-## Fingerprinting and reproducibility
+## What deterministic validation does not prove
 
-Reports identify their inputs with SHA-256. The answer fingerprint hashes the
-exact UTF-8 bytes of the answer text. Each source fingerprint does the same for
-its exact text.
+Exact span checks do not prove:
 
-The normalized bundle contains only the inspected text and the identifiers
-needed to associate source fingerprints:
+- that a proposed relationship is semantically correct;
+- that the source is accurate, authoritative, current, or complete;
+- that reality agrees with the source;
+- that omitted evidence does not exist elsewhere;
+- that every relevant claim was extracted;
+- that a scientific, causal, clinical, legal, or safety conclusion is valid;
+- that an answer is globally good or bad.
 
-```json
-{"answer":"<exact answer text>","sources":[{"source_id":"<id>","text":"<exact source text>"}]}
-```
+These are limits of the question Inspektorium asks, not exceptions hidden from
+the report.
 
-Titles and display metadata are excluded. The bundle is encoded as UTF-8 JSON;
-object keys are sorted, separators are `,` and `:` without added spaces,
-Unicode is not ASCII-escaped, and sources retain input order. Hashing this
-canonical serialization provides a compact way to detect whether a report
-refers to the same textual inputs. It does not establish authorship or source
-quality.
+## Extensibility and independent study
 
-## Source-bounded limitations
-
-Inspektorium does not determine whether:
-
-- the supplied sources are accurate, authoritative, current, or complete;
-- relevant evidence exists outside the supplied material;
-- reality agrees with the sources;
-- a domain-specific causal, clinical, legal, or safety conclusion is valid;
-- an omitted claim should have been extracted;
-- an answer is globally good or bad.
-
-These limitations apply to every report. Deterministic span verification proves
-that a proposed quotation is present at the stated location. It does not prove
-that the source, the interpretation, or the world is correct.
-
-## Reference failure case
-
-The hand-authored reference fixture contains a proposal quoting a weekday
-closing time of `8 p.m.`. The named source contains `6 p.m.` at the supplied
-offsets. The intended validator outcome is failure: the report retains the
-proposal for inspection, withholds a verified relationship, and shows the
-mismatch. It does not convert the finding into a contradiction even though a
-reader might infer one from the source; doing so would silently replace the
-model's proposed evidence-binding operation with a different one.
+Inspektorium is intentionally a small reference point, not a complete doctrine.
+Researchers and developers are encouraged to fork it, challenge its
+assumptions, replace the evaluator prompt, add providers in their own work,
+study failure cases, test alternative evidence-binding strategies, or develop
+different relationship vocabularies. Changes to this repository remain subject
+to its frozen v0.1 scope.

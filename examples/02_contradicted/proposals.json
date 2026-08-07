@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "findings": [
+    {
+      "claim_id": "claim-1",
+      "claim_text": "The Lumen desk lamp uses replaceable batteries.",
+      "claim_start": 0,
+      "claim_end": 47,
+      "proposed_relation": "contradicted",
+      "source_id": "lumen-manual",
+      "evidence_quote": "The lamp has a built-in rechargeable battery and does not accept replaceable batteries.",
+      "evidence_start": 24,
+      "evidence_end": 111,
+      "rationale": "The manual describes an internal rechargeable battery and explicitly excludes replaceable batteries.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high"
+    }
+  ]
+}

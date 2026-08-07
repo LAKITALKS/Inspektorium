@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "answer": {
+    "answer_id": "answer",
+    "text": "The Pine Street Museum says Tuesday admission is free."
+  },
+  "sources": [
+    {
+      "source_id": "museum-notice",
+      "title": "Pine Street Museum visitor notice",
+      "text": "Pine Street Museum visitor notice: The museum is open on Tuesdays, and standard admission applies every day."
+    }
+  ]
+}
