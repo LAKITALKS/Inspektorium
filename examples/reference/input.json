@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "answer": {
+    "answer_id": "answer",
+    "text": "Northbridge Library is open on Saturdays. It closes at 8 p.m. on weekdays. It opened in 1998."
+  },
+  "sources": [
+    {
+      "source_id": "northbridge-guide",
+      "title": "Northbridge Library visitor guide",
+      "text": "Northbridge Library is open on Saturdays from 10 a.m. to 2 p.m. On weekdays, the library closes at 6 p.m. The source does not state when the library opened."
+    }
+  ]
+}
+

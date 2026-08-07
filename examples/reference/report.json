@@ -1,0 +1,95 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-08-07T00:00:00Z",
+  "fingerprints": {
+    "algorithm": "sha256",
+    "answer_sha256": "78903e48852139ba081f1498bea508ea95934f3d8456380144fb80e4c04cf0d1",
+    "sources": [
+      {
+        "source_id": "northbridge-guide",
+        "sha256": "bfed0af89b8740175fba4cd45ee4a5d4bca275044adcc4b16875b388e27b6d18"
+      }
+    ],
+    "normalized_bundle_sha256": "9c4d165c8bd2ce4133b82cac10997aae4d52a6f737bc7dc887aa3ac02e10a5ad"
+  },
+  "summary": {
+    "claims_inspected": 3,
+    "evidence_bindings_verified": 1,
+    "validation_failures": 1
+  },
+  "findings": [
+    {
+      "claim_id": "claim-1",
+      "claim_text": "Northbridge Library is open on Saturdays.",
+      "claim_start": 0,
+      "claim_end": 41,
+      "relation": "supported",
+      "source_id": "northbridge-guide",
+      "evidence_quote": "Northbridge Library is open on Saturdays from 10 a.m. to 2 p.m.",
+      "evidence_start": 0,
+      "evidence_end": 63,
+      "rationale": "The source directly states that the library opens on Saturdays and adds its hours.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high",
+      "claim_span_verified": true,
+      "evidence_span_verified": true,
+      "validation_status": "passed",
+      "verified_relation": "supported"
+    },
+    {
+      "claim_id": "claim-2",
+      "claim_text": "It closes at 8 p.m. on weekdays.",
+      "claim_start": 42,
+      "claim_end": 74,
+      "relation": "supported",
+      "source_id": "northbridge-guide",
+      "evidence_quote": "On weekdays, the library closes at 8 p.m.",
+      "evidence_start": 64,
+      "evidence_end": 105,
+      "rationale": "The proposed quotation appears to state the same weekday closing time as the answer.",
+      "evidence_sufficiency": "sufficient",
+      "evaluator_certainty": "high",
+      "claim_span_verified": true,
+      "evidence_span_verified": false,
+      "validation_status": "failed",
+      "verified_relation": null
+    },
+    {
+      "claim_id": "claim-3",
+      "claim_text": "It opened in 1998.",
+      "claim_start": 75,
+      "claim_end": 93,
+      "relation": "not_established",
+      "source_id": null,
+      "evidence_quote": null,
+      "evidence_start": null,
+      "evidence_end": null,
+      "rationale": "The supplied source explicitly provides no opening year, so the source set does not establish this claim.",
+      "evidence_sufficiency": "insufficient",
+      "evaluator_certainty": "high",
+      "claim_span_verified": true,
+      "evidence_span_verified": null,
+      "validation_status": "passed",
+      "verified_relation": "not_established"
+    }
+  ],
+  "validation_warnings": [
+    {
+      "claim_id": "claim-2",
+      "code": "evidence_quote_mismatch",
+      "message": "The proposed evidence quote does not equal source[64:105]. The source span says 6 p.m.; the proposal says 8 p.m. No replacement quotation was selected."
+    }
+  ],
+  "scope": {
+    "basis": "user_supplied_sources_only",
+    "statement": "This report evaluates relationships between the answer and the source supplied with this inspection.",
+    "limitations": [
+      "It does not establish truth beyond the supplied source.",
+      "It does not judge whether the source is accurate, complete, current, or authoritative.",
+      "It does not determine whether relevant evidence exists elsewhere.",
+      "It does not make medical, legal, safety, or domain-specific validity judgments.",
+      "It does not assign an overall score or answer-level label."
+    ]
+  }
+}
+
