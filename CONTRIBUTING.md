@@ -20,4 +20,3 @@ Before proposing a change:
 
 Provider integrations, release licensing, and publication remain curator
 decisions.
-

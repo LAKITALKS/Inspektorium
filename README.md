@@ -57,4 +57,3 @@ globally good, safe, medically valid, or legally compliant.
 No license grant is included in this specification phase. The intended initial
 release posture is source-available and non-commercial, using an unmodified
 standard license selected and reviewed by the curator before release.
-

@@ -211,6 +211,14 @@ def test_every_failed_finding_requires_warning() -> None:
         InspectionReport.model_validate(data)
 
 
+def test_passed_binding_must_name_fingerprinted_source() -> None:
+    data = reference_report_data()
+    data["findings"][0]["source_id"] = "unlisted-source"  # type: ignore[index]
+
+    with pytest.raises(ValidationError, match="must name a fingerprinted source"):
+        InspectionReport.model_validate(data)
+
+
 def test_source_ids_must_be_unique() -> None:
     payload = json.loads((REFERENCE / "input.json").read_text(encoding="utf-8"))
     payload["sources"].append(dict(payload["sources"][0]))

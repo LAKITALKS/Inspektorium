@@ -31,4 +31,3 @@ sequencing, not commitments.
 Any scoring proposal, additional provider, batch workflow, retrieval feature,
 or user interface requires a separate design review. None is part of v0.1 and
 none should be inferred from this list.
-

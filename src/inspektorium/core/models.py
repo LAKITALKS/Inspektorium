@@ -295,6 +295,19 @@ class InspectionReport(StrictModel):
         if actual != expected:
             raise ValueError("summary counts must match report findings")
 
+        fingerprinted_source_ids = {
+            source.source_id for source in self.fingerprints.sources
+        }
+        for finding in self.findings:
+            if (
+                finding.validation_status is ValidationStatus.PASSED
+                and finding.source_id is not None
+                and finding.source_id not in fingerprinted_source_ids
+            ):
+                raise ValueError(
+                    "a passed evidence binding must name a fingerprinted source"
+                )
+
         failed_ids = {
             finding.claim_id
             for finding in self.findings
@@ -327,4 +340,3 @@ __all__ = [
     "ValidationStatus",
     "ValidationWarning",
 ]
-

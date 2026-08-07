@@ -56,4 +56,3 @@ verified source span.
 
 This boundary remains fixed through v0.1. Candidate capabilities belong in
 [ROADMAP.md](ROADMAP.md) and require an explicit post-v0.1 design decision.
-
