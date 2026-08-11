@@ -130,10 +130,11 @@ inspektorium inspect \
   --output report.md
 ```
 
-The provider makes one proposal call behind a small interface and requests
-native JSON-schema structured output. The returned object is then parsed with
-unknown fields rejected. Malformed output remains a visible failure; no prose
-extraction or aggressive JSON repair is attempted.
+The provider makes one proposal call behind a small interface and uses the
+Anthropic Python SDK's Pydantic parse helper to request native JSON-schema
+structured output. The returned object is validated against the strict public
+proposal model with unknown fields rejected. Malformed output remains a visible
+failure; no prose extraction or aggressive JSON repair is attempted.
 
 ## Report layers
 

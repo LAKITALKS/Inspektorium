@@ -24,6 +24,7 @@ anthropic = [
   "anthropic>=0.77",
 ]
 dev = [
+  "anthropic>=0.77",
   "build>=1.2,<2",
   "mypy>=1.13,<2",
   "pytest>=8,<10",

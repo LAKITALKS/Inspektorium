@@ -6,8 +6,8 @@ Audit date: 2026-08-11
 
 - [x] Version is `0.1.0` in package code, project metadata, and citation
   metadata.
-- [x] All 71 tests pass on Python 3.11.
-- [x] Overall branch coverage is 87.88%; deterministic-core branch coverage is
+- [x] All 74 tests pass on Python 3.11.
+- [x] Overall branch coverage is 88.11%; deterministic-core branch coverage is
   89.10%.
 - [x] Ruff, strict mypy, Python compilation, and Git whitespace checks pass.
 - [x] All five synthetic examples regenerate byte-for-byte in JSON and Markdown
@@ -27,13 +27,14 @@ Audit date: 2026-08-11
 - [x] The tracked-content, history, path, credential, and public-IP scans found no
   private-system leakage or external repository imports.
 
-## Provider release gate
+## Provider integration
 
-- [ ] Re-run one tiny synthetic Anthropic smoke after curator authorization. The
-  single authorized audit call reached Anthropic but returned prose around JSON,
-  which the strict parser correctly rejected. The adapter now requests native
-  JSON-schema structured output and has offline contract coverage, but that fix
-  has not been revalidated live.
+- [x] Initial provider integration attempts exposed request/output contract
+  defects during pre-release smoke testing. The final adapter uses the current
+  supported Anthropic Pydantic structured-output interface and passed one
+  end-to-end integration smoke on 2026-08-11. No repair or second model request
+  was used. This was an integration check, not a reliability benchmark or model-
+  quality evaluation.
 
 ## Curator release items
 
@@ -46,4 +47,4 @@ Audit date: 2026-08-11
 - [ ] Set the release date in citation metadata when the release date is known.
 
 Do not tag, push, publish, or contact Zenodo until the curator completes the
-release items and the provider release gate passes.
+release items.

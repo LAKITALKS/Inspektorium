@@ -146,9 +146,11 @@ The public failure codes are:
 - `incomplete_evidence_reference`;
 - `malformed_proposal` for parsing-layer failures.
 
-The Anthropic adapter requests native JSON-schema structured output. Provider
-JSON that is malformed or violates the strict schema still fails before finding
-validation. No prose extraction or schema repair is attempted.
+The Anthropic adapter uses the SDK's Pydantic parse helper, which transforms the
+public proposal model into the supported native JSON-schema wire format and
+validates the response against the original strict model. Provider JSON that is
+malformed or violates the strict schema still fails before finding validation.
+No prose extraction or schema repair is attempted.
 
 ## Evidence sufficiency and evaluator certainty
 
