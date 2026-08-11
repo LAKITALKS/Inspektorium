@@ -7,7 +7,8 @@ authors:
   - name: "Inspektorium contributors"
 abstract: >-
   A small evidence-binding reference tool that requires evaluator-generated
-  findings to point to deterministically validated source text.
+  findings to point to source text through deterministically validated exact
+  spans.
 license: PolyForm-Noncommercial-1.0.0
 keywords:
   - evidence binding

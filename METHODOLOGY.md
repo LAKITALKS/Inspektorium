@@ -8,10 +8,6 @@ an answer relates to supplied sources, and deterministic code checks the exact
 textual provenance of the proposed claim and citation spans before allowing
 that proposal to remain reportable.
 
-Inspektorium grew out of broader research and engineering work on
-evidence-grounded evaluation. This public repository deliberately isolates the
-small citation-binding primitive described here.
-
 ## The auditability problem
 
 A free-floating language-model judgment can be fluent without being
@@ -150,8 +146,9 @@ The public failure codes are:
 - `incomplete_evidence_reference`;
 - `malformed_proposal` for parsing-layer failures.
 
-Provider JSON that is malformed or violates the strict schema fails before
-finding validation. No prose extraction or schema repair is attempted.
+The Anthropic adapter requests native JSON-schema structured output. Provider
+JSON that is malformed or violates the strict schema still fails before finding
+validation. No prose extraction or schema repair is attempted.
 
 ## Evidence sufficiency and evaluator certainty
 

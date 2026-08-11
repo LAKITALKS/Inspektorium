@@ -11,7 +11,12 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from inspektorium.core.inspection import inspect_proposals
-from inspektorium.core.models import AnswerInput, InspectionInput, SourceDocument
+from inspektorium.core.models import (
+    AnswerInput,
+    InspectionInput,
+    ProposalBatch,
+    SourceDocument,
+)
 from inspektorium.providers.base import ProviderError
 from inspektorium.providers.parsing import ProposalParseError, parse_proposal_json
 from inspektorium.report import render_json, render_markdown
@@ -97,7 +102,9 @@ def _load_inspection_input(args: argparse.Namespace) -> InspectionInput:
     )
 
 
-def _load_proposals(args: argparse.Namespace, inspection_input: InspectionInput):
+def _load_proposals(
+    args: argparse.Namespace, inspection_input: InspectionInput
+) -> ProposalBatch:
     if args.proposals is not None:
         return parse_proposal_json(_read_text(args.proposals))
     if not args.model:

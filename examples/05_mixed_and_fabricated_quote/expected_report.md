@@ -61,8 +61,8 @@ offsets.
 - **Claim span check:** exact
 - **Proposed relationship (evaluator judgment):** `not_established`
 - **Reportable proposed relationship:** `not_established`
-- **Deterministic guard:** `passed`
-- **Citation validation:** no citation proposed
+- **Deterministic guard:** `passed` (claim span and structure only; no citation check performed)
+- **Citation validation:** not performed — no citation required or supplied for this proposal
 - **Evidence sufficiency (evaluator judgment):** `insufficient`
 - **Evaluator certainty:** `high`
 - **Rationale (evaluator-generated):** The supplied guide does not establish an opening year.

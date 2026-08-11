@@ -80,6 +80,12 @@ class AnthropicProvider:
                 max_tokens=4096,
                 temperature=0,
                 system=PUBLIC_SYSTEM_PROMPT,
+                output_config={
+                    "format": {
+                        "type": "json_schema",
+                        "schema": ProposalBatch.model_json_schema(),
+                    }
+                },
                 messages=[
                     {
                         "role": "user",

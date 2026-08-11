@@ -20,11 +20,13 @@ def _finding_markdown(index: int, finding: ValidatedFinding) -> list[str]:
         if finding.evidence_span_verified is True
         else "citation failed exact validation"
         if finding.evidence_span_verified is False
-        else "no citation proposed"
+        else "not performed — no citation required or supplied for this proposal"
     )
     claim_check = "exact" if finding.claim_span_verified else "failed"
     proposed = finding.proposed_relation.value
-    guard = finding.deterministic_validation_status.value
+    guard = f"`{finding.deterministic_validation_status.value}`"
+    if finding.evidence_span_verified is None:
+        guard += " (claim span and structure only; no citation check performed)"
     sufficiency = finding.evidence_sufficiency.value
     lines = [
         f"### Finding {index}: `{finding.claim_id}`",
@@ -34,7 +36,7 @@ def _finding_markdown(index: int, finding: ValidatedFinding) -> list[str]:
         f"- **Claim span check:** {claim_check}",
         f"- **Proposed relationship (evaluator judgment):** `{proposed}`",
         f"- **Reportable proposed relationship:** {reportable}",
-        f"- **Deterministic guard:** `{guard}`",
+        f"- **Deterministic guard:** {guard}",
         f"- **Citation validation:** {evidence_status}",
         f"- **Evidence sufficiency (evaluator judgment):** `{sufficiency}`",
         f"- **Evaluator certainty:** `{finding.evaluator_certainty.value}`",

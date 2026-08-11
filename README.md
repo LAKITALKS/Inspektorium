@@ -130,9 +130,10 @@ inspektorium inspect \
   --output report.md
 ```
 
-The provider makes one proposal call behind a small interface. Its response is
-parsed as exact JSON with unknown fields rejected. Malformed output remains a
-visible failure; no prose extraction or aggressive JSON repair is attempted.
+The provider makes one proposal call behind a small interface and requests
+native JSON-schema structured output. The returned object is then parsed with
+unknown fields rejected. Malformed output remains a visible failure; no prose
+extraction or aggressive JSON repair is attempted.
 
 ## Report layers
 
@@ -205,6 +206,7 @@ the stated canonical offsets. See [METHODOLOGY.md](METHODOLOGY.md) and
 ```bash
 python -m pip install -e '.[dev]'
 ruff check .
+mypy src
 pytest --cov=inspektorium --cov-report=term-missing
 ```
 

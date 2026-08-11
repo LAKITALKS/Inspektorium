@@ -8,7 +8,7 @@ from typing import Any
 
 import pytest
 
-from inspektorium.core.models import InspectionInput
+from inspektorium.core.models import InspectionInput, ProposalBatch
 from inspektorium.providers.anthropic import AnthropicProvider, build_user_prompt
 from inspektorium.providers.base import ProviderError
 
@@ -57,6 +57,12 @@ def test_anthropic_provider_parses_one_text_response(
     assert messages.kwargs is not None
     assert messages.kwargs["model"] == "test-model"
     assert len(messages.kwargs["messages"]) == 1
+    assert messages.kwargs["output_config"] == {
+        "format": {
+            "type": "json_schema",
+            "schema": ProposalBatch.model_json_schema(),
+        }
+    }
 
 
 def test_provider_request_failure_cannot_become_fake_success(

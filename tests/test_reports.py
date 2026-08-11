@@ -74,5 +74,13 @@ def test_not_established_language_does_not_claim_deterministic_proof(
     )
 
     assert "Proposed relationship (evaluator judgment)" in markdown
-    assert "no citation proposed" in markdown
+    assert (
+        "Citation validation:** not performed — no citation required or supplied "
+        "for this proposal"
+    ) in markdown
+    assert (
+        "Deterministic guard:** `passed` (claim span and structure only; no "
+        "citation check performed)"
+    ) in markdown
+    assert "exact source quotation confirmed" not in markdown
     assert "semantically verified" not in markdown
