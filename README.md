@@ -226,6 +226,10 @@ Release citation metadata is prepared in [CITATION.cff](CITATION.cff). No DOI
 has been assigned. Any eventual archive record should correspond to a curator-
 approved release rather than an intermediate development commit.
 
+## Author and maintainer
+
+Lazaros Varvatis — [LAKITALKS](https://github.com/LAKITALKS)
+
 ## Contributing and independent extension
 
 Inspektorium is a reference implementation and research seed. Researchers and

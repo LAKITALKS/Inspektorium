@@ -4,7 +4,8 @@ title: "Inspektorium"
 type: software
 version: 0.1.0
 authors:
-  - name: "Inspektorium contributors"
+  - family-names: "Varvatis"
+    given-names: "Lazaros"
 abstract: >-
   A small evidence-binding reference tool that requires evaluator-generated
   findings to point to source text through deterministically validated exact

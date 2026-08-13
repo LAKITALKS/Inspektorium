@@ -18,7 +18,7 @@ Audit date: 2026-08-11
   the console and module entry points run without provider credentials.
 - [x] `LICENSE` is the unchanged PolyForm Noncommercial License 1.0.0 with
   SHA-256 `c0ea4a896d2c8c394b29f9427589996db826cd501c512279ff0ed3ef48fabbe5`.
-- [x] `CITATION.cff` is valid YAML, names `Inspektorium contributors`, contains
+- [x] `CITATION.cff` is valid YAML, names `Lazaros Varvatis`, contains
   version `0.1.0`, and contains no DOI or repository URL.
 - [x] No global, trust, quality, weighted, or severity score; calibrated
   probability; ranking; or leaderboard behavior is present.
@@ -38,13 +38,14 @@ Audit date: 2026-08-11
 
 ## Curator release items
 
-- [ ] Confirm public authorship. Current collective author metadata is
-  `Inspektorium contributors` in `CITATION.cff` and `pyproject.toml`.
-- [ ] Supply the final public GitHub destination, then add it consistently to
-  release metadata.
+- [x] Confirm public authorship. Current author metadata is `Lazaros Varvatis`
+  in `CITATION.cff` and `pyproject.toml`.
+- [x] Public GitHub destination is
+  `https://github.com/LAKITALKS/Inspektorium`; GitHub Release `v0.1.0` is
+  published.
 - [ ] After the approved public release, archive that release and add the real
   Zenodo DOI. Do not create or reserve a DOI for a development commit.
 - [ ] Set the release date in citation metadata when the release date is known.
 
-Do not tag, push, publish, or contact Zenodo until the curator completes the
-release items.
+GitHub publication is complete. Zenodo archival, DOI creation, and citation
+release-date metadata remain separate curator-controlled items.

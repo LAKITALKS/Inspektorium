@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
 authors = [
-  { name = "Inspektorium contributors" },
+  { name = "Lazaros Varvatis", email = "varvatislazaros@gmail.com" },
 ]
 dependencies = [
   "pydantic>=2.8,<3",
