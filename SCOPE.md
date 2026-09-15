@@ -1,9 +1,12 @@
-# Inspektorium v0.1 Scope
+# INSPEKTORIUM: implementation and research scope
 
-This document freezes the v0.1 boundary. Capabilities not listed under **In
-scope** are out of scope even when they would be straightforward to implement.
+The public v0.1 implementation remains frozen: package 0.1.0, schema 0.1.
+The broader research direction does not change its runtime contract.
+Capabilities outside **Public v0.1 implementation** are not shipped merely
+because they appear in a research plan. The [claim ledger](CLAIMS.md) assigns
+each claim a version, evidence source and verification/access status.
 
-## In scope
+## Public v0.1 implementation
 
 - One answer per inspection.
 - One or more explicitly user-supplied text sources.
@@ -21,7 +24,7 @@ scope** are out of scope even when they would be straightforward to implement.
 - A local single-answer CLI.
 - Exactly five synthetic offline examples.
 
-## Out of scope
+## Runtime exclusions retained for public v0.1
 
 - Global, weighted, trust, quality, or severity scores.
 - Calibrated probabilities or empirical confidence calibration.
@@ -35,6 +38,10 @@ scope** are out of scope even when they would be straightforward to implement.
 - Source-quality ranking or automated web research.
 - Fuzzy quotation recovery, automatic repair, or silent evidence substitution.
 - Databases, web applications, hosted services, or governance platforms.
+- Internal scientific Solid/Overclaim/CvC/ME taxonomy.
+- Execution authorization, budget ledgers, checkpoint/resume authentication,
+  environment binding, scientific inference checks, independent adjudication
+  and a production release gate.
 
 ## Mandatory semantic boundary
 
@@ -47,7 +54,58 @@ mandatory guards pass, the unchanged proposal may appear as
 prove source insufficiency; the relation remains an evaluator judgment. Any
 optional explanatory citation must validate exactly.
 
+Failed mandatory checks set the individual `reportable_relation` to null;
+they preserve the original proposal and allow the whole report to be emitted.
+Example 05 exits 0 despite a failed quotation. This is not assurance approval.
+An exact true quotation with a false proposed semantic relationship can still
+pass, as demonstrated by the reviewer probe on example 02. Empty findings are
+allowed; zero validation failures is not a coverage guarantee (P03, P09–P11).
+
+Fingerprints bind current canonical content, not authenticated historical
+state. Neither a digest nor an unchanged citation span establishes source
+authority. Reliability claims are limited to fixed saved inputs/settings;
+robustness observations are limited to the named regression disturbances.
+
+## Broader research direction and its evidence status
+
+- **IMPLEMENTED + TESTED IN PUBLIC v0.1:** exact spans, fingerprints,
+  deterministic reports and strict offline parsing (P01–P07).
+- **OWNER-REPORTED INTERNAL EXPERIMENT:** artifact-fault containment with clean
+  counterparts, zero observed A/B accuracy gain and semantic misses (I01–I03).
+  The internal code/raw package is not public here and was not independently
+  replicated by this package.
+- **REPORTED IMPLEMENTED/TESTED INTERNALLY:** execution authorization, budget,
+  state/resume and environment controls (I04). No public implementation
+  inspected; no demonstrated end-to-end official release gate in that pilot.
+- **PLANNED — PHASE 8:** semantic/inferential checking and scientific claim
+  forensics (R08).
+- **PLANNED — PHASE 9:** disagreement, independent verdict challenge and bounded
+  review routing (R09).
+- **PLANNED — PHASE 10:** canonical operational release workflow, explicit
+  UNKNOWN states and post-render QA (R10). Current JSON/Markdown renderers are
+  already implemented.
+- **NOT CLAIMED:** general AI safety, regulatory compliance, certification or
+  alignment. No NIST, DSIT or regulatory endorsement/conformance is implied.
+
+AI assurance research seeks inspectable evidence for bounded properties,
+including negative evidence. Technical AI governance requires a named rule,
+an enforcement boundary and a traceable decision. These research definitions
+do not certify a deployment. Evidence integrity/provenance in public v0.1
+means textual/input binding. An improved end decision at acceptable cost is
+an untested hypothesis (H01), not a renamed implementation feature.
+
 ## Change control
 
-This boundary remains fixed through v0.1. Candidate features belong in
-[ROADMAP.md](ROADMAP.md) and require a separate post-v0.1 design decision.
+The public boundary remains fixed through v0.1. [ROADMAP.md](ROADMAP.md) and
+[RESEARCH_PLAN.md](RESEARCH_PLAN.md) describe later, separately reviewed work.
+The documentation migration adds no runtime, provider, runner, fixture or
+dependency. It leaves versions and the historical v0.1.0 release unchanged.
+
+Completed internal research can become public evidence only through a separate
+inspectable package with explicit version mapping, preserved originals and
+hashes. Owner reports in [RESEARCH_RESULTS.md](RESEARCH_RESULTS.md) do not grant
+access to internal artifacts. Do not import private/client cases, provider or
+account logs, prompts, credentials, or material with unclear redistribution
+rights. Keep [PolyForm Noncommercial 1.0.0](LICENSE) unchanged and use
+source-available terminology. Publication of this documentation requires
+coordinator approval separately from its local preparation.

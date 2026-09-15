@@ -1,208 +1,130 @@
 # INSPEKTORIUM
 
-Evidence-bound inspection for model outputs.
+Evidence integrity controls for AI assurance research.
 
-Inspektorium is a small reference implementation for a narrow methodological
-primitive: an evaluator may propose a source relationship, but ordinary code
-must confirm that its quoted source text occurs at the exact stated offsets
-before that proposal is allowed to remain reportable.
+## Purpose and current version
 
-```text
-MODEL PROPOSES A RELATIONSHIP AND CITATION
-                    ↓
-DETERMINISTIC CODE CHECKS CLAIM AND CITATION SPANS
-                    ↓
-UNVERIFIABLE EVIDENCE DOES NOT SILENTLY BECOME REPORTABLE
-```
+INSPEKTORIUM is a research prototype studying evidence integrity controls for
+AI assurance. Its public v0.1 release implements exact claim and citation checks
+against supplied text. Broader execution controls are reported from internal
+research; scientific inference checks and review workflows remain planned work.
 
-Inspektorium grew out of broader research and engineering work on
-evidence-grounded evaluation. This repository intentionally focuses on one
-small, inspectable methodological primitive.
+The public package is **0.1.0**, with schema **0.1**. This documentation change
+does not expand that executable kernel. INSPEKTORIUM accepts one answer and
+explicitly supplied text sources; it performs no automated source search.
+The evaluator proposes semantic relationships. Deterministic code checks text
+bindings before an individual proposal can remain reportable.
 
-## The 30-second explanation
+Here, **AI assurance research** means producing inspectable evidence for a
+bounded property, including contrary evidence and limitations. **Technical AI
+governance** means a named rule enforced at a named system boundary, with a
+traceable decision. The current rule gates a finding's reporting field; broader
+governance is a research direction. [Scope](SCOPE.md) defines this distinction.
 
-Language models can produce persuasive quotations that are slightly wrong or
-entirely fabricated. Inspektorium accepts one answer, user-supplied sources, and
-strict evaluator proposals. It normalizes the text, verifies exact Python
-character spans, computes reproducible SHA-256 fingerprints, and emits stable
-JSON or Markdown.
+## Run the existing offline demo
 
-The model's `proposed_relation` remains a semantic judgment. Deterministic
-validation does not prove that relationship. It only controls whether the
-unchanged proposal may appear as `reportable_relation` after mandatory claim
-and citation checks.
-
-## A fabricated quote is rejected
-
-The mixed offline example proposes:
-
-> On weekdays, the library closes at 8 p.m.
-
-At the proposed source offsets, the canonical source actually says `6 p.m.`.
-The result is therefore:
-
-```json
-{
-  "proposed_relation": "supported",
-  "evidence_span_verified": false,
-  "deterministic_validation_status": "failed",
-  "reportable_relation": null,
-  "validation_issues": [
-    {"code": "evidence_span_mismatch"}
-  ]
-}
-```
-
-The proposal remains visible for inspection. Inspektorium does not repair the
-quote, search for a convenient substitute, change the relationship, or conceal
-the failure.
-
-## Installation
-
-Inspektorium requires Python 3.11 or later.
+From a local checkout, using Python 3.11 or later:
 
 ```bash
 python -m pip install -e .
-```
-
-For the optional Anthropic provider:
-
-```bash
-python -m pip install -e '.[anthropic]'
-```
-
-The deterministic core, reports, CLI, tests, and all bundled examples work
-without a provider SDK, API key, or network access.
-
-## Offline demo
-
-Run the methodological heartbeat locally without making an API call:
-
-```bash
 inspektorium inspect \
   --input examples/05_mixed_and_fabricated_quote/input.json \
   --proposals examples/05_mixed_and_fabricated_quote/proposals.json \
   --format markdown
 ```
 
-Produce deterministic JSON instead:
+For JSON, use `--format json`; optionally add `--output report.json`.
+The module entry point is `python -m inspektorium`. All five bundled examples
+use synthetic, precomputed proposals and need no provider key or live call.
 
-```bash
-inspektorium inspect \
-  --input examples/05_mixed_and_fabricated_quote/input.json \
-  --proposals examples/05_mixed_and_fabricated_quote/proposals.json \
-  --format json \
-  --output report.json
+In this example a proposed quotation says the library closes at `8 p.m.`,
+while the source span says `6 p.m.`. The failed finding retains its proposal:
+
+```json
+{
+  "proposed_relation": "supported",
+  "evidence_span_verified": false,
+  "deterministic_validation_status": "failed",
+  "reportable_relation": null
+}
 ```
 
-The expected outputs are committed beside each example and regenerated
-byte-for-byte by the test suite.
+An unrelated valid finding survives. The report is still emitted and the CLI
+exits **0**. Exit 0 is not assurance approval or authorization to release an
+artifact. Expected JSON and Markdown are committed beside each example.
 
-## Inspect separate text files
+## What the control does and does not establish
 
-The compact JSON input bundle is recommended for reproducibility. A direct
-single-answer form is also available:
+The four evaluator-proposed relations are `supported`, `contradicted`,
+`not_established` and `attribution_mismatch`. Reports preserve
+`proposed_relation`, `claim_span_verified`, `evidence_span_verified`,
+`deterministic_validation_status` and the gated `reportable_relation`.
+Semantic relations remain evaluator judgments, never “verified relations.”
 
-```bash
-inspektorium inspect \
-  --answer answer.md \
-  --source manual=manual.md \
-  --source notice=notice.md \
-  --proposals proposals.json \
-  --format markdown \
-  --output report.md
-```
+“Fail-closed” describes only the individual `reportable_relation` field:
+failed mandatory claim/citation checks set it to null. The original proposal
+and the rest of the report remain visible. A true quotation with an
+intentionally false semantic relation can pass these mechanical checks.
+`not_established` may remain reportable with all citation fields null, without
+proving absence of evidence; a supplied optional citation must validate.
+Empty findings are allowed, so zero failures does not prove full claim coverage.
 
-`--source` accepts only explicitly named files in `SOURCE_ID=PATH` form. The CLI
-does not crawl directories.
+Text is normalized to LF/NFC, preserving other whitespace; offsets are half-open
+Python character indices, not byte offsets. SHA-256 fingerprints identify
+current canonical answer/source content and a source-ID-ordered bundle.
+Identical canonical IDs/texts are order-invariant; arbitrary paraphrases are
+not hash-equivalent. Hashes do not authenticate historical state or source
+authority. JSON includes `generated_at: null` by default; Markdown omits the
+date line. [Methodology](METHODOLOGY.md) gives the concrete contracts (P01–P11).
 
-## Provider-assisted inspection
+## Capability and evidence status
 
-Set `ANTHROPIC_API_KEY` in the process environment, choose an Anthropic model
-identifier explicitly, and replace the precomputed proposal input:
+| Status | Capability or result | Boundary |
+| --- | --- | --- |
+| IMPLEMENTED + TESTED IN PUBLIC v0.1 | Exact spans, input fingerprints, deterministic JSON/Markdown, strict offline parsing | Public code and regression evidence; P01–P07 |
+| OWNER-REPORTED INTERNAL EXPERIMENT | Artifact-fault pilot: 4/12 versus 12/12 blocked; 6/6 clean counterparts accepted | Not reproduced by this package; semantic misses and zero accuracy gain retained; I01–I03 |
+| REPORTED IMPLEMENTED/TESTED INTERNALLY | Execution authorization, budget/state/environment controls | No public implementation inspected; I04 |
+| PLANNED — PHASE 8 | Semantic/inferential checking | Not executable here; R08 |
+| PLANNED — PHASE 9 | Disagreement and review | No public adjudication workflow; R09 |
+| PLANNED — PHASE 10 | Canonical operational release workflow | JSON/Markdown renderers already exist; release authorization does not; R10 |
+| NOT CLAIMED | General AI safety, regulatory compliance, certification, alignment | No framework endorsement or conformance claim |
 
-```bash
-inspektorium inspect \
-  --input inspection.json \
-  --provider anthropic \
-  --model YOUR_ANTHROPIC_MODEL_ID \
-  --format markdown \
-  --output report.md
-```
+The [claim ledger](CLAIMS.md) supplies each claim's evidence, version and access
+status. Internal research does not make planned controls available in v0.1.
 
-The provider makes one proposal call behind a small interface and uses the
-Anthropic Python SDK's Pydantic parse helper to request native JSON-schema
-structured output. The returned object is validated against the strict public
-proposal model with unknown fields rejected. Malformed output remains a visible
-failure; no prose extraction or aggressive JSON repair is attempted.
+## Evidence and limitations
 
-## Report layers
+[Research results](RESEARCH_RESULTS.md) distinguishes public observations,
+historical CI and owner-reported internal studies. Saved examples reproduce
+report bytes; they do not measure live-model classification accuracy. The
+semantic counterexample in example 02, accepted empty findings, and example
+05's successful report exit define important limits.
 
-Every finding separates two different layers:
+In the internal pilot, A/B/C each achieved 24/24 main-case accuracy:
+B−A was zero percentage points. Both semantically wrong but structurally valid
+controls were accepted. The small constructed set, shared B/C responses and
+lack of independent human peer review constrain interpretation. No general
+accuracy gain or population-wide false-blocking guarantee follows.
 
-- **Evaluator judgment:** atomic claim, `proposed_relation`, evidence
-  sufficiency, evaluator certainty, rationale, and proposed citation.
-- **Deterministic checks:** exact claim span, source existence, exact quotation
-  span, guard status, failure codes, and `reportable_relation` gating.
+Evidence integrity and provenance mean textual/input binding here. Reliability
+is limited to fixed saved inputs, proposals and timestamp settings; robustness
+evidence names the tested malformed JSON, fields, spans and normalization
+disturbances. Neither establishes source quality, evidence completeness,
+scientific validity or correctness outside the supplied material.
 
-A reportable proposal is not described as semantically verified. Citation
-validation confirms textual provenance only.
+## Research roadmap
 
-## Public relationship vocabulary
+[Phase 8](ROADMAP.md#phase-8--deep-forensics) studies scientific claim forensics;
+[Phase 9](ROADMAP.md#phase-9--disagreement--review) studies disagreement and review;
+[Phase 10](ROADMAP.md#phase-10--reporting--operational-finish) studies operational
+reporting and release controls. A final v1 gate requires fresh efficacy and
+fault comparisons, real-case validation, prior criteria and negative results.
 
-- `supported` — the evaluator judges that supplied source text directly
-  supports the claim within its expressed scope.
-- `contradicted` — the evaluator judges that supplied source text directly
-  conflicts with the claim.
-- `not_established` — the evaluator judges that the supplied material does not
-  establish the claim. It may be proposed without inventing a quotation.
-- `attribution_mismatch` — the evaluator judges that the answer attributes a
-  statement or position to a supplied source that does not state or support it.
+[Research plan](RESEARCH_PLAN.md) specifies falsifiable questions, informative
+baselines and future demonstrations. These are planned comparisons, not new
+capabilities or permission to run studies.
 
-These are source-bounded evaluator proposals, not universal truth labels. There
-is no global score, severity hierarchy, calibrated probability, ranking, or
-answer-level label.
-
-## Text and offsets
-
-Before a model sees text or offsets are calculated, Inspektorium:
-
-1. converts CRLF and bare CR to LF;
-2. applies Unicode NFC normalization;
-3. preserves every other whitespace character.
-
-Offsets are half-open Python string character indices into that canonical text,
-not UTF-8 byte offsets. Fingerprints cover the same canonical representation.
-
-## Five synthetic examples
-
-- `01_supported` — fictional timer documentation.
-- `02_contradicted` — fictional desk-lamp documentation.
-- `03_not_established` — a fictional shuttle notice without a launch year.
-- `04_attribution_mismatch` — a fictional museum admission notice.
-- `05_mixed_and_fabricated_quote` — valid, not-established, and rejected
-  fabricated-quote findings in one answer.
-
-All examples were written for this repository and run offline from precomputed
-synthetic proposals.
-
-## Limitations
-
-Inspektorium compares an answer with sources supplied by the user. It does not
-determine:
-
-- truth outside those sources;
-- whether a source is accurate, complete, current, or authoritative;
-- whether relevant omitted evidence exists elsewhere;
-- whether every claim was extracted;
-- medical, legal, safety, causal, or regulatory validity;
-- whether an answer is globally good or bad.
-
-Exact quotation validation confirms only that text occurs in the named source at
-the stated canonical offsets. See [METHODOLOGY.md](METHODOLOGY.md) and
-[SCOPE.md](SCOPE.md).
-
-## Development and testing
+## Development, provider, license and citation
 
 ```bash
 python -m pip install -e '.[dev]'
@@ -211,29 +133,27 @@ mypy src
 pytest --cov=inspektorium --cov-report=term-missing
 ```
 
-Tests require no provider credential. The named heartbeat regression is
-`test_fabricated_quote_cannot_become_reportable_finding`.
+The tests use saved proposals and mocked provider transport. See
+[Contributing](CONTRIBUTING.md) for scope and claim-ledger requirements.
 
-## License
+For the optional Anthropic adapter (P08):
 
-Inspektorium is source-available under the
-[PolyForm Noncommercial License 1.0.0](LICENSE). This is not an OSI Open Source
-license, and commercial use is not granted by these terms.
+```bash
+python -m pip install -e '.[anthropic]'
+inspektorium inspect --input inspection.json \
+  --provider anthropic --model YOUR_ANTHROPIC_MODEL_ID --format markdown
+```
 
-## Citation
+Set `ANTHROPIC_API_KEY` in the process environment for this optional live path
+and supply your own input file. The explicit model argument is required.
+The adapter uses `client.messages.parse(..., output_format=ProposalBatch)`.
+One application SDK invocation and no authored semantic repair loop do not
+guarantee one HTTP attempt, bounded billing or authenticated execution.
 
-Release citation metadata is prepared in [CITATION.cff](CITATION.cff). No DOI
-has been assigned. Any eventual archive record should correspond to a curator-
-approved release rather than an intermediate development commit.
+Source-available under [PolyForm Noncommercial 1.0.0](LICENSE), not an OSI
+open-source license. [CITATION.cff](CITATION.cff) retains software version 0.1.0;
+no DOI is assigned. Historical release facts and pending publication review
+are distinguished in [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
 
-## Author and maintainer
-
-Lazaros Varvatis — [LAKITALKS](https://github.com/LAKITALKS)
-
-## Contributing and independent extension
-
-Inspektorium is a reference implementation and research seed. Researchers and
-developers are welcome to fork it, challenge its assumptions, replace the
-evaluator, study deterministic citation strategies, or explore alternate
-relationship schemas. Changes to this repository should preserve the narrow
-v0.1 scope; see [CONTRIBUTING.md](CONTRIBUTING.md).
+**Author and maintainer:** Lazaros Varvatis —
+[LAKITALKS](https://github.com/LAKITALKS).

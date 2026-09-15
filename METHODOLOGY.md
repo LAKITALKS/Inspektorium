@@ -2,11 +2,21 @@
 
 ## Purpose
 
-Inspektorium is a reference implementation and research seed for evidence-bound
-evaluation. It focuses on one inspectable operation: an evaluator proposes how
-an answer relates to supplied sources, and deterministic code checks the exact
-textual provenance of the proposed claim and citation spans before allowing
-that proposal to remain reportable.
+INSPEKTORIUM is a research prototype studying evidence integrity controls for
+AI assurance. Its public v0.1 kernel focuses on one inspectable operation: an
+evaluator proposes how an answer relates to supplied sources, and deterministic
+code checks the exact textual binding of the proposed claim and citation spans
+before allowing that proposal to remain reportable. Software remains 0.1.0;
+schema remains 0.1.
+
+Here, AI assurance research produces inspectable evidence for a bounded
+property, including contrary evidence and limitations. Technical AI governance
+means a named rule enforced at a named system boundary with a traceable
+decision. The current boundary is one finding's reporting field. Execution,
+state and authorization controls are reported internally; scientific inference
+and review workflows are planned. They are not public v0.1 capabilities.
+See [claim ledger](CLAIMS.md), [results](RESEARCH_RESULTS.md) and
+[scope](SCOPE.md) for separate version and access status.
 
 ## The auditability problem
 
@@ -66,6 +76,20 @@ If mandatory guards pass, the unchanged proposal may appear as
 mechanical reporting guard. It does not mean that deterministic code proved the
 semantic relationship, the evaluator's interpretation, or the truth of the
 claim.
+
+These public contracts are claims P01–P11 in [CLAIMS.md](CLAIMS.md). A failure
+sets only the individual finding's `reportable_relation` to null. It neither
+erases the proposal nor suppresses the entire report. The mixed faulty-quote
+example produces a report with CLI exit code 0. That code means successful
+report production, not assurance approval, execution authorization or permission
+to release an artifact. Public v0.1 implements no production release gate.
+
+The supplied reviewer counterexample changes example 02's proposed relation
+from `contradicted` to `supported` while preserving the exact true quote and
+offsets. It remains mechanically reportable despite the intentionally false
+semantic relationship. This is a boundary of exact binding, not semantic
+verification. Empty findings are also allowed: zero failures establishes
+neither complete extraction nor coverage of an answer's claims.
 
 ## Public source relationships
 
@@ -152,6 +176,15 @@ validates the response against the original strict model. Provider JSON that is
 malformed or violates the strict schema still fails before finding validation.
 No prose extraction or schema repair is attempted.
 
+Strict offline proposal parsing separately rejects malformed/ambiguous JSON,
+including duplicate keys and nonstandard numeric constants, as well as schema
+violations. Evidence is in [parser tests](tests/test_parser.py) and
+[model tests](tests/test_models.py) (P07). The optional provider path has one
+application SDK proposal invocation and no authored semantic repair loop
+(P08). This does not guarantee a single HTTP attempt, bounded billing or
+authenticated execution. Mocked transport checks are software regressions,
+not live-model accuracy experiments.
+
 ## Evidence sufficiency and evaluator certainty
 
 The two qualitative descriptors answer different questions.
@@ -178,22 +211,38 @@ canonical source. It also hashes a canonical JSON bundle of this form:
 
 Object keys are sorted, separators contain no optional spaces, Unicode is not
 ASCII-escaped, and sources are sorted by `source_id`. Display titles and
-timestamps are excluded. Therefore semantically identical source sets have the
-same bundle digest regardless of input order. The hash identifies bytes; it
-does not establish authorship or source quality.
+timestamps are excluded. The same canonical source IDs and texts, with the
+same canonical answer, have the same bundle digest regardless of source order.
+Arbitrary semantically equivalent paraphrases are not hash-equivalent. The
+hash identifies current canonical content; it does not establish authorship,
+source quality, source authority or historical-state authentication (P05).
+
+Changing source text outside a cited span changes the source and bundle hashes
+but need not invalidate that unchanged citation span. Public v0.1 does not
+compare the new hash against an authenticated historical state. A hash is not
+a signature and cannot protect against replacement of all trusted state/code.
 
 ## Deterministic reports
 
 JSON rendering uses sorted keys, fixed indentation, UTF-8-compatible Unicode,
 and one terminal newline. Markdown is assembled from the validated report
 object with fixed section order and wording. Neither renderer reads the system
-clock. `generated_at` is absent by default and can appear only when supplied as
-explicit timezone-aware input metadata.
+clock. JSON contains `generated_at: null` by default; Markdown omits its date
+line when no explicit timestamp is supplied. A non-null timestamp must be
+explicit timezone-aware input metadata. It is excluded from input fingerprints.
+
+Determinism means fixed canonical inputs, fixed saved proposals and fixed
+timestamp settings produce stable report bytes under the tested operating
+conditions (P06). It does not mean repeated live model calls are identical.
 
 The report visually labels evaluator-generated semantic content separately
 from deterministic checks. A citation-validated quotation is identified as
 such; a failed proposal is labeled unvalidated and repeated in the warning
 section.
+
+This is the current reporting layer. Phase 10 plans a canonical operational
+release workflow and post-render QA; it does not defer the already implemented
+JSON and Markdown renderers into future work.
 
 ## Why there is no global score
 
@@ -221,8 +270,14 @@ the report.
 ## Extensibility and independent study
 
 Inspektorium is intentionally a small reference point, not a complete doctrine.
-Researchers and developers are encouraged to fork it, challenge its
-assumptions, replace the evaluator prompt, add providers in their own work,
-study failure cases, test alternative evidence-binding strategies, or develop
-different relationship vocabularies. Changes to this repository remain subject
-to its frozen v0.1 scope.
+Researchers and developers can study these assumptions and counterexamples
+within the [license](LICENSE). Proposed capability changes require separate
+review under [SCOPE.md](SCOPE.md). [RESEARCH_PLAN.md](RESEARCH_PLAN.md) separates
+system-controls research, model evaluation, scientific claim forensics and
+software governance rather than treating exact binding as proof of all four.
+
+The internal fault pilot is owner-reported evidence about its particular
+corrupted artifacts and clean controls, not an experiment run by public v0.1.
+The public regressions test named quote/offset/JSON/normalization disturbances.
+Neither evidence class establishes general AI safety, regulatory compliance,
+certification, alignment, or endorsement/conformance to any external framework.
