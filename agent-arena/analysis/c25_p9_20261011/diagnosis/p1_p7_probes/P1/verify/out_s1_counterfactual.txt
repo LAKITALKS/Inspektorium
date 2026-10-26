@@ -1,0 +1,4 @@
+FROZEN report stability: {'unanimous_units': 84, 'modal_support_counts': {'5': 84}, 'modal_tie_units': []} unit_modal 70 brier 0.14901999999999999
+RECOMPUTED as stored: {'unit_modal': (70, 0.8333333333333334), 'response': (350, 420, 0.8333), 'brier': 0.14902, 'ece5': 0.10243, 'mean_conf': 0.9358, 'stability': {'unanimous_units': 84, 'modal_support_counts': {5: 84}, 'modal_tie_units': []}}
+EXCLUDE ambiguous: {'unit_modal': (70, 0.8333333333333334), 'response': (350, 418, 0.8373), 'brier': 0.14704, 'ece5': 0.09933, 'mean_conf': 0.9367, 'stability': {'unanimous_units': 82, 'modal_support_counts': {4: 2, 5: 82}, 'modal_tie_units': []}}
+USE corrected obj: {'unit_modal': (70, 0.8333333333333334), 'response': (352, 420, 0.8381), 'brier': 0.14641, 'ece5': 0.09831, 'mean_conf': 0.9364, 'stability': {'unanimous_units': 82, 'modal_support_counts': {4: 2, 5: 82}, 'modal_tie_units': []}}

@@ -10,8 +10,8 @@
 **PLAN ONLY — no new runtime, fixtures or experiments ship with this document.**
 Public software is 0.1.1/schema 0.1. Phase 8, Phase 9, Phase 10 and the
 final v1 gate are described in [ROADMAP.md](ROADMAP.md); their claims are
-R08–R10 and H01 in [CLAIMS.md](CLAIMS.md). The owner reports Phases 8–10 as
-implemented in a separate, non-public internal technical v1.0.0. That
+R08–R10 and H01 in [CLAIMS.md](CLAIMS.md). Phases 8–10 are implemented in the separate public Arena research 1.0.1
+package, derived from internal technical 1.0.0. That
 implementation answers none of the questions below; they remain open.
 
 System-controls research asks whether a named rule prevents a forbidden action
@@ -29,8 +29,8 @@ require different units, comparators and evidence.
 | Q1: Do exact bindings add value over schema validation? | Same frozen artifacts through schema-only processing and exact span guards, with matched clean counterparts | One distinct fault/clean artifact pair; related variants clustered | Additional invalid findings prevented from becoming reportable, with clean acceptance | No additional containment, or clean blocking that exceeds the predeclared tolerance |
 | Q2: Do execution/state controls actually prevent unauthorized execution or invalid resume? | Same attempted actions under shared infrastructure, selectively enabling authorization, state and environment checks | One attempted protected action, not a log message | Forbidden action did not occur; valid resumes/executions accepted | A violation is merely logged but still executes, or allowed controls cannot proceed |
 | Q3: Which epistemic contract rules affect decisions? | Competent prompt baseline versus one rule addition/ablation with identical sources, task definitions and model settings | Independent case, clustering prompt variants and repeated outputs | Correct decisions and regression counts by error family, at stated cost | No benefit on fresh cases, an adverse regression cluster, or gains explained by unequal information/compute |
-| Q4: Can Phase 8 catch semantic errors with valid citations? | Exact guards alone versus planned semantic/inferential checks, with a competent prompt baseline | Independently constructed semantic fault/clean case pair | Semantic false releases and clean release rate; evidence-type errors | Valid-citation semantic errors still pass at the same rate, or apparent gains arise only by suppressing clean releases |
-| Q5: Does Phase 9 route material disagreements usefully at a fixed review budget? | Planned routing versus a prespecified simple routing baseline at equal human time | Case requiring a review decision, with independently assessed materiality | Review precision, recall, final decisions and human minutes | No decision benefit at equal budget, missed material disagreements, or worse recall hidden by high precision |
+| Q4: Can Phase 8 catch semantic errors with valid citations? | Exact guards alone versus Arena semantic/inferential checks, with a competent prompt baseline | Independently constructed semantic fault/clean case pair | Semantic false releases and clean release rate; evidence-type errors | Valid-citation semantic errors still pass at the same rate, or apparent gains arise only by suppressing clean releases |
+| Q5: Does Phase 9 route material disagreements usefully at a fixed review budget? | Arena routing versus a prespecified simple routing baseline at equal human time | Case requiring a review decision, with independently assessed materiality | Review precision, recall, final decisions and human minutes | No decision benefit at equal budget, missed material disagreements, or worse recall hidden by high precision |
 
 Predeclare primary outcomes, tolerances and denominators before collecting new
 results. A non-significant difference does not establish equivalence. Keep
@@ -39,10 +39,9 @@ finite-fault software observations separate from model efficacy comparisons.
 ## Future fault suite
 
 All rows below are proposed evaluation work, not tests included in this commit.
-Execution, checkpoint and budget controls are only reported internally today.
-Scientific inference, review and operational release workflows are reported as
-implemented internally (R08–R10) but have no public implementation or efficacy
-evidence. The small display and input catalog in
+Execution, checkpoint, budget, inference, review and operational release
+controls are inspectable in the separate Arena package. Their technical
+implementation and offline tests do not answer the efficacy questions here. The small display and input catalog in
 [evidence/v0.1.1](evidence/v0.1.1/) is software-regression evidence for v0.1.1,
 not this fault suite.
 

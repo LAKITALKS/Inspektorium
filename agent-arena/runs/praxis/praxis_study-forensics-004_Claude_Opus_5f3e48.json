@@ -1,0 +1,1211 @@
+{
+  "run_id": "praxis_study-forensics-004_Claude_Opus_5f3e48",
+  "task": {
+    "id": "study-forensics-004",
+    "title": "Study Forensics: Daily multivitamin and memory",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A double-blind randomised trial followed over 3,500 U.S. adults aged 60 and older for three years to test whether a daily multivitamin improves memory. Participants taking the multivitamin improved their immediate-recall scores from roughly 7.1 to 7.8 words after one year, while those on placebo improved from 7.2 to 7.6 words. The modest benefit persisted over three years without widening. People with cardiovascular disease showed slightly larger improvements. The authors describe the effect as modest and call for studies in more diverse populations to determine which nutrients might be responsible; the trial's participants were predominantly white and well educated.\n",
+    "context": "A large, well-designed trial reporting a small but real effect with appropriate caveats.\nThe agent should recognise this as solid despite the modest effect size.\n",
+    "expected_answer": "solid",
+    "reference_solution": "This large, well-designed trial reports a small improvement in immediate memory from multivitamin supplementation while explicitly describing the effect as modest, identifying demographic limitations and urging further research. There is no overclaim.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "modest effect",
+        "variants": [
+          "small effect",
+          "small improvement",
+          "moderate benefit"
+        ],
+        "functional_descriptions": [
+          "the effect is real but small and honestly reported"
+        ]
+      },
+      {
+        "keyword": "demographic limitation",
+        "variants": [
+          "predominantly white",
+          "not diverse",
+          "limited population"
+        ],
+        "functional_descriptions": [
+          "authors acknowledge the sample is not representative"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating a modest effect as overclaim",
+      "missing the demographic caveat as a strength"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_modest_effect",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "overclaiming",
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish a modest-but-honest finding from overclaim?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "This large, well-designed trial reports a small improvement in immediate memory from multivitamin supplementation while explicitly describing the effect as modest, identifying demographic limitations and urging further research. There is no overclaim.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "improved their immediate-recall scores from roughly 7.1 to 7.8 words ... while those on placebo improved from 7.2 to 7.6 words",
+        "why_it_matters": "Quantifies the modest but statistically significant effect.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "effect as modest and call for studies in more diverse populations",
+        "why_it_matters": "Authors frame the finding conservatively.",
+        "supports_finding": "cautious_scope_control"
+      },
+      {
+        "span": "participants were predominantly white and well educated",
+        "why_it_matters": "Acknowledges demographic limitations.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "Double-blind RCT with n>3500 and 3-year follow-up. Authors explicitly call the effect\n'modest', acknowledge demographic limitations, and call for more diverse studies.\nThe reporting matches the evidence strength — no overclaim.\n",
+    "gold_alternative_reading": "The effect size is very small (0.2-word difference from placebo). One could argue this\napproaches 'clinically negligible' territory, but the authors frame it honestly. An\noverclaim reading would require the authors to inflate the finding, which they do not.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Tests whether agents can distinguish a modest-but-honest finding from overclaim.\nThe trap is small effect size — agents may overflag. Both sprints show stable\ncorrect classification, with occasional FP on 'overclaim' keyword mentions.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\n    \"The study design (double-blind randomized trial) was properly implemented\",\n    \"The sample size of 3,500 is adequate for detecting the reported effects\",\n    \"The immediate-recall word test is a valid measure of memory function\",\n    \"The statistical significance of the differences was established (though not explicitly stated in the summary)\"\n  ],\n  \"steps\": [\n    \"Identified study design: double-blind randomized controlled trial - gold standard for causal inference\",\n    \"Noted large sample size (3,500) and extended follow-up period (3 years)\",\n    \"Examined the claims: modest improvement in memory scores with specific numbers provided\",\n    \"Checked for overclaiming: authors explicitly describe effect as 'modest'\",\n    \"Looked for inappropriate causal language: the design supports causal claims about multivitamin effects\",\n    \"Assessed acknowledgment of limitations: authors note lack of diversity and need for further research on mechanisms\",\n    \"Verified consistency: the persistence without widening over 3 years is presented as a finding, not extrapolated\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could be classified as 'mechanism_vs_evidence' if the summary implied which specific nutrients were responsible without evidence\",\n    \"Could be 'overclaim' if the authors had generalized beyond their predominantly white, well-educated sample\"\n  ],\n  \"uncertainties\": [\n    \"Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance\",\n    \"The clinical significance of a 0.2-word improvement in recall\",\n    \"Whether proper intention-to-treat analysis was conducted\",\n    \"The specific nature of the cardiovascular disease subgroup analysis\"\n  ],\n  \"key_claims\": [\n    \"The study design (double-blind RCT) is appropriate for making causal claims about multivitamin effects\",\n    \"The authors appropriately characterize the effect size as modest\",\n    \"Limitations regarding generalizability are explicitly acknowledged\",\n    \"The call for further research is substantive (identifying which nutrients) rather than decorative\"\n  ],\n  \"self_check\": [\n    \"Confirmed no causal claims beyond what RCT design supports\",\n    \"Verified authors don't generalize beyond their sample demographics\",\n    \"Checked that uncertainty language matches the strength of claims\",\n    \"Ensured I'm not inventing problems where none exist in the text\"\n  ],\n  \"confidence\": 0.85\n}",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study design (double-blind randomized trial) was properly implemented",
+            "The sample size of 3,500 is adequate for detecting the reported effects",
+            "The immediate-recall word test is a valid measure of memory function",
+            "The statistical significance of the differences was established (though not explicitly stated in the summary)"
+          ],
+          "steps": [
+            "Identified study design: double-blind randomized controlled trial - gold standard for causal inference",
+            "Noted large sample size (3,500) and extended follow-up period (3 years)",
+            "Examined the claims: modest improvement in memory scores with specific numbers provided",
+            "Checked for overclaiming: authors explicitly describe effect as 'modest'",
+            "Looked for inappropriate causal language: the design supports causal claims about multivitamin effects",
+            "Assessed acknowledgment of limitations: authors note lack of diversity and need for further research on mechanisms",
+            "Verified consistency: the persistence without widening over 3 years is presented as a finding, not extrapolated"
+          ],
+          "alternative_hypotheses": [
+            "Could be classified as 'mechanism_vs_evidence' if the summary implied which specific nutrients were responsible without evidence",
+            "Could be 'overclaim' if the authors had generalized beyond their predominantly white, well-educated sample"
+          ],
+          "uncertainties": [
+            "Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance",
+            "The clinical significance of a 0.2-word improvement in recall",
+            "Whether proper intention-to-treat analysis was conducted",
+            "The specific nature of the cardiovascular disease subgroup analysis"
+          ],
+          "self_check": [
+            "Confirmed no causal claims beyond what RCT design supports",
+            "Verified authors don't generalize beyond their sample demographics",
+            "Checked that uncertainty language matches the strength of claims",
+            "Ensured I'm not inventing problems where none exist in the text"
+          ],
+          "key_claims": [
+            "The study design (double-blind RCT) is appropriate for making causal claims about multivitamin effects",
+            "The authors appropriately characterize the effect size as modest",
+            "Limitations regarding generalizability are explicitly acknowledged",
+            "The call for further research is substantive (identifying which nutrients) rather than decorative"
+          ],
+          "confidence": 0.85,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 19245
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.7200000000000001,
+        "uncertainty_handling": 0.49999999999999994,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.0,
+        "insight_depth": 0.5,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Identified study design: double-blind randomized controlled trial - gold standard for causal inference",
+              "source_field": "steps[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.81)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.7200000000000001,
+          "weight": 6,
+          "weighted_score": 4.3,
+          "evidence": [
+            {
+              "text": "The statistical significance of the differences was established (though not explicitly stated in the summary)",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The statistical significance of the differences was established (though not explicitly stated in the summary)",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions",
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.49999999999999994,
+          "weight": 6,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Whether proper intention-to-treat analysis was conducted",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The specific nature of the cardiovascular disease subgroup analysis",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.85",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "3 decorative uncertainty(ies)",
+            "Confidence 0.85"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "Could be classified as 'mechanism_vs_evidence' if the summary implied which specific nutrients were responsible without evidence",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "Verified authors don't generalize beyond their sample demographics",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Confirmed no causal claims beyond what RCT design supports",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 0 arithmetic, 4 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.75, 283 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Missing: modest effect",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'modest effect' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The statistical significance of the differences was establis...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The statistical significance of the differences was established (though not explicitly stated in the summary)",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the difference between groups (7.8 vs 7.6 words) rea...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether proper intention-to-treat analysis was conducted...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether proper intention-to-treat analysis was conducted",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The specific nature of the cardiovascular disease subgroup a...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The specific nature of the cardiovascular disease subgroup analysis",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_self_check",
+          "severity": "minor",
+          "description": "All 4 self-checks appear to be fluff — no substantive verification",
+          "evidence": [
+            {
+              "text": "Confirmed no causal claims beyond what RCT design supports",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Example fluff self-check",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "self_monitoring_quality",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The study design (double-blind RCT) is appropriate for making causal claims about multivitamin effects",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "The authors appropriately characterize the effect size as modest",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/5 content words)",
+          "evidence": [
+            {
+              "text": "Limitations regarding generalizability are explicitly acknowledged",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "The call for further research is substantive (identifying which nutrients) rather than decorative",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 1 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether proper intention-to-treat analysis was conducted",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be classified as 'mechanism_vs_evidence' if the summary implied which specific nutrients were responsible without evidence",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be 'overclaim' if the authors had generalized beyond their predominantly white, well-educated sample",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: none_or_minor, conclusion_exceeds_results, unsupported_generalization, decorative_uncertainty, mechanism_not_demonstrated, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study design (double-blind randomized trial) was properly implemented",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The sample size of 3,500 is adequate for detecting the reported effects",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The immediate-recall word test is a valid measure of memory function",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The statistical significance of the differences was established (though not explicitly stated in the summary)",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Identified study design: double-blind randomized controlled trial - gold standard for causal inference",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted large sample size (3,500) and extended follow-up period (3 years)",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the claims: modest improvement in memory scores with specific numbers provided",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaiming: authors explicitly describe effect as 'modest'",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Looked for inappropriate causal language: the design supports causal claims about multivitamin effects",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed acknowledgment of limitations: authors note lack of diversity and need for further research on mechanisms",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified consistency: the persistence without widening over 3 years is presented as a finding, not extrapolated",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study design (double-blind RCT) is appropriate for making causal claims about multivitamin effects",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors appropriately characterize the effect size as modest",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Limitations regarding generalizability are explicitly acknowledged",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The call for further research is substantive (identifying which nutrients) rather than decorative",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be classified as 'mechanism_vs_evidence' if the summary implied which specific nutrients were responsible without evidence",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be 'overclaim' if the authors had generalized beyond their predominantly white, well-educated sample",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the difference between groups (7.8 vs 7.6 words) reached statistical significance",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The clinical significance of a 0.2-word improvement in recall",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether proper intention-to-treat analysis was conducted",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific nature of the cardiovascular disease subgroup analysis",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Confirmed no causal claims beyond what RCT design supports",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified authors don't generalize beyond their sample demographics",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked that uncertainty language matches the strength of claims",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Ensured I'm not inventing problems where none exist in the text",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 21,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.6666666666666666
+          }
+        ],
+        "unused_assumptions": [
+          3
+        ],
+        "unaddressed_uncertainties": [
+          17,
+          19,
+          20
+        ],
+        "unsupported_conclusions": [
+          25
+        ],
+        "fluff_self_checks": [
+          21,
+          22,
+          23,
+          24
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "decorative_self_check",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 1 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph: conclusion not well grounded",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.81)",
+        "4/4 substantive assumptions",
+        "1 unused assumption(s)",
+        "4 uncertainties (4 substantive)",
+        "3 decorative uncertainty(ies)",
+        "Confidence 0.85",
+        "2 alternative hypotheses considered",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 0 arithmetic, 4 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.75, 283 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-07T07:47:34.045409+00:00",
+  "metadata": {}
+}

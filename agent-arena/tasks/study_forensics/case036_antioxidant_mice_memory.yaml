@@ -1,0 +1,79 @@
+id: study-forensics-036
+title: "Study Forensics: Antioxidant blend improves memory in aged mice"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: mechanism_vs_evidence
+trap_type: animal_to_human_overreach
+ambiguity_level: low
+prompt: |
+  Researchers administered a blend of natural antioxidants to aged mice and found that the animals navigated mazes faster and remembered previously learned routes. Muscle endurance was also improved. The authors see potential for preventing age-related memory loss in humans but warn that correct dosing is complex and excessive vitamin intake can be harmful. Clinical studies in humans are still pending.
+context: |
+  Classic preclinical-to-human translation case. The mechanism is demonstrated in mice
+  only, yet human therapeutic potential is implied. The warning about dosing is present
+  but does not prevent the human application claim.
+expected_answer: "mechanism_vs_evidence"
+reference_solution: |
+  The text describes preclinical results in mice and links them to potential benefits for humans. Although the need for further research is acknowledged, the conclusion implies a transfer to humans without supporting evidence. The central weakness is the mechanism-to-evidence gap.
+gold_label: mechanism_vs_evidence
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The text describes preclinical results in mice and connects them to possible human
+  benefits. While cautioning about dosing and noting pending human trials, it still implies
+  therapeutic potential for age-related memory loss in humans. The mechanism is demonstrated
+  only in an animal model. The implicit assumption of human benefit without evidence is the
+  core issue.
+gold_alternative_reading: |
+  One could argue that the warnings about dosing and the acknowledgment of missing human
+  studies sufficiently qualify the conclusion, making the case more moderate than
+  problematic. However, the implicit therapeutic promise for humans remains unsupported.
+gold_summary: |
+  Preclinical antioxidant study in mice with implied human therapeutic potential. Classic mechanism-vs-evidence gap with partial hedging.
+curator_notes: |
+  Imported from Dataset 6 (CaseD05). Originally German, translated to English. Classic
+  animal-to-human mechanism case in nutrition domain. Complements case028 (NAD+/Alzheimer's)
+  and case030 (APJ exercise mimetic) with a different substance but same structural pattern.
+  Based on EurekAlert antioxidant supplement study.
+expected_findings:
+  - finding: mechanism_not_demonstrated
+    severity: major
+    confidence: high
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+gold_evidence_spans:
+  - span: "animals navigated mazes faster and remembered previously learned routes"
+    why_it_matters: "Describes success in the animal model."
+    supports_finding: mechanism_not_demonstrated
+  - span: "potential for preventing age-related memory loss in humans"
+    why_it_matters: "Transfers animal data to humans without direct evidence."
+    supports_finding: conclusion_exceeds_results
+  - span: "Clinical studies in humans are still pending"
+    why_it_matters: "Confirms the lack of human evidence."
+    supports_finding: mechanism_not_demonstrated
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "animal model"
+    variants: ["mice", "aged mice", "animal"]
+    functional_descriptions:
+      - "findings are from an animal model, not humans"
+  - keyword: "translation gap"
+    variants: ["clinical studies pending", "humans", "potential"]
+    functional_descriptions:
+      - "human therapeutic claims go beyond preclinical evidence"
+common_errors:
+  - treating animal results as sufficient evidence for human claims
+  - classifying as generic overclaim instead of mechanism_vs_evidence
+expected_failure_modes:
+  - accepting_mechanism_as_evidence
+  - missing_translation_gap
+discriminative_dimensions:
+  - correctness
+  - mechanism_quality
+  - insight_depth
+diagnostic_focus: "Can the agent identify the animal-to-human translation gap despite partial hedging?"
+source_dataset: dataset_6
+source_id: CaseD05

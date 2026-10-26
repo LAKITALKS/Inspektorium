@@ -1,0 +1,151 @@
+{
+  "analysis_status": "complete",
+  "claim": {
+    "claim_context": "Active atomic proposition P-02 from the frozen ASA 25/261 Premium Grounding claim registry (origin F02 in context; type IMPLIED; THERAPEUTIC; CONDITION-SPECIFIC; PRODUCT-SPECIFIC). Frozen evidence-preparation state: NO MATERIAL DIRECT EVIDENCE LOCATED. Routing: BOUNDED NEGATIVE SEARCH — proposition-specific negative-search work documented and confirmed at class A after expanded terminology.",
+    "claim_scope": "BOUNDED NEGATIVE SEARCH | PRODUCT EQUIVALENCE UNCERTAIN",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding is relevant to/alleviates arthritis.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "development_or_production_status": "production",
+  "evidence": {
+    "contradicting_or_limiting": [
+      "No arthritis Earth-contact or grounding trial located",
+      "Closest candidates excluded for absence of conductive Earth contact",
+      "Arthritis endpoints absent from the whole evidence base"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "Freeze sections 50/52",
+        "text": "Only nonspecific pain and inflammatory surrogates exist; no arthritis-specific trial was located.",
+        "tier": "biomarker",
+        "why_it_matters": "The nearest available material is generic and does not address arthritis disease activity, function or progression."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "Freeze section 71",
+        "text": "Shakoor & Block 2006 barefoot knee-osteoarthritis gait, Neogi et al. 2021 barefoot exposure and unstable-footwear studies were screened and excluded: ordinary gait, footwear or observational exposure with no conductive Earth or earthing intervention.",
+        "tier": "not_applicable",
+        "why_it_matters": "Documents that the closest candidate records were inspected and are ineligible, rather than overlooked."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 19/70/73",
+        "text": "Documented proposition-specific search across PubMed (140 found/25 screened), Europe PMC title/abstract (140/25) and full text (479/25) and OpenAlex (62 deduplicated), with grounding, earthing, barefoot, soil-contact and Earth-contact terminology to the 22 August 2026 cut-off: class A, negative search state confirmed.",
+        "tier": "not_applicable",
+        "why_it_matters": "Establishes the breadth of the documented basis for the negative statement."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 54/55",
+        "text": "Arthritis disease-activity, function and progression endpoints are absent from the entire evidence base.",
+        "tier": "not_applicable",
+        "why_it_matters": "No endpoint capable of supporting the claim was ever measured."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "No qualifying study exists within the documented search routes and terminology.",
+    "missing_causal_chain": false,
+    "missing_comparison_group": false,
+    "missing_human_evidence": true,
+    "supporting": [
+      "Nonspecific pain and inflammatory surrogates only"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "Freeze sections 50/52"
+        ],
+        "mode": "inappropriate_generalization",
+        "rationale": "Generic pain and inflammation material is extended to a named rheumatological disease that was never studied."
+      },
+      {
+        "evidence_refs": [
+          "Freeze sections 19/70/73"
+        ],
+        "mode": "missing_human_evidence",
+        "rationale": "No human Earth-contact intervention study with an arthritis-relevant endpoint was located."
+      }
+    ],
+    "none_detected": false
+  },
+  "generated_at": "2026-08-23",
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "audit_trail": [
+      "input validated against forensic_report schema 6.3.0",
+      "analysis_status=complete",
+      "confidence classified as VALID (no coercion to 0.0)",
+      "2 failure mode(s) echoed from analysis (not inferred)",
+      "rewrite guard: no rewrite supplied"
+    ],
+    "input_digest_sha256": "654e09766646c35413658b478878bd6a496b14592bfec3dc034baeff3748edb0",
+    "model": "claude-opus-5",
+    "parser_status": "ok",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "report_generation_digest_sha256": "49653aa69fe672d576f437bd87623c6ebb505b86655bed3aba58734a6ff3bd03",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0",
+    "warnings": []
+  },
+  "reader_impact": {
+    "affected_decision_type": "Whether to seek or continue arthritis treatment.",
+    "likely_reader_misunderstanding": "That grounding is an evidence-based option for arthritis.",
+    "not_a_harm_probability_note": "Reader-impact risk is a qualitative category describing how a non-specialist might misread the claim. It is NOT a computed medical, legal, or financial harm probability.",
+    "risk_level": "high",
+    "risk_rationale": "Arthritis is a progressive disease with effective treatments; implied relevance may delay rheumatological care.",
+    "risk_uncertainty": null
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_available": false,
+    "rewrite_guard": {
+      "checked": true,
+      "status": "no_rewrite",
+      "unsupported_new_facts": []
+    },
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze.",
+    "rewrite_verification": "no_rewrite_supplied",
+    "rewrite_verification_note": "This rewrite is an UNVERIFIED proposal copied from the analysis input. The numeric-containment guard only checks that it introduces no unsupported number; it does NOT verify factual or semantic accuracy. Its factual support still requires human review."
+  },
+  "report_id": "ASA-25-261-run_001-P-02",
+  "report_schema_version": "6.3.0",
+  "status_banner": [
+    "DEVELOPMENT PROTOTYPE — claim-forensics report (Phase 6.3)"
+  ],
+  "synthetic_fixture": false,
+  "uncertainty": {
+    "alternative_label_rationale": "No specific frozen label applies; the error is implying relevance to a named disease with no qualifying study.",
+    "alternative_plausible_label": null,
+    "ambiguity": "NONE MATERIAL.",
+    "confidence_caveat": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "development_caveat": null,
+    "missing_evidence": [
+      "No arthritis Earth-contact or grounding trial located",
+      "Closest candidates excluded for absence of conductive Earth contact",
+      "Arthritis endpoints absent from the whole evidence base"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "An arthritis RCT measuring disease activity, pain, function and harms has not been performed. The absence is a bounded retrieval finding within the documented routes and terminology, not proof that no relevant study exists."
+    ]
+  },
+  "verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.9,
+    "predicted_label": "overclaim",
+    "verdict_summary": "No human Earth-contact or grounding intervention study with an arthritis-relevant clinical or functional endpoint was located, after the most extensive proposition-specific search in the case. Candidate barefoot-gait records were excluded because they involve no conductive Earth contact.",
+    "verdict_title": "Claim goes beyond the available evidence"
+  }
+}

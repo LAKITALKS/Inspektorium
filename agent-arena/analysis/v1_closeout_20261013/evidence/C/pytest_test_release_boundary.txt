@@ -1,0 +1,49 @@
+$ (cd __LOCAL_HOME__/Documents/Projects/agent-arena && env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 COLUMNS=100 PYTHONPATH=__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/plugins AREAC_NETGUARD_OUT=__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/counts/pytest_test_release_boundary.json __LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python -B -m pytest -p areac_netguard -p no:cacheprovider --basetemp __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/pt_test_release_boundary -q -rA tests/test_release_boundary.py)
+...........................................                                                  [100%]
+============================================== PASSES ==============================================
+===================================== short test summary info ======================================
+PASSED tests/test_release_boundary.py::test_A_valid_object_writes_exactly_one_verified_official_package
+PASSED tests/test_release_boundary.py::test_B_nonreleasable_consolidated_decision_writes_nothing
+PASSED tests/test_release_boundary.py::test_C_one_release_blocking_gate_finding_writes_nothing
+PASSED tests/test_release_boundary.py::test_D_missing_mandatory_gate_report_is_rejected_before_promotion
+PASSED tests/test_release_boundary.py::test_E_unknown_duplicate_or_wrong_version_gate_report_is_rejected[unknown]
+PASSED tests/test_release_boundary.py::test_E_unknown_duplicate_or_wrong_version_gate_report_is_rejected[duplicate]
+PASSED tests/test_release_boundary.py::test_E_unknown_duplicate_or_wrong_version_gate_report_is_rejected[wrong_version]
+PASSED tests/test_release_boundary.py::test_F_caller_cannot_select_one_trivial_gate
+PASSED tests/test_release_boundary.py::test_G_H_caller_or_stored_all_green_dictionary_cannot_authorize[release_report]
+PASSED tests/test_release_boundary.py::test_G_H_caller_or_stored_all_green_dictionary_cannot_authorize[authorization]
+PASSED tests/test_release_boundary.py::test_G_H_caller_or_stored_all_green_dictionary_cannot_authorize[releasable]
+PASSED tests/test_release_boundary.py::test_I_gate_execution_failure_is_controlled_no_go
+PASSED tests/test_release_boundary.py::test_J_gate_internal_incomplete_state_is_no_go
+PASSED tests/test_release_boundary.py::test_K_nonzero_evaluated_zero_findings_is_explicitly_clean
+PASSED tests/test_release_boundary.py::test_L_zero_eligible_gate_is_explicit_and_fails_closed
+PASSED tests/test_release_boundary.py::test_M_empty_vacuous_record_is_invalid_before_gates
+PASSED tests/test_release_boundary.py::test_N_unknown_eligibility_is_no_go
+PASSED tests/test_release_boundary.py::test_O_partial_coverage_is_rejected
+PASSED tests/test_release_boundary.py::test_P_impossible_or_contradictory_counters_are_rejected[evaluated_gt_eligible]
+PASSED tests/test_release_boundary.py::test_P_impossible_or_contradictory_counters_are_rejected[negative]
+PASSED tests/test_release_boundary.py::test_P_impossible_or_contradictory_counters_are_rejected[finding_count]
+PASSED tests/test_release_boundary.py::test_Q_wrong_source_fingerprint_is_no_go
+PASSED tests/test_release_boundary.py::test_R_object_change_after_gates_is_rejected
+PASSED tests/test_release_boundary.py::test_S_report_or_decision_change_after_execution_is_rejected
+PASSED tests/test_release_boundary.py::test_T_rendered_artifact_change_is_detected_before_promotion
+PASSED tests/test_release_boundary.py::test_U_renderer_or_output_io_failure_leaves_no_partial_official_package[renderer]
+PASSED tests/test_release_boundary.py::test_U_renderer_or_output_io_failure_leaves_no_partial_official_package[write]
+PASSED tests/test_release_boundary.py::test_V_preexisting_target_is_not_overwritten_or_reported_as_new
+PASSED tests/test_release_boundary.py::test_V_broken_symlink_target_is_an_occupied_collision
+PASSED tests/test_release_boundary.py::test_V_symlinked_official_namespace_is_rejected
+PASSED tests/test_release_boundary.py::test_W_direct_forensic_renderer_is_diagnostic_and_verifier_rejects_it
+PASSED tests/test_release_boundary.py::test_X_legacy_client_cli_is_diagnostic_and_cannot_target_official_namespace
+PASSED tests/test_release_boundary.py::test_diagnostic_cli_cannot_enter_official_namespace_through_symlink
+PASSED tests/test_release_boundary.py::test_public_client_renderers_return_diagnostic_only_content
+PASSED tests/test_release_boundary.py::test_direct_pdf_renderer_cannot_write_into_official_namespace
+PASSED tests/test_release_boundary.py::test_internal_report_cli_writes_only_an_explicit_diagnostic
+PASSED tests/test_release_boundary.py::test_public_forensic_cli_is_diagnostic_and_nonzero[markdown]
+PASSED tests/test_release_boundary.py::test_public_forensic_cli_is_diagnostic_and_nonzero[summary]
+PASSED tests/test_release_boundary.py::test_public_forensic_cli_is_diagnostic_and_nonzero[json]
+PASSED tests/test_release_boundary.py::test_Y_valid_package_cross_verifies_exact_object_report_and_hashes
+PASSED tests/test_release_boundary.py::test_public_official_release_cli_is_disabled_in_v1_while_api_still_releases
+PASSED tests/test_release_boundary.py::test_public_official_release_cli_denial_is_nonzero_and_writes_nothing
+PASSED tests/test_release_boundary.py::test_wrong_release_object_schema_and_pipeline_qa_role_fail_closed
+43 passed in 11.27s
+--- exit_code: 0

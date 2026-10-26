@@ -1,0 +1,66 @@
+{
+  "claim": {
+    "claim_context": "SYNTHETIC illustration — not a real scientific or medical conclusion.",
+    "claim_text": "Skip your prescribed medication; this juice cleanse reverses stage-4 cancer.",
+    "intended_reader_or_audience": "patients with serious illness"
+  },
+  "evidence": {
+    "evidence_items": [
+      {
+        "role": "weakening",
+        "text": "A testimonial video with no data.",
+        "tier": "unknown"
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "missing_human_evidence": true
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "mode": "conclusion_exceeds_results",
+        "rationale": "A cure claim rests on a single testimonial."
+      },
+      {
+        "mode": "unsupported_superiority_claim",
+        "rationale": "Claims superiority over prescribed treatment with no evidence."
+      }
+    ]
+  },
+  "meta": {
+    "development_or_production_status": "development",
+    "generated_at": "2026-08-05T12:00:00+00:00",
+    "report_id": "FR-SYN-RISK-09",
+    "synthetic_fixture": true
+  },
+  "provenance": {
+    "analysis_source": "phase6_3 synthetic fixture",
+    "model": "SYNTHETIC-MODEL",
+    "prompt_contract_version": "SYNTHETIC-CONTRACT-0",
+    "provider": "synthetic",
+    "repository_commit": "5349ad0"
+  },
+  "reader_impact": {
+    "affected_decision_type": "life-critical medical decision",
+    "likely_reader_misunderstanding": "That a juice cleanse can replace cancer treatment.",
+    "risk_level": "critical",
+    "risk_rationale": "Advises stopping medication for a life-threatening condition.",
+    "risk_uncertainty": "None on the direction of harm; magnitude not quantified here."
+  },
+  "recommended_revision": {
+    "claims_to_remove_or_narrow": [
+      "reverses stage-4 cancer",
+      "skip your prescribed medication"
+    ],
+    "defensible_rewrite": null
+  },
+  "uncertainty": {
+    "unresolved_questions": [
+      "Is there ANY controlled evidence?"
+    ]
+  },
+  "verdict": {
+    "confidence": 0.95,
+    "predicted_label": "overclaim"
+  }
+}

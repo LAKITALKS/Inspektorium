@@ -1,0 +1,193 @@
+id: P7A-BND-015
+title: "Boundary: Avastin 'starves breast tumors' - anti-angiogenesis mechanism + tumor/PFS surrogate framed as patient benefit (Shape B)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: surrogate_endpoint_overclaim
+ambiguity_level: medium
+prompt: |
+  A cancer-drug promotion states: "Avastin is a tumor-starving therapy: it cuts off the blood supply that breast-cancer tumors need to grow. By blocking the tumor's blood vessels it shrinks tumors and slows the cancer — giving women with advanced breast cancer a powerful new weapon against their disease."
+
+  Avastin (bevacizumab) is a monoclonal antibody against vascular endothelial growth factor (VEGF); its anti-angiogenesis mechanism ("starving" tumors of blood supply) is well established in preclinical models. In metastatic HER2-negative breast cancer it received US FDA accelerated approval in 2008 with paclitaxel, on the basis of improved PROGRESSION-FREE SURVIVAL (a tumor-growth surrogate) in the E2100 trial. However, the required confirmatory trials (AVADO, RIBBON-1) showed only a small effect on tumor growth and did NOT demonstrate improved OVERALL SURVIVAL or better quality of life, while adding serious harms (hypertension, hemorrhage, perforations). On 18 November 2011 the FDA revoked the breast-cancer indication, concluding the drug had not been shown to be safe and effective for that use. Progression-free survival / tumor response is a surrogate endpoint; overall survival and quality of life are the clinical outcomes that matter to patients.
+context: |
+  Evidence tier: randomized controlled trials with a clinical endpoint, plus an FDA regulatory
+  withdrawal. The anti-angiogenesis MECHANISM is real and materially invoked ("starves tumors"),
+  and a human SURROGATE (progression-free survival / tumor shrinkage) genuinely improved — but the
+  clinical outcomes (overall survival, quality of life) did not, and the indication was revoked.
+  The promotion sells the mechanism + surrogate as patient benefit. Under the frozen taxonomy this
+  "Shape B" surrogate-to-clinical framing routes to overclaim, not mechanism_vs_evidence.
+expected_answer: "overclaim"
+reference_solution: |
+  The drug improves a SURROGATE (progression-free survival / tumor shrinkage via a real
+  anti-angiogenesis mechanism) but the confirmatory RCTs showed no improvement in overall survival
+  or quality of life, and the FDA revoked the metastatic-breast-cancer indication in 2011. Selling
+  the mechanism and the surrogate as a patient benefit ("a powerful weapon", "slows the cancer") is
+  a surrogate-endpoint-framed-as-clinical-outcome overclaim. Under the frozen taxonomy,
+  surrogate-to-clinical ("Shape B") routes to overclaim. It is not mechanism_vs_evidence: that label
+  is for a described animal/preclinical pathway extrapolated to a human benefit with no direct human
+  outcome data; here there IS human trial data — a surrogate that improved while the clinical outcome
+  did not — so the gap is surrogate-to-clinical, which routes to overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: because Avastin blocks tumor blood vessels (anti-angiogenesis) and
+     shrinks tumors, it is a powerful benefit for women with advanced breast cancer.
+  2. What the evidence establishes: the mechanism is real and the surrogate improved (progression-
+     free survival in E2100), but confirmatory RCTs (AVADO, RIBBON-1) showed no overall-survival or
+     quality-of-life benefit and added serious harms; the FDA revoked the breast-cancer indication
+     in 2011.
+  3. Mismatch: a mechanism plus a surrogate improvement is presented as a clinical patient benefit
+     that the trials do not support (and regulators withdrew).
+  4. Frozen label triggered: overclaim — a surrogate/biomarker (and its mechanism) framed as a
+     clinical benefit (rhetorical inflation); per docs/study_forensics_taxonomy.md this "Shape B"
+     routes to overclaim.
+  5. Why mechanism_vs_evidence is tempting: the anti-angiogenesis "starve the tumor" mechanism is
+     real, vivid, and central to the promotion, so the mechanism boundary looks relevant.
+  6. Why precedence rejects it as primary: mechanism_vs_evidence applies when a described animal/
+     preclinical PATHWAY is extrapolated to a human benefit with no direct human outcome evidence.
+     Here direct human trial data exist — a SURROGATE endpoint (PFS) that improved while the CLINICAL
+     endpoint (overall survival / QoL) did not — so the decisive gap is surrogate-to-clinical, which
+     the taxonomy routes to overclaim (Shape B; docs/taxonomy_precedence.md; case054 precedent).
+  7. What would change the classification: had the promotion accurately reported "delays tumor growth
+     but does not extend overall survival and carries serious risks," it would be solid; had it
+     rested only on a preclinical anti-angiogenesis model with no human trial, mechanism_vs_evidence
+     could apply.
+gold_alternative_reading: |
+  Alternative: mechanism_vs_evidence. Plausible because the anti-angiogenesis ("starve the tumor")
+  mechanism is real, preclinically grounded, and materially invoked. It loses under precedence
+  because the case is not a preclinical-only extrapolation: human trial data exist and the failure is
+  a surrogate endpoint (PFS) presented as a clinical outcome (overall survival / QoL) that did not
+  improve. The taxonomy routes surrogate-to-clinical ("Shape B") to overclaim and excludes it from
+  mechanism_vs_evidence.
+gold_summary: |
+  Avastin's real anti-angiogenesis mechanism and improved progression-free survival (a surrogate) are
+  sold as a patient benefit for advanced breast cancer, but confirmatory RCTs showed no overall-
+  survival or quality-of-life gain and the FDA revoked the indication (2011). Surrogate-plus-mechanism
+  framed as clinical benefit = overclaim (Shape B), not mechanism_vs_evidence.
+curator_notes: |
+  Boundary family B2 (overclaim <-> mechanism_vs_evidence), overclaim direction. Independent
+  replacement for retired P7A-BND-007; supersedes it. This is a genuine B2 case (unlike 007): the
+  anti-angiogenesis mechanism is real, preclinically grounded, and materially invoked, so
+  mechanism_vs_evidence is a real attractor — but frozen Shape-B routing (human surrogate PFS framed
+  as clinical benefit) keeps overclaim primary. Distinct from the bone Shape-B control (P7A-BND-006):
+  different agent (VEGF-inhibitor oncology drug), different surrogate (PFS/tumor response vs BMD),
+  documented FDA withdrawal. Sourced from Genentech marketing + the FDA 2011 revocation. Gold frozen
+  before any model output.
+expected_findings:
+  - finding: surrogate_framed_as_clinical
+    severity: major
+    confidence: high
+    note: "Progression-free survival / tumor shrinkage (surrogate) sold as a patient benefit (overall survival / QoL)"
+  - finding: contradicted_by_clinical_endpoint
+    severity: major
+    confidence: high
+    note: "Confirmatory RCTs showed no overall-survival or QoL benefit; FDA revoked the breast-cancer indication in 2011"
+  - finding: mechanism_as_proof_of_benefit
+    severity: moderate
+    confidence: high
+    note: "A real anti-angiogenesis mechanism is invoked as if it were proof of clinical benefit"
+gold_evidence_spans:
+  - span: "it shrinks tumors and slows the cancer - giving women with advanced breast cancer a powerful new weapon"
+    why_it_matters: "Frames a surrogate (tumor shrinkage/PFS) and mechanism as a clinical patient benefit."
+    supports_finding: surrogate_framed_as_clinical
+  - span: "cuts off the blood supply that breast-cancer tumors need to grow"
+    why_it_matters: "The real anti-angiogenesis mechanism, invoked as proof of benefit it did not deliver in survival/QoL."
+    supports_finding: mechanism_as_proof_of_benefit
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "surrogate endpoint"
+    variants: ["progression-free survival", "tumor response", "not overall survival"]
+    functional_descriptions:
+      - "PFS/tumor shrinkage is a surrogate; overall survival and QoL are the outcomes that matter"
+  - keyword: "Shape B routes to overclaim"
+    variants: ["surrogate-to-clinical", "not mechanism_vs_evidence", "human trial data exist"]
+    functional_descriptions:
+      - "A human surrogate framed as clinical benefit is overclaim, not a preclinical-to-human leap"
+common_errors:
+  - labelling any mechanism-based drug claim mechanism_vs_evidence
+  - accepting tumor shrinkage / PFS as proof of patient benefit
+  - missing that overall survival did not improve and the indication was revoked
+expected_failure_modes:
+  - overclaim_to_over_specific
+  - surrogate_to_clinical_leap
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Does the agent route a real-mechanism, surrogate-to-clinical (Shape B) drug claim to overclaim rather than mechanism_vs_evidence?"
+origin: curated
+supersedes: P7A-BND-007
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-015
+  case_family: boundary
+  boundary_family_id: B2
+  boundary: "overclaim <-> mechanism_vs_evidence"
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    >=2 plausible labels and a subtle precedence call: a real, vivid anti-angiogenesis mechanism
+    ("starve the tumor") strongly invites mechanism_vs_evidence, but the frozen taxonomy routes the
+    human surrogate-to-clinical gap (PFS framed as patient benefit) to overclaim. Evidence-tier nuance
+    (surrogate vs clinical endpoint within human RCTs; regulatory withdrawal). Property-based tagging.
+  precedence_rationale: |
+    mechanism_vs_evidence requires a described animal/preclinical pathway extrapolated to a human
+    benefit with no direct human outcome evidence. Here human trial data exist: a surrogate endpoint
+    (progression-free survival) improved while the clinical endpoint (overall survival / QoL) did not,
+    and the FDA revoked the indication. The taxonomy routes this surrogate-to-clinical gap ("Shape B")
+    to overclaim and excludes it from mechanism_vs_evidence (docs/taxonomy_precedence.md; case054).
+    Primary = overclaim.
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary under the frozen Shape-B routing;
+    mechanism_vs_evidence is a genuine but documented-and-rejected alternative (the mechanism is real
+    but the decisive gap is surrogate-to-clinical within human trials).
+  steelman_challenge: |
+    Strongest case the gold is wrong: the anti-angiogenesis mechanism is real and preclinically
+    grounded, so the claim could be read as a mechanism-to-human leap (mechanism_vs_evidence).
+    Counter-evidence weighed: this is not a preclinical-only extrapolation — human RCTs measured a
+    surrogate (PFS, improved) and a clinical outcome (overall survival / QoL, not improved), and the
+    FDA revoked the indication in 2011. The frozen taxonomy routes surrogate-to-clinical to overclaim
+    (Shape B), with case054 the precedent. Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "Genentech / Avastin anti-angiogenesis 'tumor-starving therapy' promotion for breast cancer"
+    claim_source_url: "https://www.gene.com/media/statements/ps_052710"
+    claim_source_publisher: "Genentech (Roche) — Avastin product statements / how-it-works patient materials (avastin.com)"
+    claim_source_date: "2010-05-27"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Genentech marketed Avastin as a 'tumor-starving (anti-angiogenic) therapy' that works by cutting off the tumor's blood supply, promoted for metastatic breast cancer during the period of its 2008 accelerated approval. The frozen span is the bounded surrogate-plus-mechanism-framed-as-benefit proposition; the FDA revoked the breast-cancer indication in 2011."
+    claim_exact_span: "tumor-starving therapy ... cuts off the blood supply that breast-cancer tumors need to grow ... shrinks tumors and slows the cancer ... a powerful new weapon"
+    evidence_sources:
+      - citation: "Miller K, Wang M, Gralow J, et al. Paclitaxel plus Bevacizumab versus Paclitaxel Alone for Metastatic Breast Cancer (E2100). N Engl J Med 2007;357(26):2666-2676"
+        url: "https://www.nejm.org/doi/full/10.1056/NEJMoa072113"
+        design: "Randomized controlled trial (open-label)"
+        population: "Metastatic HER2-negative breast cancer, first-line, with paclitaxel"
+        intervention_or_exposure: "Bevacizumab (anti-VEGF) + paclitaxel"
+        comparator: "Paclitaxel alone"
+        endpoint: "Progression-free survival (surrogate); overall survival (clinical)"
+        result: "Progression-free survival improved (~11.8 vs 5.9 months) but overall survival was not significantly improved; the basis for 2008 accelerated approval"
+        source_role: primary_research
+        evidence_tier: "RCT (surrogate endpoint improved; clinical endpoint not)"
+        limitations: "PFS is a tumor-growth surrogate; confirmatory trials required"
+      - citation: "US FDA. Proposal to Withdraw Approval for the Breast Cancer Indication for Avastin (bevacizumab); Commissioner's decision (withdrawal effective Nov 18, 2011). Final decision, Federal Register 2012"
+        url: "https://www.federalregister.gov/documents/2012/02/27/2012-4424/final-decision-on-withdrawal-of-breast-cancer-indication-for-avastin-bevacizumab-following-public"
+        design: "Regulatory withdrawal (evidence review of confirmatory trials AVADO, RIBBON-1)"
+        population: "Metastatic HER2-negative breast cancer"
+        intervention_or_exposure: "Bevacizumab for metastatic breast cancer"
+        comparator: "Chemotherapy alone"
+        endpoint: "Overall survival; quality of life; safety"
+        result: "Confirmatory trials showed only a small effect on tumor growth and no improvement in overall survival or quality of life, with serious harms; FDA revoked the breast-cancer indication (effective 18 Nov 2011)"
+        source_role: regulatory_assessment
+        evidence_tier: "FDA regulatory withdrawal (authoritative assessment; not primary research)"
+        limitations: "Withdrawal applies to the metastatic-breast-cancer indication; Avastin retains other approved uses"
+    access_date: "2026-08-16"
+    claim_access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: mechanism_vs_evidence
+    probes: "overclaim -> over-specific (mechanism) attractor; Shape-B routing positive control (real-mechanism variant)"
+  case_fingerprint: "fe0e35d20a8835dd4dec2f7db5c8d2b4e0ea3724e5892264b2aa7632d7be5295"

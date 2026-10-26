@@ -1,0 +1,1094 @@
+{
+  "run_id": "mech_study-forensics-029_claude_haiku_4fb4e3",
+  "task": {
+    "id": "study-forensics-029",
+    "title": "Study Forensics: Amyloid-targeting antibody improves biomarkers without cognitive benefit",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "In a randomized Phase 2/3 trial, researchers tested a monoclonal antibody that clears amyloid plaques in people with inherited Alzheimer's disease. The drug dramatically reduced amyloid deposits and improved markers of neurodegeneration in participants' brains. Despite these biomarker successes, the trial failed to show any slowing of cognitive decline. Investigators emphasised the drug's strong impact on biomarkers and proposed an open-label extension, but acknowledged that its cognitive benefits remain unproven.\n",
+    "context": "A human clinical trial that hits its mechanistic target (amyloid clearance,\nbiomarker improvement) but fails to meet the primary clinical endpoint\n(cognitive decline). The sharpest variant of the mechanism-vs-evidence gap.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The summary describes a therapy that successfully clears amyloid plaques and improves biomarkers in a human trial, but fails to show cognitive benefit. The mechanism works at the molecular level but clinical efficacy is unproven. Investigators continue to emphasise biomarker success despite the failed clinical endpoint.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "biomarker vs clinical",
+        "variants": [
+          "biomarker success",
+          "cognitive decline",
+          "failed endpoint"
+        ],
+        "functional_descriptions": [
+          "biomarker improvements do not equal clinical benefit"
+        ]
+      },
+      {
+        "keyword": "mechanism gap",
+        "variants": [
+          "amyloid clearance",
+          "cognitive benefits remain unproven"
+        ],
+        "functional_descriptions": [
+          "mechanistic target engagement does not prove therapeutic efficacy"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting biomarker improvement as evidence of clinical benefit",
+      "classifying as generic overclaim instead of mechanism_vs_evidence"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "biomarker_without_clinical_benefit",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "conflating_biomarker_with_clinical"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise that biomarker success without cognitive improvement is a mechanism-vs-evidence gap, not generic overclaim?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "Human trial with biomarker success but clinical failure. The mechanism works at the molecular level but cognitive benefit is unproven, making the evidence-mechanism gap explicit.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "The drug dramatically reduced amyloid deposits and improved markers of neurodegeneration in participants' brains",
+        "why_it_matters": "Shows mechanistic success at the molecular level.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "the trial failed to show any slowing of cognitive decline",
+        "why_it_matters": "Indicates that clinical efficacy is unproven despite biomarker changes.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "Investigators emphasised the drug's strong impact on biomarkers and proposed an open-label extension",
+        "why_it_matters": "Highlights how mechanistic improvements are used to justify continued use despite lack of clinical benefit.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The summary notes that the antibody markedly reduced amyloid plaques and improved\nbiomarker measures, yet the trial did not meet its cognitive endpoint. Researchers\nnevertheless highlight the biomarker impact and continue treatment. This mismatch\nbetween mechanistic success and absent clinical effect justifies labeling it a\nmechanism_vs_evidence case. The mechanism works (even in humans), but the evidence\nfor clinical benefit does not follow.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Shape B of mechanism_vs_evidence: clinical trial that improves biomarkers without\naffecting clinical outcomes. This is the sharpest variant because the mechanism\nworks even in humans — it's not an animal-to-human translation problem but a\nmechanism-to-clinical-outcome gap. Tests whether models can separate biomarker\nendpoints from clinical endpoints.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\n    \"The trial was properly randomized and controlled (Phase 2/3 design implies this)\",\n    \"Biomarker measurements (amyloid deposits, neurodegeneration markers) were validated and reliably measured\",\n    \"Cognitive decline was measured using standard, validated instruments\",\n    \"The trial had adequate statistical power and follow-up duration to detect cognitive effects if present\",\n    \"The text accurately represents what the investigators concluded\"\n  ],\n  \"steps\": [\n    \"Identified the core claim: drug reduced amyloid biomarkers but failed to slow cognitive decline\",\n    \"Checked for overclaim: The text does NOT claim cognitive benefit despite biomarker success. Investigators explicitly state cognitive benefits 'remain unproven'\",\n    \"Checked for mechanism vs. evidence: The text does not claim a mechanism explaining why biomarkers improved without cognitive benefit. It simply reports both findings\",\n    \"Checked for correlation vs. causation: The biomarker improvements are from a randomized trial (appropriate for causal inference about drug effects on biomarkers). The null finding on cognition is also from the same trial\",\n    \"Checked for decorative uncertainty: The acknowledgment that 'cognitive benefits remain unproven' is substantive, not decorative—it directly contradicts what one might expect from biomarker success\",\n    \"Checked for confounders: In a randomized trial, confounding is controlled by design. The null cognitive finding is not explained away\",\n    \"Evaluated the logical coherence: The investigators present a genuine disconnect (biomarker success ≠ cognitive benefit) and acknowledge it rather than overstate implications\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Overclaim: if the text had claimed cognitive benefits based on biomarker improvements, or if investigators had downplayed the null cognitive finding\",\n    \"Mechanism vs. evidence: if the text had proposed a mechanism (e.g., 'amyloid clearance alone is insufficient') without evidence, or applied animal findings to humans\",\n    \"Correlation vs. causation: if biomarker changes were observational rather than from a randomized trial\"\n  ],\n  \"uncertainties\": [\n    \"Whether the trial was adequately powered for cognitive outcomes (not stated in the summary)\",\n    \"Whether follow-up duration was sufficient to detect cognitive decline (not specified)\",\n    \"Whether the open-label extension is presented as exploratory or as a path to approval (text says 'proposed,' suggesting exploratory)\",\n    \"The specific cognitive tests used and their sensitivity\"\n  ],\n  \"key_claims\": [\n    \"The study found a dissociation: strong biomarker effects but no cognitive benefit\",\n    \"Investigators did NOT overclaim—they explicitly state cognitive benefits are unproven\",\n    \"The null cognitive finding is presented as a genuine failure, not explained away\",\n    \"The open-label extension is proposed but framed as addressing an unproven question, not as confirmation\"\n  ],\n  \"self_check\": [\n    \"Did I assume problems that aren't stated? No—the text itself reports the null cognitive finding\",\n    \"Did I miss an overclaim? No—the investigators acknowledge the disconnect and do not claim cognitive benefit\",\n    \"Is this a case of 'biomarkers don't equal clinical benefit'? Yes, but that's an honest reporting of the trial result, not an epistemic flaw in the summary\",\n    \"Could the open-label extension be seen as problematic? It's uncontrolled, but the text frames it as exploratory, not as proof\",\n    \"Is the summary itself well-calibrated? Yes—it reports both the biomarker success and the cognitive failure without overinterpreting either\"\n  ],\n  \"confidence\": 0.88\n}\n```\n\n**Summary**: This is a **solid study report**. The investigators conducted a randomized trial, found biomarker improvements but cognitive null results, and explicitly acknowledged that cognitive benefits remain unproven. There is no overclaim, no mechanism-without-evidence, and no decorative uncertainty. The disconnect between biomarkers and cognition is real and honestly reported—this is a genuine scientific finding, not an epistemic flaw in how it's presented.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The trial was properly randomized and controlled (Phase 2/3 design implies this)",
+            "Biomarker measurements (amyloid deposits, neurodegeneration markers) were validated and reliably measured",
+            "Cognitive decline was measured using standard, validated instruments",
+            "The trial had adequate statistical power and follow-up duration to detect cognitive effects if present",
+            "The text accurately represents what the investigators concluded"
+          ],
+          "steps": [
+            "Identified the core claim: drug reduced amyloid biomarkers but failed to slow cognitive decline",
+            "Checked for overclaim: The text does NOT claim cognitive benefit despite biomarker success. Investigators explicitly state cognitive benefits 'remain unproven'",
+            "Checked for mechanism vs. evidence: The text does not claim a mechanism explaining why biomarkers improved without cognitive benefit. It simply reports both findings",
+            "Checked for correlation vs. causation: The biomarker improvements are from a randomized trial (appropriate for causal inference about drug effects on biomarkers). The null finding on cognition is also from the same trial",
+            "Checked for decorative uncertainty: The acknowledgment that 'cognitive benefits remain unproven' is substantive, not decorative—it directly contradicts what one might expect from biomarker success",
+            "Checked for confounders: In a randomized trial, confounding is controlled by design. The null cognitive finding is not explained away",
+            "Evaluated the logical coherence: The investigators present a genuine disconnect (biomarker success ≠ cognitive benefit) and acknowledge it rather than overstate implications"
+          ],
+          "alternative_hypotheses": [
+            "Overclaim: if the text had claimed cognitive benefits based on biomarker improvements, or if investigators had downplayed the null cognitive finding",
+            "Mechanism vs. evidence: if the text had proposed a mechanism (e.g., 'amyloid clearance alone is insufficient') without evidence, or applied animal findings to humans",
+            "Correlation vs. causation: if biomarker changes were observational rather than from a randomized trial"
+          ],
+          "uncertainties": [
+            "Whether the trial was adequately powered for cognitive outcomes (not stated in the summary)",
+            "Whether follow-up duration was sufficient to detect cognitive decline (not specified)",
+            "Whether the open-label extension is presented as exploratory or as a path to approval (text says 'proposed,' suggesting exploratory)",
+            "The specific cognitive tests used and their sensitivity"
+          ],
+          "self_check": [
+            "Did I assume problems that aren't stated? No—the text itself reports the null cognitive finding",
+            "Did I miss an overclaim? No—the investigators acknowledge the disconnect and do not claim cognitive benefit",
+            "Is this a case of 'biomarkers don't equal clinical benefit'? Yes, but that's an honest reporting of the trial result, not an epistemic flaw in the summary",
+            "Could the open-label extension be seen as problematic? It's uncontrolled, but the text frames it as exploratory, not as proof",
+            "Is the summary itself well-calibrated? Yes—it reports both the biomarker success and the cognitive failure without overinterpreting either"
+          ],
+          "key_claims": [
+            "The study found a dissociation: strong biomarker effects but no cognitive benefit",
+            "Investigators did NOT overclaim—they explicitly state cognitive benefits are unproven",
+            "The null cognitive finding is presented as a genuine failure, not explained away",
+            "The open-label extension is proposed but framed as addressing an unproven question, not as confirmation"
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11248
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.0,
+          "weight": 30,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "No match (got: solid)"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Checked for decorative uncertainty: The acknowledgment that 'cognitive benefits remain unproven' is substantive, not decorative—it directly contradict",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.74)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Biomarker measurements (amyloid deposits, neurodegeneration markers) were validated and reliably measured",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the open-label extension is presented as exploratory or as a path to approval (text says 'proposed,' suggesting exploratory)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "Mechanism vs. evidence: if the text had proposed a mechanism (e.g., 'amyloid clearance alone is insufficient') without evidence, or applied animal findings to humans",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Is this a case of 'biomarkers don't equal clinical benefit'? Yes, but that's an honest reporting of the trial result, not an epistemic flaw in the summary",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.70, 469 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'mechanism_vs_evidence'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'mechanism_vs_evidence', detected 'solid'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "The study found a dissociation: strong biomarker effects but no cognitive benefit",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "Investigators did NOT overclaim—they explicitly state cognitive benefits are unproven",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "The null cognitive finding is presented as a genuine failure, not explained away",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "The open-label extension is proposed but framed as addressing an unproven question, not as confirmation",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 4 not well supported in reasoning steps (1/8 content words found)",
+          "evidence": [
+            {
+              "text": "The open-label extension is proposed but framed as addressing an unproven question, not as confirmation",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Overclaim: if the text had claimed cognitive benefits based on biomarker improvements, or if investigators had downplayed the null cognitive finding",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Mechanism vs. evidence: if the text had proposed a mechanism (e.g., 'amyloid clearance alone is insufficient') without evidence, or applied animal findings to humans",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 3 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Correlation vs. causation: if biomarker changes were observational rather than from a randomized trial",
+              "source_field": "alternative_hypotheses[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "well_reasoned_wrong",
+          "description": "Wrong answer but structured reasoning — may have a subtle logic error",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Wrong despite good reasoning",
+              "role": "supporting"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The trial was properly randomized and controlled (Phase 2/3 design implies this)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Biomarker measurements (amyloid deposits, neurodegeneration markers) were validated and reliably measured",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Cognitive decline was measured using standard, validated instruments",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The trial had adequate statistical power and follow-up duration to detect cognitive effects if present",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text accurately represents what the investigators concluded",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the core claim: drug reduced amyloid biomarkers but failed to slow cognitive decline",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaim: The text does NOT claim cognitive benefit despite biomarker success. Investigators explicitly state cognitive benefits 'remain unproven'",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for mechanism vs. evidence: The text does not claim a mechanism explaining why biomarkers improved without cognitive benefit. It simply reports both findings",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for correlation vs. causation: The biomarker improvements are from a randomized trial (appropriate for causal inference about drug effects on biomarkers). The null finding on cognition is also from the same trial",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for decorative uncertainty: The acknowledgment that 'cognitive benefits remain unproven' is substantive, not decorative—it directly contradicts what one might expect from biomarker success",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for confounders: In a randomized trial, confounding is controlled by design. The null cognitive finding is not explained away",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated the logical coherence: The investigators present a genuine disconnect (biomarker success ≠ cognitive benefit) and acknowledge it rather than overstate implications",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study found a dissociation: strong biomarker effects but no cognitive benefit",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Investigators did NOT overclaim—they explicitly state cognitive benefits are unproven",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The null cognitive finding is presented as a genuine failure, not explained away",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The open-label extension is proposed but framed as addressing an unproven question, not as confirmation",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overclaim: if the text had claimed cognitive benefits based on biomarker improvements, or if investigators had downplayed the null cognitive finding",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism vs. evidence: if the text had proposed a mechanism (e.g., 'amyloid clearance alone is insufficient') without evidence, or applied animal findings to humans",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Correlation vs. causation: if biomarker changes were observational rather than from a randomized trial",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the trial was adequately powered for cognitive outcomes (not stated in the summary)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether follow-up duration was sufficient to detect cognitive decline (not specified)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the open-label extension is presented as exploratory or as a path to approval (text says 'proposed,' suggesting exploratory)",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific cognitive tests used and their sensitivity",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I assume problems that aren't stated? No—the text itself reports the null cognitive finding",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss an overclaim? No—the investigators acknowledge the disconnect and do not claim cognitive benefit",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this a case of 'biomarkers don't equal clinical benefit'? Yes, but that's an honest reporting of the trial result, not an epistemic flaw in the summary",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could the open-label extension be seen as problematic? It's uncontrolled, but the text frames it as exploratory, not as proof",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the summary itself well-calibrated? Yes—it reports both the biomarker success and the cognitive failure without overinterpreting either",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.4444444444444444
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.4444444444444444
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.3076923076923077
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          28
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "solid",
+        "label_correct": false,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [
+            "failed to show"
+          ],
+          "limitation_markers": [
+            "open-label"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "unsupported_conclusion",
+        "named_not_explained",
+        "named_not_explained",
+        "wrong_answer"
+      ],
+      "notes": [
+        "No match (got: solid)",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph: conclusion not well grounded",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.74)",
+        "5/5 substantive assumptions",
+        "4 uncertainties (4 substantive)",
+        "Confidence 0.88",
+        "3 alternative hypotheses considered",
+        "3/3 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.70, 469 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T15:44:11.307205+00:00",
+  "metadata": {}
+}

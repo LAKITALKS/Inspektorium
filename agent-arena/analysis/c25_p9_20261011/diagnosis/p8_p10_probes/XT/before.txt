@@ -1,0 +1,9 @@
+out_trace2/auth/.live-lease
+out_trace2/auth/authorization.json
+out_trace2/auth/captures/attempt-001.json
+out_trace2/auth/captures/attempt-002.json
+out_trace2/auth/ledger.json
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/decisions.jsonl
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.json
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.ledger.json
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.lock

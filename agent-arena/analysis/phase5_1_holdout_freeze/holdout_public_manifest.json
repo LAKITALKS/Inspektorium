@@ -1,0 +1,116 @@
+{
+  "source_commit": "babeb11dec4f52feced708626c9f090f61c8afaa",
+  "source_tag": "v0.8.11a-holdout-pool-augmentation",
+  "freeze_timestamp": "2026-08-02T20:30:51.541077+00:00",
+  "algorithm_version": "holdout_select_v1",
+  "seed": "agentarena-phase5.1-holdout-v1|f8efe474d3068b7fbc4d149d9be1816b12b1e9cd",
+  "prospective_holdout": true,
+  "historically_untouched": false,
+  "holdout_size": 16,
+  "label_counts": {
+    "solid": 4,
+    "overclaim": 4,
+    "correlation_vs_causation": 4,
+    "mechanism_vs_evidence": 4
+  },
+  "opaque_holdout_ids": [
+    "HLD-001",
+    "HLD-002",
+    "HLD-003",
+    "HLD-004",
+    "HLD-005",
+    "HLD-006",
+    "HLD-007",
+    "HLD-008",
+    "HLD-009",
+    "HLD-010",
+    "HLD-011",
+    "HLD-012",
+    "HLD-013",
+    "HLD-014",
+    "HLD-015",
+    "HLD-016"
+  ],
+  "generated_packets": {
+    "HLD-001": {
+      "sha256": "f5ffd2ddd48d4785dd50e65d3955915b5b8bc9e797e3ac7c47f2a78972ee9622",
+      "bytes": 1497
+    },
+    "HLD-002": {
+      "sha256": "da7e7053e098103cf87fee57ab918e415973b5e28e4fa3c29d6f0faa452a7934",
+      "bytes": 1134
+    },
+    "HLD-003": {
+      "sha256": "8db1f8ffaf1e0dcca67ee36e861bf1be4c5b0e33cce3dd344f709475ea6944bd",
+      "bytes": 3833
+    },
+    "HLD-004": {
+      "sha256": "a98287027a3d411f86450579bc737918664e9c4550d20f2bd49714e9be7edfeb",
+      "bytes": 1515
+    },
+    "HLD-005": {
+      "sha256": "6091d68d8ba24a983cb1f2599357f0fa9074ca10db0a5bf579730056219b8242",
+      "bytes": 1044
+    },
+    "HLD-006": {
+      "sha256": "7a43e5d9e8a78c9b00f68aebaedcf3d3f935700fb83ee767f2431da64c7db989",
+      "bytes": 1575
+    },
+    "HLD-007": {
+      "sha256": "8d08a687e132e226150698f4269c3f9d46121c338ca532b31c3908cd538e3dd1",
+      "bytes": 1439
+    },
+    "HLD-008": {
+      "sha256": "a47644a7791a90f6ef246b4be9616c2c8b0951c2e416e95b9931ba09a29ccda3",
+      "bytes": 1370
+    },
+    "HLD-009": {
+      "sha256": "611cb9f68469a23b0ac61f7eaa20ebc8914dcd05142b6b4f55bede2fa418ee11",
+      "bytes": 1319
+    },
+    "HLD-010": {
+      "sha256": "090eda2c73b780127244601bae59350d0982292d052f5527cdf9d05f4e799dbd",
+      "bytes": 1443
+    },
+    "HLD-011": {
+      "sha256": "b98390e2c99d9f3cb7d2877fe33c10ea632e16101ecc72e8e0447162a3716432",
+      "bytes": 2638
+    },
+    "HLD-012": {
+      "sha256": "8b7d5f8f6ed7af9307d1774cc12d765ee78b7b62681ca36694268af8422a221a",
+      "bytes": 1156
+    },
+    "HLD-013": {
+      "sha256": "9fff66227e11396b91153a7d0f1b7ee010478e8aeabe5bcb928b40a1b87ce8d4",
+      "bytes": 1207
+    },
+    "HLD-014": {
+      "sha256": "daf9222a0ede4864dddb8c254411e87f15c304e3e4b0dd25f5870be59fda9aaf",
+      "bytes": 1569
+    },
+    "HLD-015": {
+      "sha256": "e8fcfb38baf3fa17f693a2efc7903b7ce826289688547aab55f6facf2fe055fc",
+      "bytes": 1441
+    },
+    "HLD-016": {
+      "sha256": "c228acbbd6cefbd72ef638979a8dbe474e013efd0dadb11cecbd39eefadcd6e0",
+      "bytes": 1099
+    }
+  },
+  "bundle": {
+    "sha256": "aa102707a7b74761542e5b7c85b04d9d99708dc1cd101e090cdcd58b8291664a",
+    "bytes": 29979,
+    "sections": 18
+  },
+  "blank_response_sheet": {
+    "sha256": "51575488dea104e26348a0b3a30af3e4512a76296b15117595077f5779ae7f02",
+    "bytes": 623,
+    "rows": 16
+  },
+  "taxonomy_sha256": "c8c9f5c35da6d62e4a9dcffcb6b0c0b3c1604fc66b0e94795832b7f792bc872e",
+  "private_mapping_committed": false,
+  "private_gold_committed": false,
+  "evaluation_performed": false,
+  "results_collected": false,
+  "holdout_frozen": true
+}

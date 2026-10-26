@@ -1,0 +1,54 @@
+{
+  "slot_key": "A:q-5c8ebf600bd85d3a",
+  "id": "q-5c8ebf600bd85d3a",
+  "arm": "A",
+  "input_sha256": "c4acc484f9f6f270763a8cd9cb90eb1ef3f025bb7092b56bfeac9364eaf59402",
+  "request_sha256": "5f8b1c6bbe1aa7dd3fe6ca3bd5818f84bf081b5adf42fa486a4c28d2f994340c",
+  "raw_text": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"evidence_tier\": \"clinical_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"Claim assumes TEAM-AD studied cognitively healthy adults, but evidence shows it enrolled patients with established mild-to-moderate Alzheimer disease\",\n    \"Claim assumes vitamin E prevents disease, but evidence shows it slowed functional decline in already-diseased patients\",\n    \"Claim treats a modest slowing of decline as disease prevention\"\n  ],\n  \"steps\": [\n    \"TEAM-AD enrolled 613 patients with established mild-to-moderate AD, not cognitively healthy adults\",\n    \"Primary outcome was functional decline (ADCS-ADL), not disease prevention or incidence\",\n    \"Alpha-tocopherol showed 3.15-point difference vs placebo over 2.27 years (P=0.03), a modest effect on progression rate\",\n    \"No prevention claim can be supported from a trial in symptomatic disease\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Vitamin E may slow functional decline in established AD without preventing disease in healthy individuals\",\n    \"The modest effect size and borderline statistical significance may not represent clinically meaningful prevention\",\n    \"Prevention would require prospective study in cognitively normal populations with disease incidence as outcome\"\n  ],\n  \"uncertainties\": [\n    \"Whether slowing decline in symptomatic disease translates to prevention in asymptomatic populations\",\n    \"Clinical significance of 3.15-point ADCS-ADL difference over 2.27 years\",\n    \"Generalizability beyond VA population already on acetylcholinesterase inhibitors\"\n  ],\n  \"key_claims\": [\n    \"TEAM-AD studied cognitively healthy adults (FALSE—enrolled established AD patients)\",\n    \"Vitamin E prevents Alzheimer disease (FALSE—studied progression in symptomatic disease)\",\n    \"TEAM-AD establishes prevention (FALSE—no prevention endpoint or healthy population)\"\n  ],\n  \"self_check\": [\n    \"The claim makes two major category errors: population (healthy vs. diseased) and outcome (prevention vs. slowing decline)\",\n    \"Even if the trial showed benefit, it would be for disease modification in symptomatic patients, not prevention in healthy adults\",\n    \"This is a clear overclaim that extrapolates beyond the evidence scope\"\n  ],\n  \"confidence\": 0.98\n}\n```",
+  "raw_sha256": "14ac73d8d7220f9077a5779aade22540565bfdfb3b44b30d322d6018723357b2",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 6863071208,
+  "attempt_ids": [
+    "attempt-051"
+  ],
+  "usage": {
+    "input_tokens": 923,
+    "output_tokens": 585,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": false,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "overclaim",
+    "label_readable": true,
+    "confidence": 0.98,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "overclaim",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 2322
+    },
+    "B_parser_ns": 139792,
+    "C_incremental_interpretation_ns": 212333
+  }
+}

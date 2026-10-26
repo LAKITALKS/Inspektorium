@@ -1,0 +1,152 @@
+{
+  "corpus": "695 available historical text/JSON/YAML/CSV/source files, including raw historic runs, quarantine, retired cases, intake logs, Phase6.4 materials and text of four original PDFs; inventory hashed separately",
+  "decisions": [
+    {
+      "candidate_id": "C01",
+      "doi": "10.1056/nejmoa2032183",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "The three Step 1 hits are numbered authoring procedure steps, not STEP 1/semaglutide studies. C01 STEP1 and C07 SELECT are different trials/populations/endpoints."
+    },
+    {
+      "candidate_id": "C02",
+      "doi": "10.1056/nejmoa025039",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "case038 is a different Mediterranean-diet cohort, colorectal-cancer endpoint, sample and follow-up. Greek all-cause-mortality cohort is distinct; broad diet topic only."
+    },
+    {
+      "candidate_id": "C03",
+      "doi": "10.1056/nejmoa2021436",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Recovery trial hits concern exercise-recovery earthing experiments, not dexamethasone/RECOVERY."
+    },
+    {
+      "candidate_id": "C04",
+      "doi": "10.1056/nejmoa1911303",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C05",
+      "doi": "10.1056/nejm199704173361601",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C06",
+      "doi": "10.1126/science.aaf2693",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Prior NAD+ Alzheimer/memory mouse claims and stem-cell marketing concern different interventions/studies/endpoints. This source specifically reports NR aged muscle stem cells and mouse lifespan, and its claim stays in mice. R20 is a different gene-editing muscular-dystrophy experiment; mouse model similarity is not shared experimental animals."
+    },
+    {
+      "candidate_id": "C07",
+      "doi": "10.1056/nejmoa2307563",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C08",
+      "doi": "10.1056/nejmoa1809944",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Earlier vitamin-D COVID claims and historical supplementation materials concern different studies, populations and endpoints. VITAL original trial not found."
+    },
+    {
+      "candidate_id": "C09",
+      "doi": "10.1016/s0140-6736(10)60835-5",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C10",
+      "doi": "10.1056/nejmoa1606774",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C11",
+      "doi": "10.1056/nejmoa2022166",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C12",
+      "doi": "10.1001/jama.2013.282834",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Prior vitamin-E/beta-carotene cancer-prevention intake cites ATBC/CARET/SELECT, not TEAM-AD functional decline in existing Alzheimer disease. Broad compound topic only."
+    },
+    {
+      "candidate_id": "C13",
+      "doi": "10.1016/j.ypmed.2016.01.001",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C14",
+      "doi": "10.1056/nejmoa1307352",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C15",
+      "doi": "10.1001/jamainternmed.2018.7289",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C16",
+      "doi": "10.1001/jamapediatrics.2018.5056",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "A synthetic report fixture says screen-time solely causes youth anxiety using co-trends; it has no All Our Families participants or developmental screening/cross-lagged analysis. Different claim endpoint and study."
+    },
+    {
+      "candidate_id": "C17",
+      "doi": "10.1001/jamainternmed.2019.0571",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Original PURE sleep candidate excluded because retired P7A-BND-003 uses the underlying PURE cohort. Sister Study baseline light/obesity analysis has no DOI/title/claim-family hit."
+    },
+    {
+      "candidate_id": "C18",
+      "doi": "10.1016/s0140-6736(08)61689-x",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "case023 and Dataset3 concern Texas ZIP-code mental-health outpatient utilization, not England income-deprivation mortality inequality; different sample, study and substantive outcome."
+    },
+    {
+      "candidate_id": "C19",
+      "doi": "10.1038/nature25164",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C20",
+      "doi": "10.1126/science.aad5143",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C21",
+      "doi": "10.1038/416636a",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C22",
+      "doi": "10.1073/pnas.1121623109",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Three CD47 matches are random substrings inside hexadecimal hashes; no biological CD47 source/claim."
+    },
+    {
+      "candidate_id": "C23",
+      "doi": "10.1016/j.neuron.2006.02.026",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "No DOI, title or substantive-entity hit in the screened historical corpus. Distinct from all other final roots."
+    },
+    {
+      "candidate_id": "C24",
+      "doi": "10.1038/nm.3806",
+      "status": "ADOPTED_NO_SAME_STUDY_OR_SUBSTANTIVE_CLAIM_FAMILY_IDENTIFIED",
+      "reason": "Quarantined AA-NEW-003/Dataset5 is an unsourced synthetic NLRP3/Alzheimer plaque/clinical-treatment claim. Adopted Coll 2015 source measures MCC950 inhibition and EAE/MS, CAPS and ex-vivo Muckle-Wells; different disease-specific claim, experiment and endpoint. The NLRP3 pathway alone is broad topic overlap."
+    }
+  ],
+  "source_samples": "24 distinct final studies/fall families. Foundation-model pretraining UNKNOWN. Eight variants retain their primary source and are not independent samples.",
+  "replacement_count": 8,
+  "exclusions": "See replacement_log.json and adjudication_resolution.json; no tested-model output consulted."
+}

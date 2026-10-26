@@ -1,0 +1,54 @@
+{
+  "slot_key": "A:q-f84fb93fcf1862d4",
+  "id": "q-f84fb93fcf1862d4",
+  "arm": "A",
+  "input_sha256": "b27ee0975a10a3c5ed832f99cd1b20db0d270c864f245f9677616c9c91b47f2c",
+  "request_sha256": "b7c9ede290de0d7aa94e19b838d6d9ffe1b9d521a6ebba65e41849dd92269aa6",
+  "raw_text": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"clinical_human\",\n  \"conclusion_tier\": \"same as evidence\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The randomized assignment was properly executed\",\n    \"The eight-week follow-up period was completed as designed\",\n    \"Sodium intake and body weight were successfully maintained constant across groups\"\n  ],\n  \"steps\": [\n    \"Evidence reports a randomized controlled trial with 459 adults\",\n    \"Participants were assigned to control, fruit-and-vegetable, or combination diet\",\n    \"Study explicitly states sodium intake and body weight were kept constant\",\n    \"Combination diet produced 5.5 mm Hg greater mean systolic BP reduction than control over eight weeks\",\n    \"Claim directly matches the reported outcome\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The effect could be confounded by unmeasured dietary components not controlled in the design\",\n    \"The effect size may not persist beyond eight weeks\"\n  ],\n  \"uncertainties\": [\n    \"Generalizability to populations outside the enrolled demographic (systolic <160, diastolic 80-95 mm Hg)\",\n    \"Long-term sustainability of the effect\",\n    \"Mechanisms driving the blood pressure reduction\"\n  ],\n  \"key_claims\": [\n    \"DASH combination diet produced larger systolic BP reduction than control\",\n    \"Reduction was 5.5 mm Hg greater than control\",\n    \"Study duration was eight weeks\",\n    \"Sodium intake and body weight held constant\"\n  ],\n  \"self_check\": [\n    \"Claim is specific and quantified (5.5 mm Hg)\",\n    \"Claim includes appropriate scope (eight weeks, constant sodium/weight)\",\n    \"Claim matches the primary outcome reported in the evidence\",\n    \"No causal mechanism is invoked beyond the dietary intervention\",\n    \"No extrapolation beyond the studied population or timeframe\"\n  ],\n  \"confidence\": 0.98\n}\n```",
+  "raw_sha256": "f901a53489a82edb711fd767638aecc46ff6ab5413fa16bb8ba62563ebd62212",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 6045638792,
+  "attempt_ids": [
+    "attempt-057"
+  ],
+  "usage": {
+    "input_tokens": 850,
+    "output_tokens": 484,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": false,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "solid",
+    "label_readable": true,
+    "confidence": 0.98,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "solid",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 1841
+    },
+    "B_parser_ns": 50584,
+    "C_incremental_interpretation_ns": 66584
+  }
+}

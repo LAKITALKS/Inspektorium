@@ -1,0 +1,73 @@
+id: study-forensics-048
+title: 'Study Forensics: Tumour shrinkage framed as a survival benefit'
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: surrogate_endpoint_overreach
+ambiguity_level: high
+origin: synthetic_fixture
+prompt: |
+  A Phase 2 oncology report says an experimental drug shrank tumours in 40% of patients (objective response rate). The sponsor states the drug 'extends survival' and 'saves lives'. Overall survival and progression-free survival were not yet assessed.
+context: |
+  Objective response (tumour shrinkage) is a surrogate endpoint; survival was not measured. The sponsor actively sells a clinical benefit ('extends survival', 'saves lives') as fact, so the primary forensic finding is rhetorical inflation (overclaim) layered on a surrogate-to-outcome tier gap.
+expected_answer: overclaim
+reference_solution: |
+  Evidence tier: a surrogate endpoint (tumour response). Conclusion tier: overall survival benefit. Response rate frequently does not translate into longer survival. Because the sponsor states the drug 'extends survival' and 'saves lives' as fact with no survival data, it actively sells clinical benefit — the priority rule makes overclaim the primary finding, with the surrogate-to-survival tier gap (mechanism_vs_evidence) as the secondary, defensible reading.
+gold_label: overclaim
+gold_confidence: medium
+gold_case_type: borderline
+gold_justification: |
+  Both a surrogate-to-survival tier gap and rhetorical inflation are present. Applying the project priority rule: the sponsor asserts survival benefit as fact ('extends survival', 'saves lives') from response-rate data with no survival endpoint, which is active selling, so overclaim is primary and the tier gap is secondary. This contrasts with hedged mechanism cases (case024/028) that stay analytical.
+gold_alternative_reading: |
+  A defensible alternative labels this mechanism_vs_evidence: the deep problem is that the evidence tier (objective response, a surrogate endpoint) does not reach the conclusion tier (overall survival), i.e. a surrogate-to-outcome gap, and 'extends survival' could be read as an implied hypothesis rather than active marketing. Under that reading mechanism_not_demonstrated is primary. The case is borderline; a live multi-run probe (Opus 4.5, 3/3, confidence 0.92) consistently chose overclaim, consistent with the priority rule.
+gold_summary: |
+  A drug shrank tumours in 40% of patients; the sponsor sells it as extending survival and saving lives with no survival data. Primary: overclaim (survival benefit sold as fact); secondary/defensible: mechanism_vs_evidence (surrogate-to-survival gap).
+curator_notes: |
+  Surrogate-endpoint-to-patient-benefit gap in oncology. Complements case045 (biomarker) and case041 (GLP-1). Discrimination: hard / borderline.
+  GOLD REVIEW (Phase 4 live stability audit): originally gold_label mechanism_vs_evidence (clear/high). Opus 4.5 labelled it overclaim in 3/3 runs at 0.92 confidence. On review, the flat factual 'extends survival' / 'saves lives' framing sells a clinical benefit as fact and meets the prompt priority rule for overclaim, so the primary label was changed to overclaim and the case marked borderline with the mechanism_vs_evidence reading preserved as the alternative.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: conclusion_exceeds_results
+  severity: major
+  confidence: high
+- finding: mechanism_not_demonstrated
+  severity: moderate
+  confidence: high
+gold_evidence_spans:
+- span: '''extends survival'' and ''saves lives''. Overall survival ... were not yet assessed'
+  why_it_matters: Sells a survival benefit as fact with no survival data — the overclaim.
+  supports_finding: conclusion_exceeds_results
+- span: shrank tumours in 40% of patients (objective response rate)
+  why_it_matters: Objective response is a surrogate endpoint, not survival (the underlying tier gap).
+  supports_finding: mechanism_not_demonstrated
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: surrogate endpoint
+  variants:
+  - response rate
+  - tumour shrinkage
+  - ORR
+  functional_descriptions:
+  - response is a surrogate, not survival
+- keyword: survival not measured
+  variants:
+  - overall survival
+  - not assessed
+  functional_descriptions:
+  - no survival endpoint was evaluated
+common_errors:
+- equating response rate with survival
+- accepting 'saves lives' from Phase 2 response
+- missing that 'saves lives' is sold as fact (overclaim vs tier gap)
+expected_failure_modes:
+- missing_overclaim
+- surrogate_endpoint_fallacy
+- accepting_mechanism_as_evidence
+discriminative_dimensions:
+- correctness
+- mechanism_quality
+- insight_depth
+diagnostic_focus: Can the agent see both the surrogate-to-survival tier gap and the active selling of a clinical benefit, and prioritise overclaim per the rule?

@@ -1,0 +1,174 @@
+id: P7A-BND-007
+title: "Boundary: 'probiotics boost your immune system' (unsubstantiated breadth, no established mechanism)"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: unsupported_breadth_health_halo
+ambiguity_level: medium
+prompt: |
+  A supplement label states: "Our daily probiotic boosts your immune system and strengthens your body's natural defences."
+
+  The European Food Safety Authority (EFSA) has assessed probiotic immune-health claims and has rejected all of them submitted to date. In its evaluation of one such product (Nutrimune), the EFSA Panel concluded that the evidence was insufficient to establish a cause-and-effect relationship between consumption and immune defence against pathogens in the gastrointestinal and upper respiratory tracts; it noted that the human study had not been replicated and that no evidence was provided for a plausible mechanism by which the product could exert the claimed effect in vivo in humans. EFSA's general reasons for rejecting probiotic claims are that the strains were insufficiently characterized or that the cause-and-effect link was poorly substantiated.
+context: |
+  Evidence tier: regulatory evidence assessment (EFSA), which found the human evidence insufficient
+  and, notably, NO substantiated biological mechanism. The claim asserts a broad immune benefit
+  ("boosts your immune system") that the evidence does not support. Because no described animal/
+  preclinical pathway is being extrapolated (and EFSA found no plausible mechanism), the failure is
+  generic unsupported-breadth inflation = overclaim, not mechanism_vs_evidence.
+expected_answer: "overclaim"
+reference_solution: |
+  The label makes a broad, vague immune-benefit claim ("boosts your immune system") that regulators
+  have repeatedly found unsubstantiated: EFSA found insufficient human evidence AND no plausible
+  mechanism. The failure is a health-halo, unsupported-breadth claim = overclaim. It is not
+  mechanism_vs_evidence: that label requires a DESCRIBED animal/preclinical biological pathway used
+  to imply human benefit; here there is no such pathway being over-extrapolated (EFSA explicitly
+  found none), so the mechanism reading has nothing to attach to.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: a broad benefit — the probiotic "boosts your immune system" and
+     "strengthens natural defences."
+  2. What the evidence establishes: EFSA found the human evidence insufficient to establish
+     cause-and-effect and found no plausible mechanism substantiated; strains often insufficiently
+     characterized.
+  3. Mismatch: an unsubstantiated broad immune benefit is asserted as fact.
+  4. Frozen label triggered: overclaim — framing exceeds the evidence (unsupported breadth / vague
+     health-halo), the generic/residual failure.
+  5. Why mechanism_vs_evidence is tempting: probiotics are popularly marketed via a gut-immune
+     "mechanism" narrative, so a reviewer may reach for that specific label.
+  6. Why precedence rejects it as primary: mechanism_vs_evidence requires a DESCRIBED biological
+     mechanism (animal/preclinical pathway) extrapolated to human benefit. Here no such pathway is
+     presented or over-extrapolated — EFSA explicitly found no plausible mechanism — so the specific
+     trigger is absent and the primary stays overclaim (docs/taxonomy_precedence.md rule 2).
+  7. What would change the classification: if the claim had rested on a specific described animal/
+     preclinical immune pathway implying human protection, mechanism_vs_evidence could apply; if it
+     had stated only what a replicated human trial supported, it could be solid.
+gold_alternative_reading: |
+  Alternative: mechanism_vs_evidence. Plausible because probiotics carry a gut-immune mechanism
+  narrative. It loses under precedence because no described animal/preclinical pathway is being
+  extrapolated (EFSA found no plausible mechanism at all); the claim is generic unsupported-breadth
+  inflation = overclaim.
+gold_summary: |
+  A supplement claims its probiotic "boosts your immune system." EFSA rejected such claims for
+  insufficient human evidence and NO plausible mechanism. Unsupported broad health-halo claim =
+  overclaim; mechanism_vs_evidence fails because there is no described pathway to over-extrapolate.
+curator_notes: |
+  Boundary family B2 (overclaim <-> mechanism_vs_evidence), overclaim direction. Sourced from EFSA
+  probiotic health-claim rejections (incl. Nutrimune opinion). Chosen as a mechanism-tempting case
+  where the mechanism label FAILS precisely because no described biological pathway exists to
+  extrapolate. Independent proposition (no probiotics case in Class A). Gold frozen before any model
+  output.
+expected_findings:
+  - finding: unsupported_breadth
+    severity: major
+    confidence: high
+    note: "'Boosts your immune system' is a broad claim EFSA found unsubstantiated"
+  - finding: no_established_mechanism
+    severity: moderate
+    confidence: high
+    note: "EFSA found no plausible in-vivo mechanism, so a mechanism_vs_evidence reading has nothing to attach to"
+  - finding: health_halo_framing
+    severity: moderate
+    confidence: medium
+    note: "Vague 'natural defences' marketing exceeds the replicated human evidence"
+gold_evidence_spans:
+  - span: "boosts your immune system and strengthens your body's natural defences"
+    why_it_matters: "Broad immune-benefit claim regulators found unsubstantiated."
+    supports_finding: unsupported_breadth
+  - span: "no evidence was provided for a plausible mechanism"
+    why_it_matters: "Removes the basis for a mechanism_vs_evidence reading; the failure is generic overclaim."
+    supports_finding: no_established_mechanism
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "no substantiated mechanism"
+    variants: ["EFSA rejected", "insufficient evidence", "not replicated"]
+    functional_descriptions:
+      - "Without a described biological pathway, mechanism_vs_evidence does not apply"
+  - keyword: "unsupported breadth"
+    variants: ["immune boost", "health halo", "natural defences"]
+    functional_descriptions:
+      - "Broad vague benefit exceeding the evidence is overclaim"
+common_errors:
+  - labelling any probiotic/immune claim mechanism_vs_evidence
+  - accepting a broad 'immune boost' as substantiated
+  - missing that no mechanism was demonstrated
+expected_failure_modes:
+  - overclaim_to_over_specific
+  - mechanism_narrative_without_pathway
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a mechanism-flavoured marketing claim with no described pathway is overclaim, not mechanism_vs_evidence?"
+origin: curated
+status: retired
+excluded_from_active_metrics: true
+superseded_by: P7A-BND-015
+suite_history:
+  - date: "2026-08-16"
+    phase: "Phase 7A boundary repair (post-audit, pre-model)"
+    event: retired_from_active_metrics
+    audit_reference: "analysis/phase7a_boundary/boundary_curator_gold_audit.md §4 (B2 special audit)"
+    prior_family: B2
+    prior_gold: overclaim
+    prior_case_fingerprint: "a9e63cc6eb0f4f0d76207d8cda0866bd4c23faf87d3172c8a4de993c9bad4050"
+    trigger: "role-separated Claude curator audit: NOT diagnostic for overclaim <-> mechanism_vs_evidence"
+    rationale: >
+      Objective, model-independent boundary-quality defect: the B2 family requires mechanistic/
+      preclinical evidence used to imply human benefit, but this case's own evidence (EFSA) found
+      NO plausible mechanism, so mechanism_vs_evidence has nothing to over-extrapolate and is only a
+      lexical attractor. Gold-as-overclaim was defensible, but the case does not exercise the B2
+      boundary. Retired, not deleted; replaced by an independent B2 case (P7A-BND-015) with real
+      mechanistic/preclinical evidence materially invoked for a human-benefit claim.
+    label_flip: false
+    hard_deleted: false
+    superseded_by: P7A-BND-015
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-007
+  case_family: boundary
+  boundary_family_id: B2
+  boundary: "overclaim <-> mechanism_vs_evidence"
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) plus one plausible alternate (mechanism_vs_evidence, invited by the
+    gut-immune narrative); precedence decides. Low evidence-tier conflict (regulator clearly found
+    the claim unsubstantiated). Property-based tagging.
+  precedence_rationale: |
+    mechanism_vs_evidence requires a described animal/preclinical pathway extrapolated to human
+    benefit. EFSA found no plausible mechanism at all, so there is nothing for the specific label to
+    attach to; the claim is generic unsupported-breadth inflation, primary = overclaim
+    (docs/taxonomy_precedence.md rule 2).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; mechanism_vs_evidence is tempting via
+    marketing narrative but has no described pathway to rest on.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the gut-immune axis is a real biological system, so one might
+    call this mechanism_vs_evidence. Counter-evidence weighed: the claim presents no specific animal/
+    preclinical pathway, and EFSA explicitly found no plausible mechanism; the specific label needs a
+    described mechanism to over-extrapolate, which is absent. Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "Probiotic supplement 'boosts your immune system' label claim"
+    claim_source_type: marketing_claim
+    claim_exact_span: "boosts your immune system and strengthens your body's natural defences"
+    evidence_sources:
+      - citation: "EFSA NDA Panel scientific opinions rejecting probiotic immune-health claims (e.g. Nutrimune); summarized in Katan MB, 'Why the European Food Safety Authority was right to reject health claims for probiotics' (2012)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/22683835/"
+        design: "Regulatory evidence assessment (systematic appraisal of submitted human studies)"
+        population: "General population; submitted human trials"
+        intervention_or_exposure: "Probiotic supplementation"
+        comparator: "Control / no probiotic"
+        endpoint: "Immune defence against pathogens (claimed health benefit)"
+        result: "All probiotic immune-health claims rejected; for Nutrimune, evidence insufficient for cause-and-effect, human study not replicated, and no plausible in-vivo mechanism provided"
+        evidence_tier: "Regulatory evidence assessment (high-tier appraisal finding evidence insufficient)"
+        limitations: "Strains often insufficiently characterized; cause-and-effect poorly substantiated"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: mechanism_vs_evidence
+    probes: "overclaim -> over-specific (mechanism) attractor"
+  case_fingerprint: "db0918dce69434678dbc6bb1eb48814bdec63d527fabbf38d8eb490cf600e7a4"

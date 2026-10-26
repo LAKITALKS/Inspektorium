@@ -1,0 +1,55 @@
+{
+  "library_run_id": "lib_20260702_062500_5435cd",
+  "timestamp": "2026-07-02T06:25:56.962168+00:00",
+  "provider": "anthropic",
+  "model": "claude-opus-4-5",
+  "runs_per_case": 3,
+  "total_cases": 1,
+  "total_runs": 3,
+  "successful_runs": 3,
+  "failed_runs": 0,
+  "parse_failures": 0,
+  "truncation_runs": 0,
+  "label_distribution": {
+    "overclaim": 3
+  },
+  "error_distribution": {},
+  "unstable_label_cases": [],
+  "parse_fragile_cases": [],
+  "truncation_risk_cases": [],
+  "provider_error_cases": [],
+  "high_score_variance_cases": [],
+  "thresholds": {
+    "high_score_variance": 15.0
+  },
+  "case_stability": [
+    {
+      "case_id": "study-forensics-044",
+      "case_file": "case044_mice_memory_dementia.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 3,
+      "successful_runs": 3,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 40.0,
+      "score_min": 40.0,
+      "score_max": 40.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    }
+  ]
+}

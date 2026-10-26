@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  core:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,11 +19,86 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-      - name: Install
-        run: python -m pip install -e '.[dev]'
-      - name: Lint
-        run: ruff check .
-      - name: Type check
-        run: mypy src
-      - name: Test
-        run: pytest --cov=inspektorium --cov-report=term-missing --cov-fail-under=80
+          cache-dependency-path: pyproject.toml
+      - name: Install public development dependencies
+        run: python -m pip install -e '.[dev]' hatchling
+      - name: Arm and countercheck Python network guard
+        run: |
+          python evidence/v0.1.1/tools/setup_env.py guard --venv "$pythonLocation"
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'evidence/v0.1.1/tools')
+          from canary import python_canary
+          result = python_canary(Path(sys.prefix), Path(os.environ['RUNNER_TEMP']) / 'canary.jsonl')
+          print(json.dumps(result))
+          assert result['passed']
+          PY
+      - name: Core full acceptance
+        env:
+          EVIDENCE_NETGUARD_LOG: ${{ runner.temp }}/core-offline.jsonl
+          PIP_NO_INDEX: "1"
+        run: |
+          ruff check .
+          mypy src
+          pytest --cov=inspektorium --cov-report=term-missing --cov-fail-under=80
+          python -m build --no-isolation
+      - name: Check monitored operations
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          rows = [json.loads(s) for s in (Path(os.environ['RUNNER_TEMP']) / 'core-offline.jsonl').read_text().splitlines()]
+          assert any(r['event'] == 'armed' for r in rows)
+          assert not any(r['event'] == 'refused' for r in rows)
+          print('Recorded Python socket events:', len(rows))
+          PY
+  arena:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    defaults:
+      run:
+        working-directory: agent-arena
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: agent-arena/pyproject.toml
+      - name: Install public development dependencies
+        run: python -m pip install -e '.[dev,providers]' build setuptools wheel
+      - name: Arm and countercheck Python network guard
+        run: |
+          python ../evidence/v0.1.1/tools/setup_env.py guard --venv "$pythonLocation"
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, '../evidence/v0.1.1/tools')
+          from canary import python_canary
+          result = python_canary(Path(sys.prefix), Path(os.environ['RUNNER_TEMP']) / 'canary.jsonl')
+          print(json.dumps(result))
+          assert result['passed']
+          PY
+      - name: Arena full acceptance
+        env:
+          EVIDENCE_NETGUARD_LOG: ${{ runner.temp }}/arena-offline.jsonl
+          PIP_NO_INDEX: "1"
+        run: |
+          python -m pytest tests
+          python scripts/phase10_acceptance.py --output "$RUNNER_TEMP/arena-gates"
+          ruff check src/agent_arena/phase10_*.py src/agent_arena/cli.py src/agent_arena/condition_contract.py tests/test_phase10_*.py tests/test_monorepo_plan_binding.py scripts/phase10_acceptance.py scripts/phase10_clean_reproduce.py scripts/phase10_print_qa.py scripts/extract_recorded_capture.py scripts/offline_netguard.py scripts/offline_canary.py tests/test_capture_derivation.py tests/test_reproduction_guard_counter.py
+          python -m compileall -q src
+          python -m build --no-isolation
+      - name: Check monitored operations
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          rows = [json.loads(s) for s in (Path(os.environ['RUNNER_TEMP']) / 'arena-offline.jsonl').read_text().splitlines()]
+          assert any(r['event'] == 'armed' for r in rows)
+          assert not any(r['event'] == 'refused' for r in rows)
+          print('Recorded Python socket events:', len(rows))
+          PY

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Report — Simpson&#x27;s Paradox: University Admissions</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a2e;
+    --accent: #16213e;
+    --border: #e0e0e0;
+    --muted: #6b7280;
+    --green: #059669;
+    --red: #dc2626;
+    --yellow: #d97706;
+    --blue: #2563eb;
+    --bg-light: #f9fafb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p, li { margin-bottom: 0.4rem; }
+  strong { font-weight: 600; }
+  code {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.1em 0.3em;
+    font-size: 0.9em;
+  }
+  blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 0.5rem 1rem;
+    margin: 0.75rem 0;
+    background: var(--bg-light);
+    color: var(--muted);
+    font-style: italic;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+  }
+  th {
+    background: var(--bg-light);
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: var(--bg-light); }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+  ul { padding-left: 1.5rem; }
+  ol { padding-left: 1.5rem; }
+  .status-good { color: var(--green); font-weight: 700; }
+  .status-caution { color: var(--yellow); font-weight: 700; }
+  .status-critical { color: var(--red); font-weight: 700; }
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  @media print {
+    body { max-width: 100%; padding: 1rem; }
+    h2 { page-break-before: auto; }
+  }
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+</style>
+</head>
+<body>
+<h1>Audit Report</h1>
+
+<p><strong>Report generated:</strong> 2026-06-10 21:19 UTC</p>
+<p><strong>Run ID:</strong> <code>run_9f4add57</code></p>
+<p><strong>Audit timestamp:</strong> 2026-03-31 06:21:26 UTC</p>
+<p><strong>Subject:</strong> Simpson&#x27;s Paradox: University Admissions</p>
+<p><strong>Domain:</strong> statistics</p>
+
+<hr>
+
+<h2>1. Executive Summary</h2>
+
+<h3>Overall Assessment: 🟢 PASS</h3>
+
+<blockquote>
+<p>Analysis appears sound — minor issues only</p>
+</blockquote>
+
+<p><strong>Overall score:</strong> 1350 / 100</p>
+<p><strong>Models tested:</strong> Claude Opus, Claude Sonnet, Claude Haiku</p>
+
+<h3>Recommendation</h3>
+
+<ul>
+<li>No blocking issues found. Minor refinements may still improve quality.</li>
+</ul>
+
+<h2>2. Key Findings</h2>
+
+<p>No significant findings detected.</p>
+
+<h2>3. What To Change</h2>
+
+<h3>Stable Areas</h3>
+
+<ul>
+<li>✅ Correctness (1350/30)</li>
+</ul>
+
+<p>No significant changes required. Analysis appears sound.</p>
+
+
+<h2>4. Method Note</h2>
+
+<h3>What This Audit Covers</h3>
+
+<p>Agent Arena performs automated forensic analysis of AI-generated reasoning. The system evaluates:</p>
+
+<ul>
+<li><strong>Correctness</strong> — Does the answer match the expected result?</li>
+<li><strong>Reasoning quality</strong> — Are claims supported by evidence and logic?</li>
+<li><strong>Internal consistency</strong> — Do different parts of the response agree?</li>
+<li><strong>Mechanism quality</strong> — Are causal explanations grounded, not just named?</li>
+<li><strong>Self-monitoring</strong> — Does the response acknowledge its own limitations?</li>
+</ul>
+
+<h3>What This Audit Does Not Cover</h3>
+
+<ul>
+<li>External fact-checking against live databases or sources</li>
+<li>Ethical or legal assessment of conclusions</li>
+<li>Domain-specific regulatory compliance</li>
+<li>Comparison with human expert judgment</li>
+</ul>
+
+<h3>Category Definitions</h3>
+
+<h3>Confidence Levels</h3>
+
+<p>Findings are tagged with confidence levels:</p>
+
+<ul>
+<li><strong>HIGH CONFIDENCE</strong>: Deterministic or numerically verified</li>
+<li><strong>MEDIUM CONFIDENCE</strong>: Grounded heuristic with supporting evidence</li>
+<li><strong>HEURISTIC</strong>: Pattern-based detection, may require manual review</li>
+</ul>
+
+
+<h2>5. Technical Appendix</h2>
+
+<p><em>This section is for technical reviewers and internal use.</em></p>
+
+<h3>Score Matrix</h3>
+
+<table>
+<thead><tr>
+  <th>Dimension</th>
+  <th>Weight</th>
+  <th>Claude Opus</th>
+  <th>Claude Sonnet</th>
+  <th>Claude Haiku</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td>Correctness</td>
+  <td>30</td>
+  <td>1350.0/30</td>
+  <td>1350.0/30</td>
+  <td>1350.0/30</td>
+</tr>
+<tr>
+  <td>Support Strength</td>
+  <td>8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+</tr>
+<tr>
+  <td>Structural Reasoning</td>
+  <td>8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+</tr>
+<tr>
+  <td>Assumption Discipline</td>
+  <td>6</td>
+  <td>0.0/6</td>
+  <td>0.0/6</td>
+  <td>0.0/6</td>
+</tr>
+<tr>
+  <td>Uncertainty Handling</td>
+  <td>6</td>
+  <td>0.0/6</td>
+  <td>0.0/6</td>
+  <td>0.0/6</td>
+</tr>
+<tr>
+  <td>Alternative Hypothesis Quality</td>
+  <td>6</td>
+  <td>0.0/6</td>
+  <td>0.0/6</td>
+  <td>0.0/6</td>
+</tr>
+<tr>
+  <td>Self Monitoring Quality</td>
+  <td>8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+</tr>
+<tr>
+  <td>Insight Depth</td>
+  <td>8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+  <td>0.0/8</td>
+</tr>
+<tr>
+  <td>Mechanism Quality</td>
+  <td>10</td>
+  <td>0.0/10</td>
+  <td>0.0/10</td>
+  <td>0.0/10</td>
+</tr>
+<tr>
+  <td>Communication Efficiency</td>
+  <td>10</td>
+  <td>0.0/10</td>
+  <td>0.0/10</td>
+  <td>0.0/10</td>
+</tr>
+<tr>
+  <td><strong>Total</strong></td>
+  <td><strong>100</strong></td>
+  <td><strong>1350.0</strong></td>
+  <td><strong>1350.0</strong></td>
+  <td><strong>1350.0</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Agent: Claude Opus (claude-opus-4-20250514)</h3>
+
+<p><strong>Score:</strong> 1350.0/100</p>
+<p><strong>Latency:</strong> 13032ms</p>
+<p><strong>Parse OK:</strong> True</p>
+<p><strong>Agent confidence:</strong> 95% <code>[UNKALIBRIERT]</code></p>
+<p><strong>Final answer:</strong> No, the claim is not valid. This is an example of Simpson&#x27;s Paradox. While the overall admission rate for women (82.2%) is higher than for men (66%), women actually have equal or lower admission rates than men in each individual department. The apparent discrimination is due to the fact that women a</p>
+
+<h3>Agent: Claude Sonnet (claude-sonnet-4-20250514)</h3>
+
+<p><strong>Score:</strong> 1350.0/100</p>
+<p><strong>Latency:</strong> 10531ms</p>
+<p><strong>Parse OK:</strong> True</p>
+<p><strong>Agent confidence:</strong> 95% <code>[UNKALIBRIERT]</code></p>
+<p><strong>Final answer:</strong> The journalist&#x27;s claim is not valid. This is a classic example of Simpson&#x27;s Paradox. While women have a higher overall admission rate (82.2% vs 66%), men actually have higher admission rates within each individual department when we control for department choice. The apparent discrimination against</p>
+
+<h3>Agent: Claude Haiku (claude-haiku-4-5-20251001)</h3>
+
+<p><strong>Score:</strong> 1350.0/100</p>
+<p><strong>Latency:</strong> 5086ms</p>
+<p><strong>Parse OK:</strong> True</p>
+<p><strong>Agent confidence:</strong> 95% <code>[UNKALIBRIERT]</code></p>
+<p><strong>Final answer:</strong> No, the claim is not valid. This is a classic example of Simpson&#x27;s Paradox. While the overall statistics show women had a higher admission rate (82.2% vs 66%), men actually had higher admission rates in BOTH individual departments (Engineering: 30% vs 40%, Arts: 75% vs 87.5%). The apparent discrimin</p>
+
+<h3>Task Metadata</h3>
+
+<table>
+<thead><tr>
+  <th>Field</th>
+  <th>Value</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td>Task ID</td>
+  <td><code>simpsons-paradox-001</code></td>
+</tr>
+<tr>
+  <td>Type</td>
+  <td>rubric_based</td>
+</tr>
+<tr>
+  <td>Domain</td>
+  <td>statistics</td>
+</tr>
+<tr>
+  <td>Difficulty</td>
+  <td>hard</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p><em>Report generated by Agent Arena — local-first AI evaluation engine.</em></p>
+<p><em>Run ID: <code>run_9f4add57</code> | 2026-06-10 21:19 UTC</em></p>
+
+</body>
+</html>

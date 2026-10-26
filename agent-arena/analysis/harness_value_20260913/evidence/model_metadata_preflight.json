@@ -1,0 +1,10 @@
+{
+  "available": true,
+  "reason": "exact_model_metadata_match",
+  "requested_model_id": "claude-haiku-4-5-20251001",
+  "returned_model_id": "claude-haiku-4-5-20251001",
+  "metadata_operation": "models.retrieve",
+  "metadata_http_attempts": 1,
+  "model_generations": 0,
+  "error_type": null
+}

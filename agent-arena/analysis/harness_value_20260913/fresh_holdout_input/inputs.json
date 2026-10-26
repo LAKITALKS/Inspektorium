@@ -1,0 +1,418 @@
+[
+  {
+    "id": "q-6d0f876dfad53e80",
+    "claim": "Among participants with symptomatic heart failure and reduced ejection fraction in DAPA-HF, adding dapagliflozin to recommended care lowered the risk of the trial composite of worsening heart failure or cardiovascular death compared with placebo.",
+    "packet": {
+      "source": {
+        "title": "Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction.",
+        "doi": "10.1056/nejmoa1911303",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31535829/",
+        "version": "Indexed primary abstract body sha256:fae2ce93972c985d353b72866f9e391ae2bab296683633ff573eef86c0ed8f2b; publication 2019-09-19"
+      },
+      "evidence": "DAPA-HF randomized 4,744 patients with NYHA class II-IV heart failure and left ventricular ejection fraction at most 40% to dapagliflozin 10 mg daily or placebo in addition to recommended care. Over median 18.2 months, the primary composite of worsening heart failure (hospitalization or urgent visit requiring intravenous therapy) or cardiovascular death occurred in 386/2,373 (16.3%) versus 502/2,371 (21.2%), hazard ratio 0.74 (95% CI 0.65 to 0.85)."
+    }
+  },
+  {
+    "id": "q-b9c30be2f05cac0f",
+    "claim": "Because chondroitinase ABC removes scar-associated inhibition of axon growth, these experiments establish that it restores mobility in people with spinal cord injuries.",
+    "packet": {
+      "source": {
+        "title": "Chondroitinase ABC promotes functional recovery after spinal cord injury.",
+        "doi": "10.1038/416636a",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11948352/",
+        "version": "Indexed primary abstract body sha256:56e44a1f62358f9e91de51993a258abc12cb8f133637fa3306f8543e04f803cf; publication 2002-04-01"
+      },
+      "evidence": "In adult rats with lesioned spinal dorsal columns, researchers delivered chondroitinase ABC intrathecally. The enzyme degraded chondroitin-sulfate glycosaminoglycan chains at the injury site, reducing the inhibitory action of scar-associated proteoglycans on axon growth. The study reported regeneration of ascending sensory and descending corticospinal axons, restored postsynaptic activity below the lesion after electrical stimulation, and improved locomotor and proprioceptive behavior in treated rats."
+    }
+  },
+  {
+    "id": "q-39524b4a80588199",
+    "claim": "The Sister Study analysis establishes that eliminating artificial light while sleeping prevents obesity in women.",
+    "packet": {
+      "source": {
+        "title": "Association of Exposure to Artificial Light at Night While Sleeping With Risk of Obesity in Women.",
+        "doi": "10.1001/jamainternmed.2019.0571",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31180469/",
+        "version": "Indexed primary abstract body sha256:966cfb693b916fcb3d6ee239bcf78f9242b5d8d8a37f1161e8983aa010e49786; publication 2019-08-01"
+      },
+      "evidence": "The Sister Study paper includes a baseline and prospective observational analysis of 43,722 US and Puerto Rican women aged 35-74. Women with a history of cancer or cardiovascular disease, shift workers, daytime sleepers and women pregnant at baseline were excluded. Artificial light during sleep was self-reported as none, a small nightlight, light outside the room, or light/television in the room. This packet uses the baseline association: any artificial light versus none was associated with a higher prevalence of BMI-defined obesity (BMI at least 30), adjusted prevalence ratio 1.03 (95% CI 1.02 to 1.03). Baseline anthropometric measurements were taken; lighting was observed, not assigned."
+    }
+  },
+  {
+    "id": "q-d5854a68f0d77776",
+    "claim": "CRASH-2 supports the same mortality benefit from tranexamic acid when treatment begins more than eight hours after a traumatic injury.",
+    "packet": {
+      "source": {
+        "title": "Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage (CRASH-2): a randomised, placebo-controlled trial.",
+        "doi": "10.1016/s0140-6736(10)60835-5",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/20554319/",
+        "version": "Indexed primary abstract body sha256:1845a661a1dcb41af3cf254ae12c121d75002a9e689ce014bb7f4448e14e001c; publication 2010-06-14"
+      },
+      "evidence": "CRASH-2 randomized 20,211 adult trauma patients with, or at risk of, significant bleeding within eight hours of injury to tranexamic acid (1 g over 10 minutes followed by 1 g over eight hours) or placebo. Allocation was masked. The primary outcome was death in hospital within four weeks. All-cause mortality was 14.5% with tranexamic acid and 16.0% with placebo, relative risk 0.91 (95% CI 0.85 to 0.97). This packet covers the original randomized report."
+    }
+  },
+  {
+    "id": "q-8639aab55d4707e8",
+    "claim": "Blocking the CD47 signal lets macrophages engulf tumor cells; these experiments establish that anti-CD47 treatment improves survival in human patients with solid tumors.",
+    "packet": {
+      "source": {
+        "title": "The CD47-signal regulatory protein alpha (SIRPa) interaction is a therapeutic target for human solid tumors.",
+        "doi": "10.1073/pnas.1121623109",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22451913/",
+        "version": "Indexed primary abstract body sha256:b9441c2f13a6df5ecb7b3dd34e0bea7dab6321ab9cd477e79d9a2e2b4d5e30bb; publication 2012-03-26"
+      },
+      "evidence": "CD47 binds SIRP-alpha on phagocytic cells and provides a signal that inhibits engulfment. Experiments with human tumor cells showed that anti-CD47 antibodies enabled macrophage phagocytosis in vitro. In immunodeficient mice carrying patient-derived tumor xenografts, antibody administration inhibited tumor growth and increased mouse survival; an immunocompetent mouse breast-tumor model was also studied. Human patient tumor tissue was used for expression measurements and to establish xenografts; the report describes antibody treatment outcomes in mice."
+    }
+  },
+  {
+    "id": "q-bbc556c3e270d1c6",
+    "claim": "Because screen time was measured before later developmental scores, the All Our Families analysis proves that screen exposure causes developmental impairment.",
+    "packet": {
+      "source": {
+        "title": "Association Between Screen Time and Children's Performance on a Developmental Screening Test.",
+        "doi": "10.1001/jamapediatrics.2018.5056",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "version": "Indexed primary abstract body sha256:8fe07f2717336b2673391ed02a2c8229ff790d0e3a64473cf82bd55cffb76be3; publication 2019-03-01; online corrected version, correction 10.1001/jamapediatrics.2019.0515"
+      },
+      "evidence": "The All Our Families cohort analysis used data from 2,441 mothers and children in Calgary, Canada, at child ages 24, 36 and 60 months. Mothers reported screen time and ASQ-3 developmental screening performance. A random-intercepts cross-lagged panel model controlled stable between-person differences. Higher screen time at 24 months was associated with lower screening performance at 36 months (standardized beta -0.06, 95% CI -0.10 to -0.01); higher screen time at 36 months was associated with lower performance at 60 months (-0.08, -0.13 to -0.02). Exposure was observed. This uses corrected estimates: the 2019 correction clarified the model and corrected/swapped displayed coefficients and confidence intervals without changing the conclusions."
+    }
+  },
+  {
+    "id": "q-ba27e5d9d3450650",
+    "claim": "By making surviving retinal neurons light-sensitive with channelrhodopsin-2, these experiments establish that this treatment restores vision in people who have lost their photoreceptors.",
+    "packet": {
+      "source": {
+        "title": "Ectopic expression of a microbial-type rhodopsin restores visual responses in mice with photoreceptor degeneration.",
+        "doi": "10.1016/j.neuron.2006.02.026",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16600853/",
+        "version": "Indexed primary abstract body sha256:651d3ce046edcfd4314c3ed926c6c6518626547014eb4c5f3d9350cd250ea38e; publication 2006-04-01"
+      },
+      "evidence": "Researchers used an adeno-associated viral vector to express channelrhodopsin-2, a microbial light-sensitive ion channel, in surviving inner retinal neurons of rodents. In a mouse model with photoreceptor degeneration, this conferred light responsiveness on these cells and restored retinal encoding of light signals and their transmission to the visual cortex. The experiments evaluated rodent retinal and cortical responses following loss of rods and cones."
+    }
+  },
+  {
+    "id": "q-b19caeb1f5ac40c9",
+    "claim": "KEYNOTE-024 establishes the same survival advantage for pembrolizumab over chemotherapy in advanced non-small-cell lung cancer regardless of tumor PD-L1 expression.",
+    "packet": {
+      "source": {
+        "title": "Pembrolizumab versus Chemotherapy for PD-L1-Positive Non-Small-Cell Lung Cancer.",
+        "doi": "10.1056/nejmoa1606774",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27718847/",
+        "version": "Indexed primary abstract body sha256:f23d02a807117c56b281c44e7181e5f7c7e29f6dbd3e6cf51a6c173a86877463; publication 2016-10-08"
+      },
+      "evidence": "KEYNOTE-024 randomized 305 previously untreated patients with advanced non-small-cell lung cancer, PD-L1 expression on at least 50% of tumor cells, and no sensitizing EGFR mutation or ALK translocation, to pembrolizumab 200 mg every three weeks or platinum-based chemotherapy. Median progression-free survival was 10.3 versus 6.0 months, hazard ratio 0.50 (95% CI 0.37 to 0.68). Estimated six-month overall survival was 80.2% versus 72.4%, hazard ratio for death 0.60 (0.41 to 0.89)."
+    }
+  },
+  {
+    "id": "q-a4722100223cc7c9",
+    "claim": "The NutriNet-Sante mortality analysis establishes that reducing ultraprocessed food intake would lower mortality in otherwise unchanged participants.",
+    "packet": {
+      "source": {
+        "title": "Association Between Ultraprocessed Food Consumption and Risk of Mortality Among Middle-aged Adults in France.",
+        "doi": "10.1001/jamainternmed.2018.7289",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30742202/",
+        "version": "Indexed primary abstract body sha256:bc87d6f86c117711ce4d02b50abd687f7956b125855771f1c2df8204236839f0; publication 2019-04-01"
+      },
+      "evidence": "A prospective observational NutriNet-Sante analysis included 44,551 French adults aged at least 45 who supplied at least three 24-hour dietary records. Ultra-processed food intake was expressed as a proportion of total food weight. During median follow-up 7.1 years, 602 deaths occurred. After adjustment for measured demographic, lifestyle and diet factors, each ten-percentage-point higher proportion was associated with mortality hazard ratio 1.14 (95% CI 1.04 to 1.27)."
+    }
+  },
+  {
+    "id": "q-d128840f749edb7e",
+    "claim": "The England green-space study establishes that adding green space to deprived neighborhoods would cause their mortality inequality to shrink.",
+    "packet": {
+      "source": {
+        "title": "Effect of exposure to natural environment on health inequalities: an observational population study.",
+        "doi": "10.1016/s0140-6736(08)61689-x",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18994663/",
+        "version": "Indexed primary abstract body sha256:baa5881ae15469f454582240d160ab6ff5462496456d67727a5c0cc0d7bded0c; publication 2008-11-01"
+      },
+      "evidence": "An observational analysis of England covered approximately 40.8 million residents below retirement age and 366,348 individual death records during 2001-2005. Residential green-space exposure and income deprivation were linked to mortality data and analyzed in adjusted strata. The all-cause mortality incidence rate ratio comparing most versus least deprived groups was 1.93 (95% CI 1.86 to 2.01) in the least-green areas and 1.43 (1.34 to 1.53) in the greenest. Similar patterns occurred for circulatory mortality, but not lung cancer or suicide. Neighborhood greenery was observed, not assigned."
+    }
+  },
+  {
+    "id": "q-2707244776dcbae5",
+    "claim": "In RECOVERY, dexamethasone reduced 28-day mortality in hospitalized COVID-19 patients receiving respiratory support at randomization; the trial did not demonstrate that benefit in the subgroup receiving no respiratory support.",
+    "packet": {
+      "source": {
+        "title": "Dexamethasone in Hospitalized Patients with Covid-19.",
+        "doi": "10.1056/nejmoa2021436",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32678530/",
+        "version": "Indexed primary abstract body sha256:477b16531e8b21367d13fe77e0679ff918810b146519942096c2020ea87f9f7d; publication 2020-07-17; final RECOVERY NEJM 2021;384:693-704, PMID 32678530"
+      },
+      "evidence": "In the final RECOVERY report, hospitalized COVID-19 patients were randomized open-label to dexamethasone 6 mg daily for up to 10 days (2,104 patients) or usual care (4,321). Overall 28-day mortality was 22.9% versus 25.7%, age-adjusted rate ratio 0.83 (95% CI 0.75 to 0.93). At randomization, invasively ventilated patients had mortality 29.3% versus 41.4%, rate ratio 0.64 (0.51 to 0.81); patients on oxygen without invasive ventilation had 23.3% versus 26.2%, rate ratio 0.82 (0.72 to 0.94); patients receiving no respiratory support had 17.8% versus 14.0%, rate ratio 1.19 (0.92 to 1.55)."
+    }
+  },
+  {
+    "id": "q-059a0a3da48b95dc",
+    "claim": "By selectively disrupting the mutant Tmc1 allele and preserving hair cells, this study establishes that cochlear CRISPR treatment prevents progressive hearing loss in human patients with inherited deafness.",
+    "packet": {
+      "source": {
+        "title": "Treatment of autosomal dominant hearing loss by in vivo delivery of genome editing agents.",
+        "doi": "10.1038/nature25164",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29258297/",
+        "version": "Indexed primary abstract body sha256:80983a1408d8f8e76af6d0df6bbadaf82def61777e9dbd2a568ab6b1d3958cb8; publication 2017-12-20"
+      },
+      "evidence": "Researchers delivered Cas9-guide RNA complexes into the cochlea of neonatal Beethoven mice carrying a dominant Tmc1 deafness allele. The editing agents preferentially disrupted the mutant allele, which differed from wild type by one base pair. Compared with uninjected ears or control complexes targeting an unrelated gene, treated ears showed greater hair-cell survival and lower auditory brainstem response thresholds; injected mice also had enhanced acoustic startle responses. The intervention reduced progressive hearing loss in this mouse model."
+    }
+  },
+  {
+    "id": "q-19472ddd3521fb31",
+    "claim": "Adults with overweight but no established cardiovascular disease can expect the cardiovascular protection established by SELECT.",
+    "packet": {
+      "source": {
+        "title": "Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes.",
+        "doi": "10.1056/nejmoa2307563",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+        "version": "Indexed primary abstract body sha256:c87f974cae0edc6909915c97c3cee05566ae753b5124cfdeb36db12d5c152510; publication 2023-11-11"
+      },
+      "evidence": "SELECT was a double-blind randomized trial of weekly semaglutide 2.4 mg versus placebo in 17,604 adults aged at least 45 with BMI at least 27, established cardiovascular disease, and no history of diabetes. Mean follow-up was 39.8 months. The composite of cardiovascular death, nonfatal myocardial infarction or nonfatal stroke occurred in 569/8,803 (6.5%) versus 701/8,801 (8.0%), hazard ratio 0.80 (95% CI 0.72 to 0.90)."
+    }
+  },
+  {
+    "id": "q-6894c5e659fdfd2e",
+    "claim": "In STEP 1, adults meeting the trial criteria for overweight or obesity, without diabetes, lost more weight over 68 weeks with weekly semaglutide plus lifestyle intervention than with placebo plus lifestyle intervention.",
+    "packet": {
+      "source": {
+        "title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity.",
+        "doi": "10.1056/nejmoa2032183",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+        "version": "Indexed primary abstract body sha256:caf395f5a065b294ce060e8c3ea7e1896b95cc2d3eff95e46666b04d56c9a17d; publication 2021-02-10"
+      },
+      "evidence": "STEP 1 was a double-blind randomized trial in 1,961 adults without diabetes, with BMI at least 30, or at least 27 plus a weight-related condition. Participants received weekly subcutaneous semaglutide 2.4 mg or placebo (2:1), with lifestyle intervention in both groups, for 68 weeks. Mean body-weight change was -14.9% versus -2.4%; the estimated difference was -12.4 percentage points (95% CI -13.4 to -11.5)."
+    }
+  },
+  {
+    "id": "q-b61dfb593470c4cc",
+    "claim": "The experiments establish restored mobility in human spinal-cord-injury patients through chondroitinase ABC removal of the scar molecules that inhibit axon growth.",
+    "packet": {
+      "source": {
+        "title": "Chondroitinase ABC promotes functional recovery after spinal cord injury.",
+        "doi": "10.1038/416636a",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11948352/",
+        "version": "Indexed primary abstract body sha256:56e44a1f62358f9e91de51993a258abc12cb8f133637fa3306f8543e04f803cf; publication 2002-04-01"
+      },
+      "evidence": "In adult rats with lesioned spinal dorsal columns, researchers delivered chondroitinase ABC intrathecally. The enzyme degraded chondroitin-sulfate glycosaminoglycan chains at the injury site, reducing the inhibitory action of scar-associated proteoglycans on axon growth. The study reported regeneration of ascending sensory and descending corticospinal axons, restored postsynaptic activity below the lesion after electrical stimulation, and improved locomotor and proprioceptive behavior in treated rats."
+    }
+  },
+  {
+    "id": "q-82b3cd8a9e85360c",
+    "claim": "In the reported mouse experiments, nicotinamide riboside treatment improved aged muscle stem-cell function and increased mouse lifespan.",
+    "packet": {
+      "source": {
+        "title": "NAD⁺ repletion improves mitochondrial and stem cell function and enhances life span in mice.",
+        "doi": "10.1126/science.aaf2693",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27127236/",
+        "version": "Indexed primary abstract body sha256:182b5e80330374e7537c728b89944822b352496650bc5c1639d3e9150926fb10; publication 2016-04-28"
+      },
+      "evidence": "Mouse experiments tested nicotinamide riboside (NR), a precursor that replenishes NAD+. NR induced the mitochondrial unfolded protein response and synthesis of prohibitin proteins and improved the function of aged muscle stem cells. It also prevented muscle stem-cell senescence in the mdx muscular dystrophy mouse model. Separate experiments reported delayed senescence of neural and melanocyte stem cells and increased mouse lifespan. The reported organism-level outcomes are in mice."
+    }
+  },
+  {
+    "id": "q-e1ca97d5210731af",
+    "claim": "In the eight-week DASH feeding trial, the combination diet lowered average systolic blood pressure more than the control diet while sodium intake and body weight were held constant.",
+    "packet": {
+      "source": {
+        "title": "A clinical trial of the effects of dietary patterns on blood pressure. DASH Collaborative Research Group.",
+        "doi": "10.1056/nejm199704173361601",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9099655/",
+        "version": "Indexed primary abstract body sha256:d324021a20b6d8aa26b24d5ee2b5ce0a44c4636aeb2100c7d8d904fbd161295a; publication 1997-04-01"
+      },
+      "evidence": "The DASH feeding trial enrolled 459 adults with systolic blood pressure below 160 mm Hg and diastolic pressure 80-95 mm Hg. After three weeks on a control diet, they were randomly assigned to eight weeks of the control diet, a fruit-and-vegetable diet, or a combination diet rich in fruit, vegetables and low-fat dairy with reduced saturated and total fat. Sodium intake and body weight were maintained constant. The combination diet reduced mean systolic and diastolic pressure by 5.5 and 3.0 mm Hg more than control, respectively."
+    }
+  },
+  {
+    "id": "q-e596b96be010e8a0",
+    "claim": "The VITAL findings rule out clinical benefits from vitamin D supplements across adult populations and dosing regimens.",
+    "packet": {
+      "source": {
+        "title": "Vitamin D Supplements and Prevention of Cancer and Cardiovascular Disease.",
+        "doi": "10.1056/nejmoa1809944",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
+        "version": "Indexed primary abstract body sha256:4c7712c6b27104e3e1ab8aa8d2438207b4a356b97bb2a2a9967239f9e10ced96; publication 2018-11-10"
+      },
+      "evidence": "VITAL randomized 25,871 US men aged at least 50 and women aged at least 55 in a placebo-controlled factorial trial that included vitamin D3 2,000 IU daily. Median follow-up was 5.3 years. Vitamin D versus placebo gave an invasive cancer hazard ratio of 0.96 (95% CI 0.88 to 1.06; P=0.47) and a major cardiovascular event hazard ratio of 0.97 (0.85 to 1.12; P=0.69). The trial did not find statistically significant reductions in these primary outcomes."
+    }
+  },
+  {
+    "id": "q-55a74bc7a9c2a190",
+    "claim": "Because MCC950 blocks the NLRP3 inflammatory pathway, these experiments establish that MCC950 treats multiple sclerosis in human patients.",
+    "packet": {
+      "source": {
+        "title": "A small-molecule inhibitor of the NLRP3 inflammasome for the treatment of inflammatory diseases.",
+        "doi": "10.1038/nm.3806",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25686105/",
+        "version": "Indexed primary abstract body sha256:95e3e0c1e651dedea7f2075d9d8a8ed4d4df14d2d9dad7e82b61893c891981c6; publication 2015-02-16"
+      },
+      "evidence": "MCC950 inhibited canonical and noncanonical activation of the NLRP3 inflammasome at nanomolar concentrations, without inhibiting AIM2, NLRC4 or NLRP1 inflammasomes. It reduced IL-1 beta production in vivo and attenuated experimental autoimmune encephalomyelitis, a mouse model of multiple sclerosis. It also rescued neonatal lethality in a mouse model of cryopyrin-associated periodic syndrome and showed activity in ex vivo samples from people with Muckle-Wells syndrome. The reported human samples were treated outside the body."
+    }
+  },
+  {
+    "id": "q-e5add0335d3c30cc",
+    "claim": "STEP 1 participants without diabetes who met its overweight or obesity criteria had greater average weight loss at 68 weeks with semaglutide plus lifestyle intervention than with placebo plus lifestyle intervention.",
+    "packet": {
+      "source": {
+        "title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity.",
+        "doi": "10.1056/nejmoa2032183",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+        "version": "Indexed primary abstract body sha256:caf395f5a065b294ce060e8c3ea7e1896b95cc2d3eff95e46666b04d56c9a17d; publication 2021-02-10"
+      },
+      "evidence": "STEP 1 was a double-blind randomized trial in 1,961 adults without diabetes, with BMI at least 30, or at least 27 plus a weight-related condition. Participants received weekly subcutaneous semaglutide 2.4 mg or placebo (2:1), with lifestyle intervention in both groups, for 68 weeks. Mean body-weight change was -14.9% versus -2.4%; the estimated difference was -12.4 percentage points (95% CI -13.4 to -11.5)."
+    }
+  },
+  {
+    "id": "q-433b89f442ca9ed3",
+    "claim": "Among the Greek adults in this prospective cohort, higher Mediterranean-diet scores were associated with lower all-cause mortality during the reported follow-up.",
+    "packet": {
+      "source": {
+        "title": "Adherence to a Mediterranean diet and survival in a Greek population.",
+        "doi": "10.1056/nejmoa025039",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12826634/",
+        "version": "Indexed primary abstract body sha256:5e4c915b811a1ec01bb7b99929bcec3fcde9563d5fdc757a873e5915798d61a3; publication 2003-06-01"
+      },
+      "evidence": "In a prospective observational Greek cohort, 22,043 adults completed food-frequency questionnaires. Adherence to a traditional Mediterranean diet was scored from 0 to 9. Median follow-up was 44 months, during which 275 deaths occurred. After adjustment for age, sex and other measured factors, each two-point increase in score was associated with an all-cause mortality hazard ratio of 0.75 (95% CI 0.64 to 0.87). Dietary intake was measured, not experimentally assigned."
+    }
+  },
+  {
+    "id": "q-537b9ea8d86c6722",
+    "claim": "ATTIRE establishes that targeting serum albumin of at least 30 g/L prevents the combined outcome of infection, kidney dysfunction or death in hospitalized patients with decompensated cirrhosis.",
+    "packet": {
+      "source": {
+        "title": "A Randomized Trial of Albumin Infusions in Hospitalized Patients with Cirrhosis.",
+        "doi": "10.1056/nejmoa2022166",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33657293/",
+        "version": "Indexed primary abstract body sha256:760a9627711476c447fcd5849e69bc9e79d28950394e15bf1a5ad258092e675e; publication 2021-03-01"
+      },
+      "evidence": "ATTIRE randomized 777 hospitalized patients with decompensated cirrhosis and serum albumin below 30 g/L to repeated 20% albumin infusions targeting at least 30 g/L or standard care for up to 14 days. The composite of new infection, kidney dysfunction or death on days 3-15 occurred in 113/380 (29.7%) versus 120/397 (30.2%); adjusted odds ratio 0.98 (95% CI 0.71 to 1.33; P=0.87). More severe or life-threatening serious adverse events occurred in the albumin group."
+    }
+  },
+  {
+    "id": "q-e3d5fdfcbd5203ed",
+    "claim": "The Nurses' Health Study and Health Professionals Follow-up Study analysis establishes that increasing nut consumption itself prevents premature death.",
+    "packet": {
+      "source": {
+        "title": "Association of nut consumption with total and cause-specific mortality.",
+        "doi": "10.1056/nejmoa1307352",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24256379/",
+        "version": "Indexed primary abstract body sha256:b410addcb2c6c7433a7f915153c087ec6dd6d5ccc71bc500b5f3527baaf8dbbf; publication 2013-11-01"
+      },
+      "evidence": "This observational analysis followed 76,464 women in the Nurses' Health Study and 42,498 men in the Health Professionals Follow-up Study, excluding people with histories of cancer, heart disease or stroke. Nut intake was assessed by questionnaires at baseline and every two to four years. During 3,038,853 person-years, 27,429 deaths occurred. After multivariable adjustment, consumption seven or more times weekly versus never was associated with total mortality hazard ratio 0.80 (95% CI 0.73 to 0.86)."
+    }
+  },
+  {
+    "id": "q-24f3e1ac6625ed8a",
+    "claim": "The social media survey establishes that reducing social media use would cause less sleep disturbance in young adults.",
+    "packet": {
+      "source": {
+        "title": "The association between social media use and sleep disturbance among young adults.",
+        "doi": "10.1016/j.ypmed.2016.01.001",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26791323/",
+        "version": "Indexed primary abstract body sha256:5f597a930692666e33121a38c9fddc9c73ef655d6d7ed8615be8a19272b3409f; publication 2016-01-11"
+      },
+      "evidence": "In 2014, a nationally representative US sample of 1,788 adults aged 19-32 completed self-report measures of daily social media minutes, weekly visits, and PROMIS sleep disturbance. This was a cross-sectional survey. Adjusted for measured sociodemographic covariates, the highest versus lowest quartile of daily use had an adjusted odds ratio of 1.95 (95% CI 1.37 to 2.79) for sleep disturbance; the corresponding weekly frequency estimate was 2.92 (1.97 to 4.32)."
+    }
+  },
+  {
+    "id": "q-5c8ebf600bd85d3a",
+    "claim": "TEAM-AD establishes that vitamin E prevents Alzheimer disease in cognitively healthy adults.",
+    "packet": {
+      "source": {
+        "title": "Effect of vitamin E and memantine on functional decline in Alzheimer disease: the TEAM-AD VA cooperative randomized trial.",
+        "doi": "10.1001/jama.2013.282834",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+        "version": "Indexed primary abstract body sha256:121d6786ce30e9584c6f86570e767a23fc1c5f0c08a43c46b1ee927c32286bd6; publication 2014-01-01; online corrected version, correction 10.1001/jama.2014.641"
+      },
+      "evidence": "TEAM-AD was a randomized placebo-controlled trial at 14 Veterans Affairs centers in 613 patients with established mild-to-moderate Alzheimer disease already receiving an acetylcholinesterase inhibitor. The arms were alpha tocopherol 2,000 IU daily, memantine 20 mg daily, their combination, and placebo. Over mean follow-up 2.27 years, the alpha-tocopherol group had 3.15 points less decline on the ADCS-ADL daily-function scale than placebo (95% CI 0.92 to 5.39; adjusted P=0.03). Memantine and the combination did not show this benefit. An online correction updated one table value and figure/supplement values; this packet uses the indexed corrected abstract and does not use those table/figure values."
+    }
+  },
+  {
+    "id": "q-3bba7049197e9e00",
+    "claim": "Creating greener neighborhoods would causally narrow deprivation-related mortality differences, as established by the England green-space analysis.",
+    "packet": {
+      "source": {
+        "title": "Effect of exposure to natural environment on health inequalities: an observational population study.",
+        "doi": "10.1016/s0140-6736(08)61689-x",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18994663/",
+        "version": "Indexed primary abstract body sha256:baa5881ae15469f454582240d160ab6ff5462496456d67727a5c0cc0d7bded0c; publication 2008-11-01"
+      },
+      "evidence": "An observational analysis of England covered approximately 40.8 million residents below retirement age and 366,348 individual death records during 2001-2005. Residential green-space exposure and income deprivation were linked to mortality data and analyzed in adjusted strata. The all-cause mortality incidence rate ratio comparing most versus least deprived groups was 1.93 (95% CI 1.86 to 2.01) in the least-green areas and 1.43 (1.34 to 1.53) in the greenest. Similar patterns occurred for circulatory mortality, but not lung cancer or suicide. Neighborhood greenery was observed, not assigned."
+    }
+  },
+  {
+    "id": "q-6aa6692ed5967cce",
+    "claim": "VITAL proves that vitamin D supplementation has no clinical benefit at any dose in adults.",
+    "packet": {
+      "source": {
+        "title": "Vitamin D Supplements and Prevention of Cancer and Cardiovascular Disease.",
+        "doi": "10.1056/nejmoa1809944",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
+        "version": "Indexed primary abstract body sha256:4c7712c6b27104e3e1ab8aa8d2438207b4a356b97bb2a2a9967239f9e10ced96; publication 2018-11-10"
+      },
+      "evidence": "VITAL randomized 25,871 US men aged at least 50 and women aged at least 55 in a placebo-controlled factorial trial that included vitamin D3 2,000 IU daily. Median follow-up was 5.3 years. Vitamin D versus placebo gave an invasive cancer hazard ratio of 0.96 (95% CI 0.88 to 1.06; P=0.47) and a major cardiovascular event hazard ratio of 0.97 (0.85 to 1.12; P=0.69). The trial did not find statistically significant reductions in these primary outcomes."
+    }
+  },
+  {
+    "id": "q-7f0ca6e5ec639574",
+    "claim": "These experiments establish longer survival for solid-tumor patients by using anti-CD47 antibodies to remove the signal that protects tumor cells from macrophages.",
+    "packet": {
+      "source": {
+        "title": "The CD47-signal regulatory protein alpha (SIRPa) interaction is a therapeutic target for human solid tumors.",
+        "doi": "10.1073/pnas.1121623109",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22451913/",
+        "version": "Indexed primary abstract body sha256:b9441c2f13a6df5ecb7b3dd34e0bea7dab6321ab9cd477e79d9a2e2b4d5e30bb; publication 2012-03-26"
+      },
+      "evidence": "CD47 binds SIRP-alpha on phagocytic cells and provides a signal that inhibits engulfment. Experiments with human tumor cells showed that anti-CD47 antibodies enabled macrophage phagocytosis in vitro. In immunodeficient mice carrying patient-derived tumor xenografts, antibody administration inhibited tumor growth and increased mouse survival; an immunocompetent mouse breast-tumor model was also studied. Human patient tumor tissue was used for expression measurements and to establish xenografts; the report describes antibody treatment outcomes in mice."
+    }
+  },
+  {
+    "id": "q-f84fb93fcf1862d4",
+    "claim": "With body weight and sodium intake kept constant, the DASH combination diet produced a larger mean systolic blood-pressure reduction than the control diet over eight weeks.",
+    "packet": {
+      "source": {
+        "title": "A clinical trial of the effects of dietary patterns on blood pressure. DASH Collaborative Research Group.",
+        "doi": "10.1056/nejm199704173361601",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9099655/",
+        "version": "Indexed primary abstract body sha256:d324021a20b6d8aa26b24d5ee2b5ce0a44c4636aeb2100c7d8d904fbd161295a; publication 1997-04-01"
+      },
+      "evidence": "The DASH feeding trial enrolled 459 adults with systolic blood pressure below 160 mm Hg and diastolic pressure 80-95 mm Hg. After three weeks on a control diet, they were randomly assigned to eight weeks of the control diet, a fruit-and-vegetable diet, or a combination diet rich in fruit, vegetables and low-fat dairy with reduced saturated and total fat. Sodium intake and body weight were maintained constant. The combination diet reduced mean systolic and diastolic pressure by 5.5 and 3.0 mm Hg more than control, respectively."
+    }
+  },
+  {
+    "id": "q-3a7480df1ae448f2",
+    "claim": "The screen-time analysis identifies a causal impairment of development, since higher screen exposure preceded the later developmental screening scores.",
+    "packet": {
+      "source": {
+        "title": "Association Between Screen Time and Children's Performance on a Developmental Screening Test.",
+        "doi": "10.1001/jamapediatrics.2018.5056",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "version": "Indexed primary abstract body sha256:8fe07f2717336b2673391ed02a2c8229ff790d0e3a64473cf82bd55cffb76be3; publication 2019-03-01; online corrected version, correction 10.1001/jamapediatrics.2019.0515"
+      },
+      "evidence": "The All Our Families cohort analysis used data from 2,441 mothers and children in Calgary, Canada, at child ages 24, 36 and 60 months. Mothers reported screen time and ASQ-3 developmental screening performance. A random-intercepts cross-lagged panel model controlled stable between-person differences. Higher screen time at 24 months was associated with lower screening performance at 36 months (standardized beta -0.06, 95% CI -0.10 to -0.01); higher screen time at 36 months was associated with lower performance at 60 months (-0.08, -0.13 to -0.02). Exposure was observed. This uses corrected estimates: the 2019 correction clarified the model and corrected/swapped displayed coefficients and confidence intervals without changing the conclusions."
+    }
+  },
+  {
+    "id": "q-55c13bdbd3b6a47d",
+    "claim": "Restoring dystrophin through CRISPR removal of the defective exon establishes that this treatment improves muscle strength in patients with Duchenne muscular dystrophy.",
+    "packet": {
+      "source": {
+        "title": "In vivo genome editing improves muscle function in a mouse model of Duchenne muscular dystrophy.",
+        "doi": "10.1126/science.aad5143",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26721684/",
+        "version": "Indexed primary abstract body sha256:a0dfaeaa7d84d77dc0a10e5e4b2c9b5fb5ecb65b0399b5314d127c0af3c39e3e; publication 2015-12-31"
+      },
+      "evidence": "Researchers used adeno-associated virus to deliver CRISPR-Cas9 in the mdx mouse model of Duchenne muscular dystrophy, removing mutant exon 23 from the dystrophin gene. Delivery was local or systemic in adult mice and systemic in neonatal mice. Exon deletion produced modified dystrophin expression, partial restoration of functional dystrophin in skeletal and cardiac muscle, improved muscle biochemistry and increased muscle force. The experiments described in this report are in mice."
+    }
+  },
+  {
+    "id": "q-c375bcc3535a420a",
+    "claim": "SELECT establishes cardiovascular prevention with semaglutide for adults with overweight who have never had cardiovascular disease.",
+    "packet": {
+      "source": {
+        "title": "Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes.",
+        "doi": "10.1056/nejmoa2307563",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+        "version": "Indexed primary abstract body sha256:c87f974cae0edc6909915c97c3cee05566ae753b5124cfdeb36db12d5c152510; publication 2023-11-11"
+      },
+      "evidence": "SELECT was a double-blind randomized trial of weekly semaglutide 2.4 mg versus placebo in 17,604 adults aged at least 45 with BMI at least 27, established cardiovascular disease, and no history of diabetes. Mean follow-up was 39.8 months. The composite of cardiovascular death, nonfatal myocardial infarction or nonfatal stroke occurred in 569/8,803 (6.5%) versus 701/8,801 (8.0%), hazard ratio 0.80 (95% CI 0.72 to 0.90)."
+    }
+  }
+]

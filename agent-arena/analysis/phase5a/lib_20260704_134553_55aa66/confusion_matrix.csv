@@ -1,0 +1,5 @@
+gold\detected,solid,overclaim,mechanism_vs_evidence,correlation_vs_causation,row_total
+solid,42,0,0,0,42
+overclaim,3,66,3,0,72
+mechanism_vs_evidence,0,0,18,0,18
+correlation_vs_causation,0,0,0,18,18

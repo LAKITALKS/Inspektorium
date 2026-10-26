@@ -28,8 +28,8 @@ python3 -m venv /new/path/arena-env
   --task agent-arena/examples/phase10/positive-task.json
 /new/path/arena-env/bin/agent-arena audit run \
   --task agent-arena/examples/phase10/positive-task.json \
-  --offline agent-arena/examples/phase10/positive-recording.json \
-  --output /new/path/positive-bundle
+  --offline --recording agent-arena/examples/phase10/positive-recording.json \
+  --output-root /new/path/positive-bundle
 ```
 
 Dependency installation may download public packages. The displayed evaluations

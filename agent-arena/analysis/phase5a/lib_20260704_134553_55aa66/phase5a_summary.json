@@ -1,0 +1,107 @@
+{
+  "phase": "5A",
+  "kind": "single_model_ceiling_stability",
+  "run_id": "lib_20260704_134553_55aa66",
+  "generated_at": "2026-07-04T15:47:39.966219+00:00",
+  "provider": "anthropic",
+  "model": "claude-opus-4-5",
+  "runs_per_case": 3,
+  "n_cases": 50,
+  "n_runs": 150,
+  "successful": 150,
+  "failed": 0,
+  "parse_failures": 0,
+  "truncation": 0,
+  "provider_errors": 0,
+  "run_accuracy": 96.0,
+  "case_majority_accuracy": 96.0,
+  "per_label": {
+    "solid": {
+      "correct": 42,
+      "total": 42,
+      "acc": 100.0
+    },
+    "overclaim": {
+      "correct": 66,
+      "total": 72,
+      "acc": 91.7
+    },
+    "mechanism_vs_evidence": {
+      "correct": 18,
+      "total": 18,
+      "acc": 100.0
+    },
+    "correlation_vs_causation": {
+      "correct": 18,
+      "total": 18,
+      "acc": 100.0
+    }
+  },
+  "confusion_matrix": {
+    "solid": {
+      "solid": 42,
+      "overclaim": 0,
+      "mechanism_vs_evidence": 0,
+      "correlation_vs_causation": 0
+    },
+    "overclaim": {
+      "solid": 3,
+      "overclaim": 66,
+      "mechanism_vs_evidence": 3,
+      "correlation_vs_causation": 0
+    },
+    "mechanism_vs_evidence": {
+      "solid": 0,
+      "overclaim": 0,
+      "mechanism_vs_evidence": 18,
+      "correlation_vs_causation": 0
+    },
+    "correlation_vs_causation": {
+      "solid": 0,
+      "overclaim": 0,
+      "mechanism_vs_evidence": 0,
+      "correlation_vs_causation": 18
+    }
+  },
+  "solid_as_problem_rate_pct": 0.0,
+  "solid_as_problem_count": "0/42",
+  "problem_as_solid_rate_pct": 2.78,
+  "problem_as_solid_count": "3/108",
+  "metric_definitions": {
+    "solid_as_problem_rate": "gold_label==solid but predicted!=solid \u2014 a supported/solid claim wrongly flagged as a problem (the commercially important false-positive direction).",
+    "problem_as_solid_rate": "gold_label!=solid but predicted==solid \u2014 a real problem under-flagged as solid (false-negative-style under-flagging)."
+  },
+  "consistency_distribution": {
+    "1_unique_labels": 50
+  },
+  "unstable_cases": [],
+  "stable_wrong_cases": [
+    "study-forensics-042",
+    "study-forensics-054"
+  ],
+  "stable_alternative_cases": [
+    "study-forensics-042",
+    "study-forensics-054"
+  ],
+  "high_score_variance_cases": [],
+  "suite_counts": {
+    "core_candidate": 35,
+    "boundary_candidate": 10,
+    "anchor_candidate": 5
+  },
+  "token_usage": {
+    "input": 189516,
+    "output": 125024,
+    "total": 314540
+  },
+  "latency_ms": {
+    "mean": 21433,
+    "median": 15988,
+    "min": 12148,
+    "max": 618700
+  },
+  "thresholds": {
+    "high_score_variance": 15.0
+  },
+  "caveat": "Single strong model (Opus 4.5) ceiling/stability run \u2014 NOT a discrimination-power measurement. Confidence values are the model's uncalibrated self-report and must not be read as calibrated probabilities."
+}

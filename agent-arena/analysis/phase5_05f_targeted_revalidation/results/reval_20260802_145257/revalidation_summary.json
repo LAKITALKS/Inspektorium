@@ -1,0 +1,173 @@
+{
+  "run_id": "reval_20260802_145257",
+  "study_designation": "targeted_versioned_blind_model_revalidation",
+  "acceptance_criteria_version": "5.05f/1.0",
+  "repository_commit": "902fea74bf00b85f1effe0dbef2c9f3b7aa5e75e",
+  "repository_tag": "v0.8.7-targeted-revalidation-prep",
+  "n_cases": 2,
+  "revalidators": {
+    "X": {
+      "model_family": "Anthropic",
+      "displayed_model_name": "Opus 5",
+      "inference_mode": "default"
+    },
+    "Y": {
+      "model_family": "GLM",
+      "displayed_model_name": "GLM 5.2",
+      "inference_mode": "default"
+    },
+    "Z": {
+      "model_family": "Gemini",
+      "displayed_model_name": "Gemini 3.5 Flash",
+      "inference_mode": "Extra Thinking"
+    }
+  },
+  "cases": {
+    "RVAL-001": {
+      "gold": "correlation_vs_causation",
+      "target": "BIAA-013_v2",
+      "primary": {
+        "X": "correlation_vs_causation",
+        "Y": "correlation_vs_causation",
+        "Z": "correlation_vs_causation"
+      },
+      "secondary": {
+        "X": "overclaim",
+        "Y": "overclaim",
+        "Z": "overclaim"
+      },
+      "confidence": {
+        "X": 0.6,
+        "Y": 0.9,
+        "Z": 0.9
+      },
+      "primary_vote_distribution": {
+        "correlation_vs_causation": 3
+      },
+      "secondary_distribution": {
+        "overclaim": 3
+      },
+      "gold_primary_count": 3,
+      "alternate_majority_present": false,
+      "source_voice_yes": 2,
+      "claim_isolated_yes": 2,
+      "evidence_understandable_yes": 3,
+      "material_defect_yes": 0,
+      "material_defect_uncertain": 1,
+      "multiple_competing_claims": {
+        "X": "yes",
+        "Y": "no",
+        "Z": "no"
+      },
+      "recommended_human_review": {
+        "X": "yes",
+        "Y": "no",
+        "Z": "no"
+      },
+      "material_defect_notes": {
+        "X": "The packet does not designate which single statement is the claim under evaluation. It supplies at least five candidate claims (three media headlines, the lead author's quote, a co-author's quote) alongside the study's own honestly hedged reporting including explicit \"cannot prove causation\" limitations. The label is reading-dependent: judging the paper itself yields solid, judging the headlines or the lead author's quote yields correlation_vs_causation. RVAL-002 contains an explicit isolation instruction while RVAL-001 does not, so the omission looks structural rather than intentional. Labelled uncertain rather than yes because the framing \"claim together with the evidence available for it\" plus the inclusion of a media-coverage section makes the disseminated claims the plausible intended target.",
+        "Y": "none",
+        "Z": "none"
+      },
+      "ambiguity_notes": {
+        "X": "Main ambiguity is target selection, not taxonomy fit: the study reporting is honest and hedged, while the downstream headlines and the lead author's quote are causal. A second ambiguity is voice: the co-author's quote (\"are associated with\") is correctly associational, while the lead author's quote is causal, so the two attributed sources do not fail in the same way. mechanism_vs_evidence was considered and rejected: no biological pathway narrative is described.",
+        "Y": "Some headlines use hedging language (could, may) while author quotes use more direct causal language (can provide, can make a real difference), but the overall pattern of causal framing from observational data is clear.",
+        "Z": "none"
+      },
+      "freeform_notes": {
+        "X": "Missing evidence that would justify the propagated claim: a randomised or otherwise controlled intervention trial of added vigorous activity with hard clinical endpoints; the observed 29-63 percent risk reductions are associations subject to reverse causation (early subclinical disease reducing vigorous activity) and healthy-user confounding. Note on the instrument: the taxonomy reference lists the packet-quality fields evidence_matches_claim_strength and missing_evidence_notes while the response sheet schema instead has evidence_context_understandable and multiple_competing_claims_present; I answered the schema as given and recorded the missing-evidence content here.",
+        "Y": "none",
+        "Z": "none"
+      },
+      "unanimous_primary": true,
+      "disagreement": "absent",
+      "soft": 0,
+      "serious": 0,
+      "criteria": {
+        "c1_ge2_gold_primary": true,
+        "c2_no_alt_majority": true,
+        "c3_clarity_ge2": true,
+        "c4_no_mpd_majority": true,
+        "c5_individual_defect_unresolved": true,
+        "c6_serious_boundary": false
+      },
+      "provisional_status": "CURATOR_REVIEW_REQUIRED",
+      "curator_review_reason": "individual material_packet_defect=yes/uncertain"
+    },
+    "RVAL-002": {
+      "gold": "overclaim",
+      "target": "BIAA-016_v2",
+      "primary": {
+        "X": "overclaim",
+        "Y": "overclaim",
+        "Z": "overclaim"
+      },
+      "secondary": {
+        "X": "correlation_vs_causation",
+        "Y": "correlation_vs_causation",
+        "Z": "correlation_vs_causation"
+      },
+      "confidence": {
+        "X": 0.87,
+        "Y": 0.95,
+        "Z": 0.95
+      },
+      "primary_vote_distribution": {
+        "overclaim": 3
+      },
+      "secondary_distribution": {
+        "correlation_vs_causation": 3
+      },
+      "gold_primary_count": 3,
+      "alternate_majority_present": false,
+      "source_voice_yes": 3,
+      "claim_isolated_yes": 3,
+      "evidence_understandable_yes": 3,
+      "material_defect_yes": 0,
+      "material_defect_uncertain": 0,
+      "multiple_competing_claims": {
+        "X": "no",
+        "Y": "no",
+        "Z": "no"
+      },
+      "recommended_human_review": {
+        "X": "no",
+        "Y": "no",
+        "Z": "no"
+      },
+      "material_defect_notes": {
+        "X": "none",
+        "Y": "none",
+        "Z": "none"
+      },
+      "ambiguity_notes": {
+        "X": "The debatable point is the primary/secondary ordering. The design is a textbook uncontrolled pre/post, which would support correlation_vs_causation as primary, but the distance between \"subjective stress fell 30 percent in 15 students over two weeks\" and \"replace clinical therapies\" is far larger than the causal-inference gap alone, so under precedence rule 3 the inflation captures the core error. The hedge \"has the potential to\" is decorative rather than constraining and does not move the item toward solid. mechanism_vs_evidence does not apply: no biological pathway is described.",
+        "Y": "none",
+        "Z": "none"
+      },
+      "freeform_notes": {
+        "X": "Missing evidence that would justify the claim: randomised controlled trials against active clinical comparators (for example CBT or pharmacotherapy) in diagnosed clinical populations, validated clinical outcome measures rather than daily self-report, adequate sample size and long-term follow-up including relapse and dropout. The university group's caveats are correctly treated as evidence context and do not soften the company's separate public statement. Same instrument note as RVAL-001: the taxonomy reference names evidence_matches_claim_strength and missing_evidence_notes, whereas the response sheet uses evidence_context_understandable and multiple_competing_claims_present.",
+        "Y": "none",
+        "Z": "none"
+      },
+      "unanimous_primary": true,
+      "disagreement": "absent",
+      "soft": 0,
+      "serious": 0,
+      "criteria": {
+        "c1_ge2_gold_primary": true,
+        "c2_no_alt_majority": true,
+        "c3_clarity_ge2": true,
+        "c4_no_mpd_majority": true,
+        "c5_individual_defect_unresolved": false,
+        "c6_serious_boundary": false
+      },
+      "provisional_status": "PASS_CANDIDATE",
+      "curator_review_reason": "all auto-checkable criteria pass; no defect report requires curator resolution"
+    }
+  },
+  "two_case_descriptive_note": "Simple descriptive agreement only; kappa NOT computed for a two-case targeted sample.",
+  "overall_provisional_disposition": "B. TARGETED REVALIDATION PARTIALLY PASSED \u2014 CURATOR REVIEW REQUIRED",
+  "human_iaa": false,
+  "holdout_action": "none"
+}

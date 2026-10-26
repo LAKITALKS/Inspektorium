@@ -127,22 +127,21 @@ This bounded result is not a universal font/viewer or readability guarantee.
   deterministic reports and strict offline parsing (P01–P07); in 0.1.1 also
   Markdown display of untrusted text as data and strict `--input` parsing
   (P12–P13).
-- **OWNER-REPORTED INTERNAL EXPERIMENT:** artifact-fault containment with clean
-  counterparts, zero observed A/B accuracy gain and semantic misses (I01–I03).
-  The internal code/raw package is not public here and was not independently
-  replicated by this package.
-- **REPORTED IMPLEMENTED/TESTED INTERNALLY:** execution authorization, budget,
-  state/resume and environment controls (I04). No public implementation
-  inspected; no demonstrated end-to-end official release gate in that pilot.
-- **OWNER-REPORTED INTERNAL IMPLEMENTATION — PHASES 8–10:** semantic and
-  inferential checking and scientific claim forensics (R08); disagreement,
-  independent verdict challenge and bounded review routing (R09); canonical
-  operational release workflow, explicit UNKNOWN states and post-render QA
-  (R10). The owner reports these as implemented in the internal technical
-  v1.0.0 closeout of a separate, non-public codebase, checked offline and
-  live-tested in a limited way on earlier internal states. The closeout code
-  was not live-tested again, no scientific efficacy is demonstrated, and none
-  of it is part of this package.
+- **HISTORICAL EXPERIMENTS, NOW WITH PUBLIC DERIVATIVES:** artifact-fault
+  containment, zero observed A/B accuracy gain and semantic misses (I01–I03).
+  The [Arena evidence tree](agent-arena/analysis/) and
+  [import map](publication/2026-10-26/import-index.json) expose reviewed sources
+  and any redactions; historical results are not independently validated by
+  this publication.
+- **PUBLIC ARENA RESEARCH IMPLEMENTATION:** execution authorization, budget,
+  state/resume and environment controls (I04), plus P1–P7 tooling, are in the
+  separate `agent-arena/` package. Their original limits and closed budgets
+  remain in force.
+- **PUBLIC ARENA PHASES 8–10:** semantic/inferential checking (R08), disagreement
+  and review routing (R09), canonical artifact release and post-render QA (R10).
+  These are technical research 1.0.1, derived from internal 1.0.0, not additions
+  to the core runtime. Earlier live checks cover limited synthetic cases on
+  older code. No new live validation or scientific efficacy is claimed.
 - **NOT CLAIMED:** general AI safety, regulatory compliance, certification or
   alignment. No NIST, DSIT or regulatory endorsement/conformance is implied.
 
@@ -164,11 +163,9 @@ dependencies, and adds the evidence package. It keeps relation semantics,
 guard rules, offsets, fingerprints, JSON report output and schema 0.1. The
 historical v0.1.0 release and tag are unchanged.
 
-Completed internal research can become public evidence only through a separate
-inspectable package with explicit version mapping, preserved originals and
-hashes. Owner reports in [RESEARCH_RESULTS.md](RESEARCH_RESULTS.md) do not grant
-access to internal artifacts. Do not import private/client cases, provider or
-account logs, prompts, credentials, or material with unclear redistribution
-rights. Keep [PolyForm Noncommercial 1.0.0](LICENSE) unchanged and use
-source-available terminology. Publication of v0.1.1 requires the maintainer's
-decision, separately from its local preparation.
+The 2026-10-26 publication includes the reviewed Arena snapshot and public
+evidence derivatives with explicit version mapping and preserved originals.
+Private/client cases, credentials, account data and material with unclear rights
+remain excluded. Own reviewed prompts and synthetic captures are included. Keep [PolyForm Noncommercial 1.0.0](LICENSE) unchanged and use
+source-available terminology. The maintainer explicitly authorized this GitHub release in the
+[dated decision](publication/2026-10-26/AUTHORIZATION.md).

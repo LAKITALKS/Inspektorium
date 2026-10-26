@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Report — Study Forensics: Social media use and well-being</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a2e;
+    --accent: #16213e;
+    --border: #e0e0e0;
+    --muted: #6b7280;
+    --green: #059669;
+    --red: #dc2626;
+    --yellow: #d97706;
+    --blue: #2563eb;
+    --bg-light: #f9fafb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p, li { margin-bottom: 0.4rem; }
+  strong { font-weight: 600; }
+  code {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.1em 0.3em;
+    font-size: 0.9em;
+  }
+  blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 0.5rem 1rem;
+    margin: 0.75rem 0;
+    background: var(--bg-light);
+    color: var(--muted);
+    font-style: italic;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+  }
+  th {
+    background: var(--bg-light);
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: var(--bg-light); }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+  ul { padding-left: 1.5rem; }
+  ol { padding-left: 1.5rem; }
+  .status-good { color: var(--green); font-weight: 700; }
+  .status-caution { color: var(--yellow); font-weight: 700; }
+  .status-critical { color: var(--red); font-weight: 700; }
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  @media print {
+    body { max-width: 100%; padding: 1rem; }
+    h2 { page-break-before: auto; }
+  }
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+</style>
+</head>
+<body>
+<h1>Audit Report</h1>
+
+<p><strong>Report generated:</strong> 2026-06-10 21:19 UTC</p>
+<p><strong>Run ID:</strong> <code>praxis_study-forensics-001_Claude_Opus_4c1193</code></p>
+<p><strong>Audit timestamp:</strong> 2026-04-07 07:46:52 UTC</p>
+<p><strong>Subject:</strong> Study Forensics: Social media use and well-being</p>
+<p><strong>Domain:</strong> study_forensics</p>
+<p><strong>Category:</strong> Well-supported — no significant issues found</p>
+
+<hr>
+
+<h2>1. Executive Summary</h2>
+
+<h3>Overall Assessment: 🟡 CAUTION</h3>
+
+<blockquote>
+<p>Notable issues found — review recommended</p>
+</blockquote>
+
+<p><strong>Overall score:</strong> 70 / 100</p>
+<p><strong>Analyzed by:</strong> Claude Opus</p>
+<p><strong>Classification:</strong> <strong>Well-supported — no significant issues found</strong></p>
+
+<h3>Key Findings</h3>
+
+<ol>
+<li>🟡 <strong>Conclusion not supported by evidence</strong> — Final answer lacks load-bearing or supporting step grounding</li>
+<li>🟡 <strong>Named Not Explained</strong> — Names the phenomenon but does not explain the causal mechanism</li>
+<li>🟡 <strong>Unsupported Intermediate Step</strong> — No reasoning step is load-bearing — final answer lacks traceable derivation</li>
+<li>🟡 <strong>Missed a key insight</strong> — Missed expected finding: evidence_matches_claim</li>
+<li>⚪ <strong>Decorative Uncertainty</strong> — Uncertainty &#x27;The magnitude of the effects is not stated...&#x27; is listed but not addressed</li>
+</ol>
+
+<h3>Recommendation</h3>
+
+<ul>
+<li>Review and temper unsupported claims.</li>
+</ul>
+
+<h2>2. Key Findings</h2>
+
+<h3>🟡 Conclusion not supported by evidence</h3>
+
+<p><strong>Severity:</strong> MODERATE <code>[MEDIUM CONFIDENCE]</code></p>
+<p><strong>Description:</strong> Final answer lacks load-bearing or supporting step grounding</p>
+<p><strong>Impact:</strong> support_strength</p>
+
+<p><strong>Evidence:</strong></p>
+<blockquote>
+<p><code>final_answer</code>: &quot;solid&quot;</p>
+</blockquote>
+
+<h3>🟡 Named Not Explained</h3>
+
+<p><strong>Severity:</strong> MODERATE <code>[MEDIUM CONFIDENCE]</code></p>
+<p><strong>Description:</strong> Names the phenomenon but does not explain the causal mechanism</p>
+<p><strong>Impact:</strong> mechanism_quality</p>
+
+<p><strong>Evidence:</strong></p>
+<blockquote>
+<p><code>final_answer</code>: &quot;solid&quot;</p>
+</blockquote>
+
+<h3>🟡 Named Not Explained</h3>
+
+<p><strong>Severity:</strong> MODERATE <code>[MEDIUM CONFIDENCE]</code></p>
+<p><strong>Description:</strong> Named concept(s) [&#x27;effect&#x27;] but mechanism not described</p>
+<p><strong>Impact:</strong> mechanism_quality, insight_depth</p>
+
+<h3>🟡 Unsupported Intermediate Step</h3>
+
+<p><strong>Severity:</strong> MODERATE <code>[MEDIUM CONFIDENCE]</code></p>
+<p><strong>Description:</strong> No reasoning step is load-bearing — final answer lacks traceable derivation</p>
+<p><strong>Impact:</strong> support_strength, structural_reasoning</p>
+
+<p><strong>Evidence:</strong></p>
+<blockquote>
+<p><code>final_answer</code>: &quot;solid&quot;</p>
+</blockquote>
+
+<h3>🟡 Missed a key insight</h3>
+
+<p><strong>Severity:</strong> MODERATE <code>[MEDIUM CONFIDENCE]</code></p>
+<p><strong>Description:</strong> Missed expected finding: evidence_matches_claim</p>
+<p><strong>Impact:</strong> insight_depth</p>
+
+<p><strong>Evidence:</strong></p>
+<blockquote>
+<p><code>(task expectation)</code>: &quot;Expected: evidence_matches_claim&quot;</p>
+</blockquote>
+
+<h3>⚪ Decorative Uncertainty</h3>
+
+<p><strong>Severity:</strong> STYLISTIC <code>[HEURISTIC]</code></p>
+<p><strong>Description:</strong> Uncertainty &#x27;The magnitude of the effects is not stated...&#x27; is listed but not addressed</p>
+<p><strong>Impact:</strong> uncertainty_handling</p>
+
+<p><strong>Evidence:</strong></p>
+<blockquote>
+<p><code>uncertainties[1]</code>: &quot;The magnitude of the effects is not stated&quot;</p>
+</blockquote>
+
+<h3>⚪ Decorative Uncertainty</h3>
+
+<p><strong>Severity:</strong> STYLISTIC <code>[HEURISTIC]</code></p>
+<p><strong>Description:</strong> Uncertainty &#x27;The baseline characteristics of the groups...&#x27; is listed but not addressed</p>
+<p><strong>Impact:</strong> uncertainty_handling</p>
+
+<p><strong>Evidence:</strong></p>
+<blockquote>
+<p><code>uncertainties[3]</code>: &quot;The baseline characteristics of the groups&quot;</p>
+</blockquote>
+
+<h3>Study Forensics Detail</h3>
+
+<p><strong>Agent:</strong> Claude Opus</p>
+<p><strong>Classification:</strong> Well-supported — no significant issues found ✅</p>
+<p><strong>Expected:</strong> Well-supported — no significant issues found</p>
+<p><strong>Correctly identified:</strong> cautious_scope_control, none_or_minor</p>
+<p><strong>Missed:</strong> evidence_matches_claim</p>
+<p><strong>Additional findings:</strong> conclusion_exceeds_results, correlation_as_causation</p>
+
+
+<h2>3. What To Change</h2>
+
+<h3>Borderline — Review Recommended</h3>
+
+<ul>
+<li>🟡 Conclusion not supported by evidence: Final answer lacks load-bearing or supporting step grounding</li>
+<li>🟡 Named Not Explained: Names the phenomenon but does not explain the causal mechanism</li>
+<li>🟡 Named Not Explained: Named concept(s) [&#x27;effect&#x27;] but mechanism not described</li>
+<li>🟡 Unsupported Intermediate Step: No reasoning step is load-bearing — final answer lacks traceable derivation</li>
+<li>🟡 Missed a key insight: Missed expected finding: evidence_matches_claim</li>
+</ul>
+
+<h3>Stable Areas</h3>
+
+<ul>
+<li>✅ Correctness (30/30)</li>
+<li>✅ Assumption Discipline (5/6)</li>
+<li>✅ Alternative Hypothesis Quality (6/6)</li>
+<li>✅ Communication Efficiency (10/10)</li>
+</ul>
+
+
+<h2>4. Method Note</h2>
+
+<h3>What This Audit Covers</h3>
+
+<p>Agent Arena performs automated forensic analysis of AI-generated reasoning. The system evaluates:</p>
+
+<ul>
+<li><strong>Correctness</strong> — Does the answer match the expected result?</li>
+<li><strong>Reasoning quality</strong> — Are claims supported by evidence and logic?</li>
+<li><strong>Internal consistency</strong> — Do different parts of the response agree?</li>
+<li><strong>Mechanism quality</strong> — Are causal explanations grounded, not just named?</li>
+<li><strong>Self-monitoring</strong> — Does the response acknowledge its own limitations?</li>
+</ul>
+
+<h3>What This Audit Does Not Cover</h3>
+
+<ul>
+<li>External fact-checking against live databases or sources</li>
+<li>Ethical or legal assessment of conclusions</li>
+<li>Domain-specific regulatory compliance</li>
+<li>Comparison with human expert judgment</li>
+</ul>
+
+<h3>Category Definitions</h3>
+
+<ul>
+<li><strong>missed_key_insight</strong>: Missed a key insight</li>
+<li><strong>solid</strong>: Well-supported — no significant issues found</li>
+<li><strong>unsupported_conclusion</strong>: Conclusion not supported by evidence</li>
+</ul>
+
+<h3>Confidence Levels</h3>
+
+<p>Findings are tagged with confidence levels:</p>
+
+<ul>
+<li><strong>HIGH CONFIDENCE</strong>: Deterministic or numerically verified</li>
+<li><strong>MEDIUM CONFIDENCE</strong>: Grounded heuristic with supporting evidence</li>
+<li><strong>HEURISTIC</strong>: Pattern-based detection, may require manual review</li>
+</ul>
+
+
+<h2>5. Technical Appendix</h2>
+
+<p><em>This section is for technical reviewers and internal use.</em></p>
+
+<h3>Score Matrix</h3>
+
+<table>
+<thead><tr>
+  <th>Dimension</th>
+  <th>Weight</th>
+  <th>Claude Opus</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td>Correctness</td>
+  <td>30</td>
+  <td>30.0/30</td>
+</tr>
+<tr>
+  <td>Support Strength</td>
+  <td>8</td>
+  <td>0.0/8</td>
+</tr>
+<tr>
+  <td>Structural Reasoning</td>
+  <td>8</td>
+  <td>4.8/8</td>
+</tr>
+<tr>
+  <td>Assumption Discipline</td>
+  <td>6</td>
+  <td>4.8/6</td>
+</tr>
+<tr>
+  <td>Uncertainty Handling</td>
+  <td>6</td>
+  <td>3.3/6</td>
+</tr>
+<tr>
+  <td>Alternative Hypothesis Quality</td>
+  <td>6</td>
+  <td>6.0/6</td>
+</tr>
+<tr>
+  <td>Self Monitoring Quality</td>
+  <td>8</td>
+  <td>4.8/8</td>
+</tr>
+<tr>
+  <td>Insight Depth</td>
+  <td>8</td>
+  <td>5.3/8</td>
+</tr>
+<tr>
+  <td>Mechanism Quality</td>
+  <td>10</td>
+  <td>1.5/10</td>
+</tr>
+<tr>
+  <td>Communication Efficiency</td>
+  <td>10</td>
+  <td>10.0/10</td>
+</tr>
+<tr>
+  <td><strong>Total</strong></td>
+  <td><strong>100</strong></td>
+  <td><strong>70.5</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Agent: Claude Opus (claude-opus-4-20250514)</h3>
+
+<p><strong>Score:</strong> 70.5/100</p>
+<p><strong>Latency:</strong> 17696ms</p>
+<p><strong>Parse OK:</strong> True</p>
+<p><strong>Agent confidence:</strong> 85% <code>[UNKALIBRIERT]</code></p>
+<p><strong>Final answer:</strong> solid</p>
+<p><strong>Reasoning integrity:</strong> brittle</p>
+<p><strong>Mechanism:</strong> concept named</p>
+<p><strong>Missing:</strong> mechanism not described, mechanism not grounded to case data</p>
+<p><strong>Grounding:</strong> 0 direct, 0 indirect, 1 unsupported, 0 contradicted</p>
+
+<h3>Consistency Checks</h3>
+
+<ul>
+<li>⚠️ <code>[HEURISTIC]</code> <code>answer_claim_alignment</code>: Key claim 1 has low overlap with final answer (0/5 content words)</li>
+<li>⚠️ <code>[HEURISTIC]</code> <code>answer_claim_alignment</code>: Key claim 2 has low overlap with final answer (0/6 content words)</li>
+<li>⚠️ <code>[HEURISTIC]</code> <code>answer_claim_alignment</code>: Key claim 3 has low overlap with final answer (0/5 content words)</li>
+<li>⚠️ <code>[HEURISTIC]</code> <code>answer_claim_alignment</code>: Key claim 4 has low overlap with final answer (0/9 content words)</li>
+<li>⚠️ <code>[HEURISTIC]</code> <code>decorative_uncertainty</code>: Uncertainty 2 appears decorative — not addressed in reasoning or self-check</li>
+<li>⚠️ <code>[HEURISTIC]</code> <code>decorative_uncertainty</code>: Uncertainty 4 appears decorative — not addressed in reasoning or self-check</li>
+</ul>
+
+<h3>Forensic Flags</h3>
+
+<ul>
+<li>🟡 <code>weak_mechanism</code>: Correct answer but weak mechanism explanation — answer may not generalize</li>
+</ul>
+<blockquote>
+<p><code>final_answer</code>: &quot;solid&quot;</p>
+</blockquote>
+<ul>
+<li>🟠 <code>unsupported_leap</code>: Correct answer with weak support chain — final answer may be an unsupported leap</li>
+<li>🟡 <code>unsupported_conclusion_claims</code>: 1/1 conclusion claims lack step support</li>
+</ul>
+<blockquote>
+<p><code>final_answer</code>: &quot;solid&quot;</p>
+</blockquote>
+<ul>
+<li>🟡 <code>ungrounded_mechanism</code>: Mechanism named/described but not connected to case-specific data</li>
+</ul>
+<blockquote>
+<p><code>(mechanism analysis)</code>: &quot;effect&quot;</p>
+</blockquote>
+<ul>
+<li>🔵 <code>study_forensics_overflagging</code>: Agent raised extra findings in solid case: conclusion_exceeds_results, correlation_as_causation</li>
+</ul>
+
+<h3>Reasoning Integrity</h3>
+
+<ul>
+<li>Classification: <strong>brittle</strong></li>
+<li>Load-bearing steps: 0 / 6</li>
+</ul>
+
+<h3>Task Metadata</h3>
+
+<table>
+<thead><tr>
+  <th>Field</th>
+  <th>Value</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td>Task ID</td>
+  <td><code>study-forensics-001</code></td>
+</tr>
+<tr>
+  <td>Type</td>
+  <td>study_forensics</td>
+</tr>
+<tr>
+  <td>Domain</td>
+  <td>study_forensics</td>
+</tr>
+<tr>
+  <td>Difficulty</td>
+  <td>medium</td>
+</tr>
+<tr>
+  <td>Family</td>
+  <td>solid</td>
+</tr>
+<tr>
+  <td>Trap type</td>
+  <td>overflagging_solid_study</td>
+</tr>
+<tr>
+  <td>Ambiguity</td>
+  <td>low</td>
+</tr>
+<tr>
+  <td>Gold label</td>
+  <td>solid</td>
+</tr>
+<tr>
+  <td>Gold confidence</td>
+  <td>high</td>
+</tr>
+<tr>
+  <td>Case type</td>
+  <td>clear</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p><em>Report generated by Agent Arena — local-first AI evaluation engine.</em></p>
+<p><em>Run ID: <code>praxis_study-forensics-001_Claude_Opus_4c1193</code> | 2026-06-10 21:19 UTC</em></p>
+
+</body>
+</html>

@@ -1,0 +1,1152 @@
+{
+  "run_id": "full27_study-forensics-027_Claude_Haiku_87342d",
+  "task": {
+    "id": "study-forensics-027",
+    "title": "Study Forensics: AI coding assistant productivity claims",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A comprehensive study of AI-powered coding assistants reveals transformative productivity gains for software development teams. The research tracked 450 developers using an AI code completion tool over three months, measuring code commits, pull request completion times, and feature delivery velocity. Developers using the AI assistant showed 42 percent faster completion times on coding tasks and produced 35 percent more code commits per week compared to baseline measurements taken before tool adoption. The study concludes that AI coding assistants fundamentally enhance developer productivity and will reshape software engineering workflows across the industry. The researchers recommend immediate enterprise adoption to maintain competitive advantage. Notably, 78 percent of developers initially enrolled in the study continued active use of the tool through the study period, indicating high satisfaction and sustained utility. The productivity gains were consistent across both junior and senior developers, suggesting universal applicability regardless of experience level.\n",
+    "context": "A technology study with severe survivorship bias, no control group, and inappropriate\ngeneralization from voluntary early adopters to enterprise-wide mandates.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment. The 78% retention is framed as success but actually signals selection bias.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "survivorship bias",
+        "variants": [
+          "attrition",
+          "continued active use",
+          "selection bias"
+        ],
+        "functional_descriptions": [
+          "the 22% dropout is non-random and biases results upward"
+        ]
+      },
+      {
+        "keyword": "no control group",
+        "variants": [
+          "baseline measurements",
+          "before adoption",
+          "pre-post comparison"
+        ],
+        "functional_descriptions": [
+          "without concurrent controls, gains could be artifactual"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting 78% retention as evidence of success rather than selection bias",
+      "missing the lack of control group"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "survivorship_bias_overclaim",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "accepting_survivorship_as_evidence"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent detect survivorship bias framed as a success metric?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "78 percent of developers initially enrolled in the study continued active use",
+        "why_it_matters": "22% attrition likely non-random (frustrated users quit), creating survivorship bias.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "compared to baseline measurements taken before tool adoption",
+        "why_it_matters": "No concurrent control group; cannot distinguish tool effect from Hawthorne/seasonality.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "recommend immediate enterprise adoption to maintain competitive advantage",
+        "why_it_matters": "Generalizes from voluntary early adopters to mandatory enterprise users without justification.",
+        "supports_finding": "unsupported_generalization"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The 22% attrition rate is mentioned but dismissed as \"high satisfaction\" rather than\nacknowledged as potential selection bias. No control group exists — productivity gains\ncould reflect Hawthorne effects, seasonal variation, or project complexity differences.\n\"Continued active use\" filters out users who abandoned the tool. The jump from\n\"voluntary adopters in study\" to \"enterprise adoption recommendations\" ignores the\ndifference between self-selected enthusiasts and mandated users.\n",
+    "gold_alternative_reading": "The 22% who discontinued may represent users who found the tool counterproductive.\nEarly voluntary adopters likely differ systematically from reluctant enterprise-mandated\nusers. Without a control group, the 42% improvement could be entirely artifactual.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Excellent overclaim case that tests survivorship-bias detection. The 78% retention\nis a subtle tell — most readers see \"high satisfaction\" but it actually signals\nselection bias. Different failure mode than Case025 (media hype vs methodological flaw).\nFrom Dataset 2 (v0.2_003), adapted to use existing finding types.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"evidence_tier\": \"limited_human\",\n  \"conclusion_tier\": \"human_policy\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The study measured actual productivity outcomes (code commits, PR times, velocity) rather than self-reported satisfaction\",\n    \"The 450 developers represent a reasonably sized cohort for observational measurement\",\n    \"The three-month duration is sufficient to detect sustained effects\",\n    \"Baseline measurements were taken before tool adoption (pre-post design)\",\n    \"The 78% retention rate reflects genuine utility rather than selection bias or sunk-cost effects\"\n  ],\n  \"steps\": [\n    \"EVIDENCE TIER IDENTIFICATION: This is a limited human observational study (pre-post measurement of 450 developers over 3 months). It is NOT a randomized controlled trial, has no control group, and measures behavioral/output metrics rather than causal mechanisms.\",\n    \"CONCLUSION TIER IDENTIFICATION: The text makes sweeping claims about industry-wide transformation ('reshape software engineering workflows across the industry'), enterprise policy ('immediate enterprise adoption'), and universal applicability ('regardless of experience level'). These are human_policy and general_public tier conclusions.\",\n    \"BRIDGE GAP ANALYSIS: The evidence is a single-arm observational study with no control group. The bridge from 'we measured faster commits in 450 developers using tool X' to 'AI coding assistants fundamentally enhance productivity industry-wide' requires: (a) causal inference (not correlation), (b) generalization beyond this specific tool and cohort, (c) exclusion of confounders (learning effects, selection bias, Hawthorne effect, task selection).\",\n    \"CONFOUNDER CHECK: Multiple uncontrolled variables could explain the observed gains: (1) Novelty/Hawthorne effect — developers work harder when observed or using new tools; (2) Selection bias — the 78% who continued may be systematically different from those who dropped out; (3) Task selection — developers may have chosen easier tasks to complete faster; (4) Learning curve — developers improve over time regardless of tool; (5) Measurement artifact — 'code commits' and 'pull requests' may not correlate with actual software quality or business value.\",\n    \"RHETORICAL INFLATION CHECK: The text uses promotional language: 'transformative,' 'fundamentally enhance,' 'reshape,' 'immediate adoption to maintain competitive advantage.' These are active selling claims, not analytical hedges. The language treats correlation as causation and a single observational study as definitive evidence.\",\n    \"RETENTION RATE MISINTERPRETATION: The 78% continuation rate is presented as evidence of 'utility,' but in a study where developers know they are being measured and where tool adoption may be socially encouraged, continuation reflects satisfaction with the tool experience, not necessarily productivity gain. This is a weak proxy for actual impact.\",\n    \"UNIVERSAL APPLICABILITY CLAIM: The statement that gains were 'consistent across both junior and senior developers' is presented without effect-size breakdown, confidence intervals, or interaction analysis. 'Consistent' may mean both groups improved, but not necessarily by the same magnitude or for the same reasons.\",\n    \"CLASSIFICATION DECISION: The primary forensic problem is RHETORICAL INFLATION. The text actively sells a breakthrough narrative ('transformative,' 'reshape industry,' 'immediate adoption') based on a single-arm observational study with no control group and multiple uncontrolled confounders. This is not a cautious, hedged report of limited evidence; it is a promotional claim that exceeds the evidence tier by multiple steps. The evidence supports 'developers completed tasks faster while using this tool' (limited_human, observational). The conclusion implies 'AI coding assistants are a fundamental productivity enhancement that should be adopted enterprise-wide' (human_policy, causal). The gap is bridged by rhetorical assertion, not evidence.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"mechanism_vs_evidence: If the text had been more cautious ('this observational study suggests a possible productivity benefit; controlled trials are needed'), the primary issue would be evidence-tier mismatch rather than overclaim. However, the promotional language ('transformative,' 'reshape,' 'immediate adoption') elevates this to overclaim.\",\n    \"correlation_vs_causation: The core issue is causal inference from observational data, but this is subsumed under overclaim because the text does not merely report correlation — it asserts causation and industry-wide impact.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the study included any control group (e.g., developers not using the tool). The text does not explicitly state 'no control group,' but the phrase 'baseline measurements taken before tool adoption' suggests a pre-post design, not a randomized trial.\",\n    \"Whether 'code commits' and 'pull request completion times' are validated proxies for actual productivity or software quality. Faster commits could reflect lower quality or task selection bias.\",\n    \"Whether the 42% and 35% figures are statistically significant or clinically meaningful. No confidence intervals, p-values, or effect-size context is provided.\",\n    \"Whether the study controlled for confounders such as task difficulty, developer experience, or external factors (e.g., deadline pressure, team changes).\",\n    \"The exact definition of 'productivity' and whether it aligns with business outcomes (e.g., fewer bugs, faster feature delivery, user satisfaction).\"\n  ],\n  \"key_claims\": [\n    \"OVERCLAIM: The text uses promotional language ('transformative,' 'reshape industry,' 'immediate adoption') to assert industry-wide impact based on a single-arm observational study.\",\n    \"CONFOUNDER RISK: No control group and multiple uncontrolled variables (novelty effect, selection bias, task selection, learning curve) make causal inference unreliable.\",\n    \"GENERALIZATION LEAP: A study of 450 developers using one tool over three months does not support claims about 'software engineering workflows across the industry.'\",\n    \"RETENTION BIAS: The 78% continuation rate reflects satisfaction with the tool experience, not necessarily productivity gain, and may reflect selection bias (those who benefited stayed; those who didn't dropped out).\",\n    \"MISSING CONTEXT: No mention of software quality, bug rates, user satisfaction, or business outcomes — only output metrics (commits, PR times) that may not reflect true productivity.\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problems? No. The study is genuinely limited (no control group, observational, single-arm), and the text genuinely uses promotional language. These are real issues.\",\n    \"Did I miss the possibility that this is a solid study? No. A solid study would report results cautiously ('this observational study suggests...'), acknowledge confounders, and avoid industry-wide claims. This text does none of that.\",\n    \"Did I correctly distinguish overclaim from mechanism_vs_evidence? Yes. The text is not cautiously reporting limited evidence; it is actively selling a breakthrough narrative. The rhetorical inflation is the primary forensic finding.\",\n    \"Did I correctly identify the evidence tier? Yes. This is a limited human observational study (pre-post, no control group, 450 developers, 3 months). It is not a clinical trial or RCT.\",\n    \"Did I correctly identify the conclusion tier? Yes. The text makes claims about industry-wide adoption and policy ('immediate enterprise adoption'), which is human_policy tier.\",\n    \"Did I verify the bridge gap? Yes. The bridge from observational data to causal, industry-wide claims is not supported by the evidence or by explicit hedging.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\nThis text exhibits **overclaim** — the primary forensic problem is rhetorical inflation, not merely an evidence-tier mismatch.\n\n**Evidence tier:** Limited human observational study (pre-post measurement of 450 developers, no control group, 3 months).\n\n**Conclusion tier:** Human policy and industry-wide impact (\"reshape software engineering workflows,\" \"immediate enterprise adoption\").\n\n**Bridge gap:** The text asserts causation and universal applicability based on a single-arm observational study with multiple uncontrolled confounders (novelty effect, selection bias, task selection, learning curve). No control group, no causal inference framework, no acknowledgment of limitations.\n\n**Rhetorical inflation:** The language is promotional (\"transformative,\" \"fundamentally enhance,\" \"reshape,\" \"immediate adoption to maintain competitive advantage\"), not analytical. This is active selling, not cautious reporting.\n\n**Key confounders:** Developers may work faster due to novelty, social pressure, or task selection — not because the tool genuinely enhances productivity. The 78% retention rate reflects satisfaction, not productivity gain, and may reflect selection bias.\n\n**Missing context:** No mention of software quality, bug rates, or business outcomes — only output metrics (commits, PR times) that may not correlate with true productivity.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study measured actual productivity outcomes (code commits, PR times, velocity) rather than self-reported satisfaction",
+            "The 450 developers represent a reasonably sized cohort for observational measurement",
+            "The three-month duration is sufficient to detect sustained effects",
+            "Baseline measurements were taken before tool adoption (pre-post design)",
+            "The 78% retention rate reflects genuine utility rather than selection bias or sunk-cost effects"
+          ],
+          "steps": [
+            "EVIDENCE TIER IDENTIFICATION: This is a limited human observational study (pre-post measurement of 450 developers over 3 months). It is NOT a randomized controlled trial, has no control group, and measures behavioral/output metrics rather than causal mechanisms.",
+            "CONCLUSION TIER IDENTIFICATION: The text makes sweeping claims about industry-wide transformation ('reshape software engineering workflows across the industry'), enterprise policy ('immediate enterprise adoption'), and universal applicability ('regardless of experience level'). These are human_policy and general_public tier conclusions.",
+            "BRIDGE GAP ANALYSIS: The evidence is a single-arm observational study with no control group. The bridge from 'we measured faster commits in 450 developers using tool X' to 'AI coding assistants fundamentally enhance productivity industry-wide' requires: (a) causal inference (not correlation), (b) generalization beyond this specific tool and cohort, (c) exclusion of confounders (learning effects, selection bias, Hawthorne effect, task selection).",
+            "CONFOUNDER CHECK: Multiple uncontrolled variables could explain the observed gains: (1) Novelty/Hawthorne effect — developers work harder when observed or using new tools; (2) Selection bias — the 78% who continued may be systematically different from those who dropped out; (3) Task selection — developers may have chosen easier tasks to complete faster; (4) Learning curve — developers improve over time regardless of tool; (5) Measurement artifact — 'code commits' and 'pull requests' may not correlate with actual software quality or business value.",
+            "RHETORICAL INFLATION CHECK: The text uses promotional language: 'transformative,' 'fundamentally enhance,' 'reshape,' 'immediate adoption to maintain competitive advantage.' These are active selling claims, not analytical hedges. The language treats correlation as causation and a single observational study as definitive evidence.",
+            "RETENTION RATE MISINTERPRETATION: The 78% continuation rate is presented as evidence of 'utility,' but in a study where developers know they are being measured and where tool adoption may be socially encouraged, continuation reflects satisfaction with the tool experience, not necessarily productivity gain. This is a weak proxy for actual impact.",
+            "UNIVERSAL APPLICABILITY CLAIM: The statement that gains were 'consistent across both junior and senior developers' is presented without effect-size breakdown, confidence intervals, or interaction analysis. 'Consistent' may mean both groups improved, but not necessarily by the same magnitude or for the same reasons.",
+            "CLASSIFICATION DECISION: The primary forensic problem is RHETORICAL INFLATION. The text actively sells a breakthrough narrative ('transformative,' 'reshape industry,' 'immediate adoption') based on a single-arm observational study with no control group and multiple uncontrolled confounders. This is not a cautious, hedged report of limited evidence; it is a promotional claim that exceeds the evidence tier by multiple steps. The evidence supports 'developers completed tasks faster while using this tool' (limited_human, observational). The conclusion implies 'AI coding assistants are a fundamental productivity enhancement that should be adopted enterprise-wide' (human_policy, causal). The gap is bridged by rhetorical assertion, not evidence."
+          ],
+          "alternative_hypotheses": [
+            "mechanism_vs_evidence: If the text had been more cautious ('this observational study suggests a possible productivity benefit; controlled trials are needed'), the primary issue would be evidence-tier mismatch rather than overclaim. However, the promotional language ('transformative,' 'reshape,' 'immediate adoption') elevates this to overclaim.",
+            "correlation_vs_causation: The core issue is causal inference from observational data, but this is subsumed under overclaim because the text does not merely report correlation — it asserts causation and industry-wide impact."
+          ],
+          "uncertainties": [
+            "Whether the study included any control group (e.g., developers not using the tool). The text does not explicitly state 'no control group,' but the phrase 'baseline measurements taken before tool adoption' suggests a pre-post design, not a randomized trial.",
+            "Whether 'code commits' and 'pull request completion times' are validated proxies for actual productivity or software quality. Faster commits could reflect lower quality or task selection bias.",
+            "Whether the 42% and 35% figures are statistically significant or clinically meaningful. No confidence intervals, p-values, or effect-size context is provided.",
+            "Whether the study controlled for confounders such as task difficulty, developer experience, or external factors (e.g., deadline pressure, team changes).",
+            "The exact definition of 'productivity' and whether it aligns with business outcomes (e.g., fewer bugs, faster feature delivery, user satisfaction)."
+          ],
+          "self_check": [
+            "Did I overstate the problems? No. The study is genuinely limited (no control group, observational, single-arm), and the text genuinely uses promotional language. These are real issues.",
+            "Did I miss the possibility that this is a solid study? No. A solid study would report results cautiously ('this observational study suggests...'), acknowledge confounders, and avoid industry-wide claims. This text does none of that.",
+            "Did I correctly distinguish overclaim from mechanism_vs_evidence? Yes. The text is not cautiously reporting limited evidence; it is actively selling a breakthrough narrative. The rhetorical inflation is the primary forensic finding.",
+            "Did I correctly identify the evidence tier? Yes. This is a limited human observational study (pre-post, no control group, 450 developers, 3 months). It is not a clinical trial or RCT.",
+            "Did I correctly identify the conclusion tier? Yes. The text makes claims about industry-wide adoption and policy ('immediate enterprise adoption'), which is human_policy tier.",
+            "Did I verify the bridge gap? Yes. The bridge from observational data to causal, industry-wide claims is not supported by the evidence or by explicit hedging."
+          ],
+          "key_claims": [
+            "OVERCLAIM: The text uses promotional language ('transformative,' 'reshape industry,' 'immediate adoption') to assert industry-wide impact based on a single-arm observational study.",
+            "CONFOUNDER RISK: No control group and multiple uncontrolled variables (novelty effect, selection bias, task selection, learning curve) make causal inference unreliable.",
+            "GENERALIZATION LEAP: A study of 450 developers using one tool over three months does not support claims about 'software engineering workflows across the industry.'",
+            "RETENTION BIAS: The 78% continuation rate reflects satisfaction with the tool experience, not necessarily productivity gain, and may reflect selection bias (those who benefited stayed; those who didn't dropped out).",
+            "MISSING CONTEXT: No mention of software quality, bug rates, user satisfaction, or business outcomes — only output metrics (commits, PR times) that may not reflect true productivity."
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 20527
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.09,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.8,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.7
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "CLASSIFICATION DECISION: The primary forensic problem is RHETORICAL INFLATION. The text actively sells a breakthrough narrative ('transformative,' 're",
+              "source_field": "steps[7]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.75)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The study measured actual productivity outcomes (code commits, PR times, velocity) rather than self-reported satisfaction",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether the study included any control group (e.g., developers not using the tool). The text does not explicitly state 'no control group,' but the phrase 'baseline measurements taken before tool adoption' suggests a pre-post design, not a randomized trial.",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The exact definition of 'productivity' and whether it aligns with business outcomes (e.g., fewer bugs, faster feature delivery, user satisfaction).",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence: If the text had been more cautious ('this observational study suggests a possible productivity benefit; controlled trials are needed'), the primary issue would be evidence-tier ",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "Did I miss the possibility that this is a solid study? No. A solid study would report results cautiously ('this observational study suggests...'), acknowledge confounders, and avoid industry-wide clai",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 self-check items",
+            "Self-check quality: 0 deep, 6 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.7,
+          "weight": 10,
+          "weighted_score": 7.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.74, 1006 words",
+            "Verbose (1006 words)"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "domized controlled trial, has no control group, and measures behavioral/outp",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no control group' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The exact definition of 'productivity' and whether it aligns...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The exact definition of 'productivity' and whether it aligns with business outcomes (e.g., fewer bugs, faster feature delivery, user satisfaction).",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "oververbose_without_gain",
+          "severity": "stylistic",
+          "description": "Output is verbose (1006 words, density 0.74)",
+          "evidence": [
+            {
+              "text": "1006 words, density 0.74",
+              "source_field": "(computed)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Length/density metrics",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "communication_efficiency",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['bias', 'effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/17 content words)",
+          "evidence": [
+            {
+              "text": "OVERCLAIM: The text uses promotional language ('transformative,' 'reshape industry,' 'immediate adoption') to assert industry-wide impact based on a single-arm observational study.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/19 content words)",
+          "evidence": [
+            {
+              "text": "CONFOUNDER RISK: No control group and multiple uncontrolled variables (novelty effect, selection bias, task selection, learning curve) make causal inference unreliable.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (1/16 content words)",
+          "evidence": [
+            {
+              "text": "GENERALIZATION LEAP: A study of 450 developers using one tool over three months does not support claims about 'software engineering workflows across the industry.'",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/21 content words)",
+          "evidence": [
+            {
+              "text": "RETENTION BIAS: The 78% continuation rate reflects satisfaction with the tool experience, not necessarily productivity gain, and may reflect selection bias (those who benefited stayed; those who didn't dropped out).",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/17 content words)",
+          "evidence": [
+            {
+              "text": "MISSING CONTEXT: No mention of software quality, bug rates, user satisfaction, or business outcomes — only output metrics (commits, PR times) that may not reflect true productivity.",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 5 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The exact definition of 'productivity' and whether it aligns with business outcomes (e.g., fewer bugs, faster feature delivery, user satisfaction).",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias, effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study measured actual productivity outcomes (code commits, PR times, velocity) rather than self-reported satisfaction",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 450 developers represent a reasonably sized cohort for observational measurement",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The three-month duration is sufficient to detect sustained effects",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Baseline measurements were taken before tool adoption (pre-post design)",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 78% retention rate reflects genuine utility rather than selection bias or sunk-cost effects",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "EVIDENCE TIER IDENTIFICATION: This is a limited human observational study (pre-post measurement of 450 developers over 3 months). It is NOT a randomized controlled trial, has no control group, and measures behavioral/output metrics rather than causal mechanisms.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CONCLUSION TIER IDENTIFICATION: The text makes sweeping claims about industry-wide transformation ('reshape software engineering workflows across the industry'), enterprise policy ('immediate enterprise adoption'), and universal applicability ('regardless of experience level'). These are human_policy and general_public tier conclusions.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "BRIDGE GAP ANALYSIS: The evidence is a single-arm observational study with no control group. The bridge from 'we measured faster commits in 450 developers using tool X' to 'AI coding assistants fundamentally enhance productivity industry-wide' requires: (a) causal inference (not correlation), (b) generalization beyond this specific tool and cohort, (c) exclusion of confounders (learning effects, selection bias, Hawthorne effect, task selection).",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CONFOUNDER CHECK: Multiple uncontrolled variables could explain the observed gains: (1) Novelty/Hawthorne effect — developers work harder when observed or using new tools; (2) Selection bias — the 78% who continued may be systematically different from those who dropped out; (3) Task selection — developers may have chosen easier tasks to complete faster; (4) Learning curve — developers improve over time regardless of tool; (5) Measurement artifact — 'code commits' and 'pull requests' may not correlate with actual software quality or business value.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "RHETORICAL INFLATION CHECK: The text uses promotional language: 'transformative,' 'fundamentally enhance,' 'reshape,' 'immediate adoption to maintain competitive advantage.' These are active selling claims, not analytical hedges. The language treats correlation as causation and a single observational study as definitive evidence.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "RETENTION RATE MISINTERPRETATION: The 78% continuation rate is presented as evidence of 'utility,' but in a study where developers know they are being measured and where tool adoption may be socially encouraged, continuation reflects satisfaction with the tool experience, not necessarily productivity gain. This is a weak proxy for actual impact.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "UNIVERSAL APPLICABILITY CLAIM: The statement that gains were 'consistent across both junior and senior developers' is presented without effect-size breakdown, confidence intervals, or interaction analysis. 'Consistent' may mean both groups improved, but not necessarily by the same magnitude or for the same reasons.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CLASSIFICATION DECISION: The primary forensic problem is RHETORICAL INFLATION. The text actively sells a breakthrough narrative ('transformative,' 'reshape industry,' 'immediate adoption') based on a single-arm observational study with no control group and multiple uncontrolled confounders. This is not a cautious, hedged report of limited evidence; it is a promotional claim that exceeds the evidence tier by multiple steps. The evidence supports 'developers completed tasks faster while using this tool' (limited_human, observational). The conclusion implies 'AI coding assistants are a fundamental productivity enhancement that should be adopted enterprise-wide' (human_policy, causal). The gap is bridged by rhetorical assertion, not evidence.",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "OVERCLAIM: The text uses promotional language ('transformative,' 'reshape industry,' 'immediate adoption') to assert industry-wide impact based on a single-arm observational study.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CONFOUNDER RISK: No control group and multiple uncontrolled variables (novelty effect, selection bias, task selection, learning curve) make causal inference unreliable.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "GENERALIZATION LEAP: A study of 450 developers using one tool over three months does not support claims about 'software engineering workflows across the industry.'",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "RETENTION BIAS: The 78% continuation rate reflects satisfaction with the tool experience, not necessarily productivity gain, and may reflect selection bias (those who benefited stayed; those who didn't dropped out).",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "MISSING CONTEXT: No mention of software quality, bug rates, user satisfaction, or business outcomes — only output metrics (commits, PR times) that may not reflect true productivity.",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence: If the text had been more cautious ('this observational study suggests a possible productivity benefit; controlled trials are needed'), the primary issue would be evidence-tier mismatch rather than overclaim. However, the promotional language ('transformative,' 'reshape,' 'immediate adoption') elevates this to overclaim.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation: The core issue is causal inference from observational data, but this is subsumed under overclaim because the text does not merely report correlation — it asserts causation and industry-wide impact.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the study included any control group (e.g., developers not using the tool). The text does not explicitly state 'no control group,' but the phrase 'baseline measurements taken before tool adoption' suggests a pre-post design, not a randomized trial.",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether 'code commits' and 'pull request completion times' are validated proxies for actual productivity or software quality. Faster commits could reflect lower quality or task selection bias.",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 42% and 35% figures are statistically significant or clinically meaningful. No confidence intervals, p-values, or effect-size context is provided.",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the study controlled for confounders such as task difficulty, developer experience, or external factors (e.g., deadline pressure, team changes).",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The exact definition of 'productivity' and whether it aligns with business outcomes (e.g., fewer bugs, faster feature delivery, user satisfaction).",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problems? No. The study is genuinely limited (no control group, observational, single-arm), and the text genuinely uses promotional language. These are real issues.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss the possibility that this is a solid study? No. A solid study would report results cautiously ('this observational study suggests...'), acknowledge confounders, and avoid industry-wide claims. This text does none of that.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly distinguish overclaim from mechanism_vs_evidence? Yes. The text is not cautiously reporting limited evidence; it is actively selling a breakthrough narrative. The rhetorical inflation is the primary forensic finding.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly identify the evidence tier? Yes. This is a limited human observational study (pre-post, no control group, 450 developers, 3 months). It is not a clinical trial or RCT.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly identify the conclusion tier? Yes. The text makes claims about industry-wide adoption and policy ('immediate enterprise adoption'), which is human_policy tier.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I verify the bridge gap? Yes. The bridge from observational data to causal, industry-wide claims is not supported by the evidence or by explicit hedging.",
+            "source_field": "self_check[5]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.4166666666666667
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.42857142857142855
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 5,
+            "relation": "checks",
+            "strength": 0.26666666666666666
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.26666666666666666
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 12,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 12,
+            "relation": "checks",
+            "strength": 0.42105263157894735
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 5,
+            "relation": "checks",
+            "strength": 0.47058823529411764
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 12,
+            "relation": "checks",
+            "strength": 0.29411764705882354
+          },
+          {
+            "source_idx": 29,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.625
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          24
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias",
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'overclaim...'"
+        ],
+        "unsupported_claims": [
+          "overclaim"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "named_not_explained",
+        "oververbose_without_gain",
+        "named_not_explained",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph confirms conclusion grounding",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.75)",
+        "5/5 substantive assumptions",
+        "5 uncertainties (5 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "6 self-check items",
+        "Self-check quality: 0 deep, 6 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.74, 1006 words",
+        "Verbose (1006 words)"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T18:00:20.008656+00:00",
+  "metadata": {}
+}

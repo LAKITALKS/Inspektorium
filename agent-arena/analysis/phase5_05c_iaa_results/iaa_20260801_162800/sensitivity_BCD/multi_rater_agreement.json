@@ -1,0 +1,11 @@
+{
+  "statistic": "fleiss_kappa",
+  "fleiss_kappa": 0.8568019093078759,
+  "all_raters_exact_agreement": 0.85,
+  "annotators": [
+    "B",
+    "C",
+    "D"
+  ],
+  "note": "Fleiss chosen for fixed complete-rater design; uncalibrated proxy IAA"
+}

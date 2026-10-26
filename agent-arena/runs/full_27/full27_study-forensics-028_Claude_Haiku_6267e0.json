@@ -1,0 +1,932 @@
+{
+  "run_id": "full27_study-forensics-028_Claude_Haiku_6267e0",
+  "task": {
+    "id": "study-forensics-028",
+    "title": "Study Forensics: NAD+ restoration reverses Alzheimer's in mice",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "Researchers studying Alzheimer's disease in genetically engineered mice discovered that severe drops in a molecule called NAD+ disrupt the brain's energy balance. They treated mice that already had advanced Alzheimer's by restoring NAD+ levels to a healthy range using a compound. The treatment repaired brain damage and the animals regained normal memory performance. The scientists said these results suggest that boosting NAD+ could move Alzheimer's therapy beyond slowing decline toward meaningful recovery and called for clinical trials to see if the approach will translate to patients.\n",
+    "context": "Classic animal-to-human leap in neurodegeneration. Dramatic reversal of\npathology in mice (memory fully restored) paired with a suggestion of\nhuman therapeutic recovery. The mechanism is demonstrated in animals only.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The summary describes a preclinical study in which NAD+ restoration reversed Alzheimer's pathology and restored memory in genetically engineered mice. The researchers suggest this could lead to human therapies, but no human evidence exists. The mechanism is confined to an animal model.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "genetically engineered mice",
+          "mouse model"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "translation gap",
+        "variants": [
+          "translate to patients",
+          "clinical trials",
+          "meaningful recovery"
+        ],
+        "functional_descriptions": [
+          "therapeutic claims go beyond preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating dramatic animal results as sufficient for human claims",
+      "classifying as generic overclaim instead of mechanism_vs_evidence"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish dramatic preclinical reversal from evidence of human therapeutic benefit?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "Classic animal-to-human mechanism case. NAD+ restoration reverses Alzheimer's in mice with dramatic results, but no human evidence exists for the suggested therapeutic application.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "restoring NAD+ levels to a healthy range using a compound... the animals regained normal memory performance",
+        "why_it_matters": "Shows strong mechanistic success in mice, not humans.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "results suggest that boosting NAD+ could move Alzheimer's therapy beyond slowing decline toward meaningful recovery",
+        "why_it_matters": "Implies a human therapeutic leap without clinical evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The article reports that restoring NAD+ reversed pathology and memory deficits\nin mouse models, but explicitly notes that further research and trials are needed\nto determine whether this finding can translate to people. The main weakness is\nthat the mechanism is demonstrated in animals, yet human therapeutic implications\nare suggested without evidence. The phrase \"meaningful recovery\" implies a\ntherapeutic promise that goes beyond preclinical data.\n",
+    "gold_alternative_reading": "This could be read as cautious optimism about an interesting preclinical result\nrather than an overclaim; however, the implication of human recovery still goes\nbeyond the evidence.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Shape A of mechanism_vs_evidence: animal model implying human therapeutic reversal.\nTests whether models recognise that the mechanistic success is confined to animals\nand avoid simply branding the case as hype. Parallels Case013 (gut microbes) and\nCase024 (Klotho) but in neurodegeneration domain with stronger therapeutic claims.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The study was conducted in genetically engineered mice with Alzheimer's-like pathology\",\n    \"The mice showed measurable cognitive recovery after NAD+ restoration\",\n    \"The text implies this could translate to human therapeutic benefit\",\n    \"No human clinical data are presented or referenced\",\n    \"The call for clinical trials acknowledges the gap but does not close it\"\n  ],\n  \"steps\": [\n    \"1. EVIDENCE TIER IDENTIFICATION: The study is conducted in animal models (genetically engineered mice). This is Tier 2 evidence.\",\n    \"2. CONCLUSION TIER IDENTIFICATION: The text implies human therapeutic benefit ('move Alzheimer's therapy beyond slowing decline toward meaningful recovery') and calls for clinical trials in patients. This is Tier 5 (human therapeutic) language.\",\n    \"3. BRIDGE STEP DETECTION: There is a substantial gap between animal models and human clinical application. The text does not present human data, biomarker studies, or mechanistic evidence that would bridge this gap.\",\n    \"4. HEDGE ANALYSIS: The phrase 'suggest that' and 'called for clinical trials to see if the approach will translate' acknowledges uncertainty about human applicability. However, these hedges do not constitute evidence that the mechanism works in humans. They are decorative uncertainty—they acknowledge the gap without closing it.\",\n    \"5. MECHANISM VS. EVIDENCE CLASSIFICATION: The text describes a mechanistic finding (NAD+ restoration repairs brain damage in mice) and extrapolates to human therapeutic potential without direct human evidence. This is a classic mechanism_vs_evidence pattern: strong animal data, weak bridge to humans.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as 'solid' if the text were framed as 'mouse study suggests mechanism; human trials needed' without implying therapeutic benefit. However, the language 'move Alzheimer's therapy toward meaningful recovery' implies human benefit, which exceeds the evidence tier.\",\n    \"Could classify as 'overclaim' if the text made stronger certainty claims (e.g., 'will work in humans'). However, the hedging language prevents this classification; the issue is the tier mismatch, not false certainty.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the genetically engineered mice fully recapitulate human Alzheimer's pathology (a known limitation of mouse models not addressed in the text)\",\n    \"Whether NAD+ depletion is a primary driver or secondary consequence of Alzheimer's in humans\",\n    \"Whether the compound used is safe and bioavailable in humans\",\n    \"The specific nature of 'brain damage repair' — whether this is structural, functional, or biomarker-based\"\n  ],\n  \"key_claims\": [\n    \"Mouse study shows NAD+ restoration can reverse cognitive decline in advanced Alzheimer's-like disease\",\n    \"Text implies this could translate to human therapeutic recovery, not just slowing decline\",\n    \"No human evidence is presented; the bridge from animal to human is acknowledged as needing clinical trials but not yet supported\",\n    \"The hedging language ('suggest,' 'could,' 'clinical trials needed') is appropriate but does not resolve the evidence-tier gap\"\n  ],\n  \"self_check\": [\n    \"Did I overclassify this as mechanism_vs_evidence? No — the text explicitly moves from animal findings to human therapeutic implications without human data. This is the definition of mechanism_vs_evidence.\",\n    \"Is the hedging language sufficient to make this 'solid'? No — hedging acknowledges the gap but does not close it. A solid study would either (a) present human data, or (b) frame the finding as 'mechanism in mice; human translation unknown.'\",\n    \"Did I miss any human data? Re-read: no human trials, biomarkers, or observational studies are mentioned.\",\n    \"Is this an unfair classification? No — the text's own call for clinical trials confirms that human evidence is absent and needed.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\nThis is a **mechanism_vs_evidence** case. The study provides strong animal evidence (Tier 2) that NAD+ restoration reverses cognitive decline in mice with Alzheimer's-like disease. However, the text then implies human therapeutic benefit (\"move Alzheimer's therapy toward meaningful recovery\") without presenting any human data (Tier 5). \n\nThe hedging language (\"suggest,\" \"could,\" \"clinical trials needed\") is appropriate and shows scientific caution, but **caution alone does not bridge the evidence gap**. The text acknowledges the need for human trials, which confirms that the current evidence does not yet support human therapeutic claims.\n\n**For a solid classification**, the text would need to either present human data or frame the finding as purely mechanistic (\"reveals a potential mechanism in mice; human applicability unknown\").",
+        "parsed": {
+          "final_answer": "mechanism_vs_evidence",
+          "assumptions": [
+            "The study was conducted in genetically engineered mice with Alzheimer's-like pathology",
+            "The mice showed measurable cognitive recovery after NAD+ restoration",
+            "The text implies this could translate to human therapeutic benefit",
+            "No human clinical data are presented or referenced",
+            "The call for clinical trials acknowledges the gap but does not close it"
+          ],
+          "steps": [
+            "1. EVIDENCE TIER IDENTIFICATION: The study is conducted in animal models (genetically engineered mice). This is Tier 2 evidence.",
+            "2. CONCLUSION TIER IDENTIFICATION: The text implies human therapeutic benefit ('move Alzheimer's therapy beyond slowing decline toward meaningful recovery') and calls for clinical trials in patients. This is Tier 5 (human therapeutic) language.",
+            "3. BRIDGE STEP DETECTION: There is a substantial gap between animal models and human clinical application. The text does not present human data, biomarker studies, or mechanistic evidence that would bridge this gap.",
+            "4. HEDGE ANALYSIS: The phrase 'suggest that' and 'called for clinical trials to see if the approach will translate' acknowledges uncertainty about human applicability. However, these hedges do not constitute evidence that the mechanism works in humans. They are decorative uncertainty—they acknowledge the gap without closing it.",
+            "5. MECHANISM VS. EVIDENCE CLASSIFICATION: The text describes a mechanistic finding (NAD+ restoration repairs brain damage in mice) and extrapolates to human therapeutic potential without direct human evidence. This is a classic mechanism_vs_evidence pattern: strong animal data, weak bridge to humans."
+          ],
+          "alternative_hypotheses": [
+            "Could classify as 'solid' if the text were framed as 'mouse study suggests mechanism; human trials needed' without implying therapeutic benefit. However, the language 'move Alzheimer's therapy toward meaningful recovery' implies human benefit, which exceeds the evidence tier.",
+            "Could classify as 'overclaim' if the text made stronger certainty claims (e.g., 'will work in humans'). However, the hedging language prevents this classification; the issue is the tier mismatch, not false certainty."
+          ],
+          "uncertainties": [
+            "Whether the genetically engineered mice fully recapitulate human Alzheimer's pathology (a known limitation of mouse models not addressed in the text)",
+            "Whether NAD+ depletion is a primary driver or secondary consequence of Alzheimer's in humans",
+            "Whether the compound used is safe and bioavailable in humans",
+            "The specific nature of 'brain damage repair' — whether this is structural, functional, or biomarker-based"
+          ],
+          "self_check": [
+            "Did I overclassify this as mechanism_vs_evidence? No — the text explicitly moves from animal findings to human therapeutic implications without human data. This is the definition of mechanism_vs_evidence.",
+            "Is the hedging language sufficient to make this 'solid'? No — hedging acknowledges the gap but does not close it. A solid study would either (a) present human data, or (b) frame the finding as 'mechanism in mice; human translation unknown.'",
+            "Did I miss any human data? Re-read: no human trials, biomarkers, or observational studies are mentioned.",
+            "Is this an unfair classification? No — the text's own call for clinical trials confirms that human evidence is absent and needed."
+          ],
+          "key_claims": [
+            "Mouse study shows NAD+ restoration can reverse cognitive decline in advanced Alzheimer's-like disease",
+            "Text implies this could translate to human therapeutic recovery, not just slowing decline",
+            "No human evidence is presented; the bridge from animal to human is acknowledged as needing clinical trials but not yet supported",
+            "The hedging language ('suggest,' 'could,' 'clinical trials needed') is appropriate but does not resolve the evidence-tier gap"
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11963
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.3,
+        "structural_reasoning": 0.6699999999999999,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.6000000000000001,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.3,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 5",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6699999999999999,
+          "weight": 8,
+          "weighted_score": 5.4,
+          "evidence": [
+            {
+              "text": "5. MECHANISM VS. EVIDENCE CLASSIFICATION: The text describes a mechanistic finding (NAD+ restoration repairs brain damage in mice) and extrapolates to",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 reasoning steps",
+            "Low step utility: 1/5 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.75)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The study was conducted in genetically engineered mice with Alzheimer's-like pathology",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether the genetically engineered mice fully recapitulate human Alzheimer's pathology (a known limitation of mouse models not addressed in the text)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The specific nature of 'brain damage repair' — whether this is structural, functional, or biomarker-based",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could classify as 'solid' if the text were framed as 'mouse study suggests mechanism; human trials needed' without implying therapeutic benefit. However, the language 'move Alzheimer's therapy toward ",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Is the hedging language sufficient to make this 'solid'? No — hedging acknowledges the gap but does not close it. A solid study would either (a) present human data, or (b) frame the finding as 'mechan",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 526 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "on: the study is conducted in animal models (genetically engineered mice",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'animal model' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The specific nature of 'brain damage repair' — whether this ...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The specific nature of 'brain damage repair' — whether this is structural, functional, or biomarker-based",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "Mouse study shows NAD+ restoration can reverse cognitive decline in advanced Alzheimer's-like disease",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Text implies this could translate to human therapeutic recovery, not just slowing decline",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (1/11 content words)",
+          "evidence": [
+            {
+              "text": "No human evidence is presented; the bridge from animal to human is acknowledged as needing clinical trials but not yet supported",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The hedging language ('suggest,' 'could,' 'clinical trials needed') is appropriate but does not resolve the evidence-tier gap",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 4 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The specific nature of 'brain damage repair' — whether this is structural, functional, or biomarker-based",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted in genetically engineered mice with Alzheimer's-like pathology",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The mice showed measurable cognitive recovery after NAD+ restoration",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text implies this could translate to human therapeutic benefit",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No human clinical data are presented or referenced",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The call for clinical trials acknowledges the gap but does not close it",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "1. EVIDENCE TIER IDENTIFICATION: The study is conducted in animal models (genetically engineered mice). This is Tier 2 evidence.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "2. CONCLUSION TIER IDENTIFICATION: The text implies human therapeutic benefit ('move Alzheimer's therapy beyond slowing decline toward meaningful recovery') and calls for clinical trials in patients. This is Tier 5 (human therapeutic) language.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "3. BRIDGE STEP DETECTION: There is a substantial gap between animal models and human clinical application. The text does not present human data, biomarker studies, or mechanistic evidence that would bridge this gap.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "4. HEDGE ANALYSIS: The phrase 'suggest that' and 'called for clinical trials to see if the approach will translate' acknowledges uncertainty about human applicability. However, these hedges do not constitute evidence that the mechanism works in humans. They are decorative uncertainty—they acknowledge the gap without closing it.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "5. MECHANISM VS. EVIDENCE CLASSIFICATION: The text describes a mechanistic finding (NAD+ restoration repairs brain damage in mice) and extrapolates to human therapeutic potential without direct human evidence. This is a classic mechanism_vs_evidence pattern: strong animal data, weak bridge to humans.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mouse study shows NAD+ restoration can reverse cognitive decline in advanced Alzheimer's-like disease",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Text implies this could translate to human therapeutic recovery, not just slowing decline",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No human evidence is presented; the bridge from animal to human is acknowledged as needing clinical trials but not yet supported",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The hedging language ('suggest,' 'could,' 'clinical trials needed') is appropriate but does not resolve the evidence-tier gap",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'solid' if the text were framed as 'mouse study suggests mechanism; human trials needed' without implying therapeutic benefit. However, the language 'move Alzheimer's therapy toward meaningful recovery' implies human benefit, which exceeds the evidence tier.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'overclaim' if the text made stronger certainty claims (e.g., 'will work in humans'). However, the hedging language prevents this classification; the issue is the tier mismatch, not false certainty.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the genetically engineered mice fully recapitulate human Alzheimer's pathology (a known limitation of mouse models not addressed in the text)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether NAD+ depletion is a primary driver or secondary consequence of Alzheimer's in humans",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the compound used is safe and bioavailable in humans",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific nature of 'brain damage repair' — whether this is structural, functional, or biomarker-based",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overclassify this as mechanism_vs_evidence? No — the text explicitly moves from animal findings to human therapeutic implications without human data. This is the definition of mechanism_vs_evidence.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the hedging language sufficient to make this 'solid'? No — hedging acknowledges the gap but does not close it. A solid study would either (a) present human data, or (b) frame the finding as 'mechanism in mice; human translation unknown.'",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any human data? Re-read: no human trials, biomarkers, or observational studies are mentioned.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this an unfair classification? No — the text's own call for clinical trials confirms that human evidence is absent and needed.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.42857142857142855
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.8333333333333334
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.6
+          },
+          {
+            "source_idx": 20,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.35714285714285715
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.36363636363636365
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          19
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'mechanism_vs_evidence...' <- step 9 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "mechanism_vs_evidence",
+        "label_correct": true,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 5",
+        "Reasoning graph confirms conclusion grounding",
+        "5 reasoning steps",
+        "Low step utility: 1/5 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.75)",
+        "5/5 substantive assumptions",
+        "4 uncertainties (4 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.71, 526 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:04:05.613013+00:00",
+  "metadata": {}
+}

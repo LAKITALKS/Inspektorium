@@ -1,0 +1,89 @@
+{
+  "schema": "aa-p10-live-smoke-expectations/1.0",
+  "note": "Held separately from model inputs; never read by the product code or sent to a model. AI-authored development expectations, not gold labels; disputed points stay disputed.",
+  "cases": {
+    "LS-01": {
+      "expected_composite": [
+        "supported"
+      ],
+      "not_acceptable": [
+        "contradicted"
+      ],
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "boundary": "Randomized comparison supports better reading proficiency in this population; no broader claim."
+    },
+    "LS-02": {
+      "expected_composite": [
+        "unknown",
+        "unsupported"
+      ],
+      "not_acceptable": [
+        "supported"
+      ],
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "boundary": "In-vitro cell kill does not establish treatment of patients (species/population transfer); expected derived label mechanism_vs_evidence or overclaim."
+    },
+    "LS-03": {
+      "expected_composite": [
+        "unknown",
+        "unsupported"
+      ],
+      "not_acceptable": [
+        "supported"
+      ],
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "boundary": "LDL reduction component supported; heart-attack component not measured (no events tracked), so the AND claim is not supported."
+    },
+    "LS-04": {
+      "expected_composite": [
+        "supported"
+      ],
+      "not_acceptable": [
+        "contradicted"
+      ],
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "boundary": "Reading-progress alternative supported by the randomized trial; absenteeism not addressed. A correct OR is supported if one alternative is supported. Disputed: whether an unaddressed OR component is treated as nonmaterial."
+    },
+    "LS-05": {
+      "expected_composite": [
+        "unknown"
+      ],
+      "not_acceptable": [
+        "contradicted",
+        "supported"
+      ],
+      "acceptable_status": [
+        "REVIEW_REQUIRED",
+        "READY_FOR_RELEASE"
+      ],
+      "boundary": "No serious adverse events in 60 people over four weeks neither establishes nor refutes long-term liver damage; absence of evidence is not refutation."
+    },
+    "LS-06": {
+      "expected_composite": [
+        "contradicted",
+        "unknown"
+      ],
+      "not_acceptable": [
+        "supported"
+      ],
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "boundary": "Observational association favours breakfast eaters; RCT meta-analysis found no weight loss from assigned breakfast. Causal weight-loss claim is contradicted by the randomized evidence; conflict may trigger review."
+    }
+  },
+  "state_vocabulary": "AA-P8/1.0 ScientificState: supported, unsupported, contradicted, unknown"
+}

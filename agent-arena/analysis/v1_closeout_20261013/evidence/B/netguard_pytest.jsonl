@@ -1,0 +1,1 @@
+{"pid": 89224, "argv": ["-c"], "counts": {"httpx.Client.send": 0, "httpx.HTTPTransport.handle_request": 0, "httpx.AsyncClient.send": 0, "httpx.AsyncHTTPTransport.handle_async_request": 0, "socket.connect": 0, "socket.connect_ex": 0, "socket.create_connection": 0}, "total": 0, "details": []}

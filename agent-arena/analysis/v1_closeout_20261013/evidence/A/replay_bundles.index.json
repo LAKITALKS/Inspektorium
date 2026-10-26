@@ -1,0 +1,83 @@
+{
+ "archive": "replay_bundles.tar.gz",
+ "archive_sha256": "6e539557b3121c6a6927df08cf26f017ab86d12c19e63e099bd4920adb6e928d",
+ "description": "Offline replays (agent_arena 1.0.0, code commit 5560e95) of Sonnet LR-02, Sonnet LR-03 and Haiku LR-03 from a scratch COPY of analysis/c25_p9_20261011/live_retest; no model call. Loose report.md would trip git diff --check, so the bundles are stored only inside this archive.",
+ "extract": "tar -xzf replay_bundles.tar.gz  (then: agent-arena audit inspect --bundle replay_bundles/<slot>/<revision>)",
+ "members": [
+  {
+   "path": "replay_bundles/claude-haiku-5-5-LR-03/0525da7c-e6d1-4b09-b315-f7d33d96accb/decision.json",
+   "bytes": 4268,
+   "sha256": "d340f4141c8f9ddc8d87b09771d075524220b273bce8981b81c2e956386c4fb5"
+  },
+  {
+   "path": "replay_bundles/claude-haiku-5-5-LR-03/0525da7c-e6d1-4b09-b315-f7d33d96accb/manifest.json",
+   "bytes": 9923,
+   "sha256": "efde238fd86e030808aa6e6c6d2a521a71afabdbcb9b1d772757809b85950bc7"
+  },
+  {
+   "path": "replay_bundles/claude-haiku-5-5-LR-03/0525da7c-e6d1-4b09-b315-f7d33d96accb/record.json",
+   "bytes": 213858,
+   "sha256": "f9f3849c43565729e07b501bf4978384699a1f8335f94c85f28f083c096c0fba"
+  },
+  {
+   "path": "replay_bundles/claude-haiku-5-5-LR-03/0525da7c-e6d1-4b09-b315-f7d33d96accb/report.html",
+   "bytes": 57924,
+   "sha256": "464f7993758671e8d6cea7739c5f3bcafd12b763a04963fb5ab774d8033b7a80"
+  },
+  {
+   "path": "replay_bundles/claude-haiku-5-5-LR-03/0525da7c-e6d1-4b09-b315-f7d33d96accb/report.md",
+   "bytes": 41800,
+   "sha256": "773a99e3bf2b052cee4ffd8fb7f6251629c02a4788235bcf6935fb3b12cc9f27"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-02/d66be275-bc08-406e-8a29-d9e627d93751/decision.json",
+   "bytes": 4073,
+   "sha256": "0e5aa4f4ed36205a89c1a9ac1cdb1df0889bf2858357179cfb22ecacea801284"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-02/d66be275-bc08-406e-8a29-d9e627d93751/manifest.json",
+   "bytes": 9935,
+   "sha256": "8f691c6309f7732ef0d99a61fee39d03d90c89cd4e234eee9458109c3e325de6"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-02/d66be275-bc08-406e-8a29-d9e627d93751/record.json",
+   "bytes": 155609,
+   "sha256": "794e97f552c9041e94002eda8daf225e4c87810d1e0fde4d876cae6262665a62"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-02/d66be275-bc08-406e-8a29-d9e627d93751/report.html",
+   "bytes": 50625,
+   "sha256": "ed8854b4c630dcce997f7084d2e75677d0fb80a173c7377df93095328db88b20"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-02/d66be275-bc08-406e-8a29-d9e627d93751/report.md",
+   "bytes": 37040,
+   "sha256": "d6586c2a420e24f12420cb0ad5ff216a10177b5669812a3f763d946209c4052b"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-03/d1f6411d-b913-46c5-8195-b765f0a10f51/decision.json",
+   "bytes": 4016,
+   "sha256": "fb844baf1817702f16b2f4ca2bd5e094a9497baf624b6f99c7233a4339a20341"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-03/d1f6411d-b913-46c5-8195-b765f0a10f51/manifest.json",
+   "bytes": 11843,
+   "sha256": "4e4351473e6e5a85a30dee4bf172aa5a08cac0a7623d2d2d818657631e839404"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-03/d1f6411d-b913-46c5-8195-b765f0a10f51/record.json",
+   "bytes": 509900,
+   "sha256": "a30d138a7f7fb5172b3f1405922fcb1dc85580a633ae5d227ffa90f54fcc32ae"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-03/d1f6411d-b913-46c5-8195-b765f0a10f51/report.html",
+   "bytes": 254154,
+   "sha256": "16854ec0f328159d5db96354e5af53ac90616577c2df5e57f8e4b5cbf038bf7e"
+  },
+  {
+   "path": "replay_bundles/claude-sonnet-5-5-LR-03/d1f6411d-b913-46c5-8195-b765f0a10f51/report.md",
+   "bytes": 194374,
+   "sha256": "855510572c306d3198fb48aa2151a482e219a50bb4ed9aa309e6e2a6df4d1244"
+  }
+ ]
+}

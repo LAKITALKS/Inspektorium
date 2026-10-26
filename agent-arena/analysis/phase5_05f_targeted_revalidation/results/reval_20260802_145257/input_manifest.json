@@ -1,0 +1,46 @@
+{
+  "run_id": "reval_20260802_145257",
+  "timestamp": "2026-08-02T14:56:42.207698+00:00",
+  "repository_commit": "902fea74bf00b85f1effe0dbef2c9f3b7aa5e75e",
+  "repository_tag": "v0.8.7-targeted-revalidation-prep",
+  "analysis_plan_version": "written before mapping/gold access",
+  "study_designation": "targeted_versioned_blind_model_revalidation",
+  "acceptance_criteria_version": "5.05f/1.0",
+  "inputs": {
+    "X": {
+      "filename": "revalidator_X_response_sheet.csv (private, outside Git)",
+      "sha256": "44b06ba132439bb82295da09d6835b71c9e6053b110cf5682275bb42ea9cbe50",
+      "model_family": "Anthropic",
+      "displayed_model_name": "Opus 5",
+      "inference_mode": "default"
+    },
+    "Y": {
+      "filename": "revalidator_Y_response_sheet.csv (private, outside Git)",
+      "sha256": "0c68ab39e4f11d66f0a901ba8b1c481ffe3f17359d53d922291528fa1cdc0283",
+      "model_family": "GLM",
+      "displayed_model_name": "GLM 5.2",
+      "inference_mode": "default"
+    },
+    "Z": {
+      "filename": "revalidator_Z_response_sheet.csv (private, outside Git)",
+      "sha256": "2299ea9f5aa7cd046b4ead2e6f62b6134184c75284908fde5be24db814d239ae",
+      "model_family": "Gemini",
+      "displayed_model_name": "Gemini 3.5 Flash",
+      "inference_mode": "Extra Thinking"
+    }
+  },
+  "rval_to_internal_target": {
+    "RVAL-001": "BIAA-013_v2",
+    "RVAL-002": "BIAA-016_v2"
+  },
+  "existing_gold_labels": {
+    "RVAL-001": "correlation_vs_causation",
+    "RVAL-002": "overclaim"
+  },
+  "all_three_preserved_before_comparison": true,
+  "no_result_calculated_before_plan": true,
+  "gold_mapping_used": true,
+  "missing_response_count": 0,
+  "validation_warnings": {},
+  "note": "Private raw responses and full private manifests remain outside Git; not copied here."
+}

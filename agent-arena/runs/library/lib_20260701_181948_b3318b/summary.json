@@ -1,0 +1,55 @@
+{
+  "library_run_id": "lib_20260701_181948_b3318b",
+  "timestamp": "2026-07-01T18:20:58.609648+00:00",
+  "provider": "anthropic",
+  "model": "claude-opus-4-5",
+  "runs_per_case": 3,
+  "total_cases": 1,
+  "total_runs": 3,
+  "successful_runs": 3,
+  "failed_runs": 0,
+  "parse_failures": 0,
+  "truncation_runs": 0,
+  "label_distribution": {
+    "correlation_vs_causation": 3
+  },
+  "error_distribution": {},
+  "unstable_label_cases": [],
+  "parse_fragile_cases": [],
+  "truncation_risk_cases": [],
+  "provider_error_cases": [],
+  "high_score_variance_cases": [],
+  "thresholds": {
+    "high_score_variance": 15.0
+  },
+  "case_stability": [
+    {
+      "case_id": "study-forensics-046",
+      "case_file": "case046_coffee_longevity_correlation.yaml",
+      "gold_label": "correlation_vs_causation",
+      "n_runs": 3,
+      "successful_runs": 3,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.7,
+      "score_min": 72.4,
+      "score_max": 75.7,
+      "score_range": 3.3,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    }
+  ]
+}

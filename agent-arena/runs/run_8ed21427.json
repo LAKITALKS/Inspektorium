@@ -1,0 +1,434 @@
+{
+  "run_id": "run_8ed21427",
+  "task": {
+    "id": "simpsons-paradox-001",
+    "title": "Simpson's Paradox: University Admissions",
+    "domain": "statistics",
+    "difficulty": "hard",
+    "task_type": "rubric_based",
+    "prompt": "A university has two departments: Engineering and Arts.\n\nEngineering: admitted 30/100 men (30%) and 20/50 women (40%)\nArts: admitted 300/400 men (75%) and 350/400 women (87.5%)\n\nOverall: admitted 330/500 men (66%) and 370/450 women (82.2%)\n\nA journalist writes: \"The university discriminates against men — only 66% of male\napplicants were admitted versus 82.2% of female applicants.\"\n\nIs this claim valid? Explain why or why not with precise reasoning.\n",
+    "context": "This task tests whether the solver can identify Simpson's paradox — where a trend that\nappears in aggregated data reverses when the data is separated into subgroups.\n",
+    "expected_answer": "no",
+    "reference_solution": "The claim is misleading. Within each department, men are admitted at a LOWER rate than women:\n- Engineering: men 30%, women 40% — women favored\n- Arts: men 75%, women 87.5% — women favored\nThe aggregate reversal happens because men disproportionately applied to the more selective\ndepartment (Engineering). This is Simpson's paradox. The per-department data shows no\ndiscrimination against men.\n",
+    "rubric": [
+      {
+        "criterion": "identifies simpson paradox",
+        "points": 25,
+        "description": "Recognizes this as Simpson's paradox or equivalent aggregation paradox",
+        "variants": [
+          "simpson's paradox",
+          "aggregation paradox",
+          "ecological fallacy"
+        ]
+      },
+      {
+        "criterion": "per-department analysis",
+        "points": 25,
+        "description": "Breaks down admission rates by department",
+        "variants": [
+          "department-level",
+          "by department",
+          "each department",
+          "within each department",
+          "individual department"
+        ]
+      },
+      {
+        "criterion": "selection bias in applications",
+        "points": 25,
+        "description": "Explains that men applied more to the selective department",
+        "variants": [
+          "application pattern",
+          "applied disproportionately",
+          "applied more to",
+          "applied mostly to",
+          "applied heavily to",
+          "applicant pool",
+          "different application",
+          "composition of applicant"
+        ]
+      },
+      {
+        "criterion": "concludes claim is invalid or misleading",
+        "points": 25,
+        "description": "Correctly concludes the journalist's claim is not valid",
+        "variants": [
+          "not valid",
+          "not justified",
+          "claim is misleading",
+          "claim is not valid",
+          "claim is invalid"
+        ]
+      }
+    ],
+    "evaluation": {
+      "method": "rubric",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "simpson",
+        "variants": [
+          "simpson's paradox",
+          "simpson paradox"
+        ]
+      },
+      {
+        "keyword": "paradox",
+        "variants": [
+          "aggregation paradox",
+          "statistical paradox"
+        ]
+      },
+      {
+        "keyword": "aggregation",
+        "variants": [
+          "aggregate",
+          "aggregated data"
+        ]
+      },
+      {
+        "keyword": "confounding",
+        "variants": [
+          "confound",
+          "lurking variable",
+          "confounder"
+        ]
+      },
+      {
+        "keyword": "subgroup",
+        "variants": [
+          "sub-group",
+          "within each",
+          "per-department",
+          "department-level"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting aggregate statistics at face value",
+      "ignoring department-level breakdown",
+      "failing to explain the mechanism"
+    ],
+    "task_family": "statistical_paradox",
+    "trap_type": "aggregation_reversal",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "aggregation_error",
+      "confounder_blindness",
+      "surface_pattern_match"
+    ],
+    "discriminative_dimensions": [
+      "structural_reasoning",
+      "alternative_hypothesis_awareness",
+      "insight_depth"
+    ]
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"No, the claim is not valid. This is an example of Simpson's Paradox. While the overall admission rate for women (82.2%) is higher than for men (66%), women actually have equal or lower admission rates than men in each individual department. The apparent discrimination is due to the fact that men disproportionately applied to the more competitive Engineering department (100/500 = 20% of male applicants) while women disproportionately applied to the less competitive Arts department (400/450 = 88.9% of female applicants).\",\n  \"assumptions\": [\n    \"The data provided is accurate and complete\",\n    \"These are the only two departments at the university\",\n    \"All applicants applied to exactly one department\",\n    \"Admission decisions within each department are based on merit/qualifications\"\n  ],\n  \"steps\": [\n    \"First, I'll verify the overall statistics: Men: 30+300=330 admitted out of 100+400=500 total (66%). Women: 20+350=370 admitted out of 50+400=450 total (82.2%). These match the given figures.\",\n    \"Next, I'll examine admission rates by department: Engineering - Men: 30%, Women: 40%. Arts - Men: 75%, Women: 87.5%\",\n    \"In both departments, women have higher admission rates than men, which seems to contradict the discrimination claim\",\n    \"Now I'll analyze the application patterns: Male applicants - Engineering: 100/500 = 20%, Arts: 400/500 = 80%. Female applicants - Engineering: 50/450 = 11.1%, Arts: 400/450 = 88.9%\",\n    \"The key insight: Men applied to Engineering (the harder department with ~35% overall admission rate) at nearly twice the rate that women did\",\n    \"This is Simpson's Paradox: when data is aggregated, it can show the opposite trend from what occurs in each subgroup\",\n    \"The higher overall admission rate for women is explained by their tendency to apply to the less competitive department, not by discrimination in favor of women\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The university does discriminate against men: I rejected this because women don't have higher admission rates when comparing within departments\",\n    \"The university discriminates against women: I rejected this because women actually have higher admission rates in both departments\",\n    \"There's discrimination in application encouragement: Possible, but this would be about pre-application factors, not admission discrimination\"\n  ],\n  \"uncertainties\": [\n    \"Whether there are other departments not included in this data\",\n    \"Whether the different application patterns reflect self-selection, guidance counseling, or other systemic factors\",\n    \"Whether the admission criteria are truly merit-based within each department\",\n    \"Whether applicants could apply to multiple departments\"\n  ],\n  \"self_check\": [\n    \"Verified arithmetic: 30+300=330, 20+350=370, 100+400=500, 50+400=450\",\n    \"Confirmed this matches Simpson's Paradox pattern: subgroup trends opposite of aggregate trend\",\n    \"Checked that women have higher rates in BOTH departments (not just one)\",\n    \"Verified that the application pattern difference (20% vs 11.1% to Engineering) is sufficient to explain the overall difference\"\n  ],\n  \"confidence\": 0.95\n}",
+        "parsed": {
+          "final_answer": "No, the claim is not valid. This is an example of Simpson's Paradox. While the overall admission rate for women (82.2%) is higher than for men (66%), women actually have equal or lower admission rates than men in each individual department. The apparent discrimination is due to the fact that men disproportionately applied to the more competitive Engineering department (100/500 = 20% of male applicants) while women disproportionately applied to the less competitive Arts department (400/450 = 88.9% of female applicants).",
+          "assumptions": [
+            "The data provided is accurate and complete",
+            "These are the only two departments at the university",
+            "All applicants applied to exactly one department",
+            "Admission decisions within each department are based on merit/qualifications"
+          ],
+          "steps": [
+            "First, I'll verify the overall statistics: Men: 30+300=330 admitted out of 100+400=500 total (66%). Women: 20+350=370 admitted out of 50+400=450 total (82.2%). These match the given figures.",
+            "Next, I'll examine admission rates by department: Engineering - Men: 30%, Women: 40%. Arts - Men: 75%, Women: 87.5%",
+            "In both departments, women have higher admission rates than men, which seems to contradict the discrimination claim",
+            "Now I'll analyze the application patterns: Male applicants - Engineering: 100/500 = 20%, Arts: 400/500 = 80%. Female applicants - Engineering: 50/450 = 11.1%, Arts: 400/450 = 88.9%",
+            "The key insight: Men applied to Engineering (the harder department with ~35% overall admission rate) at nearly twice the rate that women did",
+            "This is Simpson's Paradox: when data is aggregated, it can show the opposite trend from what occurs in each subgroup",
+            "The higher overall admission rate for women is explained by their tendency to apply to the less competitive department, not by discrimination in favor of women"
+          ],
+          "alternative_hypotheses": [
+            "The university does discriminate against men: I rejected this because women don't have higher admission rates when comparing within departments",
+            "The university discriminates against women: I rejected this because women actually have higher admission rates in both departments",
+            "There's discrimination in application encouragement: Possible, but this would be about pre-application factors, not admission discrimination"
+          ],
+          "uncertainties": [
+            "Whether there are other departments not included in this data",
+            "Whether the different application patterns reflect self-selection, guidance counseling, or other systemic factors",
+            "Whether the admission criteria are truly merit-based within each department",
+            "Whether applicants could apply to multiple departments"
+          ],
+          "self_check": [
+            "Verified arithmetic: 30+300=330, 20+350=370, 100+400=500, 50+400=450",
+            "Confirmed this matches Simpson's Paradox pattern: subgroup trends opposite of aggregate trend",
+            "Checked that women have higher rates in BOTH departments (not just one)",
+            "Verified that the application pattern difference (20% vs 11.1% to Engineering) is sufficient to explain the overall difference"
+          ],
+          "confidence": 0.95
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 24078
+      },
+      "scores": {
+        "correctness": 1.0,
+        "structural_reasoning": 0.72,
+        "assumption_discipline": 1.0,
+        "uncertainty_calibration": 0.6500000000000001,
+        "alternative_hypothesis_awareness": 1.0,
+        "self_verification_quality": 0.6,
+        "insight_depth": 0.9,
+        "communication_efficiency": 1.0
+      },
+      "failure_modes": [],
+      "layer_notes": {
+        "deterministic": [
+          "Contains expected answer"
+        ],
+        "semantic_rubric": [
+          "Rubric hit: identifies simpson paradox",
+          "Rubric hit: per-department analysis",
+          "Rubric hit: selection bias in applications",
+          "Rubric hit: concludes claim is invalid or misleading",
+          "Key insights: 4 full + 1 partial / 5"
+        ],
+        "diagnostic": [
+          "7 reasoning steps",
+          "Steps are detailed (avg 145 chars)",
+          "4/4 substantive assumptions",
+          "4 uncertainties listed (4 substantive)",
+          "Confidence 0.95 — very high, may be overconfident",
+          "3 alternative hypotheses considered",
+          "3/3 alternatives include rejection reasoning",
+          "4 self-check items",
+          "Signal density: 0.73, 415 words total",
+          "Consistency issues (1):",
+          "  - High confidence (>=0.95) despite listing 3+ uncertainties"
+        ]
+      },
+      "notes": [
+        "Contains expected answer",
+        "Rubric hit: identifies simpson paradox",
+        "Rubric hit: per-department analysis",
+        "Rubric hit: selection bias in applications",
+        "Rubric hit: concludes claim is invalid or misleading",
+        "Key insights: 4 full + 1 partial / 5",
+        "7 reasoning steps",
+        "Steps are detailed (avg 145 chars)",
+        "4/4 substantive assumptions",
+        "4 uncertainties listed (4 substantive)",
+        "Confidence 0.95 — very high, may be overconfident",
+        "3 alternative hypotheses considered",
+        "3/3 alternatives include rejection reasoning",
+        "4 self-check items",
+        "Signal density: 0.73, 415 words total",
+        "Consistency issues (1):",
+        "  - High confidence (>=0.95) despite listing 3+ uncertainties"
+      ]
+    },
+    {
+      "agent_result": {
+        "provider": "Claude Sonnet",
+        "model": "claude-sonnet-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"The journalist's claim is not valid. This is a classic example of Simpson's Paradox. While women have a higher overall admission rate (82.2% vs 66%), men actually have higher admission rates within each individual department when we control for department choice. The apparent discrimination against men is entirely explained by men disproportionately applying to Engineering (which has much lower admission rates) while women disproportionately apply to Arts (which has much higher admission rates).\",\n  \"assumptions\": [\n    \"The data provided is accurate and complete\",\n    \"There are only these two departments at the university\",\n    \"Department choice is made by applicants, not assigned by the university\",\n    \"The admission decisions within each department are independent of overall university quotas\"\n  ],\n  \"steps\": [\n    \"First, I verified the given statistics: Engineering admits 30% of men and 40% of women; Arts admits 75% of men and 87.5% of women\",\n    \"I confirmed the overall rates: 330/500 = 66% for men, 370/450 = 82.2% for women\",\n    \"I identified this as Simpson's Paradox - where aggregate data shows one trend but disaggregated data shows the opposite\",\n    \"I analyzed department choice patterns: 100/500 (20%) of male applicants chose Engineering vs 50/450 (11.1%) of female applicants\",\n    \"Conversely, 400/500 (80%) of male applicants chose Arts vs 400/450 (88.9%) of female applicants\",\n    \"I recognized that Engineering has much lower admission rates (30-40%) compared to Arts (75-87.5%)\",\n    \"The key insight: men's lower overall admission rate is due to their higher tendency to apply to the more competitive Engineering department, not discrimination\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Direct discrimination against men - rejected because men actually have competitive rates within each department\",\n    \"Discrimination in department assignment - rejected because applicants likely choose their own departments\",\n    \"Hidden confounding factors - possible but the department choice explanation is sufficient and more parsimonious\"\n  ],\n  \"uncertainties\": [\n    \"Whether applicants truly choose their departments freely or face barriers to certain departments\",\n    \"Whether there might be other unmeasured factors affecting admission decisions\",\n    \"Whether the sample sizes are representative of typical application patterns\",\n    \"Whether admission criteria differ systematically between departments in ways that could advantage one gender\"\n  ],\n  \"self_check\": [\n    \"Verified all arithmetic: 30/100=30%, 20/50=40%, 300/400=75%, 350/400=87.5%, 330/500=66%, 370/450=82.2%\",\n    \"Confirmed this matches the classic Simpson's Paradox pattern where aggregate and disaggregated data show opposite trends\",\n    \"Double-checked that within each department, admission rates favor the same gender (women) or are at least competitive\",\n    \"Verified that the department choice distribution explains the paradox: men choose the harder department more often\"\n  ],\n  \"confidence\": 0.92\n}",
+        "parsed": {
+          "final_answer": "The journalist's claim is not valid. This is a classic example of Simpson's Paradox. While women have a higher overall admission rate (82.2% vs 66%), men actually have higher admission rates within each individual department when we control for department choice. The apparent discrimination against men is entirely explained by men disproportionately applying to Engineering (which has much lower admission rates) while women disproportionately apply to Arts (which has much higher admission rates).",
+          "assumptions": [
+            "The data provided is accurate and complete",
+            "There are only these two departments at the university",
+            "Department choice is made by applicants, not assigned by the university",
+            "The admission decisions within each department are independent of overall university quotas"
+          ],
+          "steps": [
+            "First, I verified the given statistics: Engineering admits 30% of men and 40% of women; Arts admits 75% of men and 87.5% of women",
+            "I confirmed the overall rates: 330/500 = 66% for men, 370/450 = 82.2% for women",
+            "I identified this as Simpson's Paradox - where aggregate data shows one trend but disaggregated data shows the opposite",
+            "I analyzed department choice patterns: 100/500 (20%) of male applicants chose Engineering vs 50/450 (11.1%) of female applicants",
+            "Conversely, 400/500 (80%) of male applicants chose Arts vs 400/450 (88.9%) of female applicants",
+            "I recognized that Engineering has much lower admission rates (30-40%) compared to Arts (75-87.5%)",
+            "The key insight: men's lower overall admission rate is due to their higher tendency to apply to the more competitive Engineering department, not discrimination"
+          ],
+          "alternative_hypotheses": [
+            "Direct discrimination against men - rejected because men actually have competitive rates within each department",
+            "Discrimination in department assignment - rejected because applicants likely choose their own departments",
+            "Hidden confounding factors - possible but the department choice explanation is sufficient and more parsimonious"
+          ],
+          "uncertainties": [
+            "Whether applicants truly choose their departments freely or face barriers to certain departments",
+            "Whether there might be other unmeasured factors affecting admission decisions",
+            "Whether the sample sizes are representative of typical application patterns",
+            "Whether admission criteria differ systematically between departments in ways that could advantage one gender"
+          ],
+          "self_check": [
+            "Verified all arithmetic: 30/100=30%, 20/50=40%, 300/400=75%, 350/400=87.5%, 330/500=66%, 370/450=82.2%",
+            "Confirmed this matches the classic Simpson's Paradox pattern where aggregate and disaggregated data show opposite trends",
+            "Double-checked that within each department, admission rates favor the same gender (women) or are at least competitive",
+            "Verified that the department choice distribution explains the paradox: men choose the harder department more often"
+          ],
+          "confidence": 0.92
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 16368
+      },
+      "scores": {
+        "correctness": 1.0,
+        "structural_reasoning": 0.85,
+        "assumption_discipline": 1.0,
+        "uncertainty_calibration": 0.7500000000000001,
+        "alternative_hypothesis_awareness": 1.0,
+        "self_verification_quality": 0.6,
+        "insight_depth": 1.0,
+        "communication_efficiency": 1.0
+      },
+      "failure_modes": [],
+      "layer_notes": {
+        "deterministic": [
+          "Contains expected answer"
+        ],
+        "semantic_rubric": [
+          "Rubric hit: identifies simpson paradox",
+          "Rubric hit: per-department analysis",
+          "Rubric hit: selection bias in applications",
+          "Rubric hit: concludes claim is invalid or misleading",
+          "Key insights: 5 full / 5"
+        ],
+        "diagnostic": [
+          "7 reasoning steps",
+          "Steps are detailed (avg 115 chars)",
+          "4/4 substantive assumptions",
+          "4 uncertainties listed (4 substantive)",
+          "Confidence 0.92",
+          "3 alternative hypotheses considered",
+          "3/3 alternatives include rejection reasoning",
+          "4 self-check items",
+          "Signal density: 0.76, 388 words total",
+          "No consistency issues detected"
+        ]
+      },
+      "notes": [
+        "Contains expected answer",
+        "Rubric hit: identifies simpson paradox",
+        "Rubric hit: per-department analysis",
+        "Rubric hit: selection bias in applications",
+        "Rubric hit: concludes claim is invalid or misleading",
+        "Key insights: 5 full / 5",
+        "7 reasoning steps",
+        "Steps are detailed (avg 115 chars)",
+        "4/4 substantive assumptions",
+        "4 uncertainties listed (4 substantive)",
+        "Confidence 0.92",
+        "3 alternative hypotheses considered",
+        "3/3 alternatives include rejection reasoning",
+        "4 self-check items",
+        "Signal density: 0.76, 388 words total",
+        "No consistency issues detected"
+      ]
+    },
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"The journalist's claim is NOT valid. This is a classic example of Simpson's Paradox. While the overall statistics show women had a higher admission rate (82.2% vs 66%), men actually had higher admission rates in BOTH individual departments (Engineering: 30% vs 40%, Arts: 75% vs 87.5%). The overall disparity is caused by the different composition of applicants across departments, not discrimination. Women applied disproportionately to Arts (a high-acceptance department), while men applied disproportionately to Engineering (a low-acceptance department).\",\n  \"assumptions\": [\n    \"The admission decisions within each department are independent and the data accurately reflects actual admission rates\",\n    \"We are evaluating whether the overall statistic validly supports a discrimination claim\",\n    \"The applicant pools are comparable in qualifications (no information suggests otherwise)\",\n    \"The department-level data is the appropriate level of analysis for detecting discrimination\"\n  ],\n  \"steps\": [\n    \"1. Verify the overall statistics: (30+300)/(100+400) = 330/500 = 66% for men ✓; (20+350)/(50+400) = 370/450 = 82.2% for women ✓\",\n    \"2. Examine department-level admission rates: Engineering men 30%, Engineering women 40%; Arts men 75%, Arts women 87.5%\",\n    \"3. Recognize the paradox: Women have higher overall admission rate, but LOWER rates in both departments\",\n    \"4. Analyze the composition: Men: 100/500 = 20% applied to Engineering (low acceptance), 400/500 = 80% to Arts (high acceptance). Women: 50/450 = 11.1% applied to Engineering, 400/450 = 88.9% to Arts\",\n    \"5. Calculate the weighted effect: Men's lower overall rate is driven by higher proportion applying to the harder department (Engineering). Women's higher overall rate is driven by higher proportion applying to the easier department (Arts)\",\n    \"6. Conclude: The disparity is explained by self-selection into departments, not by discriminatory treatment within departments\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The journalist is correct and the university discriminates against men: REJECTED because men have higher admission rates in both departments individually. The overall disparity is purely compositional.\",\n    \"There is discrimination against women that is masked by department selection: REJECTED because women have higher admission rates in both departments, showing no evidence of discrimination against them.\",\n    \"The data is fabricated or incorrect: REJECTED because the numbers are internally consistent and the paradox is mathematically sound.\"\n  ],\n  \"uncertainties\": [\n    \"Whether applicant qualifications differ by gender within departments (if women applicants to Engineering were significantly stronger, the lower admission rate might still reflect discrimination, though the data doesn't suggest this)\",\n    \"Whether the department choice itself reflects prior discrimination (e.g., if women were discouraged from Engineering earlier, that would be discrimination, but it's not reflected in these admission statistics)\",\n    \"Whether there are other confounding variables not shown in the data that could explain department selection patterns\"\n  ],\n  \"self_check\": [\n    \"Verified all arithmetic: 30+300=330, 100+400=500, 330/500=0.66 ✓; 20+350=370, 50+400=450, 370/450≈0.822 ✓\",\n    \"Confirmed the paradox exists: women higher overall, but lower in both departments ✓\",\n    \"Checked the mechanism: composition of applicants across departments explains the reversal ✓\",\n    \"Considered whether this proves no discrimination: correctly noted it shows no discrimination in admission decisions, though doesn't rule out discrimination elsewhere in the pipeline ✓\",\n    \"Avoided the trap of accepting the surface-level statistic without examining subgroups ✓\"\n  ],\n  \"confidence\": 0.95\n}\n```\n\n---\n\n## Summary\n\nThe journalist's claim **commits a statistical fallacy** known as **Simpson's Paradox**. \n\n**The key insight:** Men have *higher* admission rates in both departments individually:\n- **Engineering:** 30% (men) vs 40% (women)\n- **Arts:** 75% (men) vs 87.5% (women)\n\nYet women have a higher overall rate (82.2% vs 66%). How? **Composition matters.**\n\n- **Men** applied mostly to Engineering (80%), which has low acceptance rates overall\n- **Women** applied mostly to Arts (89%), which has high acceptance rates overall\n\nThe overall disparity is entirely explained by *where* applicants chose to apply, not by *how* they were treated within each department. This is a textbook example of why you must examine disaggregated data before making causal claims about discrimination.",
+        "parsed": {
+          "final_answer": "The journalist's claim is NOT valid. This is a classic example of Simpson's Paradox. While the overall statistics show women had a higher admission rate (82.2% vs 66%), men actually had higher admission rates in BOTH individual departments (Engineering: 30% vs 40%, Arts: 75% vs 87.5%). The overall disparity is caused by the different composition of applicants across departments, not discrimination. Women applied disproportionately to Arts (a high-acceptance department), while men applied disproportionately to Engineering (a low-acceptance department).",
+          "assumptions": [
+            "The admission decisions within each department are independent and the data accurately reflects actual admission rates",
+            "We are evaluating whether the overall statistic validly supports a discrimination claim",
+            "The applicant pools are comparable in qualifications (no information suggests otherwise)",
+            "The department-level data is the appropriate level of analysis for detecting discrimination"
+          ],
+          "steps": [
+            "1. Verify the overall statistics: (30+300)/(100+400) = 330/500 = 66% for men ✓; (20+350)/(50+400) = 370/450 = 82.2% for women ✓",
+            "2. Examine department-level admission rates: Engineering men 30%, Engineering women 40%; Arts men 75%, Arts women 87.5%",
+            "3. Recognize the paradox: Women have higher overall admission rate, but LOWER rates in both departments",
+            "4. Analyze the composition: Men: 100/500 = 20% applied to Engineering (low acceptance), 400/500 = 80% to Arts (high acceptance). Women: 50/450 = 11.1% applied to Engineering, 400/450 = 88.9% to Arts",
+            "5. Calculate the weighted effect: Men's lower overall rate is driven by higher proportion applying to the harder department (Engineering). Women's higher overall rate is driven by higher proportion applying to the easier department (Arts)",
+            "6. Conclude: The disparity is explained by self-selection into departments, not by discriminatory treatment within departments"
+          ],
+          "alternative_hypotheses": [
+            "The journalist is correct and the university discriminates against men: REJECTED because men have higher admission rates in both departments individually. The overall disparity is purely compositional.",
+            "There is discrimination against women that is masked by department selection: REJECTED because women have higher admission rates in both departments, showing no evidence of discrimination against them.",
+            "The data is fabricated or incorrect: REJECTED because the numbers are internally consistent and the paradox is mathematically sound."
+          ],
+          "uncertainties": [
+            "Whether applicant qualifications differ by gender within departments (if women applicants to Engineering were significantly stronger, the lower admission rate might still reflect discrimination, though the data doesn't suggest this)",
+            "Whether the department choice itself reflects prior discrimination (e.g., if women were discouraged from Engineering earlier, that would be discrimination, but it's not reflected in these admission statistics)",
+            "Whether there are other confounding variables not shown in the data that could explain department selection patterns"
+          ],
+          "self_check": [
+            "Verified all arithmetic: 30+300=330, 100+400=500, 330/500=0.66 ✓; 20+350=370, 50+400=450, 370/450≈0.822 ✓",
+            "Confirmed the paradox exists: women higher overall, but lower in both departments ✓",
+            "Checked the mechanism: composition of applicants across departments explains the reversal ✓",
+            "Considered whether this proves no discrimination: correctly noted it shows no discrimination in admission decisions, though doesn't rule out discrimination elsewhere in the pipeline ✓",
+            "Avoided the trap of accepting the surface-level statistic without examining subgroups ✓"
+          ],
+          "confidence": 0.95
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11468
+      },
+      "scores": {
+        "correctness": 1.0,
+        "structural_reasoning": 0.738,
+        "assumption_discipline": 1.0,
+        "uncertainty_calibration": 0.6500000000000001,
+        "alternative_hypothesis_awareness": 1.0,
+        "self_verification_quality": 0.6,
+        "insight_depth": 0.8,
+        "communication_efficiency": 1.0
+      },
+      "failure_modes": [],
+      "layer_notes": {
+        "deterministic": [
+          "Contains expected answer"
+        ],
+        "semantic_rubric": [
+          "Rubric hit: identifies simpson paradox",
+          "Rubric hit: per-department analysis",
+          "Rubric hit: selection bias in applications",
+          "Rubric hit: concludes claim is invalid or misleading",
+          "Key insights: 4 full / 5"
+        ],
+        "diagnostic": [
+          "6 reasoning steps",
+          "Steps are detailed (avg 152 chars)",
+          "4/4 substantive assumptions",
+          "3 uncertainties listed (3 substantive)",
+          "Confidence 0.95 — very high, may be overconfident",
+          "3 alternative hypotheses considered",
+          "3/3 alternatives include rejection reasoning",
+          "5 self-check items",
+          "Signal density: 0.76, 488 words total",
+          "Consistency issues (1):",
+          "  - High confidence (>=0.95) despite listing 3+ uncertainties"
+        ]
+      },
+      "notes": [
+        "Contains expected answer",
+        "Rubric hit: identifies simpson paradox",
+        "Rubric hit: per-department analysis",
+        "Rubric hit: selection bias in applications",
+        "Rubric hit: concludes claim is invalid or misleading",
+        "Key insights: 4 full / 5",
+        "6 reasoning steps",
+        "Steps are detailed (avg 152 chars)",
+        "4/4 substantive assumptions",
+        "3 uncertainties listed (3 substantive)",
+        "Confidence 0.95 — very high, may be overconfident",
+        "3 alternative hypotheses considered",
+        "3/3 alternatives include rejection reasoning",
+        "5 self-check items",
+        "Signal density: 0.76, 488 words total",
+        "Consistency issues (1):",
+        "  - High confidence (>=0.95) despite listing 3+ uncertainties"
+      ]
+    }
+  ],
+  "timestamp": "2026-03-31T07:03:24.406479+00:00",
+  "metadata": {}
+}

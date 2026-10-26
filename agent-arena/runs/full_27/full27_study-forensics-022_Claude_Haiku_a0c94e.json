@@ -1,0 +1,1241 @@
+{
+  "run_id": "full27_study-forensics-022_Claude_Haiku_a0c94e",
+  "task": {
+    "id": "study-forensics-022",
+    "title": "Study Forensics: Four-day workweek trial improves well-being",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A six-month experiment across 141 companies in six countries tested whether cutting the work week from five days to four while maintaining pay could improve employee well-being. Companies volunteered to restructure their workflows so that productivity would not decline with fewer hours. Nearly 2,900 participants completed surveys before and after the trial. After six months, workers reported lower stress and burnout, higher job satisfaction, and no perceived drop in performance. More than 90 percent of participating companies chose to continue the four-day schedule. The researchers cautioned that because companies self-selected into the trial and outcomes were self-reported, further randomised evaluations are needed.\n",
+    "context": "A large multi-company trial with positive results but important methodological\nlimitations (self-selection, self-report). The researchers acknowledge limitations openly.\n",
+    "expected_answer": "solid",
+    "reference_solution": "The summary reports results from a large multi-company trial showing improvements in employee well-being without apparent productivity loss. It notes limitations such as voluntary participation and self-reported outcomes. Although the study design has weaknesses, the claims are restrained to measured outcomes and the need for further research is acknowledged.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "self-selection",
+        "variants": [
+          "companies volunteered",
+          "self-selected",
+          "volunteered to restructure"
+        ],
+        "functional_descriptions": [
+          "companies that chose to participate may differ from those that did not"
+        ]
+      },
+      {
+        "keyword": "self-reported",
+        "variants": [
+          "surveys",
+          "reported lower stress",
+          "perceived drop"
+        ],
+        "functional_descriptions": [
+          "outcomes depend on subjective reporting, not objective measures"
+        ]
+      }
+    ],
+    "common_errors": [
+      "overflagging because of self-selection and self-report limitations",
+      "missing the honest caveating as a strength"
+    ],
+    "task_family": "solid",
+    "trap_type": "borderline_solid_with_caveats",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "overclaiming",
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise honest reporting of limited evidence without overflagging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "The summary reports results from a large multi-company trial of a four-day workweek showing improvements in well-being without productivity loss. It notes limitations such as voluntary participation and self-reported outcomes.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "medium"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "workers reported lower stress and burnout, higher job satisfaction, and no perceived drop in performance",
+        "why_it_matters": "Directly supports the claim that the four-day schedule improved well-being.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "researchers cautioned that because companies self-selected into the trial and outcomes were self-reported, further randomised evaluations are needed",
+        "why_it_matters": "Explicit acknowledgement of methodological limitations represents honest uncertainty.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "medium",
+    "gold_justification": "Although the study was not randomised and relies on self-report, the summary accurately\nconveys the evidence and includes caveats. The claims are restrained to the measured\noutcomes, and the need for further research is acknowledged. The self-selection bias\nweakens the evidence but the authors are transparent about it. We label this solid\nbecause the reporting matches the evidence quality — no overclaim is made.\n",
+    "gold_alternative_reading": "Some may argue that self-selection (only enthusiastic companies participated) and\nself-reported outcomes (workers may overstate satisfaction) limit the evidence quality\nenough to warrant an overclaim label. The 90% continuation rate may reflect commitment\nbias rather than objective success. A reasonable analyst could mark this as borderline\noverclaim due to the design limitations.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Key borderline case. The evidence is real but methodologically limited. The reporting\nis honest and restrained. Tests whether agents can distinguish \"weak evidence honestly\nreported\" (solid) from \"strong evidence dishonestly reported\" (overclaim). The gold\nlabel is solid because the claims match the evidence quality, even though that quality\nhas limitations. Expect model disagreement on this case.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"limited_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The 141 companies represent a diverse range of industries and organizational contexts\",\n    \"The six-month duration is sufficient to detect meaningful changes in well-being metrics\",\n    \"Self-reported outcomes (stress, burnout, job satisfaction) are valid proxies for actual well-being\",\n    \"The pre-post survey design with no control group is the intended methodology\",\n    \"Attrition and response bias are not severe enough to invalidate the findings\"\n  ],\n  \"steps\": [\n    \"Identified evidence tier: This is a real-world human trial with 2,900 participants across 141 companies over six months. Not a cell study, not an animal model, not a small pilot—this is a substantial observational/quasi-experimental human study. Evidence tier = limited_human (not full clinical because no randomization, self-selection bias, self-reported outcomes).\",\n    \"Identified conclusion tier: The text implies benefits for workers' well-being (stress, burnout, job satisfaction) in a real-world employment context. This is human_therapeutic in scope.\",\n    \"Assessed bridge: The evidence (human trial with self-reported well-being improvements) directly addresses the conclusion (workers experience improved well-being under four-day schedules). The bridge is direct and supported by the study design.\",\n    \"Evaluated caveats: The text explicitly acknowledges two major limitations: (1) self-selection bias (companies volunteered), and (2) self-reported outcomes. These are appropriate and honest caveats that do not undermine the study's validity but correctly flag reasons for caution.\",\n    \"Checked for overclaim: The text does not claim causation definitively; it reports what workers 'reported' and what companies 'chose.' The language is appropriately measured.\",\n    \"Checked for correlation vs. causation: The text does not claim the four-day week *caused* improvements; it reports associations observed in the trial. The caveat about needing randomized evaluations acknowledges this limitation.\",\n    \"Checked for mechanism vs. evidence: The conclusion stays within the evidence tier. The study measured human outcomes directly; it does not extrapolate to animal models or cellular mechanisms, nor does it claim universal applicability beyond the trial context.\",\n    \"Evaluated decorative uncertainty: The uncertainty language is not decorative—it is substantive. The researchers identify specific methodological weaknesses (self-selection, self-report) and call for a specific next step (randomized trials). This is appropriate epistemic humility, not hedging to mask overclaims.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as overclaim if the text implied universal applicability or causation—but it does not.\",\n    \"Could classify as correlation_vs_causation if the text claimed the four-day week caused improvements—but it reports associations and acknowledges the need for causal evidence.\",\n    \"Could classify as mechanism_vs_evidence if the text implied benefits for populations not studied (e.g., all workers globally)—but it stays within the trial context.\"\n  ],\n  \"uncertainties\": [\n    \"The severity of self-selection bias is not quantified. If only highly productive, well-managed companies volunteered, results may not generalize.\",\n    \"The magnitude of self-report bias is unknown. Workers may report improvements due to novelty, social desirability, or expectancy effects.\",\n    \"The text does not specify which industries or countries were represented, limiting assessment of generalizability.\",\n    \"No information on attrition rate or whether the 2,900 participants represent the full sample or a subset.\",\n    \"The definition of 'no perceived drop in performance' is unclear—was this self-reported by workers, measured objectively, or both?\"\n  ],\n  \"key_claims\": [\n    \"This is a well-designed real-world human trial with substantial sample size (2,900 participants, 141 companies) and appropriate duration (six months).\",\n    \"The conclusions (improved well-being, maintained performance) stay within the evidence tier and are directly supported by the study design.\",\n    \"The researchers appropriately identify and acknowledge the two main limitations: self-selection bias and self-reported outcomes.\",\n    \"The call for randomized trials is a legitimate next step and does not undermine the current findings—it contextualizes them appropriately.\",\n    \"The high continuation rate (>90% of companies) is a meaningful real-world outcome that supports the feasibility and acceptability of the intervention.\"\n  ],\n  \"self_check\": [\n    \"Did I overidentify problems? No. The study has real limitations (self-selection, self-report), but these are acknowledged by the researchers and do not invalidate the findings within their scope.\",\n    \"Did I miss a mechanism vs. evidence problem? No. The evidence is human, the conclusion is human, and the bridge is direct.\",\n    \"Did I miss a correlation vs. causation problem? No. The text reports associations, not causal claims, and acknowledges the need for causal evidence.\",\n    \"Did I miss an overclaim? No. The language is appropriately measured and hedged.\",\n    \"Is this truly a solid study? Yes, within its scope. It is a well-executed real-world trial with honest limitations and appropriate caveats. It does not claim more than the evidence supports.\"\n  ],\n  \"confidence\": 0.88\n}\n```\n\n---\n\n## Summary\n\nThis text describes a **solid study**. It reports a substantial real-world human trial (2,900 participants, 141 companies, six months) with direct measurement of well-being outcomes. The conclusions stay within the evidence tier—human workers in a real trial reported improved well-being—and the researchers appropriately acknowledge the two main limitations (self-selection bias and self-reported outcomes) while calling for randomized trials as a next step.\n\nThe caveats are not decorative; they are substantive and correctly identify the gap between this observational trial and definitive causal evidence. The study is honest about what it can and cannot claim, and the findings are presented in measured language that matches the evidence.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The 141 companies represent a diverse range of industries and organizational contexts",
+            "The six-month duration is sufficient to detect meaningful changes in well-being metrics",
+            "Self-reported outcomes (stress, burnout, job satisfaction) are valid proxies for actual well-being",
+            "The pre-post survey design with no control group is the intended methodology",
+            "Attrition and response bias are not severe enough to invalidate the findings"
+          ],
+          "steps": [
+            "Identified evidence tier: This is a real-world human trial with 2,900 participants across 141 companies over six months. Not a cell study, not an animal model, not a small pilot—this is a substantial observational/quasi-experimental human study. Evidence tier = limited_human (not full clinical because no randomization, self-selection bias, self-reported outcomes).",
+            "Identified conclusion tier: The text implies benefits for workers' well-being (stress, burnout, job satisfaction) in a real-world employment context. This is human_therapeutic in scope.",
+            "Assessed bridge: The evidence (human trial with self-reported well-being improvements) directly addresses the conclusion (workers experience improved well-being under four-day schedules). The bridge is direct and supported by the study design.",
+            "Evaluated caveats: The text explicitly acknowledges two major limitations: (1) self-selection bias (companies volunteered), and (2) self-reported outcomes. These are appropriate and honest caveats that do not undermine the study's validity but correctly flag reasons for caution.",
+            "Checked for overclaim: The text does not claim causation definitively; it reports what workers 'reported' and what companies 'chose.' The language is appropriately measured.",
+            "Checked for correlation vs. causation: The text does not claim the four-day week *caused* improvements; it reports associations observed in the trial. The caveat about needing randomized evaluations acknowledges this limitation.",
+            "Checked for mechanism vs. evidence: The conclusion stays within the evidence tier. The study measured human outcomes directly; it does not extrapolate to animal models or cellular mechanisms, nor does it claim universal applicability beyond the trial context.",
+            "Evaluated decorative uncertainty: The uncertainty language is not decorative—it is substantive. The researchers identify specific methodological weaknesses (self-selection, self-report) and call for a specific next step (randomized trials). This is appropriate epistemic humility, not hedging to mask overclaims."
+          ],
+          "alternative_hypotheses": [
+            "Could classify as overclaim if the text implied universal applicability or causation—but it does not.",
+            "Could classify as correlation_vs_causation if the text claimed the four-day week caused improvements—but it reports associations and acknowledges the need for causal evidence.",
+            "Could classify as mechanism_vs_evidence if the text implied benefits for populations not studied (e.g., all workers globally)—but it stays within the trial context."
+          ],
+          "uncertainties": [
+            "The severity of self-selection bias is not quantified. If only highly productive, well-managed companies volunteered, results may not generalize.",
+            "The magnitude of self-report bias is unknown. Workers may report improvements due to novelty, social desirability, or expectancy effects.",
+            "The text does not specify which industries or countries were represented, limiting assessment of generalizability.",
+            "No information on attrition rate or whether the 2,900 participants represent the full sample or a subset.",
+            "The definition of 'no perceived drop in performance' is unclear—was this self-reported by workers, measured objectively, or both?"
+          ],
+          "self_check": [
+            "Did I overidentify problems? No. The study has real limitations (self-selection, self-report), but these are acknowledged by the researchers and do not invalidate the findings within their scope.",
+            "Did I miss a mechanism vs. evidence problem? No. The evidence is human, the conclusion is human, and the bridge is direct.",
+            "Did I miss a correlation vs. causation problem? No. The text reports associations, not causal claims, and acknowledges the need for causal evidence.",
+            "Did I miss an overclaim? No. The language is appropriately measured and hedged.",
+            "Is this truly a solid study? Yes, within its scope. It is a well-executed real-world trial with honest limitations and appropriate caveats. It does not claim more than the evidence supports."
+          ],
+          "key_claims": [
+            "This is a well-designed real-world human trial with substantial sample size (2,900 participants, 141 companies) and appropriate duration (six months).",
+            "The conclusions (improved well-being, maintained performance) stay within the evidence tier and are directly supported by the study design.",
+            "The researchers appropriately identify and acknowledge the two main limitations: self-selection bias and self-reported outcomes.",
+            "The call for randomized trials is a legitimate next step and does not undermine the current findings—it contextualizes them appropriately.",
+            "The high continuation rate (>90% of companies) is a meaningful real-world outcome that supports the feasibility and acceptability of the intervention."
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 14864
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.45,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.55,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.4,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Identified evidence tier: This is a real-world human trial with 2,900 participants across 141 companies over six months. Not a cell study, not an anim",
+              "source_field": "steps[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.73)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.45,
+          "weight": 6,
+          "weighted_score": 2.7,
+          "evidence": [
+            {
+              "text": "The 141 companies represent a diverse range of industries and organizational contexts",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The six-month duration is sufficient to detect meaningful changes in well-being metrics",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The pre-post survey design with no control group is the intended methodology",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Attrition and response bias are not severe enough to invalidate the findings",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Self-reported outcomes (stress, burnout, job satisfaction) are valid proxies for actual well-being",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "4 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "The severity of self-selection bias is not quantified. If only highly productive, well-managed companies volunteered, results may not generalize.",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The text does not specify which industries or countries were represented, limiting assessment of generalizability.",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could classify as correlation_vs_causation if the text claimed the four-day week caused improvements—but it reports associations and acknowledges the need for causal evidence.",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "3/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.55,
+          "weight": 8,
+          "weighted_score": 4.4,
+          "evidence": [
+            {
+              "text": "Did I overidentify problems? No. The study has real limitations (self-selection, self-report), but these are acknowledged by the researchers and do not invalidate the findings within their scope.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Did I miss an overclaim? No. The language is appropriately measured and hedged.",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 1 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.4,
+          "weight": 10,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Identified evidence tier: This is a real-world human trial with 2,900 participants across 141 companies over six months. Not a cell study, not an anim",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Mechanism description without case grounding",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Names concept + describes mechanism (not grounded to case)"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.68, 695 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "cal because no randomization, self-selection bias, self-reported outcomes)",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'self-selection' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "ization, self-selection bias, self-reported outcomes). identified conclus",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'self-reported' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The 141 companies represent a diverse range of industries an...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The 141 companies represent a diverse range of industries and organizational contexts",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The six-month duration is sufficient to detect meaningful ch...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The six-month duration is sufficient to detect meaningful changes in well-being metrics",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The pre-post survey design with no control group is the inte...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The pre-post survey design with no control group is the intended methodology",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'Attrition and response bias are not severe enough to invalid...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "Attrition and response bias are not severe enough to invalidate the findings",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The text does not specify which industries or countries were...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The text does not specify which industries or countries were represented, limiting assessment of generalizability.",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/15 content words)",
+          "evidence": [
+            {
+              "text": "This is a well-designed real-world human trial with substantial sample size (2,900 participants, 141 companies) and appropriate duration (six months).",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/13 content words)",
+          "evidence": [
+            {
+              "text": "The conclusions (improved well-being, maintained performance) stay within the evidence tier and are directly supported by the study design.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The researchers appropriately identify and acknowledge the two main limitations: self-selection bias and self-reported outcomes.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The call for randomized trials is a legitimate next step and does not undermine the current findings—it contextualizes them appropriately.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The high continuation rate (>90% of companies) is a meaningful real-world outcome that supports the feasibility and acceptability of the intervention.",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 5 not well supported in reasoning steps (2/12 content words found)",
+          "evidence": [
+            {
+              "text": "The high continuation rate (>90% of companies) is a meaningful real-world outcome that supports the feasibility and acceptability of the intervention.",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 5 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "Attrition and response bias are not severe enough to invalidate the findings",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The text does not specify which industries or countries were represented, limiting assessment of generalizability.",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: none_or_minor, conclusion_exceeds_results, unsupported_generalization, decorative_uncertainty, mechanism_not_demonstrated, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The 141 companies represent a diverse range of industries and organizational contexts",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The six-month duration is sufficient to detect meaningful changes in well-being metrics",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Self-reported outcomes (stress, burnout, job satisfaction) are valid proxies for actual well-being",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The pre-post survey design with no control group is the intended methodology",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Attrition and response bias are not severe enough to invalidate the findings",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence tier: This is a real-world human trial with 2,900 participants across 141 companies over six months. Not a cell study, not an animal model, not a small pilot—this is a substantial observational/quasi-experimental human study. Evidence tier = limited_human (not full clinical because no randomization, self-selection bias, self-reported outcomes).",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified conclusion tier: The text implies benefits for workers' well-being (stress, burnout, job satisfaction) in a real-world employment context. This is human_therapeutic in scope.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed bridge: The evidence (human trial with self-reported well-being improvements) directly addresses the conclusion (workers experience improved well-being under four-day schedules). The bridge is direct and supported by the study design.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated caveats: The text explicitly acknowledges two major limitations: (1) self-selection bias (companies volunteered), and (2) self-reported outcomes. These are appropriate and honest caveats that do not undermine the study's validity but correctly flag reasons for caution.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaim: The text does not claim causation definitively; it reports what workers 'reported' and what companies 'chose.' The language is appropriately measured.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for correlation vs. causation: The text does not claim the four-day week *caused* improvements; it reports associations observed in the trial. The caveat about needing randomized evaluations acknowledges this limitation.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for mechanism vs. evidence: The conclusion stays within the evidence tier. The study measured human outcomes directly; it does not extrapolate to animal models or cellular mechanisms, nor does it claim universal applicability beyond the trial context.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated decorative uncertainty: The uncertainty language is not decorative—it is substantive. The researchers identify specific methodological weaknesses (self-selection, self-report) and call for a specific next step (randomized trials). This is appropriate epistemic humility, not hedging to mask overclaims.",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is a well-designed real-world human trial with substantial sample size (2,900 participants, 141 companies) and appropriate duration (six months).",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The conclusions (improved well-being, maintained performance) stay within the evidence tier and are directly supported by the study design.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The researchers appropriately identify and acknowledge the two main limitations: self-selection bias and self-reported outcomes.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The call for randomized trials is a legitimate next step and does not undermine the current findings—it contextualizes them appropriately.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The high continuation rate (>90% of companies) is a meaningful real-world outcome that supports the feasibility and acceptability of the intervention.",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as overclaim if the text implied universal applicability or causation—but it does not.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as correlation_vs_causation if the text claimed the four-day week caused improvements—but it reports associations and acknowledges the need for causal evidence.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as mechanism_vs_evidence if the text implied benefits for populations not studied (e.g., all workers globally)—but it stays within the trial context.",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The severity of self-selection bias is not quantified. If only highly productive, well-managed companies volunteered, results may not generalize.",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The magnitude of self-report bias is unknown. Workers may report improvements due to novelty, social desirability, or expectancy effects.",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The text does not specify which industries or countries were represented, limiting assessment of generalizability.",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "No information on attrition rate or whether the 2,900 participants represent the full sample or a subset.",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The definition of 'no perceived drop in performance' is unclear—was this self-reported by workers, measured objectively, or both?",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overidentify problems? No. The study has real limitations (self-selection, self-report), but these are acknowledged by the researchers and do not invalidate the findings within their scope.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a mechanism vs. evidence problem? No. The evidence is human, the conclusion is human, and the bridge is direct.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a correlation vs. causation problem? No. The text reports associations, not causal claims, and acknowledges the need for causal evidence.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss an overclaim? No. The language is appropriately measured and hedged.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this truly a solid study? Yes, within its scope. It is a well-executed real-world trial with honest limitations and appropriate caveats. It does not claim more than the evidence supports.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.4444444444444444
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.375
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.375
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 29,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 30,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.25
+          }
+        ],
+        "unused_assumptions": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "unaddressed_uncertainties": [
+          23
+        ],
+        "unsupported_conclusions": [
+          31
+        ],
+        "fluff_self_checks": [
+          29
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias"
+        ],
+        "mechanism_sentences": [
+          "Identified evidence tier: This is a real-world human trial with 2,900 participants across 141 companies over six months. Not a cell study, not an anim"
+        ],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could improve"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [
+            "self-report"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unused_assumption",
+        "unused_assumption",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph: conclusion not well grounded",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.73)",
+        "5/5 substantive assumptions",
+        "4 unused assumption(s)",
+        "5 uncertainties (5 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.88",
+        "3 alternative hypotheses considered",
+        "3/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 1 fluff",
+        "Names concept + describes mechanism (not grounded to case)",
+        "Signal density: 0.68, 695 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T16:59:37.851344+00:00",
+  "metadata": {}
+}

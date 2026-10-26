@@ -1,0 +1,40 @@
+{
+  "execution_evidence_schema_version": "agent_arena.full_replication_execution_evidence/v1",
+  "plan_id": "AA-P5B-SONNET-FULL-REPLICATION-001",
+  "specification_fingerprint": "feb0d4c7d39ee126ec8c8adf5a315314ce3ddd1d43b28d85d074209ef5d14b53",
+  "provider_construction_counts": {
+    "haiku": 0,
+    "sonnet": 1,
+    "unapproved_conditions": 0
+  },
+  "one_shot_lease": {
+    "lease_schema_version": "agent_arena.one_shot_execution_lease/v1",
+    "status": "CONSUMED_FOR_SINGLE_GUARDED_INVOCATION",
+    "plan_id": "AA-P5B-SONNET-FULL-REPLICATION-001",
+    "specification_fingerprint": "feb0d4c7d39ee126ec8c8adf5a315314ce3ddd1d43b28d85d074209ef5d14b53",
+    "arm_id": "prospective_taxonomy_aligned_full_sonnet",
+    "model_key": "sonnet",
+    "model_id": "claude-sonnet-4-5-20250929",
+    "prompt_condition_id": "study_forensics.taxonomy_aligned.v2",
+    "expected_slots": 420,
+    "guarded_invocations_consumed": 1,
+    "manual_restarts_remaining": 0,
+    "repository_commit": "56aba486c36a977558ab42cbe560676732a0ae57",
+    "source_state_fingerprint": "6ab7f4fea08122190ce4a8c083f072d03ddbb182bb958773532437e0a9fe97ef",
+    "synthetic_test_only": false,
+    "consumed_at": "2026-09-13T05:28:26.294443+00:00",
+    "lease_fingerprint": "e24f41f6ae3d46a2fe988d748a1d12bc3788c3bfe152a4ae88d03c1e0c95f250"
+  },
+  "planned_slots": 420,
+  "observed_records": 420,
+  "terminal_attempts": 420,
+  "classification_valid_calls": 420,
+  "calibration_valid_calls": 420,
+  "analysis_status": "COMPLETE",
+  "usage_cost_fingerprint": "779a0f93a325965f66aa21502a5de2ab296eae718712b93fe58f31c1b9709a74",
+  "comparison_fingerprint": "55b98e99b01d65085604cfcb39fb13e94860c1c4ad2c80f1c7cf4fa260ddc909",
+  "official_release_writes": 0,
+  "manual_restarts": 0,
+  "batch_abort": null,
+  "execution_evidence_fingerprint": "8e718ce2ef88d705765279ca210d2d509f07a12dd153ade87ed9a71c00f7915f"
+}

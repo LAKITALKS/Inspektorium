@@ -1,0 +1,51 @@
+case_id,gold,case_type,suite,review_required,rationale
+study-forensics-001,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-004,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-007,solid,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-009,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-013,mechanism_vs_evidence,clear,core_candidate,False,clear stable-correct
+study-forensics-019,correlation_vs_causation,clear,core_candidate,False,clear stable-correct
+study-forensics-021,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-022,solid,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-023,correlation_vs_causation,clear,core_candidate,False,clear stable-correct
+study-forensics-024,mechanism_vs_evidence,clear,core_candidate,False,clear stable-correct
+study-forensics-025,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-026,solid,clear,anchor_candidate,False,easy clear anchor
+study-forensics-027,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-028,mechanism_vs_evidence,clear,core_candidate,False,clear stable-correct
+study-forensics-029,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-030,mechanism_vs_evidence,clear,core_candidate,False,clear stable-correct
+study-forensics-031,solid,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-032,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-033,solid,clear,anchor_candidate,False,easy clear anchor
+study-forensics-034,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-035,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-036,mechanism_vs_evidence,clear,core_candidate,False,clear stable-correct
+study-forensics-037,overclaim,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-038,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-039,solid,clear,anchor_candidate,False,easy clear anchor
+study-forensics-040,correlation_vs_causation,clear,core_candidate,False,clear stable-correct
+study-forensics-041,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-042,overclaim,borderline,boundary_candidate,True,stable-alternative borderline
+study-forensics-043,overclaim,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-044,mechanism_vs_evidence,clear,core_candidate,False,clear stable-correct
+study-forensics-045,overclaim,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-046,correlation_vs_causation,clear,core_candidate,False,clear stable-correct
+study-forensics-047,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-048,overclaim,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-049,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-050,overclaim,clear,anchor_candidate,False,easy clear anchor
+study-forensics-051,solid,clear,core_candidate,False,clear stable-correct
+study-forensics-052,solid,clear,anchor_candidate,False,easy clear anchor
+study-forensics-053,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-054,overclaim,borderline,boundary_candidate,True,stable-alternative borderline
+study-forensics-055,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-056,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-057,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-058,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-059,overclaim,borderline,boundary_candidate,False,borderline stable-correct
+study-forensics-060,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-061,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-062,overclaim,clear,core_candidate,False,clear stable-correct
+study-forensics-063,correlation_vs_causation,clear,core_candidate,False,clear stable-correct
+study-forensics-public-001,correlation_vs_causation,clear,core_candidate,False,clear stable-correct

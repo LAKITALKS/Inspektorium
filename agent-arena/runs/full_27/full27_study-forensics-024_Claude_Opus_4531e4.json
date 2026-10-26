@@ -1,0 +1,957 @@
+{
+  "run_id": "full27_study-forensics-024_Claude_Opus_4531e4",
+  "task": {
+    "id": "study-forensics-024",
+    "title": "Study Forensics: Gene therapy elevating Klotho protein extends lifespan in mice",
+    "domain": "study_forensics",
+    "difficulty": "hard",
+    "task_type": "study_forensics",
+    "prompt": "An international team used viral vectors to boost production of the secreted form of the Klotho protein in middle-aged mice. The treated mice lived 15 to 20 percent longer and showed improvements in muscle strength, bone density and cognitive performance. Researchers observed increased formation of neurons and enhanced immune activity in the hippocampus. They filed patents for using Klotho to treat bone, muscle and aging-related deficits and suggested that with a suitable delivery method, this gene therapy could help build a healthier society by combating age-related decline.\n",
+    "context": "Strong animal evidence for a specific biological mechanism, but the leap to human\ntherapeutic claims and societal benefits is speculative. Classic mechanism vs evidence gap.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The summary describes a gene-therapy intervention that increases Klotho protein levels in mice and reports extended lifespan and improved physiological and cognitive outcomes. It suggests potential human applications without presenting human evidence. The mechanism is described but not demonstrated in humans.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "middle-aged mice",
+          "viral vectors"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "speculative therapy",
+        "variants": [
+          "healthier society",
+          "suitable delivery method",
+          "patents"
+        ],
+        "functional_descriptions": [
+          "therapeutic and societal claims go beyond preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating strong animal evidence as sufficient for human claims",
+      "missing the patent/commercial interest as a signal"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish strong preclinical mechanism from speculative human application?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "The summary describes a gene-therapy intervention that increases Klotho protein levels in mice and reports extended lifespan and improved outcomes. It suggests potential human applications without human evidence.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "The treated mice lived 15 to 20 percent longer and showed improvements in muscle strength, bone density and cognitive performance",
+        "why_it_matters": "Demonstrates robust effects observed in animals but not yet in humans.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "they filed patents for using Klotho to treat bone, muscle and aging-related deficits and suggested that with a suitable delivery method, this gene therapy could help build a healthier society",
+        "why_it_matters": "Illustrates overextension of animal findings to broad societal benefits without human evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "While the study demonstrates a mechanism (increased Klotho) and measurable effects in\nmice, the article extends the implications to human aging. The mechanism is described\nbut not demonstrated in humans; translation to people remains speculative. The patent\nfilings and \"healthier society\" language signal commercial optimism beyond evidence.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Clear mechanism_vs_evidence case in longevity/gene therapy domain. Parallel to\nCase013 (gut microbes) but with stronger animal evidence and more explicit commercial\ninterest (patents). Tests the same animal-to-human inference gap in a different domain.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\"The study was conducted only on mice based on 'middle-aged mice' reference\", \"The 'suitable delivery method' comment refers to future human application\", \"The patent filing and 'healthier society' language implies intended human therapeutic use\"],\n  \"steps\": [\"Identified evidence tier: mouse study with lifespan, muscle, bone, and cognitive outcomes\", \"Identified conclusion tier: human therapeutic implied by 'healthier society' and patent filing for treating human deficits\", \"Detected bridge step: from mouse longevity/health data to human therapeutic application\", \"Evaluated bridge support: no human data mentioned, only future-oriented language about delivery methods\", \"Checked for rhetorical inflation: language is relatively measured, not hyperbolic\", \"Applied priority rule: since text is analytical rather than promotional, mechanism_vs_evidence takes precedence\"],\n  \"alternative_hypotheses\": [\"overclaim - could argue the 'healthier society' claim exceeds evidence\", \"solid - if interpreted as purely reporting mouse findings, but the human therapeutic implications are clear\"],\n  \"uncertainties\": [\"Whether any human safety or preliminary data exists but wasn't mentioned\", \"The exact scope of the patents filed\", \"Whether 'international team' implies multiple institutions or countries\"],\n  \"key_claims\": [\"Mouse longevity increased 15-20% with Klotho gene therapy\", \"Improvements seen in multiple aging markers in mice\", \"Patents filed for human therapeutic applications\", \"Human benefit implied despite only animal evidence\"],\n  \"self_check\": [\"Confirmed the text does imply human benefit through patent filing and 'healthier society' language\", \"Verified no human data is mentioned\", \"Checked that hedging ('suitable delivery method') acknowledges but doesn't resolve the tier gap\", \"Ensured not overflagging - the human implications are explicitly stated, not inferred\"],\n  \"confidence\": 0.90\n}",
+        "parsed": {
+          "final_answer": "mechanism_vs_evidence",
+          "assumptions": [
+            "The study was conducted only on mice based on 'middle-aged mice' reference",
+            "The 'suitable delivery method' comment refers to future human application",
+            "The patent filing and 'healthier society' language implies intended human therapeutic use"
+          ],
+          "steps": [
+            "Identified evidence tier: mouse study with lifespan, muscle, bone, and cognitive outcomes",
+            "Identified conclusion tier: human therapeutic implied by 'healthier society' and patent filing for treating human deficits",
+            "Detected bridge step: from mouse longevity/health data to human therapeutic application",
+            "Evaluated bridge support: no human data mentioned, only future-oriented language about delivery methods",
+            "Checked for rhetorical inflation: language is relatively measured, not hyperbolic",
+            "Applied priority rule: since text is analytical rather than promotional, mechanism_vs_evidence takes precedence"
+          ],
+          "alternative_hypotheses": [
+            "overclaim - could argue the 'healthier society' claim exceeds evidence",
+            "solid - if interpreted as purely reporting mouse findings, but the human therapeutic implications are clear"
+          ],
+          "uncertainties": [
+            "Whether any human safety or preliminary data exists but wasn't mentioned",
+            "The exact scope of the patents filed",
+            "Whether 'international team' implies multiple institutions or countries"
+          ],
+          "self_check": [
+            "Confirmed the text does imply human benefit through patent filing and 'healthier society' language",
+            "Verified no human data is mentioned",
+            "Checked that hedging ('suitable delivery method') acknowledges but doesn't resolve the tier gap",
+            "Ensured not overflagging - the human implications are explicitly stated, not inferred"
+          ],
+          "key_claims": [
+            "Mouse longevity increased 15-20% with Klotho gene therapy",
+            "Improvements seen in multiple aging markers in mice",
+            "Patents filed for human therapeutic applications",
+            "Human benefit implied despite only animal evidence"
+          ],
+          "confidence": 0.9,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 17675
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.3,
+        "structural_reasoning": 0.6583333333333333,
+        "assumption_discipline": 0.65,
+        "uncertainty_handling": 0.55,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.45,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.3,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 6",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6583333333333333,
+          "weight": 8,
+          "weighted_score": 5.3,
+          "evidence": [
+            {
+              "text": "Identified conclusion tier: human therapeutic implied by 'healthier society' and patent filing for treating human deficits",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 1/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.85)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.65,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "The patent filing and 'healthier society' language implies intended human therapeutic use",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3/3 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.55,
+          "weight": 6,
+          "weighted_score": 3.3,
+          "evidence": [
+            {
+              "text": "Whether any human safety or preliminary data exists but wasn't mentioned",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The exact scope of the patents filed",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Whether 'international team' implies multiple institutions or countries",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "2 decorative uncertainty(ies)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "solid - if interpreted as purely reporting mouse findings, but the human therapeutic implications are clear",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "1/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.45,
+          "weight": 8,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Confirmed the text does imply human benefit through patent filing and 'healthier society' language",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Verified no human data is mentioned",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 3 arithmetic, 1 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.81, 236 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The exact scope of the patents filed...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The exact scope of the patents filed",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether 'international team' implies multiple institutions o...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether 'international team' implies multiple institutions or countries",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Mouse longevity increased 15-20% with Klotho gene therapy",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "Improvements seen in multiple aging markers in mice",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/5 content words)",
+          "evidence": [
+            {
+              "text": "Patents filed for human therapeutic applications",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 2 not well supported in reasoning steps (0/6 content words found)",
+          "evidence": [
+            {
+              "text": "Improvements seen in multiple aging markers in mice",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The exact scope of the patents filed",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether 'international team' implies multiple institutions or countries",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "overclaim - could argue the 'healthier society' claim exceeds evidence",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted only on mice based on 'middle-aged mice' reference",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 'suitable delivery method' comment refers to future human application",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The patent filing and 'healthier society' language implies intended human therapeutic use",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence tier: mouse study with lifespan, muscle, bone, and cognitive outcomes",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified conclusion tier: human therapeutic implied by 'healthier society' and patent filing for treating human deficits",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Detected bridge step: from mouse longevity/health data to human therapeutic application",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated bridge support: no human data mentioned, only future-oriented language about delivery methods",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for rhetorical inflation: language is relatively measured, not hyperbolic",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Applied priority rule: since text is analytical rather than promotional, mechanism_vs_evidence takes precedence",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mouse longevity increased 15-20% with Klotho gene therapy",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Improvements seen in multiple aging markers in mice",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Patents filed for human therapeutic applications",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Human benefit implied despite only animal evidence",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim - could argue the 'healthier society' claim exceeds evidence",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid - if interpreted as purely reporting mouse findings, but the human therapeutic implications are clear",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether any human safety or preliminary data exists but wasn't mentioned",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The exact scope of the patents filed",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether 'international team' implies multiple institutions or countries",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Confirmed the text does imply human benefit through patent filing and 'healthier society' language",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified no human data is mentioned",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked that hedging ('suitable delivery method') acknowledges but doesn't resolve the tier gap",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Ensured not overflagging - the human implications are explicitly stated, not inferred",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.6666666666666666
+          },
+          {
+            "source_idx": 18,
+            "target_idx": 4,
+            "relation": "checks",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 19,
+            "target_idx": 4,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 19,
+            "target_idx": 5,
+            "relation": "checks",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 19,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.5
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          16,
+          17
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [
+          19
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'mechanism_vs_evidence...' <- step 8 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "mechanism_vs_evidence",
+        "label_correct": true,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "conclusion_exceeds_results",
+          "mechanism_not_demonstrated"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [
+          "unsupported_generalization"
+        ],
+        "extra_findings": [
+          "cautious_scope_control"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could help"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": false
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 6",
+        "Reasoning graph confirms conclusion grounding",
+        "6 reasoning steps",
+        "Low step utility: 1/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.85)",
+        "3/3 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "2 decorative uncertainty(ies)",
+        "Confidence 0.9",
+        "2 alternative hypotheses considered",
+        "1/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 3 arithmetic, 1 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.81, 236 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:58:20.546682+00:00",
+  "metadata": {}
+}

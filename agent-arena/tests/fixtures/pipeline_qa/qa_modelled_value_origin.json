@@ -1,0 +1,87 @@
+{
+  "record_schema_version": "0.1.0",
+  "record_id": "QA-ORIGIN-0001",
+  "synthetic_fixture": true,
+  "fixture_class": "pipeline_qa",
+  "provenance": [
+    {
+      "provenance_id": "prov-1",
+      "exact_claim_text": "A population parameter changes substantially over a defined period.",
+      "source_id": "src-claim-page",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "Synthetic claim page (fixture)",
+      "retrieved_at": "2026-01-01T00:00:00Z",
+      "content_fingerprint": "1ea218570da43e4fbe462f584d2067b4a33efcc9efac224b489d735b50c99b23",
+      "context_before": null,
+      "context_after": null
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "source_id": "src-A",
+      "role": "supporting",
+      "endpoint": "baseline quantity",
+      "material": true,
+      "exact_reference": "Source A, Table 1",
+      "text": "Source A reports a baseline quantity X.",
+      "reported_value": "100 units",
+      "value_origin": "source_reported"
+    },
+    {
+      "evidence_id": "E2",
+      "source_id": "src-B",
+      "role": "supporting",
+      "endpoint": "change rate",
+      "material": true,
+      "exact_reference": "Source B, Figure 2",
+      "text": "Source B reports a change rate Y.",
+      "reported_value": "1.5% per period",
+      "value_origin": "source_reported"
+    },
+    {
+      "evidence_id": "D1",
+      "source_id": "",
+      "role": "supporting",
+      "endpoint": "aggregate change over the period",
+      "material": true,
+      "exact_reference": null,
+      "text": "Agent Arena combines X and Y with a documented simplified model to estimate the aggregate change.",
+      "reported_value": "approximately 60%",
+      "value_origin": "system_derived",
+      "derivation_method": "simplified_linear_model_M",
+      "input_evidence_ids": ["E1", "E2"],
+      "derivation_note": "Modelled estimate: aggregate = f(X, Y) under model M. Not a value reported by any cited source."
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F1",
+      "provenance_id": "prov-1",
+      "proposition": "The substantial-change claim rests partly on an Agent Arena modelled estimate, not a directly source-reported value.",
+      "verdict_summary": "Two source-reported inputs (E1, E2) feed one Agent Arena derived estimate (D1). The claim is not directly established by any single source-reported value.",
+      "supporting_evidence_ids": ["E1", "E2", "D1"],
+      "contrary_evidence_ids": [],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": null
+    }
+  ],
+  "client_findings": [
+    {
+      "client_finding_id": "C1",
+      "parent_finding_id": "F1",
+      "display_claim": "The reviewed sources report a baseline quantity and a change rate; the aggregate figure is an Agent Arena modelled estimate.",
+      "client_explanation": "Two values are taken directly from the cited sources. The aggregate change is an Agent Arena estimate derived from those inputs under a simplified model, not a value published by any source.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": ["E1", "E2", "D1"],
+      "provenance_id": "prov-1",
+      "value_claims": [
+        {"evidence_id": "E1", "claimed_origin": "source_reported", "claimed_source_ids": ["src-A"]},
+        {"evidence_id": "E2", "claimed_origin": "source_reported", "claimed_source_ids": ["src-B"]},
+        {"evidence_id": "D1", "claimed_origin": "system_derived", "claimed_source_ids": []}
+      ]
+    }
+  ]
+}

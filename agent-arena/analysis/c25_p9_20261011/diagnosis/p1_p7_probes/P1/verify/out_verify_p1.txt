@@ -1,0 +1,22 @@
+== F1 counter-cases (draft first, corrected final second) ==
+SINGLE_FINAL: strategy=fenced_json ok=True trunc=False label=solid p8=completed/supported p9=completed/AUTO_RESOLVABLE row_label=solid class_valid=True p10_forensic_binding=support
+TWO_FENCES: strategy=fenced_json ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+TWO_RAW: strategy=brace_scan ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+== precedence: bare fence first, ```json second ==
+BARE_THEN_JSON: strategy=fenced_json ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+== first fenced block is not an analysis ==
+META_THEN_ANALYSIS: strategy=fenced_json ok=True trunc=False label= p8=not_executed/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=None class_valid=False p10_forensic_binding=None
+== hidden truncation: complete draft, truncated second object ==
+TRUNC_SECOND fr=None: strategy=fenced_json ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+TRUNC_SECOND fr=unknown: strategy=fenced_json ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+TRUNC_SECOND fr=stop: strategy=fenced_json ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+TRUNC_SECOND fr=length: strategy=fenced_json ok=True trunc=True label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=False p10_forensic_binding=None
+TRUNC_SECOND_RAW fr=None: strategy=brace_scan ok=True trunc=False label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=True p10_forensic_binding=contradict
+== duplicate top-level key (inline self-correction) ==
+DUP_KEY: raw True overclaim unexpected/missing: [] []
+== F2: empty raw_output with parsed + finish_reason=length ==
+F2 direct: completed supported e3b0c44298fc
+F2 baseline with raw (length): incomplete
+F2 via refresh_run_phase8 after stripping raw: completed
+F2 loaded w/o raw_output key -> refresh: completed
+F2 P10 reconstruct on that record: phase8 None forensic False

@@ -1,0 +1,8 @@
+{
+  "file": "clean-rc3.tar.gz",
+  "sha256": "b95fad413461f399c6823c0074ef18bcac7342117fdafdf9d4ca0165f9b1dc88",
+  "members": 206,
+  "bytes": 937377,
+  "all_members_byte_verified": true,
+  "status": "Completed separate clean wheel and editable validation"
+}

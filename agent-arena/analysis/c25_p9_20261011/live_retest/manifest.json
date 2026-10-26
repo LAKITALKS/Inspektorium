@@ -1,0 +1,172 @@
+{
+  "schema": "aa-p10-live-retest-manifest/1.1",
+  "contract": {
+    "evaluation": "AA-P8/1.2",
+    "review": "AA-P9/1.2",
+    "host_rule_version": "AA-P8-HOST/1.1",
+    "model_output_format": "AA-P8/1.0 ledger (unchanged)",
+    "prompts": [
+      "study_forensics_prompt/v3-phase8-contract-r2",
+      "study_forensics_prompt/v3-phase8-contract-r2-review-p9-2"
+    ],
+    "registry": {
+      "input_preflight": "1.1",
+      "evidence_symmetry": "1.1.0",
+      "phase8_semantics_taxonomy": "1.2",
+      "phase9_history_review": "1.2"
+    },
+    "documents": "docs/phase8_9_conflict_addendum.md §2-§8, docs/phase10_live_addendum.md"
+  },
+  "authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
+  "authorization_sha256": "63f94f028d721f5547b1344fc8afa9377a24368e0743af1a4411ac8740126b0a",
+  "tested_code_commit": "21a284984f44a5fc7f2b6f6a2f8e559c81afab76",
+  "cases": [
+    {
+      "case_id": "LR-01",
+      "task_id": "aa-p10-live-retest-LR-01",
+      "role": "supported: a randomized between-group comparison whose population, intervention, comparator, endpoint and horizon are worded identically in claim and source (template sibling of LS-01's positive-control role on a new topic)",
+      "label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "task_file": "tasks/LR-01.json",
+      "task_file_sha256": "5a330df6496bc7e04d46bb65f4f842295b305a55b0931f6ebce9efed377786ef",
+      "task_sha256": "d2e63c98dfbd37dfd2e7f273f975d391c534cc457cc01da0e20f5ab90b08b480"
+    },
+    {
+      "case_id": "LR-02",
+      "task_id": "aa-p10-live-retest-LR-02",
+      "role": "clearly unsupported with sufficient evidence: a single cross-sectional association used for a causal, longitudinal claim (shares the observational-confounding element of LS-06, without its RCT)",
+      "label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "task_file": "tasks/LR-02.json",
+      "task_file_sha256": "b54ba3ca1f1ff75f7cb4305e0bd052239922f8ab23ab9edc39a687f8a37e1906",
+      "task_sha256": "57fbe77420ba1425718dc66b98d66c85d58adbe6d0bbb8ca4e82a372dc01e9c7"
+    },
+    {
+      "case_id": "LR-03",
+      "task_id": "aa-p10-live-retest-LR-03",
+      "role": "conflict-capable: a before-after change in one group with a stated confounder and no comparison figures; unsupported versus unknown is a genuine judgment call (same trap template as library case 063, a before-after policy change with a concurrent confounder and no comparison group, and topic close to library case 022; different topic and wording, copied from neither)",
+      "label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "task_file": "tasks/LR-03.json",
+      "task_file_sha256": "4fc9574e7b97593387d3c0fe66ae726f03cff6d5b622045a31bd2554880d8851",
+      "task_sha256": "06fc4d6b9fe4f6e8c6edc13e044152d740cbf4187dcf90a593f01bea11e2545a"
+    }
+  ],
+  "expectations_file": "expectations.json",
+  "expectations_sha256": "0a8322c565a80ca872cf2f7582c3a34b8d038294769787abf926f2ca1acbe10c",
+  "scripts": {
+    "scripts/run_retest.py": "2b066fe9602bfe725ed27b8e848bf47025eefec729c42da592220ebfef4a020e",
+    "scripts/summarize_retest.py": "45dde4a566e6fa1cbd0f4888d27a388eda58d9774eec647ed37ab1d05d127bce",
+    "scripts/replay_retest.py": "0bab7d74e7af08d79b5119e60ad77d886db2153b3cdbecccd2e716a70a5936ce",
+    "scripts/close_retest.py": "f530bda8d15bafe358f368b30bae120a66bf17b968560cb26e155c399c3b74b0",
+    "scripts/prepare_retest.py": "e3e1901afde8f982d79c5016dc634913dc1ce530337b560cecd2ba8af5671ec8"
+  },
+  "profiles": {
+    "claude-haiku-5-5@3": {
+      "fingerprint": "074068522bba56971670c34b634073b64e9193529fe50553e3f4245e5013d1f2",
+      "prompt_versions": [
+        "study_forensics_prompt/v3-phase8-contract-r2",
+        "study_forensics_prompt/v3-phase8-contract-r2-review-p9-2"
+      ],
+      "prompt_sha256": [
+        "e92bba734f72c8526f5d922839a282fdb290e3d8b4db45d9e9e15e00a61a131f",
+        "725f35b00a758daa6a4ee5d7d8822e3db2b3787553fb6955ae4cc9a47e88fd9e"
+      ],
+      "max_tokens": 48000
+    },
+    "claude-sonnet-5-5@3": {
+      "fingerprint": "537510e9db6bf7564f9840998ed2987cb4b3691a9c48ed0a0853f629ce775af5",
+      "prompt_versions": [
+        "study_forensics_prompt/v3-phase8-contract-r2",
+        "study_forensics_prompt/v3-phase8-contract-r2-review-p9-2"
+      ],
+      "prompt_sha256": [
+        "e92bba734f72c8526f5d922839a282fdb290e3d8b4db45d9e9e15e00a61a131f",
+        "725f35b00a758daa6a4ee5d7d8822e3db2b3787553fb6955ae4cc9a47e88fd9e"
+      ],
+      "max_tokens": 16000
+    }
+  },
+  "budget": {
+    "order_total_microusd": 2000000,
+    "predecessor_consumed_microusd": 1236936,
+    "authorized_microusd": 763064,
+    "per_call_ceiling_microusd": 300000,
+    "attempts": {
+      "predecessors": 24,
+      "this_order_max": 12,
+      "ceiling": 40
+    },
+    "technical_retries": {
+      "predecessors": 0,
+      "this_order_max": 2,
+      "ceiling": 4
+    },
+    "review_caps_per_profile": {
+      "counterreview": 1,
+      "stability": 1
+    },
+    "max_primary_exposure_microusd": {
+      "claude-haiku-5-5@3|LR-01": 28111,
+      "claude-haiku-5-5@3|LR-02": 28087,
+      "claude-haiku-5-5@3|LR-03": 28088,
+      "claude-sonnet-5-5@3|LR-01": 242210,
+      "claude-sonnet-5-5@3|LR-02": 241726,
+      "claude-sonnet-5-5@3|LR-03": 241756
+    },
+    "counterreview_reserve_microusd": {
+      "claude-haiku-5-5@3|LR-01": 30427,
+      "claude-haiku-5-5@3|LR-02": 30331,
+      "claude-haiku-5-5@3|LR-03": 30337,
+      "claude-sonnet-5-5@3|LR-01": 288538,
+      "claude-sonnet-5-5@3|LR-02": 286602,
+      "claude-sonnet-5-5@3|LR-03": 286722
+    }
+  },
+  "call_plan": {
+    "order": [
+      "claude-haiku-5-5@3 LR-03",
+      "claude-haiku-5-5@3 LR-01",
+      "claude-haiku-5-5@3 LR-02",
+      "claude-sonnet-5-5@3 LR-03",
+      "claude-sonnet-5-5@3 LR-01",
+      "claude-sonnet-5-5@3 LR-02"
+    ],
+    "rules": [
+      "Fixed order; at most 6 primary slots; a skipped or denied slot is never reallocated.",
+      "Pre-checks before the first call: src at HEAD equals tested_code_commit and src has no uncommitted or untracked change; the frozen retest files (authorization.json, manifest.json, expectations.json, tasks/, scripts/) are committed and unchanged at HEAD, and the freeze commit is logged; the authorization, task, expectations and script hashes equal this manifest; the provider key is present in the runner's environment (presence only, never printed); -003 carries no successor claim or exactly this one.",
+      "Single start: one runner process at a time (exclusive runner lock). The runner refuses to start when the -004 ledger is not ACTIVE or records any attempt or review allowance claim. A restart is permitted only while the ledger is absent or ACTIVE with zero attempts and zero claims (for example after failed pre-checks); it is logged, and the summary evaluates only the records after the last start whose pre-checks passed.",
+      "Reserve rule (cap-aware): before each primary the remaining executable budget must cover the primary maximal exposure plus, while the profile's counterreview allowance is still unclaimed in the ledger, the counterreview reserve. Otherwise this primary is skipped (not executed) with the logged cause, and later primaries are checked again under the same rule. The inputs are logged for every primary.",
+      "Reviews run only through the canonical P10 path: on REVIEW_RECOMMENDED of a technically complete analysis the mandatory counterreview, then, only if it completed, the single stability variant (evidence order reversed; a reversal that changes nothing is rejected as a no-op without a call, and its claimed allowance counts as used). Per profile at most 1 counterreview and 1 stability (authorization review_caps). A review that is denied, rejected, failed or not sent leaves the case UNRESOLVED (status REVIEW_REQUIRED).",
+      "At most 1 technical retry per request and 2 in total (ledger); no retry for content.",
+      "Stop rule: after each slot the runner reads that slot's new ledger attempts and stops the whole run (remaining slots logged as not run) on any FAILED_PERMANENT attempt, any attempt still RESERVED_POSSIBLY_BILLABLE, any overrun, a request whose final attempt is FAILED_TRANSIENT without a permitted retry left (its retry was not granted, or 2 of 2 order-wide retries are used), a ledger that is not ACTIVE, or a result without a bundle (status None, PREFLIGHT_BLOCKED or RELEASE_BLOCKED, or no path).",
+      "Not a stop: a 429/529/5xx/timeout/connection failure that persists after its single retry while an order-wide retry remains is a technical slot failure (PARTIAL) and the run continues; refusal, truncation, missing text, ANALYSIS_INCOMPLETE and REVIEW_REQUIRED are model or process outcomes.",
+      "Overrun: the per-call ceiling is enforced before sending by the maximal-exposure reservation (max_tokens bound); the ledger revokes itself when confirmed cost exceeds the authorized total. An overrun is detected by the runner only after its slot, so that slot's own review calls may already have been sent; any overrun is reported as a breach of the work-order limits.",
+      "An interrupted run counts as PARTIAL and is not resumed (single start); an unresolved reservation stays bound; the interrupted case is documented from the ledger and, where a terminal capture exists, by offline replay.",
+      "The runner is started detached (background) and monitored; it is never run inside a foreground tool timeout. Each request has the profile's 300 s client timeout and no SDK retry; the runner adds no subprocess timeout, because killing a running CLI would leave an unresolved reservation."
+    ]
+  },
+  "evaluation_rule": "For each executed slot, three sides are checked separately: the model composite (model_composite_state), the host composite (host_composite_state) and the effective composite (composite_state), plus the final status. A side of a technically complete analysis is classified as 'within' (in acceptable), 'conservative' (in conservative) or 'not_acceptable'. A side without a value, and every side of a technically incomplete slot (status RUN_FAILED, ANALYSIS_INCOMPLETE, PREFLIGHT_BLOCKED or RELEASE_BLOCKED, or a phase8 technical_status other than completed, including transformation and Phase-7 findings), is 'not_evaluable': it is reported with its technical cause and its recorded values, is never counted as a model or host deviation, and the slot is not within expectations (reason: technical). An effective 'unknown' forced by technical incompleteness is never classified. A slot is within expectations only if every side is within and the status is acceptable. An effective 'unknown' caused by an open conflict never counts as acceptance of either side. Every deviation is reported per side together with the per-proposition host reasons. For every technically complete slot the host route is recorded over the required propositions (all propositions if none is marked required) whose host state is not supported: 'string_mismatch_only' when the final host reason of every evidence binding of each such proposition is an attribute-string reason ('semantic mismatch: ...', 'unsupported product/dose/formulation/route transfer', 'semantic transfer unresolved', 'product transfer unresolved') and no unresolved claim attribute, support/contradiction conflict or unresolved required bridge constrains it; 'capability' when no binding of these propositions ends in an attribute-string reason; 'mixed' otherwise; 'none' when every such proposition is host-supported. A host deviation with route 'string_mismatch_only' is additionally labelled as a likely representation artifact, but it still counts as a deviation. A host 'within' with route 'string_mismatch_only' is reported as 'within (representation artifact)': it still counts as within by the frozen sets, but the report must not attribute it to the reasoning the case was designed to test.",
+  "p9_reporting": "For every slot, the counterreview and the stability are reported separately: outcome (completed, failed, denied, rejected_noop, interrupted, or not reached), request sent (yes if a review capture records request_sent; 'possibly' if a review ledger attempt is still RESERVED_POSSIBLY_BILLABLE without a capture; no otherwise), response received (a review capture with HTTP status 200) and response processed (a review position built from an HTTP-200 model response was assessed by Phase 8/9; transport-failed and unsent reviews count as no response). The four order statuses are then: (1) P9 routing reached (a mandatory REVIEW_RECOMMENDED trigger fired, a review allowance was claimed, or a P9 attempt exists); (2) P9 model call made (any review request sent, or 'possibly' as above); (3) response processed (any review response processed as defined); (4) conflict: 'resolved by human adjudication', 'open_material' (a mandatory model_host_conflict trigger), 'open_bounded' (only bounded_model_host_conflict triggers) or 'none'; for a technically incomplete analysis the value carries the suffix '(analysis technically incomplete)' and 'none' becomes 'none recorded'. P9 position-versus-position conflicts after a review are reported separately with their materiality. No human adjudication is performed in this retest, so every material conflict stays open. For a slot without a bundle the statuses are derived from the ledger, its review allowance claims and the captures, and the conflict is 'not determinable (no bundle)'.",
+  "release_policy": "A test release is attempted once per READY_FOR_RELEASE or REVIEW_REQUIRED bundle with reviewer 'TEST ONLY - not a scientific release' and a reason naming the synthetic case, and its result is recorded once in evidence/test_releases.json; a bundle with an open mandatory review or material conflict must stay RELEASE_BLOCKED.",
+  "recording": [
+    "transport (http status, request id, error type)",
+    "format/parse",
+    "evidence completeness",
+    "model judgment",
+    "host state, host reasons and host route",
+    "conflict (material/bounded)",
+    "P9 route and real review calls, counterreview and stability outcomes separately",
+    "the four P9 statuses (routing reached, model call made, response processed, conflict)",
+    "review resolution",
+    "bundle integrity",
+    "release",
+    "tokens",
+    "cost and overrun",
+    "latency"
+  ],
+  "replay_target": "the first slot in the fixed order with a sent live review request; else the first slot in the fixed order with a terminal primary capture (normally Haiku LR-03); chosen by replay_retest.py from the ledger",
+  "after_run": [
+    "close_retest.py immediately after the runner has ended: closes -004 by a direct ledger revoke with an ORDER_COMPLETE reason under the lease (as -003 was closed; after expires_at under the lease file without a live session); unresolved reservations stay bound; an already REVOKED ledger counts as closed; while a live process still holds the lease it refuses and writes nothing; evidence/closure.json is written once and later checks are appended to evidence/closure_checks.jsonl; replay stays possible",
+    "replay_retest.py with the installed wheel of tested_code_commit (offline; SCRATCH_DIR outside the repository; writes evidence/replay_check.json after the comparison, also when the replay fails)",
+    "summarize_retest.py (offline; per-attempt and per-slot evidence, expectation checks, P9 statuses, test releases recorded once in evidence/test_releases.json; includes closure.json and replay_check.json; re-runnable)",
+    "evidence commit: the whole retest directory including evidence/, plus analysis/live_smoke_20261011/repair_r1/successor_claim.json (the O_EXCL binding of -004 to -003, written by the first live session of -004)"
+  ]
+}

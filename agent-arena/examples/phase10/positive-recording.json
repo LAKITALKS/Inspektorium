@@ -1,0 +1,340 @@
+{
+  "final_answer": "solid",
+  "confidence": 0.82,
+  "forensic_record": {
+    "record_schema_version": "0.1.0",
+    "record_id": "phase10-positive",
+    "synthetic_fixture": true,
+    "fixture_class": "phase10_recorded_offline_example",
+    "provenance": [
+      {
+        "provenance_id": "origin",
+        "exact_claim_text": "intervention X reduces event Q in adults.",
+        "source_id": "input",
+        "provenance_state": "archived_snapshot",
+        "canonical_url": null,
+        "page_title": null,
+        "retrieved_at": null,
+        "content_fingerprint": null,
+        "context_before": null,
+        "context_after": null
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "e1",
+        "source_id": "context",
+        "role": "supporting",
+        "endpoint": "event Q",
+        "material": true,
+        "exact_reference": "A randomized comparison in adults (human) found that intervention X reduced event Q versus placebo at 12 weeks.",
+        "text": "A randomized comparison in adults (human) found that intervention X reduced event Q versus placebo at 12 weeks.",
+        "reported_value": null,
+        "value_origin": "source_reported",
+        "derivation_method": null,
+        "input_evidence_ids": [],
+        "derivation_note": null
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "claim:p1",
+        "provenance_id": "origin",
+        "proposition": "intervention X reduces event Q in adults.",
+        "verdict_summary": "",
+        "supporting_evidence_ids": [
+          "e1"
+        ],
+        "contrary_evidence_ids": [],
+        "allowed_summary_strength": "not_assessed",
+        "confidence_status": "",
+        "predicted_label": null
+      }
+    ],
+    "client_findings": [
+      {
+        "client_finding_id": "client1",
+        "parent_finding_id": "claim:p1",
+        "display_claim": "intervention X reduces event Q in adults.",
+        "client_explanation": "",
+        "client_strength": "not_assessed",
+        "referenced_evidence_ids": [
+          "e1"
+        ],
+        "provenance_id": "origin",
+        "value_claims": [],
+        "client_negative_assertions": []
+      }
+    ],
+    "search_scopes": [
+      {
+        "search_scope_id": "review",
+        "scope_type": "reviewed_set",
+        "reviewed_source_ids": [
+          "input",
+          "context"
+        ],
+        "resources": [],
+        "query_terms": [],
+        "date_cutoff": null,
+        "search_completeness": null
+      }
+    ],
+    "negative_assertions": [],
+    "phase8": {
+      "claim_id": "claim",
+      "provenance_id": "origin",
+      "original_claim": "intervention X reduces event Q in adults.",
+      "required_proposition_ids": [
+        "claim:p1"
+      ],
+      "propositions": [
+        {
+          "proposition_id": "claim:p1",
+          "parent_claim_id": "claim",
+          "proposition_text": "intervention X reduces event Q in adults.",
+          "original_span": {
+            "start": 0,
+            "end": 41,
+            "text": "intervention X reduces event Q in adults."
+          },
+          "materiality": "required",
+          "attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "material_dimensions": [
+            "species",
+            "population",
+            "intervention",
+            "comparator",
+            "endpoint",
+            "endpoint_type",
+            "relation",
+            "follow_up",
+            "certainty",
+            "comparison"
+          ],
+          "evidence_bindings": [
+            {
+              "binding_id": "b1",
+              "proposition_id": "claim:p1",
+              "evidence_id": "e1",
+              "directness": "direct",
+              "observation": "support",
+              "reason": "Matching trial"
+            }
+          ],
+          "reported_verdict": "supported",
+          "reason": "Source reports the stated comparison",
+          "provenance_id": "origin",
+          "search_question": "What evidence supports: intervention X reduces event Q in adults.",
+          "search_scope_ids": [
+            "review"
+          ]
+        }
+      ],
+      "logic": {
+        "operator": "leaf",
+        "proposition_id": "claim:p1"
+      },
+      "extraction_provenance": "offline extraction from supplied prompt and context",
+      "evidence_descriptions": [
+        {
+          "evidence_id": "e1",
+          "evidence_type": "controlled_intervention",
+          "source_role": "primary_study",
+          "attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "randomized": true,
+          "study_id": "synthetic-study-1"
+        }
+      ],
+      "transformations": [
+        {
+          "transformation_id": "extraction",
+          "stage": "extraction",
+          "target_id": "claim:p1",
+          "from_proposition_ids": [
+            "claim:p1"
+          ],
+          "from_text": "intervention X reduces event Q in adults.",
+          "to_text": "intervention X reduces event Q in adults.",
+          "from_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "to_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "asserted_state": null,
+          "asserts_whole_claim": false,
+          "reason": "Meaning retained"
+        },
+        {
+          "transformation_id": "search_question",
+          "stage": "search_question",
+          "target_id": "claim:p1",
+          "from_proposition_ids": [
+            "claim:p1"
+          ],
+          "from_text": "intervention X reduces event Q in adults.",
+          "to_text": "What evidence supports: intervention X reduces event Q in adults.",
+          "from_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "to_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "asserted_state": null,
+          "asserts_whole_claim": false,
+          "reason": "Meaning retained"
+        },
+        {
+          "transformation_id": "internal",
+          "stage": "internal",
+          "target_id": "claim:p1",
+          "from_proposition_ids": [
+            "claim:p1"
+          ],
+          "from_text": "intervention X reduces event Q in adults.",
+          "to_text": "intervention X reduces event Q in adults.",
+          "from_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "to_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "asserted_state": null,
+          "asserts_whole_claim": false,
+          "reason": "Meaning retained"
+        },
+        {
+          "transformation_id": "summary",
+          "stage": "summary",
+          "target_id": "client1",
+          "from_proposition_ids": [
+            "claim:p1"
+          ],
+          "from_text": "intervention X reduces event Q in adults.",
+          "to_text": "intervention X reduces event Q in adults.",
+          "from_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "to_attributes": {
+            "species": "human",
+            "population": "adults",
+            "intervention": "intervention X",
+            "comparator": "placebo",
+            "endpoint": "event Q",
+            "endpoint_type": "clinical_event",
+            "relation": "causal",
+            "follow_up": "12 weeks",
+            "certainty": "asserted",
+            "comparison": "between"
+          },
+          "asserted_state": "supported",
+          "asserts_whole_claim": true,
+          "reason": "Meaning retained"
+        }
+      ]
+    },
+    "phase8_taxonomy": {
+      "core_error": "none",
+      "causal_claim": true,
+      "noncausal_result_used": false,
+      "described_biological_mechanism": false,
+      "implies_human_benefit": true,
+      "proposition_ids": [
+        "claim:p1"
+      ],
+      "evidence_ids": [
+        "e1"
+      ],
+      "trigger_proposition_id": "claim:p1",
+      "trigger_evidence_id": "e1",
+      "trigger_quote": "A randomized comparison in adults (human) found that intervention X reduced event Q versus placebo at 12 weeks.",
+      "reason": "Generic represented core-error analysis"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "aa-p10-live-authorization/1.1",
+  "authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
+  "work_order": "AGENT ARENA — C25 korrigieren, verpflichtende P9-Konfliktprüfung und Gesamtdiagnose P1–P10 (11.10.2026)",
+  "issued_at": "2026-10-12T00:00:00+00:00",
+  "expires_at": "2026-10-15T00:00:00+00:00",
+  "status": "INERT_PUBLIC_ARCHIVE",
+  "canonical_directory": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/c25_p9_20261011/live_retest",
+  "endpoint": "https://api.anthropic.com",
+  "total_budget_microusd": 763064,
+  "max_generation_attempts": 12,
+  "max_technical_retries": 2,
+  "max_attempts_per_request": 2,
+  "per_call_ceiling_microusd": 300000,
+  "allowed_profiles": {
+    "claude-haiku-5-5@3": "074068522bba56971670c34b634073b64e9193529fe50553e3f4245e5013d1f2",
+    "claude-sonnet-5-5@3": "537510e9db6bf7564f9840998ed2987cb4b3691a9c48ed0a0853f629ce775af5"
+  },
+  "task_bindings": {
+    "aa-p10-live-retest-LR-01": "d2e63c98dfbd37dfd2e7f273f975d391c534cc457cc01da0e20f5ab90b08b480",
+    "aa-p10-live-retest-LR-02": "57fbe77420ba1425718dc66b98d66c85d58adbe6d0bbb8ca4e82a372dc01e9c7",
+    "aa-p10-live-retest-LR-03": "06fc4d6b9fe4f6e8c6edc13e044152d740cbf4187dcf90a593f01bea11e2545a"
+  },
+  "slots": [
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|stability",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|stability",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|stability",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|stability",
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|stability",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability"
+  ],
+  "supersedes": {
+    "prior_authorization_id": "AA-P10-LIVE-SMOKE-20261011-003",
+    "state": "CLOSED_ORDER_COMPLETE",
+    "prior_ledger_sha256_after_closure": "124ffab09ad94b9c751b50fe2888e48a2e585d41f16a6e21d2062d99e69497da",
+    "reason": "-003 was closed as ORDER_COMPLETE (its remainder was not carried over by that order). The work order of 11.10.2026 explicitly re-authorizes exactly the old remainder for this retest: 763064 microUSD, 12 attempts, 2 technical retries, within the cumulative ceilings. -002/-003 stay closed and replayable; no other budget exists."
+  },
+  "predecessors": [
+    {
+      "authorization_id": "AA-P10-LIVE-SMOKE-20261011-002",
+      "directory": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/live_run",
+      "ledger_sha256": "e6ef0f5aff3b6bdd3c841fc0a5982449a83eecac004f73e42f9a19a66b0c64b5",
+      "consumed_microusd": 487679,
+      "attempts": 12,
+      "technical_retries": 0
+    },
+    {
+      "authorization_id": "AA-P10-LIVE-SMOKE-20261011-003",
+      "directory": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1",
+      "ledger_sha256": "124ffab09ad94b9c751b50fe2888e48a2e585d41f16a6e21d2062d99e69497da",
+      "consumed_microusd": 749257,
+      "attempts": 12,
+      "technical_retries": 0
+    }
+  ],
+  "review_caps": {
+    "claude-haiku-5-5@3": {
+      "counterreview": 1,
+      "stability": 1
+    },
+    "claude-sonnet-5-5@3": {
+      "counterreview": 1,
+      "stability": 1
+    }
+  },
+  "publication_original_status": "ACTIVE",
+  "publication_notice": "Historical metadata derivative only. No current live authorization. Original expired; original authorizations/ledgers remain private and unchanged. Native historical auth-dir replay cannot accept this derivative unchanged."
+}

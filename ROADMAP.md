@@ -13,18 +13,12 @@ and its five examples are defined in [SCOPE.md](SCOPE.md); the existing
 release tag is preserved. The phase names organize later research and do not
 announce a new public release or authorize public implementation.
 
-Execution authorization, budget, state/resume and environment controls are
-reported implemented/tested internally (I04), with no public implementation
-inspected. The owner-reported fault pilot is described with its null results
-and semantic misses in [RESEARCH_RESULTS.md](RESEARCH_RESULTS.md). This roadmap
-does not rebuild an earlier internal phase or migrate that code.
-
-The owner reports that Phases 8–10 are implemented in the internal technical
-v1.0.0 closeout of a separate, non-public codebase. They were checked offline
-and live-tested in a limited way on earlier internal states; the closeout code
-was not live-tested again. No scientific efficacy is demonstrated, and none of
-this implementation is part of the public package. Making any of it public
-requires a separate inspectable package and review.
+Arena's execution, budget, state and environment controls and P1–P10 source
+are now public under [agent-arena/](agent-arena/README.md), as technical research
+prerelease 1.0.1. The [publication record](publication/2026-10-26/README.md)
+links current offline checks and historical source/evidence mapping. Historical
+null results and semantic misses remain in [RESEARCH_RESULTS.md](RESEARCH_RESULTS.md).
+The final code has no new live validation. Scientific efficacy remains unproven.
 
 ## Public maintenance — v0.1.1
 
@@ -35,8 +29,7 @@ Phase 8–10 capability. Full evaluator provenance in reports and a separate
 
 ## Phase 8 — Deep Forensics
 
-**Implemented internally (R08, owner-reported); no public implementation or
-assigned public release.**
+**Implemented in public Arena research 1.0.1 (R08); efficacy unproven.**
 
 Investigate semantic/inferential defects that can survive exact citation
 binding:
@@ -57,8 +50,7 @@ claiming decision benefit.
 
 ## Phase 9 — Disagreement & Review
 
-**Implemented internally (R09, owner-reported); no public implementation or
-assigned public release.**
+**Implemented in public Arena research 1.0.1 (R09); efficacy unproven.**
 
 Identify material disagreements; enable independent verdict challenge and
 bounded review routing. Preserve original judgments, explanations and the
@@ -71,8 +63,8 @@ it is requested separately; disclose reviewer/model dependencies.
 
 ## Phase 10 — Reporting & Operational Finish
 
-**Implemented internally (R10, owner-reported); no public operational release
-gate or assigned public release.**
+**Implemented in public Arena research 1.0.1 (R10); technical artifact release
+is distinct from scientific approval.**
 
 Develop a canonical release path with explicit metadata, visible UNKNOWN
 states, report-schema requirements, appropriate output formats, post-render
@@ -100,6 +92,5 @@ a successful finite fault set is insufficient by itself.
 [RESEARCH_PLAN.md](RESEARCH_PLAN.md) defines falsifiable questions, analysis
 units, clean counterparts and informative baselines. H01—better end decisions
 at acceptable total cost—remains untested. Software governance, system-controls
-research and model efficacy need their own evidence. Maintainer review,
-separate implementation authorization and an inspectable evidence package
-precede any claim that these phases have become public capabilities.
+research and model efficacy need their own evidence. The authorized publication exposes the code and inspectable evidence; it does
+not satisfy these scientific comparisons.

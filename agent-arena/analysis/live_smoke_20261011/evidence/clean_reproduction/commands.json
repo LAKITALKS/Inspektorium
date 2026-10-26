@@ -1,0 +1,458 @@
+[
+  {
+    "name": "clone",
+    "command": [
+      "git",
+      "clone",
+      "--quiet",
+      "--no-hardlinks",
+      "--no-checkout",
+      "__LOCAL_HOME__/Documents/Projects/agent-arena",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1",
+    "exit_code": 0
+  },
+  {
+    "name": "checkout",
+    "command": [
+      "git",
+      "checkout",
+      "--quiet",
+      "--detach",
+      "a695f91d4e6850714952e70947171ae28c557554"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "initial-status",
+    "command": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "venv",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-m",
+      "venv",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "install",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      ".[dev,providers]"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "installed-origin",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-c",
+      "import agent_arena,sys; print(agent_arena.__file__); print(sys.version)"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "installed-code",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-c",
+      "import json; from agent_arena.phase10_pipeline import code_identity; print(json.dumps(code_identity()))"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "installed-packages",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "cli-help",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "--help"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "validate",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "validate",
+      "--task",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/positive-task.json"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "run-positive",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "run",
+      "--offline",
+      "--task",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/positive-task.json",
+      "--recording",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/positive-recording.json",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "release-positive",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/606bfbb1-f986-49c9-b201-35f8c89eca59",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Explicit synthetic local artifact release for installation verification"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "inspect-positive",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/be889f37-2ae0-47c9-a450-fa1f754df6de"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "run-negative",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "run",
+      "--offline",
+      "--task",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/negative-task.json",
+      "--recording",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/negative-recording.json",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "release-negative",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/4c0be59e-aa2d-4ace-b0d4-a93cd167a5d0",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Explicit synthetic local artifact release for installation verification"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "inspect-negative",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/33fdc595-12bf-482d-a0a4-bd5e89277f35"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "run-unknown",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "run",
+      "--offline",
+      "--task",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/unknown-task.json",
+      "--recording",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/unknown-recording.json",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 2
+  },
+  {
+    "name": "inspect-blocked",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/8387235a-7599-46a7-86c6-0e90765193e7"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "release-blocked",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/8387235a-7599-46a7-86c6-0e90765193e7",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles",
+      "--reviewer",
+      "Offline operator",
+      "--reason",
+      "Test refusal"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 2
+  },
+  {
+    "name": "human-review",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "review",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/8387235a-7599-46a7-86c6-0e90765193e7",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles",
+      "--state-dir",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/human-state",
+      "--select",
+      "p9position:8dce93fed85d4427439a8a10",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Resolve represented design uncertainty from supplied source",
+      "--correction",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/examples/phase10/positive-recording.json"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "release-human-review",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/8b5c3252-a1b4-4bb9-b669-890548ead530",
+      "--output-root",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Explicit synthetic local artifact release for installation verification"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "inspect-human-review",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/cli-bundles/3e059bd8-1dce-4eca-b0e8-16bda38545e7"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "acceptance",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "scripts/phase10_acceptance.py",
+      "--output",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/acceptance"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "ruff",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "src/agent_arena/phase10_bundle.py",
+      "src/agent_arena/phase10_cli.py",
+      "src/agent_arena/phase10_live.py",
+      "src/agent_arena/phase10_models.py",
+      "src/agent_arena/phase10_pipeline.py",
+      "src/agent_arena/phase10_projection.py",
+      "src/agent_arena/phase10_render.py",
+      "src/agent_arena/cli.py",
+      "tests/test_phase10_bundle.py",
+      "tests/test_phase10_live.py",
+      "tests/test_phase10_render.py",
+      "scripts/phase10_acceptance.py",
+      "scripts/phase10_clean_reproduce.py",
+      "scripts/phase10_print_qa.py"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "compileall",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-m",
+      "compileall",
+      "-q",
+      "src/agent_arena"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "wheel-phase10-tests",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_phase10_bundle.py",
+      "tests/test_phase10_render.py"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "development-venv",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-m",
+      "venv",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "development-install",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "-c",
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1-evidence/wheel-dependency-constraints.txt",
+      "-e",
+      ".[dev,providers]"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "development-origin",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv/bin/python",
+      "-c",
+      "import agent_arena,sys; print(agent_arena.__file__); print(sys.version)"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "development-code",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv/bin/python",
+      "-c",
+      "import json; from agent_arena.phase10_pipeline import code_identity; print(json.dumps(code_identity()))"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "development-packages",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv/bin/python",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "full-suite",
+    "command": [
+      "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "final-status",
+    "command": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+    "exit_code": 0
+  }
+]

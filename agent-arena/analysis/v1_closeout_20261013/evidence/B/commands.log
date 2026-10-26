@@ -1,0 +1,720 @@
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.recording.json --output-root <scratch>/bundles/B1_bounded_optional_conflict/candidate
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "READY_FOR_RELEASE",
+  "path": "<scratch>/bundles/B1_bounded_optional_conflict/candidate/a5e00647-2039-4b7b-800f-beb96c9e0a59",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/B1_bounded_optional_conflict/candidate/a5e00647-2039-4b7b-800f-beb96c9e0a59
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "READY_FOR_RELEASE",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/B1_bounded_optional_conflict/candidate/a5e00647-2039-4b7b-800f-beb96c9e0a59 --output-root <scratch>/bundles/B1_bounded_optional_conflict/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASED",
+  "path": "<scratch>/bundles/B1_bounded_optional_conflict/released/58523698-ef76-4c72-a55c-389be9dafb98",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/B1_bounded_optional_conflict/released/58523698-ef76-4c72-a55c-389be9dafb98
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "RELEASED",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.recording.json --output-root <scratch>/bundles/B2a_material_premise/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/B2a_material_premise/candidate/9bdc0604-0f3c-406f-9c47-234911d22d64",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/B2a_material_premise/candidate/9bdc0604-0f3c-406f-9c47-234911d22d64
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/B2a_material_premise/candidate/9bdc0604-0f3c-406f-9c47-234911d22d64 --output-root <scratch>/bundles/B2a_material_premise/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.recording.json --output-root <scratch>/bundles/B2b_material_taxonomy_label/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/B2b_material_taxonomy_label/candidate/ce514b72-a4a1-4eed-a449-3c9e07d45302",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/B2b_material_taxonomy_label/candidate/ce514b72-a4a1-4eed-a449-3c9e07d45302
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/B2b_material_taxonomy_label/candidate/ce514b72-a4a1-4eed-a449-3c9e07d45302 --output-root <scratch>/bundles/B2b_material_taxonomy_label/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.recording.json --output-root <scratch>/bundles/B2c_material_decisive_summary/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/B2c_material_decisive_summary/candidate/b9c4a4f6-0d05-4323-87d1-1b725b374fcd",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/B2c_material_decisive_summary/candidate/b9c4a4f6-0d05-4323-87d1-1b725b374fcd
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/B2c_material_decisive_summary/candidate/b9c4a4f6-0d05-4323-87d1-1b725b374fcd --output-root <scratch>/bundles/B2c_material_decisive_summary/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.recording.json --output-root <scratch>/bundles/VB1_M4b_whole_claim_summary_conflicted_optional/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/VB1_M4b_whole_claim_summary_conflicted_optional/candidate/2d85eb52-2379-430c-9b7a-bd216e304a39",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/VB1_M4b_whole_claim_summary_conflicted_optional/candidate/2d85eb52-2379-430c-9b7a-bd216e304a39
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/VB1_M4b_whole_claim_summary_conflicted_optional/candidate/2d85eb52-2379-430c-9b7a-bd216e304a39 --output-root <scratch>/bundles/VB1_M4b_whole_claim_summary_conflicted_optional/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.recording.json --output-root <scratch>/bundles/VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "ANALYSIS_INCOMPLETE",
+  "path": "<scratch>/bundles/VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/62ce8af2-1f28-48be-972a-c6b76eec1903",
+  "errors": [
+    "analysis_source: Analysis incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.3 (AA-P8-HOST/1.1); summary-client-opt: partial-to-whole promotion",
+    "finding_artifact_binding: Evaluated client_findings",
+    "phase8_semantics_taxonomy: Semantic or taxonomy analysis incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.3 (AA-P8-HOST/1.1)",
+    "phase9_history_review: Review open: technically incomplete analysis; no conflict review was run: Ledger, evidence constraints and transformations evaluated under AA-P8/1.3 (AA-P8-HOST/1.1); summary-client-opt: partial-to-whole promotion"
+  ]
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/62ce8af2-1f28-48be-972a-c6b76eec1903
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "ANALYSIS_INCOMPLETE",
+  "errors": []
+}
+$ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/62ce8af2-1f28-48be-972a-c6b76eec1903 --output-root <scratch>/bundles/VB1_M4d_agreed_unsupported_optional_whole_claim_summary/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <repo>/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is ANALYSIS_INCOMPLETE; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.recording.json --output-root <scratch>/bundles/old558e920__B1_bounded_optional_conflict/candidate
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "READY_FOR_RELEASE",
+  "path": "<scratch>/bundles/old558e920__B1_bounded_optional_conflict/candidate/ca504c72-73aa-4790-b0f1-a3747fc0a663",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__B1_bounded_optional_conflict/candidate/ca504c72-73aa-4790-b0f1-a3747fc0a663
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "READY_FOR_RELEASE",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/old558e920__B1_bounded_optional_conflict/candidate/ca504c72-73aa-4790-b0f1-a3747fc0a663 --output-root <scratch>/bundles/old558e920__B1_bounded_optional_conflict/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASED",
+  "path": "<scratch>/bundles/old558e920__B1_bounded_optional_conflict/released/42f4648a-c69c-466e-b200-e4521b7beb7a",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__B1_bounded_optional_conflict/released/42f4648a-c69c-466e-b200-e4521b7beb7a
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "RELEASED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.task.json
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.recording.json --output-root <scratch>/bundles/old558e920__B2a_material_premise/candidate
+# exit=2
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/old558e920__B2a_material_premise/candidate/37898bac-c5a3-4a0b-a646-1b3987232ac5",
+  "errors": [
+    "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__B2a_material_premise/candidate/37898bac-c5a3-4a0b-a646-1b3987232ac5
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/old558e920__B2a_material_premise/candidate/37898bac-c5a3-4a0b-a646-1b3987232ac5 --output-root <scratch>/bundles/old558e920__B2a_material_premise/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.task.json
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.recording.json --output-root <scratch>/bundles/old558e920__B2b_material_taxonomy_label/candidate
+# exit=2
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/old558e920__B2b_material_taxonomy_label/candidate/4d127522-5ffc-42c8-8e96-d8aa0cb2f5b5",
+  "errors": [
+    "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__B2b_material_taxonomy_label/candidate/4d127522-5ffc-42c8-8e96-d8aa0cb2f5b5
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/old558e920__B2b_material_taxonomy_label/candidate/4d127522-5ffc-42c8-8e96-d8aa0cb2f5b5 --output-root <scratch>/bundles/old558e920__B2b_material_taxonomy_label/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.task.json
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.recording.json --output-root <scratch>/bundles/old558e920__B2c_material_decisive_summary/candidate
+# exit=2
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/old558e920__B2c_material_decisive_summary/candidate/7dae4bc1-cbf6-4ba4-8462-52cbc4aba98f",
+  "errors": [
+    "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__B2c_material_decisive_summary/candidate/7dae4bc1-cbf6-4ba4-8462-52cbc4aba98f
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/old558e920__B2c_material_decisive_summary/candidate/7dae4bc1-cbf6-4ba4-8462-52cbc4aba98f --output-root <scratch>/bundles/old558e920__B2c_material_decisive_summary/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.task.json
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.recording.json --output-root <scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/candidate
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "READY_FOR_RELEASE",
+  "path": "<scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/candidate/c9b8393c-5ef8-48f2-9a3b-8da2ebb069c6",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/candidate/c9b8393c-5ef8-48f2-9a3b-8da2ebb069c6
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "READY_FOR_RELEASE",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/candidate/c9b8393c-5ef8-48f2-9a3b-8da2ebb069c6 --output-root <scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASED",
+  "path": "<scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/released/4648ea2e-7613-4cf6-9774-de7e27ba2d9f",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__VB1_M4b_whole_claim_summary_conflicted_optional/released/4648ea2e-7613-4cf6-9774-de7e27ba2d9f
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "RELEASED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.recording.json --output-root <scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "READY_FOR_RELEASE",
+  "path": "<scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/897c0791-676f-4928-a00f-c57f99327040",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/897c0791-676f-4928-a00f-c57f99327040
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "READY_FOR_RELEASE",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/897c0791-676f-4928-a00f-c57f99327040 --output-root <scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASED",
+  "path": "<scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/released/f40da7cf-d1a5-47f7-8d22-627e6f2260dc",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/old558/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/old558e920__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/released/f40da7cf-d1a5-47f7-8d22-627e6f2260dc
+# exit=0
+# stderr: AGENT_ARENA 0.1.0 <scratch>/old558/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "RELEASED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.recording.json --output-root <scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/candidate
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "READY_FOR_RELEASE",
+  "path": "<scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/candidate/5e2bcf77-3640-4c6a-82ae-4dc9a072c690",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/candidate/5e2bcf77-3640-4c6a-82ae-4dc9a072c690
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "READY_FOR_RELEASE",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/candidate/5e2bcf77-3640-4c6a-82ae-4dc9a072c690 --output-root <scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASED",
+  "path": "<scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/released/1a1aca84-4304-4892-8179-36e57c4abba4",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__B1_bounded_optional_conflict/released/1a1aca84-4304-4892-8179-36e57c4abba4
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "RELEASED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2a_material_premise.recording.json --output-root <scratch>/bundles/oldfd1ad7c__B2a_material_premise/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/oldfd1ad7c__B2a_material_premise/candidate/4f558738-fb67-41a1-bd13-2d64ef3e31c1",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__B2a_material_premise/candidate/4f558738-fb67-41a1-bd13-2d64ef3e31c1
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/oldfd1ad7c__B2a_material_premise/candidate/4f558738-fb67-41a1-bd13-2d64ef3e31c1 --output-root <scratch>/bundles/oldfd1ad7c__B2a_material_premise/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2b_material_taxonomy_label.recording.json --output-root <scratch>/bundles/oldfd1ad7c__B2b_material_taxonomy_label/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/oldfd1ad7c__B2b_material_taxonomy_label/candidate/c62fe03c-3a3f-492b-9825-00d9b70aa18e",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__B2b_material_taxonomy_label/candidate/c62fe03c-3a3f-492b-9825-00d9b70aa18e
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/oldfd1ad7c__B2b_material_taxonomy_label/candidate/c62fe03c-3a3f-492b-9825-00d9b70aa18e --output-root <scratch>/bundles/oldfd1ad7c__B2b_material_taxonomy_label/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B2c_material_decisive_summary.recording.json --output-root <scratch>/bundles/oldfd1ad7c__B2c_material_decisive_summary/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/oldfd1ad7c__B2c_material_decisive_summary/candidate/ecf389ad-a2b0-4bd8-9f1a-1b55882884d4",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__B2c_material_decisive_summary/candidate/ecf389ad-a2b0-4bd8-9f1a-1b55882884d4
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/oldfd1ad7c__B2c_material_decisive_summary/candidate/ecf389ad-a2b0-4bd8-9f1a-1b55882884d4 --output-root <scratch>/bundles/oldfd1ad7c__B2c_material_decisive_summary/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4b_whole_claim_summary_conflicted_optional.recording.json --output-root <scratch>/bundles/oldfd1ad7c__VB1_M4b_whole_claim_summary_conflicted_optional/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<scratch>/bundles/oldfd1ad7c__VB1_M4b_whole_claim_summary_conflicted_optional/candidate/0be0a6b9-b86e-4373-a7bc-4cbd9a17f962",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__VB1_M4b_whole_claim_summary_conflicted_optional/candidate/0be0a6b9-b86e-4373-a7bc-4cbd9a17f962
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "REVIEW_REQUIRED",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/oldfd1ad7c__VB1_M4b_whole_claim_summary_conflicted_optional/candidate/0be0a6b9-b86e-4373-a7bc-4cbd9a17f962 --output-root <scratch>/bundles/oldfd1ad7c__VB1_M4b_whole_claim_summary_conflicted_optional/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/VB1_M4d_agreed_unsupported_optional_whole_claim_summary.recording.json --output-root <scratch>/bundles/oldfd1ad7c__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "ANALYSIS_INCOMPLETE",
+  "path": "<scratch>/bundles/oldfd1ad7c__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/35556d23-dd3e-4667-8372-f34a6a98bf33",
+  "errors": [
+    "analysis_source: Analysis incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.3 (AA-P8-HOST/1.1); summary-client-opt: partial-to-whole promotion",
+    "finding_artifact_binding: Evaluated client_findings",
+    "phase8_semantics_taxonomy: Semantic or taxonomy analysis incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.3 (AA-P8-HOST/1.1)",
+    "phase9_history_review: Review open: technically incomplete analysis; no conflict review was run: Ledger, evidence constraints and transformations evaluated under AA-P8/1.3 (AA-P8-HOST/1.1); summary-client-opt: partial-to-whole promotion"
+  ]
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit inspect --bundle <scratch>/bundles/oldfd1ad7c__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/35556d23-dd3e-4667-8372-f34a6a98bf33
+# exit=0
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "ANALYSIS_INCOMPLETE",
+  "errors": []
+}
+$ OLD_SRC=<scratch>/oldfd1/src env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 python -B guarded_cli.py audit release --bundle <scratch>/bundles/oldfd1ad7c__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/candidate/35556d23-dd3e-4667-8372-f34a6a98bf33 --output-root <scratch>/bundles/oldfd1ad7c__VB1_M4d_agreed_unsupported_optional_whole_claim_summary/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=2
+# stderr: AGENT_ARENA 1.0.0 <scratch>/oldfd1/src/agent_arena/__init__.py | NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is ANALYSIS_INCOMPLETE; a current READY_FOR_RELEASE candidate is required."
+  ]
+}
+$ PYTHONPATH=<scratch>/tools/site env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 <repo>/.venv/bin/agent-arena audit validate --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json
+# exit=0
+# stderr: NETGUARD total=0
+# stdout:
+{"input_valid": true, "errors": [], "release_authorized": false}
+$ PYTHONPATH=<scratch>/tools/site env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 <repo>/.venv/bin/agent-arena audit run --offline --task <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.task.json --recording <repo>/analysis/v1_closeout_20261013/evidence/B/fixtures/B1_bounded_optional_conflict.recording.json --output-root <scratch>/bundles/console__B1_bounded_optional_conflict/candidate
+# exit=0
+# stderr: NETGUARD total=0
+# stdout:
+{
+  "status": "READY_FOR_RELEASE",
+  "path": "<scratch>/bundles/console__B1_bounded_optional_conflict/candidate/a9f0a73d-2049-426d-835e-60f7159a2e04",
+  "errors": []
+}
+$ PYTHONPATH=<scratch>/tools/site env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 <repo>/.venv/bin/agent-arena audit inspect --bundle <scratch>/bundles/console__B1_bounded_optional_conflict/candidate/a9f0a73d-2049-426d-835e-60f7159a2e04
+# exit=0
+# stderr: NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "READY_FOR_RELEASE",
+  "errors": []
+}
+$ PYTHONPATH=<scratch>/tools/site env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 <repo>/.venv/bin/agent-arena audit release --bundle <scratch>/bundles/console__B1_bounded_optional_conflict/candidate/a9f0a73d-2049-426d-835e-60f7159a2e04 --output-root <scratch>/bundles/console__B1_bounded_optional_conflict/released --reviewer "TEST ONLY - not a scientific release" --reason "v1 closeout Area B evidence; SYNTHETIC TEST FIXTURE"
+# exit=0
+# stderr: NETGUARD total=0
+# stdout:
+{
+  "status": "RELEASED",
+  "path": "<scratch>/bundles/console__B1_bounded_optional_conflict/released/988e2e77-9bbe-402b-8201-36d848b9fb76",
+  "errors": []
+}
+$ PYTHONPATH=<scratch>/tools/site env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 <repo>/.venv/bin/agent-arena audit inspect --bundle <scratch>/bundles/console__B1_bounded_optional_conflict/released/988e2e77-9bbe-402b-8201-36d848b9fb76
+# exit=0
+# stderr: NETGUARD total=0
+# stdout:
+{
+  "valid": true,
+  "status": "RELEASED",
+  "errors": []
+}

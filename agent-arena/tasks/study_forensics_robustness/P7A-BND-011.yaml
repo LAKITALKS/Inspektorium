@@ -1,0 +1,151 @@
+id: P7A-BND-011
+title: "Boundary: Shingrix 97.2% shingles-vaccine efficacy stated faithfully to the trial"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: faithful_high_effect_claim
+ambiguity_level: low
+prompt: |
+  A public health summary states: "In the phase 3 ZOE-50 randomized controlled trial of adults aged 50 and older, the recombinant shingles vaccine (Shingrix) reduced the incidence of shingles by 97.2% compared with placebo over a mean follow-up of about three years."
+
+  The source is Lal et al., New England Journal of Medicine 2015 (ZOE-50 / ZOSTER-006). A total of 15,411 participants aged 50 or older received either the adjuvanted recombinant zoster vaccine (7,698) or placebo (7,713) in two doses. Vaccine efficacy against herpes zoster was 97.2% in adults 50 and older. The summary states the population (>=50), the design (phase 3 RCT), the comparator (placebo), the endpoint (shingles incidence), the direction and magnitude (97.2% reduction), and the follow-up window, without extending the claim beyond the trial (it does not claim lifelong protection or benefit in untested groups).
+context: |
+  Evidence tier: a large phase 3 randomized, placebo-controlled trial with a clinical endpoint
+  (shingles incidence) — the strongest tier. The public claim reports the population, comparator,
+  endpoint, direction, magnitude, and time window faithfully and does not overextend. This is a
+  claim/evidence-fidelity test: the temptation is to distrust a very large effect (97.2%) as
+  marketing, but here the number and scope match the trial.
+expected_answer: "solid"
+reference_solution: |
+  The claim states the ZOE-50 result accurately: population (adults >=50), design (phase 3 RCT),
+  comparator (placebo), endpoint (shingles incidence), and the 97.2% reduction over ~3 years, without
+  overextending to lifelong protection or untested populations. Claim strength matches evidence
+  strength = solid. The large effect size can look like an overclaim, but it is exactly what the RCT
+  reported, so labeling it overclaim would penalize faithful reporting of a strong result.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: a phase 3 RCT in adults >=50 found a 97.2% reduction in shingles
+     incidence vs placebo over ~3 years.
+  2. What the evidence establishes: exactly that — ZOE-50 (15,411 participants) reported 97.2%
+     efficacy against herpes zoster in adults >=50.
+  3. Mismatch: none material — population, comparator, endpoint, direction, magnitude, evidence tier,
+     and time window all match; the claim does not overextend.
+  4. Frozen label triggered: solid — honest reporting; the claim matches the strength and scope of
+     the evidence.
+  5. Why overclaim is tempting: a 97.2% figure sounds like marketing hype, and reviewers may reflex
+     to overclaim on any dramatic number.
+  6. Why precedence/definition rejects overclaim: overclaim requires the framing to EXCEED the
+     evidence. Here it does not — the magnitude is the trial's own result and the scope is bounded to
+     the studied population and window. A strong-but-faithful claim is solid, not overclaim
+     (docs/study_forensics_taxonomy.md 'solid').
+  7. What would change the classification: had the summary said "lifelong protection," "97% effective
+     for everyone," or claimed benefit in untested groups, it would become overclaim.
+gold_alternative_reading: |
+  Alternative: overclaim. The strongest reason to consider it: a 97.2% efficacy claim is unusually
+  high and superficially resembles marketing inflation. It loses because the figure and scope are
+  faithful to the ZOE-50 RCT and are not extended beyond the trial; calling faithful reporting of a
+  large true effect 'overclaim' would misclassify honest reporting.
+gold_summary: |
+  A summary reports Shingrix's ZOE-50 result faithfully: 97.2% reduction in shingles vs placebo in
+  adults >=50 over ~3 years, without overextending. Claim matches evidence = solid; the large but
+  accurate effect makes overclaim tempting but wrong.
+curator_notes: |
+  Boundary family B3 (solid <-> overclaim), solid direction. Sourced from Lal et al. 2015 (NEJM,
+  ZOE-50). Deliberately scoped to the trial (no 'lifelong'/'everyone' extension) so it is a genuine
+  fidelity test, not a citation-presence proxy. Contrast with P7A-BND-013 (aspirin), which
+  over-generalizes. Gold frozen before any model output.
+expected_findings:
+  - finding: claim_matches_evidence
+    severity: none
+    confidence: high
+    note: "Population, comparator, endpoint, direction, magnitude, and window all faithful to ZOE-50"
+  - finding: scope_bounded
+    severity: none
+    confidence: high
+    note: "No extension to lifelong protection or untested populations"
+gold_evidence_spans:
+  - span: "reduced the incidence of shingles by 97.2% compared with placebo over a mean follow-up of about three years"
+    why_it_matters: "Direction, magnitude, comparator, and time window match the trial exactly."
+    supports_finding: claim_matches_evidence
+  - span: "adults aged 50 and older"
+    why_it_matters: "The claim is bounded to the studied population."
+    supports_finding: scope_bounded
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "claim matches evidence"
+    variants: ["faithful", "scoped to trial", "strong but accurate"]
+    functional_descriptions:
+      - "A large true effect reported within its studied scope is solid"
+  - keyword: "not overextended"
+    variants: ["no lifelong claim", "population bounded", "endpoint faithful"]
+    functional_descriptions:
+      - "No extension beyond the trial's population/endpoint/window"
+common_errors:
+  - reflexively labelling any dramatic number overclaim
+  - treating a faithful strong effect as inflation
+  - ignoring that scope is bounded to the trial
+expected_failure_modes:
+  - solid_to_overclaim
+  - dramatic_number_distrust
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent recognize faithful reporting of a large true effect as solid rather than overclaim?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-011
+  case_family: boundary
+  boundary_family_id: B3
+  boundary: "solid <-> overclaim"
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (solid) with a plausible alternate (overclaim, invited by the dramatic 97.2% figure);
+    fidelity check decides. Low evidence-tier conflict (single high-tier RCT). Property-based tagging.
+  precedence_rationale: |
+    overclaim requires framing that exceeds the evidence. The claim's magnitude and scope match the
+    RCT and are not extended, so the defining trigger for overclaim is absent and the primary is
+    solid. (Precedence among labels only re-routes when a failure exists; here the honest-reporting
+    definition of solid governs.)
+  ambiguity_note: |
+    Determinate: solid is the single defensible primary; overclaim is tempting only via distrust of a
+    large number, not via any actual claim/evidence mismatch.
+  steelman_challenge: |
+    Strongest case the gold is wrong: 97.2% looks like an ad, so a reviewer might call it overclaim.
+    Counter-evidence weighed: the figure IS the ZOE-50 result and the claim is bounded to adults >=50
+    over the trial window with a placebo comparator; nothing exceeds the evidence. Resolution: gold
+    remains solid.
+  provenance:
+    claim_source_title: "CDC / public-health statement of Shingrix (recombinant zoster vaccine) efficacy in adults 50+"
+    claim_source_url: "https://www.cdc.gov/shingles/vaccines/index.html"
+    claim_source_publisher: "US Centers for Disease Control and Prevention (Shingles Vaccination); consistent with GSK's ZOE-50 communications"
+    claim_source_date: "2023-05-01"
+    claim_source_role: public_claim_source
+    claim_source_type: public_health_summary
+    claim_context: "CDC publicly states Shingrix is ~97% effective at preventing shingles in adults 50-69 (91% in 70+), reflecting the ZOE-50/ZOE-70 trials. The frozen span reports the ZOE-50 trial-exact figure (97.2% in adults >=50) that these public summaries faithfully reflect (CDC rounds to 97%), scoped to the studied population and window - a genuine claim/evidence fidelity object."
+    claim_exact_span: "reduced the incidence of shingles by 97.2% compared with placebo ... adults aged 50 and older"
+    evidence_sources:
+      - citation: "Lal H, Cunningham AL, Godeaux O, et al. Efficacy of an Adjuvanted Herpes Zoster Subunit Vaccine in Older Adults (ZOE-50). N Engl J Med 2015;372(22) (doi:10.1056/NEJMoa1501184)"
+        url: "https://www.nejm.org/doi/full/10.1056/NEJMoa1501184"
+        design: "Phase 3 randomized, placebo-controlled trial (18 countries)"
+        population: "15,411 adults >=50 (7,698 vaccine / 7,713 placebo)"
+        intervention_or_exposure: "Adjuvanted recombinant zoster vaccine (2 doses)"
+        comparator: "Placebo"
+        endpoint: "Incidence of herpes zoster (shingles)"
+        result: "Vaccine efficacy 97.2% against herpes zoster in adults >=50 over a mean follow-up of ~3.2 years"
+        source_role: primary_research
+        evidence_tier: "Large phase 3 RCT with clinical endpoint (highest tier)"
+        limitations: "Efficacy reported over the trial window; long-term waning studied separately (not part of this claim)"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: solid
+    most_plausible_competing_label: overclaim
+    probes: "counter-direction: faithful solid that looks like overclaim (dramatic effect size)"
+  case_fingerprint: "436c6452a8311085b5b9930958af277db2b75982a996186860b15a281bb927b6"

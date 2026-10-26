@@ -1,0 +1,200 @@
+{
+  "pack_id": "agent-arena-pack-001",
+  "version": "1.0",
+  "created": "2026-04-07",
+  "description": "7-case high-signal dataset pack for Agent Arena forensic reasoning evaluation. Covers causal overclaim, epistemic calibration, mechanism-to-application errors, counterfactual reasoning, base rate neglect, hedging theater, and genuine borderline cases.",
+  "distribution": {
+    "clear_strong": 2,
+    "clear_moderate": 2,
+    "diagnostic_problem": 2,
+    "true_borderline": 1
+  },
+  "cases": [
+    {
+      "id": "AA-NEW-001",
+      "title": "Mediterranean diet and colorectal cancer: cohort analysis claims causation",
+      "domain": "Clinical epidemiology",
+      "task_family": "Causal overclaim detection",
+      "gold_label": "overclaim",
+      "gold_confidence": "high",
+      "gold_case_type": "clear",
+      "shape_tag": "correlation_causation_slip",
+      "difficulty": "moderate",
+      "source_note": "Composite based on published Mediterranean diet and cancer epidemiology literature",
+      "input_text": "A prospective cohort study tracking 42,000 adults over twelve years found that individuals who closely adhered to a Mediterranean-style diet had a 27% lower incidence of colorectal cancer compared to those with low adherence. The researchers controlled for age, sex, smoking status, and physical activity. Based on these findings, the study authors concluded that adopting a Mediterranean diet reduces colorectal cancer risk and that dietary guidelines should be updated accordingly. The association persisted across all subgroups analyzed, including both smokers and non-smokers. The authors noted that the biological mechanism likely involves the anti-inflammatory properties of olive oil and the fiber content of legumes and whole grains, which together suppress tumor growth pathways.",
+      "gold_justification": "The text makes a causal claim from observational cohort data. Even with multivariate adjustment, unmeasured confounders — socioeconomic status, overall health-seeking behavior, correlated dietary habits — cannot be ruled out. The mechanistic speculation is presented as explanatory rather than independently established. The policy recommendation is premature given the evidence tier. Classic observational-to-causal leap.",
+      "gold_alternative_reading": "If the confounder adjustment is genuinely robust and the effect size replicates across multiple independent cohorts with a consistent dose-response, a cautious quasi-causal association claim may be defensible at lower confidence.",
+      "proposed_expected_findings": [
+        "causal_claim_from_observational_data",
+        "residual_confounding_unaddressed",
+        "mechanism_speculation_treated_as_confirmatory",
+        "premature_policy_recommendation"
+      ],
+      "proposed_evidence_spans": [
+        "concluded that adopting a Mediterranean diet reduces colorectal cancer risk",
+        "dietary guidelines should be updated accordingly",
+        "which together suppress tumor growth pathways"
+      ],
+      "why_this_case_is_useful": "Tests the core observational-to-causal slip with partial controls and plausible mechanistic language in place — less obvious than cartoon versions. Forces the model to distinguish association from causation while navigating seemingly rigorous methodology."
+    },
+    {
+      "id": "AA-NEW-002",
+      "title": "NLP benchmark performance: well-calibrated model evaluation with explicit limitations",
+      "domain": "AI/ML systems evaluation",
+      "task_family": "Epistemic calibration — true positive anchor",
+      "gold_label": "solid_with_limitations",
+      "gold_confidence": "high",
+      "gold_case_type": "clear",
+      "shape_tag": "correct_calibration_anchor",
+      "difficulty": "easy_to_moderate",
+      "source_note": null,
+      "input_text": "Our language model achieved 91.3% accuracy on the standard reading comprehension benchmark in controlled evaluation. However, several important limitations should be noted. The benchmark was published prior to our training cutoff, raising the possibility that some test items appeared in pretraining data, which could inflate measured performance. The evaluation was conducted in a zero-shot setting using a single prompt formulation; performance varies with prompt phrasing by an estimated 4 to 9 percentage points across tested variants. Additionally, the benchmark was designed on English-language news and encyclopedia text; we have not evaluated generalization to conversational, technical, or multilingual input. Given these constraints, we recommend treating the reported figure as an upper-bound estimate rather than a reliable operational performance guarantee.",
+      "gold_justification": "Three validity threats are identified — training contamination, prompt sensitivity, distribution shift — and the headline number is explicitly downgraded to an upper-bound estimate. The hedge is substantive, not performative: it changes the recommended interpretation of the result. This is a necessary positive anchor for evaluation systems that would otherwise flag every confident number as an overclaim.",
+      "gold_alternative_reading": "A strict reviewer might argue that even 'upper-bound estimate' overclaims without a formal contamination analysis — if contamination is severe enough, no bound can be established from this benchmark at all.",
+      "proposed_expected_findings": [
+        "appropriate_limitation_disclosure",
+        "substantive_hedge_not_performative",
+        "correctly_downgrades_headline_metric",
+        "no_causal_overclaim"
+      ],
+      "proposed_evidence_spans": [
+        "raising the possibility that some test items appeared in pretraining data",
+        "we recommend treating the reported figure as an upper-bound estimate rather than a reliable operational performance guarantee"
+      ],
+      "why_this_case_is_useful": "Prevents false-positive over-flagging. Tests whether the agent recognizes genuinely well-calibrated reasoning. An essential calibration anchor without which evaluation drift toward paranoid labeling is likely."
+    },
+    {
+      "id": "AA-NEW-003",
+      "title": "NLRP3 inflammasome inhibitor in murine model: Alzheimer's treatment claim",
+      "domain": "Neuropharmacology",
+      "task_family": "Mechanism-to-application overclaim",
+      "gold_label": "overclaim",
+      "gold_confidence": "medium_high",
+      "gold_case_type": "clear",
+      "shape_tag": "preclinical_translation_overclaim",
+      "difficulty": "moderate",
+      "source_note": null,
+      "input_text": "Researchers testing a synthetic compound in a transgenic mouse model of Alzheimer's disease found that it significantly reduced microglial activation and lowered amyloid-beta plaque burden by 38% over an eight-week treatment period. The compound selectively inhibits the NLRP3 inflammasome pathway, which has been implicated in neuroinflammatory cascades thought to accelerate disease progression. The authors stated that the results demonstrate the compound's potential as a disease-modifying Alzheimer's therapy and that the findings open a viable path toward clinical treatment. They called for accelerated progression to Phase I safety trials.",
+      "gold_justification": "The mechanistic claim is scientifically legitimate and the plaque data is internally valid. The overclaim is the leap to 'disease-modifying Alzheimer's therapy' and 'viable path toward clinical treatment.' Transgenic mouse models of Alzheimer's have failed to translate clinically at an extremely high rate. The text treats a preclinical model result as near-clinical evidence.",
+      "gold_alternative_reading": "If 'opens a viable path' is read as meaning only that the compound has a mechanism worth testing in humans — not that efficacy is established — the claim becomes modest enough to be defensible. The phrase is genuinely ambiguous, which makes this case moderate rather than clear-strong.",
+      "proposed_expected_findings": [
+        "mouse_model_generalization_error",
+        "preclinical_to_clinical_overextension",
+        "mechanism_valid_application_overclaimed"
+      ],
+      "proposed_evidence_spans": [
+        "demonstrate the compound's potential as a disease-modifying Alzheimer's therapy",
+        "open a viable path toward clinical treatment"
+      ],
+      "why_this_case_is_useful": "Tests the subtype of overclaim where the mechanism is real and the data is clean — the error exists only in the translational leap. Prevents the agent from being distracted by valid scientific detail into missing the evidence-tier problem."
+    },
+    {
+      "id": "AA-NEW-004",
+      "title": "Vocational training program: pre-post employment gain without control group",
+      "domain": "Economics / policy evaluation",
+      "task_family": "Counterfactual reasoning failure",
+      "gold_label": "overclaim",
+      "gold_confidence": "medium",
+      "gold_case_type": "clear",
+      "shape_tag": "missing_counterfactual",
+      "difficulty": "moderate",
+      "source_note": null,
+      "input_text": "A regional workforce development agency evaluated its six-month vocational training program by comparing employment rates among participants before and after completing the program. Prior to enrollment, 34% of participants were employed. Twelve months after program completion, the employment rate among former participants had risen to 61%. The agency concluded that the program successfully increased employment by approximately 27 percentage points and recommended expanding the program to additional districts. The program director noted that the results confirmed the effectiveness of skills-based training as an intervention for unemployment.",
+      "gold_justification": "The pre-post comparison lacks any control group or counterfactual construction. The 27-point gain cannot be attributed to the program without controlling for secular labor market trends, Ashenfelter's dip, selection bias, and macroeconomic changes during the period. 'Confirmed the effectiveness' is an overclaim given the evidence design.",
+      "gold_alternative_reading": "In contexts where controlled evaluation is genuinely infeasible and the pre-post gain substantially exceeds documented regional labor market trends during the same period, a carefully hedged effectiveness claim may be defensible. The text provides no regional baseline comparisons.",
+      "proposed_expected_findings": [
+        "absent_control_group",
+        "no_counterfactual_construction",
+        "secular_trend_not_addressed",
+        "selection_bias_unacknowledged",
+        "premature_scale_up_recommendation"
+      ],
+      "proposed_evidence_spans": [
+        "concluded that the program successfully increased employment by approximately 27 percentage points",
+        "confirmed the effectiveness of skills-based training as an intervention for unemployment"
+      ],
+      "why_this_case_is_useful": "Tests counterfactual reasoning in a policy evaluation context. The error is structural — the absence of a comparison arm. Useful for detecting whether agents recognize that pre-post gains require benchmarking against an expected trajectory."
+    },
+    {
+      "id": "AA-NEW-005",
+      "title": "Pancreatic cancer biomarker screening: positive predictive value ignored",
+      "domain": "Diagnostic medicine / Bayesian reasoning",
+      "task_family": "Base rate neglect",
+      "gold_label": "reasoning_failure",
+      "gold_confidence": "high",
+      "gold_case_type": "clear",
+      "shape_tag": "bayesian_base_rate_failure",
+      "difficulty": "hard",
+      "source_note": null,
+      "input_text": "A new blood biomarker test for early-stage pancreatic cancer has a reported sensitivity of 92% and specificity of 89%. A hospital oncology department issued an internal guidance note recommending the test for general population screening. The guidance stated: 'Given the high sensitivity and specificity of this test, a positive result strongly indicates the presence of pancreatic cancer and should prompt immediate further diagnostic workup.' The guidance did not specify a target screening population beyond the general adult population.",
+      "gold_justification": "Textbook base rate neglect. Pancreatic cancer prevalence is approximately 0.015% in the general adult population. At 92% sensitivity and 89% specificity at this prevalence, Bayesian calculation yields a positive predictive value of roughly 0.12% — over 99.8% of positive results would be false positives. The statement that a positive result 'strongly indicates' cancer is not only incorrect but potentially clinically harmful. Sensitivity and specificity are properties of the test; PPV is a property of the test in a specific population — and the population context was ignored entirely.",
+      "gold_alternative_reading": "If the guidance was intended for a defined high-risk subpopulation (e.g., BRCA2 carriers, chronic pancreatitis patients) where prevalence may reach 1–5%, the PPV changes substantially and the recommendation becomes more defensible. However, 'general adult population' is explicitly stated.",
+      "proposed_expected_findings": [
+        "base_rate_neglect",
+        "ppv_not_calculated",
+        "sensitivity_specificity_misapplied_to_rare_condition",
+        "clinical_harm_potential"
+      ],
+      "proposed_evidence_spans": [
+        "a positive result strongly indicates the presence of pancreatic cancer",
+        "recommending the test for general population screening"
+      ],
+      "why_this_case_is_useful": "High-value test for mathematical reasoning failure in a clinical setting. The numbers are internally self-consistent — the error is purely conceptual. Tests whether agents can perform or recognize Bayesian updating rather than being satisfied by precise-sounding statistics."
+    },
+    {
+      "id": "AA-NEW-006",
+      "title": "Direct air capture cost projections: performative uncertainty with firm deployment conclusion",
+      "domain": "Climate technology / policy",
+      "task_family": "Hedging theater detection",
+      "gold_label": "hedging_theater",
+      "gold_confidence": "medium_high",
+      "gold_case_type": "clear",
+      "shape_tag": "performative_hedge_conclusory_slip",
+      "difficulty": "hard",
+      "source_note": null,
+      "input_text": "Current estimates for direct air capture of carbon dioxide remain highly uncertain and vary widely across different technological approaches. Cost projections in the literature range from roughly 150 to over 1,000 USD per ton of CO2, depending on energy source, scale, and geographic context. These figures are preliminary and based largely on early-stage demonstration projects rather than commercial-scale deployments. Given the significant uncertainties in both capital costs and long-term operational performance, it would be premature to draw firm conclusions. Nevertheless, the evidence strongly supports prioritizing direct air capture as the primary carbon removal strategy for achieving net-zero targets by 2050, and policymakers should begin large-scale deployment now to ensure sufficient capacity is in place.",
+      "gold_justification": "The text front-loads accurate uncertainty language and correctly describes the evidence situation. The failure is structural: the conclusion — 'strongly supports prioritizing direct air capture as the primary carbon removal strategy' and 'policymakers should begin large-scale deployment now' — is not derivable from the uncertainty just described. The words 'preliminary,' 'highly uncertain,' 'vary widely,' and 'premature to draw firm conclusions' appear, then a firm directive conclusion is issued anyway. The hedge is terminological decoration that leaves the conclusion structurally unchanged.",
+      "gold_alternative_reading": "If the conclusion rests on a real-options argument — that under uncertainty, early investment reduces future option costs — it need not resolve cost uncertainty to be valid. Under this reading the conclusion is a separate policy argument about option value, not a claim that efficacy is established. But this argument is not made in the text.",
+      "proposed_expected_findings": [
+        "performative_hedging",
+        "conclusion_decoupled_from_stated_uncertainty",
+        "hedge_does_not_constrain_recommendation",
+        "false_epistemic_humility"
+      ],
+      "proposed_evidence_spans": [
+        "it would be premature to draw firm conclusions",
+        "the evidence strongly supports prioritizing direct air capture as the primary carbon removal strategy",
+        "policymakers should begin large-scale deployment now"
+      ],
+      "why_this_case_is_useful": "The most diagnostically demanding case in the pack. Tests whether the agent tracks whether uncertainty statements actually constrain conclusions, or function as rhetorical buffers. Critical for LLM evaluation in policy domains where hedging theater is pervasive."
+    },
+    {
+      "id": "AA-NEW-007",
+      "title": "Depression RCT: pre-specified subgroup positive, primary endpoint null",
+      "domain": "Clinical psychiatry / research methodology",
+      "task_family": "Borderline epistemic assessment",
+      "gold_label": "ambiguous — honest_subgroup_reporting vs soft_overclaim",
+      "gold_confidence": "low_medium",
+      "gold_case_type": "borderline",
+      "shape_tag": "prespecified_subgroup_primary_null",
+      "difficulty": "very_hard",
+      "source_note": null,
+      "input_text": "A randomized controlled trial of a novel antidepressant compound enrolled 340 adults with major depressive disorder. The primary endpoint — mean reduction in depression rating score at week eight — did not reach statistical significance in the intent-to-treat population (p = 0.11, effect size d = 0.18). In a pre-specified secondary analysis of participants with baseline inflammatory markers above the median, the compound produced a statistically significant reduction compared to placebo (p = 0.03, d = 0.41). The trial was registered before enrollment and the subgroup analysis was listed as a secondary endpoint in the pre-registration document. The authors concluded that the findings provide promising preliminary evidence for the efficacy of the compound in a biologically defined subpopulation and recommended that future trials specifically enroll patients with elevated inflammatory markers.",
+      "gold_justification": "In favor of legitimate reporting: the subgroup was pre-specified, the biological hypothesis is theoretically grounded, the primary endpoint null is transparently reported, and the conclusion is hedged. In favor of overclaim concern: the primary endpoint was negative; p = 0.03 in a secondary subgroup analysis carries unresolved multiplicity concerns even with pre-registration; 'promising preliminary evidence for efficacy' edges toward stronger language than the evidence supports; median-split subgroups are a known soft cherry-picking pattern.",
+      "gold_alternative_reading": "Equally credible as honest science: pre-specified subgroup with biological plausibility, transparent reporting of the null primary, moderate effect size (d = 0.41), and hedged conclusion. This is what correctly designed exploratory secondary analysis is supposed to produce. Labeling it overclaim would penalize good scientific practice and discourage pre-specification.",
+      "proposed_expected_findings": [
+        "primary_endpoint_null",
+        "prespecified_subgroup_positive",
+        "multiplicity_unresolved",
+        "biological_plausibility_present",
+        "hedged_conclusion_language"
+      ],
+      "proposed_evidence_spans": [
+        "did not reach statistical significance in the intent-to-treat population",
+        "the subgroup analysis was listed as a secondary endpoint in the pre-registration document",
+        "provide promising preliminary evidence for the efficacy of the compound in a biologically defined subpopulation"
+      ],
+      "why_this_case_is_useful": "The only genuine borderline in the pack. Tests nuanced judgment about pre-specification, multiple comparisons, and the boundary between hypothesis generation and preliminary efficacy claims. Valuable for calibrating gold reviewers themselves and for identifying LLMs that default to a label without engaging the structural tension."
+    }
+  ]
+}

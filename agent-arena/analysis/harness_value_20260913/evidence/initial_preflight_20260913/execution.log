@@ -1,0 +1,10 @@
+Starting the registered one-shot preflight; no provider construction until gates pass.
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py", line 1112, in run_registered_condition
+    return mission._run_mission(repo_root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/bounded_harness_mission.py", line 186, in _run_mission
+    if status!=pi.QA_PASSED or errors:raise MissionError('canonical QA: '+str(errors))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+agent_arena.bounded_harness_mission.MissionError: canonical QA: ['canonical QA collected count mismatch', 'not every canonical QA test passed']

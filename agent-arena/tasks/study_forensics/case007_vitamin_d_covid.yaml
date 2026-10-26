@@ -1,0 +1,101 @@
+id: study-forensics-007
+title: "Study Forensics: Vitamin D supplements and long COVID"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: overflagging_decorative_uncertainty
+ambiguity_level: medium
+prompt: |
+  A randomised controlled trial involving 1,747 adults tested whether high-dose vitamin D3 could affect COVID-19 outcomes. Supplementation did not change the severity of acute infection. When researchers looked at lingering symptoms eight weeks later, 21 percent of people taking vitamin D reported at least one ongoing symptom compared with 25 percent in the placebo group. The senior author called this difference a "promising signal," but emphasised that larger trials are needed. The study was conducted remotely and started supplementation after infection onset, limiting interpretation.
+context: |
+  The press piece highlights a very small absolute difference (4 percentage points) in long-COVID symptoms
+  as evidence that vitamin D might help, despite no effect on acute outcomes and numerous limitations.
+expected_answer: "solid"
+reference_solution: |
+  The text reports a small secondary finding (21% vs 25%) from an RCT with a null primary
+  outcome. The senior author uses appropriately tentative language ("promising signal") and
+  explicitly calls for larger trials. The effect size is reported accurately without
+  exaggeration. The study limitations (remote conduct, post-infection start) are disclosed.
+  This is cautious reporting of weak but honestly presented results.
+gold_label: solid
+gold_confidence: medium
+gold_case_type: borderline
+gold_justification: |
+  The text reports an RCT's secondary finding accurately: 21% vs 25%, a 4 percentage point
+  difference. The senior author frames this as a "promising signal" — tentative language for
+  a secondary finding — and explicitly calls for larger trials. The null primary outcome is
+  reported honestly. Study limitations are disclosed. The evidence tier (human RCT) matches
+  the conclusion tier (human outcomes with appropriate caveats). No causal overclaim is made.
+gold_alternative_reading: |
+  An 'overclaim' reading is defensible: the null primary outcome makes the secondary finding
+  very weak, and "promising signal" could be seen as optimistic framing that exceeds what
+  a null-primary + weak-secondary result warrants. Under a strict epistemic norm, highlighting
+  a 4pp secondary difference from a failed trial constitutes decorative uncertainty. However,
+  0/6 model runs across two validation sprints agree with the overclaim label, and the text
+  does stay within its evidence tier (human RCT → human results).
+gold_summary: |
+  Borderline solid case. Cautious reporting of a weak secondary RCT finding with honest disclosure of null primary outcome and study limitations.
+curator_notes: |
+  RELABELED 2026-04-08: Gold label changed from overclaim to solid.
+
+  Reason: 0/6 model runs across two validation sprints (Praxis + Full 27) agree with
+  overclaim label. All 3 models consistently classify as solid. The text reports human
+  RCT results with human-appropriate conclusions — evidence tier matches conclusion tier.
+  "Promising signal" + "larger trials needed" is seen as responsible communication by
+  all models. The previous overclaim label reflected a stricter epistemic norm than
+  the text warrants.
+
+  This case now serves as a borderline-solid calibration test: can the agent recognize
+  that cautious reporting of weak results from a well-designed study is solid, not overclaim?
+relabel_history:
+  - date: "2026-04-08"
+    old_label: overclaim
+    new_label: solid
+    reason: "0/6 model runs agree with overclaim. Evidence tier (human RCT) matches conclusion tier. Cautious language is genuine."
+    evidence: "Praxis + Full 27: 0/6 correct across Sonnet, Haiku, Opus"
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: medium
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: medium
+gold_evidence_spans:
+  - span: "21 percent of people taking vitamin D reported at least one ongoing symptom compared with 25 percent in the placebo group"
+    why_it_matters: "Effect size is reported accurately without exaggeration."
+    supports_finding: evidence_matches_claim
+  - span: "promising signal ... larger trials are needed"
+    why_it_matters: "Tentative language appropriate for a secondary finding, with explicit call for further research."
+    supports_finding: cautious_scope_control
+  - span: "The study was conducted remotely and started supplementation after infection onset, limiting interpretation"
+    why_it_matters: "Study limitations are honestly disclosed."
+    supports_finding: cautious_scope_control
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "honest reporting"
+    variants: ["accurately reported", "did not exaggerate", "tentative language"]
+    functional_descriptions:
+      - "the text reports results at the appropriate evidence tier without overclaim"
+  - keyword: "limitations disclosed"
+    variants: ["conducted remotely", "after infection onset", "limiting interpretation"]
+    functional_descriptions:
+      - "study limitations are honestly acknowledged"
+  - keyword: "appropriate hedging"
+    variants: ["promising signal", "larger trials needed"]
+    functional_descriptions:
+      - "uncertainty language is genuine and constrains interpretation for a secondary finding"
+common_errors:
+  - flagging as overclaim when the text stays within its evidence tier
+  - treating a weak secondary finding as automatically problematic
+  - missing that the evidence tier (human RCT) matches the conclusion tier (human outcomes)
+expected_failure_modes:
+  - false_positive_flagging
+  - overclaiming
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+  - mechanism_quality
+diagnostic_focus: "Can the agent recognize that a human RCT reporting human results with honest caveats is solid, even when the finding is weak?"

@@ -1,0 +1,470 @@
+# Phase 7A Perturbation Manifest (class B, 7A.2) - FROZEN pre-model
+#
+# Master manifest for the perturbation / metamorphic-robustness track: the 10 deterministically
+# selected base clusters (4 neutral anchors + 6 fingerprint-ordered from the frozen Boundary/
+# Adversarial pools), the 5 frozen perturbation families (P1-P5), and the 50 meaning-preserving
+# variants (10 x 5). 50 variants are NESTED in 10 independent bases - NOT 50 independent cases.
+# 0 model calls. Regenerate/verify with:  python3 -m agent_arena.robustness_pool.
+manifest_version: 1
+phase: 7A
+data_class: B
+track: 7A.2_perturbation
+gold_status: frozen_pre_model
+design_reference: analysis/phase7a_startup/phase7a_case_and_perturbation_contract.md
+family_reference: analysis/phase7a_startup/phase7a_robustness_design.md
+curator_review: analysis/phase7a_perturbation/perturbation_curator_review.md
+candidate_log: analysis/phase7a_perturbation/neutral_anchor_candidate_log.md
+authoring_log: analysis/phase7a_perturbation/perturbation_authoring_log.md
+boundary_approved_checkpoint: 3bdabaf
+adversarial_approved_checkpoint: e9e13e3
+model_calls: 0
+holdout_touched: false
+expected_counts:
+  n_independent_perturbation_bases: 10
+  n_perturbation_variants: 50
+  n_perturbation_families: 5
+  variants_per_base: 5
+  variants_per_family: 10
+  base_strata:
+    neutral: 4
+    B1: 1
+    B2: 1
+    B3: 1
+    adversarial: 3
+  neutral_gold:
+    solid: 1
+    overclaim: 1
+    correlation_vs_causation: 1
+    mechanism_vs_evidence: 1
+five_perturbation_families:
+- id: P1
+  family: claim paraphrase
+  invariance: true
+  allowed_transformation: Re-express the same scientific proposition in different wording/syntax.
+  forbidden_semantic_changes: May not change population, comparator, endpoint, magnitude, causal/mechanistic/clinical-benefit force, certainty, temporal scope, superiority, evidence tier, or scientific meaning; may not repair or introduce a defect.
+  certification_criteria: The decisive proposition and every §12 dimension are materially unchanged; only surface wording differs.
+- id: P2
+  family: hedging variation (neutral)
+  invariance: true
+  allowed_transformation: Add/adjust a superficial (attributional/discourse) hedge in how the claim is framed.
+  forbidden_semantic_changes: The superficial hedge may not change the substantive proposition or its force; specifically it may not soften an overclaim, weaken a causal/mechanistic claim, downgrade certainty, or otherwise repair the original defect (a hedge that materially weakens the claim is INVALID, §13).
+  certification_criteria: The asserted force/certainty and all §12 dimensions are unchanged; the hedge is packaging only.
+- id: P3
+  family: order (claim/evidence context)
+  invariance: true
+  allowed_transformation: 'Reorder sentences / evidence items (here: present the evidence/context before the claim) while preserving semantic content.'
+  forbidden_semantic_changes: May not add, drop, or edit any claim or evidence content; only sequence changes.
+  certification_criteria: The perturbed prompt is a pure reordering of the base content; no decisive term added/removed.
+- id: P4
+  family: distractor context
+  invariance: true
+  allowed_transformation: Add irrelevant-but-plausible material that does not bear on the claim.
+  forbidden_semantic_changes: The added material may not bear on the claim, add or alter scientific evidence, or change any §12 dimension (no new comparator/endpoint/evidence, §23).
+  certification_criteria: The claim and its evidence set are unchanged; the added text is demonstrably irrelevant to the forensic judgment.
+- id: P5
+  family: formatting
+  invariance: true
+  allowed_transformation: Re-render the same content in a different format (prose <-> bullets, section ordering, metadata/label placement).
+  forbidden_semantic_changes: May not add, drop, or alter any claim, evidence item, or decisive term; format only.
+  certification_criteria: Every claim and evidence item is preserved; only presentation/format differs.
+neutral_anchors:
+- id: P7A-NEU-001
+  gold: solid
+  difficulty: D1
+  claim_source_url: https://www.cdc.gov/folic-acid/about/index.html
+  case_fingerprint: 168fed4886d8ef296a15894a11f00b067e1a67dd65fc0bbbd8c6eaafedaa405a
+- id: P7A-NEU-002
+  gold: overclaim
+  difficulty: D2
+  claim_source_url: https://www.ftc.gov/news-events/news/press-releases/2014/01/sensa-three-other-marketers-fad-weight-loss-products-settle-ftc-charges
+  case_fingerprint: 254ab437034cae50441ebbc05567abfaa818bcdeec3ef9650fa6b4ab8eec3363
+- id: P7A-NEU-003
+  gold: correlation_vs_causation
+  difficulty: D2
+  claim_source_url: https://www.iarc.who.int/wp-content/uploads/2018/07/pr244_E.pdf
+  case_fingerprint: 5bc0f712e52d0b72b1162d596bc0f62f38ef65bdefda9bb7d01b6c9896dad6a0
+- id: P7A-NEU-004
+  gold: mechanism_vs_evidence
+  difficulty: D2
+  claim_source_url: https://www.fda.gov/consumers/consumer-updates/whole-body-cryotherapy-wbc-cool-trend-lacks-evidence-poses-risks
+  case_fingerprint: 66de577e7c4bbf71d19ec3fd205d81d99379c539f743c5df773fc274a445a83e
+base_selection:
+- slot: 1
+  base_case_id: P7A-NEU-001
+  origin: neutral_anchor
+  stratum: neutral:solid
+  base_gold: solid
+  base_case_fingerprint: 168fed4886d8ef296a15894a11f00b067e1a67dd65fc0bbbd8c6eaafedaa405a
+  selection_rule: neutral anchor for 'solid' (auto-included per contract §6 step 1)
+  variants:
+  - variant_id: P7A-PRT-01-P1
+    perturbation_family: P1
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: 5c945ef1dcfec32ec2e85d52824bfc784c67d0af93dd3684e9f2f04886a1080b
+  - variant_id: P7A-PRT-01-P2
+    perturbation_family: P2
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: cd947d505402db65bf9f7369a6923a7daf5d434a325a26d3416eaec4a66c0e67
+  - variant_id: P7A-PRT-01-P3
+    perturbation_family: P3
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: 3d6e116421d3f9d033a346adbcf90375275fffc1fa3928e7f7fc4d6aeeddbc2e
+  - variant_id: P7A-PRT-01-P4
+    perturbation_family: P4
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: bcb8215732472a35dcf84489bbc4d9a2c487383b562e337cee42ef91ed0904eb
+  - variant_id: P7A-PRT-01-P5
+    perturbation_family: P5
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: c58a696f85e03b1aafea1bd2f37f749759188ff6de4cd0bca968e09ec69c852e
+- slot: 2
+  base_case_id: P7A-NEU-002
+  origin: neutral_anchor
+  stratum: neutral:overclaim
+  base_gold: overclaim
+  base_case_fingerprint: 254ab437034cae50441ebbc05567abfaa818bcdeec3ef9650fa6b4ab8eec3363
+  selection_rule: neutral anchor for 'overclaim' (auto-included per contract §6 step 1)
+  variants:
+  - variant_id: P7A-PRT-02-P1
+    perturbation_family: P1
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: ac51965c865a5d8d4e76b9338deea3b714908b7e30f5c3ed3f90d89cb99b9eca
+  - variant_id: P7A-PRT-02-P2
+    perturbation_family: P2
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 23bd42ed37482ac7caac2b4354db028a6db714ec54964a6c664014034a3108cd
+  - variant_id: P7A-PRT-02-P3
+    perturbation_family: P3
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 0b9f87909229e9d43ba48537370adb9a9ba6cbe76a14fc225f4dfab2caa9f85e
+  - variant_id: P7A-PRT-02-P4
+    perturbation_family: P4
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 6e3048c96d9e20b517ef1ee3c01c3cdeffe27cda3b3713a1016353a2e850633d
+  - variant_id: P7A-PRT-02-P5
+    perturbation_family: P5
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 559dcf4880d99344fbfc6375bedf6447216526f9bab3d5de79f15ada1571823b
+- slot: 3
+  base_case_id: P7A-NEU-003
+  origin: neutral_anchor
+  stratum: neutral:correlation_vs_causation
+  base_gold: correlation_vs_causation
+  base_case_fingerprint: 5bc0f712e52d0b72b1162d596bc0f62f38ef65bdefda9bb7d01b6c9896dad6a0
+  selection_rule: neutral anchor for 'correlation_vs_causation' (auto-included per contract §6 step 1)
+  variants:
+  - variant_id: P7A-PRT-03-P1
+    perturbation_family: P1
+    gold_label: correlation_vs_causation
+    meaning_preservation: PASS
+    variant_fingerprint: c63a76a7fc4f785d6c94e962c23e875d7c43b86d722d932122baa419cdbcbce0
+  - variant_id: P7A-PRT-03-P2
+    perturbation_family: P2
+    gold_label: correlation_vs_causation
+    meaning_preservation: PASS
+    variant_fingerprint: a016c35f6528eaba1e04853b634f8a02253da515df76584685632edd2af70969
+  - variant_id: P7A-PRT-03-P3
+    perturbation_family: P3
+    gold_label: correlation_vs_causation
+    meaning_preservation: PASS
+    variant_fingerprint: d158c4a4ce5b21f4497c45ea12cce11b9c5b2edd3de86311ac2d0512778f207e
+  - variant_id: P7A-PRT-03-P4
+    perturbation_family: P4
+    gold_label: correlation_vs_causation
+    meaning_preservation: PASS
+    variant_fingerprint: 2c1737df5f18460f0caa9d2425237adbc0b0710d2412778e1a679fd052d3c1c0
+  - variant_id: P7A-PRT-03-P5
+    perturbation_family: P5
+    gold_label: correlation_vs_causation
+    meaning_preservation: PASS
+    variant_fingerprint: b037e12738799bf93fe2c1e287ba38ff01edab4edad8d07a3c02b51361f18c09
+- slot: 4
+  base_case_id: P7A-NEU-004
+  origin: neutral_anchor
+  stratum: neutral:mechanism_vs_evidence
+  base_gold: mechanism_vs_evidence
+  base_case_fingerprint: 66de577e7c4bbf71d19ec3fd205d81d99379c539f743c5df773fc274a445a83e
+  selection_rule: neutral anchor for 'mechanism_vs_evidence' (auto-included per contract §6 step 1)
+  variants:
+  - variant_id: P7A-PRT-04-P1
+    perturbation_family: P1
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: 6f3d3e06c8225796ed7f9db29ce0857e9fa70781ef32bd18485be4ee4a606b82
+  - variant_id: P7A-PRT-04-P2
+    perturbation_family: P2
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: 89eb824e64b187840faf6c77cf88fa8e54039cd33407093c2b0768daae221b51
+  - variant_id: P7A-PRT-04-P3
+    perturbation_family: P3
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: c91f6f8f1b4dd203af7e18643499b9e661c21b8fb213da87a37c1331a1c6ce54
+  - variant_id: P7A-PRT-04-P4
+    perturbation_family: P4
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: 84abd8783eca3448ed6d4a7bee644b8213ff3799e60c6758cd53670c95f70c9e
+  - variant_id: P7A-PRT-04-P5
+    perturbation_family: P5
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: 681ba5180c9a7ecf724f4451c6d85580bf99c7f9ab12cf3b4925fc0c342f4854
+- slot: 5
+  base_case_id: P7A-BND-017
+  origin: boundary
+  stratum: B1
+  base_gold: overclaim
+  base_case_fingerprint: 0495f2c997c8e8de86dd63ec71540db457f14cf338ecbc0d6345dda8dbcc2f42
+  selection_rule: rank 1 of 5 by ascending case_fingerprint in stratum B1
+  variants:
+  - variant_id: P7A-PRT-05-P1
+    perturbation_family: P1
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 638b7ad9ad1d97e14666fbc60d8284027afa130bc1df3151b98210bbb180ab55
+  - variant_id: P7A-PRT-05-P2
+    perturbation_family: P2
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 2f280650f4c905262cf0be441ec1d64bea0c9fb0806e6e7570ccb8399ddca437
+  - variant_id: P7A-PRT-05-P3
+    perturbation_family: P3
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 83236f64fd4d3afb21d41274b3a73e85de8083ba711d8f8362502b3c01b83ee5
+  - variant_id: P7A-PRT-05-P4
+    perturbation_family: P4
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 460199df5138addd3db3a0451fe4762cb4fd323c133667e3a7425c73c2b64205
+  - variant_id: P7A-PRT-05-P5
+    perturbation_family: P5
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: d0f941d66c2f25b436dddb367b028c86ae9e2acead7fe4b66ef36bb7097370f6
+- slot: 6
+  base_case_id: P7A-BND-009
+  origin: boundary
+  stratum: B2
+  base_gold: mechanism_vs_evidence
+  base_case_fingerprint: 19a710bc2cf484bbbc83a2feb4571c5bb5c65b8d58b672c4fb2aa6a73f90acda
+  selection_rule: rank 1 of 5 by ascending case_fingerprint in stratum B2
+  variants:
+  - variant_id: P7A-PRT-06-P1
+    perturbation_family: P1
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: d748c40786f71d1ee54d7d63b0184d6d71c757fd940c9d42647cf25e1cca0979
+  - variant_id: P7A-PRT-06-P2
+    perturbation_family: P2
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: 7a98151aa3fa24656c06085072e5ca198fc14dcd3285060c2321673169e7c6a6
+  - variant_id: P7A-PRT-06-P3
+    perturbation_family: P3
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: c873af51fded280f50cfcbe3284997e7a7eac8f708c278c359287e57791beac2
+  - variant_id: P7A-PRT-06-P4
+    perturbation_family: P4
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: 8d4f2c5d566bc563c07d40dfd041bbd81340cce37c6e94a3bfd0bab49b6123d0
+  - variant_id: P7A-PRT-06-P5
+    perturbation_family: P5
+    gold_label: mechanism_vs_evidence
+    meaning_preservation: PASS
+    variant_fingerprint: dd8508cbb13c448699a8816212d7239318e7dca127c7568fc19e01a651b1aedb
+- slot: 7
+  base_case_id: P7A-BND-011
+  origin: boundary
+  stratum: B3
+  base_gold: solid
+  base_case_fingerprint: 436c6452a8311085b5b9930958af277db2b75982a996186860b15a281bb927b6
+  selection_rule: rank 1 of 4 by ascending case_fingerprint in stratum B3
+  variants:
+  - variant_id: P7A-PRT-07-P1
+    perturbation_family: P1
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: 65f7a43588e723e8ebdcf2251f49183bf44fd9cd1f9932de0ae590e5b50f42ed
+  - variant_id: P7A-PRT-07-P2
+    perturbation_family: P2
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: 03c71f379954ac8685747789f34bd95afc0b20e355d694dc4e1989b914db6e69
+  - variant_id: P7A-PRT-07-P3
+    perturbation_family: P3
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: e17f87f6d63f6cdb65d2f90014f1b8e66c10ed0cb6bb4b94b761de9c96646436
+  - variant_id: P7A-PRT-07-P4
+    perturbation_family: P4
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: dacca13e00c382678d13c05ea073e08f939c6dd60479db133e3b1efcd61757cf
+  - variant_id: P7A-PRT-07-P5
+    perturbation_family: P5
+    gold_label: solid
+    meaning_preservation: PASS
+    variant_fingerprint: 833d48cd103b5c975f3585eedd0c4ad390c5fc8de1995f324919535f97a5aab9
+- slot: 8
+  base_case_id: P7A-ADV-010
+  origin: adversarial
+  stratum: adversarial:A5
+  base_gold: overclaim
+  base_case_fingerprint: 001d6fe0a3a1425064644755959735bea7e1cac46ae9aacd535f8899c5f6f035
+  selection_rule: 'distinct-family pick #1: first fingerprint-ordered case of new family A5'
+  variants:
+  - variant_id: P7A-PRT-08-P1
+    perturbation_family: P1
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 77924af1ad84a202af3edab5776155f5439b00b942a868dfe5f4847ed956472f
+  - variant_id: P7A-PRT-08-P2
+    perturbation_family: P2
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: bd3e814428a2ce31118b9424a7db72173600f46d46645fa03ea9374f35c72e7d
+  - variant_id: P7A-PRT-08-P3
+    perturbation_family: P3
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 1a7af5615cb4f9e35378b28501a0b861a4ebacda895ae4dcd8c3f5cfad19960c
+  - variant_id: P7A-PRT-08-P4
+    perturbation_family: P4
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 1bfa9ce0b63af2e7d356d14143dddb5754006adda0e9a4c224557c6fe17901d3
+  - variant_id: P7A-PRT-08-P5
+    perturbation_family: P5
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 8b7174feb99490d4a2a453aca1c6702fe1a948d94948cd727937f648e8dec687
+- slot: 9
+  base_case_id: P7A-ADV-001
+  origin: adversarial
+  stratum: adversarial:A1
+  base_gold: overclaim
+  base_case_fingerprint: 10681b9faa8bbcebcb75c2af429422202653c7cf28049d36b49c069418d3810f
+  selection_rule: 'distinct-family pick #2: first fingerprint-ordered case of new family A1'
+  variants:
+  - variant_id: P7A-PRT-09-P1
+    perturbation_family: P1
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 7dd005a38a94f6d89c9ab42e7e7f826d9bdd19afe495314b2025e101466277db
+  - variant_id: P7A-PRT-09-P2
+    perturbation_family: P2
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 2eea4e44af47a6010e1459c5436704a097ed8ce3740a7f39417c5205711e7aca
+  - variant_id: P7A-PRT-09-P3
+    perturbation_family: P3
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: adae39ba7a150e28faeeb643f0b2b8546efaa95665a728286d687ffc3e0214d9
+  - variant_id: P7A-PRT-09-P4
+    perturbation_family: P4
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 7c961ec1ba6a0991c345996299fcb558b0350a1a35d45ca7b11d52c6ee8be80b
+  - variant_id: P7A-PRT-09-P5
+    perturbation_family: P5
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: cc339ffdd90eb94b3a571f4b3fffb2a94c5b5dfc383aa235c15860084aadebfc
+- slot: 10
+  base_case_id: P7A-ADV-011
+  origin: adversarial
+  stratum: adversarial:A6
+  base_gold: overclaim
+  base_case_fingerprint: 1a191e3548bd5beb0fa68d4c999628062ecfeec530b07d4edced3739370908dc
+  selection_rule: 'distinct-family pick #3: first fingerprint-ordered case of new family A6'
+  variants:
+  - variant_id: P7A-PRT-10-P1
+    perturbation_family: P1
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: dd3bc8d604d0d4744fb799966a1d925e0247d5849a9e71fc77ea60062badd3e9
+  - variant_id: P7A-PRT-10-P2
+    perturbation_family: P2
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 2bb27fdd2c39b0eadc55cc9902c6f648bf7428e32f2977c635b451b6e628c1a8
+  - variant_id: P7A-PRT-10-P3
+    perturbation_family: P3
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: 80f229397e8a3424f24832e582ea63e72bfca44139a729a2a83fecdab034b36a
+  - variant_id: P7A-PRT-10-P4
+    perturbation_family: P4
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: d8d3d2981ae3a6794e24bc4ca8d1c2ab8aacf7cdf671c028f80ec664792141c8
+  - variant_id: P7A-PRT-10-P5
+    perturbation_family: P5
+    gold_label: overclaim
+    meaning_preservation: PASS
+    variant_fingerprint: b55410e27b145ad8208d3092357e44cd6151220e3b44b00d6070486c1715a2f7
+clustering:
+  n_independent_perturbation_bases: 10
+  n_perturbation_clusters: 10
+  n_perturbation_variants: 50
+  n_perturbation_families: 5
+  variants_per_base:
+    P7A-ADV-001: 5
+    P7A-ADV-010: 5
+    P7A-ADV-011: 5
+    P7A-BND-009: 5
+    P7A-BND-011: 5
+    P7A-BND-017: 5
+    P7A-NEU-001: 5
+    P7A-NEU-002: 5
+    P7A-NEU-003: 5
+    P7A-NEU-004: 5
+  variants_per_family:
+    P1: 10
+    P2: 10
+    P3: 10
+    P4: 10
+    P5: 10
+  variants_are_independent_cases: false
+  note: 50 perturbation variants are NESTED in 10 independent bases (cluster roots). They are NOT 50 independent scientific cases; downstream reporting must use n_independent_perturbation_bases=10, n_perturbation_variants=50.
+base_strata_observed:
+  neutral: 4
+  B1: 1
+  B2: 1
+  B3: 1
+  adversarial: 3
+verification:
+  neutral_n_active: 4
+  neutral_gold_counts_match_expected: true
+  neutral_anchor_labels_match_gold: true
+  neutral_fingerprints_reproduce: true
+  n_independent_bases: 10
+  n_variants: 50
+  n_families: 5
+  bases_match_selection: true
+  variants_per_base_all_5: true
+  variants_per_family_all_10: true
+  unique_variant_ids: true
+  unique_variant_fingerprints: true
+  variant_fingerprints_reproduce: true
+  all_resolve_to_base: true
+  all_gold_inherited: true
+  all_base_fingerprints_match: true
+  all_meaning_preserved: true
+  all_frozen_pre_model: true

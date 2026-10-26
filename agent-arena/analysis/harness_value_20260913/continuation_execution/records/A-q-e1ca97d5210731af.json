@@ -1,0 +1,54 @@
+{
+  "slot_key": "A:q-e1ca97d5210731af",
+  "id": "q-e1ca97d5210731af",
+  "arm": "A",
+  "input_sha256": "e8a9875c550ea033bbf0b9c938a0e026efad7cc70522f8cb899bc3220648b578",
+  "request_sha256": "d78b87e04bfbb5afe4cd95eb0052eeadfb73a2203ce4c29d7c41385d022c5274",
+  "raw_text": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"clinical_human\",\n  \"conclusion_tier\": \"same as evidence\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The randomized controlled design adequately controls for confounding\",\n    \"Eight weeks is sufficient to assess the dietary intervention effect\",\n    \"The enrolled population (systolic BP <160, diastolic 80-95 mm Hg) represents the intended study cohort\"\n  ],\n  \"steps\": [\n    \"Randomized controlled trial design with control and intervention arms\",\n    \"Sodium intake and body weight held constant across groups\",\n    \"Systolic BP reduction measured directly in both groups\",\n    \"Difference calculated: combination diet reduced systolic BP 5.5 mm Hg more than control\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Unmeasured dietary components beyond those specified could drive the effect\",\n    \"Adherence differences between groups could influence outcomes\"\n  ],\n  \"uncertainties\": [\n    \"Generalizability to populations outside the enrolled BP range\",\n    \"Long-term sustainability of the effect beyond eight weeks\",\n    \"Mechanisms underlying the BP reduction\"\n  ],\n  \"key_claims\": [\n    \"Combination diet lowered systolic BP more than control\",\n    \"Effect size: 5.5 mm Hg additional reduction\",\n    \"Sodium and body weight held constant\",\n    \"Eight-week duration\"\n  ],\n  \"self_check\": [\n    \"Claim matches evidence directly: ✓\",\n    \"Scope appropriate to study design: ✓\",\n    \"No causal overreach: ✓ (RCT design supports causal inference)\",\n    \"No mechanism-to-clinical leap: ✓ (clinical outcome measured directly)\",\n    \"Caveats present: ✓ (specific conditions stated)\"\n  ],\n  \"confidence\": 0.96\n}\n```\n\n**Rationale:** The claim accurately reports the DASH trial findings with appropriate scope and specificity. The evidence directly supports that the combination diet reduced systolic BP 5.5 mm Hg more than control in an eight-week randomized controlled trial with sodium and body weight held constant. The randomized design supports the causal framing, and the outcome is clinical (blood pressure), not a surrogate. No overclaiming, mechanism-to-evidence gap, or correlation-causation confusion is present.",
+  "raw_sha256": "db931ed96514537172be08e90c83b6d6dd74265b5862f315828f150f2a92da92",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 7175037708,
+  "attempt_ids": [
+    "attempt-036"
+  ],
+  "usage": {
+    "input_tokens": 852,
+    "output_tokens": 575,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": false,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "solid",
+    "label_readable": true,
+    "confidence": 0.96,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "solid",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 2182
+    },
+    "B_parser_ns": 465459,
+    "C_incremental_interpretation_ns": 361417
+  }
+}

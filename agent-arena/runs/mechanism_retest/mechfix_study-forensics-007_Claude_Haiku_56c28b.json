@@ -1,0 +1,1081 @@
+{
+  "run_id": "mechfix_study-forensics-007_Claude_Haiku_56c28b",
+  "task": {
+    "id": "study-forensics-007",
+    "title": "Study Forensics: Vitamin D supplements and long COVID",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A randomised controlled trial involving 1,747 adults tested whether high-dose vitamin D3 could affect COVID-19 outcomes. Supplementation did not change the severity of acute infection. When researchers looked at lingering symptoms eight weeks later, 21 percent of people taking vitamin D reported at least one ongoing symptom compared with 25 percent in the placebo group. The senior author called this difference a \"promising signal,\" but emphasised that larger trials are needed. The study was conducted remotely and started supplementation after infection onset, limiting interpretation.\n",
+    "context": "The press piece highlights a very small absolute difference (4 percentage points) in long-COVID symptoms\nas evidence that vitamin D might help, despite no effect on acute outcomes and numerous limitations.\n",
+    "expected_answer": "solid",
+    "reference_solution": "The text reports a small secondary finding (21% vs 25%) from an RCT with a null primary\noutcome. The senior author uses appropriately tentative language (\"promising signal\") and\nexplicitly calls for larger trials. The effect size is reported accurately without\nexaggeration. The study limitations (remote conduct, post-infection start) are disclosed.\nThis is cautious reporting of weak but honestly presented results.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "honest reporting",
+        "variants": [
+          "accurately reported",
+          "did not exaggerate",
+          "tentative language"
+        ],
+        "functional_descriptions": [
+          "the text reports results at the appropriate evidence tier without overclaim"
+        ]
+      },
+      {
+        "keyword": "limitations disclosed",
+        "variants": [
+          "conducted remotely",
+          "after infection onset",
+          "limiting interpretation"
+        ],
+        "functional_descriptions": [
+          "study limitations are honestly acknowledged"
+        ]
+      },
+      {
+        "keyword": "appropriate hedging",
+        "variants": [
+          "promising signal",
+          "larger trials needed"
+        ],
+        "functional_descriptions": [
+          "uncertainty language is genuine and constrains interpretation for a secondary finding"
+        ]
+      }
+    ],
+    "common_errors": [
+      "flagging as overclaim when the text stays within its evidence tier",
+      "treating a weak secondary finding as automatically problematic",
+      "missing that the evidence tier (human RCT) matches the conclusion tier (human outcomes)"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_decorative_uncertainty",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "false_positive_flagging",
+      "overclaiming"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth",
+      "mechanism_quality"
+    ],
+    "diagnostic_focus": "Can the agent recognize that a human RCT reporting human results with honest caveats is solid, even when the finding is weak?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "Borderline solid case. Cautious reporting of a weak secondary RCT finding with honest disclosure of null primary outcome and study limitations.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "medium"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "21 percent of people taking vitamin D reported at least one ongoing symptom compared with 25 percent in the placebo group",
+        "why_it_matters": "Effect size is reported accurately without exaggeration.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "promising signal ... larger trials are needed",
+        "why_it_matters": "Tentative language appropriate for a secondary finding, with explicit call for further research.",
+        "supports_finding": "cautious_scope_control"
+      },
+      {
+        "span": "The study was conducted remotely and started supplementation after infection onset, limiting interpretation",
+        "why_it_matters": "Study limitations are honestly disclosed.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "medium",
+    "gold_justification": "The text reports an RCT's secondary finding accurately: 21% vs 25%, a 4 percentage point\ndifference. The senior author frames this as a \"promising signal\" — tentative language for\na secondary finding — and explicitly calls for larger trials. The null primary outcome is\nreported honestly. Study limitations are disclosed. The evidence tier (human RCT) matches\nthe conclusion tier (human outcomes with appropriate caveats). No causal overclaim is made.\n",
+    "gold_alternative_reading": "An 'overclaim' reading is defensible: the null primary outcome makes the secondary finding\nvery weak, and \"promising signal\" could be seen as optimistic framing that exceeds what\na null-primary + weak-secondary result warrants. Under a strict epistemic norm, highlighting\na 4pp secondary difference from a failed trial constitutes decorative uncertainty. However,\n0/6 model runs across two validation sprints agree with the overclaim label, and the text\ndoes stay within its evidence tier (human RCT → human results).\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "RELABELED 2026-04-08: Gold label changed from overclaim to solid.\n\nReason: 0/6 model runs across two validation sprints (Praxis + Full 27) agree with\noverclaim label. All 3 models consistently classify as solid. The text reports human\nRCT results with human-appropriate conclusions — evidence tier matches conclusion tier.\n\"Promising signal\" + \"larger trials needed\" is seen as responsible communication by\nall models. The previous overclaim label reflected a stricter epistemic norm than\nthe text warrants.\n\nThis case now serves as a borderline-solid calibration test: can the agent recognize\nthat cautious reporting of weak results from a well-designed study is solid, not overclaim?\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"clinical_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The RCT was adequately powered for the primary endpoint (acute infection severity)\",\n    \"The 1,747 participant sample is representative of the population studied\",\n    \"The remote conduct and post-infection timing are acknowledged limitations rather than hidden confounders\",\n    \"The 4-percentage-point difference (25% vs 21%) in lingering symptoms is the actual observed effect\"\n  ],\n  \"steps\": [\n    \"Identified evidence tier: This is a randomised controlled trial in 1,747 adults — full clinical human evidence (tier 5)\",\n    \"Identified conclusion tier: The text discusses outcomes in the studied population (adults with COVID-19) — human_therapeutic\",\n    \"Assessed bridge: The conclusions stay within the evidence tier. The study directly measured human outcomes in humans.\",\n    \"Evaluated primary claim: The study's primary endpoint (acute infection severity) showed no effect. This is a null finding, clearly stated.\",\n    \"Evaluated secondary observation: A post-hoc observation of lingering symptoms showed a 4-percentage-point difference favoring vitamin D (21% vs 25%). The text appropriately calls this a 'promising signal' rather than a definitive finding.\",\n    \"Checked hedging quality: The senior author explicitly emphasises that 'larger trials are needed.' This is not decorative uncertainty — it is appropriate epistemic caution for a secondary, exploratory finding.\",\n    \"Assessed limitations disclosure: The text transparently notes two important limitations: remote conduct and post-infection timing of supplementation. These are acknowledged, not hidden.\",\n    \"Checked for overclaim: The text does not claim the intervention works. It reports a null primary endpoint and a suggestive secondary signal with appropriate caveats.\",\n    \"Checked for correlation vs causation: The RCT design supports causal inference for the measured outcomes. No causal claims are made beyond what the design permits.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as 'overclaim' if the 4-percentage-point difference were presented as clinically meaningful without acknowledging it is exploratory — but the text does not do this.\",\n    \"Could classify as 'mechanism_vs_evidence' if the text implied broader population benefit (e.g., 'vitamin D prevents long COVID') — but it does not.\",\n    \"Could classify as 'decorative_uncertainty' if the hedging language masked a strong underlying claim — but the underlying claim is genuinely modest (a secondary signal, not a primary finding).\"\n  ],\n  \"uncertainties\": [\n    \"Whether the 4-percentage-point difference in lingering symptoms is clinically meaningful (the text does not specify effect size or confidence intervals, though this is a minor omission for a press report)\",\n    \"Whether the remote conduct and post-infection timing are truly limiting factors or simply contextual details — the text notes them but does not quantify their impact\",\n    \"Whether the study was adequately powered for the secondary endpoint (lingering symptoms at 8 weeks) — this is not stated, but the call for larger trials suggests it may not have been\"\n  ],\n  \"key_claims\": [\n    \"Primary endpoint (acute infection severity): no effect of vitamin D supplementation — clearly null, appropriately reported\",\n    \"Secondary observation (lingering symptoms): 4-percentage-point difference favoring vitamin D — appropriately framed as 'promising signal' requiring larger trials\",\n    \"Limitations are transparently disclosed: remote conduct, post-infection timing\",\n    \"The text avoids overclaiming and maintains appropriate epistemic humility for an exploratory finding\"\n  ],\n  \"self_check\": [\n    \"Did I correctly identify this as a full RCT? Yes — 1,747 adults, randomised, controlled design.\",\n    \"Did I conflate the null primary endpoint with a problem in the study design? No — null findings are valid outcomes.\",\n    \"Did I penalise the text for appropriate caution about a secondary finding? No — the hedging is proportionate to the evidence.\",\n    \"Did I miss any hidden overclaims? No — the text is transparent about what was found and what remains uncertain.\",\n    \"Did I apply the evidence-tier check correctly? Yes — evidence is clinical human (tier 5), conclusion is human_therapeutic (same tier), bridge is direct and supported by RCT design.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\nThis is a **solid study report**. The text describes a well-designed RCT with appropriate caveats:\n\n1. **Primary endpoint**: Null finding (no effect on acute infection severity) — clearly stated.\n2. **Secondary observation**: A 4-percentage-point difference in lingering symptoms — appropriately labeled a \"promising signal\" and explicitly flagged as requiring larger trials.\n3. **Limitations**: Transparently disclosed (remote conduct, post-infection timing).\n4. **Hedging**: Proportionate to the evidence — not decorative, but genuinely warranted for an exploratory finding.\n\nThe text does not overclaim, does not confuse correlation with causation, and does not imply benefits beyond what the evidence supports. The senior author's emphasis on the need for larger trials is appropriate epistemic caution, not a sign of hidden uncertainty.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The RCT was adequately powered for the primary endpoint (acute infection severity)",
+            "The 1,747 participant sample is representative of the population studied",
+            "The remote conduct and post-infection timing are acknowledged limitations rather than hidden confounders",
+            "The 4-percentage-point difference (25% vs 21%) in lingering symptoms is the actual observed effect"
+          ],
+          "steps": [
+            "Identified evidence tier: This is a randomised controlled trial in 1,747 adults — full clinical human evidence (tier 5)",
+            "Identified conclusion tier: The text discusses outcomes in the studied population (adults with COVID-19) — human_therapeutic",
+            "Assessed bridge: The conclusions stay within the evidence tier. The study directly measured human outcomes in humans.",
+            "Evaluated primary claim: The study's primary endpoint (acute infection severity) showed no effect. This is a null finding, clearly stated.",
+            "Evaluated secondary observation: A post-hoc observation of lingering symptoms showed a 4-percentage-point difference favoring vitamin D (21% vs 25%). The text appropriately calls this a 'promising signal' rather than a definitive finding.",
+            "Checked hedging quality: The senior author explicitly emphasises that 'larger trials are needed.' This is not decorative uncertainty — it is appropriate epistemic caution for a secondary, exploratory finding.",
+            "Assessed limitations disclosure: The text transparently notes two important limitations: remote conduct and post-infection timing of supplementation. These are acknowledged, not hidden.",
+            "Checked for overclaim: The text does not claim the intervention works. It reports a null primary endpoint and a suggestive secondary signal with appropriate caveats.",
+            "Checked for correlation vs causation: The RCT design supports causal inference for the measured outcomes. No causal claims are made beyond what the design permits."
+          ],
+          "alternative_hypotheses": [
+            "Could classify as 'overclaim' if the 4-percentage-point difference were presented as clinically meaningful without acknowledging it is exploratory — but the text does not do this.",
+            "Could classify as 'mechanism_vs_evidence' if the text implied broader population benefit (e.g., 'vitamin D prevents long COVID') — but it does not.",
+            "Could classify as 'decorative_uncertainty' if the hedging language masked a strong underlying claim — but the underlying claim is genuinely modest (a secondary signal, not a primary finding)."
+          ],
+          "uncertainties": [
+            "Whether the 4-percentage-point difference in lingering symptoms is clinically meaningful (the text does not specify effect size or confidence intervals, though this is a minor omission for a press report)",
+            "Whether the remote conduct and post-infection timing are truly limiting factors or simply contextual details — the text notes them but does not quantify their impact",
+            "Whether the study was adequately powered for the secondary endpoint (lingering symptoms at 8 weeks) — this is not stated, but the call for larger trials suggests it may not have been"
+          ],
+          "self_check": [
+            "Did I correctly identify this as a full RCT? Yes — 1,747 adults, randomised, controlled design.",
+            "Did I conflate the null primary endpoint with a problem in the study design? No — null findings are valid outcomes.",
+            "Did I penalise the text for appropriate caution about a secondary finding? No — the hedging is proportionate to the evidence.",
+            "Did I miss any hidden overclaims? No — the text is transparent about what was found and what remains uncertain.",
+            "Did I apply the evidence-tier check correctly? Yes — evidence is clinical human (tier 5), conclusion is human_therapeutic (same tier), bridge is direct and supported by RCT design."
+          ],
+          "key_claims": [
+            "Primary endpoint (acute infection severity): no effect of vitamin D supplementation — clearly null, appropriately reported",
+            "Secondary observation (lingering symptoms): 4-percentage-point difference favoring vitamin D — appropriately framed as 'promising signal' requiring larger trials",
+            "Limitations are transparently disclosed: remote conduct, post-infection timing",
+            "The text avoids overclaiming and maintains appropriate epistemic humility for an exploratory finding"
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 12897
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 0.6666666666666666,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 9",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Evaluated secondary observation: A post-hoc observation of lingering symptoms showed a 4-percentage-point difference favoring vitamin D (21% vs 25%). ",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "9 reasoning steps",
+            "Low step utility: 0/9 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.75)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The remote conduct and post-infection timing are acknowledged limitations rather than hidden confounders",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the 4-percentage-point difference in lingering symptoms is clinically meaningful (the text does not specify effect size or confidence intervals, though this is a minor omission for a press report)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could classify as 'decorative_uncertainty' if the hedging language masked a strong underlying claim — but the underlying claim is genuinely modest (a secondary signal, not a primary finding).",
+              "source_field": "alternative_hypotheses[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "3/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Did I apply the evidence-tier check correctly? Yes — evidence is clinical human (tier 5), conclusion is human_therapeutic (same tier), bridge is direct and supported by RCT design.",
+              "source_field": "self_check[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 580 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.6666666666666666,
+          "weight": 8,
+          "weighted_score": 5.3,
+          "evidence": [
+            {
+              "text": "Missing: honest reporting",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'honest reporting' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "Primary endpoint (acute infection severity): no effect of vitamin D supplementation — clearly null, appropriately reported",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/15 content words)",
+          "evidence": [
+            {
+              "text": "Secondary observation (lingering symptoms): 4-percentage-point difference favoring vitamin D — appropriately framed as 'promising signal' requiring larger trials",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "Limitations are transparently disclosed: remote conduct, post-infection timing",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/9 content words)",
+          "evidence": [
+            {
+              "text": "The text avoids overclaiming and maintains appropriate epistemic humility for an exploratory finding",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: none_or_minor, conclusion_exceeds_results, unsupported_generalization, decorative_uncertainty, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The RCT was adequately powered for the primary endpoint (acute infection severity)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 1,747 participant sample is representative of the population studied",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The remote conduct and post-infection timing are acknowledged limitations rather than hidden confounders",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 4-percentage-point difference (25% vs 21%) in lingering symptoms is the actual observed effect",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence tier: This is a randomised controlled trial in 1,747 adults — full clinical human evidence (tier 5)",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified conclusion tier: The text discusses outcomes in the studied population (adults with COVID-19) — human_therapeutic",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed bridge: The conclusions stay within the evidence tier. The study directly measured human outcomes in humans.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated primary claim: The study's primary endpoint (acute infection severity) showed no effect. This is a null finding, clearly stated.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated secondary observation: A post-hoc observation of lingering symptoms showed a 4-percentage-point difference favoring vitamin D (21% vs 25%). The text appropriately calls this a 'promising signal' rather than a definitive finding.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked hedging quality: The senior author explicitly emphasises that 'larger trials are needed.' This is not decorative uncertainty — it is appropriate epistemic caution for a secondary, exploratory finding.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed limitations disclosure: The text transparently notes two important limitations: remote conduct and post-infection timing of supplementation. These are acknowledged, not hidden.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaim: The text does not claim the intervention works. It reports a null primary endpoint and a suggestive secondary signal with appropriate caveats.",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for correlation vs causation: The RCT design supports causal inference for the measured outcomes. No causal claims are made beyond what the design permits.",
+            "source_field": "steps[8]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Primary endpoint (acute infection severity): no effect of vitamin D supplementation — clearly null, appropriately reported",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Secondary observation (lingering symptoms): 4-percentage-point difference favoring vitamin D — appropriately framed as 'promising signal' requiring larger trials",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Limitations are transparently disclosed: remote conduct, post-infection timing",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text avoids overclaiming and maintains appropriate epistemic humility for an exploratory finding",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'overclaim' if the 4-percentage-point difference were presented as clinically meaningful without acknowledging it is exploratory — but the text does not do this.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'mechanism_vs_evidence' if the text implied broader population benefit (e.g., 'vitamin D prevents long COVID') — but it does not.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'decorative_uncertainty' if the hedging language masked a strong underlying claim — but the underlying claim is genuinely modest (a secondary signal, not a primary finding).",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the 4-percentage-point difference in lingering symptoms is clinically meaningful (the text does not specify effect size or confidence intervals, though this is a minor omission for a press report)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the remote conduct and post-infection timing are truly limiting factors or simply contextual details — the text notes them but does not quantify their impact",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the study was adequately powered for the secondary endpoint (lingering symptoms at 8 weeks) — this is not stated, but the call for larger trials suggests it may not have been",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I correctly identify this as a full RCT? Yes — 1,747 adults, randomised, controlled design.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I conflate the null primary endpoint with a problem in the study design? No — null findings are valid outcomes.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I penalise the text for appropriate caution about a secondary finding? No — the hedging is proportionate to the evidence.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any hidden overclaims? No — the text is transparent about what was found and what remains uncertain.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I apply the evidence-tier check correctly? Yes — evidence is clinical human (tier 5), conclusion is human_therapeutic (same tier), bridge is direct and supported by RCT design.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.7142857142857143
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.5555555555555556
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.4444444444444444
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 4,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 4,
+            "relation": "checks",
+            "strength": 0.25
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          28
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": true,
+          "hedge_phrases": [
+            "promising signal"
+          ],
+          "null_outcome_markers": [
+            "did not change"
+          ],
+          "limitation_markers": [
+            "conducted remotely",
+            "after infection"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 3",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 9",
+        "Reasoning graph: conclusion not well grounded",
+        "9 reasoning steps",
+        "Low step utility: 0/9 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.75)",
+        "4/4 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "Confidence 0.92",
+        "3 alternative hypotheses considered",
+        "3/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.71, 580 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T16:44:34.570131+00:00",
+  "metadata": {}
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "aa-p10-live-closure/1.0",
+  "closed_at": "2026-10-11T15:43:49.798907+00:00",
+  "authorization_id": "AA-P10-LIVE-SMOKE-20261011-003",
+  "authorization_fingerprint": "b93edacd76b3726024494e7f493fb67896481c413ca38459c0bb739bba6357ae",
+  "ledger_state": "REVOKED",
+  "attempts": 12,
+  "reserved_or_confirmed_microusd": 749257,
+  "executable_remaining_microusd": 0,
+  "unresolved_attempts": [],
+  "technical_retries": 0,
+  "unknown_billing_attempts": [],
+  "ledger_sha256_after_closure": "124ffab09ad94b9c751b50fe2888e48a2e585d41f16a6e21d2062d99e69497da",
+  "note": "Closed through the existing ledger revocation after the work order's live part ended; authorization.json unchanged; captures remain replayable."
+}

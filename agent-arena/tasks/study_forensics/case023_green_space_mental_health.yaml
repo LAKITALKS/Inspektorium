@@ -1,0 +1,72 @@
+id: study-forensics-023
+title: "Study Forensics: Urban green space and mental health"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: correlation_vs_causation
+trap_type: correlation_as_causation
+ambiguity_level: low
+prompt: |
+  Researchers used a neighbourhood NatureScore to measure the amount and quality of green space across over a thousand ZIP codes in urban Texas. They linked these scores to aggregated outpatient records for depression, bipolar disorder, stress and anxiety among more than 61 million encounters. Neighbourhoods with higher NatureScores had about 50 percent fewer mental health visits, and residents living in areas scoring above 40 points were reported to have a 51 percent lower likelihood of depression and a 63 percent lower likelihood of bipolar disorder. The authors suggested that increasing green space in cities could promote well-being and improve mental health outcomes.
+context: |
+  A cross-sectional analysis linking green-space scores to mental health service utilisation.
+  Strong associations are reported and policy suggestions made, but no causation is established.
+expected_answer: "correlation_vs_causation"
+reference_solution: |
+  The summary describes a cross-sectional analysis linking green-space scores to mental health at the ZIP-code level. It reports strong associations and speculates about benefits of increasing urban greenness but does not establish causation. Socioeconomic confounders are not controlled for.
+gold_label: correlation_vs_causation
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The study measured correlations between green space and mental health at the ZIP-code
+  level. Without experimental or longitudinal design, one cannot infer that green space
+  causes better mental health. Socioeconomic differences (wealthier neighbourhoods have
+  more green space and better mental health access) are an obvious confounder. The policy
+  recommendation to "increase green space" implies causation from correlation.
+gold_alternative_reading: null
+gold_summary: |
+  Cross-sectional analysis with strong associations but no causal design. Policy recommendations imply causation from correlational data.
+curator_notes: |
+  Clear correlation_vs_causation case in environment/public health domain. Similar
+  structure to Case019 (houseplants) but with larger dataset and more impressive
+  statistics, which makes the correlation-causation trap more seductive. Tests whether
+  agents resist impressive effect sizes (51%, 63%) without causal design.
+expected_findings:
+  - finding: correlation_as_causation
+    severity: major
+    confidence: high
+  - finding: unsupported_generalization
+    severity: moderate
+    confidence: medium
+gold_evidence_spans:
+  - span: "Neighbourhoods with higher NatureScores had about 50 percent fewer mental health visits"
+    why_it_matters: "Shows the strength of the reported association, which may be mistaken for causation."
+    supports_finding: correlation_as_causation
+  - span: "residents living in areas scoring above 40 points were reported to have a 51 percent lower likelihood of depression and a 63 percent lower likelihood of bipolar disorder"
+    why_it_matters: "Impressive percentage reductions that could lead to overinterpretation of causality."
+    supports_finding: correlation_as_causation
+  - span: "The authors suggested that increasing green space in cities could promote well-being and improve mental health outcomes"
+    why_it_matters: "Indicates scope overreach: policy recommendation based on correlational data."
+    supports_finding: unsupported_generalization
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "cross-sectional"
+    variants: ["ZIP codes", "linked scores to records", "aggregated"]
+    functional_descriptions:
+      - "no causal inference possible from a cross-sectional ecological design"
+  - keyword: "confounders"
+    variants: ["socioeconomic", "wealthier neighbourhoods", "income"]
+    functional_descriptions:
+      - "the observed association may be driven by confounding variables"
+common_errors:
+  - accepting impressive effect sizes as evidence of causation
+  - missing ecological fallacy in ZIP-code-level analysis
+expected_failure_modes:
+  - accepting_correlation_as_causation
+  - missing_confounders
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent resist impressive effect sizes and identify correlation-as-causation?"

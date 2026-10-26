@@ -1,0 +1,8 @@
+Verification: {'valid': True, 'status': 'RELEASED', 'errors': []}
+Broken binding references: [('report.md', 'record.json#/run_record/adjudications/0/position_fingerprints', "'adjudications'"), ('report.html', 'record.json#/run_record/adjudications/0/position_fingerprints', "'adjudications'")]
+Traceback (most recent call last):
+  File "/tmp/agent-arena-p10-wp2-binding-ref-repro.py", line 46, in <module>
+    assert not errors, 'Every displayed review-binding reference must resolve to its actual bound carrier'
+AssertionError: Every displayed review-binding reference must resolve to its actual bound carrier
+
+exit_code=1

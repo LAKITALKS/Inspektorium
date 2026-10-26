@@ -1,0 +1,68 @@
+id: forecast-rule-trap-001
+title: "Resolution Trap: Earnings Beat Definition"
+domain: forecasting
+difficulty: hard
+task_type: forecasting_decision
+task_family: forecasting_decision
+trap_type: rule_ambiguity
+ambiguity_level: high
+expected_failure_modes:
+  - rule_misread
+  - narrative_overreach
+  - overconfident_forecast
+discriminative_dimensions:
+  - rule_comprehension
+  - uncertainty_honesty
+  - skeptic_depth
+prompt: |
+  Question: Will TechCorp's Q3 earnings "beat expectations"?
+
+  Resolution rule: This question resolves YES if TechCorp's reported Q3 EPS
+  (earnings per share) EXCEEDS the consensus analyst estimate as published by
+  FactSet on the day before the earnings release. A result that MATCHES the
+  consensus exactly does NOT count as a beat.
+
+  Available information:
+  - Consensus EPS estimate: $2.15
+  - TechCorp's Q2 EPS was $2.10 (beat by $0.03)
+  - Industry trend: 72% of S&P 500 tech companies beat estimates in Q2
+  - TechCorp has beaten estimates in 14 of the last 16 quarters
+  - Recent analyst note: "Strong product cycle but currency headwinds may offset gains"
+  - Company guidance: "In line with consensus" (stated during Q2 call)
+
+  Provide your forecast decision with probability, reasoning, and key drivers.
+context: |
+  Tests whether the agent understands the precise resolution rule (EXCEEDS, not matches)
+  and whether it anchors too heavily on the narrative of past beats.
+  The company guided "in line" — a signal pointing toward match, not beat.
+expected_answer: null
+reference_solution: |
+  The base rate of beating (14/16 = 87.5%) is strong but must be adjusted:
+  - Company specifically guided "in line with consensus" — this is a signal toward matching, not beating
+  - The resolution rule requires EXCEEDING consensus, not matching
+  - Currency headwinds create downside risk
+  - A well-calibrated forecast would be around 55-70% (anchored on base rate, shrunk toward
+    uncertainty due to the "in line" guidance)
+  - A watch or modest forecast is appropriate; aggressive >80% would be overconfident
+base_rate: 0.875
+resolution_rule: "Resolves YES if reported Q3 EPS EXCEEDS (not matches) FactSet consensus estimate published day before release"
+correct_decision: forecast
+expected_probability_range: [0.50, 0.75]
+key_insights:
+  - keyword: "resolution rule"
+    variants: ["exceeds", "not matches", "strict beat"]
+    functional_descriptions:
+      - "matching consensus does not count as a beat"
+  - keyword: "in line guidance"
+    variants: ["guided in line", "company guidance"]
+    functional_descriptions:
+      - "company signaled they expect to match, not beat"
+  - keyword: "base rate"
+    variants: ["14 of 16", "87.5%", "historical beat rate"]
+    functional_descriptions:
+      - "past performance suggests high probability but needs adjustment"
+common_errors:
+  - using base rate without adjusting for "in line" guidance
+  - ignoring the strict "exceeds" resolution rule
+  - forecasting >85% based purely on narrative momentum
+evaluator_notes: "Key discriminator is whether agent adjusts base rate for 'in line' guidance and understands the strict resolution rule."

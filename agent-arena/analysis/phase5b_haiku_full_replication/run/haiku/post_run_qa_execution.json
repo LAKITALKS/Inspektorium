@@ -1,0 +1,23 @@
+{
+  "qa_kind": "pytest_diagnostic_non_authorizing",
+  "produced_by": "agent_arena.preflight_integrity.execute_diagnostic_qa",
+  "authorization_source": "non_authorizing_diagnostic",
+  "command": [
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+    "-m",
+    "pytest",
+    "--tb=no",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "exit_code": 0,
+  "tests_collected": 1855,
+  "tests_passed": 1855,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "tests_errors": 0,
+  "summary_line": "======================= 1855 passed in 326.72s (0:05:26) =======================",
+  "log_sha256": "be9677944652cb0a1949ff8cfda12ffe4f9675b4cf355206725f3db66f7e0913",
+  "runtime_seconds": 327.11,
+  "timestamp": "2026-09-06T09:36:20.460512+00:00"
+}

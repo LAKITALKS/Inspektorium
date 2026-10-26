@@ -1,0 +1,61 @@
+{
+  "installation": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-b/venv/lib/python3.11/site-packages/agent_arena",
+  "installation_inside_repository": false,
+  "target": {
+    "profile": "claude-sonnet-5-5@3",
+    "case": "LR-03",
+    "rule": "the first slot in the fixed order with a sent live review request; else the first slot in the fixed order with a terminal primary capture (normally Haiku LR-03); chosen by replay_retest.py from the ledger",
+    "chosen_because": "first slot with a sent live review request"
+  },
+  "status": "REVIEW_REQUIRED",
+  "live_status": "REVIEW_REQUIRED",
+  "live_bundle": "bundles/claude-sonnet-5-5@3/cab93a7a-9b80-4d9c-bae7-14e8676941f2",
+  "errors": [
+    "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+  ],
+  "bundle_valid": true,
+  "execution_mode": "offline_replay_of_live",
+  "current_execution": "offline_replay",
+  "new_generation": false,
+  "capture_verified": true,
+  "request_identical": true,
+  "replay_ledger_sha256": "ccbbdc4fdc47fa0a62e9fcf87d117a036ef33de589f56be0ea1706299fda2cac",
+  "original_request_id": "req_011CfxZHY8mDZhGVkTCkiWDU",
+  "replay_facts": {
+    "model": "unsupported",
+    "host": "unknown",
+    "effective": "unknown",
+    "route": "HUMAN_REVIEW_REQUIRED",
+    "attempts": [
+      [
+        "counterreview",
+        "completed"
+      ],
+      [
+        "stability",
+        "completed"
+      ]
+    ]
+  },
+  "live_facts": {
+    "model": "unsupported",
+    "host": "unknown",
+    "effective": "unknown",
+    "route": "HUMAN_REVIEW_REQUIRED",
+    "attempts": [
+      [
+        "counterreview",
+        "completed"
+      ],
+      [
+        "stability",
+        "completed"
+      ]
+    ]
+  },
+  "same_as_live": true,
+  "provider_network_attempts": 0,
+  "retest_directory_unchanged": true,
+  "blocked_network_attempts": 0,
+  "network_measurement": "httpx.Client.send, socket.connect and socket.connect_ex are replaced by a refusing counter before the package is imported"
+}

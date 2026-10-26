@@ -1,0 +1,68 @@
+id: study-forensics-047
+title: 'Study Forensics: 12-person pilot presented as proof a therapy works'
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: small_sample_overreach
+ambiguity_level: low
+origin: synthetic_fixture
+prompt: |
+  A wellness clinic reports that in a 12-person uncontrolled pilot, a new breathing therapy 'proved effective' for chronic anxiety, with most participants feeling calmer. The clinic now recommends the therapy for all anxiety patients and markets it as an evidence-based treatment.
+context: |
+  Tiny, uncontrolled pilot with a subjective outcome, marketed as proof and a broad clinical recommendation. Overclaim driven by sample size and framing.
+expected_answer: overclaim
+reference_solution: |
+  A 12-person uncontrolled pilot with self-reported outcomes cannot 'prove' efficacy or justify a blanket recommendation. No control group, no blinding, high placebo susceptibility; the promotional 'evidence-based' framing exceeds the evidence.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The text actively sells a small uncontrolled pilot as proof and an evidence-based treatment for all patients. The rhetorical inflation of underpowered data is the primary forensic finding — an overclaim.
+gold_alternative_reading: null
+gold_summary: |
+  A 12-person uncontrolled pilot is marketed as proof a breathing therapy works and recommended for all anxiety patients. Underpowered, promotional overclaim.
+curator_notes: |
+  Small-sample overclaim with promotional framing. Discrimination: catches weak models that accept 'proved effective' from a pilot.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: conclusion_exceeds_results
+  severity: major
+  confidence: high
+- finding: unsupported_generalization
+  severity: moderate
+  confidence: high
+gold_evidence_spans:
+- span: in a 12-person uncontrolled pilot, a new breathing therapy 'proved effective'
+  why_it_matters: A tiny uncontrolled pilot cannot prove efficacy.
+  supports_finding: conclusion_exceeds_results
+- span: recommends the therapy for all anxiety patients and markets it as an evidence-based treatment
+  why_it_matters: Broad clinical recommendation and 'evidence-based' label from pilot data.
+  supports_finding: unsupported_generalization
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: small sample
+  variants:
+  - 12-person
+  - pilot
+  - uncontrolled
+  functional_descriptions:
+  - underpowered, uncontrolled design
+- keyword: proved effective
+  variants:
+  - evidence-based
+  - proof
+  functional_descriptions:
+  - proof language exceeds the pilot evidence
+common_errors:
+- accepting 'proved' from a pilot
+- missing the absence of a control group
+expected_failure_modes:
+- missing_overclaim
+- small_sample_blindness
+discriminative_dimensions:
+- correctness
+- insight_depth
+diagnostic_focus: Can the agent reject 'proof' and broad recommendations from an underpowered pilot?

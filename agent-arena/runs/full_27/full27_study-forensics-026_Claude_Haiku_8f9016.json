@@ -1,0 +1,971 @@
+{
+  "run_id": "full27_study-forensics-026_Claude_Haiku_8f9016",
+  "task": {
+    "id": "study-forensics-026",
+    "title": "Study Forensics: Low-cost air sensor validation",
+    "domain": "study_forensics",
+    "difficulty": "easy",
+    "task_type": "study_forensics",
+    "prompt": "Researchers validated low-cost particulate matter sensors against regulatory-grade reference instruments at three urban monitoring sites over six months. The study compared readings from 45 low-cost sensors costing approximately 250 dollars each against Federal Reference Method monitors for PM2.5 concentrations ranging from 5 to 85 micrograms per cubic meter. Linear regression showed strong correlation between low-cost and reference sensors with an R-squared of 0.87, slope of 0.94, and intercept of 1.2 micrograms per cubic meter. However, accuracy degraded significantly at humidity levels above 80 percent, with measurement error increasing from plus or minus 3 to plus or minus 8 micrograms per cubic meter. Sensors also underestimated concentrations during wildfire smoke events by an average of 15 percent. The authors recommend these sensors for identifying spatial patterns and temporal trends in typical urban conditions but caution against using them for regulatory compliance monitoring or health studies requiring precise exposure assessment during extreme pollution events. They provide site-specific calibration equations and note that sensors require recalibration every 12 months.\n",
+    "context": "A rigorous validation study that explicitly states where the technology works and where it fails.\nThe agent should recognise the appropriate epistemic boundaries.\n",
+    "expected_answer": "solid",
+    "reference_solution": "Rigorous validation study with explicit boundary conditions, degradation analysis under stress conditions, and appropriate usage recommendations that respect instrument limitations. The authors explicitly forbid inappropriate use cases despite potential demand.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "boundary conditions",
+        "variants": [
+          "caution against",
+          "degrade",
+          "failure mode"
+        ],
+        "functional_descriptions": [
+          "authors state where the technology does and does not work"
+        ]
+      },
+      {
+        "keyword": "validation",
+        "variants": [
+          "reference instruments",
+          "R-squared",
+          "calibration"
+        ],
+        "functional_descriptions": [
+          "proper metrological comparison against gold standard"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating acknowledged limitations as unacknowledged flaws",
+      "overflagging because the technology has known weaknesses"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_technical_validation",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise proper technical validation with appropriate epistemic boundaries?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "Rigorous validation study with explicit boundary conditions, degradation analysis under stress conditions, and appropriate usage recommendations that respect instrument limitations.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "accuracy degraded significantly at humidity levels above 80 percent",
+        "why_it_matters": "Identifies specific environmental conditions where instrument fails.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "recommend these sensors for identifying spatial patterns and temporal trends in typical urban conditions but caution against using them for regulatory compliance monitoring",
+        "why_it_matters": "Explicit prohibition of inappropriate use despite potential market pressure.",
+        "supports_finding": "cautious_scope_control"
+      },
+      {
+        "span": "sensors require recalibration every 12 months",
+        "why_it_matters": "Practical limitation openly disclosed.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The study demonstrates excellent metrological practice: correlation is not treated as\ninterchangeability, specific failure modes are characterized (humidity, high concentration),\nand recommendations are appropriately bounded. The R-squared of 0.87 is strong but not\noverstated as perfect agreement. Authors explicitly forbid inappropriate use cases\n(regulatory compliance) despite potential demand for such applications.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Non-health solid case from environmental science. Tests whether agents can recognise\nproper technical validation and appropriate \"do not use for X\" recommendations.\nDiversifies domain coverage beyond health/supplements.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"biomarker\",\n  \"conclusion_tier\": \"human_policy\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The study was conducted with appropriate quality control and blinding procedures (not stated but standard for sensor validation)\",\n    \"The 'regulatory-grade reference instruments' are indeed Federal Reference Method monitors as stated\",\n    \"The six-month duration is sufficient to capture seasonal variation in urban conditions\",\n    \"The three urban sites are representative of typical urban environments (though not claimed to be nationally representative)\",\n    \"Linear regression is the appropriate statistical model for this comparison (reasonable for sensor validation)\"\n  ],\n  \"steps\": [\n    \"1. EVIDENCE TIER IDENTIFICATION: This is a biomarker/surrogate endpoint study. The evidence is direct comparison of measurement instruments (low-cost sensors vs. reference monitors) in real-world conditions. It is not cell/animal work, nor is it a clinical human trial. It is instrumental validation.\",\n    \"2. CONCLUSION TIER IDENTIFICATION: The text implies conclusions about policy-relevant use (regulatory compliance, health studies, spatial monitoring) — human policy tier, not just instrumental performance.\",\n    \"3. BRIDGE CHECK: Does biomarker-level evidence (sensor validation) support policy-level conclusions? Yes, with caveats. Sensor validation studies ARE the appropriate evidence tier for determining whether instruments can be used for policy/health applications.\",\n    \"4. STRENGTH OF EVIDENCE: R² = 0.87 with slope near 1.0 and small intercept indicates strong agreement under typical conditions. This is solid validation evidence.\",\n    \"5. LIMITATIONS CLEARLY STATED: The authors explicitly identify failure modes (humidity >80%, wildfire smoke) and restrict recommendations accordingly. They do NOT claim universal applicability.\",\n    \"6. RECOMMENDATIONS MATCH EVIDENCE: Authors recommend use for 'spatial patterns and temporal trends in typical urban conditions' — this is precisely what the data support. They explicitly caution against regulatory compliance and precise exposure assessment during extreme events — exactly where the data show degradation.\",\n    \"7. PRACTICAL GUIDANCE PROVIDED: Site-specific calibration equations and 12-month recalibration schedule are actionable and evidence-based.\",\n    \"8. NO OVERCLAIM DETECTED: The text does not use promotional language ('breakthrough,' 'transforms,' 'solves'). It presents findings analytically.\",\n    \"9. NO MECHANISM VS. EVIDENCE MISMATCH: The evidence tier (sensor validation) is appropriate for the conclusion tier (policy guidance on sensor use). The bridge is direct and supported.\",\n    \"10. NO CORRELATION VS. CAUSATION ISSUE: The study is not claiming causation; it is validating measurement agreement.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as 'mechanism_vs_evidence' if one argues that sensor validation (biomarker) is insufficient for policy recommendations without downstream health outcome data — but this would be overly strict, as sensor validation IS the standard evidence tier for determining instrument suitability for policy use.\",\n    \"Could flag the three-site, six-month scope as 'limited' — but the text does not claim national or year-round applicability, so this is not an overclaim.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the three urban sites are geographically or climatically diverse enough to support the generalization to 'typical urban conditions' — the text does not specify site selection criteria or diversity.\",\n    \"Whether 45 sensors is a sufficient sample size for the claims made — no power analysis or sample size justification is mentioned.\",\n    \"Whether the 12-month recalibration interval is empirically derived or a conservative recommendation — the text does not explain the basis.\",\n    \"Whether the humidity and wildfire smoke failure modes are the only significant confounders — other factors (e.g., temperature, particle composition, sensor age) are not discussed.\"\n  ],\n  \"key_claims\": [\n    \"Low-cost sensors show strong correlation (R² = 0.87) with reference monitors under typical urban conditions — SUPPORTED by data.\",\n    \"Accuracy degrades significantly above 80% humidity and during wildfire smoke — SUPPORTED by quantified data (error increases from ±3 to ±8 µg/m³; 15% underestimation).\",\n    \"Sensors are suitable for spatial/temporal trend identification but NOT for regulatory compliance or precise exposure assessment during extreme events — APPROPRIATELY SCOPED to evidence.\",\n    \"Site-specific calibration and 12-month recalibration are necessary — STATED but not fully justified in the summary.\"\n  ],\n  \"self_check\": [\n    \"Did I overidentify problems? No. The study is well-designed, limitations are clearly stated, and recommendations are appropriately scoped. I did not fabricate issues.\",\n    \"Did I miss an evidence-tier mismatch? No. Sensor validation (biomarker) is the correct evidence tier for policy guidance on sensor use. The bridge from biomarker to policy is direct and standard.\",\n    \"Did I miss an overclaim? No. The language is analytical, not promotional. The authors actively restrict their claims to what the data support.\",\n    \"Did I miss a correlation vs. causation issue? No. This is not a causal study; it is a validation study comparing two measurement methods.\",\n    \"Is the 'solid' classification justified? Yes. The study is well-executed, limitations are transparent, recommendations are appropriately hedged, and the evidence tier matches the conclusion tier.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\nThis is a **solid study**. \n\nThe researchers conducted a straightforward sensor validation study comparing low-cost instruments to regulatory-grade reference monitors over six months at three urban sites. The evidence tier (biomarker/instrumental validation) is appropriate for the conclusion tier (policy guidance on sensor use). \n\n**Strengths:**\n- Strong correlation (R² = 0.87) under typical conditions\n- Explicit identification of failure modes (humidity >80%, wildfire smoke)\n- Recommendations appropriately scoped: sensors are recommended for spatial/temporal trends but explicitly cautioned against for regulatory compliance and precise exposure assessment\n- Practical guidance (calibration equations, recalibration schedule)\n- No promotional language or overclaiming\n\n**Limitations (acknowledged by authors):**\n- Three sites, six months — generalizability to all urban environments not claimed\n- Accuracy degrades significantly in high-humidity and extreme pollution conditions\n- Other confounders (temperature, particle composition) not discussed\n\nThe authors do not claim more than their evidence supports, and they transparently communicate where the sensors work well and where they fail. This is exemplary scientific communication.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study was conducted with appropriate quality control and blinding procedures (not stated but standard for sensor validation)",
+            "The 'regulatory-grade reference instruments' are indeed Federal Reference Method monitors as stated",
+            "The six-month duration is sufficient to capture seasonal variation in urban conditions",
+            "The three urban sites are representative of typical urban environments (though not claimed to be nationally representative)",
+            "Linear regression is the appropriate statistical model for this comparison (reasonable for sensor validation)"
+          ],
+          "steps": [
+            "1. EVIDENCE TIER IDENTIFICATION: This is a biomarker/surrogate endpoint study. The evidence is direct comparison of measurement instruments (low-cost sensors vs. reference monitors) in real-world conditions. It is not cell/animal work, nor is it a clinical human trial. It is instrumental validation.",
+            "2. CONCLUSION TIER IDENTIFICATION: The text implies conclusions about policy-relevant use (regulatory compliance, health studies, spatial monitoring) — human policy tier, not just instrumental performance.",
+            "3. BRIDGE CHECK: Does biomarker-level evidence (sensor validation) support policy-level conclusions? Yes, with caveats. Sensor validation studies ARE the appropriate evidence tier for determining whether instruments can be used for policy/health applications.",
+            "4. STRENGTH OF EVIDENCE: R² = 0.87 with slope near 1.0 and small intercept indicates strong agreement under typical conditions. This is solid validation evidence.",
+            "5. LIMITATIONS CLEARLY STATED: The authors explicitly identify failure modes (humidity >80%, wildfire smoke) and restrict recommendations accordingly. They do NOT claim universal applicability.",
+            "6. RECOMMENDATIONS MATCH EVIDENCE: Authors recommend use for 'spatial patterns and temporal trends in typical urban conditions' — this is precisely what the data support. They explicitly caution against regulatory compliance and precise exposure assessment during extreme events — exactly where the data show degradation.",
+            "7. PRACTICAL GUIDANCE PROVIDED: Site-specific calibration equations and 12-month recalibration schedule are actionable and evidence-based.",
+            "8. NO OVERCLAIM DETECTED: The text does not use promotional language ('breakthrough,' 'transforms,' 'solves'). It presents findings analytically.",
+            "9. NO MECHANISM VS. EVIDENCE MISMATCH: The evidence tier (sensor validation) is appropriate for the conclusion tier (policy guidance on sensor use). The bridge is direct and supported.",
+            "10. NO CORRELATION VS. CAUSATION ISSUE: The study is not claiming causation; it is validating measurement agreement."
+          ],
+          "alternative_hypotheses": [
+            "Could classify as 'mechanism_vs_evidence' if one argues that sensor validation (biomarker) is insufficient for policy recommendations without downstream health outcome data — but this would be overly strict, as sensor validation IS the standard evidence tier for determining instrument suitability for policy use.",
+            "Could flag the three-site, six-month scope as 'limited' — but the text does not claim national or year-round applicability, so this is not an overclaim."
+          ],
+          "uncertainties": [
+            "Whether the three urban sites are geographically or climatically diverse enough to support the generalization to 'typical urban conditions' — the text does not specify site selection criteria or diversity.",
+            "Whether 45 sensors is a sufficient sample size for the claims made — no power analysis or sample size justification is mentioned.",
+            "Whether the 12-month recalibration interval is empirically derived or a conservative recommendation — the text does not explain the basis.",
+            "Whether the humidity and wildfire smoke failure modes are the only significant confounders — other factors (e.g., temperature, particle composition, sensor age) are not discussed."
+          ],
+          "self_check": [
+            "Did I overidentify problems? No. The study is well-designed, limitations are clearly stated, and recommendations are appropriately scoped. I did not fabricate issues.",
+            "Did I miss an evidence-tier mismatch? No. Sensor validation (biomarker) is the correct evidence tier for policy guidance on sensor use. The bridge from biomarker to policy is direct and standard.",
+            "Did I miss an overclaim? No. The language is analytical, not promotional. The authors actively restrict their claims to what the data support.",
+            "Did I miss a correlation vs. causation issue? No. This is not a causal study; it is a validation study comparing two measurement methods.",
+            "Is the 'solid' classification justified? Yes. The study is well-executed, limitations are transparent, recommendations are appropriately hedged, and the evidence tier matches the conclusion tier."
+          ],
+          "key_claims": [
+            "Low-cost sensors show strong correlation (R² = 0.87) with reference monitors under typical urban conditions — SUPPORTED by data.",
+            "Accuracy degrades significantly above 80% humidity and during wildfire smoke — SUPPORTED by quantified data (error increases from ±3 to ±8 µg/m³; 15% underestimation).",
+            "Sensors are suitable for spatial/temporal trend identification but NOT for regulatory compliance or precise exposure assessment during extreme events — APPROPRIATELY SCOPED to evidence.",
+            "Site-specific calibration and 12-month recalibration are necessary — STATED but not fully justified in the summary."
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 16775
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.3,
+        "structural_reasoning": 0.635,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.3,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 10",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.635,
+          "weight": 8,
+          "weighted_score": 5.1,
+          "evidence": [
+            {
+              "text": "6. RECOMMENDATIONS MATCH EVIDENCE: Authors recommend use for 'spatial patterns and temporal trends in typical urban conditions' — this is precisely wh",
+              "source_field": "steps[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "10 reasoning steps",
+            "Low step utility: 1/10 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.79)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The study was conducted with appropriate quality control and blinding procedures (not stated but standard for sensor validation)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the three urban sites are geographically or climatically diverse enough to support the generalization to 'typical urban conditions' — the text does not specify site selection criteria or diversity.",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could classify as 'mechanism_vs_evidence' if one argues that sensor validation (biomarker) is insufficient for policy recommendations without downstream health outcome data — but this would be overly ",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Did I miss an evidence-tier mismatch? No. Sensor validation (biomarker) is the correct evidence tier for policy guidance on sensor use. The bridge from biomarker to policy is direct and standard.",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.72, 719 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "man trial. it is instrumental validation. 2. conclusion tier identific",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'validation' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/15 content words)",
+          "evidence": [
+            {
+              "text": "Low-cost sensors show strong correlation (R² = 0.87) with reference monitors under typical urban conditions — SUPPORTED by data.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/16 content words)",
+          "evidence": [
+            {
+              "text": "Accuracy degrades significantly above 80% humidity and during wildfire smoke — SUPPORTED by quantified data (error increases from ±3 to ±8 µg/m³; 15% underestimation).",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/16 content words)",
+          "evidence": [
+            {
+              "text": "Sensors are suitable for spatial/temporal trend identification but NOT for regulatory compliance or precise exposure assessment during extreme events — APPROPRIATELY SCOPED to evidence.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/9 content words)",
+          "evidence": [
+            {
+              "text": "Site-specific calibration and 12-month recalibration are necessary — STATED but not fully justified in the summary.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "easy_task_caveat",
+          "description": "Answer robust only because task is easy — performance on harder tasks may differ",
+          "evidence": [],
+          "severity": "stylistic"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: conclusion_exceeds_results, unsupported_generalization, decorative_uncertainty, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted with appropriate quality control and blinding procedures (not stated but standard for sensor validation)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 'regulatory-grade reference instruments' are indeed Federal Reference Method monitors as stated",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The six-month duration is sufficient to capture seasonal variation in urban conditions",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The three urban sites are representative of typical urban environments (though not claimed to be nationally representative)",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Linear regression is the appropriate statistical model for this comparison (reasonable for sensor validation)",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "1. EVIDENCE TIER IDENTIFICATION: This is a biomarker/surrogate endpoint study. The evidence is direct comparison of measurement instruments (low-cost sensors vs. reference monitors) in real-world conditions. It is not cell/animal work, nor is it a clinical human trial. It is instrumental validation.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "2. CONCLUSION TIER IDENTIFICATION: The text implies conclusions about policy-relevant use (regulatory compliance, health studies, spatial monitoring) — human policy tier, not just instrumental performance.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "3. BRIDGE CHECK: Does biomarker-level evidence (sensor validation) support policy-level conclusions? Yes, with caveats. Sensor validation studies ARE the appropriate evidence tier for determining whether instruments can be used for policy/health applications.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "4. STRENGTH OF EVIDENCE: R² = 0.87 with slope near 1.0 and small intercept indicates strong agreement under typical conditions. This is solid validation evidence.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "5. LIMITATIONS CLEARLY STATED: The authors explicitly identify failure modes (humidity >80%, wildfire smoke) and restrict recommendations accordingly. They do NOT claim universal applicability.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "6. RECOMMENDATIONS MATCH EVIDENCE: Authors recommend use for 'spatial patterns and temporal trends in typical urban conditions' — this is precisely what the data support. They explicitly caution against regulatory compliance and precise exposure assessment during extreme events — exactly where the data show degradation.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "7. PRACTICAL GUIDANCE PROVIDED: Site-specific calibration equations and 12-month recalibration schedule are actionable and evidence-based.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "8. NO OVERCLAIM DETECTED: The text does not use promotional language ('breakthrough,' 'transforms,' 'solves'). It presents findings analytically.",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "9. NO MECHANISM VS. EVIDENCE MISMATCH: The evidence tier (sensor validation) is appropriate for the conclusion tier (policy guidance on sensor use). The bridge is direct and supported.",
+            "source_field": "steps[8]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "10. NO CORRELATION VS. CAUSATION ISSUE: The study is not claiming causation; it is validating measurement agreement.",
+            "source_field": "steps[9]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Low-cost sensors show strong correlation (R² = 0.87) with reference monitors under typical urban conditions — SUPPORTED by data.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Accuracy degrades significantly above 80% humidity and during wildfire smoke — SUPPORTED by quantified data (error increases from ±3 to ±8 µg/m³; 15% underestimation).",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Sensors are suitable for spatial/temporal trend identification but NOT for regulatory compliance or precise exposure assessment during extreme events — APPROPRIATELY SCOPED to evidence.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Site-specific calibration and 12-month recalibration are necessary — STATED but not fully justified in the summary.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'mechanism_vs_evidence' if one argues that sensor validation (biomarker) is insufficient for policy recommendations without downstream health outcome data — but this would be overly strict, as sensor validation IS the standard evidence tier for determining instrument suitability for policy use.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could flag the three-site, six-month scope as 'limited' — but the text does not claim national or year-round applicability, so this is not an overclaim.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the three urban sites are geographically or climatically diverse enough to support the generalization to 'typical urban conditions' — the text does not specify site selection criteria or diversity.",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether 45 sensors is a sufficient sample size for the claims made — no power analysis or sample size justification is mentioned.",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 12-month recalibration interval is empirically derived or a conservative recommendation — the text does not explain the basis.",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the humidity and wildfire smoke failure modes are the only significant confounders — other factors (e.g., temperature, particle composition, sensor age) are not discussed.",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overidentify problems? No. The study is well-designed, limitations are clearly stated, and recommendations are appropriately scoped. I did not fabricate issues.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss an evidence-tier mismatch? No. Sensor validation (biomarker) is the correct evidence tier for policy guidance on sensor use. The bridge from biomarker to policy is direct and standard.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss an overclaim? No. The language is analytical, not promotional. The authors actively restrict their claims to what the data support.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a correlation vs. causation issue? No. This is not a causal study; it is a validation study comparing two measurement methods.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the 'solid' classification justified? Yes. The study is well-executed, limitations are transparent, recommendations are appropriately hedged, and the evidence tier matches the conclusion tier.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 13,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 13,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 26,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.3125
+          },
+          {
+            "source_idx": 26,
+            "target_idx": 13,
+            "relation": "checks",
+            "strength": 0.375
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 14,
+            "relation": "checks",
+            "strength": 0.36363636363636365
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'solid...' <- step 8 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 10",
+        "Reasoning graph confirms conclusion grounding",
+        "10 reasoning steps",
+        "Low step utility: 1/10 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.79)",
+        "5/5 substantive assumptions",
+        "4 uncertainties (4 substantive)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.72, 719 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:59:30.076898+00:00",
+  "metadata": {}
+}

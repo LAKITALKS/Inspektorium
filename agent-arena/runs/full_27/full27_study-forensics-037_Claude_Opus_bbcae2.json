@@ -1,0 +1,1084 @@
+{
+  "run_id": "full27_study-forensics-037_Claude_Opus_bbcae2",
+  "task": {
+    "id": "study-forensics-037",
+    "title": "Study Forensics: Mindfulness app claims to revolutionize mental health care",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A startup developed a chat-based mindfulness app that offers users brief daily breathing and meditation exercises. In a two-week pilot project with 15 university students, daily questionnaire data were collected. Participants reported an average 30 percent decline in their subjective stress levels. The company then declared that the app has the potential to revolutionize mental health care and replace clinical therapies. The accompanying university research group notes, however, that there was no control group, that the sample size was very small, and that long-term effects have not yet been studied.\n",
+    "context": "Small uncontrolled pilot with self-reported outcomes and marketing-driven overclaim.\nThe researchers themselves warn against overinterpretation. Tests whether the agent\ndistinguishes the marketing claim from the limited evidence.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The text combines early positive self-reports from 15 participants with the claim that the app could revolutionize mental health care and replace clinical therapies. With no control group, no objective measures, and the researchers themselves warning against overinterpretation, this is a classic overclaim based on insufficient evidence.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "no control group",
+        "variants": [
+          "uncontrolled",
+          "no comparison",
+          "pilot"
+        ],
+        "functional_descriptions": [
+          "without a control group, observed changes cannot be attributed to the intervention"
+        ]
+      },
+      {
+        "keyword": "small sample",
+        "variants": [
+          "15 students",
+          "small",
+          "pilot project"
+        ],
+        "functional_descriptions": [
+          "sample size is too small for generalizable claims"
+        ]
+      },
+      {
+        "keyword": "marketing overclaim",
+        "variants": [
+          "revolutionize",
+          "replace clinical therapies",
+          "potential"
+        ],
+        "functional_descriptions": [
+          "marketing language far exceeds the evidence base"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting the marketing claim at face value",
+      "treating researchers' caveats as sufficient to prevent overclaim classification"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "small_study_marketing_overclaim",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "accepting_overclaim_due_to_caveats",
+      "false_negative_labeling"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish marketing overclaim from cautious research reporting in the same text?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Small uncontrolled pilot with marketing-driven overclaim about revolutionizing mental health care. Borderline case with genuine ambiguity.\n",
+    "expected_findings": [
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "low"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "low"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "average 30 percent decline in their subjective stress levels",
+        "why_it_matters": "The central result serving as basis for the broad claim.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "the app has the potential to revolutionize mental health care and replace clinical therapies",
+        "why_it_matters": "Greatly overstates the possible benefit relative to the small, uncontrolled study.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "no control group, that the sample size was very small, and that long-term effects have not yet been studied",
+        "why_it_matters": "Highlights methodological weaknesses that make generalization problematic.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "low",
+    "gold_justification": "The text combines early positive self-reports with the claim that the app could\nrevolutionize mental health care and replace clinical therapies. Neither a control group\nnor objective measurements exist, and the researchers themselves warn against\noverinterpretation. The core problem is an exaggerated generalization of early results.\nThe low confidence reflects genuine ambiguity: it could be a hopeful early result or\nclassic overclaim.\n",
+    "gold_alternative_reading": "One could view the claim as cautious because the researchers explicitly point out the\nlimitations. In this reading, the app is merely presented as a promising pilot and the\nbold statements should be attributed to marketing rather than the research. Then the case\nwould be closer to a moderate correlation_vs_causation case.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Imported from Dataset 6 (CaseB07). Originally German, translated to English. Valuable\nborderline overclaim case that tests sensitivity to marketing-driven claims vs. research\nevidence. Low gold_confidence reflects the genuine tension between the marketing claims\nand the researchers' own caveats. The small sample (n=15) and lack of control group make\nthe overclaim clear, but the explicit warnings create interpretive ambiguity.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\"The study measured subjective stress levels through self-reported questionnaires\", \"The 30% decline is based on comparing pre- and post-intervention scores\", \"The company and research group have different interpretations of the same data\", \"The pilot was designed as a preliminary feasibility study\"],\n  \"steps\": [\"Identified the study design: 15 students, 2 weeks, self-reported stress measures\", \"Noted the finding: 30% average decline in subjective stress\", \"Examined the company's claim: 'revolutionize mental health care and replace clinical therapies'\", \"Compared this claim to the evidence: small pilot study with subjective measures\", \"Noted the research group's caveats: no control group, small sample, no long-term data\", \"The gap between evidence (preliminary pilot data) and claim (replacing clinical therapies) is extreme\"],\n  \"alternative_hypotheses\": [\"solid - if focusing only on the research group's cautious interpretation\", \"mechanism_vs_evidence - but no mechanism is actually proposed here\", \"correlation_vs_causation - but the company does claim the app causes benefits, just vastly overstates them\"],\n  \"uncertainties\": [\"Whether the company has additional unpublished data supporting their claims\", \"The exact wording of the stress questionnaires used\", \"Whether 'replace clinical therapies' is meant literally or as marketing hyperbole\"],\n  \"key_claims\": [\"Company makes extreme overclaim from limited pilot data\", \"Research group appropriately identifies major limitations\", \"The evidence (small uncontrolled pilot) cannot support claims about replacing clinical therapy\", \"The 30% reduction in self-reported stress is the only actual finding\"],\n  \"self_check\": [\"Did not overflag - the company's claim is genuinely unsupported\", \"The research group's caveats are appropriate and I'm not conflating them with the company\", \"The classification as 'overclaim' rather than 'solid' is based on the company's statement, not the research itself\", \"No correlation/causation issue because the company does claim causation, just goes far beyond the evidence\"],\n  \"confidence\": 0.95\n}",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study measured subjective stress levels through self-reported questionnaires",
+            "The 30% decline is based on comparing pre- and post-intervention scores",
+            "The company and research group have different interpretations of the same data",
+            "The pilot was designed as a preliminary feasibility study"
+          ],
+          "steps": [
+            "Identified the study design: 15 students, 2 weeks, self-reported stress measures",
+            "Noted the finding: 30% average decline in subjective stress",
+            "Examined the company's claim: 'revolutionize mental health care and replace clinical therapies'",
+            "Compared this claim to the evidence: small pilot study with subjective measures",
+            "Noted the research group's caveats: no control group, small sample, no long-term data",
+            "The gap between evidence (preliminary pilot data) and claim (replacing clinical therapies) is extreme"
+          ],
+          "alternative_hypotheses": [
+            "solid - if focusing only on the research group's cautious interpretation",
+            "mechanism_vs_evidence - but no mechanism is actually proposed here",
+            "correlation_vs_causation - but the company does claim the app causes benefits, just vastly overstates them"
+          ],
+          "uncertainties": [
+            "Whether the company has additional unpublished data supporting their claims",
+            "The exact wording of the stress questionnaires used",
+            "Whether 'replace clinical therapies' is meant literally or as marketing hyperbole"
+          ],
+          "self_check": [
+            "Did not overflag - the company's claim is genuinely unsupported",
+            "The research group's caveats are appropriate and I'm not conflating them with the company",
+            "The classification as 'overclaim' rather than 'solid' is based on the company's statement, not the research itself",
+            "No correlation/causation issue because the company does claim causation, just goes far beyond the evidence"
+          ],
+          "key_claims": [
+            "Company makes extreme overclaim from limited pilot data",
+            "Research group appropriately identifies major limitations",
+            "The evidence (small uncontrolled pilot) cannot support claims about replacing clinical therapy",
+            "The 30% reduction in self-reported stress is the only actual finding"
+          ],
+          "confidence": 0.95,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 19723
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.15,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.44999999999999996,
+        "alternative_hypothesis_quality": 0.9166666666666667,
+        "self_monitoring_quality": 0.45,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The gap between evidence (preliminary pilot data) and claim (replacing clinical therapies) is extreme",
+              "source_field": "steps[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 0/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.82)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The study measured subjective stress levels through self-reported questionnaires",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.44999999999999996,
+          "weight": 6,
+          "weighted_score": 2.7,
+          "evidence": [
+            {
+              "text": "Whether 'replace clinical therapies' is meant literally or as marketing hyperbole",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the company has additional unpublished data supporting their claims",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.95 — very high"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.9166666666666667,
+          "weight": 6,
+          "weighted_score": 5.5,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation - but the company does claim the app causes benefits, just vastly overstates them",
+              "source_field": "alternative_hypotheses[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "2/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.45,
+          "weight": 8,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "The classification as 'overclaim' rather than 'solid' is based on the company's statement, not the research itself",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Did not overflag - the company's claim is genuinely unsupported",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 3 arithmetic, 1 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.74, 270 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "the research group's caveats: no control group, small sample, no long-term d",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no control group' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "'s caveats: no control group, small sample, no long-term data the gap be",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'small sample' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 3 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the company has additional unpublished data supporti...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the company has additional unpublished data supporting their claims",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "confidence_mismatch",
+          "severity": "minor",
+          "description": "Very high confidence (0.95) on medium task",
+          "evidence": [
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "High confidence value",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/8 content words)",
+          "evidence": [
+            {
+              "text": "Company makes extreme overclaim from limited pilot data",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "Research group appropriately identifies major limitations",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The evidence (small uncontrolled pilot) cannot support claims about replacing clinical therapy",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/5 content words)",
+          "evidence": [
+            {
+              "text": "The 30% reduction in self-reported stress is the only actual finding",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "confidence_uncertainty",
+          "status": "warning",
+          "description": "Confidence 0.95 is very high despite listing 3 uncertainties — possible performative calibration",
+          "evidence": [
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "High confidence value",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the company has additional unpublished data supporting their claims",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The exact wording of the stress questionnaires used",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether 'replace clinical therapies' is meant literally or as marketing hyperbole",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "solid - if focusing only on the research group's cautious interpretation",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "calibration_gap",
+          "description": "Confidence 0.95 is very high despite listing 3 uncertainties — possible performative calibration",
+          "evidence": [
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "High confidence value",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the company has additional unpublished data supporting their claims",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The exact wording of the stress questionnaires used",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether 'replace clinical therapies' is meant literally or as marketing hyperbole",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "severity": "minor"
+        },
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study measured subjective stress levels through self-reported questionnaires",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 30% decline is based on comparing pre- and post-intervention scores",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The company and research group have different interpretations of the same data",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The pilot was designed as a preliminary feasibility study",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the study design: 15 students, 2 weeks, self-reported stress measures",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted the finding: 30% average decline in subjective stress",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the company's claim: 'revolutionize mental health care and replace clinical therapies'",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Compared this claim to the evidence: small pilot study with subjective measures",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted the research group's caveats: no control group, small sample, no long-term data",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The gap between evidence (preliminary pilot data) and claim (replacing clinical therapies) is extreme",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Company makes extreme overclaim from limited pilot data",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Research group appropriately identifies major limitations",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The evidence (small uncontrolled pilot) cannot support claims about replacing clinical therapy",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 30% reduction in self-reported stress is the only actual finding",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid - if focusing only on the research group's cautious interpretation",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence - but no mechanism is actually proposed here",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation - but the company does claim the app causes benefits, just vastly overstates them",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the company has additional unpublished data supporting their claims",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The exact wording of the stress questionnaires used",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether 'replace clinical therapies' is meant literally or as marketing hyperbole",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did not overflag - the company's claim is genuinely unsupported",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The research group's caveats are appropriate and I'm not conflating them with the company",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The classification as 'overclaim' rather than 'solid' is based on the company's statement, not the research itself",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No correlation/causation issue because the company does claim causation, just goes far beyond the evidence",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.42857142857142855
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 21,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.25
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          17
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [
+          20
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'overclaim...' <- step 10 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "unsupported_generalization",
+          "conclusion_exceeds_results",
+          "none_or_minor"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "none_or_minor"
+        ],
+        "missed_findings": [
+          "unsupported_generalization"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "confidence_mismatch",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 3 full / 3",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+        "Reasoning graph confirms conclusion grounding",
+        "6 reasoning steps",
+        "Low step utility: 0/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.82)",
+        "4/4 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.95 — very high",
+        "3 alternative hypotheses considered",
+        "2/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 3 arithmetic, 1 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.74, 270 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T08:25:26.712017+00:00",
+  "metadata": {}
+}

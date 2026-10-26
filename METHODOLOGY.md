@@ -21,11 +21,9 @@ Here, AI assurance research produces inspectable evidence for a bounded
 property, including contrary evidence and limitations. Technical AI governance
 means a named rule enforced at a named system boundary with a traceable
 decision. The current boundary is one finding's reporting field. Execution,
-state and authorization controls are reported internally. Scientific
-inference, review and operational reporting workflows (Phases 8–10) are
-reported as implemented in a separate, non-public internal technical v1.0.0,
-without demonstrated scientific efficacy. None of these are public v0.1
-capabilities.
+state, authorization, scientific inference, review and operational reporting
+controls are published in the separate Arena research package 1.0.1. Their
+scientific efficacy remains unproven; they do not extend the core 0.1.1 runtime.
 See [claim ledger](CLAIMS.md), [results](RESEARCH_RESULTS.md) and
 [scope](SCOPE.md) for separate version and access status.
 
@@ -426,8 +424,8 @@ This bounded result is not a universal font/viewer or readability guarantee.
   intact.
 
 This is the current public reporting layer. Phase 10 describes a canonical
-operational release workflow and post-render QA (public roadmap; internal
-implementation owner-reported only); it does not defer the already implemented
+operational release workflow and post-render QA (implemented in the separate
+public Arena research package); it does not defer the already implemented
 JSON and Markdown renderers into future work.
 
 ## Why there is no global score

@@ -1,0 +1,1042 @@
+{
+  "run_id": "full27_study-forensics-032_Claude_Haiku_e2b152",
+  "task": {
+    "id": "study-forensics-032",
+    "title": "Study Forensics: Novel cholesterol drug dramatically lowers LDL but cardiovascular outcomes unknown",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A pharmaceutical company announced results from its Phase 2 trial of a new injectable cholesterol-lowering agent. The drug reduced LDL cholesterol by 65 percent in patients with familial hypercholesterolaemia who were already on maximum statin therapy. Company executives described the results as a major breakthrough in cardiovascular protection and said the drug would transform outcomes for patients at high risk of heart attack and stroke. They announced plans for an accelerated approval pathway based on the LDL reduction data. The trial measured only lipid levels and liver safety over twelve weeks; no cardiovascular events were tracked and no outcomes trial is expected to report for at least four more years.\n",
+    "context": "A pharmaceutical trial showing dramatic improvement in a surrogate biomarker\n(LDL cholesterol) with the company actively framing the biomarker success as\ncardiovascular protection. No clinical outcomes data exist. The rhetorical\nleap from biomarker to clinical benefit is explicit and central.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The summary describes a drug that dramatically lowers LDL cholesterol (a biomarker) but has not been tested for cardiovascular outcomes (heart attacks, strokes). Despite this, the company actively frames the LDL reduction as \"cardiovascular protection\" and a \"breakthrough\" that will \"transform outcomes.\" The claims about clinical benefit are unsupported by the trial data, which measured only lipid levels.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "surrogate endpoint",
+        "variants": [
+          "LDL cholesterol",
+          "lipid levels",
+          "biomarker"
+        ],
+        "functional_descriptions": [
+          "LDL reduction is a surrogate marker, not a clinical outcome"
+        ]
+      },
+      {
+        "keyword": "rhetorical overclaim",
+        "variants": [
+          "breakthrough in cardiovascular protection",
+          "transform outcomes",
+          "accelerated approval"
+        ],
+        "functional_descriptions": [
+          "company frames biomarker success as proven clinical benefit"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting LDL reduction as sufficient evidence of cardiovascular protection",
+      "missing the surrogate-to-clinical gap"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "surrogate_endpoint_overclaim",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_surrogate_as_clinical"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify that a dramatic surrogate biomarker improvement framed as cardiovascular protection is overclaim?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Pharmaceutical company actively frames surrogate biomarker improvement (65% LDL reduction) as cardiovascular protection despite no outcomes data. Relabeled from mechanism_vs_evidence to overclaim after calibration sprint confirmed the active rhetorical selling is the primary issue.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "Company executives described the results as a major breakthrough in cardiovascular protection and said the drug would transform outcomes for patients at high risk of heart attack and stroke",
+        "why_it_matters": "Explicitly frames biomarker success as clinical benefit — the defining overclaim.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "The trial measured only lipid levels and liver safety over twelve weeks; no cardiovascular events were tracked",
+        "why_it_matters": "Confirms that no clinical outcomes were measured, making the cardiovascular protection claim unsupported.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "The drug reduced LDL cholesterol by 65 percent",
+        "why_it_matters": "Dramatic surrogate improvement that is rhetorically inflated into clinical claims.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "no outcomes trial is expected to report for at least four more years",
+        "why_it_matters": "Evidence for clinical benefit will not exist for years, yet claims are made now.",
+        "supports_finding": "unsupported_generalization"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "v0.6.5 relabel from mechanism_vs_evidence to overclaim. All three models\n(Haiku, Sonnet, Opus) independently classified this as overclaim in the\nMechanism Calibration Sprint 2, with strong reasoning: the company claims\n\"major breakthrough in cardiovascular protection\" and that the drug will\n\"transform outcomes for patients at high risk of heart attack and stroke\"\nbased solely on 12-week LDL reduction data with no cardiovascular events\ntracked. This is textbook overclaim — the conclusion (cardiovascular\nprotection) goes far beyond the results (lipid lowering). The empirical\nfinding from multiple sprints confirms: when biomarker success is actively\nsold as clinical benefit, models correctly see overclaim, not a\nmechanism-evidence gap. The mechanism-vs-evidence framing requires that\nthe gap between mechanism and evidence is the central issue; here, the\ncentral issue is the rhetorical inflation of claims beyond data.\n",
+    "gold_alternative_reading": "One could argue this is mechanism_vs_evidence because the underlying issue\nis a surrogate-to-clinical-outcome gap. However, the active rhetorical\nselling (\"breakthrough in cardiovascular protection\", \"transform outcomes\")\nmakes overclaim the more precise label. The mechanism-evidence gap is\npresent but secondary to the overclaim.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "v0.6.5 RELABELED. Originally designed as Shape B of mechanism_vs_evidence\n(biomarker success sold as clinical benefit). After Mechanism Calibration\nSprint 2, all 3 models (Haiku, Sonnet, Opus) independently classified as\noverclaim. Key insight: the Biomarker-to-Clinical shape does NOT produce\nmechanism_vs_evidence when the framing is actively promotional. It produces\noverclaim. This is now a clean overclaim case that tests whether models\nidentify surrogate-endpoint inflation. The mechanism_vs_evidence category\nis empirically limited to animal/preclinical-to-human gaps (Shapes A, C).\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"evidence_tier\": \"biomarker\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The Phase 2 trial is a legitimate randomized controlled trial with appropriate controls\",\n    \"The 65% LDL reduction is accurately measured and statistically significant\",\n    \"The 12-week safety data for liver function is reliable\",\n    \"LDL cholesterol is a validated surrogate endpoint for cardiovascular outcomes in this population\",\n    \"The company's statements represent the primary claims being made to the public and regulators\"\n  ],\n  \"steps\": [\n    \"EVIDENCE TIER IDENTIFICATION: The study measured biomarkers (LDL cholesterol, liver safety) over 12 weeks in a Phase 2 trial. This is biomarker/surrogate endpoint evidence, not clinical outcome evidence.\",\n    \"CONCLUSION TIER IDENTIFICATION: The company claims the drug will 'transform outcomes for patients at high risk of heart attack and stroke' — this is a human therapeutic claim about hard cardiovascular endpoints (MI, stroke), not surrogate endpoints.\",\n    \"BRIDGE GAP ANALYSIS: There is a critical gap between biomarker reduction and clinical cardiovascular outcomes. The text explicitly states 'no cardiovascular events were tracked' and outcomes data will not arrive for 4+ years.\",\n    \"RHETORICAL INFLATION CHECK: The language used is actively promotional: 'major breakthrough,' 'transform outcomes,' 'cardiovascular protection.' These are not hedged as hypothetical or preliminary; they are stated as established benefits.\",\n    \"SURROGATE ENDPOINT VALIDITY: While LDL reduction is associated with cardiovascular benefit in some populations, a 65% reduction in a 12-week Phase 2 trial does NOT establish that this specific drug will reduce heart attacks or strokes. The surrogate-to-outcome bridge is assumed, not proven.\",\n    \"ACCELERATED APPROVAL CONCERN: The company is pursuing accelerated approval based solely on biomarker data, which further inflates the claim beyond what the evidence supports. Accelerated approval for a surrogate endpoint is appropriate only if the surrogate is well-validated; the text provides no evidence of such validation for this drug.\",\n    \"CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transform outcomes,' 'major breakthrough') based on a biomarker in a short-term Phase 2 trial. The rhetorical inflation is the primary forensic problem.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"mechanism_vs_evidence: If the text had been more cautious (e.g., 'LDL reduction may eventually translate to cardiovascular benefit, pending outcome trials'), the primary issue would be the evidence-tier gap rather than rhetorical inflation. But the actual language is promotional.\",\n    \"solid: If LDL reduction in this population were a fully validated surrogate endpoint with established clinical relevance, and if the company had explicitly stated that cardiovascular benefit is hypothetical pending outcome data, the claims might be defensible. But neither condition is met in the text.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the Phase 2 trial had appropriate controls and randomization (assumed yes, but not stated in the summary)\",\n    \"Whether LDL reduction is a well-validated surrogate for cardiovascular outcomes specifically in familial hypercholesterolaemia patients on maximum statin therapy (the text does not address this)\",\n    \"The exact wording of the company's regulatory submission vs. the press announcement (the summary conflates them)\",\n    \"Whether the accelerated approval pathway is being pursued under FDA guidance that accepts LDL reduction as a valid surrogate in this indication (context not provided)\"\n  ],\n  \"key_claims\": [\n    \"The core overclaim: cardiovascular outcome benefit ('transform outcomes for patients at high risk of heart attack and stroke') is claimed based on a 12-week biomarker study with no cardiovascular event tracking.\",\n    \"Promotional language ('major breakthrough,' 'cardiovascular protection') is used without qualification, despite the absence of outcome data.\",\n    \"The accelerated approval strategy amplifies the overclaim by treating a biomarker as sufficient evidence of clinical benefit.\",\n    \"The 4-year gap to outcome data is acknowledged but does not prevent the company from making outcome-level claims in the present tense.\"\n  ],\n  \"self_check\": [\n    \"Did I correctly identify the evidence tier? Yes — biomarkers (LDL, liver safety) measured in a Phase 2 trial is tier 3 (biomarker/surrogate endpoint).\",\n    \"Did I correctly identify the conclusion tier? Yes — 'transform outcomes,' 'cardiovascular protection,' 'high risk of heart attack and stroke' are tier 5 (clinical human outcomes), not tier 3.\",\n    \"Is the bridge supported? No — the text explicitly states no cardiovascular events were tracked and outcomes data is 4+ years away.\",\n    \"Is this overclaim or mechanism_vs_evidence? Overclaim, because the language is actively promotional ('major breakthrough,' 'transform outcomes') rather than cautious or hedged. The company is selling a clinical benefit, not hypothesizing one.\",\n    \"Did I miss any solid aspects? No — the Phase 2 biomarker data itself may be solid, but the claims made from it are not.\",\n    \"Did I overreach? No — the text itself provides the evidence of overclaim through its promotional language and the explicit acknowledgment that outcome data is pending.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\n**Classification: OVERCLAIM**\n\nThe pharmaceutical company is making **clinical outcome claims** (\"transform outcomes,\" \"cardiovascular protection,\" \"major breakthrough\") based on **biomarker data** from a 12-week Phase 2 trial. The evidence-tier mismatch is severe: LDL reduction is a surrogate endpoint, not a hard cardiovascular outcome. But the primary forensic problem is **rhetorical inflation**—the company is actively selling clinical benefit in promotional language, not cautiously hypothesizing it.\n\nThe text itself undermines the claims by stating that \"no cardiovascular events were tracked\" and outcomes data will not arrive for 4+ years. This is a textbook case of using a surrogate endpoint to imply clinical benefit without evidence that the surrogate translates to the claimed outcome in this specific drug and population.\n\nThe accelerated approval strategy further amplifies the overclaim by treating a biomarker as sufficient for regulatory approval, despite the absence of outcome validation.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The Phase 2 trial is a legitimate randomized controlled trial with appropriate controls",
+            "The 65% LDL reduction is accurately measured and statistically significant",
+            "The 12-week safety data for liver function is reliable",
+            "LDL cholesterol is a validated surrogate endpoint for cardiovascular outcomes in this population",
+            "The company's statements represent the primary claims being made to the public and regulators"
+          ],
+          "steps": [
+            "EVIDENCE TIER IDENTIFICATION: The study measured biomarkers (LDL cholesterol, liver safety) over 12 weeks in a Phase 2 trial. This is biomarker/surrogate endpoint evidence, not clinical outcome evidence.",
+            "CONCLUSION TIER IDENTIFICATION: The company claims the drug will 'transform outcomes for patients at high risk of heart attack and stroke' — this is a human therapeutic claim about hard cardiovascular endpoints (MI, stroke), not surrogate endpoints.",
+            "BRIDGE GAP ANALYSIS: There is a critical gap between biomarker reduction and clinical cardiovascular outcomes. The text explicitly states 'no cardiovascular events were tracked' and outcomes data will not arrive for 4+ years.",
+            "RHETORICAL INFLATION CHECK: The language used is actively promotional: 'major breakthrough,' 'transform outcomes,' 'cardiovascular protection.' These are not hedged as hypothetical or preliminary; they are stated as established benefits.",
+            "SURROGATE ENDPOINT VALIDITY: While LDL reduction is associated with cardiovascular benefit in some populations, a 65% reduction in a 12-week Phase 2 trial does NOT establish that this specific drug will reduce heart attacks or strokes. The surrogate-to-outcome bridge is assumed, not proven.",
+            "ACCELERATED APPROVAL CONCERN: The company is pursuing accelerated approval based solely on biomarker data, which further inflates the claim beyond what the evidence supports. Accelerated approval for a surrogate endpoint is appropriate only if the surrogate is well-validated; the text provides no evidence of such validation for this drug.",
+            "CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transform outcomes,' 'major breakthrough') based on a biomarker in a short-term Phase 2 trial. The rhetorical inflation is the primary forensic problem."
+          ],
+          "alternative_hypotheses": [
+            "mechanism_vs_evidence: If the text had been more cautious (e.g., 'LDL reduction may eventually translate to cardiovascular benefit, pending outcome trials'), the primary issue would be the evidence-tier gap rather than rhetorical inflation. But the actual language is promotional.",
+            "solid: If LDL reduction in this population were a fully validated surrogate endpoint with established clinical relevance, and if the company had explicitly stated that cardiovascular benefit is hypothetical pending outcome data, the claims might be defensible. But neither condition is met in the text."
+          ],
+          "uncertainties": [
+            "Whether the Phase 2 trial had appropriate controls and randomization (assumed yes, but not stated in the summary)",
+            "Whether LDL reduction is a well-validated surrogate for cardiovascular outcomes specifically in familial hypercholesterolaemia patients on maximum statin therapy (the text does not address this)",
+            "The exact wording of the company's regulatory submission vs. the press announcement (the summary conflates them)",
+            "Whether the accelerated approval pathway is being pursued under FDA guidance that accepts LDL reduction as a valid surrogate in this indication (context not provided)"
+          ],
+          "self_check": [
+            "Did I correctly identify the evidence tier? Yes — biomarkers (LDL, liver safety) measured in a Phase 2 trial is tier 3 (biomarker/surrogate endpoint).",
+            "Did I correctly identify the conclusion tier? Yes — 'transform outcomes,' 'cardiovascular protection,' 'high risk of heart attack and stroke' are tier 5 (clinical human outcomes), not tier 3.",
+            "Is the bridge supported? No — the text explicitly states no cardiovascular events were tracked and outcomes data is 4+ years away.",
+            "Is this overclaim or mechanism_vs_evidence? Overclaim, because the language is actively promotional ('major breakthrough,' 'transform outcomes') rather than cautious or hedged. The company is selling a clinical benefit, not hypothesizing one.",
+            "Did I miss any solid aspects? No — the Phase 2 biomarker data itself may be solid, but the claims made from it are not.",
+            "Did I overreach? No — the text itself provides the evidence of overclaim through its promotional language and the explicit acknowledgment that outcome data is pending."
+          ],
+          "key_claims": [
+            "The core overclaim: cardiovascular outcome benefit ('transform outcomes for patients at high risk of heart attack and stroke') is claimed based on a 12-week biomarker study with no cardiovascular event tracking.",
+            "Promotional language ('major breakthrough,' 'cardiovascular protection') is used without qualification, despite the absence of outcome data.",
+            "The accelerated approval strategy amplifies the overclaim by treating a biomarker as sufficient evidence of clinical benefit.",
+            "The 4-year gap to outcome data is acknowledged but does not prevent the company from making outcome-level claims in the present tense."
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 14870
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.15,
+        "structural_reasoning": 0.51,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.8,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.3,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transfo",
+              "source_field": "steps[6]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.73)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "LDL cholesterol is a validated surrogate endpoint for cardiovascular outcomes in this population",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether LDL reduction is a well-validated surrogate for cardiovascular outcomes specifically in familial hypercholesterolaemia patients on maximum statin therapy (the text does not address this)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The exact wording of the company's regulatory submission vs. the press announcement (the summary conflates them)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "solid: If LDL reduction in this population were a fully validated surrogate endpoint with established clinical relevance, and if the company had explicitly stated that cardiovascular benefit is hypoth",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "Is this overclaim or mechanism_vs_evidence? Overclaim, because the language is actively promotional ('major breakthrough,' 'transform outcomes') rather than cautious or hedged. The company is selling ",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 self-check items",
+            "Self-check quality: 0 deep, 6 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.3,
+          "weight": 10,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transfo",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Mechanism description",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Describes mechanism but does not name concept"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.69, 727 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "se 2 trial. this is biomarker/surrogate endpoint evidence, not clinical outcom",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'surrogate endpoint' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The exact wording of the company's regulatory submission vs....' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The exact wording of the company's regulatory submission vs. the press announcement (the summary conflates them)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/21 content words)",
+          "evidence": [
+            {
+              "text": "The core overclaim: cardiovascular outcome benefit ('transform outcomes for patients at high risk of heart attack and stroke') is claimed based on a 12-week biomarker study with no cardiovascular event tracking.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/13 content words)",
+          "evidence": [
+            {
+              "text": "Promotional language ('major breakthrough,' 'cardiovascular protection') is used without qualification, despite the absence of outcome data.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (1/11 content words)",
+          "evidence": [
+            {
+              "text": "The accelerated approval strategy amplifies the overclaim by treating a biomarker as sufficient evidence of clinical benefit.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The 4-year gap to outcome data is acknowledged but does not prevent the company from making outcome-level claims in the present tense.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "assumption_reasoning",
+          "status": "fail",
+          "description": "Assumption 4 may be contradicted by step 2",
+          "evidence": [
+            {
+              "text": "LDL cholesterol is a validated surrogate endpoint for cardiovascular outcomes in this population",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Assumed condition",
+              "role": "supporting"
+            },
+            {
+              "text": "CONCLUSION TIER IDENTIFICATION: The company claims the drug will 'transform outcomes for patients at high risk of heart attack and stroke' — this is a human therapeutic claim about hard cardiovascular endpoints (MI, stroke), not surrogate endpoints.",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Potentially contradicting step",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The exact wording of the company's regulatory submission vs. the press announcement (the summary conflates them)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "minor",
+          "description": "Causal mechanism described but underlying concept not named",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Describes mechanism without naming concept",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unnamed_mechanism",
+          "description": "Describes mechanism without naming the concept — under-explicit",
+          "evidence": [
+            {
+              "text": "CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transfo",
+              "source_field": "steps[6]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Functional description without concept name",
+              "role": "supporting"
+            }
+          ],
+          "severity": "stylistic"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The Phase 2 trial is a legitimate randomized controlled trial with appropriate controls",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 65% LDL reduction is accurately measured and statistically significant",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 12-week safety data for liver function is reliable",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "LDL cholesterol is a validated surrogate endpoint for cardiovascular outcomes in this population",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The company's statements represent the primary claims being made to the public and regulators",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "EVIDENCE TIER IDENTIFICATION: The study measured biomarkers (LDL cholesterol, liver safety) over 12 weeks in a Phase 2 trial. This is biomarker/surrogate endpoint evidence, not clinical outcome evidence.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CONCLUSION TIER IDENTIFICATION: The company claims the drug will 'transform outcomes for patients at high risk of heart attack and stroke' — this is a human therapeutic claim about hard cardiovascular endpoints (MI, stroke), not surrogate endpoints.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "BRIDGE GAP ANALYSIS: There is a critical gap between biomarker reduction and clinical cardiovascular outcomes. The text explicitly states 'no cardiovascular events were tracked' and outcomes data will not arrive for 4+ years.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "RHETORICAL INFLATION CHECK: The language used is actively promotional: 'major breakthrough,' 'transform outcomes,' 'cardiovascular protection.' These are not hedged as hypothetical or preliminary; they are stated as established benefits.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SURROGATE ENDPOINT VALIDITY: While LDL reduction is associated with cardiovascular benefit in some populations, a 65% reduction in a 12-week Phase 2 trial does NOT establish that this specific drug will reduce heart attacks or strokes. The surrogate-to-outcome bridge is assumed, not proven.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "ACCELERATED APPROVAL CONCERN: The company is pursuing accelerated approval based solely on biomarker data, which further inflates the claim beyond what the evidence supports. Accelerated approval for a surrogate endpoint is appropriate only if the surrogate is well-validated; the text provides no evidence of such validation for this drug.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transform outcomes,' 'major breakthrough') based on a biomarker in a short-term Phase 2 trial. The rhetorical inflation is the primary forensic problem.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The core overclaim: cardiovascular outcome benefit ('transform outcomes for patients at high risk of heart attack and stroke') is claimed based on a 12-week biomarker study with no cardiovascular event tracking.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Promotional language ('major breakthrough,' 'cardiovascular protection') is used without qualification, despite the absence of outcome data.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The accelerated approval strategy amplifies the overclaim by treating a biomarker as sufficient evidence of clinical benefit.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 4-year gap to outcome data is acknowledged but does not prevent the company from making outcome-level claims in the present tense.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence: If the text had been more cautious (e.g., 'LDL reduction may eventually translate to cardiovascular benefit, pending outcome trials'), the primary issue would be the evidence-tier gap rather than rhetorical inflation. But the actual language is promotional.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid: If LDL reduction in this population were a fully validated surrogate endpoint with established clinical relevance, and if the company had explicitly stated that cardiovascular benefit is hypothetical pending outcome data, the claims might be defensible. But neither condition is met in the text.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the Phase 2 trial had appropriate controls and randomization (assumed yes, but not stated in the summary)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether LDL reduction is a well-validated surrogate for cardiovascular outcomes specifically in familial hypercholesterolaemia patients on maximum statin therapy (the text does not address this)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The exact wording of the company's regulatory submission vs. the press announcement (the summary conflates them)",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the accelerated approval pathway is being pursued under FDA guidance that accepts LDL reduction as a valid surrogate in this indication (context not provided)",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I correctly identify the evidence tier? Yes — biomarkers (LDL, liver safety) measured in a Phase 2 trial is tier 3 (biomarker/surrogate endpoint).",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly identify the conclusion tier? Yes — 'transform outcomes,' 'cardiovascular protection,' 'high risk of heart attack and stroke' are tier 5 (clinical human outcomes), not tier 3.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the bridge supported? No — the text explicitly states no cardiovascular events were tracked and outcomes data is 4+ years away.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this overclaim or mechanism_vs_evidence? Overclaim, because the language is actively promotional ('major breakthrough,' 'transform outcomes') rather than cautious or hedged. The company is selling a clinical benefit, not hypothesizing one.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any solid aspects? No — the Phase 2 biomarker data itself may be solid, but the claims made from it are not.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I overreach? No — the text itself provides the evidence of overclaim through its promotional language and the explicit acknowledgment that outcome data is pending.",
+            "source_field": "self_check[5]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.42857142857142855
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.42857142857142855
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 22,
+            "target_idx": 5,
+            "relation": "checks",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.47058823529411764
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.6666666666666666
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          20
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [
+          "CLASSIFICATION DECISION: This is overclaim, not merely mechanism_vs_evidence, because the company is actively selling cardiovascular benefit ('transfo"
+        ],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'overclaim...' <- step 14 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [
+          "unsupported_generalization"
+        ],
+        "extra_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph confirms conclusion grounding",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.73)",
+        "5/5 substantive assumptions",
+        "4 uncertainties (4 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "6 self-check items",
+        "Self-check quality: 0 deep, 6 arithmetic, 0 fluff",
+        "Describes mechanism but does not name concept",
+        "Signal density: 0.69, 727 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T18:03:48.232917+00:00",
+  "metadata": {}
+}

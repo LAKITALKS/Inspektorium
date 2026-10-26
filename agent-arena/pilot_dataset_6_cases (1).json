@@ -1,0 +1,248 @@
+{
+  "Case001": {
+    "case_id": "Case001",
+    "input_text": "Researchers at the University of Pennsylvania randomly assigned 143 college students either to continue their usual use of Facebook, Snapchat and Instagram or to limit each platform to ten minutes per day. Over three weeks they collected objective usage data from phone screenshots and measured depression and loneliness. Students who restricted social\u2011media use reported significant declines in depressive symptoms and loneliness compared with the control group. The authors caution that the study involved only college students and three specific platforms and that the results may not generalise to other populations.",
+    "gold_label": "solid",
+    "gold_summary": "Randomised experimental evidence shows that limiting use of three social\u2011media platforms reduces depression and loneliness in college students.  The paper is careful not to overgeneralise and openly acknowledges its limitations, so there are no major epistemic failures.",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "span": "randomly assigned 143 college students either to continue their usual use ... or to limit each platform to ten minutes per day",
+        "why_it_matters": "Indicates a true randomised design, supporting causal inference.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "Students who restricted social\u2011media use reported significant declines in depressive symptoms and loneliness",
+        "why_it_matters": "Direct evidence that limiting social\u2011media use improved well\u2011being\u3010582003163473007\u2020L180-L183\u3011.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "the study involved only college students and three specific platforms",
+        "why_it_matters": "Authors themselves restrict the scope and urge caution\u3010582003163473007\u2020L185-L210\u3011\u3010582003163473007\u2020L197-L200\u3011.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "why_this_case_is_useful": "A clear example of a well\u2011designed randomized trial with honest uncertainty, used to teach the model what a solid case looks like and to prevent overflagging.  It demonstrates that some texts contain no substantive epistemic issues."
+  },
+  "Case004": {
+    "case_id": "Case004",
+    "input_text": "A double\u2011blind randomised trial followed over 3,500 U.S. adults aged 60 and older for three years to test whether a daily multivitamin improves memory. Participants taking the multivitamin improved their immediate\u2011recall scores from roughly 7.1 to 7.8 words after one year, while those on placebo improved from 7.2 to 7.6 words. The modest benefit persisted over three years without widening. People with cardiovascular disease showed slightly larger improvements. The authors describe the effect as modest and call for studies in more diverse populations to determine which nutrients might be responsible; the trial\u2019s participants were predominantly white and well educated.",
+    "gold_label": "solid",
+    "gold_summary": "This large, well\u2011designed trial reports a small improvement in immediate memory from multivitamin supplementation while explicitly describing the effect as modest, identifying demographic limitations and urging further research.  There is no overclaim.",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "span": "improved their immediate\u2011recall scores from roughly 7.1 to 7.8 words ... while those on placebo improved from 7.2 to 7.6 words",
+        "why_it_matters": "Quantifies the modest but statistically significant effect\u3010516642103377490\u2020L135-L143\u3011.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "effect as modest and call for studies in more diverse populations",
+        "why_it_matters": "Authors frame the finding conservatively\u3010516642103377490\u2020L105-L110\u3011\u3010516642103377490\u2020L168-L169\u3011.",
+        "supports_finding": "cautious_scope_control"
+      },
+      {
+        "span": "participants were predominantly white and well educated",
+        "why_it_matters": "Acknowledges demographic limitations\u3010516642103377490\u2020L124-L126\u3011.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "why_this_case_is_useful": "Demonstrates how to communicate a statistically significant but modest effect without hype.  It helps train the model to recognise careful uncertainty statements and demographic caveats as signs of solid reasoning."
+  },
+  "Case007": {
+    "case_id": "Case007",
+    "input_text": "A randomised controlled trial involving 1,747 adults tested whether high\u2011dose vitamin D3 could affect COVID\u201119 outcomes. Supplementation **did not change the severity of acute infection**. When researchers looked at lingering symptoms eight weeks later, 21 percent of people taking vitamin D reported at least one ongoing symptom compared with 25 percent in the placebo group. The senior author called this difference a \u201cpromising signal,\u201d but emphasised that larger trials are needed. The study was conducted remotely and started supplementation after infection onset, limiting interpretation.",
+    "gold_label": "overclaim",
+    "gold_summary": "The press piece highlights a very small absolute difference (4\u00a0percentage points) in long\u2011COVID symptoms as evidence that vitamin\u00a0D might help, despite no effect on acute outcomes and numerous limitations.  This constitutes mild overclaim because the results are statistically and clinically weak.",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "decorative_uncertainty",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "span": "Supplementation did not change the severity of acute infection",
+        "why_it_matters": "Establishes that primary outcomes were null\u3010272839963186842\u2020L494-L499\u3011.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "21\u00a0percent ... versus 25\u00a0percent",
+        "why_it_matters": "Shows the tiny difference touted as promising\u3010272839963186842\u2020L512-L515\u3011.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "promising signal ... larger trials are needed",
+        "why_it_matters": "The article wraps a weak finding in optimistic rhetoric while mentioning further research\u3010272839963186842\u2020L487-L522\u3011.",
+        "supports_finding": "decorative_uncertainty"
+      }
+    ],
+    "why_this_case_is_useful": "Highlights how small effect sizes can be overinterpreted when framed optimistically, teaching the model to weigh absolute differences and look past rhetorical enthusiasm."
+  },
+  "Case009": {
+    "case_id": "Case009",
+    "input_text": "In an open\u2011access randomised controlled trial, 89 adults diagnosed with autism practiced mindfulness using a smartphone app for six weeks. Compared with a wait\u2011list control group, the intervention group reported significant reductions in anxiety and perceived stress; when the control group later used the app, they replicated the improvements. Gains persisted six weeks after practice stopped. Lead investigator John Gabrieli said he and his colleagues were **already convinced** the app could help autistic adults and suggested it might benefit people of all ages.",
+    "gold_label": "overclaim",
+    "gold_summary": "Although the trial design is solid and results are promising, the lead investigator\u2019s assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.",
+    "expected_findings": [
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "decorative_uncertainty",
+        "severity": "minor",
+        "confidence": "low"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "span": "reported significant reductions in anxiety and perceived stress",
+        "why_it_matters": "Summarises the actual findings\u3010617326484093761\u2020L181-L186\u3011.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "already convinced the app could help autistic adults and ... people of all ages",
+        "why_it_matters": "Shows explicit overgeneralization and strong conviction beyond data\u3010617326484093761\u2020L198-L205\u3011.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "gains persisted six weeks after practice stopped",
+        "why_it_matters": "Suggests lasting effect, which could be overinterpreted without long\u2011term follow\u2011up\u3010617326484093761\u2020L188-L190\u3011.",
+        "supports_finding": "decorative_uncertainty"
+      }
+    ],
+    "why_this_case_is_useful": "Illustrates how a strong study can still lead to overclaiming if authors or press use persuasive language.  Helps the model distinguish between robust results and sweeping generalisations."
+  },
+  "Case013": {
+    "case_id": "Case013",
+    "input_text": "Neuroscientists studying mice found that microbial metabolites known as **indoles** modulate activity in the basolateral amygdala, affecting anxiety\u2011like behaviour. Germ\u2011free mice exhibited heightened anxiety, which was reduced when they were colonised with normal microbiota or given indoles. The researchers propose that indole\u2011producing probiotics could one day be used to treat anxiety disorders. They caution that human trials are needed to confirm safety and efficacy.",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "The animal study convincingly demonstrates that microbial indoles influence anxiety in mice but then speculates about probiotic therapies for humans.  The mechanistic finding is solid within rodents, yet the translation to humans is unproven, and the causal pathway in people remains undemonstrated.",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "span": "indoles modulate activity in the basolateral amygdala ... affecting anxiety\u2011like behaviour",
+        "why_it_matters": "Describes a mechanistic result in mice\u3010178022529761409\u2020L41-L66\u3011.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "germ\u2011free mice exhibited heightened anxiety ... reduced when colonised or given indoles",
+        "why_it_matters": "Shows the effect is causally tied to microbiota in animals\u3010178022529761409\u2020L56-L87\u3011.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "indole\u2011producing probiotics could one day be used to treat anxiety disorders",
+        "why_it_matters": "Moves from animal mechanistic insight to speculative human therapy\u3010178022529761409\u2020L84-L111\u3011.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "human trials are needed",
+        "why_it_matters": "Acknowledges that evidence is preclinical\u3010178022529761409\u2020L123-L126\u3011.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "why_this_case_is_useful": "Encourages the model to separate strong mechanistic findings in preclinical systems from speculative clinical applications, highlighting when extrapolation is premature even if authors mention the need for trials."
+  },
+  "Case019": {
+    "case_id": "Case019",
+    "input_text": "A cross\u2011sectional survey of 5,000 remote workers asked participants how many houseplants they owned and assessed their depressive symptoms with a standard questionnaire. Those with five or more houseplants reported average depression scores 30 percent lower than those with no plants. The article concludes that \u201cbringing the outdoors in\u201d can improve mental health and urges employers to reimburse plant purchases for home offices. No experimental design is used, and the survey authors acknowledge that plant owners also tended to have higher incomes, more natural light and more leisure time.",
+    "gold_label": "correlation_vs_causation",
+    "gold_summary": "The synthetic summary equates owning multiple houseplants with improved mental health based on a cross\u2011sectional survey, ignoring socioeconomic confounders.  The recommendation for employers to subsidise plants is unsupported by causal evidence.",
+    "expected_findings": [
+      {
+        "finding": "correlation_as_causation",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "minor",
+        "confidence": "low"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "span": "depression scores 30\u00a0percent lower",
+        "why_it_matters": "States the core association.",
+        "supports_finding": "correlation_as_causation"
+      },
+      {
+        "span": "bringing the outdoors in can improve mental health",
+        "why_it_matters": "Asserts a causal relationship without evidence.",
+        "supports_finding": "correlation_as_causation"
+      },
+      {
+        "span": "urges employers to reimburse plant purchases",
+        "why_it_matters": "Generalises to policy based on correlation.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "plant owners also tended to have higher incomes, more natural light and more leisure time",
+        "why_it_matters": "Indicates confounders the article fails to control for.",
+        "supports_finding": "mechanism_not_demonstrated"
+      }
+    ],
+    "why_this_case_is_useful": "An uncomplicated synthetic example of correlation being mistaken for causation, valuable for reinforcing that cross\u2011sectional associations cannot justify causal claims or workplace interventions."
+  }
+}

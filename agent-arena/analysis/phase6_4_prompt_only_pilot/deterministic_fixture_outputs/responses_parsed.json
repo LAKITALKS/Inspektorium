@@ -1,0 +1,282 @@
+{
+  "n": 13,
+  "results": [
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.82,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "solid"
+      },
+      "id": "r01_solid_valid",
+      "parsed": {
+        "brief_reason": "The human RCT result stays within the reported evidence.",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.82,
+        "errors": [],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "solid",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.9,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim"
+      },
+      "id": "r02_overclaim_valid",
+      "parsed": {
+        "brief_reason": "A small pilot cannot support a universal cure claim.",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.9,
+        "errors": [],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.88,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "correlation_vs_causation"
+      },
+      "id": "r03_correlation_valid",
+      "parsed": {
+        "brief_reason": "A cross-sectional association is stated as a causal effect.",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.88,
+        "errors": [],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "correlation_vs_causation",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.86,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "mechanism_vs_evidence"
+      },
+      "id": "r04_mechanism_valid",
+      "parsed": {
+        "brief_reason": "An animal mechanism is used to imply human clinical benefit.",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.86,
+        "errors": [],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "mechanism_vs_evidence",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "MISSING",
+        "confidence_value": null,
+        "ok": false,
+        "parse_ok": true,
+        "predicted_label": "solid"
+      },
+      "id": "r05_missing_confidence",
+      "parsed": {
+        "brief_reason": "No confidence key supplied.",
+        "confidence_validity": "MISSING",
+        "confidence_value": null,
+        "errors": [
+          "missing_fields:['confidence']",
+          "confidence_MISSING"
+        ],
+        "ok": false,
+        "parse_ok": true,
+        "predicted_label": "solid",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "INVALID",
+        "confidence_value": null,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "solid"
+      },
+      "id": "r06_invalid_confidence_string",
+      "parsed": {
+        "brief_reason": "Confidence is a non-numeric string.",
+        "confidence_validity": "INVALID",
+        "confidence_value": null,
+        "errors": [
+          "confidence_INVALID"
+        ],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "solid",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "INVALID",
+        "confidence_value": null,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim"
+      },
+      "id": "r07_boolean_confidence",
+      "parsed": {
+        "brief_reason": "Confidence is a boolean.",
+        "confidence_validity": "INVALID",
+        "confidence_value": null,
+        "errors": [
+          "confidence_INVALID"
+        ],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "INVALID",
+        "confidence_value": null,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim"
+      },
+      "id": "r08_out_of_range_confidence",
+      "parsed": {
+        "brief_reason": "Confidence exceeds 1.0.",
+        "confidence_validity": "INVALID",
+        "confidence_value": null,
+        "errors": [
+          "confidence_INVALID"
+        ],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.5,
+        "ok": false,
+        "parse_ok": true,
+        "predicted_label": "fabricated_label"
+      },
+      "id": "r09_unknown_label",
+      "parsed": {
+        "brief_reason": "Label not in the frozen taxonomy.",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.5,
+        "errors": [
+          "unknown_label:'fabricated_label'"
+        ],
+        "ok": false,
+        "parse_ok": true,
+        "predicted_label": "fabricated_label",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "MISSING",
+        "confidence_value": null,
+        "ok": false,
+        "parse_ok": false,
+        "predicted_label": null
+      },
+      "id": "r10_malformed_json",
+      "parsed": {
+        "brief_reason": null,
+        "confidence_validity": "MISSING",
+        "confidence_value": null,
+        "errors": [
+          "parser_failure:repaired/truncated output not accepted as a verdict"
+        ],
+        "ok": false,
+        "parse_ok": false,
+        "predicted_label": null,
+        "strategy": "repaired"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.7,
+        "ok": false,
+        "parse_ok": true,
+        "predicted_label": "solid"
+      },
+      "id": "r11_extra_field",
+      "parsed": {
+        "brief_reason": "ok",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.7,
+        "errors": [
+          "extra_fields:['chain_of_thought']"
+        ],
+        "ok": false,
+        "parse_ok": true,
+        "predicted_label": "solid",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "VALID",
+        "confidence_value": 0.0,
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim"
+      },
+      "id": "r12_zero_confidence_valid",
+      "parsed": {
+        "brief_reason": "Genuine minimal confidence, not missing.",
+        "confidence_validity": "VALID",
+        "confidence_value": 0.0,
+        "errors": [],
+        "ok": true,
+        "parse_ok": true,
+        "predicted_label": "overclaim",
+        "strategy": "raw"
+      }
+    },
+    {
+      "expect": {
+        "confidence_validity": "MISSING",
+        "confidence_value": null,
+        "ok": false,
+        "parse_ok": false,
+        "predicted_label": null
+      },
+      "id": "r13_empty_response",
+      "parsed": {
+        "brief_reason": null,
+        "confidence_validity": "MISSING",
+        "confidence_value": null,
+        "errors": [
+          "parser_failure:empty or non-string output"
+        ],
+        "ok": false,
+        "parse_ok": false,
+        "predicted_label": null,
+        "strategy": "none"
+      }
+    }
+  ]
+}

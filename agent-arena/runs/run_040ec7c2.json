@@ -1,0 +1,2529 @@
+{
+  "run_id": "run_040ec7c2",
+  "task": {
+    "id": "simpsons-paradox-001",
+    "title": "Simpson's Paradox: University Admissions",
+    "domain": "statistics",
+    "difficulty": "hard",
+    "task_type": "rubric_based",
+    "prompt": "A university has two departments: Engineering and Arts.\n\nEngineering: admitted 30/100 men (30%) and 20/50 women (40%)\nArts: admitted 300/400 men (75%) and 350/400 women (87.5%)\n\nOverall: admitted 330/500 men (66%) and 370/450 women (82.2%)\n\nA journalist writes: \"The university discriminates against men — only 66% of male\napplicants were admitted versus 82.2% of female applicants.\"\n\nIs this claim valid? Explain why or why not with precise reasoning.\n",
+    "context": "This task tests whether the solver can identify Simpson's paradox — where a trend that\nappears in aggregated data reverses when the data is separated into subgroups.\n",
+    "expected_answer": "no",
+    "reference_solution": "The claim is misleading. Within each department, men are admitted at a LOWER rate than women:\n- Engineering: men 30%, women 40% — women favored\n- Arts: men 75%, women 87.5% — women favored\nThe aggregate reversal happens because men disproportionately applied to the more selective\ndepartment (Engineering). This is Simpson's paradox. The per-department data shows no\ndiscrimination against men.\n",
+    "rubric": [
+      {
+        "criterion": "identifies simpson paradox",
+        "points": 25,
+        "description": "Recognizes this as Simpson's paradox or equivalent aggregation paradox",
+        "variants": [
+          "simpson's paradox",
+          "aggregation paradox",
+          "ecological fallacy"
+        ]
+      },
+      {
+        "criterion": "per-department analysis",
+        "points": 25,
+        "description": "Breaks down admission rates by department",
+        "variants": [
+          "department-level",
+          "by department",
+          "each department",
+          "within each department",
+          "individual department"
+        ]
+      },
+      {
+        "criterion": "selection bias in applications",
+        "points": 25,
+        "description": "Explains that men applied more to the selective department",
+        "variants": [
+          "application pattern",
+          "applied disproportionately",
+          "applied more to",
+          "applied mostly to",
+          "applied heavily to",
+          "applicant pool",
+          "different application",
+          "composition of applicant"
+        ]
+      },
+      {
+        "criterion": "concludes claim is invalid or misleading",
+        "points": 25,
+        "description": "Correctly concludes the journalist's claim is not valid",
+        "variants": [
+          "not valid",
+          "not justified",
+          "claim is misleading",
+          "claim is not valid",
+          "claim is invalid"
+        ]
+      }
+    ],
+    "evaluation": {
+      "method": "rubric",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "simpson",
+        "variants": [
+          "simpson's paradox",
+          "simpson paradox"
+        ],
+        "functional_descriptions": [
+          "trend reverses when data is disaggregated",
+          "aggregate shows opposite of subgroup trends"
+        ]
+      },
+      {
+        "keyword": "paradox",
+        "variants": [
+          "aggregation paradox",
+          "statistical paradox"
+        ],
+        "functional_descriptions": [
+          "counterintuitive reversal in combined data"
+        ]
+      },
+      {
+        "keyword": "aggregation",
+        "variants": [
+          "aggregate",
+          "aggregated data"
+        ],
+        "functional_descriptions": [
+          "combining data from different groups hides the true pattern"
+        ]
+      },
+      {
+        "keyword": "confounding",
+        "variants": [
+          "confound",
+          "lurking variable",
+          "confounder"
+        ],
+        "functional_descriptions": [
+          "a third variable drives the apparent relationship",
+          "department choice explains the overall difference"
+        ]
+      },
+      {
+        "keyword": "subgroup",
+        "variants": [
+          "sub-group",
+          "within each",
+          "per-department",
+          "department-level"
+        ],
+        "functional_descriptions": [
+          "analyzing each department separately reveals the truth"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting aggregate statistics at face value",
+      "ignoring department-level breakdown",
+      "failing to explain the mechanism"
+    ],
+    "task_family": "statistical_paradox",
+    "trap_type": "aggregation_reversal",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "aggregation_error",
+      "confounder_blindness",
+      "surface_pattern_match"
+    ],
+    "discriminative_dimensions": [
+      "structural_reasoning",
+      "alternative_hypothesis_awareness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify aggregation reversal and explain the causal mechanism?",
+    "expected_mechanism_terms": [
+      "simpson",
+      "paradox",
+      "aggregation",
+      "department"
+    ],
+    "fragile_points": [
+      "agent may name Simpson's Paradox without explaining why the reversal occurs",
+      "agent may compute department-level rates but not connect them to application patterns"
+    ],
+    "likely_shortcuts": [
+      "naming Simpson's Paradox from pattern recognition without verifying the data"
+    ],
+    "evaluator_notes": "All three models consistently identify this. Differentiation comes from mechanism depth and self-audit quality."
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "StrongAgent",
+        "model": "strong-v1",
+        "raw_output": "",
+        "parsed": {
+          "final_answer": "The journalist's claim is misleading. This is Simpson's Paradox. While the aggregate data shows men admitted at 66% vs women at 82.2%, within each department women actually have higher admission rates. Engineering: men 30%, women 40%. Arts: men 75%, women 87.5%. The reversal occurs because men disproportionately applied to Engineering, which has much lower admission rates overall.",
+          "assumptions": [
+            "The admission data as presented is accurate and complete",
+            "Department assignment is based on applicant choice, not university assignment"
+          ],
+          "steps": [
+            "First, I verify the department-level data: Engineering admits 30% of men and 40% of women.",
+            "In Arts, men are admitted at 75% and women at 87.5% — women have higher rates in both departments.",
+            "The aggregate reversal happens because 80% of men (400/500) applied to the less selective Arts department, while a larger share of men applied to the more selective Engineering department.",
+            "This is Simpson's Paradox: the trend that appears in aggregated data reverses when disaggregated by department.",
+            "The causal mechanism is that department choice acts as a confounding variable — men apply more to the selective department, which drives down their aggregate rate despite being admitted at lower rates in each department."
+          ],
+          "alternative_hypotheses": [
+            "The university intentionally discriminates against men — rejected because department-level data shows women are favored in both departments, and the aggregate pattern is fully explained by application composition"
+          ],
+          "uncertainties": [
+            "Whether applicant qualifications differ between men and women within each department",
+            "Whether there are additional departments not shown in this data"
+          ],
+          "self_check": [
+            "Verified arithmetic: 30/100=30%, 20/50=40% in Engineering; 300/400=75%, 350/400=87.5% in Arts. Overall: 330/500=66% men, 370/450=82.2% women. All numbers check out.",
+            "Could I be falling for a different statistical trap? No — the reversal pattern is clear and the confounding variable (department choice) fully explains the aggregate reversal."
+          ],
+          "key_claims": [
+            "Women have higher admission rates in both departments",
+            "Simpson's Paradox explains the aggregate reversal",
+            "Department choice is the confounding variable"
+          ],
+          "confidence": 0.92
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 4200
+      },
+      "scores": {
+        "correctness": 0.75,
+        "support_strength": 0.5,
+        "structural_reasoning": 0.3899999999999999,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.8,
+        "self_monitoring_quality": 0.2,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.9375,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 20,
+          "weighted_score": 20.0,
+          "evidence": [
+            {
+              "text": "misleading. this is simpson's paradox. while the aggregat",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: identifies simpson paradox",
+              "role": "supporting"
+            },
+            {
+              "text": "first, i verify the department-level data: engineering a",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: per-department analysis",
+              "role": "supporting"
+            },
+            {
+              "text": "applications",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: selection bias in applications",
+              "role": "supporting"
+            },
+            {
+              "text": "the journalist's claim is misleading. this is simpson's",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: concludes claim is invalid or misleading",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Rubric hit: identifies simpson paradox",
+            "Rubric hit: per-department analysis",
+            "Rubric hit: selection bias in applications",
+            "Rubric hit: concludes claim is invalid or misleading"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.8500000000000001,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [
+            {
+              "text": "The journalist's claim is misleading. This is Simpson's Paradox. While the aggregate data shows men admitted at 66% vs w",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            },
+            {
+              "text": "Women have higher admission rates in both departments",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Strongest supporting claim",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Final answer is grounded in reasoning steps",
+            "Short support chain: 1",
+            "Key claims supporting answer: 3/3"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.7,
+          "weight": 10,
+          "weighted_score": 7.0,
+          "evidence": [
+            {
+              "text": "The causal mechanism is that department choice acts as a confounding variable — men apply more to the selective department, which drives down their ag",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most detailed reasoning step",
+              "role": "supporting"
+            },
+            {
+              "text": "First, I verify the department-level data: Engineering admits 30% of men and 40% of women.",
+              "source_field": "steps[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Briefest reasoning step",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "5 reasoning steps",
+            "Steps are detailed (avg 141 chars)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "Department assignment is based on applicant choice, not university assignment",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2/2 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 8,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "Whether applicant qualifications differ between men and women within each department",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 uncertainties (2 substantive)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "The university intentionally discriminates against men — rejected because department-level data shows women are favored in both departments, and the aggregate pattern is fully explained by application",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 alternative hypotheses considered",
+            "1/1 include rejection reasoning"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Could I be falling for a different statistical trap? No — the reversal pattern is clear and the confounding variable (department choice) fully explains the aggregate reversal.",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 self-check items",
+            "Self-check quality: 1 deep, 1 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.9375,
+          "weight": 10,
+          "weighted_score": 9.4,
+          "evidence": [
+            {
+              "text": "The aggregate reversal happens because 80% of men (400/500) applied to the less selective Arts department, while a larger share of men applied to the ",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Case-grounded mechanism explanation",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Names concept + describes mechanism + grounds to case",
+            "Mechanism terms: 3/4",
+            "Multi-step mechanism (3 sentences)"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.73, 305 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "claim is misleading. this is simpson's paradox. while the aggregat",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'simpson' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "misleading. this is simpson's paradox. while the aggregate data sho",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'paradox' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "t department choice acts as a confounding variable — men apply more to",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'confounding' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 5 full / 5"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'no'",
+          "evidence": [
+            {
+              "text": "The journalist's claim is misleading. This is Simpson's Paradox. While the aggregate data shows men admitted at 66% vs women at 82.2%, within each department women actually have higher admission rates",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness"
+        },
+        {
+          "category": "verbal_numeric_contradiction",
+          "severity": "major",
+          "description": "Verbal-numeric contradiction: Values equal (75.0%) — claim says higher",
+          "evidence": [
+            {
+              "text": "In Arts, men are admitted at 75% and women at 87.5% — women have higher rates in both departments",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Values equal (75.0%) — claim says higher",
+              "role": "contradictory"
+            }
+          ],
+          "impact_on_score": "correctness, support_strength, structural_reasoning"
+        },
+        {
+          "category": "failed_self_audit",
+          "severity": "moderate",
+          "description": "Self-check claims correctness but claim checker found contradictions",
+          "evidence": [
+            {
+              "text": "Verified arithmetic: 30/100=30%, 20/50=40% in Engineering; 300/400=75%, 350/400=87.5% in Arts. Overall: 330/500=66% men, 370/450=82.2% women. All numb",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Self-check missed real errors",
+              "role": "weakening"
+            }
+          ],
+          "impact_on_score": "self_monitoring_quality"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Expected mechanism terms missing: aggregation",
+          "evidence": [
+            {
+              "text": "Missing: aggregation",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Task expects these mechanism terms",
+              "role": "missing_expected"
+            }
+          ]
+        },
+        {
+          "check_type": "numeric_verbal_reversal",
+          "status": "fail",
+          "description": "Verbal claim contradicts numeric facts: 'In Arts, men are admitted at 75% and women at 87.5% — women have higher rates in both departments' — Values equal (75.0%) — claim says higher",
+          "evidence": [
+            {
+              "text": "In Arts, men are admitted at 75% and women at 87.5% — women have higher rates in both departments",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Claims women higher_than men",
+              "role": "contradictory"
+            },
+            {
+              "text": "women: 75.0%",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Contradicting numeric fact",
+              "role": "contradictory"
+            },
+            {
+              "text": "men: 75.0%",
+              "source_field": "reference_solution",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Contradicting numeric fact",
+              "role": "contradictory"
+            }
+          ]
+        },
+        {
+          "check_type": "failed_self_audit",
+          "status": "fail",
+          "description": "Self-check affirms correctness but 1 numeric-verbal contradiction(s) found — self-audit missed real errors",
+          "evidence": [
+            {
+              "text": "Verified arithmetic: 30/100=30%, 20/50=40% in Engineering; 300/400=75%, 350/400=87.5% in Arts. Overall: 330/500=66% men, 370/450=82.2% women. All numb",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Self-check affirms correctness",
+              "role": "weakening"
+            },
+            {
+              "text": "Values equal (75.0%) — claim says higher",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Contradiction missed by self-check",
+              "role": "contradictory"
+            }
+          ]
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "numeric_verbal_contradiction",
+          "description": "1 verbal claim(s) contradict numeric facts — local truth failure",
+          "evidence": [
+            {
+              "text": "Values equal (75.0%) — claim says higher",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "First contradiction found",
+              "role": "contradictory"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/7 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "The journalist's claim is misleading",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "self_contradicting_conclusion",
+          "description": "2 conclusion claim(s) contradicted by own reasoning steps",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "failed_self_audit",
+          "description": "Self-check affirms correctness despite detectable contradictions — self-monitoring blind spot",
+          "evidence": [],
+          "severity": "major"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The admission data as presented is accurate and complete",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Department assignment is based on applicant choice, not university assignment",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "First, I verify the department-level data: Engineering admits 30% of men and 40% of women.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "In Arts, men are admitted at 75% and women at 87.5% — women have higher rates in both departments.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The aggregate reversal happens because 80% of men (400/500) applied to the less selective Arts department, while a larger share of men applied to the more selective Engineering department.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is Simpson's Paradox: the trend that appears in aggregated data reverses when disaggregated by department.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The causal mechanism is that department choice acts as a confounding variable — men apply more to the selective department, which drives down their aggregate rate despite being admitted at lower rates in each department.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Women have higher admission rates in both departments",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Simpson's Paradox explains the aggregate reversal",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Department choice is the confounding variable",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The university intentionally discriminates against men — rejected because department-level data shows women are favored in both departments, and the aggregate pattern is fully explained by application composition",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether applicant qualifications differ between men and women within each department",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether there are additional departments not shown in this data",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Verified arithmetic: 30/100=30%, 20/50=40% in Engineering; 300/400=75%, 350/400=87.5% in Arts. Overall: 330/500=66% men, 370/450=82.2% women. All numbers check out.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could I be falling for a different statistical trap? No — the reversal pattern is clear and the confounding variable (department choice) fully explains the aggregate reversal.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The journalist's claim is misleading. This is Simpson's Paradox. While the aggregate data shows men admitted at 66% vs women at 82.2%, within each department women actually have higher admission rates. Engineering: men 30%, women 40%. Arts: men 75%, women 87.5%. The reversal occurs because men disproportionately applied to Engineering, which has much lower admission rates overall.",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 3,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 6,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.2631578947368421
+          },
+          {
+            "source_idx": 7,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.6666666666666666
+          },
+          {
+            "source_idx": 8,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.6
+          },
+          {
+            "source_idx": 9,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.25
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 1,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [
+        {
+          "claim": {
+            "subject": "women",
+            "object": "men",
+            "relation": "higher_than",
+            "metric": "rate",
+            "source_field": "steps[1]",
+            "source_text": "In Arts, men are admitted at 75% and women at 87.5% — women have higher rates in both departments"
+          },
+          "truth_status": "contradicted",
+          "explanation": "Values equal (75.0%) — claim says higher",
+          "supporting_facts": [],
+          "contradicting_facts": [
+            {
+              "entity": "women",
+              "metric": "rate",
+              "value": 75.0,
+              "source_field": "steps[1]",
+              "context": "arts"
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 75.0,
+              "source_field": "reference_solution",
+              "context": "arts"
+            }
+          ]
+        }
+      ],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": true,
+        "named_concepts": [
+          "paradox",
+          "simpson"
+        ],
+        "mechanism_sentences": [
+          "The aggregate reversal happens because 80% of men (400/500) applied to the less selective Arts department, while a larger share of men applied to the ",
+          "The causal mechanism is that department choice acts as a confounding variable — men apply more to the selective department, which drives down their ag",
+          "The journalist's claim is misleading. This is Simpson's Paradox. While the aggregate data shows men admitted at 66% vs women at 82.2%, within each dep"
+        ],
+        "grounding_sentences": [
+          "The aggregate reversal happens because 80% of men (400/500) applied to the less selective Arts department, while a larger share of men applied to the "
+        ],
+        "missing_elements": [
+          "expected term missing: aggregation"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 7,
+        "directly_supported": 4,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 2,
+        "support_paths": [
+          "UNSUPPORTED: 'The journalist's claim is misleading...'",
+          "DIRECT: 'This is Simpson's Paradox...' <- step 8",
+          "DIRECT: 'While the aggregate data shows men admitted at 66% vs women ...' <- step 3",
+          "CONTRADICTED: '2%, within each department women actually have higher admiss...'",
+          "DIRECT: 'Engineering: men 30%, women 40%...' <- step 3",
+          "DIRECT: 'Arts: men 75%, women 87...' <- step 3",
+          "CONTRADICTED: 'The reversal occurs because men disproportionately applied t...'"
+        ],
+        "unsupported_claims": [
+          "The journalist's claim is misleading"
+        ]
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "verbal_numeric_contradiction",
+        "failed_self_audit"
+      ],
+      "notes": [
+        "No match (got: the journalist's claim is misleading. this is simpson's paradox. while the aggre)",
+        "Rubric hit: identifies simpson paradox",
+        "Rubric hit: per-department analysis",
+        "Rubric hit: selection bias in applications",
+        "Rubric hit: concludes claim is invalid or misleading",
+        "Key insights: 5 full / 5",
+        "Final answer is grounded in reasoning steps",
+        "Short support chain: 1",
+        "Key claims supporting answer: 3/3",
+        "5 reasoning steps",
+        "Steps are detailed (avg 141 chars)",
+        "2/2 substantive assumptions",
+        "2 uncertainties (2 substantive)",
+        "Confidence 0.92",
+        "1 alternative hypotheses considered",
+        "1/1 include rejection reasoning",
+        "2 self-check items",
+        "Self-check quality: 1 deep, 1 arithmetic, 0 fluff",
+        "Names concept + describes mechanism + grounds to case",
+        "Mechanism terms: 3/4",
+        "Multi-step mechanism (3 sentences)",
+        "Signal density: 0.73, 305 words"
+      ]
+    },
+    {
+      "agent_result": {
+        "provider": "PatternMatcher",
+        "model": "pattern-v1",
+        "raw_output": "",
+        "parsed": {
+          "final_answer": "No, the claim is not valid. This is Simpson's Paradox.",
+          "assumptions": [
+            "The data is accurate"
+          ],
+          "steps": [
+            "I recognize this as Simpson's Paradox.",
+            "The aggregate statistics are misleading.",
+            "Looking at department-level data tells a different story."
+          ],
+          "alternative_hypotheses": [
+            "Maybe not."
+          ],
+          "uncertainties": [
+            "Some uncertainty about the data"
+          ],
+          "self_check": [
+            "I checked my work."
+          ],
+          "key_claims": [
+            "This is Simpson's Paradox"
+          ],
+          "confidence": 0.95
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 3100
+      },
+      "scores": {
+        "correctness": 0.75,
+        "support_strength": 0.8500000000000001,
+        "structural_reasoning": 0.5,
+        "assumption_discipline": 0.36999999999999994,
+        "uncertainty_handling": 0.44999999999999996,
+        "alternative_hypothesis_quality": 0.5,
+        "self_monitoring_quality": 0.15000000000000002,
+        "insight_depth": 0.8,
+        "mechanism_quality": 0.3375,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.75,
+          "weight": 20,
+          "weighted_score": 15.0,
+          "evidence": [
+            {
+              "text": "not valid. this is simpson's paradox. i recognize this a",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: identifies simpson paradox",
+              "role": "supporting"
+            },
+            {
+              "text": "leading. looking at department-level data tells a differ",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: per-department analysis",
+              "role": "supporting"
+            },
+            {
+              "text": "Missing: selection bias in applications",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion not met: selection bias in applications",
+              "role": "missing_expected"
+            },
+            {
+              "text": "no, the claim is not valid. this is simpson's",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: concludes claim is invalid or misleading",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Rubric hit: identifies simpson paradox",
+            "Rubric hit: per-department analysis",
+            "Rubric miss: selection bias in applications",
+            "Rubric hit: concludes claim is invalid or misleading"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.8500000000000001,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [
+            {
+              "text": "No, the claim is not valid. This is Simpson's Paradox.",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            },
+            {
+              "text": "This is Simpson's Paradox",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Strongest supporting claim",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Final answer is grounded in reasoning steps",
+            "Short support chain: 1",
+            "Key claims supporting answer: 1/1"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.5,
+          "weight": 10,
+          "weighted_score": 5.0,
+          "evidence": [
+            {
+              "text": "Looking at department-level data tells a different story.",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most detailed reasoning step",
+              "role": "supporting"
+            },
+            {
+              "text": "I recognize this as Simpson's Paradox.",
+              "source_field": "steps[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Briefest reasoning step",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "3 reasoning steps",
+            "Steps are moderate (avg 45 chars)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.36999999999999994,
+          "weight": 8,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "The data is accurate",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The data is accurate",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.44999999999999996,
+          "weight": 8,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Some uncertainty about the data",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Some uncertainty about the data",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 uncertainties (1 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.95 — very high"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [],
+          "notes": [
+            "1 alternative hypotheses considered",
+            "1/1 include rejection reasoning",
+            "1 weak/short alternative(s)"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.15000000000000002,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "I checked my work.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "1 self-check items",
+            "Self-check quality: 0 deep, 0 arithmetic, 1 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.3375,
+          "weight": 10,
+          "weighted_score": 3.4,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism",
+            "Mechanism terms: 3/4"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.62, 48 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "e claim is not valid. this is simpson's paradox. i recognize this a",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'simpson' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "not valid. this is simpson's paradox. i recognize this as simpson'",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'paradox' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "Missing: confounding",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'confounding' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 4 full / 5"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "missed_key_insight",
+          "severity": "major",
+          "description": "Rubric criterion not met: selection bias in applications",
+          "evidence": [],
+          "impact_on_score": "correctness"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The data is accurate...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The data is accurate",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Some uncertainty about the data...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Some uncertainty about the data",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling"
+        },
+        {
+          "category": "confidence_mismatch",
+          "severity": "minor",
+          "description": "Very high confidence (0.95) on hard task",
+          "evidence": [
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "High confidence value",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling"
+        },
+        {
+          "category": "weak_alternative_hypothesis",
+          "severity": "stylistic",
+          "description": "Alternative hypothesis 1 is too brief (10 chars)",
+          "evidence": [
+            {
+              "text": "Maybe not.",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Brief alternative",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "alternative_hypothesis_quality"
+        },
+        {
+          "category": "decorative_self_check",
+          "severity": "minor",
+          "description": "All 1 self-checks appear to be fluff — no substantive verification",
+          "evidence": [
+            {
+              "text": "I checked my work.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Example fluff self-check",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "self_monitoring_quality"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "No, the claim is not valid. This is Simpson's Paradox.",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['paradox', 'simpson'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "confidence_uncertainty",
+          "status": "minor",
+          "description": "Confidence 0.95 on a hard task — may indicate miscalibration",
+          "evidence": [
+            {
+              "text": "confidence: 0.95",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "High confidence on hard task",
+              "role": "supporting"
+            }
+          ]
+        },
+        {
+          "check_type": "self_check_depth",
+          "status": "minor",
+          "description": "Self-check 1 appears to be generic fluff rather than substantive verification",
+          "evidence": [
+            {
+              "text": "I checked my work.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Short or generic self-check",
+              "role": "weakening"
+            }
+          ]
+        },
+        {
+          "check_type": "self_check_depth",
+          "status": "warning",
+          "description": "All 1 self-checks appear to be fluff — no substantive verification detected",
+          "evidence": [
+            {
+              "text": "I checked my work.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Example of fluff self-check",
+              "role": "weakening"
+            }
+          ]
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is too brief to represent genuine consideration",
+          "evidence": [
+            {
+              "text": "Maybe not.",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Very brief alternative",
+              "role": "weakening"
+            }
+          ]
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "No, the claim is not valid. This is Simpson's Paradox.",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ]
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Expected mechanism terms missing: aggregation",
+          "evidence": [
+            {
+              "text": "Missing: aggregation",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Task expects these mechanism terms",
+              "role": "missing_expected"
+            }
+          ]
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/2 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "No, the claim is not valid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "paradox, simpson",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The data is accurate",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "I recognize this as Simpson's Paradox.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The aggregate statistics are misleading.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Looking at department-level data tells a different story.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is Simpson's Paradox",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Maybe not.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Some uncertainty about the data",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "I checked my work.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No, the claim is not valid. This is Simpson's Paradox.",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 3,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 8,
+            "relation": "supports",
+            "strength": 0.6666666666666666
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 8,
+            "relation": "supports",
+            "strength": 0.5
+          }
+        ],
+        "unused_assumptions": [
+          0
+        ],
+        "unaddressed_uncertainties": [
+          6
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [
+          7
+        ],
+        "support_chain_length": 1,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "paradox",
+          "simpson"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data",
+          "expected term missing: aggregation"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 2,
+        "directly_supported": 1,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'No, the claim is not valid...'",
+          "DIRECT: 'This is Simpson's Paradox...' <- step 4"
+        ],
+        "unsupported_claims": [
+          "No, the claim is not valid"
+        ]
+      },
+      "failure_modes": [
+        "missed_key_insight",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "confidence_mismatch",
+        "weak_alternative_hypothesis",
+        "decorative_self_check",
+        "named_not_explained",
+        "named_not_explained"
+      ],
+      "notes": [
+        "Contains expected answer",
+        "Rubric hit: identifies simpson paradox",
+        "Rubric hit: per-department analysis",
+        "Rubric miss: selection bias in applications",
+        "Rubric hit: concludes claim is invalid or misleading",
+        "Key insights: 4 full / 5",
+        "Final answer is grounded in reasoning steps",
+        "Short support chain: 1",
+        "Key claims supporting answer: 1/1",
+        "3 reasoning steps",
+        "Steps are moderate (avg 45 chars)",
+        "1 unused assumption(s)",
+        "1 uncertainties (1 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.95 — very high",
+        "1 alternative hypotheses considered",
+        "1/1 include rejection reasoning",
+        "1 weak/short alternative(s)",
+        "1 self-check items",
+        "Self-check quality: 0 deep, 0 arithmetic, 1 fluff",
+        "Names concept but does not describe mechanism",
+        "Mechanism terms: 3/4",
+        "Signal density: 0.62, 48 words"
+      ]
+    },
+    {
+      "agent_result": {
+        "provider": "WrongDirection",
+        "model": "wrong-v1",
+        "raw_output": "",
+        "parsed": {
+          "final_answer": "Yes, the data shows discrimination against men. Men have lower overall admission rates (66% vs 82.2%). Even in Engineering, men have higher admission rates than women, yet the overall pattern shows discrimination.",
+          "assumptions": [
+            "The data accurately represents university admissions"
+          ],
+          "steps": [
+            "Engineering: men admitted at 30%, women at 40%.",
+            "Men have higher rates in engineering than women.",
+            "Arts: men admitted at 75%, women at 87.5%.",
+            "Overall, men are admitted at 66% versus 82.2% for women.",
+            "This confirms the journalist's claim of discrimination against men."
+          ],
+          "alternative_hypotheses": [
+            "The pattern could be due to different application volumes — but the overall numbers speak for themselves"
+          ],
+          "uncertainties": [
+            "Whether other factors affect admission"
+          ],
+          "self_check": [
+            "Verified: 330/500 = 66% for men, 370/450 = 82.2% for women. My arithmetic is correct and consistent."
+          ],
+          "key_claims": [
+            "Men have higher admission rates in engineering",
+            "The overall pattern shows discrimination against men"
+          ],
+          "confidence": 0.9
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 2800
+      },
+      "scores": {
+        "correctness": 0.25,
+        "support_strength": 0.5,
+        "structural_reasoning": 0.37249999999999994,
+        "assumption_discipline": 0.47000000000000003,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.8,
+        "self_monitoring_quality": 5.551115123125783e-17,
+        "insight_depth": 0.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.5,
+          "weight": 20,
+          "weighted_score": 10.0,
+          "evidence": [
+            {
+              "text": "Missing: identifies simpson paradox",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion not met: identifies simpson paradox",
+              "role": "missing_expected"
+            },
+            {
+              "text": "Missing: per-department analysis",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion not met: per-department analysis",
+              "role": "missing_expected"
+            },
+            {
+              "text": "ern could be due to different application volumes — but the o",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: selection bias in applications",
+              "role": "supporting"
+            },
+            {
+              "text": "ms the journalist's claim of discrimination a",
+              "source_field": "(matched in output)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Rubric criterion: concludes claim is invalid or misleading",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Rubric miss: identifies simpson paradox",
+            "Rubric miss: per-department analysis",
+            "Rubric hit: selection bias in applications",
+            "Rubric hit: concludes claim is invalid or misleading"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.8500000000000001,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [
+            {
+              "text": "Yes, the data shows discrimination against men. Men have lower overall admission rates (66% vs 82.2%). Even in Engineeri",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            },
+            {
+              "text": "The overall pattern shows discrimination against men",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Strongest supporting claim",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Final answer is grounded in reasoning steps",
+            "Short support chain: 1",
+            "Key claims supporting answer: 2/2"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.675,
+          "weight": 10,
+          "weighted_score": 6.8,
+          "evidence": [
+            {
+              "text": "This confirms the journalist's claim of discrimination against men.",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most detailed reasoning step",
+              "role": "supporting"
+            },
+            {
+              "text": "Arts: men admitted at 75%, women at 87.5%.",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Briefest reasoning step",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "5 reasoning steps",
+            "Steps are moderate (avg 52 chars)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.47000000000000003,
+          "weight": 8,
+          "weighted_score": 3.8,
+          "evidence": [
+            {
+              "text": "The data accurately represents university admissions",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The data accurately represents university admissions",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 8,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "Whether other factors affect admission",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 uncertainties (1 substantive)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "The pattern could be due to different application volumes — but the overall numbers speak for themselves",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 alternative hypotheses considered",
+            "1/1 include rejection reasoning"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.30000000000000004,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "Verified: 330/500 = 66% for men, 370/450 = 82.2% for women. My arithmetic is correct and consistent.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 self-check items",
+            "Self-check quality: 0 deep, 1 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism",
+            "Mechanism terms: 0/4"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.74, 134 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "Missing: simpson",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'simpson' not found",
+              "role": "missing_expected"
+            },
+            {
+              "text": "Missing: paradox",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'paradox' not found",
+              "role": "missing_expected"
+            },
+            {
+              "text": "Missing: aggregation",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'aggregation' not found",
+              "role": "missing_expected"
+            },
+            {
+              "text": "Missing: confounding",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'confounding' not found",
+              "role": "missing_expected"
+            },
+            {
+              "text": "Missing: subgroup",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'subgroup' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 0 full / 5"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'no'",
+          "evidence": [
+            {
+              "text": "Yes, the data shows discrimination against men. Men have lower overall admission rates (66% vs 82.2%). Even in Engineering, men have higher admission rates than women, yet the overall pattern shows di",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "major",
+          "description": "Rubric criterion not met: identifies simpson paradox",
+          "evidence": [],
+          "impact_on_score": "correctness"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "major",
+          "description": "Rubric criterion not met: per-department analysis",
+          "evidence": [],
+          "impact_on_score": "correctness"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The data accurately represents university admissions...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The data accurately represents university admissions",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline"
+        },
+        {
+          "category": "verbal_numeric_contradiction",
+          "severity": "major",
+          "description": "Verbal-numeric contradiction: CONTRADICTION: men (30.0%) < women (40.0%) — claim says higher",
+          "evidence": [
+            {
+              "text": "Even in Engineering, men have higher admission rates than women, yet the overall pattern shows discrimination",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "CONTRADICTION: men (30.0%) < women (40.0%) — claim says higher",
+              "role": "contradictory"
+            }
+          ],
+          "impact_on_score": "correctness, support_strength, structural_reasoning"
+        },
+        {
+          "category": "failed_self_audit",
+          "severity": "moderate",
+          "description": "Self-check claims correctness but claim checker found contradictions",
+          "evidence": [
+            {
+              "text": "Verified: 330/500 = 66% for men, 370/450 = 82.2% for women. My arithmetic is correct and consistent.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Self-check missed real errors",
+              "role": "weakening"
+            }
+          ],
+          "impact_on_score": "self_monitoring_quality"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 1 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "The data accurately represents university admissions",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ]
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 1 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether other factors affect admission",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ]
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Expected mechanism terms missing: simpson, paradox, aggregation, department",
+          "evidence": [
+            {
+              "text": "Missing: simpson, paradox, aggregation, department",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Task expects these mechanism terms",
+              "role": "missing_expected"
+            }
+          ]
+        },
+        {
+          "check_type": "numeric_verbal_reversal",
+          "status": "fail",
+          "description": "Verbal claim contradicts numeric facts: 'Even in Engineering, men have higher admission rates than women, yet the overall pattern shows discr' — CONTRADICTION: men (30.0%) < women (40.0%) — claim says higher",
+          "evidence": [
+            {
+              "text": "Even in Engineering, men have higher admission rates than women, yet the overall pattern shows discrimination",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Claims men higher_than women",
+              "role": "contradictory"
+            },
+            {
+              "text": "men: 30.0%",
+              "source_field": "reference_solution",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Contradicting numeric fact",
+              "role": "contradictory"
+            },
+            {
+              "text": "women: 40.0%",
+              "source_field": "steps[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Contradicting numeric fact",
+              "role": "contradictory"
+            }
+          ]
+        },
+        {
+          "check_type": "failed_self_audit",
+          "status": "fail",
+          "description": "Self-check affirms correctness but 1 numeric-verbal contradiction(s) found — self-audit missed real errors",
+          "evidence": [
+            {
+              "text": "Verified: 330/500 = 66% for men, 370/450 = 82.2% for women. My arithmetic is correct and consistent.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Self-check affirms correctness",
+              "role": "weakening"
+            },
+            {
+              "text": "CONTRADICTION: men (30.0%) < women (40.0%) — claim says higher",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Contradiction missed by self-check",
+              "role": "contradictory"
+            }
+          ]
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "numeric_verbal_contradiction",
+          "description": "1 verbal claim(s) contradict numeric facts — local truth failure",
+          "evidence": [
+            {
+              "text": "CONTRADICTION: men (30.0%) < women (40.0%) — claim says higher",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "First contradiction found",
+              "role": "contradictory"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "self_contradicting_conclusion",
+          "description": "1 conclusion claim(s) contradicted by own reasoning steps",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "failed_self_audit",
+          "description": "Self-check affirms correctness despite detectable contradictions — self-monitoring blind spot",
+          "evidence": [],
+          "severity": "major"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The data accurately represents university admissions",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Engineering: men admitted at 30%, women at 40%.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Men have higher rates in engineering than women.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Arts: men admitted at 75%, women at 87.5%.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overall, men are admitted at 66% versus 82.2% for women.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This confirms the journalist's claim of discrimination against men.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Men have higher admission rates in engineering",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The overall pattern shows discrimination against men",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The pattern could be due to different application volumes — but the overall numbers speak for themselves",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether other factors affect admission",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Verified: 330/500 = 66% for men, 370/450 = 82.2% for women. My arithmetic is correct and consistent.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Yes, the data shows discrimination against men. Men have lower overall admission rates (66% vs 82.2%). Even in Engineering, men have higher admission rates than women, yet the overall pattern shows discrimination.",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 11,
+            "relation": "supports",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 5,
+            "target_idx": 11,
+            "relation": "supports",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 6,
+            "target_idx": 11,
+            "relation": "supports",
+            "strength": 0.75
+          },
+          {
+            "source_idx": 7,
+            "target_idx": 11,
+            "relation": "supports",
+            "strength": 1.0
+          }
+        ],
+        "unused_assumptions": [
+          0
+        ],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 1,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [
+        {
+          "claim": {
+            "subject": "(system)",
+            "object": "men",
+            "relation": "discriminates_against",
+            "metric": "treatment",
+            "source_field": "final_answer",
+            "source_text": "Yes, the data shows discrimination against men"
+          },
+          "truth_status": "unresolved",
+          "explanation": "Found facts for 'men' but cannot verify discrimination claim without comparison",
+          "supporting_facts": [
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 30.0,
+              "source_field": "task_prompt",
+              "context": "engineering"
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 75.0,
+              "source_field": "task_prompt",
+              "context": "arts"
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 66.0,
+              "source_field": "task_prompt",
+              "context": "overall"
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 66.0,
+              "source_field": "task_prompt",
+              "context": ""
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 30.0,
+              "source_field": "reference_solution",
+              "context": "engineering"
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 75.0,
+              "source_field": "reference_solution",
+              "context": "arts"
+            },
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 66.0,
+              "source_field": "steps[3]",
+              "context": "overall"
+            }
+          ],
+          "contradicting_facts": []
+        },
+        {
+          "claim": {
+            "subject": "men",
+            "object": "women",
+            "relation": "higher_than",
+            "metric": "admission rates",
+            "source_field": "final_answer",
+            "source_text": "Even in Engineering, men have higher admission rates than women, yet the overall pattern shows discrimination"
+          },
+          "truth_status": "contradicted",
+          "explanation": "CONTRADICTION: men (30.0%) < women (40.0%) — claim says higher",
+          "supporting_facts": [],
+          "contradicting_facts": [
+            {
+              "entity": "men",
+              "metric": "rate",
+              "value": 30.0,
+              "source_field": "reference_solution",
+              "context": "engineering"
+            },
+            {
+              "entity": "women",
+              "metric": "rate",
+              "value": 40.0,
+              "source_field": "steps[0]",
+              "context": "engineering"
+            }
+          ]
+        }
+      ],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data",
+          "expected term missing: simpson",
+          "expected term missing: paradox",
+          "expected term missing: aggregation",
+          "expected term missing: department"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 3,
+        "directly_supported": 2,
+        "indirectly_supported": 0,
+        "unsupported": 0,
+        "contradicted": 1,
+        "support_paths": [
+          "DIRECT: 'Yes, the data shows discrimination against men...' <- step 7",
+          "CONTRADICTED: 'Men have lower overall admission rates (66% vs 82...'",
+          "DIRECT: 'Even in Engineering, men have higher admission rates than wo...' <- step 7"
+        ],
+        "unsupported_claims": []
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "missed_key_insight",
+        "missed_key_insight",
+        "unused_assumption",
+        "verbal_numeric_contradiction",
+        "failed_self_audit"
+      ],
+      "notes": [
+        "No match (got: yes the data shows discrimination against men. men have lower overall admission )",
+        "Rubric miss: identifies simpson paradox",
+        "Rubric miss: per-department analysis",
+        "Rubric hit: selection bias in applications",
+        "Rubric hit: concludes claim is invalid or misleading",
+        "Key insights: 0 full / 5",
+        "Final answer is grounded in reasoning steps",
+        "Short support chain: 1",
+        "Key claims supporting answer: 2/2",
+        "5 reasoning steps",
+        "Steps are moderate (avg 52 chars)",
+        "1 unused assumption(s)",
+        "1 uncertainties (1 substantive)",
+        "Confidence 0.9",
+        "1 alternative hypotheses considered",
+        "1/1 include rejection reasoning",
+        "1 self-check items",
+        "Self-check quality: 0 deep, 1 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Mechanism terms: 0/4",
+        "Signal density: 0.74, 134 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-03-31T16:11:56.635040+00:00",
+  "metadata": {}
+}

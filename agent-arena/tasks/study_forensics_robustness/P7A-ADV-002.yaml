@@ -1,0 +1,170 @@
+id: P7A-ADV-002
+title: "Adversarial A1: POM Wonderful 'backed by $35 million of research' treats heart disease/prostate cancer/ED (decorative citation)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: decorative_citation
+ambiguity_level: low
+prompt: |
+  Advertising for POM Wonderful pomegranate juice and POMx supplements states: "Backed by $35 million in medical research at the world's leading universities, POM Wonderful helps prevent and treat heart disease, prostate cancer, and erectile dysfunction. Cheat death."
+
+  The US Federal Trade Commission challenged 36 advertisements and, after trial, the Commission (2013) found there was insufficient competent and reliable scientific evidence that POM products treat, prevent, or reduce the risk of heart disease, prostate cancer, or erectile dysfunction. The company-funded studies it cited did not establish those disease outcomes: the cardiovascular studies were small or lacked adequate controls, and the prostate-cancer study had no control group. The Final Order requires two randomized, well-controlled human trials to support any such disease claim.
+context: |
+  Evidence tier: a regulator's post-trial evidence assessment (FTC Commission Opinion), weighing the
+  company's own cited research. The advertising foregrounds a large research investment ("$35 million",
+  "leading universities") as if the volume of citation proves disease prevention/treatment. The cited
+  studies support, at most, adjacent or preliminary findings (biomarkers, uncontrolled series) — not
+  the asserted clinical disease outcomes. The load-bearing move is the decorative appeal to expensive
+  research; the defect is rhetorical inflation = overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  POM's ads cite "$35 million in medical research at leading universities" to claim its products
+  prevent and treat heart disease, prostate cancer, and erectile dysfunction. The FTC found the cited
+  studies did not establish those disease outcomes (small/uncontrolled cardiovascular studies; a
+  prostate study with no control group). The research volume is decoration; it does not support the
+  disease claims. Conclusions framed as research-proven that exceed what the studies show = overclaim.
+  It is not mechanism_vs_evidence (no animal/preclinical mechanism is the basis) or
+  correlation_vs_causation (the defect is the unsupported proof-claim, not a specific observational
+  design error).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: POM products, "backed by $35 million in medical research", prevent and treat
+     heart disease, prostate cancer, and erectile dysfunction.
+  2. What the strongest evidence establishes: the FTC found insufficient competent and reliable
+     evidence for those disease outcomes; the cited studies were small, uncontrolled, or measured
+     adjacent endpoints, not the asserted clinical outcomes.
+  3. Adversarial surface feature: the large, specific research investment ("$35 million", "world's
+     leading universities") signals heavy scientific backing and invites crediting the disease claims.
+  4. Actual forensic mismatch: the cited research does not establish the disease claims; the dollar
+     figure and institutional prestige are non-probative for the specific outcomes asserted.
+  5. Primary frozen label: overclaim — disease-prevention/treatment claims framed as research-proven
+     that exceed what the cited studies establish.
+  6. Why: the entire defect is rhetorical inflation via a decorative appeal to research volume; there
+     is no specific structural trigger doing the decisive work.
+  7. Strongest competing label: solid — the studies are real and university-affiliated, so faithful
+     reporting of them might seem solid.
+  8. Why it loses: the studies do not support the disease outcomes claimed (uncontrolled/biomarker
+     level), so the disease claims are unsupported; volume of research is not evidence of the specific
+     outcomes = overclaim, not solid.
+  9. What would change the verdict: two randomized, well-controlled human trials showing POM prevents
+     or treats these diseases (the FTC's required standard) would move the claim toward solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: the ads cite substantial, real, university-based
+  research, so a reader might treat the disease claims as well-supported. It loses because the FTC
+  found the cited studies do not establish the heart-disease, prostate-cancer, or ED outcomes (small,
+  uncontrolled, or biomarker-level); the research investment is decorative relative to the specific
+  claims = overclaim.
+gold_summary: |
+  POM cited "$35 million in medical research at leading universities" to claim it treats/prevents heart
+  disease, prostate cancer, and ED; the FTC found the cited studies did not establish those outcomes.
+  A large but non-probative research citation dressing unsupported disease claims = overclaim.
+curator_notes: |
+  Adversarial family A1 (decorative citation). Real public claim documented by the FTC 2013 Commission
+  Opinion (POM Wonderful). Distinct proposition from Airborne A1 (P7A-ADV-001): here the decoration is
+  research VOLUME/prestige ($35M, leading universities) across three disease outcomes, not a single
+  fake trial. Independent of all Boundary/Class-A cases. Gold frozen before any model output.
+expected_findings:
+  - finding: decorative_research_volume_citation
+    severity: major
+    confidence: high
+    note: "'$35 million of research at leading universities' cited as if it proves the disease claims"
+  - finding: disease_claims_unsupported
+    severity: major
+    confidence: high
+    note: "FTC: cited studies did not establish heart-disease/prostate-cancer/ED outcomes"
+gold_evidence_spans:
+  - span: "Backed by $35 million in medical research at the world's leading universities"
+    why_it_matters: "Research volume/prestige cited as proof; non-probative for the specific disease outcomes."
+    supports_finding: decorative_research_volume_citation
+  - span: "helps prevent and treat heart disease, prostate cancer, and erectile dysfunction"
+    why_it_matters: "Disease outcomes the cited studies do not establish."
+    supports_finding: disease_claims_unsupported
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "research volume as decoration"
+    variants: ["$35 million", "leading universities", "non-probative"]
+    functional_descriptions:
+      - "Amount of research is cited as if it proves specific disease outcomes"
+  - keyword: "unsupported disease claims"
+    variants: ["FTC", "no control group", "insufficient evidence"]
+    functional_descriptions:
+      - "The cited studies do not establish the asserted clinical outcomes"
+common_errors:
+  - treating a large research investment as proof of specific outcomes
+  - crediting disease claims because studies are 'university' studies
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - decorative_citation_credited
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that citing research volume/prestige is decoration when the cited studies do not establish the asserted disease outcomes?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-002
+  case_family: adversarial
+  adversarial_family_id: A1
+  adversarial_family: "decorative citation (citation present, does not support the claim)"
+  adversarial_mechanism: |
+    The claim advertises a large, specific research investment ("$35 million in medical research at the
+    world's leading universities") as if the volume and prestige of citation prove disease prevention
+    and treatment. The FTC found the cited studies do not establish the asserted heart-disease,
+    prostate-cancer, or ED outcomes (small, uncontrolled, or biomarker-level). The surface pressure is
+    that heavy, institutionally prestigious research reads as proof. The pressure to resist: treating
+    citation volume/prestige as substantiation of the specific outcomes.
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    Multiple decorative cues (a large dollar figure, prestigious institutions, three separate disease
+    outcomes each with its own cited study) increase the number of plausible readings and the
+    claim-to-evidence distance; disentangling that the cited studies do not establish the disease
+    outcomes requires evidence-tier discrimination. Property-based; D3.
+  precedence_rationale: |
+    No specific-label trigger fires: the basis is not a described animal/preclinical mechanism (rules
+    out mechanism_vs_evidence) and not a single observational dataset read causally (rules out
+    correlation_vs_causation). The defect is generic rhetorical inflation via decorative research
+    citation, so overclaim stays primary per the residual/generic rule.
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary. solid is tempting only if the cited
+    research is credited for the disease outcomes, which the FTC found it does not support.
+  steelman_challenge: |
+    Strongest case the gold is wrong: POM funded and cited genuine, university-affiliated research and
+    some studies reported favourable biomarker signals, so a reader could call faithful reporting
+    solid. Counter-evidence weighed: the FTC's post-trial Commission Opinion found the studies did not
+    establish the disease outcomes (uncontrolled series; a prostate study with no control group; small
+    cardiovascular studies) and required two RCTs for such claims. Resolution: the citation is
+    decorative for the specific outcomes; gold remains overclaim.
+  provenance:
+    claim_source_title: "FTC: Commissioners Uphold Decision that POM Wonderful Deceptively Advertised Pomegranate Products (heart disease, prostate cancer, ED claims)"
+    claim_source_url: "https://www.ftc.gov/news-events/news/press-releases/2013/01/ftc-commissioners-uphold-trial-judge-decision-pom-wonderful-llc-stewart-lynda-resnick-others"
+    claim_source_publisher: "POM Wonderful, LLC (Stewart and Lynda Resnick); the advertising claims and their disposition are documented by the US Federal Trade Commission"
+    claim_source_date: "2010-2013"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "POM's advertising campaign (challenged in 36 ads) promoted pomegranate juice and POMx as backed by tens of millions of dollars of research at leading universities and as preventing/treating heart disease, prostate cancer, and erectile dysfunction ('Cheat Death', 'Super Health Powers'). The FTC's 2012 ALJ decision and 2013 Commission Opinion found insufficient competent and reliable scientific evidence for the disease claims. The frozen span is the bounded research-volume proof-claim across the three disease outcomes."
+    claim_exact_span: "Backed by $35 million in medical research at the world's leading universities, POM Wonderful helps prevent and treat heart disease, prostate cancer, and erectile dysfunction"
+    evidence_sources:
+      - citation: "US Federal Trade Commission. In re POM Wonderful LLC, Commission Opinion and Final Order (2013); FTC Docket No. 9344"
+        url: "https://www.ftc.gov/news-events/news/press-releases/2013/01/ftc-commissioners-uphold-trial-judge-decision-pom-wonderful-llc-stewart-lynda-resnick-others"
+        design: "Regulatory adjudication (post-trial Commission Opinion) and evidence assessment"
+        population: "Consumers targeted by POM disease-claim advertising"
+        intervention_or_exposure: "POM Wonderful juice / POMx supplements for heart disease, prostate cancer, ED"
+        comparator: "Standard of proof: competent and reliable scientific evidence (two RCTs required by the Order)"
+        endpoint: "Substantiation of disease prevention/treatment claims"
+        result: "Insufficient competent and reliable scientific evidence; the cited studies did not establish the disease outcomes; deceptive-advertising liability upheld"
+        source_role: regulatory_assessment
+        evidence_tier: "Regulatory adjudication / evidence assessment"
+        limitations: "Adjudicates substantiation and deception; does not itself run trials"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "decorative citation: research volume/prestige cited as proof of unsupported disease outcomes"
+  case_fingerprint: "3850cc04df208f833d662d6844f6a033103b917c0fb1d5a0724fda2820b5d7e7"

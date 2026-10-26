@@ -1,0 +1,736 @@
+[
+  {
+    "case_id": "study-forensics-013",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "mech_study-forensics-013_claude_haiku_510322",
+    "parse_ok": true,
+    "total_score": 74.8,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 4,
+    "latency_ms": 12318,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The summary appropriately distinguishes between animal model findings (presented as established) and human applications (presented as speculative)",
+      "Causal claims are supported by experimental design (germ-free comparison + intervention)",
+      "The therapeutic proposal is properly hedged with explicit acknowledgment that human trials are needed",
+      "No unsupported generalizations are made from mice to humans in the text as presented"
+    ]
+  },
+  {
+    "case_id": "study-forensics-013",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "mech_study-forensics-013_claude_sonnet_dfcb60",
+    "parse_ok": true,
+    "total_score": 67.9,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 1,
+    "latency_ms": 11593,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Mouse study shows indoles reduce anxiety-like behavior via amygdala modulation",
+      "Researchers propose human therapeutic applications based on mouse mechanism",
+      "Human trials acknowledged as needed but therapeutic potential still promoted"
+    ]
+  },
+  {
+    "case_id": "study-forensics-013",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "mech_study-forensics-013_claude_opus_028eb8",
+    "parse_ok": true,
+    "total_score": 39.6,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "unsupported_generalization"
+    ],
+    "finding_recall": 0.667,
+    "false_positives": [],
+    "n_failures": 4,
+    "latency_ms": 18548,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study appropriately limits conclusions to mice",
+      "Human applications are presented as future possibilities, not current recommendations",
+      "Necessary caveats about human trials are explicitly included",
+      "The mechanism (indoles → amygdala → anxiety) is described only for mice"
+    ]
+  },
+  {
+    "case_id": "study-forensics-024",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "mech_study-forensics-024_claude_haiku_405b2c",
+    "parse_ok": true,
+    "total_score": 71.0,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 3,
+    "latency_ms": 14231,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "The primary mechanism-vs-evidence issue: Mouse hippocampal neurogenesis and immune changes are presented as mechanistic explanations, but these are observed in mice and the leap to human therapeutic application is not evidenced",
+      "The translational gap is acknowledged minimally ('with a suitable delivery method') but the broader claim about combating human age-related decline is stated confidently despite being entirely extrapolated from mouse data",
+      "Patent filing and clinical suggestions are made on the basis of mouse lifespan and phenotypic data alone, without human safety, efficacy, or mechanism validation",
+      "The text does not distinguish between what was demonstrated in mice versus what remains speculative for humans"
+    ]
+  },
+  {
+    "case_id": "study-forensics-024",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "mech_study-forensics-024_claude_sonnet_f88517",
+    "parse_ok": true,
+    "total_score": 65.1,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 3,
+    "latency_ms": 11587,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Mouse study shows clear anti-aging benefits of Klotho gene therapy",
+      "Researchers suggest this could help build a healthier human society",
+      "Patents filed for treating human age-related conditions",
+      "No evidence presented for human efficacy or safety"
+    ]
+  },
+  {
+    "case_id": "study-forensics-024",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "mech_study-forensics-024_claude_opus_039f0a",
+    "parse_ok": true,
+    "total_score": 38.9,
+    "predicted_label": "overclaim",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 6,
+    "latency_ms": 17835,
+    "raw_answer": "overclaim",
+    "raw_key_claims": [
+      "Mouse study results are being extrapolated to human societal benefits without evidence of human efficacy",
+      "The jump from 'mice lived 15-20% longer' to 'help build a healthier society' is unsupported",
+      "Patents for human conditions are being filed based on mouse data alone"
+    ]
+  },
+  {
+    "case_id": "study-forensics-028",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "mech_study-forensics-028_claude_haiku_cedb67",
+    "parse_ok": true,
+    "total_score": 68.9,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 4,
+    "latency_ms": 13857,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "The primary epistemic issue is mechanism_vs_evidence: a mechanism (NAD+ restoration) and a treatment outcome (memory recovery) demonstrated in mice are presented as evidence for human therapeutic potential without human data",
+      "The text does include appropriate hedging language ('suggest,' 'call for clinical trials'), which partially mitigates the overclaim risk",
+      "However, the framing—'repaired brain damage and regained normal memory'—is presented as a strong positive result that justifies moving toward human trials, which is a moderate extrapolation from mouse to human",
+      "The claim that this moves therapy 'beyond slowing decline toward meaningful recovery' is aspirational language that goes beyond what the mouse data alone can support"
+    ]
+  },
+  {
+    "case_id": "study-forensics-028",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "mech_study-forensics-028_claude_sonnet_45a5ab",
+    "parse_ok": true,
+    "total_score": 68.6,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 5,
+    "latency_ms": 12710,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Animal study shows NAD+ restoration can repair brain damage and restore memory in Alzheimer's mice",
+      "Researchers suggest this could lead to recovery-focused human therapies",
+      "The mechanism identified in mice is being proposed as relevant to human treatment"
+    ]
+  },
+  {
+    "case_id": "study-forensics-028",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "mech_study-forensics-028_claude_opus_5340b9",
+    "parse_ok": true,
+    "total_score": 70.9,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 5,
+    "latency_ms": 15518,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "NAD+ drops disrupt brain energy in Alzheimer's mice",
+      "NAD+ restoration reversed damage and memory loss in mice",
+      "Researchers suggest this could work in humans without human evidence",
+      "The text presents mouse mechanism as basis for human therapeutic optimism"
+    ]
+  },
+  {
+    "case_id": "study-forensics-029",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "mech_study-forensics-029_claude_haiku_4fb4e3",
+    "parse_ok": true,
+    "total_score": 40.0,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 5,
+    "latency_ms": 11248,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study found a dissociation: strong biomarker effects but no cognitive benefit",
+      "Investigators did NOT overclaim—they explicitly state cognitive benefits are unproven",
+      "The null cognitive finding is presented as a genuine failure, not explained away",
+      "The open-label extension is proposed but framed as addressing an unproven question, not as confirmation"
+    ]
+  },
+  {
+    "case_id": "study-forensics-029",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "mech_study-forensics-029_claude_sonnet_6475cd",
+    "parse_ok": true,
+    "total_score": 35.7,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 5,
+    "latency_ms": 11135,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study appropriately separates biomarker success from clinical efficacy",
+      "Investigators honestly acknowledge the lack of cognitive benefits",
+      "No unsupported causal claims are made between biomarker changes and cognitive outcomes",
+      "The research maintains appropriate scientific humility about unproven benefits"
+    ]
+  },
+  {
+    "case_id": "study-forensics-029",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "mech_study-forensics-029_claude_opus_894bea",
+    "parse_ok": true,
+    "total_score": 40.0,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 5,
+    "latency_ms": 15902,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study shows appropriate scientific restraint by reporting both successes and failures",
+      "Biomarker improvements are not conflated with clinical benefits",
+      "The acknowledgment of unproven cognitive benefits appears genuine, not decorative",
+      "This represents good scientific communication of mixed results"
+    ]
+  },
+  {
+    "case_id": "study-forensics-030",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "mech_study-forensics-030_claude_haiku_64c0fa",
+    "parse_ok": true,
+    "total_score": 40.0,
+    "predicted_label": "overclaim",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 6,
+    "latency_ms": 14840,
+    "raw_answer": "overclaim",
+    "raw_key_claims": [
+      "The core overclaim: calling this an 'exercise mimetic' based on activation of one pathway in mice. Exercise is a complex, multi-system stimulus; activating the apelin/APJ pathway is not equivalent to exercise.",
+      "Mechanism-to-human translation gap: Preclinical efficacy in mice (HbA1c reduction, weight loss, cardiac remodeling) does not predict human efficacy. Mice and humans differ in metabolism, pharmacokinetics, and disease pathophysiology.",
+      "Confounding in combination therapy: The synergistic effect with incretin therapy is presented without clarity on whether the agonist alone drives the benefits or whether the combination is required.",
+      "Appropriate caution is present ('could serve as,' 'preparing to translate') but is undermined by the framing of apelin as an 'exercise hormone system' and the confident claim about translation potential."
+    ]
+  },
+  {
+    "case_id": "study-forensics-030",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "mech_study-forensics-030_claude_sonnet_f43d49",
+    "parse_ok": true,
+    "total_score": 67.9,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "conclusion_exceeds_results",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 3,
+    "latency_ms": 11936,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Mouse studies show improved glycemic control, weight loss, and cardiac benefits",
+      "Company claims this could work as 'pharmacological exercise mimetic' in humans",
+      "No human evidence is provided to support the therapeutic translation"
+    ]
+  },
+  {
+    "case_id": "study-forensics-030",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "clear",
+    "gold_confidence": "high",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "mech_study-forensics-030_claude_opus_36eee1",
+    "parse_ok": true,
+    "total_score": 67.1,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 3,
+    "latency_ms": 14437,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Strong preclinical evidence in multiple mouse disease models",
+      "Clear mechanism-to-human therapeutic leap without human evidence",
+      "The 'exercise hormone' and 'exercise mimetic' framing implies human relevance not yet demonstrated"
+    ]
+  },
+  {
+    "case_id": "study-forensics-031",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "borderline",
+    "gold_confidence": "medium",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "mech_study-forensics-031_claude_haiku_e9b6d5",
+    "parse_ok": true,
+    "total_score": 40.0,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "decorative_uncertainty"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "decorative_uncertainty"
+    ],
+    "missed_findings": [],
+    "finding_recall": 1.0,
+    "false_positives": [],
+    "n_failures": 3,
+    "latency_ms": 10455,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "Mouse lifespan extension (10-25%) is well-replicated but does not translate to proven human aging effects",
+      "The human trial was well-designed and tested relevant endpoints, but did not achieve its primary goal and did not measure biological aging",
+      "Expert consensus explicitly states no clinical evidence supports rapamycin for aging in humans",
+      "Off-label use carries documented risks, especially for vulnerable populations",
+      "The text maintains a clear epistemic boundary between animal data, human enthusiasm, and human evidence"
+    ]
+  },
+  {
+    "case_id": "study-forensics-031",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "borderline",
+    "gold_confidence": "medium",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "mech_study-forensics-031_claude_sonnet_c94da9",
+    "parse_ok": true,
+    "total_score": 39.9,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "decorative_uncertainty"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated"
+    ],
+    "missed_findings": [
+      "decorative_uncertainty"
+    ],
+    "finding_recall": 0.5,
+    "false_positives": [],
+    "n_failures": 6,
+    "latency_ms": 10717,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "Mouse studies show reliable lifespan extension",
+      "Human trial was safe but failed primary endpoint",
+      "No clinical evidence yet exists for human anti-aging effects",
+      "Off-label use carries risks"
+    ]
+  },
+  {
+    "case_id": "study-forensics-031",
+    "gold_label": "mechanism_vs_evidence",
+    "gold_case_type": "borderline",
+    "gold_confidence": "medium",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "mech_study-forensics-031_claude_opus_b52739",
+    "parse_ok": true,
+    "total_score": 36.7,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "decorative_uncertainty"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated"
+    ],
+    "missed_findings": [
+      "decorative_uncertainty"
+    ],
+    "finding_recall": 0.5,
+    "false_positives": [],
+    "n_failures": 7,
+    "latency_ms": 16548,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "Text maintains clear epistemic boundaries between species",
+      "Acknowledges replication in mice while noting absence of human aging evidence",
+      "Includes appropriate expert warnings about off-label use",
+      "Does not extrapolate from mechanism to human outcomes"
+    ]
+  }
+]

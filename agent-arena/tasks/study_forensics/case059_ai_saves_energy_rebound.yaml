@@ -1,0 +1,69 @@
+id: study-forensics-059
+title: 'Study Forensics: ''AI saves energy'' ignoring compute lifecycle and rebound'
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: energy_lifecycle_blind_spot
+ambiguity_level: high
+origin: synthetic_fixture
+prompt: |
+  A vendor claims its AI logistics optimiser 'saves energy and cuts carbon' because routed trucks used 8% less fuel in a pilot. The claim ignores the energy cost of training and running the model and the possibility that cheaper logistics increase total shipping volume (rebound effect).
+context: |
+  An operational fuel saving is presented as a net energy/carbon benefit without accounting for compute lifecycle emissions or rebound effects. Boundary/lifecycle overclaim. Borderline — a narrow operational reading is defensible.
+expected_answer: overclaim
+reference_solution: |
+  The 8% routing saving is a partial, operational figure. A net energy/carbon claim requires accounting for model training/inference energy and rebound effects (induced demand). Without full-boundary accounting, the net benefit is unproven.
+gold_label: overclaim
+gold_confidence: medium
+gold_case_type: borderline
+gold_justification: |
+  A partial operational fuel saving is generalised to a net energy/carbon benefit while ignoring compute-lifecycle emissions and rebound effects. The system-boundary omission makes the net claim exceed the evidence — an overclaim (borderline).
+gold_alternative_reading: |
+  Read narrowly as 'routing reduced fuel use by 8% in this pilot', the operational claim is supported and could be labelled cautious/insufficient rather than overclaim. It tips to overclaim because the vendor states a net 'saves energy and cuts carbon' benefit without lifecycle or rebound accounting.
+gold_summary: |
+  An 8% routing fuel saving is sold as net energy/carbon benefit, ignoring model compute and rebound effects. Lifecycle-boundary overclaim (borderline).
+curator_notes: |
+  Borderline energy blind-spot case; parallels case042 (edge-AI energy). Genuinely debatable between overclaim and insufficient_evidence. Discrimination: hard.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: conclusion_exceeds_results
+  severity: major
+  confidence: medium
+- finding: unsupported_generalization
+  severity: moderate
+  confidence: medium
+gold_evidence_spans:
+- span: '''saves energy and cuts carbon'' because routed trucks used 8% less fuel in a pilot'
+  why_it_matters: A partial operational figure presented as a net benefit.
+  supports_finding: conclusion_exceeds_results
+- span: ignores the energy cost of training and running the model ... rebound effect
+  why_it_matters: System-boundary omissions undercut the net claim.
+  supports_finding: unsupported_generalization
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: system boundary
+  variants:
+  - lifecycle
+  - training energy
+  - compute cost
+  functional_descriptions:
+  - compute lifecycle emissions are excluded
+- keyword: rebound effect
+  variants:
+  - induced demand
+  - increase total shipping
+  functional_descriptions:
+  - cheaper logistics may raise total volume
+common_errors:
+- accepting a partial saving as a net benefit
+- ignoring rebound and compute costs
+expected_failure_modes:
+- missing_overclaim
+- boundary_blindness
+discriminative_dimensions:
+- correctness
+- insight_depth
+diagnostic_focus: Can the agent flag a net energy claim that ignores lifecycle and rebound?

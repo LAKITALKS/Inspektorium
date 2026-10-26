@@ -1,0 +1,1116 @@
+{
+  "run_id": "praxis_study-forensics-009_Claude_Haiku_111a16",
+  "task": {
+    "id": "study-forensics-009",
+    "title": "Study Forensics: Mindfulness app for autistic adults",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "In an open-access randomised controlled trial, 89 adults diagnosed with autism practiced mindfulness using a smartphone app for six weeks. Compared with a wait-list control group, the intervention group reported significant reductions in anxiety and perceived stress; when the control group later used the app, they replicated the improvements. Gains persisted six weeks after practice stopped. Lead investigator John Gabrieli said he and his colleagues were already convinced the app could help autistic adults and suggested it might benefit people of all ages.\n",
+    "context": "Although the trial design is solid and results are promising, the lead investigator's assertion\nthat mindfulness apps will help autistic adults and potentially everyone else goes beyond the\navailable evidence.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "Although the trial design is solid and results are promising, the lead investigator's assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "unsupported generalization",
+        "variants": [
+          "overgeneralization",
+          "beyond the data",
+          "all ages"
+        ],
+        "functional_descriptions": [
+          "the investigator extends findings to populations not studied"
+        ]
+      },
+      {
+        "keyword": "investigator conviction",
+        "variants": [
+          "already convinced",
+          "strong conviction"
+        ],
+        "functional_descriptions": [
+          "the researcher expresses certainty beyond what the data supports"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating the study as fully solid because the trial design is good",
+      "missing the investigator's overclaim"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "investigator_overclaim",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "confusing_study_quality_with_claim_quality"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent separate solid study design from investigator overclaim?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Although the trial design is solid and results are promising, the lead investigator's assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.\n",
+    "expected_findings": [
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "decorative_uncertainty",
+        "severity": "minor",
+        "confidence": "low"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "reported significant reductions in anxiety and perceived stress",
+        "why_it_matters": "Summarises the actual findings.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "already convinced the app could help autistic adults and ... people of all ages",
+        "why_it_matters": "Shows explicit overgeneralization and strong conviction beyond data.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "gains persisted six weeks after practice stopped",
+        "why_it_matters": "Suggests lasting effect, which could be overinterpreted without long-term follow-up.",
+        "supports_finding": "decorative_uncertainty"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The trial design is solid, but the investigator's statement 'already convinced' and\nextension to 'people of all ages' clearly exceeds what a 6-week study on 89 autistic\nadults can support. The overclaim is in the interpretation, not the methodology.\n",
+    "gold_alternative_reading": "If one reads 'already convinced' as casual optimism rather than a scientific claim,\nthe case weakens. But the explicit generalization to 'all ages' from a narrow sample\nis a textbook unsupported generalization. The alternative reading is weak.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Good discriminative case: tests whether agents can separate study quality from claim\nquality. Both sprints show strong model agreement with the gold label (5/6 correct).\nThe one miss was Opus in Sprint 1 — too charitable with investigator rhetoric.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\n    \"The study measured self-reported anxiety and stress (not objective biomarkers)\",\n    \"The wait-list control group is the only comparison condition mentioned\",\n    \"No placebo control group is described\",\n    \"The sample size of 89 is modest for generalizing across autism spectrum\",\n    \"Six weeks is a short intervention period\",\n    \"The lead investigator's prior conviction is being reported as context, not as study evidence\"\n  ],\n  \"steps\": [\n    \"1. Identified the core claim: mindfulness app reduces anxiety/stress in autistic adults with persistence\",\n    \"2. Assessed study design: RCT with wait-list control is reasonable but not gold-standard (no active placebo control mentioned)\",\n    \"3. Evaluated the evidence base: improvements in intervention group vs. wait-list, replication in delayed-start control group, 6-week follow-up persistence\",\n    \"4. Identified the overclaim: Gabrieli states the app 'might benefit people of all ages' — this extrapolates from a study of autistic adults to the general population without evidence\",\n    \"5. Noted decorative uncertainty: 'might benefit' is weak language but still makes a generalization unsupported by the data\",\n    \"6. Checked for confounders: no mention of blinding, expectancy effects, or whether participants knew they were in intervention vs. control (likely not blinded given smartphone app context)\",\n    \"7. Assessed mechanism: no mechanism described, so mechanism_vs_evidence does not apply\",\n    \"8. Assessed causation: RCT design supports causal inference for the autism sample, but generalization to 'all ages' is not causal — it's speculative\"\n  ],\n  \"alternative_hypotheses\": [\n    \"solid — if the study is well-designed and the investigator's comment is merely speculative rather than a claim being promoted by the press report\",\n    \"correlation_vs_causation — if the improvements are driven by expectancy/placebo rather than the app itself (wait-list control does not rule this out)\"\n  ],\n  \"uncertainties\": [\n    \"Whether the study included a placebo/active control condition (not mentioned in the summary)\",\n    \"Whether participants and assessors were blinded (unlikely for a smartphone app study, but not stated)\",\n    \"The magnitude of effect sizes (only 'significant' is reported)\",\n    \"Whether the investigator's comment about 'all ages' is being quoted directly or paraphrased by the press\",\n    \"Whether the improvements are clinically meaningful or just statistically significant\",\n    \"The heterogeneity of autism spectrum — whether results generalize across the full spectrum\"\n  ],\n  \"key_claims\": [\n    \"The primary claim (app reduces anxiety/stress in autistic adults) is supported by RCT evidence with replication in delayed-start control\",\n    \"The secondary claim (app might benefit people of all ages) is an unsupported generalization beyond the study population\",\n    \"The investigator's prior conviction is disclosed but may bias interpretation of results\",\n    \"Lack of active control/placebo condition leaves open the possibility that expectancy or non-specific factors drive improvements\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problems? The RCT design is legitimate; the main issue is the unjustified generalization to 'all ages,' not the core finding in autistic adults\",\n    \"Did I miss anything? The replication in the delayed-start control group is a strength; persistence at 6-week follow-up is also positive\",\n    \"Is the overclaim label justified? Yes — extrapolating from autistic adults to 'people of all ages' without evidence is a clear overclaim\",\n    \"Should I flag expectancy/placebo more strongly? Possibly, but the wait-list control does provide some protection; an active control would be better but is not described as missing\"\n  ],\n  \"confidence\": 0.78\n}\n```\n\n**Summary**: The study appears to be a reasonably designed RCT showing that a mindfulness app reduces anxiety and stress in autistic adults, with evidence of persistence. However, the investigator's suggestion that it \"might benefit people of all ages\" is an unsupported generalization that exceeds the evidence. The lack of an active placebo control is a limitation but not fatal to the core claim about autistic adults. The overclaim is primarily in the press report's framing of the investigator's speculative comment.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study measured self-reported anxiety and stress (not objective biomarkers)",
+            "The wait-list control group is the only comparison condition mentioned",
+            "No placebo control group is described",
+            "The sample size of 89 is modest for generalizing across autism spectrum",
+            "Six weeks is a short intervention period",
+            "The lead investigator's prior conviction is being reported as context, not as study evidence"
+          ],
+          "steps": [
+            "1. Identified the core claim: mindfulness app reduces anxiety/stress in autistic adults with persistence",
+            "2. Assessed study design: RCT with wait-list control is reasonable but not gold-standard (no active placebo control mentioned)",
+            "3. Evaluated the evidence base: improvements in intervention group vs. wait-list, replication in delayed-start control group, 6-week follow-up persistence",
+            "4. Identified the overclaim: Gabrieli states the app 'might benefit people of all ages' — this extrapolates from a study of autistic adults to the general population without evidence",
+            "5. Noted decorative uncertainty: 'might benefit' is weak language but still makes a generalization unsupported by the data",
+            "6. Checked for confounders: no mention of blinding, expectancy effects, or whether participants knew they were in intervention vs. control (likely not blinded given smartphone app context)",
+            "7. Assessed mechanism: no mechanism described, so mechanism_vs_evidence does not apply",
+            "8. Assessed causation: RCT design supports causal inference for the autism sample, but generalization to 'all ages' is not causal — it's speculative"
+          ],
+          "alternative_hypotheses": [
+            "solid — if the study is well-designed and the investigator's comment is merely speculative rather than a claim being promoted by the press report",
+            "correlation_vs_causation — if the improvements are driven by expectancy/placebo rather than the app itself (wait-list control does not rule this out)"
+          ],
+          "uncertainties": [
+            "Whether the study included a placebo/active control condition (not mentioned in the summary)",
+            "Whether participants and assessors were blinded (unlikely for a smartphone app study, but not stated)",
+            "The magnitude of effect sizes (only 'significant' is reported)",
+            "Whether the investigator's comment about 'all ages' is being quoted directly or paraphrased by the press",
+            "Whether the improvements are clinically meaningful or just statistically significant",
+            "The heterogeneity of autism spectrum — whether results generalize across the full spectrum"
+          ],
+          "self_check": [
+            "Did I overstate the problems? The RCT design is legitimate; the main issue is the unjustified generalization to 'all ages,' not the core finding in autistic adults",
+            "Did I miss anything? The replication in the delayed-start control group is a strength; persistence at 6-week follow-up is also positive",
+            "Is the overclaim label justified? Yes — extrapolating from autistic adults to 'people of all ages' without evidence is a clear overclaim",
+            "Should I flag expectancy/placebo more strongly? Possibly, but the wait-list control does provide some protection; an active control would be better but is not described as missing"
+          ],
+          "key_claims": [
+            "The primary claim (app reduces anxiety/stress in autistic adults) is supported by RCT evidence with replication in delayed-start control",
+            "The secondary claim (app might benefit people of all ages) is an unsupported generalization beyond the study population",
+            "The investigator's prior conviction is disclosed but may bias interpretation of results",
+            "Lack of active control/placebo condition leaves open the possibility that expectancy or non-specific factors drive improvements"
+          ],
+          "confidence": 0.78,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11511
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.09,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.7000000000000001,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.7000000000000001,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "4. Identified the overclaim: Gabrieli states the app 'might benefit people of all ages' — this extrapolates from a study of autistic adults to the gen",
+              "source_field": "steps[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.78)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.7000000000000001,
+          "weight": 6,
+          "weighted_score": 4.2,
+          "evidence": [
+            {
+              "text": "The lead investigator's prior conviction is being reported as context, not as study evidence",
+              "source_field": "assumptions[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6/6 substantive assumptions",
+            "Many assumptions (6)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether the investigator's comment about 'all ages' is being quoted directly or paraphrased by the press",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The magnitude of effect sizes (only 'significant' is reported)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.78",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 uncertainties (6 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.78"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation — if the improvements are driven by expectancy/placebo rather than the app itself (wait-list control does not rule this out)",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "1/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7000000000000001,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Should I flag expectancy/placebo more strongly? Possibly, but the wait-list control does provide some protection; an active control would be better but is not described as missing",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 1 deep, 3 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.69, 502 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "fit people of all ages) is an unsupported generalization beyond the study population t",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'unsupported generalization' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "Missing: investigator conviction",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'investigator conviction' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The magnitude of effect sizes (only 'significant' is reporte...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The magnitude of effect sizes (only 'significant' is reported)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['bias', 'effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/13 content words)",
+          "evidence": [
+            {
+              "text": "The primary claim (app reduces anxiety/stress in autistic adults) is supported by RCT evidence with replication in delayed-start control",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (1/12 content words)",
+          "evidence": [
+            {
+              "text": "The secondary claim (app might benefit people of all ages) is an unsupported generalization beyond the study population",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "The investigator's prior conviction is disclosed but may bias interpretation of results",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "Lack of active control/placebo condition leaves open the possibility that expectancy or non-specific factors drive improvements",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 3 not well supported in reasoning steps (0/7 content words found)",
+          "evidence": [
+            {
+              "text": "The investigator's prior conviction is disclosed but may bias interpretation of results",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "solid — if the study is well-designed and the investigator's comment is merely speculative rather than a claim being promoted by the press report",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias, effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study measured self-reported anxiety and stress (not objective biomarkers)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The wait-list control group is the only comparison condition mentioned",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No placebo control group is described",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The sample size of 89 is modest for generalizing across autism spectrum",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Six weeks is a short intervention period",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The lead investigator's prior conviction is being reported as context, not as study evidence",
+            "source_field": "assumptions[5]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "1. Identified the core claim: mindfulness app reduces anxiety/stress in autistic adults with persistence",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "2. Assessed study design: RCT with wait-list control is reasonable but not gold-standard (no active placebo control mentioned)",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "3. Evaluated the evidence base: improvements in intervention group vs. wait-list, replication in delayed-start control group, 6-week follow-up persistence",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "4. Identified the overclaim: Gabrieli states the app 'might benefit people of all ages' — this extrapolates from a study of autistic adults to the general population without evidence",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "5. Noted decorative uncertainty: 'might benefit' is weak language but still makes a generalization unsupported by the data",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "6. Checked for confounders: no mention of blinding, expectancy effects, or whether participants knew they were in intervention vs. control (likely not blinded given smartphone app context)",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "7. Assessed mechanism: no mechanism described, so mechanism_vs_evidence does not apply",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "8. Assessed causation: RCT design supports causal inference for the autism sample, but generalization to 'all ages' is not causal — it's speculative",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The primary claim (app reduces anxiety/stress in autistic adults) is supported by RCT evidence with replication in delayed-start control",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The secondary claim (app might benefit people of all ages) is an unsupported generalization beyond the study population",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The investigator's prior conviction is disclosed but may bias interpretation of results",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Lack of active control/placebo condition leaves open the possibility that expectancy or non-specific factors drive improvements",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid — if the study is well-designed and the investigator's comment is merely speculative rather than a claim being promoted by the press report",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation — if the improvements are driven by expectancy/placebo rather than the app itself (wait-list control does not rule this out)",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the study included a placebo/active control condition (not mentioned in the summary)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether participants and assessors were blinded (unlikely for a smartphone app study, but not stated)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The magnitude of effect sizes (only 'significant' is reported)",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the investigator's comment about 'all ages' is being quoted directly or paraphrased by the press",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the improvements are clinically meaningful or just statistically significant",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The heterogeneity of autism spectrum — whether results generalize across the full spectrum",
+            "source_field": "uncertainties[5]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problems? The RCT design is legitimate; the main issue is the unjustified generalization to 'all ages,' not the core finding in autistic adults",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss anything? The replication in the delayed-start control group is a strength; persistence at 6-week follow-up is also positive",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the overclaim label justified? Yes — extrapolating from autistic adults to 'people of all ages' without evidence is a clear overclaim",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Should I flag expectancy/placebo more strongly? Possibly, but the wait-list control does provide some protection; an active control would be better but is not described as missing",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 5,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.6363636363636364
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.45454545454545453
+          },
+          {
+            "source_idx": 29,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.25
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          22
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias",
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'overclaim...'"
+        ],
+        "unsupported_claims": [
+          "overclaim"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "unsupported_generalization",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty"
+        ],
+        "detected_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "unsupported_generalization",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "none_or_minor",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could help"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [
+            "wait-list control"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 1 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph confirms conclusion grounding",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.78)",
+        "6/6 substantive assumptions",
+        "Many assumptions (6)",
+        "6 uncertainties (6 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.78",
+        "2 alternative hypotheses considered",
+        "1/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 1 deep, 3 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.69, 502 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-07T07:48:33.278847+00:00",
+  "metadata": {}
+}

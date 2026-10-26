@@ -1,0 +1,81 @@
+{
+ "command": "agent-arena audit run --replay --task <scratch>/copy/tasks/<case>.json --authorization-dir <scratch>/copy --profile <profile> --output-root <scratch>/replay/<slot>",
+ "code_commit": "5560e95",
+ "slots": {
+  "claude-sonnet-5-5-LR-02": {
+   "exit": 2,
+   "cli_json": {
+    "status": "REVIEW_REQUIRED",
+    "path": "<scratch>/replay/claude-sonnet-5-5-LR-02/d66be275-bc08-406e-8a29-d9e627d93751",
+    "errors": [
+     "phase9_history_review: Review open: mandatory review not executed: counterreview denied: Review cap for this model reached (1 counterreview per profile under AA-P10-LIVE-RETEST-20261011-004); the review stays open"
+    ]
+   },
+   "cli_stdout_is_ascii": true,
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  },
+  "claude-sonnet-5-5-LR-03": {
+   "exit": 2,
+   "cli_json": {
+    "status": "REVIEW_REQUIRED",
+    "path": "<scratch>/replay/claude-sonnet-5-5-LR-03/d1f6411d-b913-46c5-8195-b765f0a10f51",
+    "errors": [
+     "phase9_history_review: Review open: automatic reviews executed (counterreview completed; stability completed); the material conflict or UNKNOWN remains open"
+    ]
+   },
+   "cli_stdout_is_ascii": true,
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  },
+  "claude-haiku-5-5-LR-03": {
+   "exit": 2,
+   "cli_json": {
+    "status": "ANALYSIS_INCOMPLETE",
+    "path": "<scratch>/replay/claude-haiku-5-5-LR-03/0525da7c-e6d1-4b09-b315-f7d33d96accb",
+    "errors": [
+     "analysis_source: Analysis incomplete: claim:p1: original span mismatch; claim:p2: original span mismatch",
+     "finding_artifact_binding: Evaluated client_findings",
+     "phase8_semantics_taxonomy: Semantic or taxonomy analysis incomplete: claim:p1: original span mismatch",
+     "phase9_history_review: Review open: technically incomplete analysis; no conflict review was run: claim:p1: original span mismatch; claim:p2: original span mismatch"
+    ]
+   },
+   "cli_stdout_is_ascii": true,
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  }
+ }
+}

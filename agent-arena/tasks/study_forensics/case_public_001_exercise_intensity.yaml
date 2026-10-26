@@ -1,0 +1,152 @@
+id: study-forensics-public-001
+title: "Study Forensics: Vigorous Exercise and 8 Major Diseases — Correlation Sold as Intervention"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: correlation_vs_causation
+trap_type: causal_framing_of_observational_data
+ambiguity_level: low
+prompt: |
+  Analyze the following study summary and media coverage for epistemological integrity. Identify any overclaims, unsupported causal inferences, mechanism gaps, or correlation-as-causation issues.
+
+  ## Study
+
+  Title: "Volume vs intensity of physical activity and risk of cardiovascular and non-cardiovascular chronic diseases"
+
+  Published: European Heart Journal, March 29, 2026
+  Authors: Jiehua Wei, Minxue Shen, et al. (Central South University, Monash University, University of Sydney)
+
+  Design: Prospective observational cohort study using UK Biobank data. Two cohorts: ~96,000 participants with wrist-worn accelerometer data (7 days of wear), and ~376,000 with self-reported physical activity questionnaires. Median follow-up approximately 7 years.
+
+  Key findings:
+  - Participants with >4% of physical activity classified as vigorous had 29-63% lower risk of 8 major chronic diseases compared to those with no vigorous activity
+  - The 8 diseases: cardiovascular disease, dementia, type 2 diabetes, chronic kidney disease, chronic liver disease, respiratory disease, immune-mediated inflammatory diseases, and depression
+  - Strongest associations were for inflammatory conditions (63% lower risk) and dementia (61% lower risk)
+  - Even 15-20 minutes per week of vigorous activity (~4 minutes/day) was associated with meaningful risk reduction
+  - Vigorous activity intensity showed stronger associations per minute than moderate activity for most outcomes
+
+  Stated limitations (from paper):
+  - Observational design — cannot prove causation
+  - UK Biobank participants may not represent the general population
+  - Accelerometer data captured only 7 days — may not reflect habitual activity levels
+  - Residual confounding possible despite statistical adjustments
+
+  Funding: National Natural Science Foundation of China, others. No pharmaceutical industry funding reported.
+
+  ## Media Coverage
+
+  Headline 1 (ScienceDaily / European Society of Cardiology press release):
+  "Just a few minutes of effort could lower your risk of 8 major diseases"
+
+  Headline 2 (SciTechDaily):
+  "Just a Few Breathless Minutes a Day Could Slash Your Risk of 8 Major Diseases"
+
+  Headline 3 (TIME):
+  "Just A Few Minutes of Hard Exercise May Slash Your Risk for These Serious Health Conditions, Study Says"
+
+  Key quote from media coverage:
+  Lead author Prof. Shen stated: "Our findings suggest that making some of your physical activity vigorous can provide substantial health benefits. This doesn't require going to the gym. Adding short bursts of activity that make you slightly breathless into daily life can make a real difference."
+
+  Co-author Prof. Stamatakis stated: "Four and a half minutes are associated with approximately 35 to 50% lower risk for incident cardiovascular disease."
+context: |
+  A large observational cohort study (UK Biobank) finding associations between
+  vigorous physical activity and lower chronic disease incidence. The study
+  itself is well-designed and published in a top journal. The forensic issue
+  lies in the media communication layer: headlines frame observational
+  associations as interventional claims. First public demonstration case.
+expected_answer: "correlation_vs_causation"
+reference_solution: |
+  The study is a prospective observational cohort analysis that found strong associations between vigorous physical activity and lower chronic disease risk. The study design cannot establish causation. Media headlines frame the findings with interventional language ("could lower/slash your risk") that exceeds what the observational design supports. Key confounders include healthy user bias, reverse causation, and volunteer bias. Risk reductions of 29-63% are relative, not absolute.
+gold_label: correlation_vs_causation
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  This is a prospective observational cohort study using UK Biobank data.
+  Participants were not randomized to exercise groups. The study measures
+  association, not causation. The paper itself states it "cannot prove
+  causation." The key forensic issue: media headlines frame the findings
+  as interventional ("could lower your risk", "could slash your risk")
+  when the study design only supports associational claims. Healthy user
+  bias (active people differ systematically from inactive people), reverse
+  causation (early disease reduces activity), and UK Biobank volunteer bias
+  are unresolved confounders. The study is sound; the communication overclaims.
+gold_alternative_reading: |
+  A charitable reading could argue that the media headlines use "could"
+  (conditional) rather than "will" (definitive), and that the underlying
+  biological mechanisms linking exercise to reduced disease risk are
+  well-established from other research including some RCTs. In this reading,
+  the headlines are simplifications rather than outright misrepresentations.
+  However, the causal framing combined with specific percentage reductions
+  from an observational study crosses the line from simplification to overclaim.
+gold_summary: |
+  Large observational cohort study with strong associations between vigorous exercise and lower disease risk. Media coverage frames observational findings with interventional language. The study is sound; the communication exceeds the evidence. First public demonstration case for Study Forensics.
+curator_notes: |
+  First public demonstration case. Selected because:
+  1. correlation_vs_causation is the strongest category (100% accuracy on clear cases)
+  2. Published in European Heart Journal — top journal, not attackable
+  3. Widespread recent media coverage (March 30, 2026)
+  4. Clear, well-defined forensic issues
+  5. Accessible topic (exercise and health)
+  6. The study is NOT bad science — the forensic issue is in the communication,
+     making the analysis constructive rather than destructive
+  7. The paper acknowledges its own limitations — the problem is the media layer
+expected_findings:
+  - finding: correlation_as_causation
+    severity: major
+    confidence: high
+  - finding: unsupported_generalization
+    severity: moderate
+    confidence: medium
+gold_evidence_spans:
+  - span: "could lower your risk"
+    why_it_matters: "Causal framing applied to observational data — interventional language for associational findings."
+    supports_finding: correlation_as_causation
+  - span: "Could Slash Your Risk of 8 Major Diseases"
+    why_it_matters: "Dramatic interventional language for a study that cannot prove exercise caused the lower risk."
+    supports_finding: correlation_as_causation
+  - span: "29-63% lower risk"
+    why_it_matters: "Large relative risk reductions reported without absolute risk context."
+    supports_finding: unsupported_generalization
+  - span: "Prospective observational cohort study"
+    why_it_matters: "Study design only supports associational claims, not causal ones."
+    supports_finding: correlation_as_causation
+  - span: "cannot prove causation"
+    why_it_matters: "The paper itself acknowledges the limitation that media coverage ignores."
+    supports_finding: correlation_as_causation
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "observational study"
+    variants: ["observational design", "cannot establish causality", "association not causation", "correlational evidence"]
+    functional_descriptions:
+      - "the study design only allows conclusions about associations"
+      - "participants were not randomly assigned to exercise groups"
+  - keyword: "healthy user bias"
+    variants: ["healthy volunteer bias", "confounding by health status", "self-selection"]
+    functional_descriptions:
+      - "people who exercise vigorously may be healthier overall"
+      - "active people tend to have better diets and health behaviors"
+  - keyword: "reverse causation"
+    variants: ["reverse causality", "preclinical disease", "prodromal symptoms"]
+    functional_descriptions:
+      - "people with early disease may exercise less"
+      - "the disease could cause the inactivity rather than the reverse"
+  - keyword: "relative risk without absolute"
+    variants: ["relative risk reduction", "without baseline rates", "missing absolute numbers"]
+    functional_descriptions:
+      - "percentage reductions sound dramatic without knowing base rates"
+      - "63% lower risk could mean from 3% to 1.1% in absolute terms"
+common_errors:
+  - accepting causal framing of headlines without noting observational design
+  - failing to mention healthy user bias or reverse causation
+  - treating relative risk reductions as absolute benefit
+  - dismissing the study entirely instead of distinguishing study from coverage
+  - not recognizing that the paper itself is more cautious than the media
+expected_failure_modes:
+  - accepting_correlation_as_causation
+  - missing_confounders
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent distinguish between a well-conducted observational study and its overclaimed media coverage, correctly identifying correlation-as-causation framing?"

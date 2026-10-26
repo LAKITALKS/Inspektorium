@@ -1,0 +1,194 @@
+[
+  {
+    "authoring_id": "C01",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa2032183",
+    "adopted_doi": "10.1056/nejmoa2032183",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C02",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa025039",
+    "adopted_doi": "10.1056/nejmoa025039",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C03",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa2021436",
+    "adopted_doi": "10.1056/nejmoa2021436",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C04",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa1911303",
+    "adopted_doi": "10.1056/nejmoa1911303",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C05",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJM199704173361601",
+    "adopted_doi": "10.1056/nejm199704173361601",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C06",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1126/science.aaf2693",
+    "adopted_doi": "10.1126/science.aaf2693",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C07",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa2307563",
+    "adopted_doi": "10.1056/nejmoa2307563",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C08",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa1809944",
+    "adopted_doi": "10.1056/nejmoa1809944",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C09",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1016/S0140-6736(10)60835-5",
+    "adopted_doi": "10.1016/s0140-6736(10)60835-5",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C10",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa1606774",
+    "adopted_doi": "10.1056/nejmoa1606774",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C11",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa2022166",
+    "adopted_doi": "10.1056/nejmoa2022166",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C12",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1001/jama.2013.282834",
+    "adopted_doi": "10.1001/jama.2013.282834",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C13",
+    "action": "REPLACE",
+    "reason": "Historical coffee mortality claim family (case046) overlaps.",
+    "original_doi": "10.1001/jamainternmed.2018.2425",
+    "adopted_doi": "10.1016/j.ypmed.2016.01.001",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C14",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1056/NEJMoa1307352",
+    "adopted_doi": "10.1056/nejmoa1307352",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C15",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1001/jamainternmed.2018.7289",
+    "adopted_doi": "10.1001/jamainternmed.2018.7289",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C16",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1001/jamapediatrics.2018.5056",
+    "adopted_doi": "10.1001/jamapediatrics.2018.5056",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C17",
+    "action": "REPLACE",
+    "reason": "The retired P7A-BND-003 grip-strength case uses the same underlying PURE cohort; exclude shared historical participants conservatively.",
+    "original_doi": "10.1093/eurheartj/ehy695",
+    "adopted_doi": "10.1001/jamainternmed.2019.0571",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C18",
+    "action": "RETAIN",
+    "reason": "Source body supports a decisive scoped packet. No same study/claim family identified in local historical corpus.",
+    "original_doi": "10.1016/S0140-6736(08)61689-X",
+    "adopted_doi": "10.1016/s0140-6736(08)61689-x",
+    "claim_edit": null
+  },
+  {
+    "authoring_id": "C19",
+    "action": "REPLACE",
+    "reason": "Prior resveratrol/sirtuin human-longevity intake family overlaps.",
+    "original_doi": "10.1038/nature05354",
+    "adopted_doi": "10.1038/nature25164",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C20",
+    "action": "REPLACE",
+    "reason": "Prior dasatinib-quercetin aging/physical-function claim family overlaps.",
+    "original_doi": "10.1111/acel.12344",
+    "adopted_doi": "10.1126/science.aad5143",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C21",
+    "action": "REPLACE",
+    "reason": "Prior metformin human-longevity claim family overlaps.",
+    "original_doi": "10.1016/j.cell.2013.02.035",
+    "adopted_doi": "10.1038/416636a",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C22",
+    "action": "REPLACE",
+    "reason": "Prior spermidine/autophagy human-longevity claim family overlaps.",
+    "original_doi": "10.1038/ncb1975",
+    "adopted_doi": "10.1073/pnas.1121623109",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C23",
+    "action": "REPLACE",
+    "reason": "Original curcumin paper has an erratum whose decisive body could not be verified; a retrieved page contained a different paper.",
+    "original_doi": "10.1074/jbc.270.42.24995",
+    "adopted_doi": "10.1016/j.neuron.2006.02.026",
+    "claim_edit": "Replacement source requires replacement claim"
+  },
+  {
+    "authoring_id": "C24",
+    "action": "REPLACE",
+    "reason": "Prior EGCG cancer-prevention claim intake overlaps.",
+    "original_doi": "10.1038/nsmb743",
+    "adopted_doi": "10.1038/nm.3806",
+    "claim_edit": "Replacement source requires replacement claim"
+  }
+]

@@ -1,0 +1,168 @@
+{
+  "analysis_status": "complete",
+  "claim": {
+    "claim_context": "Active atomic proposition I-01 from the frozen ASA 25/261 Premium Grounding claim registry (origin F01/F08; type EXPLICIT; PHYSIOLOGICAL; THERAPEUTIC; PRODUCT-SPECIFIC). Frozen evidence-preparation state: VERY LIMITED DIRECT EVIDENCE. Routing: STANDARD BIOMEDICAL ADJUDICATION",
+    "claim_scope": "SURROGATE ENDPOINT ONLY | PRODUCT EQUIVALENCE UNCERTAIN | REPLICATION ABSENT for clinical disease",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding reduces inflammation.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "development_or_production_status": "production",
+  "evidence": {
+    "contradicting_or_limiting": [
+      "No clinical inflammatory-disease trial located",
+      "H34 CRP rests on paired/subgroup analyses without a direct group interaction test",
+      "H31 CRP carries sign/mean/median/unit conflicts",
+      "H16 multiplicity across many outcomes and timepoints",
+      "H21/H22 are one dataset, not two replications"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "H16/H21",
+        "text": "Brown, Chevalier & Hill 2015 and Chevalier et al. 2018 report selected inflammatory and CK-related marker differences across many outcomes and timepoints.",
+        "tier": "biomarker",
+        "why_it_matters": "Direct human biomarker signals, but multiply tested and sponsor/network associated."
+      },
+      {
+        "role": "supporting",
+        "source_reference": "H31",
+        "text": "Sokal et al. 2025: CRP 15.34 to 24.42 versus 24.54 to 57.42 mg/L, p=.000033, with sign, mean, median and unit conflicts preserved.",
+        "tier": "biomarker",
+        "why_it_matters": "A large nominal p-value on a surrogate marker in a one-night postoperative setting, with unresolved reporting conflicts."
+      },
+      {
+        "role": "supporting",
+        "source_reference": "H34",
+        "text": "Kim JS et al. 2024: full-sample salivary CRP sneaker 98.74 to 129.11 to 185.15 pg/mL, pre to final p=.046; barefoot 144.80 to 196.94 to 123.67, p=.608. Baseline-CRP at or above 100 post hoc subset: sneaker n=9 p=.963; barefoot n=14 282.13 to 254.26 to 113.11, p=.010.",
+        "tier": "biomarker",
+        "why_it_matters": "Earth-contact eligible human CRP line, but these are paired within-group and post hoc subgroup tests; the source table supplies no direct group-by-time or between-group contrast."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 27/51/63",
+        "text": "No clinical inflammatory-disease trial and no validated clinical inflammation endpoint were located.",
+        "tier": "not_applicable",
+        "why_it_matters": "The claim names a therapeutic effect for which no clinical outcome study exists."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "H29",
+        "text": "Estiningtyas et al. 2024 reported wound-score improvement in 21 patients with no comparator and incomplete methods.",
+        "tier": "limited_human",
+        "why_it_matters": "Uncontrolled; natural course and wound care cannot be separated from the intervention."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "All human evidence is surrogate; the claim is therapeutic. No clinical inflammation endpoint was measured anywhere in the located evidence.",
+    "missing_causal_chain": true,
+    "missing_comparison_group": false,
+    "missing_human_evidence": false,
+    "supporting": [
+      "H16/H21 selected inflammatory and CK markers",
+      "H31 CRP p=.000033 (surrogate, reporting-sensitive)",
+      "H34 Earth-contact salivary CRP subgroup signal",
+      "H29 uncontrolled wound-score observation"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "H16/H21",
+          "H31",
+          "H34"
+        ],
+        "mode": "evidence_tier_mismatch",
+        "rationale": "Biomarker-tier evidence (CRP, cytokines, CK, thermography) supports a therapeutic-tier claim about reducing inflammation."
+      },
+      {
+        "evidence_refs": [
+          "H34",
+          "Freeze sections 27/51"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "Marker movement in small, multiply tested studies is presented as an established anti-inflammatory effect of the product."
+      }
+    ],
+    "none_detected": false
+  },
+  "generated_at": "2026-08-23",
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "audit_trail": [
+      "input validated against forensic_report schema 6.3.0",
+      "analysis_status=complete",
+      "confidence classified as VALID (no coercion to 0.0)",
+      "2 failure mode(s) echoed from analysis (not inferred)",
+      "rewrite guard: no rewrite supplied"
+    ],
+    "input_digest_sha256": "7a4894550f580c0f614d369119b2956677fd174fa3842a6814624b0b450759d7",
+    "model": "claude-opus-5",
+    "parser_status": "ok",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "report_generation_digest_sha256": "10f579651747cf5cb7e5745a6cbd2bb618663a4205413700e82a583ae4598210",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0",
+    "warnings": []
+  },
+  "reader_impact": {
+    "affected_decision_type": "Management of an inflammatory condition.",
+    "likely_reader_misunderstanding": "That the product has been shown to reduce clinical inflammation, rather than to move some markers in small studies.",
+    "not_a_harm_probability_note": "Reader-impact risk is a qualitative category describing how a non-specialist might misread the claim. It is NOT a computed medical, legal, or financial harm probability.",
+    "risk_level": "high",
+    "risk_rationale": "Readers with inflammatory conditions may substitute the device for treatment; the advertisement pairs the claim with arthritis and other named conditions.",
+    "risk_uncertainty": null
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_available": false,
+    "rewrite_guard": {
+      "checked": true,
+      "status": "no_rewrite",
+      "unsupported_new_facts": []
+    },
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze.",
+    "rewrite_verification": "no_rewrite_supplied",
+    "rewrite_verification_note": "This rewrite is an UNVERIFIED proposal copied from the analysis input. The numeric-containment guard only checks that it introduces no unsupported number; it does NOT verify factual or semantic accuracy. Its factual support still requires human review."
+  },
+  "report_id": "ASA-25-261-run_001-I-01",
+  "report_schema_version": "6.3.0",
+  "status_banner": [
+    "DEVELOPMENT PROTOTYPE — claim-forensics report (Phase 6.3)"
+  ],
+  "synthetic_fixture": false,
+  "uncertainty": {
+    "alternative_label_rationale": "Rejected as primary under the frozen precedence rule: the taxonomy explicitly excludes the biomarker/surrogate-to-clinical gap from mechanism_vs_evidence and routes surrogate endpoints framed as clinical outcomes to overclaim.",
+    "alternative_plausible_label": "mechanism_vs_evidence",
+    "ambiguity": "MATERIAL — Steelman defended a genuine repeated biomarker signal; the adversarial layer showed none of it reaches a clinical endpoint. Resolved as OVERCLAIM with the biomarker signal explicitly preserved.",
+    "confidence_caveat": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "development_caveat": null,
+    "missing_evidence": [
+      "No clinical inflammatory-disease trial located",
+      "H34 CRP rests on paired/subgroup analyses without a direct group interaction test",
+      "H31 CRP carries sign/mean/median/unit conflicts",
+      "H16 multiplicity across many outcomes and timepoints",
+      "H21/H22 are one dataset, not two replications"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "An adequately powered inflammatory-disease or validated-inflammation-endpoint RCT has not been done."
+    ]
+  },
+  "verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.87,
+    "predicted_label": "overclaim",
+    "verdict_summary": "Human evidence for this claim is entirely surrogate: cytokines, CK, CRP, thermography and one uncontrolled wound series. No clinical inflammatory-disease trial exists, and the newest biomarker line (H34 CRP) rests on paired within-group and post hoc subgroup tests without a direct group contrast.",
+    "verdict_title": "Claim goes beyond the available evidence"
+  }
+}

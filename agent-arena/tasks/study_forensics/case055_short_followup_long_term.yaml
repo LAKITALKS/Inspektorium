@@ -1,0 +1,69 @@
+id: study-forensics-055
+title: 'Study Forensics: ''Long-term benefit'' claimed from short follow-up'
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: follow_up_window_overreach
+ambiguity_level: low
+origin: synthetic_fixture
+prompt: |
+  A weight-loss programme trial followed participants for 12 weeks and reported meaningful weight loss. The marketing claims the programme delivers 'lasting, long-term results' and 'permanent weight control', despite no data beyond 12 weeks.
+context: |
+  A 12-week result is extrapolated to 'permanent' and 'long-term' outcomes with no long-term data. Weight regain after short programmes is common. Follow-up-window overreach.
+expected_answer: overclaim
+reference_solution: |
+  The follow-up window is 12 weeks; durability was never measured. Claims of 'lasting', 'long-term', and 'permanent' results extrapolate well beyond the observation period, especially where regain is common. Overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  Durability claims ('lasting', 'permanent', 'long-term') are made from a 12-week study with no long-term data. The extrapolation beyond the follow-up window is the core overclaim.
+gold_alternative_reading: null
+gold_summary: |
+  A 12-week weight-loss result is marketed as 'lasting/permanent' with no long-term data. Follow-up-window overclaim.
+curator_notes: |
+  Extrapolation beyond follow-up window. Related to the case041 no-plateau/durability subclaim. Discrimination: separates weak from strong models on time-horizon reasoning.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: conclusion_exceeds_results
+  severity: major
+  confidence: high
+- finding: unsupported_generalization
+  severity: moderate
+  confidence: medium
+gold_evidence_spans:
+- span: followed participants for 12 weeks
+  why_it_matters: The observation window is only 12 weeks.
+  supports_finding: conclusion_exceeds_results
+- span: '''lasting, long-term results'' and ''permanent weight control'', despite no data beyond 12 weeks'
+  why_it_matters: Durability claims exceed the follow-up window.
+  supports_finding: conclusion_exceeds_results
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: follow-up window
+  variants:
+  - 12 weeks
+  - no data beyond
+  - short-term
+  functional_descriptions:
+  - durability claimed beyond the measured window
+- keyword: long-term claim
+  variants:
+  - lasting
+  - permanent
+  - long-term
+  functional_descriptions:
+  - permanence asserted without long-term data
+common_errors:
+- accepting 'permanent' from a 12-week study
+- ignoring likely regain
+expected_failure_modes:
+- missing_overclaim
+- time_horizon_blindness
+discriminative_dimensions:
+- correctness
+- insight_depth
+diagnostic_focus: Can the agent flag durability claims that exceed the follow-up window?

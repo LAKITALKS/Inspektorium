@@ -1,0 +1,1173 @@
+{
+  "run_id": "full27_study-forensics-021_Claude_Haiku_60906a",
+  "task": {
+    "id": "study-forensics-021",
+    "title": "Study Forensics: Virtual tutoring boosts reading skills",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A randomized controlled trial tested a virtual reading tutoring program in a rural school district. The program paired live online tutors with small groups of struggling elementary students for ten-week sessions. Students who completed around forty tutoring sessions gained roughly two additional months of reading progress compared with peers in the control condition. Even those attending fewer sessions showed modest gains. Researchers emphasised that consistent participation was critical and highlighted that the program delivered results at a lower cost than typical high-dose tutoring.\n",
+    "context": "A well-designed educational RCT with cautious language and clear limitations.\nThe agent should recognise this as solid without overflagging.\n",
+    "expected_answer": "solid",
+    "reference_solution": "The summary describes a rigorously designed trial of a virtual tutoring program. It reports improved reading outcomes and notes cost effectiveness and the importance of consistent participation without overstating broader impacts.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "RCT",
+        "variants": [
+          "randomized controlled trial",
+          "control condition",
+          "randomly assigned"
+        ],
+        "functional_descriptions": [
+          "the study uses random assignment, supporting causal claims"
+        ]
+      },
+      {
+        "keyword": "cautious language",
+        "variants": [
+          "roughly",
+          "modest gains",
+          "consistent participation was critical"
+        ],
+        "functional_descriptions": [
+          "authors hedge claims appropriately and note conditions for success"
+        ]
+      }
+    ],
+    "common_errors": [
+      "hallucinating major flaws in a solid study",
+      "treating modest effects as evidence of overclaim"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_solid_study",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "overclaiming",
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise a well-designed educational RCT without overflagging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "The summary describes a rigorously designed trial of a virtual tutoring program. It reports improved reading outcomes and notes cost effectiveness and the importance of consistent participation without overstating broader impacts.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "Students who completed around forty tutoring sessions gained roughly two additional months of reading progress compared with peers in the control condition",
+        "why_it_matters": "Shows that the primary claim is directly supported by measured outcomes in the trial.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "Researchers emphasised that consistent participation was critical and highlighted that the program delivered results at a lower cost than typical high-dose tutoring",
+        "why_it_matters": "Demonstrates cautious language and avoids overgeneralization by noting conditions for success.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "A randomized controlled trial with clear outcome measures supports the claims.\nThe summary uses cautious language (\"gained roughly two additional months\",\n\"consistency is critical\") and does not generalise beyond the study population.\nThere is no obvious mechanism-evidence mismatch or causal overreach.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Clean solid case from education domain. Tests whether agents avoid flagging\nnon-problems in a well-conducted RCT with measured language. Good calibration\nanchor alongside the existing health-focused solid cases (001, 004).\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\n    \"The study used a proper randomized assignment to treatment and control conditions\",\n    \"Reading progress was measured with a validated, standardized assessment\",\n    \"The 'two additional months of reading progress' represents a meaningful effect size\",\n    \"The control condition received standard instruction (not an alternative intervention)\",\n    \"Attrition and compliance were tracked and reported appropriately\",\n    \"The rural school district context is representative enough to warrant the claims made\"\n  ],\n  \"steps\": [\n    \"Identified the study design: RCT with treatment (virtual tutoring) and control conditions\",\n    \"Examined the primary outcome: reading progress measured in months gained\",\n    \"Checked for causal claims: The text attributes gains to the program via the RCT design, which is appropriate\",\n    \"Evaluated scope of claims: Results are presented as specific to this program, in this context, with this population\",\n    \"Assessed uncertainty language: The text notes 'even those attending fewer sessions showed modest gains,' acknowledging dose-response variation\",\n    \"Reviewed for confounders: RCT design controls for most baseline confounders; no obvious unaddressed confounders mentioned\",\n    \"Checked mechanism claims: No mechanistic claims are made; the text stays descriptive\",\n    \"Evaluated generalizability: Claims are appropriately bounded to the program tested in a rural district\",\n    \"Assessed cost-effectiveness claim: Stated as comparative ('lower cost than typical high-dose tutoring'), which is reasonable given the context\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The study could be overclaimed if effect sizes are modest and statistical significance was driven by large sample size rather than practical significance\",\n    \"The study could have correlation_vs_causation issues if attrition differed between groups in ways that biased results\",\n    \"The study could be solid if the RCT design, outcome measures, and reporting are all appropriate\"\n  ],\n  \"uncertainties\": [\n    \"Whether 'two additional months of reading progress' is educationally meaningful (effect size in standard deviations not provided in the summary)\",\n    \"Whether the control group received any intervention or just standard instruction\",\n    \"The actual attrition rate and whether it differed between conditions\",\n    \"Whether the 'forty tutoring sessions' represents completion or is an average, and how much variation existed\",\n    \"The specific reading assessment used and whether it is sensitive to the types of gains expected\",\n    \"Whether the rural context limits generalizability to urban or suburban settings\"\n  ],\n  \"key_claims\": [\n    \"RCT design appropriately supports causal inference about the program's effect\",\n    \"The text avoids overclaiming by noting dose-response effects ('even those attending fewer sessions showed modest gains')\",\n    \"No mechanism claims are made; the study remains descriptive about outcomes\",\n    \"Cost-effectiveness is framed comparatively, not absolutely, which is appropriate\",\n    \"The emphasis on 'consistent participation' is evidence-based and appropriately cautious\"\n  ],\n  \"self_check\": [\n    \"Did I assume problems that aren't stated? No—I found no explicit red flags in the text\",\n    \"Did I miss any overclaiming? The text is appropriately bounded to the program tested; no wild generalizations detected\",\n    \"Did I verify the RCT design supports causation? Yes—randomization is the gold standard for causal inference\",\n    \"Did I check for mechanism vs. evidence issues? No such issues present; no mechanism is claimed\",\n    \"Did I assess confounders? RCT design controls for baseline confounders; no obvious unaddressed confounders mentioned\",\n    \"Is the uncertainty language effective? Yes—the text acknowledges dose-response variation and emphasizes the importance of participation\"\n  ],\n  \"confidence\": 0.82\n}\n```\n\n**Summary**: This is a well-reported RCT with appropriate causal claims, bounded scope, and effective uncertainty language. The study design (randomization) justifies the causal inference. No overclaiming, mechanism misapplication, or ignored confounders are evident in the text. The main limitation is that the summary lacks effect size details (e.g., Cohen's d) needed to fully evaluate practical significance, but this is a limitation of the *summary*, not necessarily the study itself.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study used a proper randomized assignment to treatment and control conditions",
+            "Reading progress was measured with a validated, standardized assessment",
+            "The 'two additional months of reading progress' represents a meaningful effect size",
+            "The control condition received standard instruction (not an alternative intervention)",
+            "Attrition and compliance were tracked and reported appropriately",
+            "The rural school district context is representative enough to warrant the claims made"
+          ],
+          "steps": [
+            "Identified the study design: RCT with treatment (virtual tutoring) and control conditions",
+            "Examined the primary outcome: reading progress measured in months gained",
+            "Checked for causal claims: The text attributes gains to the program via the RCT design, which is appropriate",
+            "Evaluated scope of claims: Results are presented as specific to this program, in this context, with this population",
+            "Assessed uncertainty language: The text notes 'even those attending fewer sessions showed modest gains,' acknowledging dose-response variation",
+            "Reviewed for confounders: RCT design controls for most baseline confounders; no obvious unaddressed confounders mentioned",
+            "Checked mechanism claims: No mechanistic claims are made; the text stays descriptive",
+            "Evaluated generalizability: Claims are appropriately bounded to the program tested in a rural district",
+            "Assessed cost-effectiveness claim: Stated as comparative ('lower cost than typical high-dose tutoring'), which is reasonable given the context"
+          ],
+          "alternative_hypotheses": [
+            "The study could be overclaimed if effect sizes are modest and statistical significance was driven by large sample size rather than practical significance",
+            "The study could have correlation_vs_causation issues if attrition differed between groups in ways that biased results",
+            "The study could be solid if the RCT design, outcome measures, and reporting are all appropriate"
+          ],
+          "uncertainties": [
+            "Whether 'two additional months of reading progress' is educationally meaningful (effect size in standard deviations not provided in the summary)",
+            "Whether the control group received any intervention or just standard instruction",
+            "The actual attrition rate and whether it differed between conditions",
+            "Whether the 'forty tutoring sessions' represents completion or is an average, and how much variation existed",
+            "The specific reading assessment used and whether it is sensitive to the types of gains expected",
+            "Whether the rural context limits generalizability to urban or suburban settings"
+          ],
+          "self_check": [
+            "Did I assume problems that aren't stated? No—I found no explicit red flags in the text",
+            "Did I miss any overclaiming? The text is appropriately bounded to the program tested; no wild generalizations detected",
+            "Did I verify the RCT design supports causation? Yes—randomization is the gold standard for causal inference",
+            "Did I check for mechanism vs. evidence issues? No such issues present; no mechanism is claimed",
+            "Did I assess confounders? RCT design controls for baseline confounders; no obvious unaddressed confounders mentioned",
+            "Is the uncertainty language effective? Yes—the text acknowledges dose-response variation and emphasizes the importance of participation"
+          ],
+          "key_claims": [
+            "RCT design appropriately supports causal inference about the program's effect",
+            "The text avoids overclaiming by noting dose-response effects ('even those attending fewer sessions showed modest gains')",
+            "No mechanism claims are made; the study remains descriptive about outcomes",
+            "Cost-effectiveness is framed comparatively, not absolutely, which is appropriate",
+            "The emphasis on 'consistent participation' is evidence-based and appropriately cautious"
+          ],
+          "confidence": 0.82,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 10881
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.7000000000000001,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.8,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 9",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Assessed uncertainty language: The text notes 'even those attending fewer sessions showed modest gains,' acknowledging dose-response variation",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "9 reasoning steps",
+            "Low step utility: 0/9 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.75)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.7000000000000001,
+          "weight": 6,
+          "weighted_score": 4.2,
+          "evidence": [
+            {
+              "text": "The control condition received standard instruction (not an alternative intervention)",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6/6 substantive assumptions",
+            "Many assumptions (6)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether 'two additional months of reading progress' is educationally meaningful (effect size in standard deviations not provided in the summary)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.82",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 uncertainties (6 substantive)",
+            "Confidence 0.82"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "The study could be overclaimed if effect sizes are modest and statistical significance was driven by large sample size rather than practical significance",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "Is the uncertainty language effective? Yes—the text acknowledges dose-response variation and emphasizes the importance of participation",
+              "source_field": "self_check[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 self-check items",
+            "Self-check quality: 0 deep, 6 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 491 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "identified the study design: rct with treatment (virtual tutor",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'RCT' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "RCT design appropriately supports causal inference about the program's effect",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/13 content words)",
+          "evidence": [
+            {
+              "text": "The text avoids overclaiming by noting dose-response effects ('even those attending fewer sessions showed modest gains')",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "No mechanism claims are made; the study remains descriptive about outcomes",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/5 content words)",
+          "evidence": [
+            {
+              "text": "Cost-effectiveness is framed comparatively, not absolutely, which is appropriate",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "The emphasis on 'consistent participation' is evidence-based and appropriately cautious",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 5 not well supported in reasoning steps (1/6 content words found)",
+          "evidence": [
+            {
+              "text": "The emphasis on 'consistent participation' is evidence-based and appropriately cautious",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "The study could be overclaimed if effect sizes are modest and statistical significance was driven by large sample size rather than practical significance",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "The study could have correlation_vs_causation issues if attrition differed between groups in ways that biased results",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 3 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "The study could be solid if the RCT design, outcome measures, and reporting are all appropriate",
+              "source_field": "alternative_hypotheses[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: none_or_minor, conclusion_exceeds_results, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study used a proper randomized assignment to treatment and control conditions",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Reading progress was measured with a validated, standardized assessment",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 'two additional months of reading progress' represents a meaningful effect size",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The control condition received standard instruction (not an alternative intervention)",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Attrition and compliance were tracked and reported appropriately",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The rural school district context is representative enough to warrant the claims made",
+            "source_field": "assumptions[5]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the study design: RCT with treatment (virtual tutoring) and control conditions",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the primary outcome: reading progress measured in months gained",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for causal claims: The text attributes gains to the program via the RCT design, which is appropriate",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated scope of claims: Results are presented as specific to this program, in this context, with this population",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed uncertainty language: The text notes 'even those attending fewer sessions showed modest gains,' acknowledging dose-response variation",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Reviewed for confounders: RCT design controls for most baseline confounders; no obvious unaddressed confounders mentioned",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked mechanism claims: No mechanistic claims are made; the text stays descriptive",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated generalizability: Claims are appropriately bounded to the program tested in a rural district",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed cost-effectiveness claim: Stated as comparative ('lower cost than typical high-dose tutoring'), which is reasonable given the context",
+            "source_field": "steps[8]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "RCT design appropriately supports causal inference about the program's effect",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text avoids overclaiming by noting dose-response effects ('even those attending fewer sessions showed modest gains')",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No mechanism claims are made; the study remains descriptive about outcomes",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Cost-effectiveness is framed comparatively, not absolutely, which is appropriate",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The emphasis on 'consistent participation' is evidence-based and appropriately cautious",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study could be overclaimed if effect sizes are modest and statistical significance was driven by large sample size rather than practical significance",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study could have correlation_vs_causation issues if attrition differed between groups in ways that biased results",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study could be solid if the RCT design, outcome measures, and reporting are all appropriate",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether 'two additional months of reading progress' is educationally meaningful (effect size in standard deviations not provided in the summary)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the control group received any intervention or just standard instruction",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The actual attrition rate and whether it differed between conditions",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 'forty tutoring sessions' represents completion or is an average, and how much variation existed",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific reading assessment used and whether it is sensitive to the types of gains expected",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the rural context limits generalizability to urban or suburban settings",
+            "source_field": "uncertainties[5]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I assume problems that aren't stated? No—I found no explicit red flags in the text",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any overclaiming? The text is appropriately bounded to the program tested; no wild generalizations detected",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I verify the RCT design supports causation? Yes—randomization is the gold standard for causal inference",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I check for mechanism vs. evidence issues? No such issues present; no mechanism is claimed",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I assess confounders? RCT design controls for baseline confounders; no obvious unaddressed confounders mentioned",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the uncertainty language effective? Yes—the text acknowledges dose-response variation and emphasizes the importance of participation",
+            "source_field": "self_check[5]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 5,
+            "target_idx": 13,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 30,
+            "target_idx": 13,
+            "relation": "checks",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 33,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.8
+          },
+          {
+            "source_idx": 34,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.36363636363636365
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          35
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 9",
+        "Reasoning graph: conclusion not well grounded",
+        "9 reasoning steps",
+        "Low step utility: 0/9 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.75)",
+        "6/6 substantive assumptions",
+        "Many assumptions (6)",
+        "6 uncertainties (6 substantive)",
+        "Confidence 0.82",
+        "3 alternative hypotheses considered",
+        "3/3 genuinely diverse alternatives",
+        "6 self-check items",
+        "Self-check quality: 0 deep, 6 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.71, 491 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T08:14:15.412052+00:00",
+  "metadata": {}
+}

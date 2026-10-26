@@ -1,0 +1,993 @@
+{
+  "run_id": "ocfix_study-forensics-013_Claude_Haiku_dd3043",
+  "task": {
+    "id": "study-forensics-013",
+    "title": "Study Forensics: Gut microbes and anxiety",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "Neuroscientists studying mice found that microbial metabolites known as indoles modulate activity in the basolateral amygdala, affecting anxiety-like behaviour. Germ-free mice exhibited heightened anxiety, which was reduced when they were colonised with normal microbiota or given indoles. The researchers propose that indole-producing probiotics could one day be used to treat anxiety disorders. They caution that human trials are needed to confirm safety and efficacy.\n",
+    "context": "The animal study convincingly demonstrates that microbial indoles influence anxiety in mice\nbut then speculates about probiotic therapies for humans. The mechanistic finding is solid\nwithin rodents, yet the translation to humans is unproven.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The animal study convincingly demonstrates that microbial indoles influence anxiety in mice but then speculates about probiotic therapies for humans. The mechanistic finding is solid within rodents, yet the translation to humans is unproven, and the causal pathway in people remains undemonstrated.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "rodent",
+          "preclinical",
+          "germ-free"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "mechanism not demonstrated in humans",
+        "variants": [
+          "translation gap",
+          "animal to human",
+          "preclinical only"
+        ],
+        "functional_descriptions": [
+          "the mechanism is shown in mice but not demonstrated in people"
+        ]
+      },
+      {
+        "keyword": "speculative therapy",
+        "variants": [
+          "could one day",
+          "probiotics",
+          "potential treatment"
+        ],
+        "functional_descriptions": [
+          "therapeutic claims go beyond the available preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating animal mechanism as proven in humans",
+      "missing the translation gap",
+      "accepting the caution as sufficient"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish between solid preclinical mechanism and speculative human application?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "The animal study convincingly demonstrates that microbial indoles influence anxiety in mice but then speculates about probiotic therapies for humans. The mechanistic finding is solid within rodents, yet the translation to humans is unproven, and the causal pathway in people remains undemonstrated.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "indoles modulate activity in the basolateral amygdala ... affecting anxiety-like behaviour",
+        "why_it_matters": "Describes a mechanistic result in mice.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "germ-free mice exhibited heightened anxiety ... reduced when colonised or given indoles",
+        "why_it_matters": "Shows the effect is causally tied to microbiota in animals.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "indole-producing probiotics could one day be used to treat anxiety disorders",
+        "why_it_matters": "Moves from animal mechanistic insight to speculative human therapy.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "human trials are needed",
+        "why_it_matters": "Acknowledges that evidence is preclinical.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "Strong causal evidence in animal model (germ-free mice, colonisation reversal). But the\nleap to 'indole-producing probiotics for anxiety disorders' in humans is speculative.\nThe core issue is mechanism vs evidence: the mechanism is demonstrated in mice, not humans.\nThis is distinct from simple overclaim because the animal evidence is genuinely strong.\n",
+    "gold_alternative_reading": "Could be read as overclaim (speculative therapy claim). But the defining feature is the\nspecies-translation gap, not simple claim inflation. The 'human trials needed' caveat\nshows the authors know the limitation — the issue is the gap itself, not deception.\nA correlation_vs_causation reading is incorrect because the animal evidence IS causal.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Tricky label. Haiku confused this with correlation_vs_causation in Sprint 2 (the animal\nevidence IS causal, so that label is wrong). Opus classified as 'solid' in both sprints\n— too charitable with 'human trials needed' as sufficient caveat. Sonnet is the only\nmodel that consistently gets this right. Good discriminative case for mechanism reasoning.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The study measured anxiety-like behavior in mice using standard behavioral assays (e.g., elevated plus maze, open field test)\",\n    \"Indoles were administered either via microbiota colonization or direct supplementation\",\n    \"The basolateral amygdala involvement was demonstrated through neural recording or imaging\",\n    \"Germ-free mice are a valid model for studying microbiota effects, though they are not a perfect human analog\",\n    \"Anxiety-like behavior in mice is a reasonable proxy for human anxiety, though the translation is imperfect\"\n  ],\n  \"steps\": [\n    \"Identified evidence tier: Animal model (mice) — this is Tier 2, the second-weakest evidence category\",\n    \"Identified conclusion tier: Human therapeutic use ('could one day be used to treat anxiety disorders') — this is a human clinical benefit claim\",\n    \"Assessed bridge: The text proposes indole-producing probiotics for human anxiety treatment based on mouse data\",\n    \"Evaluated hedging: The text includes 'could one day' and 'human trials are needed,' which acknowledges the gap but does not close it\",\n    \"Applied KEY RULE: Cautious wording alone does NOT resolve an evidence-tier mismatch. The hedge acknowledges the gap but does not provide direct evidence that indoles work in humans\",\n    \"Assessed rhetorical tone: The language is analytical and measured ('propose,' 'caution'), not promotional ('breakthrough,' 'confirms'). No active selling of clinical benefit\",\n    \"Conclusion: The primary forensic problem is the evidence-tier mismatch (animal → human therapeutic), not rhetorical inflation. This is mechanism_vs_evidence\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as 'solid' if the text were framed as 'this mouse study suggests a mechanism worth investigating in humans' — but the text goes further by proposing therapeutic use\",\n    \"Could classify as 'overclaim' if the language were more promotional (e.g., 'indoles reduce anxiety' stated as fact rather than 'could one day be used'). The hedging prevents this classification\"\n  ],\n  \"uncertainties\": [\n    \"Whether the mouse behavioral assays used are well-validated proxies for human anxiety (they are reasonably well-established, but translation is always imperfect)\",\n    \"Whether the neural mechanism (basolateral amygdala modulation) is conserved between mice and humans (likely, but not guaranteed)\",\n    \"The specific design of the human trial pathway — whether the researchers are planning Phase I/II studies or merely speculating\",\n    \"Whether other confounders in the mouse model (e.g., housing, stress, diet) were adequately controlled\"\n  ],\n  \"key_claims\": [\n    \"Indoles modulate basolateral amygdala activity in mice — supported by animal evidence\",\n    \"Germ-free mice show heightened anxiety, reversed by microbiota or indoles — supported by animal evidence\",\n    \"Indole-producing probiotics could treat human anxiety disorders — NOT supported by animal evidence alone; requires human trials\",\n    \"The text correctly acknowledges the gap ('human trials are needed'), but this acknowledgment does not eliminate the evidence-tier mismatch\"\n  ],\n  \"self_check\": [\n    \"Did I overclassify this as overclaim? No — the language is cautious ('could one day,' 'propose,' 'caution'). The problem is not rhetorical inflation but evidence tier\",\n    \"Did I correctly apply the KEY RULE? Yes — the hedge language is present but does not resolve the animal-to-human gap. The text still implies human therapeutic potential based on animal data\",\n    \"Is this a solid study? No — the study itself may be well-designed, but the text's conclusion (human therapeutic use) exceeds the evidence tier (animal model)\",\n    \"Did I miss a confounding variable or design flaw? The text does not provide enough methodological detail to assess this. I am assuming standard mouse behavioral assays and appropriate controls\"\n  ],\n  \"confidence\": 0.88\n}\n```\n\n---\n\n### Summary\n\n**Classification: mechanism_vs_evidence**\n\nThe core issue is a **tier mismatch**: the evidence comes from mouse studies (Tier 2), but the conclusion implies human therapeutic benefit (Tier 5). While the text appropriately hedges with \"could one day\" and \"human trials are needed,\" these caveats acknowledge the gap without closing it. The text is analytical rather than promotional, so this is not an overclaim problem—it is a structural evidence-tier problem. The mouse data support a *mechanism* (indoles → amygdala modulation → reduced anxiety-like behavior), but not yet a *human therapeutic claim*.\n\nHuman trials are indeed needed before the therapeutic claim can be elevated to clinical evidence.",
+        "parsed": {
+          "final_answer": "mechanism_vs_evidence",
+          "assumptions": [
+            "The study measured anxiety-like behavior in mice using standard behavioral assays (e.g., elevated plus maze, open field test)",
+            "Indoles were administered either via microbiota colonization or direct supplementation",
+            "The basolateral amygdala involvement was demonstrated through neural recording or imaging",
+            "Germ-free mice are a valid model for studying microbiota effects, though they are not a perfect human analog",
+            "Anxiety-like behavior in mice is a reasonable proxy for human anxiety, though the translation is imperfect"
+          ],
+          "steps": [
+            "Identified evidence tier: Animal model (mice) — this is Tier 2, the second-weakest evidence category",
+            "Identified conclusion tier: Human therapeutic use ('could one day be used to treat anxiety disorders') — this is a human clinical benefit claim",
+            "Assessed bridge: The text proposes indole-producing probiotics for human anxiety treatment based on mouse data",
+            "Evaluated hedging: The text includes 'could one day' and 'human trials are needed,' which acknowledges the gap but does not close it",
+            "Applied KEY RULE: Cautious wording alone does NOT resolve an evidence-tier mismatch. The hedge acknowledges the gap but does not provide direct evidence that indoles work in humans",
+            "Assessed rhetorical tone: The language is analytical and measured ('propose,' 'caution'), not promotional ('breakthrough,' 'confirms'). No active selling of clinical benefit",
+            "Conclusion: The primary forensic problem is the evidence-tier mismatch (animal → human therapeutic), not rhetorical inflation. This is mechanism_vs_evidence"
+          ],
+          "alternative_hypotheses": [
+            "Could classify as 'solid' if the text were framed as 'this mouse study suggests a mechanism worth investigating in humans' — but the text goes further by proposing therapeutic use",
+            "Could classify as 'overclaim' if the language were more promotional (e.g., 'indoles reduce anxiety' stated as fact rather than 'could one day be used'). The hedging prevents this classification"
+          ],
+          "uncertainties": [
+            "Whether the mouse behavioral assays used are well-validated proxies for human anxiety (they are reasonably well-established, but translation is always imperfect)",
+            "Whether the neural mechanism (basolateral amygdala modulation) is conserved between mice and humans (likely, but not guaranteed)",
+            "The specific design of the human trial pathway — whether the researchers are planning Phase I/II studies or merely speculating",
+            "Whether other confounders in the mouse model (e.g., housing, stress, diet) were adequately controlled"
+          ],
+          "self_check": [
+            "Did I overclassify this as overclaim? No — the language is cautious ('could one day,' 'propose,' 'caution'). The problem is not rhetorical inflation but evidence tier",
+            "Did I correctly apply the KEY RULE? Yes — the hedge language is present but does not resolve the animal-to-human gap. The text still implies human therapeutic potential based on animal data",
+            "Is this a solid study? No — the study itself may be well-designed, but the text's conclusion (human therapeutic use) exceeds the evidence tier (animal model)",
+            "Did I miss a confounding variable or design flaw? The text does not provide enough methodological detail to assess this. I am assuming standard mouse behavioral assays and appropriate controls"
+          ],
+          "key_claims": [
+            "Indoles modulate basolateral amygdala activity in mice — supported by animal evidence",
+            "Germ-free mice show heightened anxiety, reversed by microbiota or indoles — supported by animal evidence",
+            "Indole-producing probiotics could treat human anxiety disorders — NOT supported by animal evidence alone; requires human trials",
+            "The text correctly acknowledges the gap ('human trials are needed'), but this acknowledgment does not eliminate the evidence-tier mismatch"
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 12379
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.3,
+        "structural_reasoning": 0.6499999999999999,
+        "assumption_discipline": 0.6000000000000001,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.6000000000000001,
+        "insight_depth": 0.667,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.3,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 7",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6499999999999999,
+          "weight": 8,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "Applied KEY RULE: Cautious wording alone does NOT resolve an evidence-tier mismatch. The hedge acknowledges the gap but does not provide direct eviden",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 1/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.76)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.6000000000000001,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "The study measured anxiety-like behavior in mice using standard behavioral assays (e.g., elevated plus maze, open field test)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The basolateral amygdala involvement was demonstrated through neural recording or imaging",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Anxiety-like behavior in mice is a reasonable proxy for human anxiety, though the translation is imperfect",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The study measured anxiety-like behavior in mice using standard behavioral assays (e.g., elevated plus maze, open field test)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "3 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the mouse behavioral assays used are well-validated proxies for human anxiety (they are reasonably well-established, but translation is always imperfect)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "Could classify as 'overclaim' if the language were more promotional (e.g., 'indoles reduce anxiety' stated as fact rather than 'could one day be used'). The hedging prevents this classification",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "1/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Did I miss a confounding variable or design flaw? The text does not provide enough methodological detail to assess this. I am assuming standard mouse behavioral assays and appropriate controls",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.72, 525 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.6666666666666666,
+          "weight": 8,
+          "weighted_score": 5.3,
+          "evidence": [
+            {
+              "text": "nce identified evidence tier: animal model (mice) — this is tier 2, the",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'animal model' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "Missing: mechanism not demonstrated in humans",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'mechanism not demonstrated in humans' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The study measured anxiety-like behavior in mice using stand...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The study measured anxiety-like behavior in mice using standard behavioral assays (e.g., elevated plus maze, open field test)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The basolateral amygdala involvement was demonstrated throug...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The basolateral amygdala involvement was demonstrated through neural recording or imaging",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'Anxiety-like behavior in mice is a reasonable proxy for huma...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "Anxiety-like behavior in mice is a reasonable proxy for human anxiety, though the translation is imperfect",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/9 content words)",
+          "evidence": [
+            {
+              "text": "Indoles modulate basolateral amygdala activity in mice — supported by animal evidence",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (1/11 content words)",
+          "evidence": [
+            {
+              "text": "Germ-free mice show heightened anxiety, reversed by microbiota or indoles — supported by animal evidence",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (1/12 content words)",
+          "evidence": [
+            {
+              "text": "Indole-producing probiotics could treat human anxiety disorders — NOT supported by animal evidence alone; requires human trials",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The text correctly acknowledges the gap ('human trials are needed'), but this acknowledgment does not eliminate the evidence-tier mismatch",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could classify as 'overclaim' if the language were more promotional (e.g., 'indoles reduce anxiety' stated as fact rather than 'could one day be used'). The hedging prevents this classification",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study measured anxiety-like behavior in mice using standard behavioral assays (e.g., elevated plus maze, open field test)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Indoles were administered either via microbiota colonization or direct supplementation",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The basolateral amygdala involvement was demonstrated through neural recording or imaging",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Germ-free mice are a valid model for studying microbiota effects, though they are not a perfect human analog",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Anxiety-like behavior in mice is a reasonable proxy for human anxiety, though the translation is imperfect",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence tier: Animal model (mice) — this is Tier 2, the second-weakest evidence category",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified conclusion tier: Human therapeutic use ('could one day be used to treat anxiety disorders') — this is a human clinical benefit claim",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed bridge: The text proposes indole-producing probiotics for human anxiety treatment based on mouse data",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated hedging: The text includes 'could one day' and 'human trials are needed,' which acknowledges the gap but does not close it",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Applied KEY RULE: Cautious wording alone does NOT resolve an evidence-tier mismatch. The hedge acknowledges the gap but does not provide direct evidence that indoles work in humans",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed rhetorical tone: The language is analytical and measured ('propose,' 'caution'), not promotional ('breakthrough,' 'confirms'). No active selling of clinical benefit",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Conclusion: The primary forensic problem is the evidence-tier mismatch (animal → human therapeutic), not rhetorical inflation. This is mechanism_vs_evidence",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Indoles modulate basolateral amygdala activity in mice — supported by animal evidence",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Germ-free mice show heightened anxiety, reversed by microbiota or indoles — supported by animal evidence",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Indole-producing probiotics could treat human anxiety disorders — NOT supported by animal evidence alone; requires human trials",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text correctly acknowledges the gap ('human trials are needed'), but this acknowledgment does not eliminate the evidence-tier mismatch",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'solid' if the text were framed as 'this mouse study suggests a mechanism worth investigating in humans' — but the text goes further by proposing therapeutic use",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as 'overclaim' if the language were more promotional (e.g., 'indoles reduce anxiety' stated as fact rather than 'could one day be used'). The hedging prevents this classification",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the mouse behavioral assays used are well-validated proxies for human anxiety (they are reasonably well-established, but translation is always imperfect)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the neural mechanism (basolateral amygdala modulation) is conserved between mice and humans (likely, but not guaranteed)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific design of the human trial pathway — whether the researchers are planning Phase I/II studies or merely speculating",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether other confounders in the mouse model (e.g., housing, stress, diet) were adequately controlled",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overclassify this as overclaim? No — the language is cautious ('could one day,' 'propose,' 'caution'). The problem is not rhetorical inflation but evidence tier",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly apply the KEY RULE? Yes — the hedge language is present but does not resolve the animal-to-human gap. The text still implies human therapeutic potential based on animal data",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this a solid study? No — the study itself may be well-designed, but the text's conclusion (human therapeutic use) exceeds the evidence tier (animal model)",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a confounding variable or design flaw? The text does not provide enough methodological detail to assess this. I am assuming standard mouse behavioral assays and appropriate controls",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          }
+        ],
+        "unused_assumptions": [
+          0,
+          2,
+          4
+        ],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'mechanism_vs_evidence...' <- step 11 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "mechanism_vs_evidence",
+        "label_correct": true,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "unsupported_generalization",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "cautious_scope_control"
+        ],
+        "missed_findings": [
+          "unsupported_generalization"
+        ],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": false
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unused_assumption",
+        "unused_assumption",
+        "unused_assumption",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 3",
+        "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 7",
+        "Reasoning graph confirms conclusion grounding",
+        "7 reasoning steps",
+        "Low step utility: 1/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.76)",
+        "5/5 substantive assumptions",
+        "3 unused assumption(s)",
+        "4 uncertainties (4 substantive)",
+        "Confidence 0.88",
+        "2 alternative hypotheses considered",
+        "1/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.72, 525 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:29:47.504334+00:00",
+  "metadata": {}
+}

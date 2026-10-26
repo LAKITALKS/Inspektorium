@@ -1,0 +1,998 @@
+{
+  "run_id": "mc2_study-forensics-024_claude_haiku_7fea34",
+  "task": {
+    "id": "study-forensics-024",
+    "title": "Study Forensics: Gene therapy elevating Klotho protein extends lifespan in mice",
+    "domain": "study_forensics",
+    "difficulty": "hard",
+    "task_type": "study_forensics",
+    "prompt": "An international team used viral vectors to boost production of the secreted form of the Klotho protein in middle-aged mice. The treated mice lived 15 to 20 percent longer and showed improvements in muscle strength, bone density and cognitive performance. Researchers observed increased formation of neurons and enhanced immune activity in the hippocampus. They filed patents for using Klotho to treat bone, muscle and aging-related deficits and suggested that with a suitable delivery method, this gene therapy could help build a healthier society by combating age-related decline.\n",
+    "context": "Strong animal evidence for a specific biological mechanism, but the leap to human\ntherapeutic claims and societal benefits is speculative. Classic mechanism vs evidence gap.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The summary describes a gene-therapy intervention that increases Klotho protein levels in mice and reports extended lifespan and improved physiological and cognitive outcomes. It suggests potential human applications without presenting human evidence. The mechanism is described but not demonstrated in humans.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "middle-aged mice",
+          "viral vectors"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "speculative therapy",
+        "variants": [
+          "healthier society",
+          "suitable delivery method",
+          "patents"
+        ],
+        "functional_descriptions": [
+          "therapeutic and societal claims go beyond preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating strong animal evidence as sufficient for human claims",
+      "missing the patent/commercial interest as a signal"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish strong preclinical mechanism from speculative human application?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "The summary describes a gene-therapy intervention that increases Klotho protein levels in mice and reports extended lifespan and improved outcomes. It suggests potential human applications without human evidence.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "The treated mice lived 15 to 20 percent longer and showed improvements in muscle strength, bone density and cognitive performance",
+        "why_it_matters": "Demonstrates robust effects observed in animals but not yet in humans.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "they filed patents for using Klotho to treat bone, muscle and aging-related deficits and suggested that with a suitable delivery method, this gene therapy could help build a healthier society",
+        "why_it_matters": "Illustrates overextension of animal findings to broad societal benefits without human evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "While the study demonstrates a mechanism (increased Klotho) and measurable effects in\nmice, the article extends the implications to human aging. The mechanism is described\nbut not demonstrated in humans; translation to people remains speculative. The patent\nfilings and \"healthier society\" language signal commercial optimism beyond evidence.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Clear mechanism_vs_evidence case in longevity/gene therapy domain. Parallel to\nCase013 (gut microbes) but with stronger animal evidence and more explicit commercial\ninterest (patents). Tests the same animal-to-human inference gap in a different domain.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\n    \"The study was conducted in mice only, as stated\",\n    \"The improvements in lifespan and phenotypes are accurately reported from the mouse experiments\",\n    \"No human trials have been conducted yet\",\n    \"The 'suitable delivery method' for humans does not yet exist or has not been validated\",\n    \"The mechanisms observed in mice (neurogenesis, immune activity) are being inferred as relevant to human aging\"\n  ],\n  \"steps\": [\n    \"Identified the study population: middle-aged mice only\",\n    \"Identified the outcomes: lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, immune activity\",\n    \"Examined the claims made: the text moves from mouse data to human applications ('help build a healthier society by combating age-related decline')\",\n    \"Assessed the logical gap: mouse lifespan extension does not automatically translate to human longevity; mechanisms in rodent hippocampus may not replicate in human brain\",\n    \"Evaluated the delivery claim: 'with a suitable delivery method' is speculative—no validated human delivery system is mentioned\",\n    \"Checked for causal language: the text uses causal framing ('boost production... lived longer') which is appropriate for the experimental design, but then extends causality to humans without evidence\",\n    \"Assessed uncertainty language: the phrase 'could help' provides some hedging, but the overall framing ('combating age-related decline') is strong and unqualified\"\n  ],\n  \"alternative_hypotheses\": [\n    \"This could be classified as 'mechanism_vs_evidence' if the emphasis is on applying mouse hippocampal mechanisms to human aging without human data\",\n    \"This could be 'solid' if the text is interpreted as a preliminary mouse study with appropriate caveats (though the human application language undermines this)\"\n  ],\n  \"uncertainties\": [\n    \"Whether the original peer-reviewed paper contains appropriate caveats that are absent from this summary\",\n    \"Whether the patent filing itself constitutes an overclaim or is standard practice in biotech\",\n    \"The exact wording of 'suitable delivery method'—whether this is acknowledged as unsolved or presented as achievable\",\n    \"Whether the researchers themselves made the human-application claims or if this is a press report extrapolation\"\n  ],\n  \"key_claims\": [\n    \"The core overclaim: extending mouse lifespan and cognition results to human 'healthier society' benefits without human evidence\",\n    \"Mechanism application: hippocampal neurogenesis and immune changes in mice are presented as relevant to human aging without validation\",\n    \"Delivery assumption: the text assumes a 'suitable delivery method' exists or will exist, but provides no evidence or timeline\",\n    \"The causal chain is sound within mice (viral vector → Klotho → outcomes) but breaks when extended to humans\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problem? No—the text explicitly moves from mouse data to human applications without qualification\",\n    \"Did I miss a solid aspect? The mouse study itself appears well-designed (viral vector, multiple phenotypes measured), but the summary's human claims are unsupported\",\n    \"Is this truly an overclaim or just standard research communication? The phrase 'help build a healthier society' is a clear generalization beyond the evidence presented\",\n    \"Could this be mechanism_vs_evidence instead? Partially yes, but the primary issue is the unqualified leap from mice to humans, making 'overclaim' the better fit\"\n  ],\n  \"confidence\": 0.82\n}\n```\n\n**Summary**: The mouse study appears methodologically sound, but the summary commits a significant overclaim by extending results to human aging and societal health without evidence. The phrase \"could help build a healthier society by combating age-related decline\" is unsupported by mouse data alone. The \"suitable delivery method\" is presented as a solvable problem rather than an acknowledged gap. This is a classic case of preclinical-to-clinical extrapolation without the intermediate evidence.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study was conducted in mice only, as stated",
+            "The improvements in lifespan and phenotypes are accurately reported from the mouse experiments",
+            "No human trials have been conducted yet",
+            "The 'suitable delivery method' for humans does not yet exist or has not been validated",
+            "The mechanisms observed in mice (neurogenesis, immune activity) are being inferred as relevant to human aging"
+          ],
+          "steps": [
+            "Identified the study population: middle-aged mice only",
+            "Identified the outcomes: lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, immune activity",
+            "Examined the claims made: the text moves from mouse data to human applications ('help build a healthier society by combating age-related decline')",
+            "Assessed the logical gap: mouse lifespan extension does not automatically translate to human longevity; mechanisms in rodent hippocampus may not replicate in human brain",
+            "Evaluated the delivery claim: 'with a suitable delivery method' is speculative—no validated human delivery system is mentioned",
+            "Checked for causal language: the text uses causal framing ('boost production... lived longer') which is appropriate for the experimental design, but then extends causality to humans without evidence",
+            "Assessed uncertainty language: the phrase 'could help' provides some hedging, but the overall framing ('combating age-related decline') is strong and unqualified"
+          ],
+          "alternative_hypotheses": [
+            "This could be classified as 'mechanism_vs_evidence' if the emphasis is on applying mouse hippocampal mechanisms to human aging without human data",
+            "This could be 'solid' if the text is interpreted as a preliminary mouse study with appropriate caveats (though the human application language undermines this)"
+          ],
+          "uncertainties": [
+            "Whether the original peer-reviewed paper contains appropriate caveats that are absent from this summary",
+            "Whether the patent filing itself constitutes an overclaim or is standard practice in biotech",
+            "The exact wording of 'suitable delivery method'—whether this is acknowledged as unsolved or presented as achievable",
+            "Whether the researchers themselves made the human-application claims or if this is a press report extrapolation"
+          ],
+          "self_check": [
+            "Did I overstate the problem? No—the text explicitly moves from mouse data to human applications without qualification",
+            "Did I miss a solid aspect? The mouse study itself appears well-designed (viral vector, multiple phenotypes measured), but the summary's human claims are unsupported",
+            "Is this truly an overclaim or just standard research communication? The phrase 'help build a healthier society' is a clear generalization beyond the evidence presented",
+            "Could this be mechanism_vs_evidence instead? Partially yes, but the primary issue is the unqualified leap from mice to humans, making 'overclaim' the better fit"
+          ],
+          "key_claims": [
+            "The core overclaim: extending mouse lifespan and cognition results to human 'healthier society' benefits without human evidence",
+            "Mechanism application: hippocampal neurogenesis and immune changes in mice are presented as relevant to human aging without validation",
+            "Delivery assumption: the text assumes a 'suitable delivery method' exists or will exist, but provides no evidence or timeline",
+            "The causal chain is sound within mice (viral vector → Klotho → outcomes) but breaks when extended to humans"
+          ],
+          "confidence": 0.82,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11123
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.09,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.75,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.6000000000000001,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.0,
+          "weight": 30,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "No match (got: overclaim)"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Checked for causal language: the text uses causal framing ('boost production... lived longer') which is appropriate for the experimental design, but t",
+              "source_field": "steps[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.79)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The mechanisms observed in mice (neurogenesis, immune activity) are being inferred as relevant to human aging",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "The exact wording of 'suitable delivery method'—whether this is acknowledged as unsolved or presented as achievable",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the researchers themselves made the human-application claims or if this is a press report extrapolation",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.82",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.82 — appropriately cautious for hard task"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "This could be 'solid' if the text is interpreted as a preliminary mouse study with appropriate caveats (though the human application language undermines this)",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Is this truly an overclaim or just standard research communication? The phrase 'help build a healthier society' is a clear generalization beyond the evidence presented",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.68, 463 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'mechanism_vs_evidence'",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the researchers themselves made the human-applicatio...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the researchers themselves made the human-application claims or if this is a press report extrapolation",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'mechanism_vs_evidence', detected 'overclaim'",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/13 content words)",
+          "evidence": [
+            {
+              "text": "The core overclaim: extending mouse lifespan and cognition results to human 'healthier society' benefits without human evidence",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/13 content words)",
+          "evidence": [
+            {
+              "text": "Mechanism application: hippocampal neurogenesis and immune changes in mice are presented as relevant to human aging without validation",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "Delivery assumption: the text assumes a 'suitable delivery method' exists or will exist, but provides no evidence or timeline",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The causal chain is sound within mice (viral vector → Klotho → outcomes) but breaks when extended to humans",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 4 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether the researchers themselves made the human-application claims or if this is a press report extrapolation",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "This could be classified as 'mechanism_vs_evidence' if the emphasis is on applying mouse hippocampal mechanisms to human aging without human data",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "This could be 'solid' if the text is interpreted as a preliminary mouse study with appropriate caveats (though the human application language undermines this)",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "well_reasoned_wrong",
+          "description": "Wrong answer but structured reasoning — may have a subtle logic error",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Wrong despite good reasoning",
+              "role": "supporting"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted in mice only, as stated",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The improvements in lifespan and phenotypes are accurately reported from the mouse experiments",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No human trials have been conducted yet",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 'suitable delivery method' for humans does not yet exist or has not been validated",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The mechanisms observed in mice (neurogenesis, immune activity) are being inferred as relevant to human aging",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the study population: middle-aged mice only",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the outcomes: lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, immune activity",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the claims made: the text moves from mouse data to human applications ('help build a healthier society by combating age-related decline')",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed the logical gap: mouse lifespan extension does not automatically translate to human longevity; mechanisms in rodent hippocampus may not replicate in human brain",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated the delivery claim: 'with a suitable delivery method' is speculative—no validated human delivery system is mentioned",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for causal language: the text uses causal framing ('boost production... lived longer') which is appropriate for the experimental design, but then extends causality to humans without evidence",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed uncertainty language: the phrase 'could help' provides some hedging, but the overall framing ('combating age-related decline') is strong and unqualified",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The core overclaim: extending mouse lifespan and cognition results to human 'healthier society' benefits without human evidence",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism application: hippocampal neurogenesis and immune changes in mice are presented as relevant to human aging without validation",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Delivery assumption: the text assumes a 'suitable delivery method' exists or will exist, but provides no evidence or timeline",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The causal chain is sound within mice (viral vector → Klotho → outcomes) but breaks when extended to humans",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This could be classified as 'mechanism_vs_evidence' if the emphasis is on applying mouse hippocampal mechanisms to human aging without human data",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This could be 'solid' if the text is interpreted as a preliminary mouse study with appropriate caveats (though the human application language undermines this)",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the original peer-reviewed paper contains appropriate caveats that are absent from this summary",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the patent filing itself constitutes an overclaim or is standard practice in biotech",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The exact wording of 'suitable delivery method'—whether this is acknowledged as unsolved or presented as achievable",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the researchers themselves made the human-application claims or if this is a press report extrapolation",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problem? No—the text explicitly moves from mouse data to human applications without qualification",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a solid aspect? The mouse study itself appears well-designed (viral vector, multiple phenotypes measured), but the summary's human claims are unsupported",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this truly an overclaim or just standard research communication? The phrase 'help build a healthier society' is a clear generalization beyond the evidence presented",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could this be mechanism_vs_evidence instead? Partially yes, but the primary issue is the unqualified leap from mice to humans, making 'overclaim' the better fit",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 22,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.5
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          21
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'overclaim...'"
+        ],
+        "unsupported_claims": [
+          "overclaim"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "overclaim",
+        "label_correct": false,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could help"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "decorative_uncertainty",
+        "wrong_answer"
+      ],
+      "notes": [
+        "No match (got: overclaim)",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph confirms conclusion grounding",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.79)",
+        "5/5 substantive assumptions",
+        "4 uncertainties (4 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.82 — appropriately cautious for hard task",
+        "2 alternative hypotheses considered",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.68, 463 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T16:22:04.726287+00:00",
+  "metadata": {}
+}

@@ -1,0 +1,98 @@
+{
+  "record_schema_version": "0.1.0",
+  "record_id": "QA-SCOPE-0001",
+  "synthetic_fixture": true,
+  "fixture_class": "pipeline_qa",
+  "provenance": [
+    {
+      "provenance_id": "prov-1",
+      "exact_claim_text": "Intervention A has been shown to outperform Intervention B.",
+      "source_id": "src-claim-page",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "Synthetic comparison claim (fixture)",
+      "retrieved_at": "2026-01-01T00:00:00Z",
+      "content_fingerprint": "555c167f87b0f84aa4c8631ab370b1ffd3adf2a26e2cdf416cf4a93eecf2673e",
+      "context_before": null,
+      "context_after": null
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "source_id": "src-1",
+      "role": "supporting",
+      "endpoint": "cited company source 1",
+      "material": true,
+      "exact_reference": "Source 1",
+      "text": "Cited company source 1 studies Intervention A alone; it contains no A-vs-B comparison."
+    },
+    {
+      "evidence_id": "E2",
+      "source_id": "src-2",
+      "role": "supporting",
+      "endpoint": "cited company source 2",
+      "material": true,
+      "exact_reference": "Source 2",
+      "text": "Cited company source 2 studies Intervention B alone; it contains no A-vs-B comparison."
+    },
+    {
+      "evidence_id": "E3",
+      "source_id": "src-search",
+      "role": "supporting",
+      "endpoint": "documented search result set",
+      "material": true,
+      "exact_reference": "Search log",
+      "text": "The documented literature search returned no direct A-vs-B head-to-head study."
+    }
+  ],
+  "search_scopes": [
+    {
+      "search_scope_id": "SS1",
+      "scope_type": "documented_search",
+      "reviewed_source_ids": ["src-1", "src-2"],
+      "resources": ["DB-A", "DB-B"],
+      "query_terms": ["Intervention A vs Intervention B head-to-head"],
+      "date_cutoff": "2025-12",
+      "search_completeness": "structured"
+    }
+  ],
+  "negative_assertions": [
+    {
+      "assertion_id": "NA1",
+      "finding_id": "F1",
+      "proposition": "No direct head-to-head study comparing Intervention A and Intervention B was identified.",
+      "assertion_scope": "documented_search",
+      "search_scope_id": "SS1",
+      "source_local_evidence_ids": []
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F1",
+      "provenance_id": "prov-1",
+      "proposition": "No head-to-head A-vs-B comparison was identified within the documented search scope.",
+      "verdict_summary": "The cited sources study each intervention alone; a documented structured search identified no direct head-to-head comparison.",
+      "supporting_evidence_ids": ["E1", "E2", "E3"],
+      "contrary_evidence_ids": [],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": null
+    }
+  ],
+  "client_findings": [
+    {
+      "client_finding_id": "C1",
+      "parent_finding_id": "F1",
+      "display_claim": "In the reviewed sources and a documented search, no direct head-to-head comparison of A and B was identified.",
+      "client_explanation": "The cited sources study each intervention separately, and a documented structured search found no direct head-to-head study. This does not establish that no such study exists anywhere.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": ["E1", "E2", "E3"],
+      "provenance_id": "prov-1",
+      "value_claims": [],
+      "client_negative_assertions": [
+        {"assertion_id": "NA1", "client_scope": "documented_search"}
+      ]
+    }
+  ]
+}

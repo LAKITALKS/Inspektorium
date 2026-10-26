@@ -1,0 +1,4 @@
+annotator,blind_case_id,gold_label,annotator_primary,annotator_secondary,confidence,soft_reason
+C,BIAA-003,overclaim,solid,overclaim,0.8500,gold==secondary
+C,BIAA-007,overclaim,mechanism_vs_evidence,overclaim,0.9500,gold==secondary
+C,BIAA-016,overclaim,correlation_vs_causation,overclaim,0.9000,gold==secondary

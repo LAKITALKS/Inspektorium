@@ -1,0 +1,41 @@
+id: quarantine-AA-NEW-007
+title: "QUARANTINE: Depression RCT with pre-specified subgroup positive, primary null"
+domain: study_forensics
+difficulty: very_hard
+task_type: study_forensics
+task_family: ambiguous
+quarantine_reason: |
+  Gold label is genuinely ambiguous ("honest_subgroup_reporting vs soft_overclaim").
+  Gold confidence is low_medium. This case is diagnostically invaluable for gold-reviewer
+  calibration and advanced model evaluation, but too unstable for production scoring.
+  The legitimate tension between pre-specification credit and multiplicity concern makes
+  any single gold label defensible and contestable. Retain for future gold-review
+  calibration exercises and advanced evaluation tiers.
+quarantine_date: "2026-04-07"
+original_dataset: dataset_5
+original_id: AA-NEW-007
+original_label: "ambiguous — honest_subgroup_reporting vs soft_overclaim"
+original_task_family: "Borderline epistemic assessment"
+potential_normalized_label: null
+potential_normalized_family: null
+note: |
+  This is the only genuine borderline in Dataset 5. Both readings are equally credible.
+  Labeling it overclaim penalizes good scientific practice (pre-specification).
+  Labeling it solid ignores multiplicity concerns.
+  Best used for: gold-reviewer calibration, inter-rater reliability testing, advanced
+  model evaluation where we explicitly test ambiguity handling.
+prompt: |
+  A randomized controlled trial of a novel antidepressant compound enrolled 340 adults with major depressive disorder. The primary endpoint — mean reduction in depression rating score at week eight — did not reach statistical significance in the intent-to-treat population (p = 0.11, effect size d = 0.18). In a pre-specified secondary analysis of participants with baseline inflammatory markers above the median, the compound produced a statistically significant reduction compared to placebo (p = 0.03, d = 0.41). The trial was registered before enrollment and the subgroup analysis was listed as a secondary endpoint in the pre-registration document. The authors concluded that the findings provide promising preliminary evidence for the efficacy of the compound in a biologically defined subpopulation and recommended that future trials specifically enroll patients with elevated inflammatory markers.
+gold_label: "ambiguous"
+gold_confidence: low_medium
+gold_case_type: borderline
+gold_justification: |
+  In favor of legitimate reporting: the subgroup was pre-specified, the biological hypothesis
+  is theoretically grounded, the primary endpoint null is transparently reported, and the
+  conclusion is hedged. In favor of overclaim concern: p = 0.03 in a secondary subgroup
+  carries unresolved multiplicity concerns even with pre-registration; 'promising preliminary
+  evidence for efficacy' edges toward stronger language than the evidence supports.
+gold_alternative_reading: |
+  Equally credible as honest science: pre-specified subgroup with biological plausibility,
+  transparent reporting of the null primary, moderate effect size (d = 0.41), and hedged
+  conclusion. Labeling it overclaim would penalize good scientific practice.

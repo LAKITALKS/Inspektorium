@@ -1,0 +1,4 @@
+blind_case_id,shared_primary,A_conf,B_conf,abs_diff (>=0.15)
+BIAA-013,correlation_vs_causation,0.6200,0.8000,0.1800
+BIAA-016,overclaim,0.7000,0.8500,0.1500
+BIAA-019,solid,0.5000,0.7200,0.2200

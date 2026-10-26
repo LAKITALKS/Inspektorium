@@ -1,0 +1,291 @@
+{
+  "phase": "7A",
+  "model": "claude-haiku-4-5-20251001",
+  "execution_type": "independent_model_adjudication",
+  "synthetic_non_analytical": false,
+  "bound_raw_freeze": {
+    "aggregate_result_set_fingerprint": "b994672ec89bd05f34b67ac2ea24384fd822787a3795febc639b6039136ced8f",
+    "completed_analytical_calls": 420
+  },
+  "report": {
+    "phase": "7A",
+    "dry_run": false,
+    "synthetic_non_analytical": false,
+    "accounting": {
+      "n_independent_bases": 34,
+      "n_evaluated_units": 84,
+      "n_perturbation_variants": 50,
+      "n_perturbation_clusters": 10,
+      "no_pooled_headline_score": true,
+      "note": "Reported per model; 50 variants nested in 10 bases, never 50 independent cases."
+    },
+    "models": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "per_model": {
+      "claude-haiku-4-5-20251001": {
+        "model": "claude-haiku-4-5-20251001",
+        "model_summary": {
+          "n_units": 84,
+          "accuracy_all_units": 0.7262,
+          "accuracy_bases_only": 0.7059,
+          "accuracy_variants_only": 0.74,
+          "mean_brier_valid": 0.240072,
+          "note": "Per-model; NOT pooled with the other primary model."
+        },
+        "boundary_family_results": {
+          "status": "BLOCK",
+          "blocking_directions": {
+            "B1:correlation_vs_causation->overclaim": [
+              "P7A-BND-004",
+              "P7A-BND-005"
+            ],
+            "B2:mechanism_vs_evidence->overclaim": [
+              "P7A-BND-009",
+              "P7A-BND-010"
+            ]
+          },
+          "investigate_directions": {},
+          "n_majority_failures": 4
+        },
+        "adversarial_family_results": {
+          "status": "BLOCK",
+          "families": {
+            "A1": {
+              "n_cases": 2,
+              "majority_failures": 0,
+              "verdict": "PASS"
+            },
+            "A2": {
+              "n_cases": 2,
+              "majority_failures": 2,
+              "verdict": "BLOCK"
+            },
+            "A3": {
+              "n_cases": 2,
+              "majority_failures": 1,
+              "verdict": "INVESTIGATE"
+            },
+            "A4": {
+              "n_cases": 2,
+              "majority_failures": 0,
+              "verdict": "PASS"
+            },
+            "A5": {
+              "n_cases": 2,
+              "majority_failures": 0,
+              "verdict": "PASS"
+            },
+            "A6": {
+              "n_cases": 2,
+              "majority_failures": 0,
+              "verdict": "PASS"
+            },
+            "A7": {
+              "n_cases": 2,
+              "majority_failures": 2,
+              "verdict": "BLOCK"
+            },
+            "A8": {
+              "n_cases": 2,
+              "majority_failures": 0,
+              "verdict": "PASS"
+            }
+          }
+        },
+        "perturbation_cluster_results": {
+          "status": "BLOCK",
+          "family_multi_cluster_flips": {},
+          "cluster_multi_family_flips": {
+            "P7A-NEU-003": [
+              "P2",
+              "P3",
+              "P4"
+            ]
+          },
+          "flipped_variants": [
+            "P7A-PRT-03-P2",
+            "P7A-PRT-03-P3",
+            "P7A-PRT-03-P4"
+          ]
+        },
+        "replication_stability": {
+          "tier_counts": {
+            "unanimous": 84
+          },
+          "assessment": {
+            "status": "OK",
+            "fragile_or_worse_by_family": {},
+            "blocking_families": {}
+          }
+        },
+        "confusion_matrix": {
+          "overclaim": {
+            "overclaim": 44
+          },
+          "mechanism_vs_evidence": {
+            "overclaim": 17
+          },
+          "correlation_vs_causation": {
+            "correlation_vs_causation": 4,
+            "overclaim": 6
+          },
+          "solid": {
+            "solid": 13
+          }
+        },
+        "high_confidence_wrong": [
+          {
+            "unit_id": "P7A-ADV-003",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.926
+          },
+          {
+            "unit_id": "P7A-ADV-004",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.942
+          },
+          {
+            "unit_id": "P7A-ADV-006",
+            "gold": "correlation_vs_causation",
+            "modal": "overclaim",
+            "confidence_mean": 0.95
+          },
+          {
+            "unit_id": "P7A-ADV-013",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-ADV-017",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-BND-004",
+            "gold": "correlation_vs_causation",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-BND-005",
+            "gold": "correlation_vs_causation",
+            "modal": "overclaim",
+            "confidence_mean": 0.926
+          },
+          {
+            "unit_id": "P7A-BND-009",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-BND-010",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.962
+          },
+          {
+            "unit_id": "P7A-NEU-004",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-PRT-03-P2",
+            "gold": "correlation_vs_causation",
+            "modal": "overclaim",
+            "confidence_mean": 0.956
+          },
+          {
+            "unit_id": "P7A-PRT-03-P3",
+            "gold": "correlation_vs_causation",
+            "modal": "overclaim",
+            "confidence_mean": 0.95
+          },
+          {
+            "unit_id": "P7A-PRT-03-P4",
+            "gold": "correlation_vs_causation",
+            "modal": "overclaim",
+            "confidence_mean": 0.95
+          },
+          {
+            "unit_id": "P7A-PRT-04-P1",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-PRT-04-P2",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-PRT-04-P3",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.932
+          },
+          {
+            "unit_id": "P7A-PRT-04-P4",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-PRT-04-P5",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.932
+          },
+          {
+            "unit_id": "P7A-PRT-06-P1",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.938
+          },
+          {
+            "unit_id": "P7A-PRT-06-P2",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-PRT-06-P3",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.926
+          },
+          {
+            "unit_id": "P7A-PRT-06-P4",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          },
+          {
+            "unit_id": "P7A-PRT-06-P5",
+            "gold": "mechanism_vs_evidence",
+            "modal": "overclaim",
+            "confidence_mean": 0.92
+          }
+        ],
+        "systematic_failure_triggers": {
+          "boundary": "BLOCK",
+          "adversarial": "BLOCK",
+          "perturbation": "BLOCK",
+          "replication": "OK"
+        },
+        "limitations": [
+          "Isolated analytical errors are INVESTIGATE/LIMITATION, not automatic phase failure.",
+          "Level-3 taxonomy contradictions route to separate curator review, not auto-BLOCK."
+        ],
+        "taxonomy_review_flags": []
+      }
+    }
+  }
+}

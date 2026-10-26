@@ -1,0 +1,116 @@
+{
+  "claim": {
+    "claim_context": "Active atomic proposition W-01 from the frozen ASA 25/261 Premium Grounding claim registry (origin F01/F03; type EXPLICIT; GENERAL-WELLNESS; PRODUCT-SPECIFIC). Frozen evidence-preparation state: NO MATERIAL DIRECT EVIDENCE LOCATED. Routing: NOT OPERATIONALISABLE AS WORDED — 'natural balance' has no defined scientific endpoint. This is a defect in the claim, not an epistemic gap in the evidence.",
+    "claim_scope": "ENDPOINT NOT OPERATIONALISED | PRODUCT EQUIVALENCE UNCERTAIN",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding restores the body's natural balance.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "evidence": {
+    "contradicting_or_limiting": [
+      "No defined homeostatic variable; the claim is untestable as worded",
+      "Scattered symptom reports cannot validate a global balance claim"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "H22",
+        "text": "Chevalier et al. 2019 reports improvement across several well-being symptoms in 16 massage therapists.",
+        "tier": "limited_human",
+        "why_it_matters": "The nearest available material; scattered symptom self-reports cannot validate a global balance claim and the cohort is shared with H21."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 53/54/63",
+        "text": "No operationalised 'natural balance' endpoint exists; no defined homeostatic variable was identified, so the mechanism cannot be tested as worded.",
+        "tier": "not_applicable",
+        "why_it_matters": "Without a prespecified testable definition the claim admits no evidence for or against it."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "Freeze sections 56/57/58",
+        "text": "The undefined construct also prevents a population, timeframe or causal contrast from being specified.",
+        "tier": "not_applicable",
+        "why_it_matters": "Every fidelity dimension fails for the same reason: there is nothing to measure."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "No endpoint exists against which sufficiency could be assessed; the claim is not operationalisable.",
+    "missing_causal_chain": true,
+    "missing_comparison_group": false,
+    "missing_human_evidence": true,
+    "supporting": [
+      "H22 scattered well-being symptom self-reports (not a balance endpoint)"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "Freeze sections 53/54"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "A definite physiological restoration is asserted with no defined variable, no measurement and no study."
+      },
+      {
+        "evidence_refs": [
+          "Freeze section 63"
+        ],
+        "mode": "missing_human_evidence",
+        "rationale": "No human study measured any operationalised 'natural balance' endpoint."
+      }
+    ]
+  },
+  "meta": {
+    "analysis_status": "complete",
+    "development_or_production_status": "production",
+    "generated_at": "2026-08-23",
+    "report_id": "ASA-25-261-run_001-W-01",
+    "synthetic_fixture": false
+  },
+  "parser": {
+    "parse_ok": true,
+    "strategy": "structured_adjudication"
+  },
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "model": "claude-opus-5",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0"
+  },
+  "reader_impact": {
+    "affected_decision_type": "Purchase on general health grounds.",
+    "likely_reader_misunderstanding": "That a measurable physiological normalisation has been demonstrated.",
+    "risk_level": "moderate",
+    "risk_rationale": "Unfalsifiable wellness language is persuasive precisely because it cannot be checked, and it frames the specific condition list that follows it."
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze."
+  },
+  "uncertainty": {
+    "alternative_label_rationale": "No specific frozen label applies. The claim asserts a definite physiological restoration with no testable referent, which is rhetorical inflation and routes to the generic residual label.",
+    "alternative_plausible_label": null,
+    "ambiguity": "NONE MATERIAL.",
+    "missing_evidence": [
+      "No defined homeostatic variable; the claim is untestable as worded",
+      "Scattered symptom reports cannot validate a global balance claim"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "A prespecified testable definition does not exist; without one, resolution is impossible in principle."
+    ]
+  },
+  "verdict": {
+    "confidence": 0.86,
+    "predicted_label": "overclaim",
+    "verdict_summary": "'Natural balance' names no measurable physiological variable. No homeostatic endpoint was defined or measured in any located study, so the claim cannot be tested as worded and therefore cannot be substantiated."
+  }
+}

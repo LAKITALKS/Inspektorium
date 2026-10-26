@@ -1,0 +1,150 @@
+{
+ "area": "C",
+ "candidate_commit": "5560e950af20cee8c35fb2c8e2bfb38807043fab",
+ "supersedes": "evidence of candidate fd1ad7c (removed from this directory)",
+ "package_version": "agent-arena 1.0.0 (editable install, .venv; bundle manifests bind 5560e950af20cee8c35fb2c8e2bfb38807043fab)",
+ "captured_utc": "2026-10-13",
+ "items": {
+  "C1": {
+   "result": "PASS",
+   "agent_arena_run": {
+    "agents_anthropic": {
+     "exit_code": 2,
+     "v1_message": true,
+     "files_written_in_cwd": 0,
+     "get_provider_calls": 0,
+     "provider_constructions": 0
+    },
+    "agents_yaml_claude_sonnet": {
+     "exit_code": 2,
+     "v1_message": true,
+     "files_written_in_cwd": 0,
+     "get_provider_calls": 0,
+     "provider_constructions": 0
+    }
+   },
+   "official_release": {
+    "exit_code": 2,
+    "v1_message": true,
+    "output_root_created": false,
+    "files_written_in_cwd": 0
+   },
+   "repo_runs_reports_new_files": 0,
+   "supported_path": {
+    "audit_validate": {
+     "exit_code": 0,
+     "input_valid": true,
+     "release_authorized": false,
+     "errors": []
+    },
+    "audit_run_offline": {
+     "exit_code": 0,
+     "status": "READY_FOR_RELEASE",
+     "errors": []
+    },
+    "audit_inspect_candidate": {
+     "exit_code": 0,
+     "status": "READY_FOR_RELEASE",
+     "valid": true,
+     "errors": []
+    },
+    "audit_release": {
+     "exit_code": 0,
+     "status": "RELEASED",
+     "errors": []
+    },
+    "audit_inspect_release": {
+     "exit_code": 0,
+     "status": "RELEASED",
+     "valid": true,
+     "errors": []
+    },
+    "controls": {
+     "release": {
+      "status": "RELEASED",
+      "n": 12,
+      "pass": 11,
+      "not_applicable": [
+       "search_scope_binding"
+      ],
+      "not_executed": []
+     },
+     "runs": {
+      "status": "READY_FOR_RELEASE",
+      "n": 12,
+      "pass": 11,
+      "not_applicable": [
+       "search_scope_binding"
+      ],
+      "not_executed": []
+     }
+    },
+    "open_cause_row": "no blocking cause recorded (candidate and release)"
+   },
+   "help": {
+    "help_root_names_audit_as_v1_path": true,
+    "help_root_marks_run_and_official_release_disabled": true,
+    "help_run_states_disabled_in_v1": true,
+    "help_official_release_states_disabled_in_v1": true,
+    "help_audit_run_profile_example_is_at3": true,
+    "help_forensic_report_marked_not_v1": true,
+    "help_run_library_states_historical": true,
+    "guarded_help_identical_to_console_script": true
+   },
+   "tests": {
+    "tests/test_release_boundary.py": "43 passed in 11.27s",
+    "tests/test_v1_entry_point.py": "16 passed in 0.19s"
+   }
+  },
+  "C2": {
+   "result": "PASS",
+   "statement": "One canonical v1 path, 'agent-arena audit' (validate/run/inspect/review/release). The root help says so, and so does README at HEAD (lines 19 and 58-66). 'run' and 'official-release' are rejected with exit 2 before any task, provider or release object is touched. Their own help now states 'Disabled in v1'. Every other CLI command is visibly marked as not v1. The release_boundary API stays available for historical verification (test_release_boundary 43 passed). Python modules that can still reach providers when invoked directly are classified as historical research paths with their gates (historical_provider_paths.md)."
+  }
+ },
+ "checks": {
+  "help_root_names_audit_as_v1_path": true,
+  "help_root_marks_run_and_official_release_disabled": true,
+  "help_run_states_disabled_in_v1": true,
+  "help_official_release_states_disabled_in_v1": true,
+  "help_audit_run_profile_example_is_at3": true,
+  "help_forensic_report_marked_not_v1": true,
+  "help_run_library_states_historical": true,
+  "run_anthropic_exit2_v1_message": true,
+  "run_yaml_exit2_v1_message": true,
+  "official_release_exit2_v1_message": true,
+  "rejected_cwds_empty": true,
+  "official_output_root_not_created": true,
+  "audit_cli_json_is_ascii": true,
+  "guarded_help_identical_to_console_script": true
+ },
+ "observations_non_blocking": [
+  "The per-command help of 'run' and 'official-release' now starts with 'Disabled in v1: ...'. It still appends the generic addendum 'Not the canonical Phase10 path. Diagnostic or legacy Phase7-only artifacts; use agent-arena audit ...'. That is redundant but not contradictory.",
+  "README.md as committed at 5560e95 still says (lines 201-203) that the old run/official-release outputs are 'diagnostic' or 'Phase-7-only'. The working-tree README, an uncommitted documentation edit present before and after this run, replaces this with 'disabled in v1' (lines 222-230) and adds 'The only supported entry point is agent-arena audit' (line 14). Committed and working-tree README both document the audit commands as the supported path.",
+  "run_library (module CLI), runner.run_task and judge.run_judge (Python import only) can still construct a real provider without an AA-P10-LIVE gate. They are labelled or classified as historical, are not reachable from 'agent-arena audit' and produce no AA-P10 bundle."
+ ],
+ "guard_counts_total_excluding_canary": {
+  "socket_connect": 0,
+  "socket_connect_ex": 0,
+  "socket_create_connection": 0,
+  "httpx_client_send": 0,
+  "httpx_transport_handle_request": 0,
+  "get_provider_calls": 0,
+  "provider_constructions": 0
+ },
+ "canary_self_test": {
+  "socket_connect": 1,
+  "socket_connect_ex": 1,
+  "socket_create_connection": 1,
+  "httpx_client_send": 1,
+  "httpx_transport_handle_request": 1,
+  "get_provider_calls": 2,
+  "provider_constructions": 1
+ },
+ "pytest_network_counts": {
+  "tests/test_release_boundary.py": 0,
+  "tests/test_v1_entry_point.py": 0
+ },
+ "protected_hashes_unchanged": true,
+ "tracked_files_modified_by_this_run": 0,
+ "staged": 0
+}

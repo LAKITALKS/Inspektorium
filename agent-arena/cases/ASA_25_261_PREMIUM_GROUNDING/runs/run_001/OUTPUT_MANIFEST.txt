@@ -1,0 +1,138 @@
+OUTPUT MANIFEST — ASA 25/261 PREMIUM GROUNDING · RUN 001
+========================================================================
+run date            : 2026-08-23
+case                : ASA_25_261_PREMIUM_GROUNDING
+run                 : run_001
+agent arena version : agent-arena 0.1.0 (package metadata); internal contracts: forensic_report 6.3.0, ForensicRecord 0.1.0, release gate 0.1.0
+repository branch   : feat/case-library-run-harness
+repository commit   : 84d75d4b3d931090500151a23c3ef939e910cde0
+model               : claude-opus-5 (anthropic)
+reasoning setting   : NOT EXPOSED
+temperature / seed  : NOT EXPOSED
+release gate        : Phase-7B 0.1.0 — releasable=True
+record fingerprint  : 98bb2eec89f6247d9ad5fb6860654377c034d619e66177b8da778c91aa8a97e0
+code changes        : NONE
+========================================================================
+
+INPUT (re-verified after the run — must be unchanged)
+------------------------------------------------------------------------
+530f8fdf33715f59f86e10df6a9329ad5ccce4c4f0befc219341563b36600069     119130  input/01_FINAL_EVIDENCE_FREEZE_v1.md
+
+RUN OUTPUTS
+------------------------------------------------------------------------
+ebca7775fa7808ba00c954d464d344971871f535456da1b82d7cd4e34433421e      10173  ADVERSARIAL_REVIEW.md
+0bdf9f88c33094061225e1366b52c903a0d090de5e5d1036938cf483b1bce634      16019  AGENT_ARENA_ADJUDICATION.md
+e5787c03321d88483a3a1a4e92e0a620b09a08e1bd216786e2be81daad1b6a6b       6724  CONSISTENCY_CHECK.md
+64d031976f134bd2cd3ded6d216c3a423c09ddc3372a1ccc59d1497547c2a807       4955  INPUT_INTEGRITY_REPORT.md
+182b1e0f7d3e719d5589c3f5400cb263923c5496ed7b8f870e1c4be78c492cdc      66230  PROPOSITION_VERDICTS.md
+1c6332f837124613603fc30534cbeacf41b9f09475734c3c654c35e4947bc859       3457  RUN_CONFIG.md
+8804930e593b5c304789f68517f7380437ad595f24612d10e5d1bf0ee05ed9d0       4264  RUN_LOG.md
+759f2035fde20a511e6aabbd3ce6221d066044640c892a81997de8e856a39877      15383  STEELMAN_REVIEW.md
+f93146d4f73f007fb5e471666c4ef5a78ce1d7ef07a38171d130e790177591bf     207789  adjudication_data.py
+4c7dacd288a099ece36578bbc213892f75d57667ea41ce305f09f712e76cb465     118710  forensic_record.json
+e3ea753573ea6296200ecc5a5add351a99972cf97d5b5232b7ab5f8cfca83fa7       9387  proposition_reports/C-01.json
+6361747191b96d130bfb52c7eab07bfa26ac29674502d82b01369a6a73cd81e7       6835  proposition_reports/C-01.md
+6a18cfe31a977abbe2840f48470332fa482d81564b3e01f7e018b705e2efbdd9        981  proposition_reports/C-01_executive.md
+3be7e6b785bf08aa8607cfc58f31ebe933779ceb7b4da4be7ca1fbe743f04c4b       7415  proposition_reports/C-01_input.json
+05ca0bd188089b4137b2134037b84c02ab04bb870ba282bb56d47cc90e3e86db       8032  proposition_reports/E-01.json
+695441b20e9160e9687ef0c888c99f1cb0dac7bde3797a8c282a16005c640bc3       5707  proposition_reports/E-01.md
+24b9ac25442f7244c08ac4e6821750aaebf81574d922cf3842ca2bdc85308a62        928  proposition_reports/E-01_executive.md
+7a7140d4caa7b2ed751388f2d0308b8dd6d6c3a82c107bff8d3532be427e5713       6060  proposition_reports/E-01_input.json
+eb388f7a2397175584b4bc4cb8b046a624421be3d9af583e82ca53b4a6df0f08       8774  proposition_reports/E-02.json
+df08f1f759034a134ee87efeb317b52ccd02d45c24f87ff76fe57f3202358139       6311  proposition_reports/E-02.md
+7456e6cdfedb64e6d4f103c12c48b75b16d310608dca871e23bc87608474da86       1046  proposition_reports/E-02_executive.md
+8983e654cc56b1c0f064d3e7b028d108e36911181729637ffba68c6d023d48b5       6802  proposition_reports/E-02_input.json
+a737d62b817333d2d332bb40b83143d69814ce9a1f464ce49328db9242e52572       9838  proposition_reports/E-03.json
+95922ae70c3a709a0508daa90b8234e90843044dffae4bb3452e35e44347297e       7306  proposition_reports/E-03.md
+0b185c4c42e15e26c7d510032f94f2382b4ca57907df463a7cb222bcdcdc9e21        982  proposition_reports/E-03_executive.md
+2b36a370b9b04fe74c603f7bb76753bf62ae3f3c59708288041e8b006826b58e       7866  proposition_reports/E-03_input.json
+334c52860fc1cd020d237936253c801d26635b61aa0446271c653c40286f8485       9646  proposition_reports/I-01.json
+052ed4ff23a029ca8a7f6c3bf071b2405e28e695d82d9941c2281056f0cc6296       7176  proposition_reports/I-01.md
+9a8ea8856cf214c54cd338626184c3cf12a8ac3d31d9a4d2a1b69cdf160bbbc8        993  proposition_reports/I-01_executive.md
+7a4894550f580c0f614d369119b2956677fd174fa3842a6814624b0b450759d7       7674  proposition_reports/I-01_input.json
+0b7464880c09ee9ac1b1fc8dc28f971a578153ff3721d6e4a1b8b0d416caefa4       9105  proposition_reports/I-02.json
+d1d115275e0ad1feb35c03376c97e3e0edf7fb6e07f4c7aaac5d85e6c8b7f544       6483  proposition_reports/I-02.md
+44863a63203b8a5628eb21a73d0381c575b17be22dce46a8e51dd09e484b7486        984  proposition_reports/I-02_executive.md
+69a0c7fccfcf2b4b858679b157ad435d6694b8fd01d4cbb0a846389e61cb8e01       7133  proposition_reports/I-02_input.json
+1b15730b889dbda9ee33d7dafcd14845fcbfb0e458b3a2dede61a340191bc42e       8192  proposition_reports/M-01a.json
+a2f2ae05260f9db0c6cbf98d01a5b20447bc286b7a8dd2376e0e968dd22c7d58       5961  proposition_reports/M-01a.md
+4e0bfdb1938b51a2fdab954f6f96e24f6e9f14f3418b4f8361ee7d40636729f0        972  proposition_reports/M-01a_executive.md
+d1458f6bbe707c1eac2bf0b5645ca7b980a10b866c9f77706dd2639216051337       6222  proposition_reports/M-01a_input.json
+77bfe19edd2fe650eaec65aed5b75ea52b79a604a72781d05c884739ff3897b7       9348  proposition_reports/M-01b.json
+ca15bd02db6759489d3639a1f19062f07f92a436eb09294536e3edde1725a197       7107  proposition_reports/M-01b.md
+c2fd003fff0b074e631d595a025d2daa34356441c0f51900709288d6bd346ed7       1143  proposition_reports/M-01b_executive.md
+c9327106413080e0179aea3f9a8885cdab8152e625443f32594eee20f653810e       7376  proposition_reports/M-01b_input.json
+f0af5847847b63746d301cee74e99abd2296a71f8250d651c9be4a9f001212c2       8881  proposition_reports/M-02.json
+9c2757d5eed32d4974d3ae4419361a147f19bd594eb522c6f025e50dced12383       6513  proposition_reports/M-02.md
+6606f288d568e35861c8e72c292149844b369e482ded8d9a0313a3a54a94a7eb       1023  proposition_reports/M-02_executive.md
+be66bf6a14089c53167b1264eee7da1753bfdff7f1f55b63beb5c99e0b31123d       6876  proposition_reports/M-02_input.json
+c1e1191d337c3249389df71b051315d0f0c71379e9ed2a4da4799f811a9bf103       8838  proposition_reports/M-03.json
+941abe5994ddde88d5a1153a0422cd23e1526809f9e2c256d753ead4a6e303ce       6540  proposition_reports/M-03.md
+959649d1ff240873fdf3a1567dabf75b10ca9a69aa7c012fd661b869863869bf        981  proposition_reports/M-03_executive.md
+a7e13efa1c2e32ea0fb7e40f926c38db8bd7dd8051922822b72d16e41139c999       6833  proposition_reports/M-03_input.json
+ca0e7cf88c1322fd40e413412c2ef4b9cdcf5adbd27c56e66feb1f50feaa2d08       9853  proposition_reports/P-01.json
+cb9637eec842a743174a1248e2820abce58609e7768e561eb89fb5acabdba696       7414  proposition_reports/P-01.md
+fb205b3bae3fa370849209ab9665c8456de59f8cb5ef893c2f155e3255eb35e4        935  proposition_reports/P-01_executive.md
+1639d9da10dc28dafbb74ad26290f0a0e9040e21767eba3addbe311d42733731       7881  proposition_reports/P-01_input.json
+b90f7ec96b3e2d7e11a98ba4661c30d0b453b10114c47d1ece2f6dd6d1d0ddf5       8613  proposition_reports/P-02.json
+27015007a63802efa3f5762e1f8a87b1e697de1b40ce00e1ea93f593c24b3b5c       6198  proposition_reports/P-02.md
+b960406aa812c9a1ce63c336888b65a8a6b066659cc0169ff21a20b8195ee539       1037  proposition_reports/P-02_executive.md
+654e09766646c35413658b478878bd6a496b14592bfec3dc034baeff3748edb0       6641  proposition_reports/P-02_input.json
+f4ed2d3bf5e3ef0da97ad4ac9fd40aae6d719cd9f0168cab63f025ba85649b52       7668  proposition_reports/P-03.json
+88fb03bad1d248b58852d05be4fba5687c061c97d33ece5bc9d347f09acd9ce3       5311  proposition_reports/P-03.md
+a1301da1dc765533b7c812b3e1eeea6eb5fe2bb508bf6ada22808c1d3dc576c5        860  proposition_reports/P-03_executive.md
+788f3e2d3f29ebdab457e86189fcc12f47f6b9a9057f616c5059e323b4ecb47f       5696  proposition_reports/P-03_input.json
+563ffcc4567de974d0a761385a1f738e20f3089370da4836cf10cf073ec18857       7895  proposition_reports/P-04.json
+87d4f26575c67fe120eabd5dc9a3946687cbf66c82d9c29d04ea278e32db6fbd       5467  proposition_reports/P-04.md
+99d77773928fc71e993e6308721d23cea341e701246a43c1df52a8c9138bbe11        886  proposition_reports/P-04_executive.md
+8a937955d9376f322b9ccb405f81c151768899c3fe400893e8d1cefc43d856bf       5923  proposition_reports/P-04_input.json
+7e9300c4925c374e6d823e0b8f98242c35c2a00e1fe5e3d03ae2bcffd2937ace       8352  proposition_reports/P-05.json
+db78efb0b37f346810e510e2860c552dddaa5380502c95dd31c8a0905023de66       5933  proposition_reports/P-05.md
+6288efd6359bdc918ad08c037abaf389e92b0d8a7de2d7d2a118f75bd35c0a92       1040  proposition_reports/P-05_executive.md
+ae9ece9bdf3a0e0d1262766f74b13af0f2eafdafd8f38dc7cedea6eebe9dd13b       6380  proposition_reports/P-05_input.json
+3f0afd38a8a3f6911195ad65a349f222629d4bbb9bd028e7a537506df9b88e3e       7050  proposition_reports/Q-01.json
+f44c40894cf5041036cc99865df4127c2cc4672c0784e6a7bd426984befb12b8       5190  proposition_reports/Q-01.md
+40462e5f03ba5b9599f49bace48760ff02b08ae1422a4b8a5fb9baf45fb8e30b       1223  proposition_reports/Q-01_executive.md
+462af725ea6118a0132097f894d0998044cea65773be529544200bcd99b0c63e       5136  proposition_reports/Q-01_input.json
+c70f1b4e4821130bbfd7d1d227c58f8a0ec41d599046af7b41bafaeb404da29a       6770  proposition_reports/Q-02.json
+997c13b04781cea813cf9d3331ea9a9c389c36c7bed2a5ccd7808bf2bdbf4b53       5008  proposition_reports/Q-02.md
+7a57030a4d7721366d3bfd28bf2d850b85c91db581e840610578a3a6ee21124c       1157  proposition_reports/Q-02_executive.md
+0c3d0b1b874080579f8ad63a198fc7cecac81c6d38c10027483f3461a6b73f78       4806  proposition_reports/Q-02_input.json
+86313d31f0b3c8d56b56d66046a7cab503bbda42123505adbaadeac72b31048c       9785  proposition_reports/R-01.json
+8b5decc5da34df12d06ba9ff61e92900c41b0dff0760d2c2312864c8c234e25a       7332  proposition_reports/R-01.md
+9f15cddb4786ab1092ac6e2db63c729fd69f943730d5d4a9ccf5fb8c403aa489        958  proposition_reports/R-01_executive.md
+a9d369b4193929995f254aa6e4c2a1613acba1ae8a1b3c571ca19691219e57c4       7813  proposition_reports/R-01_input.json
+94b5bdbdc0e0bc6b7e4863f0d6ad59dbf263a04e385a9c456bebcd08eaf9ebeb      10544  proposition_reports/S-01.json
+bae666e37515efd924f6bfb59bcb922eb78a249bae88c32b66fb1421173dc39f       7940  proposition_reports/S-01.md
+86dd7c8abc9e949add2a53c9b5ed57dbefc6618298ea3f994b7b809be215e5c9       1051  proposition_reports/S-01_executive.md
+de86f03aafa1946b3d576df95b44efe6772a2e9147d6ebca190b0256074dfc17       8572  proposition_reports/S-01_input.json
+b3c3c09ddbdbcf5582490a0ab737d7f9e9b177c4c81378aa5176a2f24b261801       7509  proposition_reports/S-02.json
+6e32a8c2d3344ba2e972e82458f8a2c96442865bb1523b79a6729b35994c4ef1       5203  proposition_reports/S-02.md
+51190e189b64473e94807ee6dd11e60cf0dcdae6c32d61340abfe91d8809c845        902  proposition_reports/S-02_executive.md
+da80813949bb1952691f5d0da5f479689e4c483d381d541df2f3b3cde1e55e5a       5537  proposition_reports/S-02_input.json
+f78e6ab549d8f0daf33bb299822e960cafb17eb58f9c7bbcb2374bc35c19d56b       8406  proposition_reports/S-03.json
+a75b6eb163d1ba87e1e6a8111c92c9b71157d3fd35e9837961bd6cf9e6bd2690       5758  proposition_reports/S-03.md
+2f99f96da6605a8ca01b5b86773587b20187bb5732d20dbab59848e92c1a6f97        904  proposition_reports/S-03_executive.md
+fe2ed2d61f87e09a41dadd77a9cc0f05b2d49025afb803e526c5c55bfc0f8d26       6434  proposition_reports/S-03_input.json
+67217e2b5da7213c53bfbfacef240d9e08da03716f5b019680a10df81de0a0ab       7833  proposition_reports/S-04.json
+fac1d6a49b36607e58f2d96a58e92b6177c6d3645fccfce8b3b590d3a9d32592       5415  proposition_reports/S-04.md
+fd3645e66e6fc78a70a54ae467f88c213fc4d85563bf98e5b7be8f4cad1e0676        923  proposition_reports/S-04_executive.md
+d460c6e8e2ee1bff7349fa9df12d028412c6fe8dbce387dc0ddbc5c038a48f27       5861  proposition_reports/S-04_input.json
+14907366b7e73b3e52418cac9b31f9cff87e8de121f141f6a74011e30aa68361       8492  proposition_reports/V-01.json
+60f73ee0ed2676f1ecfdce3f8730551deca5b15184e82e7e7f93d3243e49e5be       6046  proposition_reports/V-01.md
+50abd221246f2d5263b973ae2b8f46c7df4391259cd21749c1be4ea7d1856399       1054  proposition_reports/V-01_executive.md
+2f0b01037aaae2a6ba644019ea4760c728034053fbc5cfac542ba4d9c1a6b127       6520  proposition_reports/V-01_input.json
+d192a4624f3277abecde82012621906be088a9060e4ae81517146042c7fa175c       7767  proposition_reports/W-01.json
+302c97bfac412bee9e3e07470d4d71d2270f68bfa817ab5e2b49f6220450d81c       5410  proposition_reports/W-01.md
+9b1714109a3af486f6e4b1f0cc374376242d037ddc455dfd7a7e7c2859642092        951  proposition_reports/W-01_executive.md
+e6d2078ab25ecdc76ee4e485ffea14e6b0bb7e0ea16b53b164872df640c6f133       5795  proposition_reports/W-01_input.json
+8e621005bb50a57a3666e16ca458078966cd3927930fbf01099f580d10c81ec5      11284  proposition_reports/X-01.json
+57577dd04b7eb55c793c691fdae954ca565bc08774d551a02447bbcb6d4674fe       8478  proposition_reports/X-01.md
+93641ef852ed4478b6ec47b6720107549687366ce95c2844836d801bd7262044       1127  proposition_reports/X-01_executive.md
+ee7f32af8714476f00a843ab4cf1a5ae9044bd18c6924937439b536cdfb5729d       9312  proposition_reports/X-01_input.json
+92c30930db4fadaa913ce25975ec0e71b1a6ac8d4192a0a7f9e51f8cc78cb29c       8214  proposition_reports/X-02.json
+0de2b8792639b7e1d08525e9159c9856eb40f3606ed75eddac3043c5f8fb779a       5705  proposition_reports/X-02.md
+7733f8f1c567927c98bbc9f55938a5478faba7cef1b19a4b5790704cb67a35d5        946  proposition_reports/X-02_executive.md
+db41e215413953bd943ea1f3c8f911a52a4b50963a668aa36e42381be6c66fd6       6242  proposition_reports/X-02_input.json
+1c2ef23250e2cbe3a5e672ae7e74b3a6811582937caea4c875f8cbd353f8254b       1048  release_report.json
+49e9b8a1e6f5b5ae1cd605fe0d287f2f42b9daf9cd50a68b4356a3aa00b5e26b      55468  run_asa_25_261.py

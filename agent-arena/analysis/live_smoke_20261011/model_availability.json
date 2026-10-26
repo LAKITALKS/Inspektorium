@@ -1,0 +1,61 @@
+{
+  "credential_present": true,
+  "sdk": "0.86.0",
+  "httpx": "0.28.1",
+  "checks": [
+    {
+      "requested_model_id": "claude-haiku-5-5",
+      "operation": "models.retrieve",
+      "model_generations": 0,
+      "sdk_retries": 0,
+      "http_status": 200,
+      "request_id": "req_011CfuLCBsw54Es2TVHg1Brz",
+      "returned_model_id": "claude-haiku-5-5",
+      "display_name": "Claude Haiku 5.5",
+      "max_input_tokens": 1000000,
+      "max_tokens": 128000,
+      "thinking_capabilities": {
+        "supported": true,
+        "types": {
+          "enabled": {
+            "supported": false
+          },
+          "adaptive": {
+            "supported": true
+          },
+          "disabled": {
+            "supported": true
+          }
+        }
+      },
+      "available": true
+    },
+    {
+      "requested_model_id": "claude-sonnet-5-5",
+      "operation": "models.retrieve",
+      "model_generations": 0,
+      "sdk_retries": 0,
+      "http_status": 200,
+      "request_id": "req_011CfuLCDKVwadpuUDtsYdQ2",
+      "returned_model_id": "claude-sonnet-5-5",
+      "display_name": "Claude Sonnet 5.5",
+      "max_input_tokens": 1000000,
+      "max_tokens": 128000,
+      "thinking_capabilities": {
+        "supported": true,
+        "types": {
+          "enabled": {
+            "supported": false
+          },
+          "adaptive": {
+            "supported": true
+          },
+          "disabled": {
+            "supported": false
+          }
+        }
+      },
+      "available": true
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+id: study-forensics-042
+title: "Study Forensics: Edge AI Energy Blind Spot — Signal Strength vs Measurement Readiness"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: capability_vs_readiness_overreach
+ambiguity_level: medium
+origin: demo_derived
+intake_review: retired_after_review
+status: retired
+excluded_from_active_metrics: true
+superseded_by: pending
+suite_history:
+  - date: "2026-07-04"
+    phase: "Phase 4/5 retrospective intake audit"
+    event: retired_from_active_metrics
+    trigger: "stable-alternative in 50x3 baseline — detected solid 3/3 vs gold overclaim (conf ~0.88)"
+    rationale: >
+      Model-independent task-design confound: the target readiness claim is embedded in a long
+      analytical paper context that itself qualifies/critiques the claim; the target claim is not
+      isolated and the source voice is ambiguous, so the case measures task interpretation rather
+      than claim-forensics ability. Origin: demo-derived Edge-AI exploratory workflow, not
+      deliberate benchmark intake.
+    label_flip: false
+    hard_deleted: false
+    superseded_by: pending
+prompt: |
+  A technical paper investigates whether current flagship edge-AI hardware
+  can provide reproducible process-level energy attribution for local
+  agentic AI workloads. The paper examines NVIDIA's Jetson platform and
+  reports that while the hardware can execute agentic AI inference tasks
+  locally, it cannot isolate and attribute energy consumption to individual
+  processes or workflow stages at the level required for enterprise energy
+  auditing, reproducible benchmarking, or regulatory reporting.
+
+  The paper argues that the absence of process-level energy measurement
+  capability constitutes a readiness gap: the hardware can run the workload
+  but cannot account for the energy cost of running it at the granularity
+  that enterprise governance, sustainability reporting, and operational
+  cost attribution require.
+
+  Meanwhile, industry positioning around edge-AI hardware frequently
+  frames these platforms as "ready" for enterprise agentic AI deployment,
+  emphasizing raw compute capability, inference throughput, and power
+  efficiency ratios — without addressing whether the energy claims are
+  reproducible at the process level or whether the measurement
+  infrastructure supports operational auditability.
+
+  <!-- SOURCE TEXT PLACEHOLDER ──────────────────────────────────────────────
+  Paste the abstract, key findings, or relevant excerpt from the technical
+  paper below this line. The paper is:
+
+  "The Energy Blind Spot: NVIDIA's Flagship Edge AI Hardware Cannot Support
+  Process-Level Energy Attribution"
+
+  Source type: Technical paper / arXiv-style publication.
+  This is NOT a market report or press release.
+
+  The analysis should be grounded in the actual source text and findings.
+  Do not reproduce the full paper. Use the abstract or key excerpt.
+
+  Source: arXiv:2605.27599, "The Energy Blind Spot: NVIDIA's Flagship
+  Edge AI Hardware Cannot Support Process-Level Energy Attribution,"
+  Deepak Panigrahy and Aakash Tyagi, 2026.
+
+  The paper examines energy observability for GB10-based desktop AI
+  systems intended for edge deployment and local agentic AI workloads.
+  The authors frame agentic AI workloads as workflows where one user
+  goal can trigger multi-step orchestration, tool calls, retries, and
+  failure recovery.
+
+  The paper reports that agentic workflows can consume substantially
+  more energy per successful goal than simpler linear baselines, citing
+  prior findings of 4.33x higher energy per successful goal and up to
+  7.63x orchestration-overhead index for multi-step reasoning tasks. It
+  also notes related evidence that CPU-side processing can account for
+  a large share of latency and dynamic energy in agentic workloads.
+
+  The main audit target is the ASUS Ascent GX10 based on NVIDIA's GB10
+  SoC. The authors report that the platform exposes no CPU energy
+  counter, no INA power-rail monitor, no IPMI/BMC, and no SCMI powercap
+  protocol through supported software interfaces. The only on-device
+  energy telemetry available through supported interfaces is
+  instantaneous GPU power via NVML.
+
+  The authors further report that MediaTek firmware appears to compute
+  per-rail energy internally through an undocumented ACPI interface, but
+  that this information is not exposed through supported interfaces.
+  They state that NVIDIA has no plans to expose CPU rail information. As
+  a result, on-device per-process energy attribution comparable to x86
+  RAPL-style measurement is not reproducible on this platform through
+  supported interfaces.
+
+  The paper's key claim is not that the hardware cannot run local AI
+  workloads. Rather, it argues that the system lacks the supported
+  energy-observability interfaces required for reproducible process-level
+  energy attribution. This creates a measurement-readiness gap for
+  evaluating the energy cost of local agentic AI workloads.
+
+  The authors propose a hardware requirements specification for energy-
+  attributed AI, an interim calibration bridge using external DC metering
+  combined with GPU subtraction, and a standards-track path through SCMI
+  powercap. Their broader conclusion is that energy observability should
+  be treated as a first-class hardware requirement for low-carbon and
+  accountable AI computing.
+
+  ──────────────────────────────────────────────────────────────────────── -->
+
+  Evaluate the following central claim:
+  "Edge-AI hardware is ready to support local agentic AI workloads."
+
+  Subclaims to evaluate:
+
+  A. "Edge-AI hardware can support local agentic workloads"
+     Is the raw compute capability sufficient to run agentic inference
+     locally? Does "can run" equal "is ready"?
+
+  B. "Energy efficiency claims are meaningful without process-level
+     energy attribution"
+     Can energy efficiency be credibly claimed if the hardware cannot
+     attribute energy consumption to individual processes or workflow
+     stages?
+
+  C. "Enterprise readiness can be inferred from raw compute capability
+     alone"
+     Does inference throughput and power-envelope performance establish
+     enterprise readiness, or does readiness also require measurement,
+     auditability, and reproducibility infrastructure?
+
+  D. "Lack of process-level energy attribution is only a minor
+     measurement gap, not a readiness concern"
+     Is the absence of process-level energy measurement a technical
+     detail, or does it represent a structural gap in operational
+     readiness for enterprise deployment?
+
+  For each subclaim provide: verdict, evidence strength, overclaim risk,
+  and reasoning.
+
+  Required analysis dimensions:
+  - technology-readiness mismatch
+  - measurement / auditability gap
+  - evidence vs positioning
+  - raw capability vs operational readiness
+  - reproducibility of energy claims
+  - process-level attribution as a requirement for enterprise governance
+  - whether "can run" is being overextended into "is ready"
+context: |
+  This case tests whether agents can distinguish between technical
+  capability and operational readiness in enterprise AI infrastructure.
+  The hardware genuinely can execute agentic workloads — this is not
+  disputed. The forensic question is whether the surrounding readiness
+  language is supported when the measurement infrastructure does not
+  enable process-level energy attribution, reproducible benchmarking,
+  or enterprise auditability.
+
+  This parallels pharma overclaim cases (strong signal, weak framing)
+  but applies the same forensic logic to technology-readiness claims
+  in the AI infrastructure space. The overclaim is subtle: the
+  capability is real, but "ready" implies a level of operational
+  maturity that the measurement gap does not support.
+
+  NOTE: This case does not claim that NVIDIA or any hardware vendor is
+  deliberately misleading. It evaluates whether the positioning language
+  around edge-AI readiness is fully supported by the available evidence,
+  specifically regarding energy measurement and attribution capability.
+expected_answer: "overclaim"
+reference_solution: |
+  The hardware can execute agentic AI inference workloads locally. This
+  is a genuine technical capability. However, "ready for enterprise
+  deployment" implies more than raw compute: it implies operational
+  readiness, which includes measurement, auditability, reproducibility,
+  and governance infrastructure.
+
+  (A) The hardware can run agentic workloads — this is supported.
+  (B) Energy efficiency claims without process-level attribution are
+  incomplete: they describe system-level power draw, not per-process
+  or per-workflow energy cost. This is a measurement gap.
+  (C) Enterprise readiness cannot be inferred from compute capability
+  alone. Readiness also requires that energy costs can be attributed,
+  reproduced, and audited at the process level — capabilities not
+  demonstrated in the current hardware measurement stack.
+  (D) The absence of process-level energy attribution is not minor.
+  For enterprise governance, sustainability reporting, and operational
+  cost allocation, it represents a structural gap between what the
+  hardware can do and what it can account for.
+
+  Verdict: The raw capability is real, but the readiness positioning
+  overextends from "can run" to "is ready" without addressing the
+  measurement and auditability requirements of enterprise deployment.
+  Classification: overclaim — the signal is genuine, but the framing
+  exceeds what the evidence supports regarding operational readiness.
+gold_label: overclaim
+gold_confidence: medium
+gold_case_type: borderline
+gold_justification: |
+  The core technical capability (running agentic inference on edge
+  hardware) is real and not disputed. However, the central claim being
+  evaluated ("ready to support local agentic AI workloads") overextends
+  in two ways:
+  - "Ready" implies operational maturity, but the measurement stack
+    cannot provide process-level energy attribution — a requirement
+    for enterprise governance and auditability.
+  - Energy efficiency claims at the system level are not equivalent
+    to reproducible, attributable energy accounting at the process
+    level. The gap is structural, not cosmetic.
+  The overclaim is in the industry readiness framing: "can run" is
+  extended into "is ready" without the measurement infrastructure to
+  support it. Borderline because the surrounding text is itself an
+  analytical paper that critiques the framing, so a fair-reporting
+  (solid) reading is defensible (see alternative reading).
+gold_alternative_reading: |
+  Two defensible alternatives exist. (1) SOLID: the surrounding text is a
+  careful, well-caveated technical paper that explicitly critiques the
+  industry positioning and does not itself overclaim, so a reader can
+  reasonably classify the passage as fair/analytical reporting. A Phase-4
+  full-baseline live probe (Opus 4.5) chose solid, consistent with this
+  reading, which is why the case is now marked borderline. (2) The
+  "readiness" term in industry usage often refers to compute capability
+  and inference performance rather than energy-measurement granularity,
+  under which the hardware is ready for its intended purpose and the
+  attribution gap is a separate infrastructure concern. The gold label
+  keeps overclaim as primary because the central claim under evaluation
+  ("is ready ... for enterprise agentic AI deployment") does overextend
+  from "can run" without the measurement/auditability infrastructure.
+gold_summary: |
+  Edge-AI hardware can execute agentic workloads locally, but readiness
+  claims overextend when the measurement stack cannot provide process-
+  level energy attribution. The capability is real; the readiness
+  framing exceeds the evidence regarding operational auditability.
+curator_notes: |
+  Showcase case for technology-readiness forensics. Tests whether agents
+  can distinguish raw compute capability from operational readiness in
+  AI infrastructure claims. Parallel to pharma overclaim cases (strong
+  signal, overextended framing) but in the technology/infrastructure
+  domain. Key challenge: the hardware genuinely works, so the overclaim
+  lives entirely in the gap between "can run" and "is ready."
+
+  Source: Technical paper / arXiv-style publication on edge-AI energy
+  measurement. Source text should be pasted into the placeholder section
+  of the prompt before running.
+
+  NOTE: This case does not accuse any vendor of deception. It evaluates
+  the evidential support for readiness language in technology positioning.
+  RETIREMENT (Phase 5 intake audit): retired from active metrics — see status /
+  suite_history above and docs/case_intake_policy.md. Primary label (overclaim)
+  and prompt are intentionally left unchanged; the case is archived as a
+  historical lesson about demo-origin contamination + task-design confound, to be
+  superseded later by a clean Edge-AI readiness overclaim case with a new case_id
+  and supersedes/superseded_by linkage.
+expected_findings:
+  - finding: conclusion_exceeds_results
+    severity: major
+    confidence: high
+  - finding: capability_vs_readiness_mismatch
+    severity: major
+    confidence: high
+  - finding: measurement_gap_underestimated
+    severity: moderate
+    confidence: high
+  - finding: unsupported_generalization
+    severity: moderate
+    confidence: medium
+  - finding: hedge_language_insufficient
+    severity: minor
+    confidence: medium
+gold_evidence_spans:
+  - span: "ready to support local agentic AI workloads"
+    why_it_matters: "Readiness claim implies operational maturity beyond raw compute capability."
+    supports_finding: capability_vs_readiness_mismatch
+  - span: "cannot isolate and attribute energy consumption to individual processes"
+    why_it_matters: "Identifies the structural measurement gap that undermines readiness claims."
+    supports_finding: measurement_gap_underestimated
+  - span: "emphasizing raw compute capability, inference throughput, and power efficiency ratios"
+    why_it_matters: "Industry positioning focuses on capability metrics while omitting measurement readiness."
+    supports_finding: conclusion_exceeds_results
+  - span: "without addressing whether the energy claims are reproducible at the process level"
+    why_it_matters: "Highlights the absence of reproducibility infrastructure in readiness positioning."
+    supports_finding: unsupported_generalization
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "capability vs readiness"
+    variants: ["can run vs is ready", "compute capability vs operational readiness", "execution vs auditability"]
+    functional_descriptions:
+      - "raw technical capability does not establish enterprise operational readiness"
+  - keyword: "process-level energy attribution"
+    variants: ["energy attribution", "per-process energy", "energy measurement gap", "energy accounting"]
+    functional_descriptions:
+      - "the hardware cannot attribute energy consumption to individual processes or workflow stages"
+  - keyword: "measurement gap"
+    variants: ["auditability gap", "measurement infrastructure", "reproducibility gap", "measurement readiness"]
+    functional_descriptions:
+      - "the absence of measurement capability is a structural readiness gap, not a minor detail"
+  - keyword: "enterprise governance"
+    variants: ["sustainability reporting", "operational auditability", "cost attribution", "regulatory reporting"]
+    functional_descriptions:
+      - "enterprise deployment requires governance and auditability infrastructure beyond compute capability"
+common_errors:
+  - accepting readiness claims because the hardware genuinely works
+  - treating the energy measurement gap as a minor technical detail
+  - conflating compute capability with deployment readiness
+  - missing the governance and auditability dimension of readiness
+expected_failure_modes:
+  - missing_overclaim
+  - accepting_capability_as_readiness
+  - underweighting_measurement_gap
+discriminative_dimensions:
+  - correctness
+  - mechanism_quality
+  - insight_depth
+  - hedge_detection
+diagnostic_focus: "Can the agent distinguish raw technical capability from enterprise operational readiness in AI infrastructure claims?"

@@ -1,0 +1,203 @@
+######## r01_normal faults={} plan={}
+== close_retest.py (1)	exit=0
+== replay_retest.py -> replay_scratch (2)	exit=0
+== summarize_retest.py (3)	exit=0
+== summarize_retest.py (4)	exit=0
+== close_retest.py (5)	exit=0
+== replay_retest.py -> replay_scratch (6)	exit=0
+RUN ended ledger REVOKED attempts 10 retries 0 cost 617813 overruns {}
+ + claude-haiku LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 HUMAN_REVIEW_REQUIRED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('completed', 'yes', True, True)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-haiku LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-haiku LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 HUMAN_REVIEW_REQUIRED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('completed', 'yes', True, True)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-sonne LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+-- r01 evidence files:
+. .. .runner-lock closure.json closure_checks.jsonl replay_check.json replay_checks_later.jsonl retest_summary.json run_log.jsonl test_releases.json 
+replay {'target': {'profile': 'claude-haiku-5-5@3', 'case': 'LR-03', 'rule': 'the first slot in the fixed order with a sent live review request; else the first slot in the fixed order with a terminal primary capture (normally Haiku LR-03); chosen by replay_retest.py from the ledger', 'chosen_because': 'first slot with a sent live review request'}, 'same_as_live': True, 'retest_directory_unchanged': True, 'blocked_network_attempts': 0, 'capture_verified': True, 'request_identical': True, 'installation_inside_repository': False}
+######## r02_auth401 faults={"*": {"status": 401, "type": "authentication_error"}} plan={}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+== replay_retest.py -> replay_scratch (3)	exit=0
+RUN ended ledger REVOKED attempts 1 retries 0 cost 28088 overruns {}
+ + claude-haiku LR-03 RUN_FAILED m/h/e None None unknown route not_evaluable checks {'model': 'not_evaluable', 'host': 'not_evaluable', 'effective': 'not_evaluable', 'status': 'not_acceptable'} within False artifact False False
+     p9 UNRESOLVED {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none recorded (analysis technically incomplete)'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release None None outside_log False stop ['attempt-001 primary FAILED_PERMANENT'] cause technical
+ - claude-haiku LR-01 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 primary FAILED_PERMANENT
+ - claude-haiku LR-02 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 primary FAILED_PERMANENT
+ - claude-sonne LR-03 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 primary FAILED_PERMANENT
+ - claude-sonne LR-01 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 primary FAILED_PERMANENT
+ - claude-sonne LR-02 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 primary FAILED_PERMANENT
+######## r03_529_retries faults={"claude-haiku-5-5|LR-03|primary|1": {"status": 529, "type": "overloaded_error"}, "claude-haiku-5-5|LR-03|primary|2": {"status": 529, "type": "overloaded_error"}, "claude-haiku-5-5|LR-01|primary|1": {"status": 529, "type": "overloaded_error"}, "claude-haiku-5-5|LR-02|primary|1": {"raise": "ReadTimeout"}} plan={}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+RUN ended ledger REVOKED attempts 5 retries 2 cost 125851 overruns {}
+ + claude-haiku LR-03 RUN_FAILED m/h/e None None unknown route not_evaluable checks {'model': 'not_evaluable', 'host': 'not_evaluable', 'effective': 'not_evaluable', 'status': 'not_acceptable'} within False artifact False False
+     p9 UNRESOLVED {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none recorded (analysis technically incomplete)'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release None None outside_log False stop [] cause technical
+ + claude-haiku LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-haiku LR-02 RUN_FAILED m/h/e None None unknown route not_evaluable checks {'model': 'not_evaluable', 'host': 'not_evaluable', 'effective': 'not_evaluable', 'status': 'not_acceptable'} within False artifact False False
+     p9 UNRESOLVED {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none recorded (analysis technically incomplete)'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release None None outside_log False stop ['attempt-005 primary FAILED_TRANSIENT without a permitted retry left (2 of 2 order-wide retries used)'] cause technical
+ - claude-sonne LR-03 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-02: attempt-005 primary FAILED_TRANSIENT without a permitted retry left (2 of 2 order-wide retries used)
+ - claude-sonne LR-01 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-02: attempt-005 primary FAILED_TRANSIENT without a permitted retry left (2 of 2 order-wide retries used)
+ - claude-sonne LR-02 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-02: attempt-005 primary FAILED_TRANSIENT without a permitted retry left (2 of 2 order-wide retries used)
+######## r04_refusal_trunc faults={"claude-haiku-5-5|LR-03|primary|1": {"stop_reason": "refusal"}, "claude-haiku-5-5|LR-01|primary|1": {"stop_reason": "max_tokens"}} plan={}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+RUN ended ledger REVOKED attempts 8 retries 0 cost 590715 overruns {}
+ + claude-haiku LR-03 RUN_FAILED m/h/e None None unknown route not_evaluable checks {'model': 'not_evaluable', 'host': 'not_evaluable', 'effective': 'not_evaluable', 'status': 'not_acceptable'} within False artifact False False
+     p9 UNRESOLVED {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none recorded (analysis technically incomplete)'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release None None outside_log False stop [] cause technical
+ + claude-haiku LR-01 ANALYSIS_INCOMPLETE m/h/e None None unknown route not_evaluable checks {'model': 'not_evaluable', 'host': 'not_evaluable', 'effective': 'not_evaluable', 'status': 'not_acceptable'} within False artifact False False
+     p9 HUMAN_REVIEW_REQUIRED {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none recorded (analysis technically incomplete)'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release None None outside_log False stop [] cause technical
+ + claude-haiku LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 HUMAN_REVIEW_REQUIRED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('completed', 'yes', True, True)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-sonne LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+######## r05_single_evidence faults={} plan={"LR-03|primary": "conflict_unknown_host", "LR-03|review": "review_unsupported"}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+RUN ended ledger REVOKED attempts 8 retries 0 cost 493131 overruns {}
+ + claude-haiku LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('rejected_noop', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-haiku LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-haiku LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('rejected_noop', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-sonne LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+######## r06_review_unsent faults={"claude-haiku-5-5|LR-03|primary|1": {"usage": {"input_tokens": 9000, "output_tokens": 1478000, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0}}} plan={}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+RUN ended ledger REVOKED attempts 1 retries 0 cost 739900 overruns {'attempt-001': 711812}
+ + claude-haiku LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'open_material'} {'counterreview': ('failed', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop ['attempt-001 overrun 711812 microUSD'] cause None
+ - claude-haiku LR-01 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 overrun 711812 microUSD
+ - claude-haiku LR-02 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 overrun 711812 microUSD
+ - claude-sonne LR-03 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 overrun 711812 microUSD
+ - claude-sonne LR-01 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 overrun 711812 microUSD
+ - claude-sonne LR-02 NOT RUN: not run: stop rule after claude-haiku-5-5@3 LR-03: attempt-001 overrun 711812 microUSD
+######## r06b_review_529x2 faults={"claude-haiku-5-5|LR-03|review|1": {"status": 529, "type": "overloaded_error"}, "claude-haiku-5-5|LR-03|review|2": {"status": 529, "type": "overloaded_error"}} plan={}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+RUN ended ledger REVOKED attempts 9 retries 1 cost 538109 overruns {}
+ + claude-haiku LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': False, 'conflict': 'open_material'} {'counterreview': ('failed', 'yes', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-haiku LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-haiku LR-02 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 HUMAN_REVIEW_REQUIRED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('completed', 'yes', True, True)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-sonne LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ - claude-sonne LR-02 NOT RUN: reserve rule: remaining 224955 < required 241726 microUSD (counterreview reserve not needed: allowance claimed)
+######## r07_mismatch faults={} plan={"LR-03|primary": "mismatch_agreed", "LR-01|primary": "mismatch_conflict", "LR-02|primary": "mixed_conflict", "LR-01|review": "conflict2", "LR-02|review": "conflict2"}
+== close_retest.py (1)	exit=0
+== summarize_retest.py (2)	exit=0
+RUN ended ledger REVOKED attempts 8 retries 0 cost 493517 overruns {}
+ + claude-haiku LR-03 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route string_mismatch_only checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False True
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-haiku LR-01 REVIEW_REQUIRED m/h/e supported unsupported unknown route string_mismatch_only checks {'model': 'within', 'host': 'not_acceptable', 'effective': 'conservative', 'status': 'within'} within False artifact True False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('rejected_noop', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-haiku LR-02 REVIEW_REQUIRED m/h/e supported unknown unknown route mixed checks {'model': 'not_acceptable', 'host': 'conservative', 'effective': 'conservative', 'status': 'within'} within False artifact False False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'open_material'} {'counterreview': ('denied', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-sonne LR-03 READY_FOR_RELEASE m/h/e unsupported unsupported unsupported route string_mismatch_only checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False True
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log False stop [] cause None
+ + claude-sonne LR-01 REVIEW_REQUIRED m/h/e supported unsupported unknown route string_mismatch_only checks {'model': 'within', 'host': 'not_acceptable', 'effective': 'conservative', 'status': 'within'} within False artifact True False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('rejected_noop', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-sonne LR-02 REVIEW_REQUIRED m/h/e supported unknown unknown route mixed checks {'model': 'not_acceptable', 'host': 'conservative', 'effective': 'conservative', 'status': 'within'} within False artifact False False
+     p9 UNRESOLVED {'routing_reached': True, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'open_material'} {'counterreview': ('denied', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+######## r08 no key -> accepted restart -> refused third start
+pre-checks failed; nothing was run
+run ended attempts 10
+ start False False ['provider key not present in the runner environment']
+ start True True []
+ start True False ['single start: the -004 ledger already records attempts or review claims, or is not ACTIVE; an executed run is never restarted or resumed']
+######## r09 runner killed while a request is in flight
+in flight: {'pid': 2157, 'key': 'claude-haiku-5-5|LR-01|primary', 'n': 1}
+runner exit code: -15
+CLI child alive after the kill: True
+close #1 exit: 1 a live process still holds the lease of -004; wait until it has ended; nothing was written
+CLI child finished
+close #2 exit: 0
+  "action": "revoked",
+  "revocation_reason": "ORDER_COMPLETE: C25/P9 live retest under the order of 11.10.2026 finished; the remaining budget is not carried over and no further execution is authorized. Replay of the captur
+RUN interrupted (no end event) ledger REVOKED attempts 4 retries 0 cost 54046 overruns {}
+ + claude-haiku LR-03 REVIEW_REQUIRED m/h/e unsupported unknown unknown route capability checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 HUMAN_REVIEW_REQUIRED {'routing_reached': True, 'model_call_made': 'yes', 'response_processed': True, 'conflict': 'open_material'} {'counterreview': ('completed', 'yes', True, True), 'stability': ('completed', 'yes', True, True)}
+     release RELEASE_BLOCKED True outside_log False stop [] cause None
+ + claude-haiku LR-01 READY_FOR_RELEASE m/h/e supported supported supported route none checks {'model': 'within', 'host': 'within', 'effective': 'within', 'status': 'within'} within True artifact False False
+     p9 AUTO_RESOLVABLE {'routing_reached': False, 'model_call_made': 'no', 'response_processed': False, 'conflict': 'none'} {'counterreview': ('not reached', 'no', False, False), 'stability': ('not reached', 'no', False, False)}
+     release RELEASED True outside_log True stop None cause None
+ - claude-haiku LR-02 NOT RUN: no record after the last accepted start
+ - claude-sonne LR-03 NOT RUN: no record after the last accepted start
+ - claude-sonne LR-01 NOT RUN: no record after the last accepted start
+ - claude-sonne LR-02 NOT RUN: no record after the last accepted start
+######## r10 close after expiry
+  "action": "revoked after expiry",
+  "authorization_expired": true,
+  "ledger_state": "REVOKED",
+  "executable_remaining_microusd": 0,
+######## r11 prepare crash (real mode) and (dry run)
+real-mode crash -> PREPARE_FAILED_NOT_EXECUTABLE
+dry-run crash -> DRY_RUN_NOT_EXECUTABLE
+sim -003 claim files: 0
+######## r12 freeze not committed
+{"event": "start", "profile": null, "case": null, "invoked": null, "status": null, "stop_reasons": null, "reason": null, "precheck_errors": ["the frozen retest files are not all committed", "the frozen retest files differ from HEAD or contain untracked files"]}
+######## r13 replay scratch inside the repository
+SCRATCH_DIR must lie outside the repository
+######## r14 never started
+ "run": "never started",
+ "ledger_state": null,
+  "action": "revoked",
+  "ledger_state": "REVOKED",
+######## r15 manifest edited after the freeze commit
+{"event": "start", "profile": null, "case": null, "invoked": null, "status": null, "stop_reasons": null, "reason": null, "precheck_errors": ["the frozen retest files differ from HEAD or contain untracked files"]}
+ledger exists: 0

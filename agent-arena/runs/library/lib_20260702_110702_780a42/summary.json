@@ -1,0 +1,1430 @@
+{
+  "library_run_id": "lib_20260702_110702_780a42",
+  "timestamp": "2026-07-02T11:22:09.531286+00:00",
+  "provider": "anthropic",
+  "model": "claude-opus-4-5",
+  "runs_per_case": 1,
+  "total_cases": 50,
+  "total_runs": 50,
+  "successful_runs": 50,
+  "failed_runs": 0,
+  "parse_failures": 0,
+  "truncation_runs": 0,
+  "label_distribution": {
+    "solid": 16,
+    "overclaim": 22,
+    "mechanism_vs_evidence": 6,
+    "correlation_vs_causation": 6
+  },
+  "error_distribution": {},
+  "unstable_label_cases": [],
+  "parse_fragile_cases": [],
+  "truncation_risk_cases": [],
+  "provider_error_cases": [],
+  "high_score_variance_cases": [],
+  "thresholds": {
+    "high_score_variance": 15.0
+  },
+  "case_stability": [
+    {
+      "case_id": "study-forensics-001",
+      "case_file": "case001_social_media.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 65.8,
+      "score_min": 65.8,
+      "score_max": 65.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-004",
+      "case_file": "case004_multivitamin.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.0,
+      "score_min": 72.0,
+      "score_max": 72.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-007",
+      "case_file": "case007_vitamin_d_covid.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 70.8,
+      "score_min": 70.8,
+      "score_max": 70.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-009",
+      "case_file": "case009_mindfulness_autism.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 75.9,
+      "score_min": 75.9,
+      "score_max": 75.9,
+      "score_range": 0.0,
+      "confidence_mean": 0.82,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-013",
+      "case_file": "case013_gut_microbes.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "mechanism_vs_evidence"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 75.0,
+      "score_min": 75.0,
+      "score_max": 75.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-019",
+      "case_file": "case019_houseplants.yaml",
+      "gold_label": "correlation_vs_causation",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 70.7,
+      "score_min": 70.7,
+      "score_max": 70.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-021",
+      "case_file": "case021_virtual_tutoring.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.8,
+      "score_min": 72.8,
+      "score_max": 72.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-022",
+      "case_file": "case022_four_day_workweek.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.5,
+      "score_min": 73.5,
+      "score_max": 73.5,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-023",
+      "case_file": "case023_green_space_mental_health.yaml",
+      "gold_label": "correlation_vs_causation",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 71.5,
+      "score_min": 71.5,
+      "score_max": 71.5,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-024",
+      "case_file": "case024_klotho_gene_therapy.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "mechanism_vs_evidence"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.4,
+      "score_min": 72.4,
+      "score_max": 72.4,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-025",
+      "case_file": "case025_ai_instruction_overclaim.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.9,
+      "score_min": 73.9,
+      "score_max": 73.9,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-026",
+      "case_file": "case026_air_sensor_validation.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 68.9,
+      "score_min": 68.9,
+      "score_max": 68.9,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-027",
+      "case_file": "case027_ai_coding_productivity.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.6,
+      "score_min": 73.6,
+      "score_max": 73.6,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-028",
+      "case_file": "case028_nad_alzheimers_mice.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "mechanism_vs_evidence"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 71.0,
+      "score_min": 71.0,
+      "score_max": 71.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.82,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-029",
+      "case_file": "case029_amyloid_antibody_biomarkers.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.8,
+      "score_min": 73.8,
+      "score_max": 73.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-030",
+      "case_file": "case030_apj_exercise_mimetic.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "mechanism_vs_evidence"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.9,
+      "score_min": 73.9,
+      "score_max": 73.9,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-031",
+      "case_file": "case031_rapamycin_longevity.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 71.8,
+      "score_min": 71.8,
+      "score_max": 71.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-032",
+      "case_file": "case032_cholesterol_drug_biomarker.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.6,
+      "score_min": 73.6,
+      "score_max": 73.6,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-033",
+      "case_file": "case033_literacy_rct.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 74.1,
+      "score_min": 74.1,
+      "score_max": 74.1,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-034",
+      "case_file": "case034_gas_stoves_asthma.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 69.3,
+      "score_min": 69.3,
+      "score_max": 69.3,
+      "score_range": 0.0,
+      "confidence_mean": 0.82,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-035",
+      "case_file": "case035_ai_tutoring.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 66.2,
+      "score_min": 66.2,
+      "score_max": 66.2,
+      "score_range": 0.0,
+      "confidence_mean": 0.78,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-036",
+      "case_file": "case036_antioxidant_mice_memory.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "mechanism_vs_evidence"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 75.6,
+      "score_min": 75.6,
+      "score_max": 75.6,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-037",
+      "case_file": "case037_mindfulness_app.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 71.7,
+      "score_min": 71.7,
+      "score_max": 71.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-038",
+      "case_file": "case038_mediterranean_diet.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 74.7,
+      "score_min": 74.7,
+      "score_max": 74.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-039",
+      "case_file": "case039_nlp_benchmark.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 65.8,
+      "score_min": 65.8,
+      "score_max": 65.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-040",
+      "case_file": "case040_vocational_training.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 39.6,
+      "score_min": 39.6,
+      "score_max": 39.6,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-041",
+      "case_file": "case041_glp1_aleniglipron.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 74.4,
+      "score_min": 74.4,
+      "score_max": 74.4,
+      "score_range": 0.0,
+      "confidence_mean": 0.82,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-042",
+      "case_file": "case042_edge_ai_energy_blind_spot.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 36.9,
+      "score_min": 36.9,
+      "score_max": 36.9,
+      "score_range": 0.0,
+      "confidence_mean": 0.82,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-043",
+      "case_file": "case043_cell_study_cancer_cure.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 70.8,
+      "score_min": 70.8,
+      "score_max": 70.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-044",
+      "case_file": "case044_mice_memory_dementia.yaml",
+      "gold_label": "mechanism_vs_evidence",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 40.0,
+      "score_min": 40.0,
+      "score_max": 40.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-045",
+      "case_file": "case045_inflammation_marker_heart.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 69.5,
+      "score_min": 69.5,
+      "score_max": 69.5,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-046",
+      "case_file": "case046_coffee_longevity_correlation.yaml",
+      "gold_label": "correlation_vs_causation",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 77.3,
+      "score_min": 77.3,
+      "score_max": 77.3,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-047",
+      "case_file": "case047_pilot_trial_broad_recommendation.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 70.5,
+      "score_min": 70.5,
+      "score_max": 70.5,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-048",
+      "case_file": "case048_tumor_shrinkage_survival.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.3,
+      "score_min": 72.3,
+      "score_max": 72.3,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-049",
+      "case_file": "case049_no_adverse_events_safe.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 76.6,
+      "score_min": 76.6,
+      "score_max": 76.6,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-050",
+      "case_file": "case050_clinically_proven_supplement.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.7,
+      "score_min": 72.7,
+      "score_max": 72.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-051",
+      "case_file": "case051_fair_cautious_observational.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.3,
+      "score_min": 72.3,
+      "score_max": 72.3,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-052",
+      "case_file": "case052_strong_rct_fair.yaml",
+      "gold_label": "solid",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "solid"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.5,
+      "score_min": 73.5,
+      "score_max": 73.5,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-053",
+      "case_file": "case053_best_in_class_no_h2h.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 77.4,
+      "score_min": 77.4,
+      "score_max": 77.4,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-054",
+      "case_file": "case054_decorative_hedging_equivalence.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "mechanism_vs_evidence"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 40.0,
+      "score_min": 40.0,
+      "score_max": 40.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-055",
+      "case_file": "case055_short_followup_long_term.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 71.2,
+      "score_min": 71.2,
+      "score_max": 71.2,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-056",
+      "case_file": "case056_subgroup_works_for_everyone.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 70.3,
+      "score_min": 70.3,
+      "score_max": 70.3,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-057",
+      "case_file": "case057_relative_vs_absolute_risk.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 77.7,
+      "score_min": 77.7,
+      "score_max": 77.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-058",
+      "case_file": "case058_ai_beats_doctors_benchmark.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 70.2,
+      "score_min": 70.2,
+      "score_max": 70.2,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-059",
+      "case_file": "case059_ai_saves_energy_rebound.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 74.7,
+      "score_min": 74.7,
+      "score_max": 74.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.88,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-060",
+      "case_file": "case060_synthetic_benchmark_real_world.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 77.5,
+      "score_min": 77.5,
+      "score_max": 77.5,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-061",
+      "case_file": "case061_fully_autonomous_scripted.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.8,
+      "score_min": 72.8,
+      "score_max": 72.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.95,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-062",
+      "case_file": "case062_green_product_lifecycle.yaml",
+      "gold_label": "overclaim",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "overclaim"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 71.7,
+      "score_min": 71.7,
+      "score_max": 71.7,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-063",
+      "case_file": "case063_policy_caused_improvement.yaml",
+      "gold_label": "correlation_vs_causation",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 72.0,
+      "score_min": 72.0,
+      "score_max": 72.0,
+      "score_range": 0.0,
+      "confidence_mean": 0.92,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    },
+    {
+      "case_id": "study-forensics-public-001",
+      "case_file": "case_public_001_exercise_intensity.yaml",
+      "gold_label": "correlation_vs_causation",
+      "n_runs": 1,
+      "successful_runs": 1,
+      "failed_runs": 0,
+      "parse_failures": 0,
+      "truncation_count": 0,
+      "unique_labels": [
+        "correlation_vs_causation"
+      ],
+      "label_consistency_rate": 1.0,
+      "score_mean": 73.8,
+      "score_min": 73.8,
+      "score_max": 73.8,
+      "score_range": 0.0,
+      "confidence_mean": 0.82,
+      "error_types": [],
+      "flags": {
+        "stable_label": true,
+        "unstable_label": false,
+        "parse_fragile": false,
+        "truncation_risk": false,
+        "provider_error_seen": false,
+        "high_score_variance": false
+      }
+    }
+  ]
+}

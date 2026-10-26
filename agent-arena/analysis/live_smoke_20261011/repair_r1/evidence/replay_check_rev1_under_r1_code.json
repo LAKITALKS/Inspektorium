@@ -1,0 +1,124 @@
+{
+  "schema": "aa-p10-live-replay-check/1.0",
+  "performed_at": "2026-10-11T15:43:36.572585+00:00",
+  "authorization_directory": "analysis/live_smoke_20261011/live_run",
+  "code": "R1 code (f885aae; HEAD 6142dcd)",
+  "api_key_in_environment": false,
+  "ledger_sha256_before": "e6ef0f5aff3b6bdd3c841fc0a5982449a83eecac004f73e42f9a19a66b0c64b5",
+  "ledger_sha256_after": "e6ef0f5aff3b6bdd3c841fc0a5982449a83eecac004f73e42f9a19a66b0c64b5",
+  "ledger_unchanged": true,
+  "slots": [
+    {
+      "profile": "claude-haiku-5-5@1",
+      "case": "LS-01",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-haiku-5-5@1",
+      "case": "LS-02",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-haiku-5-5@1",
+      "case": "LS-03",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-haiku-5-5@1",
+      "case": "LS-04",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-haiku-5-5@1",
+      "case": "LS-05",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-haiku-5-5@1",
+      "case": "LS-06",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "case": "LS-01",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "case": "LS-02",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "case": "LS-03",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "case": "LS-04",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "case": "LS-05",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "case": "LS-06",
+      "live_status": "ANALYSIS_INCOMPLETE",
+      "replay_status": "ANALYSIS_INCOMPLETE",
+      "same": true,
+      "inspect_valid": true,
+      "network_attempts": 0
+    }
+  ],
+  "all_same_status": true,
+  "all_inspect_valid": true,
+  "network_attempts_total": 0,
+  "note": "Bundles of this check were written to a scratch directory and not archived; the archived replay bundles stem from the first replay run."
+}

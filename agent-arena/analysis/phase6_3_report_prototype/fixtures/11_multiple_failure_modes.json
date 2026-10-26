@@ -1,0 +1,80 @@
+{
+  "claim": {
+    "claim_context": "SYNTHETIC illustration — not a real scientific or medical conclusion.",
+    "claim_text": "Our benchmark-topping AI beats all doctors, so hospitals should replace radiologists now.",
+    "intended_reader_or_audience": "hospital decision-makers"
+  },
+  "evidence": {
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "synthetic benchmark E",
+        "text": "Won one retrospective image benchmark against 5 clinicians.",
+        "tier": "limited_human",
+        "why_it_matters": "One retrospective benchmark is not prospective clinical deployment."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "missing_comparison_group": true,
+    "missing_human_evidence": false
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "mode": "benchmark_exaggeration",
+        "rationale": "One retrospective benchmark is generalized to 'beats all doctors'."
+      },
+      {
+        "mode": "unsupported_superiority_claim",
+        "rationale": "Superiority-over-all-clinicians claim from a 5-clinician sample."
+      },
+      {
+        "mode": "inappropriate_generalization",
+        "rationale": "'Replace radiologists now' generalizes far beyond the test setting."
+      }
+    ]
+  },
+  "meta": {
+    "development_or_production_status": "development",
+    "generated_at": "2026-08-05T12:00:00+00:00",
+    "report_id": "FR-SYN-MULTI-11",
+    "synthetic_fixture": true
+  },
+  "provenance": {
+    "analysis_source": "phase6_3 synthetic fixture",
+    "model": "SYNTHETIC-MODEL",
+    "prompt_contract_version": "SYNTHETIC-CONTRACT-0",
+    "provider": "synthetic",
+    "repository_commit": "5349ad0"
+  },
+  "reader_impact": {
+    "affected_decision_type": "clinical operations / staffing",
+    "risk_level": "high",
+    "risk_rationale": "Could drive premature clinical-staffing decisions."
+  },
+  "recommended_revision": {
+    "claims_to_remove_or_narrow": [
+      "beats all doctors",
+      "replace radiologists now"
+    ],
+    "defensible_rewrite": "On one retrospective image benchmark, the AI outperformed 5 clinicians; prospective multi-site clinical validation is needed before any staffing change.",
+    "evidence_qualifiers_to_add": [
+      "retrospective",
+      "single benchmark",
+      "5 comparators"
+    ],
+    "rewrite_rationale": "Bounds the claim to the benchmark and adds the validation qualifier."
+  },
+  "uncertainty": {
+    "scope_limitations": [
+      "Retrospective, single benchmark, 5 comparators."
+    ],
+    "unresolved_questions": [
+      "Any prospective, multi-site clinical validation?"
+    ]
+  },
+  "verdict": {
+    "confidence": 0.9,
+    "predicted_label": "overclaim"
+  }
+}

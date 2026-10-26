@@ -1,0 +1,68 @@
+id: study-forensics-057
+title: 'Study Forensics: ''50% risk reduction'' hiding a tiny absolute change'
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: relative_risk_distortion
+ambiguity_level: low
+origin: synthetic_fixture
+prompt: |
+  A press release announces that a new drug 'cuts the risk of the disease in half — a 50% reduction'. The underlying trial shows the event rate fell from 2% to 1%. The release does not mention the absolute risk difference or the number needed to treat.
+context: |
+  A large relative risk reduction (50%) corresponds to a 1 percentage-point absolute change (2%→1%). Reporting only the relative figure distorts the perceived benefit.
+expected_answer: overclaim
+reference_solution: |
+  A 50% relative reduction here equals a 1 percentage-point absolute reduction (2%→1%), i.e., NNT ≈ 100. Presenting only the relative figure without the absolute risk or NNT inflates the perceived benefit — a misleading overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The communication reports only the relative risk reduction (50%) while omitting the small absolute change (2%→1%) and NNT, distorting the benefit's magnitude. This selective framing is an overclaim.
+gold_alternative_reading: null
+gold_summary: |
+  '50% risk reduction' corresponds to a 2%→1% absolute change; omitting the absolute risk/NNT distorts the benefit. Relative-risk overclaim.
+curator_notes: |
+  Relative-vs-absolute risk distortion — a quantitative literacy discriminator. Discrimination: separates weak from strong models on risk arithmetic.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: conclusion_exceeds_results
+  severity: major
+  confidence: high
+- finding: decorative_uncertainty
+  severity: minor
+  confidence: low
+gold_evidence_spans:
+- span: '''cuts the risk of the disease in half — a 50% reduction'''
+  why_it_matters: Relative framing that sounds large.
+  supports_finding: conclusion_exceeds_results
+- span: the event rate fell from 2% to 1% ... does not mention the absolute risk difference
+  why_it_matters: The absolute change is only 1 percentage point; omitted.
+  supports_finding: conclusion_exceeds_results
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: relative vs absolute risk
+  variants:
+  - 50% reduction
+  - 2% to 1%
+  - number needed to treat
+  functional_descriptions:
+  - relative reduction hides a small absolute change
+- keyword: omitted absolute risk
+  variants:
+  - absolute risk difference
+  - NNT
+  functional_descriptions:
+  - absolute risk and NNT are not reported
+common_errors:
+- accepting the 50% figure without absolute context
+- not computing the absolute difference
+expected_failure_modes:
+- missing_overclaim
+- risk_framing_blindness
+discriminative_dimensions:
+- correctness
+- insight_depth
+diagnostic_focus: Can the agent detect relative-risk framing that hides a tiny absolute change?
