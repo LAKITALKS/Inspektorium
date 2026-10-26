@@ -1,0 +1,216 @@
+............F........................................................... [  2%]
+........................................................................ [  5%]
+.......................................................FF............... [  8%]
+........................................................................ [ 11%]
+........................................................................ [ 14%]
+........................................................................ [ 16%]
+........................................................................ [ 19%]
+........................................................................ [ 22%]
+........................................................................ [ 25%]
+........................................................................ [ 28%]
+........................................................................ [ 30%]
+........................................................................ [ 33%]
+........................................................................ [ 36%]
+........................................................................ [ 39%]
+........................................................................ [ 42%]
+........................................................................ [ 45%]
+..........F....F...F.................................................... [ 47%]
+........................................................................ [ 50%]
+........................................................................ [ 53%]
+........................................................................ [ 56%]
+........................................................................ [ 59%]
+........................................................................ [ 61%]
+........................................................................ [ 64%]
+........................................................................ [ 67%]
+........................................................................ [ 70%]
+........................................................................ [ 73%]
+........................................................................ [ 75%]
+........................................................................ [ 78%]
+........................................................................ [ 81%]
+........................................................................ [ 84%]
+........................................................................ [ 87%]
+........................................................................ [ 90%]
+........................................................................ [ 92%]
+........................................................................ [ 95%]
+........................................................................ [ 98%]
+........................................                                 [100%]
+=================================== FAILURES ===================================
+___________________ test_loader_rejects_private_path_leakage ___________________
+
+tmp_path = PosixPath('/private__LOCAL_TEMP__/pytest-of-lazarosvarvatis/pytest-12/test_loader_rejects_private_pa0')
+
+    def test_loader_rejects_private_path_leakage(tmp_path):
+        data = json.loads(FIXTURE.read_text())
+        data["provenance"][0]["canonical_url"] = "__LOCAL_HOME__/private/notes.md"
+        bad = tmp_path / "leaky.json"
+        bad.write_text(json.dumps(data))
+>       with pytest.raises(ValueError, match="private identity/path"):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_artifact_binding.py:165: Failed
+_________________ test_parent_and_scientific_binding_unchanged _________________
+
+    def test_parent_and_scientific_binding_unchanged():
+     add=m.read(BASE/'continuation/manifest.json')
+     # Current development must fail the consumed execution snapshot's source gate.
+     # Verify immutable scientific/parent bytes separately, without rebinding that
+     # historical manifest to today's implementation or authorizing another run.
+>    with pytest.raises(m.MissionError,match='continuation execution file changed'):
+E    AssertionError: Regex pattern did not match.
+E      Expected regex: 'continuation execution file changed'
+E      Actual message: 'parent freeze changed'
+
+tests/test_bounded_harness_continuation.py:15: AssertionError
+______________________ test_parent_raw_tampering_rejected ______________________
+
+tmp_path = PosixPath('/private__LOCAL_TEMP__/pytest-of-lazarosvarvatis/pytest-12/test_parent_raw_tampering_reje0')
+
+    def test_parent_raw_tampering_rejected(tmp_path):
+     b=tmp_path/m.REL;b.mkdir(parents=True)
+     shutil.copytree(BASE/'raw_execution',b/'raw_execution')
+     shutil.copy(BASE/'execution_plan.json',b/'execution_plan.json')
+     add=m.read(BASE/'continuation/manifest.json')
+     p=b/'raw_execution/attempts/attempt-001-response.bin';p.write_bytes(p.read_bytes()+b' ')
+>    with pytest.raises(m.MissionError,match='parent raw file changed'):c.verify_continuation(tmp_path,add)
+E    AssertionError: Regex pattern did not match.
+E      Expected regex: 'parent raw file changed'
+E      Actual message: 'parent freeze changed'
+
+tests/test_bounded_harness_continuation.py:33: AssertionError
+____________ test_pinned_closed_history_binds_every_new_live_budget ____________
+
+tmp_path = PosixPath('/private__LOCAL_TEMP__/pytest-of-lazarosvarvatis/pytest-12/test_pinned_closed_history_bin0')
+
+    def test_pinned_closed_history_binds_every_new_live_budget(tmp_path):
+        import hashlib
+        # The pins are the closed ledgers and authorization files of -002 and -003 as stored in the repository.
+        base = ROOT / "analysis/live_smoke_20261011"
+        for directory, auth_id in (("live_run", "AA-P10-LIVE-SMOKE-20261011-002"),
+                                   ("repair_r1", "AA-P10-LIVE-SMOKE-20261011-003")):
+            raw = (base / directory / "ledger.json").read_bytes()
+            auth_raw = (base / directory / "authorization.json").read_bytes()
+            ledger = json.loads(raw)
+>           assert PINNED_HISTORY[auth_id] == {"ledger_sha256": hashlib.sha256(raw).hexdigest(),
+                                               "authorization_sha256": hashlib.sha256(auth_raw).hexdigest()}
+E           AssertionError: assert {'ledger_sha2...db39cd115824'} == {'ledger_sha2...8169724e3b44'}
+E
+E             Omitting 1 identical items, use -vv to show
+E             Differing items:
+E             {'authorization_sha256': 'a331a4cb55cbbc83c155d7ad7abc978503cb6aab3e25880e0af4db39cd115824'} != {'authorization_sha256': '49f8ba584f0e7ebef021a9d5c0d7f112d2434ed99f324e28d49e8169724e3b44'}
+E             Use -v to get more diff
+
+tests/test_phase10_live.py:1310: AssertionError
+_____ test_replay_from_a_copy_keeps_a_never_executed_mandatory_review_open _____
+
+tmp_path = PosixPath('/private__LOCAL_TEMP__/pytest-of-lazarosvarvatis/pytest-12/test_replay_from_a_copy_keeps_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111e5a350>
+
+    def test_replay_from_a_copy_keeps_a_never_executed_mandatory_review_open(tmp_path, monkeypatch):
+        """P10-F1/P9-F1 and K1: the sealed R1 (-003) history replays from any unchanged copy (AA-P9/1.2)."""
+        import shutil
+        monkeypatch.setattr(live, "KNOWN_CLOSED_AUTHORIZATIONS", dict(PINNED_HISTORY))  # the real pins apply
+        source = ROOT / "analysis/live_smoke_20261011/repair_r1"
+        copy = tmp_path / "r1-copy"
+        copy.mkdir()
+        for name in ("authorization.json", "ledger.json"):
+            (copy / name).write_bytes((source / name).read_bytes())
+        shutil.copytree(source / "captures", copy / "captures")
+        rows = {}
+        for case in ("LS-01", "LS-02"):
+            task = load_task(ROOT / f"analysis/live_smoke_20261011/live_run/tasks/{case}.json")
+>           with live.LiveSession(copy, mode="replay") as session:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_phase10_live.py:1457:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src/agent_arena/phase10_live.py:511: in __init__
+    self.authorization, self.fingerprint = load_authorization(self.directory, now=now, mode=mode)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+directory = PosixPath('/private__LOCAL_TEMP__/pytest-of-lazarosvarvatis/pytest-12/test_replay_from_a_copy_keeps_0/r1-copy')
+now = None, mode = 'replay'
+
+    def load_authorization(directory: Path, *, now: datetime | None = None, mode: str = "live") -> tuple[dict, str]:
+        """Validate the work-order-bound authorization; any defect blocks before sending."""
+        if mode not in {"live", "replay"}:
+            raise ValueError("Authorization mode must be live or replay")
+        path = Path(directory) / "authorization.json"
+        raw = path.read_bytes()
+        auth = json.loads(raw)
+        errors = []
+        expected = {"schema", "authorization_id", "work_order", "issued_at", "expires_at", "status",
+                    "canonical_directory", "endpoint", "total_budget_microusd", "max_generation_attempts",
+                    "max_technical_retries", "max_attempts_per_request", "per_call_ceiling_microusd",
+                    "allowed_profiles", "task_bindings", "slots", "supersedes"}
+        successor = isinstance(auth, dict) and auth.get("schema") == AUTH_SCHEMA_SUCCESSOR
+        if successor:
+            expected = expected | {"predecessors", "review_caps"}
+        if not isinstance(auth, dict) or set(auth) != expected:
+>           raise ValueError("Live authorization is partial or has unknown fields")
+E           ValueError: Live authorization is partial or has unknown fields
+
+src/agent_arena/phase10_live.py:94: ValueError
+__ test_cli_replay_keeps_its_review_state_out_of_the_authorization_directory ___
+
+tmp_path = PosixPath('/private__LOCAL_TEMP__/pytest-of-lazarosvarvatis/pytest-12/test_cli_replay_keeps_its_revi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111f50750>
+
+    def test_cli_replay_keeps_its_review_state_out_of_the_authorization_directory(tmp_path, monkeypatch):
+        """P10-F4/BE14: a CLI replay that reaches a review writes nothing into the (sealed) evidence directory."""
+        import hashlib
+        import shutil
+        from click.testing import CliRunner
+        from agent_arena.phase10_cli import audit
+        monkeypatch.setattr(live, "KNOWN_CLOSED_AUTHORIZATIONS", dict(PINNED_HISTORY))
+        monkeypatch.setattr(httpx.Client, "send", lambda *a, **k: (_ for _ in ()).throw(AssertionError("network")))
+        source = ROOT / "analysis/live_smoke_20261011/repair_r1"
+        copy = tmp_path / "r1-copy"
+        copy.mkdir()
+        for name in ("authorization.json", "ledger.json"):
+            (copy / name).write_bytes((source / name).read_bytes())
+        shutil.copytree(source / "captures", copy / "captures")
+
+        def tree(path):
+            return {str(p.relative_to(path)): hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in sorted(path.rglob("*")) if p.is_file()}
+        before = tree(copy)
+        out = tmp_path / "out"
+        result = CliRunner().invoke(audit, ["run", "--replay", "--task",
+                                            str(ROOT / "analysis/live_smoke_20261011/live_run/tasks/LS-02.json"),
+                                            "--authorization-dir", str(copy), "--profile", HAIKU2,
+                                            "--output-root", str(out)])
+>       assert result.exit_code == 2 and json.loads(result.output)["status"] == "REVIEW_REQUIRED", result.output
+E       AssertionError: {"status": "PREFLIGHT_BLOCKED", "errors": ["Live authorization unusable: Live authorization is partial or has unknown fields"]}
+E
+E       assert (2 == 2 and 'PREFLIGHT_BLOCKED' == 'REVIEW_REQUIRED'
+E        +  where 2 = <Result SystemExit(2)>.exit_code
+E
+E         - REVIEW_REQUIRED
+E         + PREFLIGHT_BLOCKED)
+
+tests/test_phase10_live.py:1592: AssertionError
+=============================== warnings summary ===============================
+../../development-venv/lib/python3.11/site-packages/_pytest/python.py:124
+  <PUBLICATION_WORK>/arena-final-scratch/development-venv/lib/python3.11/site-packages/_pytest/python.py:124: PytestRemovedIn10Warning: Passing a non-Collection iterable to parametrize is deprecated.
+  Test: agent-arena/tests/test_phase8_9_conflict.py::test_K1_all_sixteen_model_host_pairs_conflict_route_and_separation, argvalues type: product
+  Please convert to a list or tuple.
+  See https://docs.pytest.org/en/stable/deprecations.html#parametrize-iterators
+    metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)
+
+../../development-venv/lib/python3.11/site-packages/_pytest/python.py:124
+  <PUBLICATION_WORK>/arena-final-scratch/development-venv/lib/python3.11/site-packages/_pytest/python.py:124: PytestRemovedIn10Warning: Passing a non-Collection iterable to parametrize is deprecated.
+  Test: agent-arena/tests/test_phase8_semantics.py::test_composite_truth_tables, argvalues type: product
+  Please convert to a list or tuple.
+  See https://docs.pytest.org/en/stable/deprecations.html#parametrize-iterators
+    metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_artifact_binding.py::test_loader_rejects_private_path_leakage
+FAILED tests/test_bounded_harness_continuation.py::test_parent_and_scientific_binding_unchanged
+FAILED tests/test_bounded_harness_continuation.py::test_parent_raw_tampering_rejected
+FAILED tests/test_phase10_live.py::test_pinned_closed_history_binds_every_new_live_budget
+FAILED tests/test_phase10_live.py::test_replay_from_a_copy_keeps_a_never_executed_mandatory_review_open
+FAILED tests/test_phase10_live.py::test_cli_replay_keeps_its_review_state_out_of_the_authorization_directory
+6 failed, 2554 passed, 2 warnings in 542.96s (0:09:02)

@@ -1,0 +1,374 @@
+{
+  "map_sanity": {
+    "checks": [
+      {
+        "change": "none",
+        "check": "M0-map-as-recorded",
+        "expected": "no problem",
+        "passed": true,
+        "problems": []
+      },
+      {
+        "change": "allowed_tags + a, img",
+        "check": "M1-allowed-tags-widened",
+        "expected": "flagged",
+        "passed": true,
+        "problems": [
+          "allowed_tags allows ['a', 'img']"
+        ]
+      },
+      {
+        "change": "last control label replaced by a label that starts no line",
+        "check": "M2-dead-control-label",
+        "expected": "flagged",
+        "passed": true,
+        "problems": [
+          "control label 'Nonexistent label:' starts no template line"
+        ]
+      },
+      {
+        "change": "tokenize display rule marking only Cc",
+        "check": "M3-display-rule-narrowed",
+        "expected": "flagged",
+        "passed": true,
+        "problems": [
+          "display rule does not mark ['Cf', 'Cs', 'Zl', 'Zp']"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  "passed": true,
+  "run_label": "candidate-fae1824",
+  "scenarios": [
+    {
+      "change": "none (unchanged copy)",
+      "expected_overall": "PASS",
+      "fail_reasons": [],
+      "incomplete_reasons": [],
+      "observed_overall": "PASS",
+      "passed": true,
+      "scenario": "S0-control"
+    },
+    {
+      "change": "insert a forged 'Deterministic guard: passed' list item into finding 1",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "1 case(s) FAILS"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "sabotaged_row": {
+        "case": "R-MX-02",
+        "failed_criteria": [
+          "K3",
+          "K5"
+        ],
+        "outcome": "RENDERED_MANIPULATED",
+        "renderer": "cmark-gfm-unsafe"
+      },
+      "scenario": "S1-forged-status-line"
+    },
+    {
+      "change": "insert '<!--' before the Validation Warnings heading",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "1 case(s) FAILS"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "sabotaged_row": {
+        "case": "R-RC-01",
+        "failed_criteria": [
+          "K1",
+          "K4",
+          "K5",
+          "K7"
+        ],
+        "outcome": "RENDERED_MANIPULATED",
+        "renderer": "markdown-it-py-html"
+      },
+      "scenario": "S2-unterminated-comment"
+    },
+    {
+      "change": "wrap the Scope and Limitations section in <div hidden>",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "1 case(s) FAILS"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "sabotaged_row": {
+        "case": "R-RC-03",
+        "failed_criteria": [
+          "K1",
+          "K4",
+          "K5",
+          "K7",
+          "K8"
+        ],
+        "outcome": "RENDERED_MANIPULATED",
+        "renderer": "python-markdown"
+      },
+      "scenario": "S3-hidden-limitations"
+    },
+    {
+      "change": "insert a raw U+202E into the first rationale",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "1 case(s) FAILS"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "sabotaged_row": {
+        "case": "R-RC-02",
+        "failed_criteria": [
+          "K10",
+          "K9"
+        ],
+        "outcome": "RENDERED_MANIPULATED",
+        "renderer": "cmark-gfm-safe"
+      },
+      "scenario": "S4-raw-bidi-control"
+    },
+    {
+      "change": "delete the last limitation line",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "1 case(s) FAILS"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "sabotaged_row": {
+        "case": "R-RC-05",
+        "failed_criteria": [
+          "K4",
+          "K5"
+        ],
+        "outcome": "RENDERED_MANIPULATED",
+        "renderer": "cmark-gfm-unsafe"
+      },
+      "scenario": "S5-missing-limitation"
+    },
+    {
+      "change": "insert a remote image into the Summary paragraph",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "rendered pages attempted network requests (blocked)",
+        "1 case(s) FAILS"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "sabotaged_row": {
+        "case": "R-RC-04",
+        "failed_criteria": [
+          "K12",
+          "K5",
+          "K7"
+        ],
+        "outcome": "RENDERED_MANIPULATED",
+        "renderer": "markdown-it-py-html"
+      },
+      "scenario": "S6-remote-image"
+    },
+    {
+      "change": "delete one measurement row (R-RC-01, cmark-gfm-unsafe)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "R-RC-01/cmark-gfm-unsafe: 0 measurement rows",
+        "1 case(s) not HOLDS/FAILS"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S7-missing-measurement-row"
+    },
+    {
+      "change": "delete the network guard log",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "missing file netguard.jsonl"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S8-missing-guard-log"
+    },
+    {
+      "change": "append one guard refusal record",
+      "expected_overall": "FAIL",
+      "fail_reasons": [
+        "network guard refused at least one connection attempt"
+      ],
+      "incomplete_reasons": [],
+      "observed_overall": "FAIL",
+      "passed": true,
+      "scenario": "S9-guard-refusal"
+    },
+    {
+      "change": "delete one CLI result row (I-OK-01, json)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "I-OK-01/cmark-gfm-unsafe: row records CLI outcome ACCEPTED, CLI rows give MISSING",
+        "I-OK-01/cmark-gfm-safe: row records CLI outcome ACCEPTED, CLI rows give MISSING",
+        "I-OK-01/markdown-it-py-html: row records CLI outcome ACCEPTED, CLI rows give MISSING",
+        "I-OK-01/python-markdown: row records CLI outcome ACCEPTED, CLI rows give MISSING",
+        "I-OK-01: CLI rows missing"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S10-missing-cli-row"
+    },
+    {
+      "change": "replace one outcome class by the string 'PASS' (R-RC-02)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "R-RC-02/python-markdown: unknown outcome class",
+        "1 case(s) not HOLDS/FAILS"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S11-unknown-outcome-label"
+    },
+    {
+      "change": "mark one CLI invocation as having no armed guard record (R-RC-07)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "a CLI process ran without an armed guard record"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S12-cli-without-armed-guard"
+    },
+    {
+      "change": "evaluate with a label map whose guard label is wrong",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "56 case(s) not HOLDS/FAILS"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S13-wrong-label-map"
+    },
+    {
+      "change": "set criterion K3 to failed but keep the stored outcome INTACT (R-LI-01, cmark-gfm-unsafe)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "R-LI-01/cmark-gfm-unsafe: stored outcome RENDERED_CONTROLS_INTACT != RENDERED_MANIPULATED derived from the criteria",
+        "1 case(s) not HOLDS/FAILS"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S14-criterion-failed-outcome-left-intact"
+    },
+    {
+      "change": "delete one CLI process's armed record from the guard log (the CLI row still reports it)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "140 CLI rows but only 139 CLI processes with an armed record in netguard.jsonl"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S15-armed-record-removed-from-log"
+    },
+    {
+      "change": "set exit code 1 and a traceback in one CLI row but keep its stored cli_outcome ACCEPTED (I-OK-01, json)",
+      "expected_overall": "INCOMPLETE",
+      "fail_reasons": [],
+      "incomplete_reasons": [
+        "I-OK-01/cmark-gfm-unsafe: row records CLI outcome ACCEPTED, CLI rows give CRASHED",
+        "I-OK-01/cmark-gfm-safe: row records CLI outcome ACCEPTED, CLI rows give CRASHED",
+        "I-OK-01/markdown-it-py-html: row records CLI outcome ACCEPTED, CLI rows give CRASHED",
+        "I-OK-01/python-markdown: row records CLI outcome ACCEPTED, CLI rows give CRASHED",
+        "I-OK-01/json: stored cli_outcome ACCEPTED != recomputed CRASHED"
+      ],
+      "observed_overall": "INCOMPLETE",
+      "passed": true,
+      "scenario": "S16-crashed-cli-row-stored-accepted"
+    }
+  ],
+  "subset_cases": [
+    "I-DK-01",
+    "I-DK-02",
+    "I-DK-03",
+    "I-DK-04",
+    "I-DK-05",
+    "I-DK-06",
+    "I-DK-07",
+    "I-LS-01",
+    "I-LS-02",
+    "I-NC-01",
+    "I-NC-02",
+    "I-NC-03",
+    "I-OK-01",
+    "I-OK-02",
+    "I-OK-03",
+    "R-BI-01",
+    "R-BI-02",
+    "R-BI-03",
+    "R-BI-04",
+    "R-BI-05",
+    "R-CO-01",
+    "R-HH-01",
+    "R-HH-02",
+    "R-HH-03",
+    "R-HH-04",
+    "R-HH-05",
+    "R-HH-06",
+    "R-HH-07",
+    "R-HH-08",
+    "R-LE-01",
+    "R-LE-02",
+    "R-LI-01",
+    "R-LI-02",
+    "R-LI-03",
+    "R-LI-04",
+    "R-LI-05",
+    "R-LI-06",
+    "R-LI-07",
+    "R-LI-08",
+    "R-LI-09",
+    "R-LI-10",
+    "R-LI-11",
+    "R-LI-12",
+    "R-LI-13",
+    "R-LI-14",
+    "R-LI-15",
+    "R-LI-16",
+    "R-LI-17",
+    "R-LI-18",
+    "R-LI-19",
+    "R-MB-01",
+    "R-MB-02",
+    "R-MB-03",
+    "R-MB-04",
+    "R-MB-05",
+    "R-MB-06",
+    "R-MX-01",
+    "R-MX-02",
+    "R-RC-00",
+    "R-RC-01",
+    "R-RC-02",
+    "R-RC-03",
+    "R-RC-04",
+    "R-RC-05",
+    "R-RC-06",
+    "R-RC-07",
+    "R-RC-08",
+    "X-RE-01",
+    "X-RE-02",
+    "X-RE-03"
+  ]
+}

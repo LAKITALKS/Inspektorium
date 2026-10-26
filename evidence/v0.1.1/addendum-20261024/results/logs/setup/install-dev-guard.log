@@ -1,0 +1,6 @@
+{
+  "venv": "<WORK>/dev",
+  "guard_module": "<WORK>/dev/lib/python3.11/site-packages/evidence_netguard.py",
+  "guard_sha256": "1e36c64181d0890a4d49955cff84015c6203c2edd280a1bba6b83accf8f4a84b",
+  "source_sha256": "1e36c64181d0890a4d49955cff84015c6203c2edd280a1bba6b83accf8f4a84b"
+}

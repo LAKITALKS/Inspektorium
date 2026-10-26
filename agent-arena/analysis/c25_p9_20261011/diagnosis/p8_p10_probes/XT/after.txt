@@ -1,0 +1,13 @@
+out_trace2/auth/.live-lease
+out_trace2/auth/authorization.json
+out_trace2/auth/captures/attempt-001.json
+out_trace2/auth/captures/attempt-002.json
+out_trace2/auth/ledger.json
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/decisions.jsonl
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.json
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.ledger.json
+out_trace2/auth/phase9-state/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.lock
+out_trace2/auth/replay-state/c43e8656-6ea1-4b60-be5b-7e1d98775f75/claude-haiku-5-5@3/decisions.jsonl
+out_trace2/auth/replay-state/c43e8656-6ea1-4b60-be5b-7e1d98775f75/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.json
+out_trace2/auth/replay-state/c43e8656-6ea1-4b60-be5b-7e1d98775f75/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.ledger.json
+out_trace2/auth/replay-state/c43e8656-6ea1-4b60-be5b-7e1d98775f75/claude-haiku-5-5@3/phase9/p9case:2c5bcb6945beb21ada7e052d.lock

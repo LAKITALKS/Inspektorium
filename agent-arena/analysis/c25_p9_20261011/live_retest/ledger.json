@@ -1,0 +1,250 @@
+{
+  "binding": {
+    "schema": "aa-p10-live-ledger/1.0",
+    "addendum": "AA-P10-LIVE/1.0",
+    "authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
+    "authorization_fingerprint": "63f94f028d721f5547b1344fc8afa9377a24368e0743af1a4411ac8740126b0a",
+    "max_technical_retries": 2,
+    "endpoint": "https://api.anthropic.com/v1/messages"
+  },
+  "state": "REVOKED",
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "slot_key": "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|primary",
+      "payload_sha256": "83996288d404ef90fff761b3e89d5d01a35f2c620c76df9587c5eae7e4d7815b",
+      "wire_sha256": "83996288d404ef90fff761b3e89d5d01a35f2c620c76df9587c5eae7e4d7815b",
+      "reserved_microusd": 28088,
+      "bound_microusd": 14098,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 14984,
+        "output_tokens": 25198,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 14098,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:07:43.061598+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:09:19.214009+00:00",
+      "capture_sha256": "c2400d2ff713730e53e0e88189794b90770fcf1a892578bf9926acd6c42b22f9",
+      "request_id": "req_011CfxYzvooQ9bNMXiD6MPzs",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-002",
+      "slot_key": "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|primary",
+      "payload_sha256": "41b7d7c75658f4e43e9b6eeae0157221dd57dcf32829282a0931ff21a12131fb",
+      "wire_sha256": "41b7d7c75658f4e43e9b6eeae0157221dd57dcf32829282a0931ff21a12131fb",
+      "reserved_microusd": 28111,
+      "bound_microusd": 11839,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 15054,
+        "output_tokens": 20667,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 11839,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:09:20.040835+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:10:36.571395+00:00",
+      "capture_sha256": "dcee81e242b14dd21b50826cef0dc7c35c25a50ad761c460c095b0889e0fc2b9",
+      "request_id": "req_011CfxZ85KTFyppPqN1xA9v6",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-003",
+      "slot_key": "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|primary",
+      "payload_sha256": "9326be3a574e0fe3f645a08d62ec6bc3b05b7c35974ec37b70ea13d0c4adc597",
+      "wire_sha256": "9326be3a574e0fe3f645a08d62ec6bc3b05b7c35974ec37b70ea13d0c4adc597",
+      "reserved_microusd": 28087,
+      "bound_microusd": 8316,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 14991,
+        "output_tokens": 13632,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 8316,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:10:37.453258+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:11:27.147702+00:00",
+      "capture_sha256": "133d16e982165dbe1ce1eec66299d59da01d81cacda1387d7f371baaa5682edf",
+      "request_id": "req_011CfxZDnHT8TojgvjiFmpQZ",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-004",
+      "slot_key": "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|primary",
+      "payload_sha256": "33993d02f31cf8c16be551d67f4918b873a171f34aa40ab0d0023e218e71aed1",
+      "wire_sha256": "33993d02f31cf8c16be551d67f4918b873a171f34aa40ab0d0023e218e71aed1",
+      "reserved_microusd": 241756,
+      "bound_microusd": 113148,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 14984,
+        "output_tokens": 8318,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 113148,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:11:28.361292+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:12:17.525064+00:00",
+      "capture_sha256": "b01f10a117838692c3f8b6d39dd2b2a6dfc1a0dc6e64189767c06ac1e28680f2",
+      "request_id": "req_011CfxZHY8mDZhGVkTCkiWDU",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-005",
+      "slot_key": "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+      "payload_sha256": "635fb1cbd0d622094764fc1d08ec04697ba19eb463eb2e66c806990fc9886a1d",
+      "wire_sha256": "635fb1cbd0d622094764fc1d08ec04697ba19eb463eb2e66c806990fc9886a1d",
+      "reserved_microusd": 248444,
+      "bound_microusd": 104884,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 16102,
+        "output_tokens": 7268,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 104884,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:12:17.617105+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:12:58.609564+00:00",
+      "capture_sha256": "202af910bd11afc8dceb009edea5367bf513923a18eb83cfe8c6dd8d408848b1",
+      "request_id": "req_011CfxZMACGLj4HMqXdrjYkc",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-006",
+      "slot_key": "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability",
+      "payload_sha256": "b9bb243a22df47d4ef06005c791325e3fdfbcca469cba76006c7e534e8f050f8",
+      "wire_sha256": "b9bb243a22df47d4ef06005c791325e3fdfbcca469cba76006c7e534e8f050f8",
+      "reserved_microusd": 248444,
+      "bound_microusd": 102994,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 16102,
+        "output_tokens": 7079,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 102994,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:12:58.792011+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:13:38.214965+00:00",
+      "capture_sha256": "b4f73c5c4414127d7e9695a4cdcf196802fd7f93ea714e8a8a00d7568127c773",
+      "request_id": "req_011CfxZQCF8BMGius1n6U2o9",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-007",
+      "slot_key": "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|primary",
+      "payload_sha256": "601b1333d1e47c36936ea2105c3ad420aedda69ec9a436a0e9bac6b7fe8b6e0a",
+      "wire_sha256": "601b1333d1e47c36936ea2105c3ad420aedda69ec9a436a0e9bac6b7fe8b6e0a",
+      "reserved_microusd": 242210,
+      "bound_microusd": 97328,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 15054,
+        "output_tokens": 6722,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 97328,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:13:40.282421+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:14:15.908057+00:00",
+      "capture_sha256": "df356e9eff6b1036941273eea8195b7be21fc5589517a75968281bda6e7371ee",
+      "request_id": "req_011CfxZTFuj7bDahVtC7QWB1",
+      "http_status": 200
+    },
+    {
+      "attempt_id": "attempt-008",
+      "slot_key": "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|primary",
+      "payload_sha256": "b4ca814fcd2f747819a2ea0a1d224f6a4bf46718554266cbe64f53a7c1c0aa22",
+      "wire_sha256": "b4ca814fcd2f747819a2ea0a1d224f6a4bf46718554266cbe64f53a7c1c0aa22",
+      "reserved_microusd": 241726,
+      "bound_microusd": 96992,
+      "state": "COMPLETED",
+      "usage": {
+        "input_tokens": 14991,
+        "output_tokens": 6701,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "confirmed_token_cost_microusd": 96992,
+      "retry_of": null,
+      "reserved_at": "2026-10-12T15:14:16.760363+00:00",
+      "billing": "confirmed_from_usage",
+      "settled_at": "2026-10-12T15:14:55.123869+00:00",
+      "capture_sha256": "24c6687c7077c298a725821ee46482e398c383318f9b8282e05a332bbce2d95e",
+      "request_id": "req_011CfxZVwrcDhJ2ziUYv2uLF",
+      "http_status": 200
+    }
+  ],
+  "terminal_keys": [
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|primary"
+  ],
+  "planned_keys": [
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|stability",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|stability",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|stability",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|stability",
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|primary",
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|stability",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|primary",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability"
+  ],
+  "reserved_microusd": 549599,
+  "executable_remaining_microusd": 0,
+  "policy": {
+    "max_attempts": 12,
+    "per_slot": 2,
+    "attempt_microusd": 300000,
+    "total_microusd": 763064
+  },
+  "terminal_record_hashes": {
+    "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|primary": "ecc05376f4fe38da1c4e9ce2c1d27e7889e07b807f4d4eca6ed3bcca90418bed",
+    "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|primary": "8158f814e89d771fb60d64cc17a984e681b0493c1d086426715ae8f479eaeeac",
+    "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|primary": "f302a4f9587b3d9bc1b885a9a62add8a978a1541ac1c959fef02338c30d13d9f",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|primary": "a604745bea589c91a23fc9a2ceb1eed07b41faeafb2b2689c9bc6b5e67319dc1",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview": "a5e4568fcfa232b504271e9b74007bea7c8a77fc7afa7f9e20a3269caae8dd37",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability": "1408ca920fc7e9ada2a33c4ed8ec2ab3149aecd5e60047e6b05f5a9d94bf55a1",
+    "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|primary": "c0d122dfe3ddfb073c1d159478c108dbe523bb730602e1afb5a5cb3f71756744",
+    "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|primary": "ca8c6d0dd0e45e15d394ab2126a6404ad784cb908e04f4a021fee43814128053"
+  },
+  "review_cap_claims": [
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability"
+  ],
+  "revocation_reason": "ORDER_COMPLETE: C25/P9 live retest under the order of 11.10.2026 finished; the remaining budget is not carried over and no further execution is authorized. Replay of the captures stays possible."
+}

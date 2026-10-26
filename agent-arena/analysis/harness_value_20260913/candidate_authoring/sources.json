@@ -1,0 +1,1325 @@
+[
+  {
+    "title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity.",
+    "doi": "10.1056/nejmoa2032183",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:caf395f5a065b294ce060e8c3ea7e1896b95cc2d3eff95e46666b04d56c9a17d; publication 2021-02-10",
+    "retrieval_date": "2026-09-13T16:39:30.493933+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa2032183%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "1ed1daadcfb00e1c84c22b3d5b4f59d35c71232214b88286644f584a32f71fdc",
+    "abstract_text_sha256": "caf395f5a065b294ce060e8c3ea7e1896b95cc2d3eff95e46666b04d56c9a17d",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "33567184",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Mar 18;384(11):1066-1067. doi: 10.1056/NEJMe2101705.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "33822032",
+          "source": "MED",
+          "reference": "Eur Heart J. 2021 May 1;42(17):1652-1653. doi: 10.1093/eurheartj/ehab175.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "33826913",
+          "source": "MED",
+          "reference": "Cell Metab. 2021 Apr 6;33(4):705-706. doi: 10.1016/j.cmet.2021.03.012.",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "33859431",
+          "source": "MED",
+          "reference": "Nat Med. 2021 Apr;27(4):589-590. doi: 10.1038/s41591-021-01319-4.",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "33961244",
+          "source": "MED",
+          "reference": "MMW Fortschr Med. 2021 May;163(9):26. doi: 10.1007/s15006-021-9940-5.",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "34192446",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jul 1;385(1):e4. doi: 10.1056/NEJMc2106918.",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "34192447",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jul 1;385(1):e4. doi: 10.1056/NEJMc2106918.",
+          "type": "Comment in",
+          "orderIn": 7
+        },
+        {
+          "id": "34192448",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jul 1;385(1):e4. doi: 10.1056/NEJMc2106918.",
+          "type": "Comment in",
+          "orderIn": 8
+        },
+        {
+          "id": "34192449",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jul 1;385(1):e4. doi: 10.1056/NEJMc2106918.",
+          "type": "Comment in",
+          "orderIn": 9
+        },
+        {
+          "id": "34192450",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jul 1;385(1):e4. doi: 10.1056/NEJMc2106918.",
+          "type": "Comment in",
+          "orderIn": 10
+        },
+        {
+          "id": "34224258",
+          "source": "MED",
+          "reference": "Ann Intern Med. 2021 Jul;174(7):JC80. doi: 10.7326/ACPJ202107200-080.",
+          "type": "Comment in",
+          "orderIn": 11
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "a985be08868b8fbd918651e69f7a17c7c21798e56f3115c1c2b2095b2474cce3",
+    "authoring_id": "C01"
+  },
+  {
+    "title": "Adherence to a Mediterranean diet and survival in a Greek population.",
+    "doi": "10.1056/nejmoa025039",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12826634/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:5e4c915b811a1ec01bb7b99929bcec3fcde9563d5fdc757a873e5915798d61a3; publication 2003-06-01",
+    "retrieval_date": "2026-09-13T16:39:39.781873+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa025039%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "8e61321c0610d3d04a5d9beee1a022b2c9d1e78dac271071b73eb46a97b4d234",
+    "abstract_text_sha256": "5e4c915b811a1ec01bb7b99929bcec3fcde9563d5fdc757a873e5915798d61a3",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "12826632",
+          "source": "MED",
+          "reference": "N Engl J Med. 2003 Jun 26;348(26):2595-6. doi: 10.1056/NEJMp030069",
+          "type": "Comment in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "c3b8026d25ee6d05b417ece8fc3d43771dca068583e215813c11d21edb5ab422",
+    "authoring_id": "C02"
+  },
+  {
+    "title": "Dexamethasone in Hospitalized Patients with Covid-19.",
+    "doi": "10.1056/nejmoa2021436",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32678530/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:477b16531e8b21367d13fe77e0679ff918810b146519942096c2020ea87f9f7d; publication 2020-07-17; final RECOVERY NEJM 2021;384:693-704, PMID 32678530",
+    "retrieval_date": "2026-09-13T16:39:30.614727+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa2021436%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "8f055d30269c161a974109dda18a11b6b51cd8047d45c410b2b802ca9e91349c",
+    "abstract_text_sha256": "477b16531e8b21367d13fe77e0679ff918810b146519942096c2020ea87f9f7d",
+    "publication_types": {
+      "pubType": [
+        "Comparative Study",
+        "research-article",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "32678528",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Feb 25;384(8):755-757. doi: 10.1056/NEJMe2024638.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "32706531",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Feb 25;384(8):757-758. doi: 10.1056/NEJMe2025674.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "32886206",
+          "source": "MED",
+          "reference": "Intensive Care Med. 2020 Nov;46(11):2108-2110. doi: 10.1007/s00134-020-06230-z.",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "33045189",
+          "source": "MED",
+          "reference": "Lancet. 2020 Oct 24;396(10259):e61-e62. doi: 10.1016/S0140-6736(20)32132-2.",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "33139895",
+          "source": "MED",
+          "reference": "Nat Rev Clin Oncol. 2021 Jan;18(1):7-8. doi: 10.1038/s41571-020-00448-y.",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "34865289",
+          "source": "MED",
+          "reference": "Respirology. 2022 Feb;27(2):107-108. doi: 10.1111/resp.14193.",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "PPR179288",
+          "source": "PPR",
+          "type": "Preprint in",
+          "note": "CrossRef Pre-print loader",
+          "orderIn": 10002
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "d98a7f7ccfae78ae257cdd191cceed4dccc820d22f8d51ee44377aeb5b8a8cdd",
+    "authoring_id": "C03"
+  },
+  {
+    "title": "Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction.",
+    "doi": "10.1056/nejmoa1911303",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31535829/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:fae2ce93972c985d353b72866f9e391ae2bab296683633ff573eef86c0ed8f2b; publication 2019-09-19",
+    "retrieval_date": "2026-09-13T16:39:30.584633+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa1911303%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "174d1479896e6217f074c7669e0576b65a0a6ceed6a2d35f10e7c636bc10dddd",
+    "abstract_text_sha256": "fae2ce93972c985d353b72866f9e391ae2bab296683633ff573eef86c0ed8f2b",
+    "publication_types": {
+      "pubType": [
+        "Clinical Trial, Phase III",
+        "Research Support, Non-U.S. Gov't",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "31535828",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 Nov 21;381(21):2063-2064. doi: 10.1056/NEJMe1912180.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "31578515",
+          "source": "MED",
+          "reference": "Nat Rev Cardiol. 2019 Dec;16(12):700. doi: 10.1038/s41569-019-0291-1.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "32066149",
+          "source": "MED",
+          "reference": "Ann Intern Med. 2020 Feb 18;172(4):JC16. doi: 10.7326/ACPJ202002180-016.",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "32130820",
+          "source": "MED",
+          "reference": "N Engl J Med. 2020 Mar 5;382(10):972. doi: 10.1056/NEJMc1917241.",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "32130821",
+          "source": "MED",
+          "reference": "N Engl J Med. 2020 Mar 5;382(10):972. doi: 10.1056/NEJMc1917241.",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "32130822",
+          "source": "MED",
+          "reference": "N Engl J Med. 2020 Mar 5;382(10):972-973. doi: 10.1056/NEJMc1917241.",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "33961267",
+          "source": "MED",
+          "reference": "MMW Fortschr Med. 2021 May;163(9):65. doi: 10.1007/s15006-021-9952-1.",
+          "type": "Comment in",
+          "orderIn": 7
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "aa50461d29b2eda7d3e378c2338f0d5a9c1e030d50a78afc416c59c052840742",
+    "authoring_id": "C04"
+  },
+  {
+    "title": "A clinical trial of the effects of dietary patterns on blood pressure. DASH Collaborative Research Group.",
+    "doi": "10.1056/nejm199704173361601",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9099655/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:d324021a20b6d8aa26b24d5ee2b5ce0a44c4636aeb2100c7d8d904fbd161295a; publication 1997-04-01",
+    "retrieval_date": "2026-09-13T16:39:30.731956+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJM199704173361601%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "ddb619c8efeeb9c4a46a535d15ea020d215e42853923456d35ddf34bae0ad451",
+    "abstract_text_sha256": "d324021a20b6d8aa26b24d5ee2b5ce0a44c4636aeb2100c7d8d904fbd161295a",
+    "publication_types": {
+      "pubType": [
+        "Clinical Trial",
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "9280832",
+          "source": "MED",
+          "reference": "N Engl J Med. 1997 Aug 28;337(9):636-7; author reply 637-8.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "9280833",
+          "source": "MED",
+          "reference": "N Engl J Med. 1997 Aug 28;337(9):637; author reply 637-8.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "9280834",
+          "source": "MED",
+          "reference": "N Engl J Med. 1997 Aug 28;337(9):637; author reply 637-8.",
+          "type": "Comment in",
+          "orderIn": 3
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "2375ab1903b6ef9f3abbdb4dfc64f7d571460b0c39b8accff09c8c45c59c69af",
+    "authoring_id": "C05"
+  },
+  {
+    "title": "NAD⁺ repletion improves mitochondrial and stem cell function and enhances life span in mice.",
+    "doi": "10.1126/science.aaf2693",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27127236/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:182b5e80330374e7537c728b89944822b352496650bc5c1639d3e9150926fb10; publication 2016-04-28",
+    "retrieval_date": "2026-09-13T16:39:30.840950+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1126%2Fscience.aaf2693%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "9138da5399ca53d2b272a6eddb40d6f25a8ad85030a8ed2983a407eab20642fe",
+    "abstract_text_sha256": "182b5e80330374e7537c728b89944822b352496650bc5c1639d3e9150926fb10",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "27211483",
+          "source": "MED",
+          "reference": "Nat Rev Mol Cell Biol. 2016 May 23;17(6):331. doi: 10.1038/nrm.2016.71",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "27313027",
+          "source": "MED",
+          "reference": "Science. 2016 Jun 17;352(6292):1396-7. doi: 10.1126/science.aag1718",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "27339086",
+          "source": "MED",
+          "reference": "Cell Res. 2016 Sep;26(9):971-2. doi: 10.1038/cr.2016.80",
+          "type": "Comment in",
+          "orderIn": 3
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "4082cb5e61a4d5c00d5a667e6ad5b9582fede45de7baa67364c2abb2cdb33dbc",
+    "authoring_id": "C06"
+  },
+  {
+    "title": "Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes.",
+    "doi": "10.1056/nejmoa2307563",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:c87f974cae0edc6909915c97c3cee05566ae753b5124cfdeb36db12d5c152510; publication 2023-11-11",
+    "retrieval_date": "2026-09-13T16:39:30.959934+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa2307563%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "7e56658122bee0a7d1e482e6f01baf59caac34a613abf433c5445817da034c32",
+    "abstract_text_sha256": "c87f974cae0edc6909915c97c3cee05566ae753b5124cfdeb36db12d5c152510",
+    "publication_types": {
+      "pubType": [
+        "Equivalence Trial",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "38036669",
+          "source": "MED",
+          "reference": "Nat Rev Cardiol. 2024 Feb;21(2):69. doi: 10.1038/s41569-023-00970-3.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "38381682",
+          "source": "MED",
+          "reference": "N Engl J Med. 2024 Feb 22;390(8):766. doi: 10.1056/NEJMc2400414.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "38381683",
+          "source": "MED",
+          "reference": "N Engl J Med. 2024 Feb 22;390(8):766-767. doi: 10.1056/NEJMc2400414.",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "38381684",
+          "source": "MED",
+          "reference": "N Engl J Med. 2024 Feb 22;390(8):767. doi: 10.1056/NEJMc2400414.",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "38381685",
+          "source": "MED",
+          "reference": "N Engl J Med. 2024 Feb 22;390(8):767. doi: 10.1056/NEJMc2400414.",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "38381686",
+          "source": "MED",
+          "reference": "N Engl J Med. 2024 Feb 22;390(8):767-768. doi: 10.1056/NEJMc2400414.",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "38381687",
+          "source": "MED",
+          "reference": "N Engl J Med. 2024 Feb 22;390(8):768-769. doi: 10.1056/NEJMc2400414.",
+          "type": "Comment in",
+          "orderIn": 7
+        },
+        {
+          "id": "38437690",
+          "source": "MED",
+          "reference": "Ann Intern Med. 2024 Mar;177(3):JC31. doi: 10.7326/J24-0008.",
+          "type": "Comment in",
+          "orderIn": 8
+        },
+        {
+          "id": "38581499",
+          "source": "MED",
+          "reference": "MMW Fortschr Med. 2024 Apr;166(6):22-23. doi: 10.1007/s15006-024-3771-0.",
+          "type": "Comment in",
+          "orderIn": 9
+        },
+        {
+          "id": "38706104",
+          "source": "MED",
+          "reference": "Diabetes Obes Metab. 2024 Aug;26(8):3003-3005. doi: 10.1111/dom.15631.",
+          "type": "Comment in",
+          "orderIn": 10
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "49b8398f62e82edc150d373f187a26b294ac4d130fcac449a9b7c1c967c460fa",
+    "authoring_id": "C07"
+  },
+  {
+    "title": "Vitamin D Supplements and Prevention of Cancer and Cardiovascular Disease.",
+    "doi": "10.1056/nejmoa1809944",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:4c7712c6b27104e3e1ab8aa8d2438207b4a356b97bb2a2a9967239f9e10ced96; publication 2018-11-10",
+    "retrieval_date": "2026-09-13T16:39:36.004243+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa1809944%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "614ad2d7e74209b21e02499278affd6773b2d3998de43ed7c673bd89d4c7322b",
+    "abstract_text_sha256": "4c7712c6b27104e3e1ab8aa8d2438207b4a356b97bb2a2a9967239f9e10ced96",
+    "publication_types": {
+      "pubType": [
+        "research-article",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "30415594",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 Jan 3;380(1):91-93. doi: 10.1056/NEJMe1814933",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "30937778",
+          "source": "MED",
+          "reference": "MMW Fortschr Med. 2019 Apr;161(6):33. doi: 10.1007/s15006-019-0349-3",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "31001644",
+          "source": "MED",
+          "reference": "Strahlenther Onkol. 2019 Jul;195(7):693-694. doi: 10.1007/s00066-019-01455-4",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "31002167",
+          "source": "MED",
+          "reference": "Eur Rev Med Pharmacol Sci. 2019 Apr;23(7):3142-3147. doi: 10.26355/eurrev_201904_17599",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "31018075",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 Apr 25;380(17):1677. doi: 10.1056/NEJMc1902165",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "31018076",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 Apr 25;380(17):1678. doi: 10.1056/NEJMc1902165",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "31063055",
+          "source": "MED",
+          "reference": "J Urol. 2019 Aug;202(2):211-212. doi: 10.1097/01.JU.0000559602.40778.1d",
+          "type": "Comment in",
+          "orderIn": 7
+        },
+        {
+          "id": "31067388",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 May 9;380(19):1878. doi: 10.1056/NEJMc1902636",
+          "type": "Comment in",
+          "orderIn": 8
+        },
+        {
+          "id": "31067389",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 May 9;380(19):1878. doi: 10.1056/NEJMc1902636",
+          "type": "Comment in",
+          "orderIn": 9
+        },
+        {
+          "id": "31067390",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 May 9;380(19):1878-1879. doi: 10.1056/NEJMc1902636",
+          "type": "Comment in",
+          "orderIn": 10
+        },
+        {
+          "id": "31067391",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 May 9;380(19):1879. doi: 10.1056/NEJMc1902636",
+          "type": "Comment in",
+          "orderIn": 11
+        },
+        {
+          "id": "31314974",
+          "source": "MED",
+          "reference": "N Engl J Med. 2019 Jul 18;381(3):285-286. doi: 10.1056/NEJMe1906559",
+          "type": "Comment in",
+          "orderIn": 12
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "f22c05b8381b5cf77151e1f1e8b64109e9141bc3099b677983f0eb3c1975ee00",
+    "authoring_id": "C08"
+  },
+  {
+    "title": "Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage (CRASH-2): a randomised, placebo-controlled trial.",
+    "doi": "10.1016/s0140-6736(10)60835-5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20554319/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:1845a661a1dcb41af3cf254ae12c121d75002a9e689ce014bb7f4448e14e001c; publication 2010-06-14",
+    "retrieval_date": "2026-09-13T16:39:31.157190+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1016%2FS0140-6736%2810%2960835-5%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "982792f904d617c9c80d118bb33309363ddc3a3e7fd7817eeb4734b4d102007f",
+    "abstract_text_sha256": "1845a661a1dcb41af3cf254ae12c121d75002a9e689ce014bb7f4448e14e001c",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "20554318",
+          "source": "MED",
+          "reference": "Lancet. 2010 Jul 3;376(9734):3-4. doi: 10.1016/S0140-6736(10)60939-7.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "20870086",
+          "source": "MED",
+          "reference": "Lancet. 2010 Sep 25;376(9746):1049-50; author reply 1050-1. doi: 10.1016/S0140-6736(10)61477-8.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "20870087",
+          "source": "MED",
+          "reference": "Lancet. 2010 Sep 25;376(9746):1049; author reply 1050-1. doi: 10.1016/S0140-6736(10)61476-6.",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "20870089",
+          "source": "MED",
+          "reference": "Lancet. 2010 Sep 25;376(9746):1050; author reply 1050-1. doi: 10.1016/S0140-6736(10)61478-X.",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "22417960",
+          "source": "MED",
+          "reference": "CJEM. 2012 Jan;14(1):53-6. doi: 10.2310/8000.2011.110525.",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "22901513",
+          "source": "MED",
+          "reference": "J Am Coll Surg. 2012 Sep;215(3):438-40. doi: 10.1016/j.jamcollsurg.2012.06.003.",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "28443547",
+          "source": "MED",
+          "reference": "Lancet. 2017 Apr 22;389(10079):1604-1605. doi: 10.1016/S0140-6736(17)31012-7.",
+          "type": "Comment in",
+          "orderIn": 7
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "3294abadc1a7b81e8b43581bcbe44b0354dfa2a3d0571ed23c49e964ffe68ec7",
+    "authoring_id": "C09"
+  },
+  {
+    "title": "Pembrolizumab versus Chemotherapy for PD-L1-Positive Non-Small-Cell Lung Cancer.",
+    "doi": "10.1056/nejmoa1606774",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27718847/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:f23d02a807117c56b281c44e7181e5f7c7e29f6dbd3e6cf51a6c173a86877463; publication 2016-10-08",
+    "retrieval_date": "2026-09-13T16:39:40.813563+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa1606774%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "145778866473a2c0f6013d1b1ec8751911e7715f92f9c45000bc9add42f7ee81",
+    "abstract_text_sha256": "f23d02a807117c56b281c44e7181e5f7c7e29f6dbd3e6cf51a6c173a86877463",
+    "publication_types": {
+      "pubType": [
+        "Clinical Trial, Phase III",
+        "Comparative Study",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "27718875",
+          "source": "MED",
+          "reference": "N Engl J Med. 2016 Nov 10;375(19):1892-1893. doi: 10.1056/NEJMe1611003",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "28129007",
+          "source": "MED",
+          "reference": "Expert Rev Anticancer Ther. 2017 Mar;17(3):199-201. doi: 10.1080/14737140.2017.1286986",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "28276230",
+          "source": "MED",
+          "reference": "N Engl J Med. ;376(10):996-7. doi: 10.1056/NEJMc1615559",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "28480202",
+          "source": "MED",
+          "reference": "Ann Transl Med. 2017 Apr;5(7):166. doi: 10.21037/atm.2017.03.55",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "28523184",
+          "source": "MED",
+          "reference": "J Thorac Dis. 2017 Apr;9(4):E384-E386. doi: 10.21037/jtd.2017.03.118",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "28616326",
+          "source": "MED",
+          "reference": "J Thorac Dis. 2017 May;9(5):E519-E521. doi: 10.21037/jtd.2017.03.155",
+          "type": "Comment in",
+          "orderIn": 6
+        },
+        {
+          "id": "29966101",
+          "source": "MED",
+          "reference": "Am J Respir Crit Care Med. 2018 Sep 1;198(5):667-669. doi: 10.1164/rccm.201801-0107RR",
+          "type": "Comment in",
+          "orderIn": 7
+        },
+        {
+          "id": "30613479",
+          "source": "MED",
+          "reference": "Transl Cancer Res. 2017 Feb;6(Suppl 1):S151-S157. doi: 10.21037/tcr.2017.02.28",
+          "type": "Comment in",
+          "orderIn": 8
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "583a2527e25616abac45dc9c1be69b295b1919cdc953247651dd5a34c0672f1d",
+    "authoring_id": "C10"
+  },
+  {
+    "title": "A Randomized Trial of Albumin Infusions in Hospitalized Patients with Cirrhosis.",
+    "doi": "10.1056/nejmoa2022166",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33657293/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:760a9627711476c447fcd5849e69bc9e79d28950394e15bf1a5ad258092e675e; publication 2021-03-01",
+    "retrieval_date": "2026-09-13T16:39:31.396643+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa2022166%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "d4cfa50065dfc6748cd342b94c97cb34108ed909686631070c4e9f7b77b97509",
+    "abstract_text_sha256": "760a9627711476c447fcd5849e69bc9e79d28950394e15bf1a5ad258092e675e",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "33657300",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Mar 4;384(9):869-871. doi: 10.1056/NEJMe2034425",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "33753931",
+          "source": "MED",
+          "reference": "Nat Rev Gastroenterol Hepatol. 2021 May;18(5):286. doi: 10.1038/s41575-021-00442-4",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "34107190",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jun 10;384(23):e90. doi: 10.1056/NEJMc2105498",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "34107191",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jun 10;384(23):e90. doi: 10.1056/NEJMc2105498",
+          "type": "Comment in",
+          "orderIn": 4
+        },
+        {
+          "id": "34107192",
+          "source": "MED",
+          "reference": "N Engl J Med. 2021 Jun 10;384(23):e90. doi: 10.1056/NEJMc2105498",
+          "type": "Comment in",
+          "orderIn": 5
+        },
+        {
+          "id": "34339226",
+          "source": "MED",
+          "reference": "Ann Intern Med. 2021 Aug;174(8):JC91. doi: 10.7326/ACPJ202108170-091",
+          "type": "Comment in",
+          "orderIn": 6
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "63e138d2e448b38024fec314a8e29883b011475fb4abebe44db9fda0846e538a",
+    "authoring_id": "C11"
+  },
+  {
+    "title": "Effect of vitamin E and memantine on functional decline in Alzheimer disease: the TEAM-AD VA cooperative randomized trial.",
+    "doi": "10.1001/jama.2013.282834",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:121d6786ce30e9584c6f86570e767a23fc1c5f0c08a43c46b1ee927c32286bd6; publication 2014-01-01; online corrected version, correction 10.1001/jama.2014.641",
+    "retrieval_date": "2026-09-13T16:39:39.867398+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1001%2Fjama.2013.282834%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "53c406bfc8329a2a6f7f4d75b5dae86d627d24240cd6d788aea7c215735646fe",
+    "abstract_text_sha256": "121d6786ce30e9584c6f86570e767a23fc1c5f0c08a43c46b1ee927c32286bd6",
+    "publication_types": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "reference": "JAMA. 2014 Mar 19;311(11):1161",
+          "type": "Erratum in",
+          "orderIn": 1
+        },
+        {
+          "id": "24381966",
+          "source": "MED",
+          "reference": "JAMA. 2014 Jan 1;311(1):29-30. doi: 10.1001/jama.2013.282835",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "24639394",
+          "source": "MED",
+          "reference": "Evid Based Med. 2014 Aug;19(4):140. doi: 10.1136/eb-2014-101741",
+          "type": "Comment in",
+          "orderIn": 3
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "correction": {
+      "doi": "10.1001/jama.2014.641",
+      "url": "https://jamanetwork.com/journals/JAMA/articlepdf/1841950/jcx140005.pdf",
+      "disposition": "Table2 and figure/supplement values corrected. Packet uses abstract population and ADCS-ADL estimate, not the affected displays."
+    },
+    "packet_sha256": "01c7449bb76a09cc0e48fe629a70e77d4c2eb7eabe7c27b545dbd8b878cfe822",
+    "authoring_id": "C12"
+  },
+  {
+    "title": "The association between social media use and sleep disturbance among young adults.",
+    "doi": "10.1016/j.ypmed.2016.01.001",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26791323/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:5f597a930692666e33121a38c9fddc9c73ef655d6d7ed8615be8a19272b3409f; publication 2016-01-11",
+    "retrieval_date": "2026-09-13T16:42:25.630988+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1016%2Fj.ypmed.2016.01.001%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "4e55ca2062c3f4f2cd9845a96f931cce63f65bfac7cf086be97d0b0ccfeff392",
+    "abstract_text_sha256": "5f597a930692666e33121a38c9fddc9c73ef655d6d7ed8615be8a19272b3409f",
+    "publication_types": {
+      "pubType": [
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": null,
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "ae7c0abf76962c5bbcf620919ca79a974deb01ebc482c2efb28785c98e5bbdeb",
+    "authoring_id": "C13"
+  },
+  {
+    "title": "Association of nut consumption with total and cause-specific mortality.",
+    "doi": "10.1056/nejmoa1307352",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24256379/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:b410addcb2c6c7433a7f915153c087ec6dd6d5ccc71bc500b5f3527baaf8dbbf; publication 2013-11-01",
+    "retrieval_date": "2026-09-13T16:39:45.543106+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1056%2FNEJMoa1307352%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "0ee5a4516896013de501d7ef22bea42f11bc819916a691a2da0a2826053e8dcf",
+    "abstract_text_sha256": "b410addcb2c6c7433a7f915153c087ec6dd6d5ccc71bc500b5f3527baaf8dbbf",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "24322654",
+          "source": "MED",
+          "reference": "Nat Rev Endocrinol. 2014 Feb;10(2):64. doi: 10.1038/nrendo.2013.249",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "24571767",
+          "source": "MED",
+          "reference": "N Engl J Med. 2014 Feb 27;370(9):882. doi: 10.1056/NEJMc1315777",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "24571768",
+          "source": "MED",
+          "reference": "N Engl J Med. 2014 Feb 27;370(9):881. doi: 10.1056/NEJMc1315777",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "24571769",
+          "source": "MED",
+          "reference": "N Engl J Med. 2014 Feb 27;370(9):881-2. doi: 10.1056/NEJMc1315777",
+          "type": "Comment in",
+          "orderIn": 4
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "b5980f68a67b7a0d710f13f185091b2969e5cbf3e5e110aa0b94cfb92d8f88d9",
+    "authoring_id": "C14"
+  },
+  {
+    "title": "Association Between Ultraprocessed Food Consumption and Risk of Mortality Among Middle-aged Adults in France.",
+    "doi": "10.1001/jamainternmed.2018.7289",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30742202/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:bc87d6f86c117711ce4d02b50abd687f7956b125855771f1c2df8204236839f0; publication 2019-04-01",
+    "retrieval_date": "2026-09-13T16:39:45.663156+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1001%2Fjamainternmed.2018.7289%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "131ec3076aff674208629e67b368ca0557aca2e9ebd51a048143f5a276fceed3",
+    "abstract_text_sha256": "bc87d6f86c117711ce4d02b50abd687f7956b125855771f1c2df8204236839f0",
+    "publication_types": {
+      "pubType": [
+        "research-article",
+        "Multicenter Study",
+        "Journal Article",
+        "Observational Study"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "31380948",
+          "source": "MED",
+          "reference": "JAMA Intern Med. 2019 Aug 1;179(8):1148-1149. doi: 10.1001/jamainternmed.2019.2205",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "31380952",
+          "source": "MED",
+          "reference": "JAMA Intern Med. 2019 Aug 1;179(8):1149-1150. doi: 10.1001/jamainternmed.2019.2208",
+          "type": "Comment in",
+          "orderIn": 2
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "679c192cb130d05072cc3529c23b4c438a2e19c0f28536cfc15ecadcf93ad245",
+    "authoring_id": "C15"
+  },
+  {
+    "title": "Association Between Screen Time and Children's Performance on a Developmental Screening Test.",
+    "doi": "10.1001/jamapediatrics.2018.5056",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:8fe07f2717336b2673391ed02a2c8229ff790d0e3a64473cf82bd55cffb76be3; publication 2019-03-01; online corrected version, correction 10.1001/jamapediatrics.2019.0515",
+    "retrieval_date": "2026-09-13T16:39:47.648713+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1001%2Fjamapediatrics.2018.5056%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "edc160b4a034a2e4c656daa471fb6d59f02f6d39fae4f84212e96924095a8305",
+    "abstract_text_sha256": "8fe07f2717336b2673391ed02a2c8229ff790d0e3a64473cf82bd55cffb76be3",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "30907942",
+          "source": "MED",
+          "reference": "JAMA Pediatr. 2019 May 1;173(5):501-502. doi: 10.1001/jamapediatrics.2019.0515",
+          "type": "Erratum in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "correction": {
+      "doi": "10.1001/jamapediatrics.2019.0515",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6503492/",
+      "disposition": "Corrected beta ordering, figure intervals and model text used."
+    },
+    "packet_sha256": "65655363b24fc860155b251e34deb71dacd1128c7a41ec1258aad7ec0aab46ac",
+    "authoring_id": "C16"
+  },
+  {
+    "title": "Association of Exposure to Artificial Light at Night While Sleeping With Risk of Obesity in Women.",
+    "doi": "10.1001/jamainternmed.2019.0571",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31180469/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:966cfb693b916fcb3d6ee239bcf78f9242b5d8d8a37f1161e8983aa010e49786; publication 2019-08-01",
+    "retrieval_date": "2026-09-13T17:03:08.175863+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A31180469+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+    "retrieval_body_sha256": "5bab67fc7de65cf0b6719850d1d052ab0a6c70997d6833e56f5bf6ea2c754f34",
+    "abstract_text_sha256": "966cfb693b916fcb3d6ee239bcf78f9242b5d8d8a37f1161e8983aa010e49786",
+    "publication_types": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": null,
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "ab34aae9a96878056d7c7c50ad91e9cf75054997dd81e959e31c74614a717ef2",
+    "authoring_id": "C17"
+  },
+  {
+    "title": "Effect of exposure to natural environment on health inequalities: an observational population study.",
+    "doi": "10.1016/s0140-6736(08)61689-x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18994663/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:baa5881ae15469f454582240d160ab6ff5462496456d67727a5c0cc0d7bded0c; publication 2008-11-01",
+    "retrieval_date": "2026-09-13T16:39:47.665566+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1016%2FS0140-6736%2808%2961689-X%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "96f45b9ccb6569c08d28e935e60e22271480186ecc9a7168d63fd5d1935d1872",
+    "abstract_text_sha256": "baa5881ae15469f454582240d160ab6ff5462496456d67727a5c0cc0d7bded0c",
+    "publication_types": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "18994650",
+          "source": "MED",
+          "reference": "Lancet. 2008 Nov 8;372(9650):1614-5. doi: 10.1016/S0140-6736(08)61669-4",
+          "type": "Comment in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "256e397b2d896f83f9b893e05b306cdc2a6b7aa3138eebd82fe986f33a4af683",
+    "authoring_id": "C18"
+  },
+  {
+    "title": "Treatment of autosomal dominant hearing loss by in vivo delivery of genome editing agents.",
+    "doi": "10.1038/nature25164",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/29258297/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:80983a1408d8f8e76af6d0df6bbadaf82def61777e9dbd2a568ab6b1d3958cb8; publication 2017-12-20",
+    "retrieval_date": "2026-09-13T16:42:23.725872+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fnature25164%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "ee14b3b7ef1f7153aed820c8de5e17315179274b5d34997b15c612eb070c23ea",
+    "abstract_text_sha256": "80983a1408d8f8e76af6d0df6bbadaf82def61777e9dbd2a568ab6b1d3958cb8",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "29293216",
+          "source": "MED",
+          "reference": "Nature. 2017 Dec 21;552(7685):300-301. doi: 10.1038/d41586-017-08722-3.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "29323325",
+          "source": "MED",
+          "reference": "Nature. 2018 Jan 11;553(7687):162-163. doi: 10.1038/d41586-017-08645-z.",
+          "type": "Comment in",
+          "orderIn": 2
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "f4e01fc7263f2e7d99c2b232f4e44f61b55bbc9689681c746423697484846c31",
+    "authoring_id": "C19"
+  },
+  {
+    "title": "In vivo genome editing improves muscle function in a mouse model of Duchenne muscular dystrophy.",
+    "doi": "10.1126/science.aad5143",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26721684/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:a0dfaeaa7d84d77dc0a10e5e4b2c9b5fb5ecb65b0399b5314d127c0af3c39e3e; publication 2015-12-31",
+    "retrieval_date": "2026-09-13T16:42:23.706696+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1126%2Fscience.aad5143%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "00658642bd42b0747f215a2b414379857a9e25c23bde2bf260e60c809ef936c2",
+    "abstract_text_sha256": "a0dfaeaa7d84d77dc0a10e5e4b2c9b5fb5ecb65b0399b5314d127c0af3c39e3e",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "26729900",
+          "source": "MED",
+          "reference": "BMJ. 2016 Jan 04;351:h7033. doi: 10.1136/bmj.h7033",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "26781811",
+          "source": "MED",
+          "reference": "Nat Rev Genet. 2016 Mar;17(3):124. doi: 10.1038/nrg.2016.2",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "26856237",
+          "source": "MED",
+          "reference": "Trends Mol Med. 2016 Mar;22(3):187-189. doi: 10.1016/j.molmed.2016.01.007",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "26952918",
+          "source": "MED",
+          "reference": "Mol Ther. 2016 Mar;24(3):414-6. doi: 10.1038/mt.2016.29",
+          "type": "Comment in",
+          "orderIn": 4
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "e491f98403cd66a3f061d797b3648b0d2aa614d26a684d8dce5a19dc9d7feb7c",
+    "authoring_id": "C20"
+  },
+  {
+    "title": "Chondroitinase ABC promotes functional recovery after spinal cord injury.",
+    "doi": "10.1038/416636a",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/11948352/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:56e44a1f62358f9e91de51993a258abc12cb8f133637fa3306f8543e04f803cf; publication 2002-04-01",
+    "retrieval_date": "2026-09-13T16:42:34.420725+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2F416636a%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "a769f295ce6f1661f1a1e3fce002f7e0d420befdd98a68d5d37628ec9fb8b8d4",
+    "abstract_text_sha256": "56e44a1f62358f9e91de51993a258abc12cb8f133637fa3306f8543e04f803cf",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "11948332",
+          "source": "MED",
+          "reference": "Nature. 2002 Apr 11;416(6881):589-90. doi: 10.1038/416589a.",
+          "type": "Comment in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "0daa6ca37652a268b20d4caff11756b1a9cca8852c8603fce8b86b2fb95b2fa0",
+    "authoring_id": "C21"
+  },
+  {
+    "title": "The CD47-signal regulatory protein alpha (SIRPa) interaction is a therapeutic target for human solid tumors.",
+    "doi": "10.1073/pnas.1121623109",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22451913/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:b9441c2f13a6df5ecb7b3dd34e0bea7dab6321ab9cd477e79d9a2e2b4d5e30bb; publication 2012-03-26",
+    "retrieval_date": "2026-09-13T16:45:33.143178+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A22451913+AND+SRC%3AMED&format=json&resultType=core",
+    "retrieval_body_sha256": "1e738a250d7176d9d7dc3d7d38b28a8b807f2fc7db36d87c29cadede6d4e962a",
+    "abstract_text_sha256": "b9441c2f13a6df5ecb7b3dd34e0bea7dab6321ab9cd477e79d9a2e2b4d5e30bb",
+    "publication_types": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "22923695",
+          "source": "MED",
+          "reference": "Proc Natl Acad Sci U S A. 2012 Oct 16;109(42):E2843; author reply E2844-5. doi: 10.1073/pnas.1209265109",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "22923696",
+          "source": "MED",
+          "reference": "Proc Natl Acad Sci U S A. 2012 Oct 16;109(42):E2842; author reply E2844-5. doi: 10.1073/pnas.1205441109",
+          "type": "Comment in",
+          "orderIn": 2
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "a634f41a95e6f2263f748595588553abcfcfe4d5ac3946b04e0432363a34e69b",
+    "authoring_id": "C22"
+  },
+  {
+    "title": "Ectopic expression of a microbial-type rhodopsin restores visual responses in mice with photoreceptor degeneration.",
+    "doi": "10.1016/j.neuron.2006.02.026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16600853/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:651d3ce046edcfd4314c3ed926c6c6518626547014eb4c5f3d9350cd250ea38e; publication 2006-04-01",
+    "retrieval_date": "2026-09-13T16:49:56.889415+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.neuron.2006.02.026&format=json&resultType=core",
+    "retrieval_body_sha256": "10c90daa8e1a26db15ad51be3fea6c0f7f0d9accacb7e9cf731208e3c5625625",
+    "abstract_text_sha256": "651d3ce046edcfd4314c3ed926c6c6518626547014eb4c5f3d9350cd250ea38e",
+    "publication_types": {
+      "pubType": [
+        "Comparative Study",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "16600846",
+          "source": "MED",
+          "reference": "Neuron. 2006 Apr 6;50(1):1-3. doi: 10.1016/j.neuron.2006.03.027",
+          "type": "Comment in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "ecf860dd0e6710d0079a487595dde10b3bc8b91fe008763e41a835192f5346d7",
+    "authoring_id": "C23"
+  },
+  {
+    "title": "A small-molecule inhibitor of the NLRP3 inflammasome for the treatment of inflammatory diseases.",
+    "doi": "10.1038/nm.3806",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25686105/",
+    "locator": "Primary article abstract; corrected online abstract where applicable",
+    "version": "Indexed primary abstract body sha256:95e3e0c1e651dedea7f2075d9d8a8ed4d4df14d2d9dad7e82b61893c891981c6; publication 2015-02-16",
+    "retrieval_date": "2026-09-13T16:42:25.896944+00:00",
+    "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fnm.3806%22&format=json&resultType=core&pageSize=5",
+    "retrieval_body_sha256": "d471e59216752688ecec99697257f0d142d8bf50e5ad29e57bab567d188ab236",
+    "abstract_text_sha256": "95e3e0c1e651dedea7f2075d9d8a8ed4d4df14d2d9dad7e82b61893c891981c6",
+    "publication_types": {
+      "pubType": [
+        "Research Support, N.I.H., Intramural",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "linked_notices": {
+      "commentCorrection": [
+        {
+          "id": "25734976",
+          "source": "MED",
+          "reference": "Nat Rev Rheumatol. 2015 Apr;11(4):198. doi: 10.1038/nrrheum.2015.23",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "id": "25743221",
+          "source": "MED",
+          "reference": "Nat Rev Immunol. 2015 Apr;15(4):199. doi: 10.1038/nri3832",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "id": "25863243",
+          "source": "MED",
+          "reference": "Cell Metab. 2015 Apr 7;21(4):513-4. doi: 10.1016/j.cmet.2015.03.012",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "id": "25991463",
+          "source": "MED",
+          "reference": "Trends Immunol. 2015 Jun;36(6):323-4. doi: 10.1016/j.it.2015.05.001",
+          "type": "Comment in",
+          "orderIn": 4
+        }
+      ]
+    },
+    "status_check": "Primary indexed record checked for linked corrections/retraction; no indexed retraction flag identified.",
+    "packet_sha256": "89103f2081461cfc5ecab546787e0ea0c5bbdbd80952980e65bec91f1564c1e0",
+    "authoring_id": "C24"
+  }
+]

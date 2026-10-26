@@ -1,0 +1,64 @@
+{
+  "record_schema_version": "0.1.0",
+  "record_id": "QA-SYM-0001",
+  "synthetic_fixture": true,
+  "fixture_class": "pipeline_qa",
+  "provenance": [
+    {
+      "provenance_id": "prov-1",
+      "exact_claim_text": "A multi-component supplement improves immune outcomes.",
+      "source_id": "src-study-1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "Synthetic controlled study (fixture)",
+      "retrieved_at": "2026-01-01T00:00:00Z",
+      "content_fingerprint": "006d7a433c9f47de28df3afc8fbf7ca59cbdaa856024ffee829cfc79b7f4d893",
+      "context_before": null,
+      "context_after": null
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "source_id": "src-study-1",
+      "role": "supporting",
+      "endpoint": "measured immune biomarker",
+      "material": true,
+      "exact_reference": "Table 2",
+      "text": "The measured immune biomarker showed no statistically significant improvement versus control."
+    },
+    {
+      "evidence_id": "E2",
+      "source_id": "src-study-1",
+      "role": "weakening",
+      "endpoint": "self-reported illness duration",
+      "material": true,
+      "exact_reference": "Table 3",
+      "text": "Self-reported illness duration was shorter in the intervention arm (a materially relevant favorable difference)."
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F1",
+      "provenance_id": "prov-1",
+      "proposition": "An unqualified global immune-improvement claim is not established; the study's evidence is mixed.",
+      "verdict_summary": "Mixed evidence: a null measured biomarker (E1) alongside a favorable self-reported outcome (E2). Does not support an unqualified global improvement claim.",
+      "supporting_evidence_ids": ["E1"],
+      "contrary_evidence_ids": ["E2"],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": null
+    }
+  ],
+  "client_findings": [
+    {
+      "client_finding_id": "C1",
+      "parent_finding_id": "F1",
+      "display_claim": "The immune-improvement claim is not directly established; the study's results are mixed.",
+      "client_explanation": "One measured immune marker showed no significant change; a self-reported outcome was favorable. Overall the evidence is mixed and does not support an unqualified improvement claim.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": ["E1", "E2"],
+      "provenance_id": "prov-1"
+    }
+  ]
+}

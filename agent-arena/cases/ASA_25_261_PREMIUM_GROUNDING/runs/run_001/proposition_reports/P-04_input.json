@@ -1,0 +1,127 @@
+{
+  "claim": {
+    "claim_context": "Active atomic proposition P-04 from the frozen ASA 25/261 Premium Grounding claim registry (origin F02 in context; type IMPLIED; THERAPEUTIC; CONDITION-SPECIFIC; PRODUCT-SPECIFIC). Frozen evidence-preparation state: VERY LIMITED DIRECT EVIDENCE. Routing: STANDARD BIOMEDICAL ADJUDICATION",
+    "claim_scope": "HIGH CONFOUNDING | CONDITION MISMATCH | PRODUCT EQUIVALENCE UNCERTAIN",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding reduces back and neck pain.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "evidence": {
+    "contradicting_or_limiting": [
+      "H25 massage cointervention and uncertain method status",
+      "No separate neck-pain trial exists",
+      "Postoperative acute pain is not chronic back or neck pain"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "H25",
+        "text": "2021 Jing massage-plus-earthing grey report, n=12 with chronic low-back pain: massage in both arms plus grounded versus sham sleep; pain reduction 38 percent versus 17 percent reported.",
+        "tier": "limited_human",
+        "why_it_matters": "Tiny, grey, with an active cointervention in both arms and uncertain publication and method status; retained as context only."
+      },
+      {
+        "role": "supporting",
+        "source_reference": "H31",
+        "text": "Sokal et al. 2025 concerns post-lumbar-surgery recovery, an acute surgical context rather than chronic back pain.",
+        "tier": "limited_human",
+        "why_it_matters": "Anatomically adjacent but a different clinical condition and timeframe."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 51/52",
+        "text": "No separate neck-pain trial was located.",
+        "tier": "not_applicable",
+        "why_it_matters": "One of the two advertised conditions has no evidence at all."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze section 63",
+        "text": "No back or neck trial without confounded cointerventions was located.",
+        "tier": "not_applicable",
+        "why_it_matters": "The one back-pain observation cannot separate grounding from massage."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "One confounded grey observation for back pain and no evidence at all for neck pain.",
+    "missing_causal_chain": false,
+    "missing_comparison_group": false,
+    "missing_human_evidence": false,
+    "supporting": [
+      "H25 grey low-back report with massage in both arms",
+      "H31 postoperative lumbar context (indirect)"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "H25",
+          "H31"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "A benefit for two named chronic conditions is implied from a 12-participant grey report with an active cointervention and an acute postoperative trial."
+      },
+      {
+        "evidence_refs": [
+          "H31"
+        ],
+        "mode": "inappropriate_generalization",
+        "rationale": "Acute postoperative lumbar pain is extended to chronic back pain and to neck pain, for which nothing was located."
+      }
+    ]
+  },
+  "meta": {
+    "analysis_status": "complete",
+    "development_or_production_status": "production",
+    "generated_at": "2026-08-23",
+    "report_id": "ASA-25-261-run_001-P-04",
+    "synthetic_fixture": false
+  },
+  "parser": {
+    "parse_ok": true,
+    "strategy": "structured_adjudication"
+  },
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "model": "claude-opus-5",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0"
+  },
+  "reader_impact": {
+    "affected_decision_type": "Chronic spinal pain management.",
+    "likely_reader_misunderstanding": "That the product is an evidence-based option for back or neck pain.",
+    "risk_level": "high",
+    "risk_rationale": "Chronic back and neck pain are common reasons to seek care; implied relevance may delay assessment."
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze."
+  },
+  "uncertainty": {
+    "alternative_label_rationale": "No specific frozen label applies; the error combines cointervention confounding with condition drift.",
+    "alternative_plausible_label": null,
+    "ambiguity": "NONE MATERIAL.",
+    "missing_evidence": [
+      "H25 massage cointervention and uncertain method status",
+      "No separate neck-pain trial exists",
+      "Postoperative acute pain is not chronic back or neck pain"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "Separate back and neck trials without confounded cointerventions have not been performed."
+    ]
+  },
+  "verdict": {
+    "confidence": 0.87,
+    "predicted_label": "overclaim",
+    "verdict_summary": "Back pain is addressed only by a 12-participant grey report in which both arms received massage, and by an acute postoperative lumbar context that is not chronic back pain. No neck-pain study of any kind was located."
+  }
+}

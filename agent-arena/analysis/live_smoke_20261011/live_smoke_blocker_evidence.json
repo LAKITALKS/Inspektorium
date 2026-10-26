@@ -1,0 +1,181 @@
+{
+  "schema": "agent_arena.live_smoke_blocker_evidence/v1",
+  "work_order": "AGENT ARENA — Initialisierung und begrenzter Live-Funktionstest (11.10.2026)",
+  "verdict": "LIVE_SMOKE_BLOCKED",
+  "stop_stage": "before_first_generation",
+  "git": {
+    "start_branch": "codex/phase10-operational-release-20261010",
+    "start_head": "43618a6d9eb330201d3a072de5737385195325c3",
+    "work_branch": "live-smoke/haiku-sonnet-5-5-20261011",
+    "reported_commits_verified": {
+      "phase10_code": "5f80c87022e569135d003aebfa9d6edcdb0efa24",
+      "evidence": "5a6874a59fc7b727af5ca3ee0e57a3d16903c34c",
+      "closeout": "43618a6d9eb330201d3a072de5737385195325c3"
+    }
+  },
+  "blocking_reason": "No supported live entry exists that runs runner -> parser -> P8 -> P9 -> P10. The canonical audit path and the P9 review runtime actively reject every non-offline provider; enabling live operation would change mandatory release gates and add a new live-operation capability, which this work order and the frozen AA-P10/1.0 contract exclude. Replaying live bytes through --offline would record them as 'RECORDED OFFLINE / SYNTHETIC; no live model execution' with model 'offline-recording-no-live-model' and is therefore not used.",
+  "code_blockers": [
+    {
+      "file": "src/agent_arena/phase10_cli.py",
+      "line": 48,
+      "sha256": "8f5f9ab61035af828561f00087f3d2d00c43a705cd86334cdafcc0f6f5b38275",
+      "fact": "audit run requires --offline and --recording; no live option exists."
+    },
+    {
+      "file": "src/agent_arena/phase10_bundle.py",
+      "line": 178,
+      "sha256": "41a49dc7ff6bd3450dcaab0f010c63dde6c8fa0e93f2bf244b310496d1d5afa7",
+      "fact": "run_audit returns PREFLIGHT_BLOCKED unless provider is exactly OfflineReviewProvider."
+    },
+    {
+      "file": "src/agent_arena/phase10_bundle.py",
+      "line": 107,
+      "sha256": "41a49dc7ff6bd3450dcaab0f010c63dde6c8fa0e93f2bf244b310496d1d5afa7",
+      "fact": "_write_revision blocks any result whose model/provider is not offline-recording-no-live-model."
+    },
+    {
+      "file": "src/agent_arena/phase10_pipeline.py",
+      "line": 222,
+      "sha256": "66779be4762d2b6eb6cd1c386f29922f3fd875e4f41483be427d667771483133",
+      "fact": "Mandatory 'provenance' control fails unless all results and P9 positions are offline recordings."
+    },
+    {
+      "file": "src/agent_arena/phase10_pipeline.py",
+      "line": 131,
+      "sha256": "66779be4762d2b6eb6cd1c386f29922f3fd875e4f41483be427d667771483133",
+      "fact": "Provenance is hard-coded config 'offline-recording-v1' and notice 'RECORDED OFFLINE / SYNTHETIC' (line 153)."
+    },
+    {
+      "file": "src/agent_arena/phase9_runtime.py",
+      "line": 408,
+      "sha256": "bbb394fd2e3027c61fb3fbf148a58caebf8b0ed5f3a05df081467bdca3af1d3d",
+      "fact": "execute_review rejects any reviewer that is not OfflineReviewProvider."
+    },
+    {
+      "file": "src/agent_arena/phase9_runtime.py",
+      "line": 350,
+      "sha256": "bbb394fd2e3027c61fb3fbf148a58caebf8b0ed5f3a05df081467bdca3af1d3d",
+      "fact": "P9 BudgetLedger policy is attempt_microusd=0, total_microusd=0 (offline zero-dollar reservations)."
+    }
+  ],
+  "other_live_capable_paths": [
+    {
+      "path": "agent-arena run (legacy) / python -m agent_arena.run_library (run_library.py:504-511)",
+      "fact": "Live provider via get_provider, any model ID; run_agent always computes Phase8 and the Phase9 initial assessment (runner.py:270-273). No P9 review execution (execute_review), no AA-P10 bundle, no BudgetLedger reservation."
+    },
+    {
+      "path": "src/agent_arena/bounded_harness_mission.py, bounded_harness_continuation.py:174",
+      "fact": "Registered measurement mission on claude-haiku-4-5-20251001 with its own dollar ledger; no AA-P10 bundle."
+    },
+    {
+      "path": "src/agent_arena/phase7a_real_run.py",
+      "fact": "Registered one-shot Phase-5B plans on 4.5 models; no AA-P10 bundle."
+    },
+    {
+      "path": "src/agent_arena/judge.py:102",
+      "fact": "Optional diagnostic judge via get_provider."
+    }
+  ],
+  "adapter_compatibility_claude_5_5": [
+    {
+      "file": "src/agent_arena/providers/anthropic.py",
+      "line": 66,
+      "sha256": "6e1389cabc6a2f2b269c03a6f9fcd6da5d5541650a9d6bccd1645f311f0b636c",
+      "finding": "Always sends temperature=self.temperature (default 0.0). Official docs: non-default temperature/top_p/top_k returns HTTP 400 on Sonnet 5.5; Haiku 5.5 docs say to omit them. (documentation-sourced; not tested by a call)"
+    },
+    {
+      "file": "src/agent_arena/providers/anthropic.py",
+      "line": 74,
+      "finding": "Reads message.content[0].text. Adaptive thinking is on by default on both models, so a thinking block can precede the text block."
+    },
+    {
+      "file": "src/agent_arena/providers/anthropic.py",
+      "line": 19,
+      "finding": "MAX_TRANSPORT_RETRIES=2 SDK retries; counted via httpx hook but not reserved individually in a budget ledger."
+    },
+    {
+      "file": "src/agent_arena/providers/response.py",
+      "line": 20,
+      "sha256": "01bc793c434bea73c9fc578024f6856bb5ef360528dfabadb404df6f9adef3be",
+      "finding": "DEFAULT_MAX_TOKENS=4096 must cover adaptive thinking plus the Phase-8 JSON; truncation risk, especially at Sonnet default effort 'high'."
+    },
+    {
+      "file": "src/agent_arena/runtime_contract.py",
+      "finding": "Registered models are claude-haiku-4-5-20251001, claude-sonnet-4-5-20250929, claude-opus-4-5-20251101 only; no 5.5 runtime contract or effort profile."
+    },
+    {
+      "finding": "No effort / thinking configuration is exposed by the adapter. Models API: Sonnet 5.5 thinking.disabled.supported=false; Haiku 5.5 thinking.disabled.supported=true; both reject thinking.type=enabled."
+    }
+  ],
+  "official_documentation_checked_2026_10_11": {
+    "claude-haiku-5-5": {
+      "default_effort": "medium",
+      "thinking": "adaptive, on by default",
+      "sampling": "omit temperature/top_p/top_k",
+      "price_usd_per_mtok": {
+        "input": 0.1,
+        "output": 0.5,
+        "note": "prompts <=100k tokens; >100k: 0.50/2.50"
+      }
+    },
+    "claude-sonnet-5-5": {
+      "default_effort": "high",
+      "thinking": "adaptive, on by default; lowest setting between_tools",
+      "sampling": "non-default temperature/top_p/top_k -> 400",
+      "forced_tool_use": "returns an error",
+      "price_usd_per_mtok": {
+        "input": 2.0,
+        "output": 10.0
+      }
+    },
+    "sources": [
+      "https://platform.claude.com/docs/en/models/overview",
+      "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+      "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+      "https://platform.claude.com/docs/en/about-claude/pricing"
+    ],
+    "assumption": "Thinking tokens are billed as output tokens (standard Anthropic billing); not separately re-verified on the pricing page."
+  },
+  "account_availability": "see model_availability.json (models.retrieve, 0 generations, SDK retries 0, base URL https://api.anthropic.com)",
+  "cost_envelope_estimate": {
+    "basis": "Canonical study_forensics path uses the Phase-8 system prompt (26,100 chars); token sizes estimated from chars/3, not messages.count_tokens.",
+    "per_attempt_caps_tokens": {
+      "input": 16000,
+      "output_including_thinking": 16000
+    },
+    "worst_case_per_attempt_usd": {
+      "claude-haiku-5-5": 0.0096,
+      "claude-sonnet-5-5": 0.192
+    },
+    "plan": "<=40 attempts: 12 primary + <=24 P9 (counterreview+stability per case-model) + <=4 technical retries; split <=20 per model",
+    "worst_case_20_haiku_usd": 0.192,
+    "worst_case_20_sonnet_usd": 3.84,
+    "worst_case_total_40_usd": 4.032,
+    "worst_case_12_primary_only_usd": 1.2096,
+    "fits_2_usd_with_these_caps": false,
+    "required_sonnet_per_attempt_cap_usd_for_40_attempts": 0.0904,
+    "implied_sonnet_output_cap_tokens_at_16k_input": 5839
+  },
+  "spend": {
+    "generation_attempts": 0,
+    "messages_create_calls": 0,
+    "model_generations": 0,
+    "non_generative_metadata_calls": 2,
+    "budget_ledger_reservations": 0,
+    "authorized_project_budget_usd": 2.0,
+    "used_usd": 0.0,
+    "reserved_exposure_usd": 0.0
+  },
+  "claude_code_billing": "This Claude Code session's environment contains no ANTHROPIC_API_KEY and uses OAuth (CLAUDE_CODE_OAUTH_SCOPES present); the project key is loaded only into child processes from ~/.zshrc. Billing of Claude Code itself is not independently verifiable from here.",
+  "cases": "Not selected: no manifest was frozen because no live run can occur on the canonical path; no development case was consumed.",
+  "critique": {
+    "critic": "one read-only Claude Code 'Explore' subagent; prior Codex 'Astra' critic role unavailable in this session",
+    "rounds": 1,
+    "verdict_changed": false,
+    "corrections": [
+      "legacy run/run_library do compute P8 and P9 initial assessment live (previously overstated as bypassing P8/P9)",
+      "cite providers/response.py:20 in report",
+      "label 400/effort statements as documentation-sourced, untested"
+    ]
+  }
+}

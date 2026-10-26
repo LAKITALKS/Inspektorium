@@ -1,0 +1,1122 @@
+{
+  "run_id": "val_study-forensics-019_claude_haiku_0b64b3",
+  "task": {
+    "id": "study-forensics-019",
+    "title": "Study Forensics: Houseplants and depression scores (synthetic)",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A cross-sectional survey of 5,000 remote workers asked participants how many houseplants they owned and assessed their depressive symptoms with a standard questionnaire. Those with five or more houseplants reported average depression scores 30 percent lower than those with no plants. The article concludes that \"bringing the outdoors in\" can improve mental health and urges employers to reimburse plant purchases for home offices. No experimental design is used, and the survey authors acknowledge that plant owners also tended to have higher incomes, more natural light and more leisure time.\n",
+    "context": "The synthetic summary equates owning multiple houseplants with improved mental health\nbased on a cross-sectional survey, ignoring socioeconomic confounders.\n",
+    "expected_answer": "correlation_vs_causation",
+    "reference_solution": "The synthetic summary equates owning multiple houseplants with improved mental health based on a cross-sectional survey, ignoring socioeconomic confounders. The recommendation for employers to subsidise plants is unsupported by causal evidence.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "cross-sectional",
+        "variants": [
+          "survey",
+          "observational",
+          "no experiment"
+        ],
+        "functional_descriptions": [
+          "no causal inference is possible from a cross-sectional design"
+        ]
+      },
+      {
+        "keyword": "confounders",
+        "variants": [
+          "higher incomes",
+          "natural light",
+          "leisure time",
+          "socioeconomic"
+        ],
+        "functional_descriptions": [
+          "the observed association may be driven by confounding variables"
+        ]
+      },
+      {
+        "keyword": "causal claim",
+        "variants": [
+          "can improve",
+          "bringing the outdoors in"
+        ],
+        "functional_descriptions": [
+          "the article makes causal claims from correlational data"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting the causal claim at face value",
+      "ignoring the confounders",
+      "treating the policy recommendation as evidence-based"
+    ],
+    "task_family": "correlation_vs_causation",
+    "trap_type": "correlation_as_causation",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_correlation_as_causation",
+      "missing_confounders"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth",
+      "mechanism_quality"
+    ],
+    "diagnostic_focus": "Can the agent identify correlation-as-causation and confounder blindness?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "correlation_vs_causation",
+    "gold_summary": "The synthetic summary equates owning multiple houseplants with improved mental health based on a cross-sectional survey, ignoring socioeconomic confounders. The recommendation for employers to subsidise plants is unsupported by causal evidence.\n",
+    "expected_findings": [
+      {
+        "finding": "correlation_as_causation",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "minor",
+        "confidence": "low"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "depression scores 30 percent lower",
+        "why_it_matters": "States the core association.",
+        "supports_finding": "correlation_as_causation"
+      },
+      {
+        "span": "bringing the outdoors in can improve mental health",
+        "why_it_matters": "Asserts a causal relationship without evidence.",
+        "supports_finding": "correlation_as_causation"
+      },
+      {
+        "span": "urges employers to reimburse plant purchases",
+        "why_it_matters": "Generalises to policy based on correlation.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "plant owners also tended to have higher incomes, more natural light and more leisure time",
+        "why_it_matters": "Indicates confounders the article fails to control for.",
+        "supports_finding": "mechanism_not_demonstrated"
+      }
+    ]
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"correlation_vs_causation\",\n  \"assumptions\": [\n    \"The depression questionnaire is a valid and reliable measure\",\n    \"The 5,000 participants are reasonably representative of remote workers\",\n    \"The reported confounders (income, natural light, leisure time) are the primary alternative explanations\",\n    \"No unmeasured confounders exist that are more powerful than the measured ones\",\n    \"The cross-sectional design captured accurate self-reported plant ownership and depression scores\"\n  ],\n  \"steps\": [\n    \"Identified the study design: cross-sectional survey with no experimental manipulation\",\n    \"Identified the key finding: 30% lower depression scores in those with ≥5 plants vs. none\",\n    \"Identified the conclusion: causal claim that plants improve mental health, with policy recommendation\",\n    \"Noted that confounders are explicitly acknowledged: income, natural light, leisure time\",\n    \"Evaluated whether the conclusion logically follows from the evidence: it does not\",\n    \"Assessed whether the confounders are plausible alternative explanations: they are highly plausible\",\n    \"Checked for decorative uncertainty: the authors acknowledge confounders but still make a causal claim\",\n    \"Determined the primary epistemic problem: causal inference from correlational data with known confounders\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Solid study with appropriate caveats (rejected: the policy recommendation is causal despite correlational design)\",\n    \"Overclaim (partially correct but less precise than correlation_vs_causation)\",\n    \"Mechanism vs. evidence (not the primary issue; no mechanism is described in animals/labs and applied to humans)\"\n  ],\n  \"uncertainties\": [\n    \"Whether the authors statistically controlled for the confounders in their analysis (the text does not specify)\",\n    \"Whether the 30% difference persists after controlling for income, light, and leisure time\",\n    \"The magnitude of bias introduced by each confounder individually\",\n    \"Whether reverse causation is plausible (depression → fewer plants, rather than plants → less depression)\",\n    \"Whether the depression questionnaire is sensitive enough to detect clinically meaningful differences\"\n  ],\n  \"key_claims\": [\n    \"The study establishes correlation, not causation: plant ownership is associated with lower depression scores\",\n    \"Multiple plausible confounders are acknowledged but the causal conclusion is still drawn\",\n    \"The policy recommendation (employer reimbursement) assumes causation without experimental evidence\",\n    \"The phrase 'bringing the outdoors in' implies a mechanism that is not tested in this design\",\n    \"Decorative uncertainty is present: confounders are mentioned but do not prevent the causal claim\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problem? No—the text explicitly makes a causal claim ('can improve mental health') from correlational data with known confounders\",\n    \"Did I miss a potential strength? The study is large (N=5,000) and uses a standard questionnaire, but these do not address the causal inference problem\",\n    \"Is the confounder issue real? Yes—income, natural light, and leisure time are all plausible causes of both plant ownership and lower depression\",\n    \"Could this be 'solid' with caveats? Only if the conclusion were framed as correlational and the policy recommendation were removed or heavily qualified\",\n    \"Did I confuse correlation_vs_causation with overclaim? No—the core issue is the causal inference from correlational data, not an exaggeration of effect size\"\n  ],\n  \"confidence\": 0.92\n}\n```",
+        "parsed": {
+          "final_answer": "correlation_vs_causation",
+          "assumptions": [
+            "The depression questionnaire is a valid and reliable measure",
+            "The 5,000 participants are reasonably representative of remote workers",
+            "The reported confounders (income, natural light, leisure time) are the primary alternative explanations",
+            "No unmeasured confounders exist that are more powerful than the measured ones",
+            "The cross-sectional design captured accurate self-reported plant ownership and depression scores"
+          ],
+          "steps": [
+            "Identified the study design: cross-sectional survey with no experimental manipulation",
+            "Identified the key finding: 30% lower depression scores in those with ≥5 plants vs. none",
+            "Identified the conclusion: causal claim that plants improve mental health, with policy recommendation",
+            "Noted that confounders are explicitly acknowledged: income, natural light, leisure time",
+            "Evaluated whether the conclusion logically follows from the evidence: it does not",
+            "Assessed whether the confounders are plausible alternative explanations: they are highly plausible",
+            "Checked for decorative uncertainty: the authors acknowledge confounders but still make a causal claim",
+            "Determined the primary epistemic problem: causal inference from correlational data with known confounders"
+          ],
+          "alternative_hypotheses": [
+            "Solid study with appropriate caveats (rejected: the policy recommendation is causal despite correlational design)",
+            "Overclaim (partially correct but less precise than correlation_vs_causation)",
+            "Mechanism vs. evidence (not the primary issue; no mechanism is described in animals/labs and applied to humans)"
+          ],
+          "uncertainties": [
+            "Whether the authors statistically controlled for the confounders in their analysis (the text does not specify)",
+            "Whether the 30% difference persists after controlling for income, light, and leisure time",
+            "The magnitude of bias introduced by each confounder individually",
+            "Whether reverse causation is plausible (depression → fewer plants, rather than plants → less depression)",
+            "Whether the depression questionnaire is sensitive enough to detect clinically meaningful differences"
+          ],
+          "self_check": [
+            "Did I overstate the problem? No—the text explicitly makes a causal claim ('can improve mental health') from correlational data with known confounders",
+            "Did I miss a potential strength? The study is large (N=5,000) and uses a standard questionnaire, but these do not address the causal inference problem",
+            "Is the confounder issue real? Yes—income, natural light, and leisure time are all plausible causes of both plant ownership and lower depression",
+            "Could this be 'solid' with caveats? Only if the conclusion were framed as correlational and the policy recommendation were removed or heavily qualified",
+            "Did I confuse correlation_vs_causation with overclaim? No—the core issue is the causal inference from correlational data, not an exaggeration of effect size"
+          ],
+          "key_claims": [
+            "The study establishes correlation, not causation: plant ownership is associated with lower depression scores",
+            "Multiple plausible confounders are acknowledged but the causal conclusion is still drawn",
+            "The policy recommendation (employer reimbursement) assumes causation without experimental evidence",
+            "The phrase 'bringing the outdoors in' implies a mechanism that is not tested in this design",
+            "Decorative uncertainty is present: confounders are mentioned but do not prevent the causal claim"
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 8662
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.7200000000000001,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Identified the conclusion: causal claim that plants improve mental health, with policy recommendation",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.73)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.7200000000000001,
+          "weight": 6,
+          "weighted_score": 4.3,
+          "evidence": [
+            {
+              "text": "The 5,000 participants are reasonably representative of remote workers",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The reported confounders (income, natural light, leisure time) are the primary alternative explanations",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the authors statistically controlled for the confounders in their analysis (the text does not specify)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Solid study with appropriate caveats (rejected: the policy recommendation is causal despite correlational design)",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "3/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Did I confuse correlation_vs_causation with overclaim? No—the core issue is the causal inference from correlational data, not an exaggeration of effect size",
+              "source_field": "self_check[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.70, 439 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "identified the study design: cross-sectional survey with no experimental m",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'cross-sectional' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "icy recommendation noted that confounders are explicitly acknowledged:",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'confounders' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "ne identified the conclusion: causal claim that plants improve mental he",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'causal claim' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 3 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The 5,000 participants are reasonably representative of remo...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The 5,000 participants are reasonably representative of remote workers",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "major",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: mechanism_not_demonstrated",
+          "evidence": [
+            {
+              "text": "Expected: mechanism_not_demonstrated",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'mechanism_not_demonstrated' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The study establishes correlation, not causation: plant ownership is associated with lower depression scores",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Multiple plausible confounders are acknowledged but the causal conclusion is still drawn",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (1/9 content words)",
+          "evidence": [
+            {
+              "text": "The policy recommendation (employer reimbursement) assumes causation without experimental evidence",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "The phrase 'bringing the outdoors in' implies a mechanism that is not tested in this design",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Decorative uncertainty is present: confounders are mentioned but do not prevent the causal claim",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 4 not well supported in reasoning steps (1/7 content words found)",
+          "evidence": [
+            {
+              "text": "The phrase 'bringing the outdoors in' implies a mechanism that is not tested in this design",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 2 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "The 5,000 participants are reasonably representative of remote workers",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The depression questionnaire is a valid and reliable measure",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 5,000 participants are reasonably representative of remote workers",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The reported confounders (income, natural light, leisure time) are the primary alternative explanations",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No unmeasured confounders exist that are more powerful than the measured ones",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The cross-sectional design captured accurate self-reported plant ownership and depression scores",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the study design: cross-sectional survey with no experimental manipulation",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the key finding: 30% lower depression scores in those with ≥5 plants vs. none",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the conclusion: causal claim that plants improve mental health, with policy recommendation",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted that confounders are explicitly acknowledged: income, natural light, leisure time",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated whether the conclusion logically follows from the evidence: it does not",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed whether the confounders are plausible alternative explanations: they are highly plausible",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for decorative uncertainty: the authors acknowledge confounders but still make a causal claim",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Determined the primary epistemic problem: causal inference from correlational data with known confounders",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study establishes correlation, not causation: plant ownership is associated with lower depression scores",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Multiple plausible confounders are acknowledged but the causal conclusion is still drawn",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The policy recommendation (employer reimbursement) assumes causation without experimental evidence",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The phrase 'bringing the outdoors in' implies a mechanism that is not tested in this design",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Decorative uncertainty is present: confounders are mentioned but do not prevent the causal claim",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Solid study with appropriate caveats (rejected: the policy recommendation is causal despite correlational design)",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overclaim (partially correct but less precise than correlation_vs_causation)",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism vs. evidence (not the primary issue; no mechanism is described in animals/labs and applied to humans)",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the authors statistically controlled for the confounders in their analysis (the text does not specify)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 30% difference persists after controlling for income, light, and leisure time",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The magnitude of bias introduced by each confounder individually",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether reverse causation is plausible (depression → fewer plants, rather than plants → less depression)",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the depression questionnaire is sensitive enough to detect clinically meaningful differences",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problem? No—the text explicitly makes a causal claim ('can improve mental health') from correlational data with known confounders",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a potential strength? The study is large (N=5,000) and uses a standard questionnaire, but these do not address the causal inference problem",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the confounder issue real? Yes—income, natural light, and leisure time are all plausible causes of both plant ownership and lower depression",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could this be 'solid' with caveats? Only if the conclusion were framed as correlational and the policy recommendation were removed or heavily qualified",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I confuse correlation_vs_causation with overclaim? No—the core issue is the causal inference from correlational data, not an exaggeration of effect size",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 26,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 26,
+            "target_idx": 12,
+            "relation": "checks",
+            "strength": 0.3125
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.26666666666666666
+          }
+        ],
+        "unused_assumptions": [
+          1
+        ],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          31
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'correlation_vs_causation...'"
+        ],
+        "unsupported_claims": [
+          "correlation_vs_causation"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "correlation_vs_causation",
+        "detected_label": "correlation_vs_causation",
+        "label_correct": true,
+        "expected_findings": [
+          "correlation_as_causation",
+          "unsupported_generalization",
+          "mechanism_not_demonstrated"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "correlation_as_causation"
+        ],
+        "missed_findings": [
+          "unsupported_generalization",
+          "mechanism_not_demonstrated"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.333,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.333,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unsupported_intermediate_step",
+        "missed_key_insight",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 3 full / 3",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph: conclusion not well grounded",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.73)",
+        "5/5 substantive assumptions",
+        "1 unused assumption(s)",
+        "5 uncertainties (5 substantive)",
+        "Confidence 0.92",
+        "3 alternative hypotheses considered",
+        "3/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.70, 439 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T09:24:48.590412+00:00",
+  "metadata": {}
+}

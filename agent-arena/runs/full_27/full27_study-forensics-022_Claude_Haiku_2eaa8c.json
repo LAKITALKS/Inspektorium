@@ -1,0 +1,1225 @@
+{
+  "run_id": "full27_study-forensics-022_Claude_Haiku_2eaa8c",
+  "task": {
+    "id": "study-forensics-022",
+    "title": "Study Forensics: Four-day workweek trial improves well-being",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A six-month experiment across 141 companies in six countries tested whether cutting the work week from five days to four while maintaining pay could improve employee well-being. Companies volunteered to restructure their workflows so that productivity would not decline with fewer hours. Nearly 2,900 participants completed surveys before and after the trial. After six months, workers reported lower stress and burnout, higher job satisfaction, and no perceived drop in performance. More than 90 percent of participating companies chose to continue the four-day schedule. The researchers cautioned that because companies self-selected into the trial and outcomes were self-reported, further randomised evaluations are needed.\n",
+    "context": "A large multi-company trial with positive results but important methodological\nlimitations (self-selection, self-report). The researchers acknowledge limitations openly.\n",
+    "expected_answer": "solid",
+    "reference_solution": "The summary reports results from a large multi-company trial showing improvements in employee well-being without apparent productivity loss. It notes limitations such as voluntary participation and self-reported outcomes. Although the study design has weaknesses, the claims are restrained to measured outcomes and the need for further research is acknowledged.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "self-selection",
+        "variants": [
+          "companies volunteered",
+          "self-selected",
+          "volunteered to restructure"
+        ],
+        "functional_descriptions": [
+          "companies that chose to participate may differ from those that did not"
+        ]
+      },
+      {
+        "keyword": "self-reported",
+        "variants": [
+          "surveys",
+          "reported lower stress",
+          "perceived drop"
+        ],
+        "functional_descriptions": [
+          "outcomes depend on subjective reporting, not objective measures"
+        ]
+      }
+    ],
+    "common_errors": [
+      "overflagging because of self-selection and self-report limitations",
+      "missing the honest caveating as a strength"
+    ],
+    "task_family": "solid",
+    "trap_type": "borderline_solid_with_caveats",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "overclaiming",
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise honest reporting of limited evidence without overflagging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "The summary reports results from a large multi-company trial of a four-day workweek showing improvements in well-being without productivity loss. It notes limitations such as voluntary participation and self-reported outcomes.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "medium"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "workers reported lower stress and burnout, higher job satisfaction, and no perceived drop in performance",
+        "why_it_matters": "Directly supports the claim that the four-day schedule improved well-being.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "researchers cautioned that because companies self-selected into the trial and outcomes were self-reported, further randomised evaluations are needed",
+        "why_it_matters": "Explicit acknowledgement of methodological limitations represents honest uncertainty.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "medium",
+    "gold_justification": "Although the study was not randomised and relies on self-report, the summary accurately\nconveys the evidence and includes caveats. The claims are restrained to the measured\noutcomes, and the need for further research is acknowledged. The self-selection bias\nweakens the evidence but the authors are transparent about it. We label this solid\nbecause the reporting matches the evidence quality — no overclaim is made.\n",
+    "gold_alternative_reading": "Some may argue that self-selection (only enthusiastic companies participated) and\nself-reported outcomes (workers may overstate satisfaction) limit the evidence quality\nenough to warrant an overclaim label. The 90% continuation rate may reflect commitment\nbias rather than objective success. A reasonable analyst could mark this as borderline\noverclaim due to the design limitations.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Key borderline case. The evidence is real but methodologically limited. The reporting\nis honest and restrained. Tests whether agents can distinguish \"weak evidence honestly\nreported\" (solid) from \"strong evidence dishonestly reported\" (overclaim). The gold\nlabel is solid because the claims match the evidence quality, even though that quality\nhas limitations. Expect model disagreement on this case.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"limited_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The 141 companies represent a diverse cross-section of industries and organizational types\",\n    \"Self-reported well-being measures (stress, burnout, job satisfaction) are valid proxies for actual employee welfare\",\n    \"The six-month timeframe is sufficient to detect sustained effects\",\n    \"Attrition and selection bias are acknowledged but do not invalidate the directional findings\",\n    \"The researchers' caution about self-selection and self-report is genuine, not decorative\"\n  ],\n  \"steps\": [\n    \"Identified evidence tier: This is a prospective observational trial with human participants (n≈2,900) across multiple organizations and countries, with pre-post measurement. This is limited_human evidence — not a randomized controlled trial, but a real-world pilot with substantial sample size.\",\n    \"Identified conclusion tier: The text implies benefit for employee well-being (stress, burnout, satisfaction) in a human working population.\",\n    \"Assessed bridge: The evidence directly measures the outcome of interest (employee well-being) in the target population (workers). The bridge is direct and supported.\",\n    \"Evaluated hedging: The researchers explicitly acknowledge two major limitations — self-selection and self-report bias — and call for randomized evaluation. This is not decorative uncertainty; it correctly identifies the study's design constraints.\",\n    \"Checked for overclaim: The text does not use promotional language ('breakthrough,' 'transforms,' 'confirms effectiveness'). It reports findings neutrally ('reported lower stress,' 'chose to continue'). No rhetorical inflation detected.\",\n    \"Checked for mechanism_vs_evidence: The conclusion (workers feel better under four-day weeks) stays within the evidence tier (human observation of self-reported outcomes). There is no leap to mechanistic claims or unsupported generalization.\",\n    \"Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text acknowledges this. Hawthorne effect (behavior change due to observation) is possible but not discussed; however, this is a known limitation of observational trials and does not invalidate the finding.\",\n    \"Checked for correlation_vs_causation: The text does not claim causation explicitly. It reports associations ('workers reported lower stress'). The researchers' call for randomized evaluation implicitly acknowledges that causation cannot be inferred from this design.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as mechanism_vs_evidence if one argues that self-selection bias is so severe that the findings cannot be generalized to the broader working population — but the text does not claim broad generalizability; it reports trial results.\",\n    \"Could flag self-report bias more heavily as a reason to downgrade confidence — but self-report is standard in well-being research and the researchers acknowledge the limitation.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the 141 companies are representative of their industries or countries (text does not specify)\",\n    \"Whether attrition during the six-month trial was significant (text does not report dropout rates)\",\n    \"Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias\",\n    \"Whether perceived performance (self-reported) correlates with objective productivity metrics\",\n    \"Whether six months is long enough to detect regression to baseline or unintended consequences\"\n  ],\n  \"key_claims\": [\n    \"This is a well-designed observational trial with appropriate caveats. The researchers do not overclaim.\",\n    \"The evidence tier (limited human observation) matches the conclusion tier (human well-being outcomes). No tier mismatch.\",\n    \"The primary limitation — self-selection — is explicitly acknowledged and correctly identified as a reason for further randomized evaluation.\",\n    \"Self-report bias is also acknowledged. This is not hidden or minimized.\",\n    \"The text avoids causal language and reports associations, which is appropriate for an observational design.\"\n  ],\n  \"self_check\": [\n    \"Did I overread the text as making causal claims? No — the text reports associations and the researchers call for RCTs.\",\n    \"Did I penalize the study for being observational rather than randomized? No — observational trials are valid evidence at the limited_human tier; the researchers correctly identify the need for RCTs as a next step.\",\n    \"Did I mistake acknowledgment of limitations for decorative uncertainty? No — the limitations are real and material, and the researchers do not claim certainty despite them.\",\n    \"Did I miss any overclaim language? No — the tone is neutral and measured throughout.\",\n    \"Is there a hidden mechanism_vs_evidence problem? No — the conclusion (workers report better well-being) is directly supported by the evidence (worker surveys).\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\nThis is a **solid study report**. The researchers conducted a six-month observational trial across 141 companies with ~2,900 participants, measuring self-reported well-being before and after a four-day work week. \n\n**Strengths:**\n- Real-world human evidence with substantial sample size\n- Pre-post design with clear outcome measurement\n- Multi-country, multi-company scope\n- Explicit acknowledgment of self-selection and self-report bias\n- Appropriate call for randomized evaluation\n\n**Limitations (acknowledged):**\n- Self-selection bias (companies volunteered; may differ from non-volunteers)\n- Self-report outcomes (no objective productivity data)\n- No control group\n- Six-month timeframe may be insufficient for long-term effects\n\n**Forensic verdict:** The conclusions stay within the evidence tier. The researchers do not overclaim, do not hide limitations, and do not use decorative hedging. This is how observational trials should be reported.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The 141 companies represent a diverse cross-section of industries and organizational types",
+            "Self-reported well-being measures (stress, burnout, job satisfaction) are valid proxies for actual employee welfare",
+            "The six-month timeframe is sufficient to detect sustained effects",
+            "Attrition and selection bias are acknowledged but do not invalidate the directional findings",
+            "The researchers' caution about self-selection and self-report is genuine, not decorative"
+          ],
+          "steps": [
+            "Identified evidence tier: This is a prospective observational trial with human participants (n≈2,900) across multiple organizations and countries, with pre-post measurement. This is limited_human evidence — not a randomized controlled trial, but a real-world pilot with substantial sample size.",
+            "Identified conclusion tier: The text implies benefit for employee well-being (stress, burnout, satisfaction) in a human working population.",
+            "Assessed bridge: The evidence directly measures the outcome of interest (employee well-being) in the target population (workers). The bridge is direct and supported.",
+            "Evaluated hedging: The researchers explicitly acknowledge two major limitations — self-selection and self-report bias — and call for randomized evaluation. This is not decorative uncertainty; it correctly identifies the study's design constraints.",
+            "Checked for overclaim: The text does not use promotional language ('breakthrough,' 'transforms,' 'confirms effectiveness'). It reports findings neutrally ('reported lower stress,' 'chose to continue'). No rhetorical inflation detected.",
+            "Checked for mechanism_vs_evidence: The conclusion (workers feel better under four-day weeks) stays within the evidence tier (human observation of self-reported outcomes). There is no leap to mechanistic claims or unsupported generalization.",
+            "Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text acknowledges this. Hawthorne effect (behavior change due to observation) is possible but not discussed; however, this is a known limitation of observational trials and does not invalidate the finding.",
+            "Checked for correlation_vs_causation: The text does not claim causation explicitly. It reports associations ('workers reported lower stress'). The researchers' call for randomized evaluation implicitly acknowledges that causation cannot be inferred from this design."
+          ],
+          "alternative_hypotheses": [
+            "Could classify as mechanism_vs_evidence if one argues that self-selection bias is so severe that the findings cannot be generalized to the broader working population — but the text does not claim broad generalizability; it reports trial results.",
+            "Could flag self-report bias more heavily as a reason to downgrade confidence — but self-report is standard in well-being research and the researchers acknowledge the limitation."
+          ],
+          "uncertainties": [
+            "Whether the 141 companies are representative of their industries or countries (text does not specify)",
+            "Whether attrition during the six-month trial was significant (text does not report dropout rates)",
+            "Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias",
+            "Whether perceived performance (self-reported) correlates with objective productivity metrics",
+            "Whether six months is long enough to detect regression to baseline or unintended consequences"
+          ],
+          "self_check": [
+            "Did I overread the text as making causal claims? No — the text reports associations and the researchers call for RCTs.",
+            "Did I penalize the study for being observational rather than randomized? No — observational trials are valid evidence at the limited_human tier; the researchers correctly identify the need for RCTs as a next step.",
+            "Did I mistake acknowledgment of limitations for decorative uncertainty? No — the limitations are real and material, and the researchers do not claim certainty despite them.",
+            "Did I miss any overclaim language? No — the tone is neutral and measured throughout.",
+            "Is there a hidden mechanism_vs_evidence problem? No — the conclusion (workers report better well-being) is directly supported by the evidence (worker surveys)."
+          ],
+          "key_claims": [
+            "This is a well-designed observational trial with appropriate caveats. The researchers do not overclaim.",
+            "The evidence tier (limited human observation) matches the conclusion tier (human well-being outcomes). No tier mismatch.",
+            "The primary limitation — self-selection — is explicitly acknowledged and correctly identified as a reason for further randomized evaluation.",
+            "Self-report bias is also acknowledged. This is not hidden or minimized.",
+            "The text avoids causal language and reports associations, which is appropriate for an observational design."
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 14932
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.51,
+        "assumption_discipline": 0.5700000000000001,
+        "uncertainty_handling": 0.49999999999999994,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.4,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text ac",
+              "source_field": "steps[6]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.72)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.5700000000000001,
+          "weight": 6,
+          "weighted_score": 3.4,
+          "evidence": [
+            {
+              "text": "The 141 companies represent a diverse cross-section of industries and organizational types",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Self-reported well-being measures (stress, burnout, job satisfaction) are valid proxies for actual employee welfare",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.49999999999999994,
+          "weight": 6,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Whether perceived performance (self-reported) correlates with objective productivity metrics",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Whether six months is long enough to detect regression to baseline or unintended consequences",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "3 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could classify as mechanism_vs_evidence if one argues that self-selection bias is so severe that the findings cannot be generalized to the broader working population — but the text does not claim broa",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Did I penalize the study for being observational rather than randomized? No — observational trials are valid evidence at the limited_human tier; the researchers correctly identify the need for RCTs as",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.4,
+          "weight": 10,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text ac",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Mechanism description without case grounding",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Names concept + describes mechanism (not grounded to case)"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.69, 632 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "ledge two major limitations — self-selection and self-report bias — and ca",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'self-selection' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "ce tier (human observation of self-reported outcomes). there is no leap t",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'self-reported' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The 141 companies represent a diverse cross-section of indus...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The 141 companies represent a diverse cross-section of industries and organizational types",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the 90% continuation rate reflects genuine satisfact...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether perceived performance (self-reported) correlates wit...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether perceived performance (self-reported) correlates with objective productivity metrics",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether six months is long enough to detect regression to ba...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether six months is long enough to detect regression to baseline or unintended consequences",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "This is a well-designed observational trial with appropriate caveats. The researchers do not overclaim.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The evidence tier (limited human observation) matches the conclusion tier (human well-being outcomes). No tier mismatch.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The primary limitation — self-selection — is explicitly acknowledged and correctly identified as a reason for further randomized evaluation.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/5 content words)",
+          "evidence": [
+            {
+              "text": "Self-report bias is also acknowledged. This is not hidden or minimized.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/9 content words)",
+          "evidence": [
+            {
+              "text": "The text avoids causal language and reports associations, which is appropriate for an observational design.",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "assumption_reasoning",
+          "status": "fail",
+          "description": "Assumption 4 may be contradicted by step 7",
+          "evidence": [
+            {
+              "text": "Attrition and selection bias are acknowledged but do not invalidate the directional findings",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Assumed condition",
+              "role": "supporting"
+            },
+            {
+              "text": "Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text acknowledges this. Hawthorne effect (behavior change due to observation) is possible but not discussed; however, this is a known limitation of observational trials and does not invalidate the finding.",
+              "source_field": "steps[6]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Potentially contradicting step",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 4 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether perceived performance (self-reported) correlates with objective productivity metrics",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 5 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether six months is long enough to detect regression to baseline or unintended consequences",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias, effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: none_or_minor, conclusion_exceeds_results, unsupported_generalization, decorative_uncertainty, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The 141 companies represent a diverse cross-section of industries and organizational types",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Self-reported well-being measures (stress, burnout, job satisfaction) are valid proxies for actual employee welfare",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The six-month timeframe is sufficient to detect sustained effects",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Attrition and selection bias are acknowledged but do not invalidate the directional findings",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The researchers' caution about self-selection and self-report is genuine, not decorative",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence tier: This is a prospective observational trial with human participants (n≈2,900) across multiple organizations and countries, with pre-post measurement. This is limited_human evidence — not a randomized controlled trial, but a real-world pilot with substantial sample size.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified conclusion tier: The text implies benefit for employee well-being (stress, burnout, satisfaction) in a human working population.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed bridge: The evidence directly measures the outcome of interest (employee well-being) in the target population (workers). The bridge is direct and supported.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated hedging: The researchers explicitly acknowledge two major limitations — self-selection and self-report bias — and call for randomized evaluation. This is not decorative uncertainty; it correctly identifies the study's design constraints.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaim: The text does not use promotional language ('breakthrough,' 'transforms,' 'confirms effectiveness'). It reports findings neutrally ('reported lower stress,' 'chose to continue'). No rhetorical inflation detected.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for mechanism_vs_evidence: The conclusion (workers feel better under four-day weeks) stays within the evidence tier (human observation of self-reported outcomes). There is no leap to mechanistic claims or unsupported generalization.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text acknowledges this. Hawthorne effect (behavior change due to observation) is possible but not discussed; however, this is a known limitation of observational trials and does not invalidate the finding.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for correlation_vs_causation: The text does not claim causation explicitly. It reports associations ('workers reported lower stress'). The researchers' call for randomized evaluation implicitly acknowledges that causation cannot be inferred from this design.",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is a well-designed observational trial with appropriate caveats. The researchers do not overclaim.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The evidence tier (limited human observation) matches the conclusion tier (human well-being outcomes). No tier mismatch.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The primary limitation — self-selection — is explicitly acknowledged and correctly identified as a reason for further randomized evaluation.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Self-report bias is also acknowledged. This is not hidden or minimized.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text avoids causal language and reports associations, which is appropriate for an observational design.",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could classify as mechanism_vs_evidence if one argues that self-selection bias is so severe that the findings cannot be generalized to the broader working population — but the text does not claim broad generalizability; it reports trial results.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could flag self-report bias more heavily as a reason to downgrade confidence — but self-report is standard in well-being research and the researchers acknowledge the limitation.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the 141 companies are representative of their industries or countries (text does not specify)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether attrition during the six-month trial was significant (text does not report dropout rates)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 90% continuation rate reflects genuine satisfaction or organizational inertia/sunk-cost bias",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether perceived performance (self-reported) correlates with objective productivity metrics",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether six months is long enough to detect regression to baseline or unintended consequences",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overread the text as making causal claims? No — the text reports associations and the researchers call for RCTs.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I penalize the study for being observational rather than randomized? No — observational trials are valid evidence at the limited_human tier; the researchers correctly identify the need for RCTs as a next step.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I mistake acknowledgment of limitations for decorative uncertainty? No — the limitations are real and material, and the researchers do not claim certainty despite them.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any overclaim language? No — the tone is neutral and measured throughout.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is there a hidden mechanism_vs_evidence problem? No — the conclusion (workers report better well-being) is directly supported by the evidence (worker surveys).",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.45454545454545453
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 12,
+            "relation": "checks",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 29,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.3076923076923077
+          }
+        ],
+        "unused_assumptions": [
+          0
+        ],
+        "unaddressed_uncertainties": [
+          22,
+          23,
+          24
+        ],
+        "unsupported_conclusions": [
+          30
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias",
+          "effect"
+        ],
+        "mechanism_sentences": [
+          "Assessed confounders: Self-selection is the primary confounder (companies that volunteer may differ systematically from those that don't). The text ac"
+        ],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could improve"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [
+            "self-report"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph: conclusion not well grounded",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.72)",
+        "5/5 substantive assumptions",
+        "1 unused assumption(s)",
+        "5 uncertainties (5 substantive)",
+        "3 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept + describes mechanism (not grounded to case)",
+        "Signal density: 0.69, 632 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:56:29.943144+00:00",
+  "metadata": {}
+}

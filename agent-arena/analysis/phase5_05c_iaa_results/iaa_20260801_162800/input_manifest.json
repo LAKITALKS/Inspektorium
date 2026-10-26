@@ -1,0 +1,48 @@
+{
+  "run_id": "iaa_20260801_162800",
+  "timestamp": "2026-08-01T16:31:52.061162+00:00",
+  "repository_commit": "d99d6f649ae93333ac6af451453912547518287b",
+  "repository_tag": "v0.8.4-iaa-analysis-prep",
+  "analysis_plan_version": "1.0",
+  "study_type": "strongly_anonymized_model_assisted_proxy_iaa",
+  "metric_implementation": "agent_arena.iaa_analysis",
+  "metric_version": "iaa_analysis/1.0",
+  "original_annotator_ids": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "slot_mappings": "not used \u2014 analyzer accepts arbitrary identity keys; original IDs preserved",
+  "inputs": {
+    "A": {
+      "filename": "annotator_A_response_sheet.csv",
+      "sha256": "3377623d77ce4818810468198ab7e33e2c80459df2022473c2ed93e1c990a0b1",
+      "model_family": "Anthropic",
+      "model_variant": "Opus 4.8"
+    },
+    "B": {
+      "filename": "annotator_B_response_sheet.csv",
+      "sha256": "6819c8d135a0d1fd1dee3edf495d541c96b708e520ba448f53c1589a7f033ff5",
+      "model_family": "Anthropic",
+      "model_variant": "Opus 5"
+    },
+    "C": {
+      "filename": "annotator_C_response_sheet.csv",
+      "sha256": "2124a7e1bbe48c67f2f0d4ec3672fc0fec2a667df48ea5d195ac6ac2d795f151",
+      "model_family": "Gemini",
+      "model_variant": "Flash 3.5"
+    },
+    "D": {
+      "filename": "annotator_D_response_sheet.csv",
+      "sha256": "e15d76e42f9808a917d35ea7d139a867144d386413c10f2fd173451f8ea8d9ed",
+      "model_family": "GLM",
+      "model_variant": "GLM 5.2"
+    }
+  },
+  "gold_mapping_used": true,
+  "missing_response_count": 0,
+  "validation_warnings": {},
+  "expected_blind_case_count": 20,
+  "note": "No private raw response text included. real_case_id never written to run dir."
+}

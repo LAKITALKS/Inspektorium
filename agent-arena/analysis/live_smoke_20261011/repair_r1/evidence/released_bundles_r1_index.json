@@ -1,0 +1,27 @@
+{
+  "archive": "released_bundles_r1.tar.gz",
+  "archive_sha256": "67b0ef8d0e6fb9b50891767ab2556f864f7c40c2797c1d51118a67635f4e60d1",
+  "original_location": "analysis/live_smoke_20261011/repair_r1/released/<profile>/<revision>/",
+  "members": {
+    "claude-haiku-5-5@2/4432c915-e807-4308-af4d-10429a6c68a5/decision.json": "2050c3948fd27366c18fe44484a284d04c8d337bbc05de49f517537b095d8e8c",
+    "claude-haiku-5-5@2/4432c915-e807-4308-af4d-10429a6c68a5/manifest.json": "b626ff34d5b90ba175b93801706efa315e6ce69027a13387e40b45d3df5a08d0",
+    "claude-haiku-5-5@2/4432c915-e807-4308-af4d-10429a6c68a5/record.json": "e680d184c254234ec5cf236c1b763e852bc12b5379a549c1539dd84bca7af778",
+    "claude-haiku-5-5@2/4432c915-e807-4308-af4d-10429a6c68a5/report.html": "b901707fc56a6fa73b4b5f9bece5357e9c02ba09eecbdad6d432f19a72fa87c6",
+    "claude-haiku-5-5@2/4432c915-e807-4308-af4d-10429a6c68a5/report.md": "95b6c0b36eaa45dd5f68400fd8832cd7336d1ee526a8e98a31b1efa86c911922",
+    "claude-sonnet-5-5@2/64e637fe-2d9c-44bc-84f5-894eef62e4d8/decision.json": "16a596e8e83fc9aa182f65341b11d4ac1bb84e60af2fd5c493acc2cfb6b013c7",
+    "claude-sonnet-5-5@2/64e637fe-2d9c-44bc-84f5-894eef62e4d8/manifest.json": "b6d97b66abac5eacf4caf32a547e957d6ffbf677586b10fb9dae0d7941e3a819",
+    "claude-sonnet-5-5@2/64e637fe-2d9c-44bc-84f5-894eef62e4d8/record.json": "9edec1098c7b18d3b30a4f75aa0cc8e774650e8487e2500e9fe44e68c6fb1ff8",
+    "claude-sonnet-5-5@2/64e637fe-2d9c-44bc-84f5-894eef62e4d8/report.html": "6c0c7eec1ce86dd7d40150c2274b4bc068adf5e0986f1aec15e6229840698fdb",
+    "claude-sonnet-5-5@2/64e637fe-2d9c-44bc-84f5-894eef62e4d8/report.md": "1a849dddb201320e1482ae6402883076203ce799bd970d28fd2b851161d70dc4"
+  },
+  "verified_against_original_bytes": true,
+  "inspect_after_extraction": {
+    "bundles": 2,
+    "valid": 2,
+    "statuses": [
+      "RELEASED",
+      "RELEASED"
+    ],
+    "code": "R1 tested code f885aae (identical in 6142dcd)"
+  }
+}

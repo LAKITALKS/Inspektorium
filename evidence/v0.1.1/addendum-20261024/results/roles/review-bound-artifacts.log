@@ -1,0 +1,53 @@
+{
+  "catalog_sha256": "245f945b39168ba0fdb250ebcce633d44fef080d7348738a64672e297e1e8380",
+  "runs": {
+    "baseline": {
+      "commit": "fae18242de35facb7c493ff18e86baff3afe2c24",
+      "wheel_package_files_checked": 19,
+      "cases": 87,
+      "text_renderings": 348,
+      "E1_text_failures": 200,
+      "K7_link_violations": 18,
+      "raw_preserved": 87,
+      "visuals": {
+        "noto-serif": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 45,
+          "critical_overlaps": 17
+        },
+        "github-like": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 42,
+          "critical_overlaps": 14
+        }
+      }
+    },
+    "candidate": {
+      "commit": "403bd3fac27f2406a150b2243a691ba4d0b12fbb",
+      "wheel_package_files_checked": 19,
+      "cases": 87,
+      "text_renderings": 348,
+      "E1_text_failures": 0,
+      "K7_link_violations": 0,
+      "raw_preserved": 87,
+      "visuals": {
+        "noto-serif": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 6,
+          "critical_overlaps": 0
+        },
+        "github-like": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 5,
+          "critical_overlaps": 0
+        }
+      }
+    }
+  },
+  "byte_identical_json_reports": 87,
+  "limitations": "Read-only recount of saved outputs and images, not a new browser run or universal visual guarantee."
+}

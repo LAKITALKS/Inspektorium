@@ -1,0 +1,65 @@
+{
+  "public_source": "<PUBLIC_CHECKOUT>/agent-arena/analysis/c25_p9_20261011/live_retest",
+  "status": "READY_FOR_RELEASE",
+  "commands": [
+    {
+      "command": [
+        "<PUBLICATION_WORK>/asset-verification/arena-wheel/bin/python",
+        "<PUBLIC_CHECKOUT>/agent-arena/scripts/extract_recorded_capture.py",
+        "--capture",
+        "<PUBLIC_CHECKOUT>/agent-arena/analysis/c25_p9_20261011/live_retest/captures/attempt-002.json",
+        "--task",
+        "<PUBLIC_CHECKOUT>/agent-arena/analysis/c25_p9_20261011/live_retest/tasks/LR-01.json",
+        "--output",
+        "<PUBLICATION_WORK>/public-capture-derivation"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"schema\": \"agent-arena-offline-capture-derivation/1.0\",\n  \"method\": \"UTF-8 encoding of concatenated recorded response text blocks, unchanged\",\n  \"scope\": \"New recorded_offline analysis; not native live replay or original bundle verification\",\n  \"unverified\": [\n    \"historical authorization\",\n    \"ledger binding\",\n    \"historical review history\",\n    \"provider authenticity\",\n    \"unredacted original capture identity\"\n  ],\n  \"capture_filename\": \"attempt-002.json\",\n  \"supplied_capture_sha256\": \"dcee81e242b14dd21b50826cef0dc7c35c25a50ad761c460c095b0889e0fc2b9\",\n  \"capture_authorization_id\": \"AA-P10-LIVE-RETEST-20261011-004\",\n  \"attempt_id\": \"attempt-002\",\n  \"profile_id\": \"claude-haiku-5-5@3\",\n  \"task_id\": \"aa-p10-live-retest-LR-01\",\n  \"canonical_task_sha256\": \"d2e63c98dfbd37dfd2e7f273f975d391c534cc457cc01da0e20f5ab90b08b480\",\n  \"recording_sha256\": \"8158f814e89d771fb60d64cc17a984e681b0493c1d086426715ae8f479eaeeac\",\n  \"task_file_sha256\": \"5a330df6496bc7e04d46bb65f4f842295b305a55b0931f6ebce9efed377786ef\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<PUBLICATION_WORK>/asset-verification/arena-wheel/bin/agent-arena",
+        "audit",
+        "run",
+        "--offline",
+        "--task",
+        "<PUBLICATION_WORK>/public-capture-derivation/task.json",
+        "--recording",
+        "<PUBLICATION_WORK>/public-capture-derivation/recording.json",
+        "--output-root",
+        "<PUBLICATION_WORK>/public-capture-bundles"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"status\": \"READY_FOR_RELEASE\",\n  \"path\": \"<PUBLICATION_WORK>/public-capture-bundles/d2594b17-d1e8-4c92-b1fa-eb6db9777098\",\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<PUBLICATION_WORK>/asset-verification/arena-wheel/bin/agent-arena",
+        "audit",
+        "inspect",
+        "--bundle",
+        "<PUBLICATION_WORK>/public-capture-bundles/d2594b17-d1e8-4c92-b1fa-eb6db9777098"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"valid\": true,\n  \"status\": \"READY_FOR_RELEASE\",\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<PUBLICATION_WORK>/asset-verification/arena-wheel/bin/python",
+        "<PUBLIC_CHECKOUT>/agent-arena/scripts/extract_recorded_capture.py",
+        "--capture",
+        "<PUBLIC_CHECKOUT>/agent-arena/analysis/c25_p9_20261011/live_retest/captures/attempt-002.json",
+        "--task",
+        "<PUBLIC_CHECKOUT>/agent-arena/analysis/c25_p9_20261011/live_retest/tasks/LR-03.json",
+        "--output",
+        "<PUBLICATION_WORK>/capture-invalid-task"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<PUBLIC_CHECKOUT>/agent-arena/scripts/extract_recorded_capture.py\", line 79, in <module>\n    main()\n  File \"<PUBLIC_CHECKOUT>/agent-arena/scripts/extract_recorded_capture.py\", line 75, in main\n    print(json.dumps(extract(args.capture, args.task, args.output), indent=2))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<PUBLIC_CHECKOUT>/agent-arena/scripts/extract_recorded_capture.py\", line 31, in extract\n    raise ValueError(\"A matching primary capture is required; review captures are not primary inputs\")\nValueError: A matching primary capture is required; review captures are not primary inputs\n"
+    }
+  ]
+}

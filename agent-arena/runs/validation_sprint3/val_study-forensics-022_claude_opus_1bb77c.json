@@ -1,0 +1,1032 @@
+{
+  "run_id": "val_study-forensics-022_claude_opus_1bb77c",
+  "task": {
+    "id": "study-forensics-022",
+    "title": "Study Forensics: Four-day workweek trial improves well-being",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A six-month experiment across 141 companies in six countries tested whether cutting the work week from five days to four while maintaining pay could improve employee well-being. Companies volunteered to restructure their workflows so that productivity would not decline with fewer hours. Nearly 2,900 participants completed surveys before and after the trial. After six months, workers reported lower stress and burnout, higher job satisfaction, and no perceived drop in performance. More than 90 percent of participating companies chose to continue the four-day schedule. The researchers cautioned that because companies self-selected into the trial and outcomes were self-reported, further randomised evaluations are needed.\n",
+    "context": "A large multi-company trial with positive results but important methodological\nlimitations (self-selection, self-report). The researchers acknowledge limitations openly.\n",
+    "expected_answer": "solid",
+    "reference_solution": "The summary reports results from a large multi-company trial showing improvements in employee well-being without apparent productivity loss. It notes limitations such as voluntary participation and self-reported outcomes. Although the study design has weaknesses, the claims are restrained to measured outcomes and the need for further research is acknowledged.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "self-selection",
+        "variants": [
+          "companies volunteered",
+          "self-selected",
+          "volunteered to restructure"
+        ],
+        "functional_descriptions": [
+          "companies that chose to participate may differ from those that did not"
+        ]
+      },
+      {
+        "keyword": "self-reported",
+        "variants": [
+          "surveys",
+          "reported lower stress",
+          "perceived drop"
+        ],
+        "functional_descriptions": [
+          "outcomes depend on subjective reporting, not objective measures"
+        ]
+      }
+    ],
+    "common_errors": [
+      "overflagging because of self-selection and self-report limitations",
+      "missing the honest caveating as a strength"
+    ],
+    "task_family": "solid",
+    "trap_type": "borderline_solid_with_caveats",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "overclaiming",
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise honest reporting of limited evidence without overflagging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "The summary reports results from a large multi-company trial of a four-day workweek showing improvements in well-being without productivity loss. It notes limitations such as voluntary participation and self-reported outcomes.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "medium"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "workers reported lower stress and burnout, higher job satisfaction, and no perceived drop in performance",
+        "why_it_matters": "Directly supports the claim that the four-day schedule improved well-being.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "researchers cautioned that because companies self-selected into the trial and outcomes were self-reported, further randomised evaluations are needed",
+        "why_it_matters": "Explicit acknowledgement of methodological limitations represents honest uncertainty.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "medium",
+    "gold_justification": "Although the study was not randomised and relies on self-report, the summary accurately\nconveys the evidence and includes caveats. The claims are restrained to the measured\noutcomes, and the need for further research is acknowledged. The self-selection bias\nweakens the evidence but the authors are transparent about it. We label this solid\nbecause the reporting matches the evidence quality — no overclaim is made.\n",
+    "gold_alternative_reading": "Some may argue that self-selection (only enthusiastic companies participated) and\nself-reported outcomes (workers may overstate satisfaction) limit the evidence quality\nenough to warrant an overclaim label. The 90% continuation rate may reflect commitment\nbias rather than objective success. A reasonable analyst could mark this as borderline\noverclaim due to the design limitations.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Key borderline case. The evidence is real but methodologically limited. The reporting\nis honest and restrained. Tests whether agents can distinguish \"weak evidence honestly\nreported\" (solid) from \"strong evidence dishonestly reported\" (overclaim). The gold\nlabel is solid because the claims match the evidence quality, even though that quality\nhas limitations. Expect model disagreement on this case.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\"The study acknowledges its limitations explicitly\", \"The researchers are transparent about self-selection bias\", \"The claims match the evidence presented\", \"The call for further research is substantive, not decorative\"],\n  \"steps\": [\"The study design is clearly described: 141 companies, 6 countries, 6 months, ~2900 participants\", \"The intervention is well-defined: 4-day work week with maintained pay and restructured workflows\", \"The outcomes measured are appropriate: stress, burnout, job satisfaction, performance\", \"The results are presented without overclaiming: workers 'reported' outcomes rather than claiming objective changes\", \"The researchers explicitly acknowledge two major limitations: self-selection bias and self-reported outcomes\", \"The call for 'randomised evaluations' is specific and addresses the actual limitations\"],\n  \"alternative_hypotheses\": [\"Could be classified as having correlation vs causation issues if the text claimed the 4-day week 'caused' improvements, but it only reports associations\", \"Could have confounders if the text ignored obvious variables, but the self-selection acknowledgment covers this\"],\n  \"uncertainties\": [\"Whether the 90% continuation rate might be influenced by factors beyond the measured outcomes\", \"How 'no perceived drop in performance' was measured exactly\"],\n  \"key_claims\": [\"This is a well-designed observational study with appropriate caveats\", \"The researchers properly acknowledge selection bias and measurement limitations\", \"The conclusions are proportionate to the evidence\", \"The uncertainty language is substantive, not decorative\"],\n  \"self_check\": [\"Did I look for problems that aren't there? No - I considered various issues but found them addressed\", \"Are the limitations real or am I being too lenient? The limitations are real and explicitly stated\", \"Is the study perfect? No, but it doesn't claim to be - it's transparent about its design\"],\n  \"confidence\": 0.90\n}",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study acknowledges its limitations explicitly",
+            "The researchers are transparent about self-selection bias",
+            "The claims match the evidence presented",
+            "The call for further research is substantive, not decorative"
+          ],
+          "steps": [
+            "The study design is clearly described: 141 companies, 6 countries, 6 months, ~2900 participants",
+            "The intervention is well-defined: 4-day work week with maintained pay and restructured workflows",
+            "The outcomes measured are appropriate: stress, burnout, job satisfaction, performance",
+            "The results are presented without overclaiming: workers 'reported' outcomes rather than claiming objective changes",
+            "The researchers explicitly acknowledge two major limitations: self-selection bias and self-reported outcomes",
+            "The call for 'randomised evaluations' is specific and addresses the actual limitations"
+          ],
+          "alternative_hypotheses": [
+            "Could be classified as having correlation vs causation issues if the text claimed the 4-day week 'caused' improvements, but it only reports associations",
+            "Could have confounders if the text ignored obvious variables, but the self-selection acknowledgment covers this"
+          ],
+          "uncertainties": [
+            "Whether the 90% continuation rate might be influenced by factors beyond the measured outcomes",
+            "How 'no perceived drop in performance' was measured exactly"
+          ],
+          "self_check": [
+            "Did I look for problems that aren't there? No - I considered various issues but found them addressed",
+            "Are the limitations real or am I being too lenient? The limitations are real and explicitly stated",
+            "Is the study perfect? No, but it doesn't claim to be - it's transparent about its design"
+          ],
+          "key_claims": [
+            "This is a well-designed observational study with appropriate caveats",
+            "The researchers properly acknowledge selection bias and measurement limitations",
+            "The conclusions are proportionate to the evidence",
+            "The uncertainty language is substantive, not decorative"
+          ],
+          "confidence": 0.9,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 15420
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.65,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.5,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The results are presented without overclaiming: workers 'reported' outcomes rather than claiming objective changes",
+              "source_field": "steps[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 0/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.76)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.65,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "The call for further research is substantive, not decorative",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the 90% continuation rate might be influenced by factors beyond the measured outcomes",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 uncertainties (2 substantive)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could be classified as having correlation vs causation issues if the text claimed the 4-day week 'caused' improvements, but it only reports associations",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Did I look for problems that aren't there? No - I considered various issues but found them addressed",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 self-check items",
+            "Self-check quality: 0 deep, 3 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.67, 249 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "wledge two major limitations: self-selection bias and self-reported outcom",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'self-selection' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "ions: self-selection bias and self-reported outcomes the call for 'random",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'self-reported' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['bias'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'solid', detected 'correlation_vs_causation'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "This is a well-designed observational study with appropriate caveats",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "The researchers properly acknowledge selection bias and measurement limitations",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/3 content words)",
+          "evidence": [
+            {
+              "text": "The conclusions are proportionate to the evidence",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/4 content words)",
+          "evidence": [
+            {
+              "text": "The uncertainty language is substantive, not decorative",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 3 not well supported in reasoning steps (0/3 content words found)",
+          "evidence": [
+            {
+              "text": "The conclusions are proportionate to the evidence",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 4 not well supported in reasoning steps (0/4 content words found)",
+          "evidence": [
+            {
+              "text": "The uncertainty language is substantive, not decorative",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: none_or_minor, conclusion_exceeds_results, decorative_uncertainty, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study acknowledges its limitations explicitly",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The researchers are transparent about self-selection bias",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The claims match the evidence presented",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The call for further research is substantive, not decorative",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study design is clearly described: 141 companies, 6 countries, 6 months, ~2900 participants",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The intervention is well-defined: 4-day work week with maintained pay and restructured workflows",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The outcomes measured are appropriate: stress, burnout, job satisfaction, performance",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The results are presented without overclaiming: workers 'reported' outcomes rather than claiming objective changes",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The researchers explicitly acknowledge two major limitations: self-selection bias and self-reported outcomes",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The call for 'randomised evaluations' is specific and addresses the actual limitations",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is a well-designed observational study with appropriate caveats",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The researchers properly acknowledge selection bias and measurement limitations",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The conclusions are proportionate to the evidence",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The uncertainty language is substantive, not decorative",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be classified as having correlation vs causation issues if the text claimed the 4-day week 'caused' improvements, but it only reports associations",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could have confounders if the text ignored obvious variables, but the self-selection acknowledgment covers this",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the 90% continuation rate might be influenced by factors beyond the measured outcomes",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "How 'no perceived drop in performance' was measured exactly",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I look for problems that aren't there? No - I considered various issues but found them addressed",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Are the limitations real or am I being too lenient? The limitations are real and explicitly stated",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the study perfect? No, but it doesn't claim to be - it's transparent about its design",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.75
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 20,
+            "target_idx": 4,
+            "relation": "checks",
+            "strength": 0.2857142857142857
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          21
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "correlation_vs_causation",
+        "label_correct": false,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could improve"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [
+            "self-report"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "wrong_answer",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+        "Reasoning graph: conclusion not well grounded",
+        "6 reasoning steps",
+        "Low step utility: 0/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.76)",
+        "4/4 substantive assumptions",
+        "2 uncertainties (2 substantive)",
+        "Confidence 0.9",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "3 self-check items",
+        "Self-check quality: 0 deep, 3 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.67, 249 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T14:29:57.380955+00:00",
+  "metadata": {}
+}

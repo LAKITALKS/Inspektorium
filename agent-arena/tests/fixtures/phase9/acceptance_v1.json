@@ -1,0 +1,25 @@
+{
+  "version": "AA-P9-ACCEPTANCE/1.0",
+  "contract": "AA-P9/1.0",
+  "scope": "Generic deterministic offline consistency cases; no efficacy holdout",
+  "cases": [
+    {"id": "stable_positive", "route": "AUTO_RESOLVABLE", "calls": 0},
+    {"id": "stable_negative", "route": "AUTO_RESOLVABLE", "calls": 0},
+    {"id": "trivial_confidence_wording", "route": "AUTO_RESOLVABLE", "conflicts": 0},
+    {"id": "necessary_proposition_conflict", "route": "HUMAN_REVIEW_REQUIRED", "dimension": "proposition"},
+    {"id": "evidence_direction_conflict", "route": "HUMAN_REVIEW_REQUIRED", "dimension": "evidence"},
+    {"id": "causality_conflict", "route": "HUMAN_REVIEW_REQUIRED", "dimension": "causal_strength"},
+    {"id": "product_transfer_conflict", "route": "HUMAN_REVIEW_REQUIRED", "dimension": "product_transfer"},
+    {"id": "population_endpoint_conflict", "route": "HUMAN_REVIEW_REQUIRED", "dimension": "proposition"},
+    {"id": "single_position_ceiling", "route": "HUMAN_REVIEW_REQUIRED", "conflicts": 0},
+    {"id": "necessary_unknown", "route": "REVIEW_RECOMMENDED", "execution_status": "not_executed"},
+    {"id": "blind_complete_counterreview", "route": "HUMAN_REVIEW_REQUIRED", "execution_status": "completed", "calls": 1},
+    {"id": "budget_zero", "route": "UNRESOLVED", "execution_status": "not_executed", "calls": 0},
+    {"id": "failed_review_and_replay", "route": "UNRESOLVED", "execution_status": "failed", "calls": 1},
+    {"id": "one_stability_flip", "route": "HUMAN_REVIEW_REQUIRED", "execution_status": "completed", "calls": 2},
+    {"id": "reject_semantic_variant", "route": "UNRESOLVED", "calls": 1},
+    {"id": "explicit_human_adjudication", "route": "AUTO_RESOLVABLE", "review_state": "adjudicated"},
+    {"id": "human_cannot_waive_source_gate", "route": "HUMAN_REVIEW_REQUIRED", "rejected": true},
+    {"id": "historical_no_phase9", "route": "UNRESOLVED", "technical_status": "not_executed"}
+  ]
+}

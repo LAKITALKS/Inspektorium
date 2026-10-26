@@ -1,0 +1,11 @@
+{
+  "inventory_import_attempt": {
+    "interpreter": "python3 outside measurement environment",
+    "exit_code": 1,
+    "error": "ModuleNotFoundError: No module named cmarkgfm",
+    "stage": "import only, before any measurement",
+    "corrected_interpreter": "guarded dev/bin/python",
+    "corrected_result": "600 historical DOM inventories checked successfully"
+  },
+  "prior_full_run": "layout-results is the preliminary run before the reviewer-requested missing-row guard; layout-final-results is the binding rerun"
+}

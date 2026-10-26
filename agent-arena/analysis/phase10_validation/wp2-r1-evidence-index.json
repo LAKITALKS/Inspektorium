@@ -1,0 +1,18 @@
+{
+  "archives": [
+    {
+      "file": "wp2-acceptance-3.tar.gz",
+      "sha256": "05fac90a07c3aa8157a25a4e0d32a751a83e1dc7b748aec91a61335808816681",
+      "bytes": 712352,
+      "members": 131
+    },
+    {
+      "file": "wp2-render-2.tar.gz",
+      "sha256": "5d39117b9e4877db86deb00f6fa733fa80792bded23b5972a9529c4afe983f81",
+      "bytes": 2077844,
+      "members": 20
+    }
+  ],
+  "archive_members_verified_against_original_bytes": true,
+  "policy": "All acceptance records/state; all6 print PDFs/all JSON and11 actually viewed PNGs. Large browser PNGs remain local and reproducible."
+}

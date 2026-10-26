@@ -1,0 +1,742 @@
+{
+  "schema": "harness-value-offline-controls/1",
+  "artifacts": [
+    {
+      "fixture_id": "F1-clean",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": true,
+      "fault": null,
+      "clean_mate": "F1-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": true,
+      "C_checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07286f1042f28a83c8d73ef0748fcbdcfa4f7ad003e1ad647f60503de9f79195"
+    },
+    {
+      "fixture_id": "F1-fault1",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "confidence_missing",
+      "clean_mate": "F1-clean",
+      "records": 420,
+      "B_accept": false,
+      "C_accept": false,
+      "C_checkpoint_valid": true,
+      "C_reason": [
+        "analytical_complete=false"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "824095a96a716f3aa227d798b6b14d5f9d3d744086b61a4ef5ab79729fc48412"
+    },
+    {
+      "fixture_id": "F1-fault2",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "confidence_1.2",
+      "clean_mate": "F1-clean",
+      "records": 420,
+      "B_accept": false,
+      "C_accept": false,
+      "C_checkpoint_valid": true,
+      "C_reason": [
+        "analytical_complete=false"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07a5c9d31605d4ca1509da6a4e126a4492df3515b14e4f466e7e97b577c6ec2d"
+    },
+    {
+      "fixture_id": "F2-clean",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": true,
+      "fault": null,
+      "clean_mate": "F2-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": true,
+      "C_checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07286f1042f28a83c8d73ef0748fcbdcfa4f7ad003e1ad647f60503de9f79195"
+    },
+    {
+      "fixture_id": "F2-fault1",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "malformed_json",
+      "clean_mate": "F2-clean",
+      "records": 420,
+      "B_accept": false,
+      "C_accept": false,
+      "C_checkpoint_valid": true,
+      "C_reason": [
+        "analytical_complete=false"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "718c7d7665fa4129f6c5c76636eb4a3fb70d214a599c570c4ff65240e0bdc733"
+    },
+    {
+      "fixture_id": "F2-fault2",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "unknown_label",
+      "clean_mate": "F2-clean",
+      "records": 420,
+      "B_accept": false,
+      "C_accept": false,
+      "C_checkpoint_valid": true,
+      "C_reason": [
+        "analytical_complete=false"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "15c53d0465783336134dc4746bf5feadb48962cd38070617ba2df5468cfb2a33"
+    },
+    {
+      "fixture_id": "F3-clean",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": true,
+      "fault": null,
+      "clean_mate": "F3-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": true,
+      "C_checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07286f1042f28a83c8d73ef0748fcbdcfa4f7ad003e1ad647f60503de9f79195"
+    },
+    {
+      "fixture_id": "F3-fault1",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "other_source_hash",
+      "clean_mate": "F3-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): record unit/gold binding mismatch: unit_fingerprint",
+        "slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): resume-record fingerprint mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "6d6c8bf41c2aac1a90378738b6fd24fe4325771519e9a3c0dbda97279b004757"
+    },
+    {
+      "fixture_id": "F3-fault2",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "other_case_id",
+      "clean_mate": "F3-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): record unit/gold binding mismatch: case_id",
+        "slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): resume-record fingerprint mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "ace14b4185a3cfbde53801eebce516eafaac43fceb53f48222c10d50d865f6c8"
+    },
+    {
+      "fixture_id": "F4-clean",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": true,
+      "fault": null,
+      "clean_mate": "F4-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": true,
+      "C_checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07286f1042f28a83c8d73ef0748fcbdcfa4f7ad003e1ad647f60503de9f79195"
+    },
+    {
+      "fixture_id": "F4-fault1",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "stale_checkpoint",
+      "clean_mate": "F4-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "checkpoint record count mismatch",
+        "checkpoint record-set fingerprint mismatch",
+        "checkpoint accounting mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "c28008296debe67c188647bcd0d6ebd197fb8779f8bd6157393b711ef9eb327c"
+    },
+    {
+      "fixture_id": "F4-fault2",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "duplicate_terminal_slot",
+      "clean_mate": "F4-clean",
+      "records": 421,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "duplicate checkpoint slots: 1",
+        "checkpoint record count mismatch",
+        "checkpoint record-set fingerprint mismatch",
+        "checkpoint accounting mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "5122605fed93b494c597f26b019bc402692ec23caf2fa011fce00a163c5b01f0"
+    },
+    {
+      "fixture_id": "F5-clean",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": true,
+      "fault": null,
+      "clean_mate": "F5-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": true,
+      "C_checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07286f1042f28a83c8d73ef0748fcbdcfa4f7ad003e1ad647f60503de9f79195"
+    },
+    {
+      "fixture_id": "F5-fault1",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "omitted_terminal_record",
+      "clean_mate": "F5-clean",
+      "records": 419,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "checkpoint record count mismatch",
+        "checkpoint record-set fingerprint mismatch",
+        "checkpoint accounting mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "617733cbf0f07de0a7f508bbb0afa677d6274e248db622dc504bd80e5c99ed83"
+    },
+    {
+      "fixture_id": "F5-fault2",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "incorrect_reported_denominator",
+      "clean_mate": "F5-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "checkpoint contract mismatch: expected_slots",
+        "checkpoint fingerprint mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "218dff9c87872c58e038fe5b6b480600604dce03e28a850f174370e72a8c56c3"
+    },
+    {
+      "fixture_id": "F6-clean",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": true,
+      "fault": null,
+      "clean_mate": "F6-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": true,
+      "C_checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "07286f1042f28a83c8d73ef0748fcbdcfa4f7ad003e1ad647f60503de9f79195"
+    },
+    {
+      "fixture_id": "F6-fault1",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "other_code_commit",
+      "clean_mate": "F6-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "checkpoint contract mismatch: repository_commit",
+        "checkpoint fingerprint mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "52b0bedae92af13b8ff9f3d9f5fc898d1ee688977f94238b7e3c718b13ecf044"
+    },
+    {
+      "fixture_id": "F6-fault2",
+      "scope": "research_run_artifact",
+      "desired_technically_valid": false,
+      "fault": "raw_changed_hash_retained",
+      "clean_mate": "F6-clean",
+      "records": 420,
+      "B_accept": true,
+      "C_accept": false,
+      "C_checkpoint_valid": false,
+      "C_reason": [
+        "slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): raw-response content/hash mismatch",
+        "slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): resume-record fingerprint mismatch"
+      ],
+      "official_release": false,
+      "official_release_reason": "Diagnostic validation role; official release not invoked or inferred",
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_real_run.build_condition_raw_freeze"
+      ],
+      "fixture_content_fingerprint": "e06aa37d4138ef4bffe9207ed1ce5b92b883073ebca200396d5229adce787605"
+    }
+  ],
+  "shared_pre_execution": [
+    {
+      "fixture_id": "F7-clean",
+      "scope": "shared_pre_execution_infrastructure",
+      "fault": null,
+      "desired_technically_valid": true,
+      "accepted": true,
+      "reason": null,
+      "fake_provider_constructions": 1,
+      "fake_provider_calls": 3,
+      "paid_provider_calls": 0,
+      "entry_point": "phase7a_real_run._run_registered_condition (existing private synthetic-only seam)",
+      "isolation_note": "Synthetic QA/credential doubles; real authorization, binding, state-comparison and checkpoint checks"
+    },
+    {
+      "fixture_id": "F7-fault1",
+      "scope": "shared_pre_execution_infrastructure",
+      "fault": "consumed_authorization",
+      "desired_technically_valid": false,
+      "accepted": false,
+      "reason": "consumed one-shot plan carries a nonzero authorized budget; private synthetic execution lacks synthetic-only authorization",
+      "fake_provider_constructions": 0,
+      "fake_provider_calls": 0,
+      "paid_provider_calls": 0,
+      "entry_point": "phase7a_real_run._run_registered_condition (existing private synthetic-only seam)",
+      "isolation_note": "Synthetic QA/credential doubles; real authorization, binding, state-comparison and checkpoint checks"
+    },
+    {
+      "fixture_id": "F7-fault2",
+      "scope": "shared_pre_execution_infrastructure",
+      "fault": "different_specification",
+      "desired_technically_valid": false,
+      "accepted": false,
+      "reason": "authorization refers to another specification",
+      "fake_provider_constructions": 0,
+      "fake_provider_calls": 0,
+      "paid_provider_calls": 0,
+      "entry_point": "phase7a_real_run._run_registered_condition (existing private synthetic-only seam)",
+      "isolation_note": "Synthetic QA/credential doubles; real authorization, binding, state-comparison and checkpoint checks"
+    },
+    {
+      "fixture_id": "F8-clean",
+      "scope": "shared_pre_execution_infrastructure",
+      "fault": null,
+      "desired_technically_valid": true,
+      "accepted": true,
+      "reason": null,
+      "fake_provider_constructions": 1,
+      "fake_provider_calls": 3,
+      "paid_provider_calls": 0,
+      "entry_point": "phase7a_real_run._run_registered_condition (existing private synthetic-only seam)",
+      "isolation_note": "Synthetic QA/credential doubles; real authorization, binding, state-comparison and checkpoint checks"
+    },
+    {
+      "fixture_id": "F8-fault1",
+      "scope": "shared_pre_execution_infrastructure",
+      "fault": "unauthorized_model",
+      "desired_technically_valid": false,
+      "accepted": false,
+      "reason": "stored immutable specification differs from tracked definition; plan specification fingerprint does not reproduce; authorization refers to another specification",
+      "fake_provider_constructions": 0,
+      "fake_provider_calls": 0,
+      "paid_provider_calls": 0,
+      "entry_point": "phase7a_real_run._run_registered_condition (existing private synthetic-only seam)",
+      "isolation_note": "Synthetic QA/credential doubles; real authorization, binding, state-comparison and checkpoint checks"
+    },
+    {
+      "fixture_id": "F8-fault2",
+      "scope": "shared_pre_execution_infrastructure",
+      "fault": "wrong_environment",
+      "desired_technically_valid": false,
+      "accepted": false,
+      "reason": "source binding mismatch: python_environment_fingerprint",
+      "fake_provider_constructions": 0,
+      "fake_provider_calls": 0,
+      "paid_provider_calls": 0,
+      "entry_point": "phase7a_real_run._run_registered_condition (existing private synthetic-only seam)",
+      "isolation_note": "Synthetic QA/credential doubles; real authorization, binding, state-comparison and checkpoint checks"
+    }
+  ],
+  "semantic_probes": [
+    {
+      "fixture_id": "S-negative",
+      "scope": "synthetic_full_bound_checkpoint",
+      "input": {
+        "id": "S-negative",
+        "claim": "This trial proves treatment has no benefit at any dose in any adult.",
+        "packet": {
+          "source": {
+            "title": "Synthetic control source"
+          },
+          "evidence": "A randomized trial compared 10 mg daily with placebo in 100 adults. The primary outcome difference was 0.1 (95% CI -0.3 to 0.5)."
+        }
+      },
+      "fixture_gold": "overclaim",
+      "predicted_label": "solid",
+      "B_accept": true,
+      "C_accept": true,
+      "checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_execution.is_calibration_valid"
+      ],
+      "envelope": [
+        {
+          "unit_id": "S-negative",
+          "model": "claude-haiku-4-5-20251001",
+          "run_index": 0,
+          "raw_response": "{\"alternative_hypotheses\":[],\"assumptions\":[],\"bridge_supported\":true,\"conclusion_tier\":\"general_public\",\"confidence\":0.99,\"evidence_tier\":\"limited_human\",\"final_answer\":\"solid\",\"key_claims\":[],\"self_check\":[],\"steps\":[],\"uncertainties\":[]}",
+          "raw_response_sha256": "46a039349c9cbeff012bc567769d7012133c956b74b32c395ff0fb927df4d594",
+          "error": null,
+          "parse_ok": true,
+          "truncation_suspected": false,
+          "label": "solid",
+          "confidence": 0.99,
+          "confidence_state": "VALID",
+          "label_correct": false,
+          "request_sha256": null,
+          "origin_raw_sha256": "46a039349c9cbeff012bc567769d7012133c956b74b32c395ff0fb927df4d594",
+          "brier_contribution": 0.9801,
+          "resume_record_schema_version": "agent_arena.condition_resume_record/v2",
+          "checkpoint_id": "p5a-B-haiku-c07a4dc565fb76432e03",
+          "checkpoint_namespace": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku:7a55db83c355164e196a",
+          "checkpoint_storage_identity": "7a55db83c355164e196ab371c7983d2a458c5408441f4b608f2b558ae99e9675",
+          "checkpoint_contract_fingerprint": "c07a4dc565fb76432e033472dc01ece9038563cfdce0dc0fa5a6feca4cbbb14c",
+          "library_run_id": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku",
+          "case_id": "S-negative",
+          "case_file": "S-negative.yaml",
+          "unit_type": "neutral",
+          "base_case_id": "S-negative",
+          "cluster_root_id": null,
+          "perturbation_family": null,
+          "family_id": null,
+          "gold_label": "overclaim",
+          "unit_fingerprint": "bde406c4a29b6744de41a1545e0c50d446c58aab6c9af853964b1d61f686d364",
+          "unit_binding_fingerprint": "a2cd4e2c79330793a8e1c3e350125c1ec00cb0552ffd54fe5035eaadca42a41a",
+          "runtime_contract_fingerprint": "4f1f41ff044b5d3419a2b449e0758df6c4e9d140c1e100ba1a8d46b66304e28e",
+          "package_fingerprint": "369c53290e2269138aaf0e7a62917dc8806cfe8569bfb3f04fb6d8670cef2e7c",
+          "scientific_manifest_fingerprint": "91fcfba173c0ec3b82b014bcfdc494400452b715ce63403ece6ee2a44c280533",
+          "execution_manifest_fingerprint": "91fcfba173c0ec3b82b014bcfdc494400452b715ce63403ece6ee2a44c280533",
+          "call_plan_fingerprint": "7551ce5a56e4e385fdc2345ee29007c2aebb19378dc20ed6a58162027b538009",
+          "source_state_fingerprint": "396fb57bb958514fb31a54d635d98ccf7a7babe62d279d6dbdef6e299ac6dec7",
+          "execution_source_fingerprint": "6e9b35f0b666a7697f8439c08d2dedc5373f0b735c32bc5d8940b49748cf1490",
+          "provider_runtime_identity_fingerprint": "903d1aeba7c156c06d6eac27ef76cb537cdf31a7e4cf47dbb1f89bbf95c186da",
+          "execution_type": "dry_run_synthetic",
+          "dry_run": true,
+          "raw_result_ref": "inline:raw_response",
+          "plan_id": "SYNTHETIC-NEGATIVE-CONTROL",
+          "specification_fingerprint": "c6747215a077bf243417ce08c41fc9f78b3cd27f5aafb3b02ee811d13243ba47",
+          "arm_id": "B",
+          "arm_specification_fingerprint": "97bcddef58c4725f3ec21c937de02ba0b6ab1eb02222c8fc460896887b4610f1",
+          "analytical_condition_id": "AA-HARNESS-VALUE-20260913-001:B",
+          "prompt_condition_id": "study_forensics.taxonomy_aligned.v2",
+          "prompt_version": "mission_wrapper/v1",
+          "system_prompt_sha256": "dca117af806fbd89085379996e3ad349ae29086b276e47c278edf40537d2d24f",
+          "terminal_attempt": true,
+          "classification_valid": true,
+          "calibration_valid": true,
+          "model_call_again_allowed": false,
+          "resume_record_fingerprint": "b4afee5dda70a6589e19d68f7aeab55fa4654864d4a630aee38ef4ab1033125b"
+        }
+      ],
+      "contract": {
+        "checkpoint_schema_version": "agent_arena.condition_checkpoint/v2",
+        "resume_record_schema_version": "agent_arena.condition_resume_record/v2",
+        "plan_id": "SYNTHETIC-NEGATIVE-CONTROL",
+        "specification_fingerprint": "c6747215a077bf243417ce08c41fc9f78b3cd27f5aafb3b02ee811d13243ba47",
+        "arm_id": "B",
+        "arm_specification_fingerprint": "97bcddef58c4725f3ec21c937de02ba0b6ab1eb02222c8fc460896887b4610f1",
+        "analytical_condition_id": "AA-HARNESS-VALUE-20260913-001:B",
+        "prompt_condition_id": "study_forensics.taxonomy_aligned.v2",
+        "prompt_version": "mission_wrapper/v1",
+        "system_prompt_sha256": "dca117af806fbd89085379996e3ad349ae29086b276e47c278edf40537d2d24f",
+        "checkpoint_namespace": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku:7a55db83c355164e196a",
+        "checkpoint_storage_identity": "7a55db83c355164e196ab371c7983d2a458c5408441f4b608f2b558ae99e9675",
+        "library_run_id": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku",
+        "model_key": "haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "model_set": [
+          "claude-haiku-4-5-20251001"
+        ],
+        "execution_type": "dry_run_synthetic",
+        "dry_run": true,
+        "n_replications": 1,
+        "expected_units": 1,
+        "expected_slots": 1,
+        "expected_unit_ids": [
+          "S-negative"
+        ],
+        "expected_slots_fingerprint": "97de0737b825d4ce0c9facb69178056132deeebdc7f0373f6b64806918c8790c",
+        "unit_bindings_fingerprint": "80d9892d3cafdf6a96068a52441c27db6cb6e1b10e6c3e99462564aef1808870",
+        "scientific_manifest_fingerprint": "91fcfba173c0ec3b82b014bcfdc494400452b715ce63403ece6ee2a44c280533",
+        "execution_manifest_fingerprint": "91fcfba173c0ec3b82b014bcfdc494400452b715ce63403ece6ee2a44c280533",
+        "call_plan_fingerprint": "7551ce5a56e4e385fdc2345ee29007c2aebb19378dc20ed6a58162027b538009",
+        "package_fingerprint": "369c53290e2269138aaf0e7a62917dc8806cfe8569bfb3f04fb6d8670cef2e7c",
+        "runtime_contract_fingerprint": "4f1f41ff044b5d3419a2b449e0758df6c4e9d140c1e100ba1a8d46b66304e28e",
+        "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+        "repository_commit": "149b3ad5d4b19ecd6e1fe41fe9ea18b5db8fe66c",
+        "repository_tree": "9ec5875d2ccbbc54be1860c32b19147d5991b088",
+        "tracked_source_fingerprint": "153369311602f7f30ddeb32890fdb0335ab5bd3287ce653a8097a9c9361de041",
+        "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+        "python_environment_fingerprint": "455f45e345d11c00a783cdab954bf803495987a84b363047b8cbd6dce331aca7",
+        "source_state_fingerprint": "396fb57bb958514fb31a54d635d98ccf7a7babe62d279d6dbdef6e299ac6dec7",
+        "execution_source_fingerprint": "6e9b35f0b666a7697f8439c08d2dedc5373f0b735c32bc5d8940b49748cf1490",
+        "provider_runtime_identity": {
+          "condition": "offline_injected_diagnostic",
+          "model": "claude-haiku-4-5-20251001",
+          "analytical": false
+        },
+        "provider_runtime_identity_fingerprint": "903d1aeba7c156c06d6eac27ef76cb537cdf31a7e4cf47dbb1f89bbf95c186da",
+        "checkpoint_contract_fingerprint": "c07a4dc565fb76432e033472dc01ece9038563cfdce0dc0fa5a6feca4cbbb14c",
+        "checkpoint_id": "p5a-B-haiku-c07a4dc565fb76432e03"
+      },
+      "limit": "Technical validity accepts a semantically wrong result; no scientific truth verifier or official release claim"
+    },
+    {
+      "fixture_id": "S-taxonomy",
+      "scope": "synthetic_full_bound_checkpoint",
+      "input": {
+        "id": "S-taxonomy",
+        "claim": "An observed association proves the exposure causes the outcome.",
+        "packet": {
+          "source": {
+            "title": "Synthetic control source"
+          },
+          "evidence": "A cross-sectional survey found an adjusted association between self-reported exposure and symptoms. Exposure was not assigned."
+        }
+      },
+      "fixture_gold": "correlation_vs_causation",
+      "predicted_label": "mechanism_vs_evidence",
+      "B_accept": true,
+      "C_accept": true,
+      "checkpoint_valid": true,
+      "C_reason": [],
+      "official_release": false,
+      "entry_points": [
+        "resume_integrity.validate_resume_checkpoint",
+        "phase7a_execution.is_calibration_valid"
+      ],
+      "envelope": [
+        {
+          "unit_id": "S-taxonomy",
+          "model": "claude-haiku-4-5-20251001",
+          "run_index": 0,
+          "raw_response": "{\"alternative_hypotheses\":[],\"assumptions\":[],\"bridge_supported\":true,\"conclusion_tier\":\"general_public\",\"confidence\":0.99,\"evidence_tier\":\"limited_human\",\"final_answer\":\"mechanism_vs_evidence\",\"key_claims\":[],\"self_check\":[],\"steps\":[],\"uncertainties\":[]}",
+          "raw_response_sha256": "57d97d23babff0ad138bd4a431d11e079f966d9426570f381be58bbece2aade9",
+          "error": null,
+          "parse_ok": true,
+          "truncation_suspected": false,
+          "label": "mechanism_vs_evidence",
+          "confidence": 0.99,
+          "confidence_state": "VALID",
+          "label_correct": false,
+          "request_sha256": null,
+          "origin_raw_sha256": "57d97d23babff0ad138bd4a431d11e079f966d9426570f381be58bbece2aade9",
+          "brier_contribution": 0.9801,
+          "resume_record_schema_version": "agent_arena.condition_resume_record/v2",
+          "checkpoint_id": "p5a-B-haiku-31adb0be76f167d473d6",
+          "checkpoint_namespace": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku:16fd9d98490b77f94f80",
+          "checkpoint_storage_identity": "16fd9d98490b77f94f8080d1a946496216b09c5ecce8b85d22046740029fa686",
+          "checkpoint_contract_fingerprint": "31adb0be76f167d473d6482a892e9f8d2101e98259b3a8f6301ccae59e32de0f",
+          "library_run_id": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku",
+          "case_id": "S-taxonomy",
+          "case_file": "S-taxonomy.yaml",
+          "unit_type": "neutral",
+          "base_case_id": "S-taxonomy",
+          "cluster_root_id": null,
+          "perturbation_family": null,
+          "family_id": null,
+          "gold_label": "correlation_vs_causation",
+          "unit_fingerprint": "42e4c6fea3ad17af159725ea28f285f5436b1430ebe9dd272f3b4282ef8b25c4",
+          "unit_binding_fingerprint": "6b9fc7e4efb35547d848fead85147b6bb2096350f5d8197a0be0781e1e440c33",
+          "runtime_contract_fingerprint": "4f1f41ff044b5d3419a2b449e0758df6c4e9d140c1e100ba1a8d46b66304e28e",
+          "package_fingerprint": "6ce178731d7aa321406e9e7dea1176a40535bda395192a4324c504581f513994",
+          "scientific_manifest_fingerprint": "e771df931e98b5886a5f4b8b0db2b3c15d3ab8a9aeb9bee5b59ba6b03acd011a",
+          "execution_manifest_fingerprint": "e771df931e98b5886a5f4b8b0db2b3c15d3ab8a9aeb9bee5b59ba6b03acd011a",
+          "call_plan_fingerprint": "059430bcdc07d9e7dc03225868b8d035905e427135a7b761996c027f73631f46",
+          "source_state_fingerprint": "396fb57bb958514fb31a54d635d98ccf7a7babe62d279d6dbdef6e299ac6dec7",
+          "execution_source_fingerprint": "6e9b35f0b666a7697f8439c08d2dedc5373f0b735c32bc5d8940b49748cf1490",
+          "provider_runtime_identity_fingerprint": "903d1aeba7c156c06d6eac27ef76cb537cdf31a7e4cf47dbb1f89bbf95c186da",
+          "execution_type": "dry_run_synthetic",
+          "dry_run": true,
+          "raw_result_ref": "inline:raw_response",
+          "plan_id": "SYNTHETIC-NEGATIVE-CONTROL",
+          "specification_fingerprint": "c3404313a4547f9afce8880335209b15ceade28e9c34c6444cfcdb466f186b63",
+          "arm_id": "B",
+          "arm_specification_fingerprint": "79d27309972003c2886f038f8224a60843bb5d8ae1a141a385d2dc92a88d41a5",
+          "analytical_condition_id": "AA-HARNESS-VALUE-20260913-001:B",
+          "prompt_condition_id": "study_forensics.taxonomy_aligned.v2",
+          "prompt_version": "mission_wrapper/v1",
+          "system_prompt_sha256": "dca117af806fbd89085379996e3ad349ae29086b276e47c278edf40537d2d24f",
+          "terminal_attempt": true,
+          "classification_valid": true,
+          "calibration_valid": true,
+          "model_call_again_allowed": false,
+          "resume_record_fingerprint": "c4f41e566f86073bd9ab64359e76cd2c483834851f11b904bcdd7e2da54c112c"
+        }
+      ],
+      "contract": {
+        "checkpoint_schema_version": "agent_arena.condition_checkpoint/v2",
+        "resume_record_schema_version": "agent_arena.condition_resume_record/v2",
+        "plan_id": "SYNTHETIC-NEGATIVE-CONTROL",
+        "specification_fingerprint": "c3404313a4547f9afce8880335209b15ceade28e9c34c6444cfcdb466f186b63",
+        "arm_id": "B",
+        "arm_specification_fingerprint": "79d27309972003c2886f038f8224a60843bb5d8ae1a141a385d2dc92a88d41a5",
+        "analytical_condition_id": "AA-HARNESS-VALUE-20260913-001:B",
+        "prompt_condition_id": "study_forensics.taxonomy_aligned.v2",
+        "prompt_version": "mission_wrapper/v1",
+        "system_prompt_sha256": "dca117af806fbd89085379996e3ad349ae29086b276e47c278edf40537d2d24f",
+        "checkpoint_namespace": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku:16fd9d98490b77f94f80",
+        "checkpoint_storage_identity": "16fd9d98490b77f94f8080d1a946496216b09c5ecce8b85d22046740029fa686",
+        "library_run_id": "SYNTHETIC-NEGATIVE-CONTROL:B:haiku",
+        "model_key": "haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "model_set": [
+          "claude-haiku-4-5-20251001"
+        ],
+        "execution_type": "dry_run_synthetic",
+        "dry_run": true,
+        "n_replications": 1,
+        "expected_units": 1,
+        "expected_slots": 1,
+        "expected_unit_ids": [
+          "S-taxonomy"
+        ],
+        "expected_slots_fingerprint": "eddd10437a7ef8698c1039d04dda889cee7c051efd46fdab3fe227f79c10f35b",
+        "unit_bindings_fingerprint": "41b39ffd391b72bbf5292f33ca80194f18f041501451d255da14b435cd70df74",
+        "scientific_manifest_fingerprint": "e771df931e98b5886a5f4b8b0db2b3c15d3ab8a9aeb9bee5b59ba6b03acd011a",
+        "execution_manifest_fingerprint": "e771df931e98b5886a5f4b8b0db2b3c15d3ab8a9aeb9bee5b59ba6b03acd011a",
+        "call_plan_fingerprint": "059430bcdc07d9e7dc03225868b8d035905e427135a7b761996c027f73631f46",
+        "package_fingerprint": "6ce178731d7aa321406e9e7dea1176a40535bda395192a4324c504581f513994",
+        "runtime_contract_fingerprint": "4f1f41ff044b5d3419a2b449e0758df6c4e9d140c1e100ba1a8d46b66304e28e",
+        "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+        "repository_commit": "149b3ad5d4b19ecd6e1fe41fe9ea18b5db8fe66c",
+        "repository_tree": "9ec5875d2ccbbc54be1860c32b19147d5991b088",
+        "tracked_source_fingerprint": "153369311602f7f30ddeb32890fdb0335ab5bd3287ce653a8097a9c9361de041",
+        "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+        "python_environment_fingerprint": "455f45e345d11c00a783cdab954bf803495987a84b363047b8cbd6dce331aca7",
+        "source_state_fingerprint": "396fb57bb958514fb31a54d635d98ccf7a7babe62d279d6dbdef6e299ac6dec7",
+        "execution_source_fingerprint": "6e9b35f0b666a7697f8439c08d2dedc5373f0b735c32bc5d8940b49748cf1490",
+        "provider_runtime_identity": {
+          "condition": "offline_injected_diagnostic",
+          "model": "claude-haiku-4-5-20251001",
+          "analytical": false
+        },
+        "provider_runtime_identity_fingerprint": "903d1aeba7c156c06d6eac27ef76cb537cdf31a7e4cf47dbb1f89bbf95c186da",
+        "checkpoint_contract_fingerprint": "31adb0be76f167d473d6482a892e9f8d2101e98259b3a8f6301ccae59e32de0f",
+        "checkpoint_id": "p5a-B-haiku-31adb0be76f167d473d6"
+      },
+      "limit": "Technical validity accepts a semantically wrong result; no scientific truth verifier or official release claim"
+    }
+  ],
+  "actual_paid_calls": 0,
+  "limitations": [
+    "Research analytical acceptance and official artifact release are distinct.",
+    "Gold establishes semantic wrongness but is not a rejection rule."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+ "browser": {
+  "name": "Google Chrome (local, headless via playwright-core)",
+  "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "version": "Google Chrome 155.0.8059.40",
+  "playwright_reported_version": "155.0.8059.40",
+  "note": "The order names Chrome 154; the local install had auto-updated to 155. All non-file requests aborted (0 seen)."
+ },
+ "node": "v26.8.1",
+ "node_modules": {
+  "markdown_it": "14.1.0",
+  "commonmark_js": "0.31.2",
+  "marked": "14.1.4",
+  "micromark": "4.0.0",
+  "micromark_extension_gfm": "3.0.0",
+  "playwright_core": "1.48.2",
+  "location": "scratchpad/v1/verify-D/node (reused isolated install; nothing downloaded)"
+ },
+ "python_renderers": {
+  "python": "Python 3.11.7",
+  "cmarkgfm (GitHub cmark-gfm bindings)": "2024.11.20",
+  "markdown-it-py": "3.0.0",
+  "location": "scratchpad/v1/verify-D/pyenv (reused isolated venv)"
+ },
+ "renderer_configs": {
+  "markdown-it-html": "MarkdownIt({html:true})",
+  "markdown-it-safe": "MarkdownIt({html:false})",
+  "markdown-it-linkify": "MarkdownIt({html:true, linkify:true})",
+  "commonmark-js": "commonmark.Parser + HtmlRenderer (default: raw HTML on; no table extension)",
+  "marked-gfm": "marked.parse(md,{gfm:true})",
+  "micromark-gfm": "micromark(md,{allowDangerousHtml:true, gfm})",
+  "cmark-gfm-github": "cmarkgfm.github_flavored_markdown_to_html(md, CMARK_OPT_UNSAFE)",
+  "markdown-it-py": "MarkdownIt('commonmark').enable('table')"
+ },
+ "product": {
+  "cli": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/agent-arena (editable install, HEAD 5560e95)",
+  "version": "agent-arena, version 1.0.0",
+  "python": "Python 3.11.7",
+  "git_head": "5560e950af20cee8c35fb2c8e2bfb38807043fab"
+ }
+}

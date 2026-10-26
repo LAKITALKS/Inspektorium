@@ -1,0 +1,24 @@
+F1-clean True True []
+F1-fault1 False False ['analytical_complete=false']
+F1-fault2 False False ['analytical_complete=false']
+F2-clean True True []
+F2-fault1 False False ['analytical_complete=false']
+F2-fault2 False False ['analytical_complete=false']
+F3-clean True True []
+F3-fault1 True False ["slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): record unit/gold binding mismatch: unit_fingerprint"]
+F3-fault2 True False ["slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): record unit/gold binding mismatch: case_id"]
+F4-clean True True []
+F4-fault1 True False ['checkpoint record count mismatch']
+F4-fault2 True False ['duplicate checkpoint slots: 1']
+F5-clean True True []
+F5-fault1 True False ['checkpoint record count mismatch']
+F5-fault2 True False ['checkpoint contract mismatch: expected_slots']
+F6-clean True True []
+F6-fault1 True False ['checkpoint contract mismatch: repository_commit']
+F6-fault2 True False ["slot ('claude-haiku-4-5-20251001', 'P7A-ADV-001', 0): raw-response content/hash mismatch"]
+F7-clean True 1
+F7-fault1 False 0
+F7-fault2 False 0
+F8-clean True 1
+F8-fault1 False 0
+F8-fault2 False 0

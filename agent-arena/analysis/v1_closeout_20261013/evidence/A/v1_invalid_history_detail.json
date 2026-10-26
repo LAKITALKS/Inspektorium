@@ -1,0 +1,185 @@
+[
+{
+ "bundle": "bundles/claude-haiku-5-5@3/2b3197b1-8a36-454c-af11-68bbd343d03a",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "bundles/claude-haiku-5-5@3/39abb806-d9db-4c35-a6d4-d3736e21ca0d",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "bundles/claude-haiku-5-5@3/d856f044-59f8-4f74-8b04-b48cc9250d9e",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "bundles/claude-sonnet-5-5@3/0055a768-d145-437e-8b8f-6dea67819abf",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "bundles/claude-sonnet-5-5@3/44b587d3-0d46-41c0-9984-97dbbc14c6bf",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "p9position:caf22e55c19b3fff985d3730/claim:p1: scientific UNKNOWN",
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "bundles/claude-sonnet-5-5@3/cab93a7a-9b80-4d9c-bae7-14e8676941f2",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "p9position:1a0eb9e182219179eae1b0ff/claim:p1: scientific UNKNOWN",
+   "p9position:238c492040e6fcdf294a13dc/claim:p1: scientific UNKNOWN",
+   "p9position:c1cdf92bf1244616b728deda/claim:p1: scientific UNKNOWN",
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "released/claude-haiku-5-5@3/LR-01/c0d46d8c-5e3a-4f61-9a7a-6588a77f21fd",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "released/claude-haiku-5-5@3/LR-02/732a4d49-2f45-48f8-b4f9-adb502de6ad2",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+,
+{
+ "bundle": "released/claude-sonnet-5-5@3/LR-01/8127951d-d846-4193-bbe4-fedcdb46a697",
+ "stored_contract_version": "AA-P9/1.2",
+ "stored_history_validation": null,
+ "v1_reconstructed": {
+  "contract_version": "AA-P9/1.2",
+  "history_validation": "invalid",
+  "route": "UNRESOLVED",
+  "execution_status": "failed",
+  "reasons": [
+   "Routing preserves separate scientific/taxonomy layers; no majority or provider call executed"
+  ],
+  "uncertainty": [
+   "Invalid Phase9 history: Phase9 case/contract binding changed; execution is unverified.",
+   "Invalid Phase9 history: Selected Phase9 history is invalid"
+  ]
+ },
+ "v1_open_cause": "review history invalid: Invalid Phase9 history: Selected Phase9 history is invalid"
+}
+]

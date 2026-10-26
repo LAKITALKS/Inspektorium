@@ -1,0 +1,56 @@
+{
+  "phase": "5.05d",
+  "type": "read_only_curator_review_and_shortcut_audit",
+  "run_reviewed": "iaa_20260801_162800",
+  "repository_commit": "d99d6f649ae93333ac6af451453912547518287b",
+  "repository_tag": "v0.8.4-iaa-analysis-prep",
+  "integrity": {
+    "result_dir_exists": true,
+    "input_hashes_unchanged": true,
+    "primary_ACD_fleiss": 0.8568,
+    "sensitivity_BCD_fleiss": 0.8568,
+    "four_rater_fleiss": 0.8918,
+    "unanimous": 17,
+    "soft": 3,
+    "serious": 0,
+    "tracked_tree_clean": true,
+    "holdout_frozen": false
+  },
+  "soft_disagreement_dispositions": {
+    "BIAA-003": "retain gold; retain-but-mark-borderline + clarify gold rationale (dissenter's secondary==gold)",
+    "BIAA-007": "retain gold; add taxonomy precedence note (mechanism-vs-overclaim boundary) + request independent human review",
+    "BIAA-016": "retain gold; retain-but-mark-borderline + revise packet to isolate the company claim"
+  },
+  "source_voice_claim_isolation_counts": {
+    "clean": 0,
+    "minor_presentation_ambiguity": 6,
+    "material_ambiguity": 2,
+    "unsuitable_without_revision": 1
+  },
+  "shortcut_audit": {
+    "demonstrated_unique_label_leakage": false,
+    "real_case_id_references": 0,
+    "verdict_like_headings": 0,
+    "packet_construction_issues": [
+      "BIAA-013"
+    ],
+    "observed_structural_correlations": [
+      "corr_vs_caus packets longer (mean 188 vs ~84; n=3, driven by BIAA-013/015)",
+      "BIAA-013 is the only packet with extra Study/Media Coverage headings and embedded analysis instruction naming all four taxonomy terms"
+    ],
+    "benign_taxonomy_word_occurrences": [
+      "BIAA-012 material contains 'causation' as an honest author caveat (gold=solid), not a cue"
+    ]
+  },
+  "perfect_gold_pattern": {
+    "fact": "3 of 4 raters reproduced all 20 gold primary labels; the 4th (Rater 3) diverged on 3 borderline cases only",
+    "leading_explanations": [
+      "genuine clarity on clear/anchor cases",
+      "shared language-model priors",
+      "model-assisted gold curation co-evolution (evidenced by gold_alternative_reading referencing a live multi-run model probe)"
+    ],
+    "caution": "A/B/D perfect match must NOT be read as independent human-grade validation of gold"
+  },
+  "final_recommendation": "B \u2014 STRONG, MINOR CURATION REQUIRED FIRST",
+  "holdout_freeze": "NOT performed; curator decision required"
+}

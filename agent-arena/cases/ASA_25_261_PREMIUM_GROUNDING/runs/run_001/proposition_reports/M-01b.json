@@ -1,0 +1,152 @@
+{
+  "analysis_status": "complete",
+  "claim": {
+    "claim_context": "Active atomic proposition M-01b from the frozen ASA 25/261 Premium Grounding claim registry (origin F06, repaired; type EXPLICIT; MOLECULAR-PROVENANCE; MECHANISTIC; PRODUCT-SPECIFIC). Frozen evidence-preparation state: NO MATERIAL DIRECT EVIDENCE LOCATED; required mechanism state: NOT ESTABLISHED. Routing: REQUIRED DIRECT ENDPOINT NOT DEMONSTRATED — this state follows from the absence of the required direct molecular provenance/direction/dose/distribution demonstration in the assembled mechanism evidence. M-01b did NOT receive the proposition-specific bounded negative-search protocol applied to P-02, P-05, V-01, E-02 and I-02.",
+    "claim_scope": "PRODUCT EQUIVALENCE UNCERTAIN | MOLECULAR PROVENANCE NOT ESTABLISHED",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "During grounding, electrons originating from Earth flow into the human body in the direction, quantity, and biological distribution implied by the advertisement.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "development_or_production_status": "production",
+  "evidence": {
+    "contradicting_or_limiting": [
+      "No tracer / dose / direction / tissue-distribution study located",
+      "M-01a cannot substitute (frozen separation, Freeze section 15)",
+      "Mechanism state frozen as NOT ESTABLISHED (Freeze sections 41/91)"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "H09/H18/H19",
+        "text": "Configured human voltage and current observations are compatible with charge movement across a conductive path.",
+        "tier": "limited_human",
+        "why_it_matters": "The nearest supporting observation; it constrains the physics but does not identify the source, direction, dose or destination of any charge."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 26/41/52",
+        "text": "No tracer, isotope-labelling, biologically relevant dose, direction or tissue-distribution study was located in the assembled mechanism evidence.",
+        "tier": "not_applicable",
+        "why_it_matters": "The endpoint that would establish the proposition was never measured in any located human study."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "Freeze sections 15/41",
+        "text": "Evidence for M-01a must not be counted automatically as evidence for M-01b; the historical conflated M-01 is superseded precisely because it merged the two.",
+        "tier": "not_applicable",
+        "why_it_matters": "Blocks the substitution that would otherwise make the proposition look supported."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "The required direct endpoint (molecular provenance with direction, quantity and distribution) is absent from every located human study.",
+    "missing_causal_chain": true,
+    "missing_comparison_group": false,
+    "missing_human_evidence": true,
+    "supporting": [
+      "Electrical measurements compatible with charge movement (H09/H18/H19) — insufficient for provenance"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "H09/H18/H19",
+          "Freeze sections 26/41/52"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "A molecular-provenance event is asserted as fact on the strength of macroscopic electrical measurements that cannot identify electron origin, direction or dose."
+      },
+      {
+        "evidence_refs": [
+          "Freeze sections 41/91"
+        ],
+        "mode": "missing_causal_chain",
+        "rationale": "The link from measured potential change to Earth-origin electron delivery is asserted, not demonstrated; the chain is frozen as NOT ESTABLISHED."
+      },
+      {
+        "evidence_refs": [
+          "Freeze sections 26/52"
+        ],
+        "mode": "missing_human_evidence",
+        "rationale": "No human study measured the provenance, direction, quantity or tissue distribution the claim specifies."
+      }
+    ],
+    "none_detected": false
+  },
+  "generated_at": "2026-08-23",
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "audit_trail": [
+      "input validated against forensic_report schema 6.3.0",
+      "analysis_status=complete",
+      "confidence classified as VALID (no coercion to 0.0)",
+      "3 failure mode(s) echoed from analysis (not inferred)",
+      "rewrite guard: no rewrite supplied"
+    ],
+    "input_digest_sha256": "c9327106413080e0179aea3f9a8885cdab8152e625443f32594eee20f653810e",
+    "model": "claude-opus-5",
+    "parser_status": "ok",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "report_generation_digest_sha256": "477e97fb861317f6c0322d4ca51a1de6e7b24540d8bb62a32f434e90c60aae84",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0",
+    "warnings": []
+  },
+  "reader_impact": {
+    "affected_decision_type": "Purchase of a wellness device on mechanistic grounds.",
+    "likely_reader_misunderstanding": "That a well-understood physical process has been shown to deliver Earth electrons into body tissue.",
+    "not_a_harm_probability_note": "Reader-impact risk is a qualitative category describing how a non-specialist might misread the claim. It is NOT a computed medical, legal, or financial harm probability.",
+    "risk_level": "moderate",
+    "risk_rationale": "The mechanism sentence is what makes the downstream health list feel physically grounded to a lay reader; accepting it makes every later claim seem pre-justified.",
+    "risk_uncertainty": null
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_available": false,
+    "rewrite_guard": {
+      "checked": true,
+      "status": "no_rewrite",
+      "unsupported_new_facts": []
+    },
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze.",
+    "rewrite_verification": "no_rewrite_supplied",
+    "rewrite_verification_note": "This rewrite is an UNVERIFIED proposal copied from the analysis input. The numeric-containment guard only checks that it introduces no unsupported number; it does NOT verify factual or semantic accuracy. Its factual support still requires human review."
+  },
+  "report_id": "ASA-25-261-run_001-M-01b",
+  "report_schema_version": "6.3.0",
+  "status_banner": [
+    "DEVELOPMENT PROTOTYPE — claim-forensics report (Phase 6.3)"
+  ],
+  "synthetic_fixture": false,
+  "uncertainty": {
+    "alternative_label_rationale": "A mechanism_vs_evidence reading was considered and rejected as primary under the frozen precedence rule: no animal or preclinical pathway is being extrapolated to human clinical benefit here. The advertisement asserts a molecular event in humans as accomplished fact when the measurement that would establish it was never performed — rhetorical inflation, which the taxonomy routes to the generic label.",
+    "alternative_plausible_label": "mechanism_vs_evidence",
+    "ambiguity": "NONE MATERIAL — both layers agree the required endpoint is missing; they differ only on how plausible the hypothesis is.",
+    "confidence_caveat": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "development_caveat": null,
+    "missing_evidence": [
+      "No tracer / dose / direction / tissue-distribution study located",
+      "M-01a cannot substitute (frozen separation, Freeze section 15)",
+      "Mechanism state frozen as NOT ESTABLISHED (Freeze sections 41/91)"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "Direct charge tracing, direction, quantity and tissue distribution in vivo remain unmeasured."
+    ]
+  },
+  "verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.86,
+    "predicted_label": "overclaim",
+    "verdict_summary": "The advertisement states that electrons originating from Earth flow into the body. No located human study traces electron provenance or establishes direction, biologically relevant quantity or tissue distribution. Measured electrical change (M-01a) is compatible with charge movement but cannot substitute for that demonstration.",
+    "verdict_title": "Claim goes beyond the available evidence"
+  }
+}

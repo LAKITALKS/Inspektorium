@@ -1,0 +1,144 @@
+{
+  "analysis_status": "complete",
+  "claim": {
+    "claim_context": "Active atomic proposition S-02 from the frozen ASA 25/261 Premium Grounding claim registry (origin F02 in context; type IMPLIED; THERAPEUTIC; CONDITION-SPECIFIC; PRODUCT-SPECIFIC). Frozen evidence-preparation state: VERY LIMITED DIRECT EVIDENCE. Routing: STANDARD BIOMEDICAL ADJUDICATION",
+    "claim_scope": "CONDITION MISMATCH | PRODUCT EQUIVALENCE UNCERTAIN",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding is relevant to/alleviates insomnia.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "development_or_production_status": "production",
+  "evidence": {
+    "contradicting_or_limiting": [
+      "H30 day-31 ISI p=.275",
+      "No diagnosed-insomnia efficacy population or endpoint located",
+      "General sleep-score change does not equal insomnia treatment"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "H02/H30",
+        "text": "Ghaly & Teplitz 2004 (n=12 with sleep dysfunction) and Park et al. 2025 enrolled participants with sleep complaints.",
+        "tier": "limited_human",
+        "why_it_matters": "Condition-adjacent samples; neither establishes a diagnosed-insomnia population or a response/remission endpoint."
+      },
+      {
+        "role": "contradictory",
+        "source_reference": "H30",
+        "text": "Park et al. 2025 day-31 Insomnia Severity Index between-group p=.275.",
+        "tier": "limited_human",
+        "why_it_matters": "The ISI is the standard insomnia instrument and it showed no between-group difference."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 51/55/63",
+        "text": "No diagnosed-insomnia trial with response or remission endpoints, harms ascertainment or durable follow-up was located.",
+        "tier": "not_applicable",
+        "why_it_matters": "The clinical endpoint the implied claim needs does not exist."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "No diagnosed population and no prespecified response/remission endpoint exist in the evidence.",
+    "missing_causal_chain": false,
+    "missing_comparison_group": false,
+    "missing_human_evidence": false,
+    "supporting": [
+      "H02/H30 sleep-complaint samples (condition-adjacent only)"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "H02/H30"
+        ],
+        "mode": "inappropriate_generalization",
+        "rationale": "General sleep-quality scores in convenience samples are extended to a named clinical sleep disorder."
+      },
+      {
+        "evidence_refs": [
+          "H30"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "Clinical relevance to insomnia is implied while the standard insomnia instrument showed no between-group difference."
+      }
+    ],
+    "none_detected": false
+  },
+  "generated_at": "2026-08-23",
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "audit_trail": [
+      "input validated against forensic_report schema 6.3.0",
+      "analysis_status=complete",
+      "confidence classified as VALID (no coercion to 0.0)",
+      "2 failure mode(s) echoed from analysis (not inferred)",
+      "rewrite guard: no rewrite supplied"
+    ],
+    "input_digest_sha256": "da80813949bb1952691f5d0da5f479689e4c483d381d541df2f3b3cde1e55e5a",
+    "model": "claude-opus-5",
+    "parser_status": "ok",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "report_generation_digest_sha256": "6cba5545e71703b6cae0f7578374beb486cbf86050540634a1a6cfecb2ea4c3d",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0",
+    "warnings": []
+  },
+  "reader_impact": {
+    "affected_decision_type": "Whether to seek clinical treatment for insomnia.",
+    "likely_reader_misunderstanding": "That the product is a recognised option for insomnia.",
+    "not_a_harm_probability_note": "Reader-impact risk is a qualitative category describing how a non-specialist might misread the claim. It is NOT a computed medical, legal, or financial harm probability.",
+    "risk_level": "high",
+    "risk_rationale": "Insomnia is a diagnosable disorder with effective treatments; implied relevance may delay care.",
+    "risk_uncertainty": null
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_available": false,
+    "rewrite_guard": {
+      "checked": true,
+      "status": "no_rewrite",
+      "unsupported_new_facts": []
+    },
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze.",
+    "rewrite_verification": "no_rewrite_supplied",
+    "rewrite_verification_note": "This rewrite is an UNVERIFIED proposal copied from the analysis input. The numeric-containment guard only checks that it introduces no unsupported number; it does NOT verify factual or semantic accuracy. Its factual support still requires human review."
+  },
+  "report_id": "ASA-25-261-run_001-S-02",
+  "report_schema_version": "6.3.0",
+  "status_banner": [
+    "DEVELOPMENT PROTOTYPE — claim-forensics report (Phase 6.3)"
+  ],
+  "synthetic_fixture": false,
+  "uncertainty": {
+    "alternative_label_rationale": "No specific frozen label applies; the error is condition drift from general sleep scores to a named clinical disorder.",
+    "alternative_plausible_label": null,
+    "ambiguity": "NONE MATERIAL.",
+    "confidence_caveat": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "development_caveat": null,
+    "missing_evidence": [
+      "H30 day-31 ISI p=.275",
+      "No diagnosed-insomnia efficacy population or endpoint located",
+      "General sleep-score change does not equal insomnia treatment"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "A diagnosed-insomnia RCT with response/remission, harms and durable follow-up has not been performed."
+    ]
+  },
+  "verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.85,
+    "predicted_label": "overclaim",
+    "verdict_summary": "No adequately powered, registered trial in a diagnosed insomnia population was located. The available samples are sleep-complaint convenience groups, and the one trial that used the standard insomnia instrument found no day-31 between-group difference on it.",
+    "verdict_title": "Claim goes beyond the available evidence"
+  }
+}

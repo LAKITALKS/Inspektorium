@@ -1,0 +1,1021 @@
+{
+  "run_id": "full27_study-forensics-024_Claude_Haiku_d285a1",
+  "task": {
+    "id": "study-forensics-024",
+    "title": "Study Forensics: Gene therapy elevating Klotho protein extends lifespan in mice",
+    "domain": "study_forensics",
+    "difficulty": "hard",
+    "task_type": "study_forensics",
+    "prompt": "An international team used viral vectors to boost production of the secreted form of the Klotho protein in middle-aged mice. The treated mice lived 15 to 20 percent longer and showed improvements in muscle strength, bone density and cognitive performance. Researchers observed increased formation of neurons and enhanced immune activity in the hippocampus. They filed patents for using Klotho to treat bone, muscle and aging-related deficits and suggested that with a suitable delivery method, this gene therapy could help build a healthier society by combating age-related decline.\n",
+    "context": "Strong animal evidence for a specific biological mechanism, but the leap to human\ntherapeutic claims and societal benefits is speculative. Classic mechanism vs evidence gap.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The summary describes a gene-therapy intervention that increases Klotho protein levels in mice and reports extended lifespan and improved physiological and cognitive outcomes. It suggests potential human applications without presenting human evidence. The mechanism is described but not demonstrated in humans.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "middle-aged mice",
+          "viral vectors"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "speculative therapy",
+        "variants": [
+          "healthier society",
+          "suitable delivery method",
+          "patents"
+        ],
+        "functional_descriptions": [
+          "therapeutic and societal claims go beyond preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating strong animal evidence as sufficient for human claims",
+      "missing the patent/commercial interest as a signal"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish strong preclinical mechanism from speculative human application?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "The summary describes a gene-therapy intervention that increases Klotho protein levels in mice and reports extended lifespan and improved outcomes. It suggests potential human applications without human evidence.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "The treated mice lived 15 to 20 percent longer and showed improvements in muscle strength, bone density and cognitive performance",
+        "why_it_matters": "Demonstrates robust effects observed in animals but not yet in humans.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "they filed patents for using Klotho to treat bone, muscle and aging-related deficits and suggested that with a suitable delivery method, this gene therapy could help build a healthier society",
+        "why_it_matters": "Illustrates overextension of animal findings to broad societal benefits without human evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "While the study demonstrates a mechanism (increased Klotho) and measurable effects in\nmice, the article extends the implications to human aging. The mechanism is described\nbut not demonstrated in humans; translation to people remains speculative. The patent\nfilings and \"healthier society\" language signal commercial optimism beyond evidence.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Clear mechanism_vs_evidence case in longevity/gene therapy domain. Parallel to\nCase013 (gut microbes) but with stronger animal evidence and more explicit commercial\ninterest (patents). Tests the same animal-to-human inference gap in a different domain.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The study was conducted in mice (middle-aged, not aged to death)\",\n    \"The intervention was a viral vector gene therapy delivering secreted Klotho\",\n    \"Outcomes measured include lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, and immune markers\",\n    \"No human trials are mentioned or implied to have been conducted\",\n    \"The text presents this as a preclinical finding with future therapeutic potential\"\n  ],\n  \"steps\": [\n    \"1. EVIDENCE TIER IDENTIFICATION: The study is conducted in mice using viral vector gene therapy. This is animal model research (Tier 2).\",\n    \"2. CONCLUSION TIER IDENTIFICATION: The text explicitly suggests therapeutic application in humans ('with a suitable delivery method, this gene therapy could help build a healthier society by combating age-related decline') and mentions patent filings for treating human conditions (bone, muscle, aging-related deficits).\",\n    \"3. BRIDGE GAP DETECTION: There is a substantial gap between animal model evidence and implied human therapeutic benefit.\",\n    \"4. HEDGE ANALYSIS: The text uses cautious language ('could help,' 'with a suitable delivery method,' 'suggested that') which acknowledges uncertainty but does not close the evidence gap. These hedges are decorative—they acknowledge the gap exists but do not provide evidence that bridges it.\",\n    \"5. MECHANISM VS. EVIDENCE CHECK: The text describes a plausible biological mechanism (Klotho production → neurogenesis, immune activity, physiological improvements) but this mechanism is demonstrated only in mice. Translating lifespan extension, muscle strength, bone density, and cognitive gains from mice to humans requires evidence not present in this summary.\",\n    \"6. CONFOUNDERS NOT ADDRESSED: No mention of control groups, dose-response relationships, potential off-target effects of viral vectors, or whether improvements are specific to Klotho or general effects of gene therapy.\",\n    \"7. PATENT FILING AS SIGNAL: Patent filings indicate commercial intent but do not constitute evidence of human efficacy or safety.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"solid: If the study included human pilot data or phase 1 trials alongside the mouse work, and the text simply emphasized the mouse findings. (Not supported by the text provided.)\",\n    \"overclaim: If the text made stronger claims about human benefit without any hedging. (The text does hedge, so mechanism_vs_evidence is more precise than overclaim.)\",\n    \"correlation_vs_causation: If the study were observational in humans. (The study is experimental in mice, so this does not apply.)\"\n  ],\n  \"uncertainties\": [\n    \"Whether the mouse lifespan extension was measured to natural death or censored at a fixed age (affects interpretation of the 15-20% figure)\",\n    \"Whether the cognitive and muscle improvements are direct effects of Klotho or secondary to systemic health improvements\",\n    \"Whether the viral vector delivery method used in mice is feasible or safe in humans\",\n    \"Whether the patent filings indicate active human development or are speculative\",\n    \"The specific age of the 'middle-aged' mice and whether this is a good model for human aging\"\n  ],\n  \"key_claims\": [\n    \"MAIN EPISTEMIC ISSUE: The text bridges from animal evidence (Tier 2) to human therapeutic implication (Tier 5) without direct human evidence. Hedging language acknowledges this gap but does not eliminate it.\",\n    \"SECONDARY ISSUE: The mechanism (Klotho → neurogenesis, immune activity) is plausible but demonstrated only in mice. Generalization to humans is speculative.\",\n    \"STRENGTH: The study appears well-designed (viral vector, multiple outcome measures, lifespan extension), but this does not resolve the animal-to-human translation gap.\",\n    \"PATENT FILINGS: Suggest commercial interest but are not evidence of efficacy or safety in humans.\"\n  ],\n  \"self_check\": [\n    \"Did I overclassify? No. The text explicitly suggests human therapeutic application ('could help build a healthier society'), which is a human_therapeutic conclusion tier. The evidence is animal-only. This is a genuine mechanism_vs_evidence issue, not a false positive.\",\n    \"Did I miss a bridge? The text provides no human data, no phase 1 trials, no biomarker studies in humans. The bridge is absent.\",\n    \"Is the hedging sufficient? No. Hedging language ('could,' 'with suitable delivery') acknowledges uncertainty but does not provide evidence. This is decorative uncertainty.\",\n    \"Did I conflate overclaim with mechanism_vs_evidence? Correctly distinguished: the text is not claiming certainty (so not overclaim), but it is implying human benefit from animal evidence (mechanism_vs_evidence).\",\n    \"Is the study itself flawed or just the reporting? The study appears sound (animal model, multiple outcomes, lifespan extension). The issue is the leap from mice to humans in the summary/framing.\"\n  ],\n  \"confidence\": 0.88\n}\n```\n\n---\n\n## Summary\n\n**Classification: MECHANISM_VS_EVIDENCE**\n\nThe core issue is a **tier mismatch**: the evidence comes from **animal studies** (mice treated with viral vector Klotho), but the conclusion implies **human therapeutic benefit** (\"could help build a healthier society by combating age-related decline,\" patent filings for human conditions).\n\n**Why not overclaim?** The text uses hedging language (\"could,\" \"with a suitable delivery method,\" \"suggested\"), which prevents it from claiming certainty. However, hedging does not resolve the evidence-tier gap.\n\n**Why not solid?** A solid study would either (a) report human data with appropriate caveats, or (b) stay within the animal tier (\"this mouse study suggests a mechanism worth investigating in humans\"). This text does the latter in words but the former in implication—the patents and \"healthier society\" framing suggest human application is the intended endpoint.\n\n**Key weakness**: No human evidence is presented. The biological mechanism is plausible but demonstrated only in mice. Translating lifespan extension and cognitive gains from rodents to humans is a major leap that requires direct human evidence to support.",
+        "parsed": {
+          "final_answer": "mechanism_vs_evidence",
+          "assumptions": [
+            "The study was conducted in mice (middle-aged, not aged to death)",
+            "The intervention was a viral vector gene therapy delivering secreted Klotho",
+            "Outcomes measured include lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, and immune markers",
+            "No human trials are mentioned or implied to have been conducted",
+            "The text presents this as a preclinical finding with future therapeutic potential"
+          ],
+          "steps": [
+            "1. EVIDENCE TIER IDENTIFICATION: The study is conducted in mice using viral vector gene therapy. This is animal model research (Tier 2).",
+            "2. CONCLUSION TIER IDENTIFICATION: The text explicitly suggests therapeutic application in humans ('with a suitable delivery method, this gene therapy could help build a healthier society by combating age-related decline') and mentions patent filings for treating human conditions (bone, muscle, aging-related deficits).",
+            "3. BRIDGE GAP DETECTION: There is a substantial gap between animal model evidence and implied human therapeutic benefit.",
+            "4. HEDGE ANALYSIS: The text uses cautious language ('could help,' 'with a suitable delivery method,' 'suggested that') which acknowledges uncertainty but does not close the evidence gap. These hedges are decorative—they acknowledge the gap exists but do not provide evidence that bridges it.",
+            "5. MECHANISM VS. EVIDENCE CHECK: The text describes a plausible biological mechanism (Klotho production → neurogenesis, immune activity, physiological improvements) but this mechanism is demonstrated only in mice. Translating lifespan extension, muscle strength, bone density, and cognitive gains from mice to humans requires evidence not present in this summary.",
+            "6. CONFOUNDERS NOT ADDRESSED: No mention of control groups, dose-response relationships, potential off-target effects of viral vectors, or whether improvements are specific to Klotho or general effects of gene therapy.",
+            "7. PATENT FILING AS SIGNAL: Patent filings indicate commercial intent but do not constitute evidence of human efficacy or safety."
+          ],
+          "alternative_hypotheses": [
+            "solid: If the study included human pilot data or phase 1 trials alongside the mouse work, and the text simply emphasized the mouse findings. (Not supported by the text provided.)",
+            "overclaim: If the text made stronger claims about human benefit without any hedging. (The text does hedge, so mechanism_vs_evidence is more precise than overclaim.)",
+            "correlation_vs_causation: If the study were observational in humans. (The study is experimental in mice, so this does not apply.)"
+          ],
+          "uncertainties": [
+            "Whether the mouse lifespan extension was measured to natural death or censored at a fixed age (affects interpretation of the 15-20% figure)",
+            "Whether the cognitive and muscle improvements are direct effects of Klotho or secondary to systemic health improvements",
+            "Whether the viral vector delivery method used in mice is feasible or safe in humans",
+            "Whether the patent filings indicate active human development or are speculative",
+            "The specific age of the 'middle-aged' mice and whether this is a good model for human aging"
+          ],
+          "self_check": [
+            "Did I overclassify? No. The text explicitly suggests human therapeutic application ('could help build a healthier society'), which is a human_therapeutic conclusion tier. The evidence is animal-only. This is a genuine mechanism_vs_evidence issue, not a false positive.",
+            "Did I miss a bridge? The text provides no human data, no phase 1 trials, no biomarker studies in humans. The bridge is absent.",
+            "Is the hedging sufficient? No. Hedging language ('could,' 'with suitable delivery') acknowledges uncertainty but does not provide evidence. This is decorative uncertainty.",
+            "Did I conflate overclaim with mechanism_vs_evidence? Correctly distinguished: the text is not claiming certainty (so not overclaim), but it is implying human benefit from animal evidence (mechanism_vs_evidence).",
+            "Is the study itself flawed or just the reporting? The study appears sound (animal model, multiple outcomes, lifespan extension). The issue is the leap from mice to humans in the summary/framing."
+          ],
+          "key_claims": [
+            "MAIN EPISTEMIC ISSUE: The text bridges from animal evidence (Tier 2) to human therapeutic implication (Tier 5) without direct human evidence. Hedging language acknowledges this gap but does not eliminate it.",
+            "SECONDARY ISSUE: The mechanism (Klotho → neurogenesis, immune activity) is plausible but demonstrated only in mice. Generalization to humans is speculative.",
+            "STRENGTH: The study appears well-designed (viral vector, multiple outcome measures, lifespan extension), but this does not resolve the animal-to-human translation gap.",
+            "PATENT FILINGS: Suggest commercial interest but are not evidence of efficacy or safety in humans."
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 16071
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.65,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.9166666666666667,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.4,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "2. CONCLUSION TIER IDENTIFICATION: The text explicitly suggests therapeutic application in humans ('with a suitable delivery method, this gene therapy",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.78)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.65,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Outcomes measured include lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, and immune markers",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the mouse lifespan extension was measured to natural death or censored at a fixed age (affects interpretation of the 15-20% figure)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.9166666666666667,
+          "weight": 6,
+          "weighted_score": 5.5,
+          "evidence": [
+            {
+              "text": "solid: If the study included human pilot data or phase 1 trials alongside the mouse work, and the text simply emphasized the mouse findings. (Not supported by the text provided.)",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "2/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Did I overclassify? No. The text explicitly suggests human therapeutic application ('could help build a healthier society'), which is a human_therapeutic conclusion tier. The evidence is animal-only. ",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.4,
+          "weight": 10,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "5. MECHANISM VS. EVIDENCE CHECK: The text describes a plausible biological mechanism (Klotho production → neurogenesis, immune activity, physiological",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Mechanism description without case grounding",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Names concept + describes mechanism (not grounded to case)"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 670 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "vector gene therapy. this is animal model research (tier 2). 2. conclus",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'animal model' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/19 content words)",
+          "evidence": [
+            {
+              "text": "MAIN EPISTEMIC ISSUE: The text bridges from animal evidence (Tier 2) to human therapeutic implication (Tier 5) without direct human evidence. Hedging language acknowledges this gap but does not eliminate it.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (1/13 content words)",
+          "evidence": [
+            {
+              "text": "SECONDARY ISSUE: The mechanism (Klotho → neurogenesis, immune activity) is plausible but demonstrated only in mice. Generalization to humans is speculative.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/15 content words)",
+          "evidence": [
+            {
+              "text": "STRENGTH: The study appears well-designed (viral vector, multiple outcome measures, lifespan extension), but this does not resolve the animal-to-human translation gap.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (1/9 content words)",
+          "evidence": [
+            {
+              "text": "PATENT FILINGS: Suggest commercial interest but are not evidence of efficacy or safety in humans.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "overclaim: If the text made stronger claims about human benefit without any hedging. (The text does hedge, so mechanism_vs_evidence is more precise than overclaim.)",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted in mice (middle-aged, not aged to death)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The intervention was a viral vector gene therapy delivering secreted Klotho",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Outcomes measured include lifespan extension (15-20%), muscle strength, bone density, cognitive performance, neurogenesis, and immune markers",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No human trials are mentioned or implied to have been conducted",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The text presents this as a preclinical finding with future therapeutic potential",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "1. EVIDENCE TIER IDENTIFICATION: The study is conducted in mice using viral vector gene therapy. This is animal model research (Tier 2).",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "2. CONCLUSION TIER IDENTIFICATION: The text explicitly suggests therapeutic application in humans ('with a suitable delivery method, this gene therapy could help build a healthier society by combating age-related decline') and mentions patent filings for treating human conditions (bone, muscle, aging-related deficits).",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "3. BRIDGE GAP DETECTION: There is a substantial gap between animal model evidence and implied human therapeutic benefit.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "4. HEDGE ANALYSIS: The text uses cautious language ('could help,' 'with a suitable delivery method,' 'suggested that') which acknowledges uncertainty but does not close the evidence gap. These hedges are decorative—they acknowledge the gap exists but do not provide evidence that bridges it.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "5. MECHANISM VS. EVIDENCE CHECK: The text describes a plausible biological mechanism (Klotho production → neurogenesis, immune activity, physiological improvements) but this mechanism is demonstrated only in mice. Translating lifespan extension, muscle strength, bone density, and cognitive gains from mice to humans requires evidence not present in this summary.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "6. CONFOUNDERS NOT ADDRESSED: No mention of control groups, dose-response relationships, potential off-target effects of viral vectors, or whether improvements are specific to Klotho or general effects of gene therapy.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "7. PATENT FILING AS SIGNAL: Patent filings indicate commercial intent but do not constitute evidence of human efficacy or safety.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "MAIN EPISTEMIC ISSUE: The text bridges from animal evidence (Tier 2) to human therapeutic implication (Tier 5) without direct human evidence. Hedging language acknowledges this gap but does not eliminate it.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SECONDARY ISSUE: The mechanism (Klotho → neurogenesis, immune activity) is plausible but demonstrated only in mice. Generalization to humans is speculative.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "STRENGTH: The study appears well-designed (viral vector, multiple outcome measures, lifespan extension), but this does not resolve the animal-to-human translation gap.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "PATENT FILINGS: Suggest commercial interest but are not evidence of efficacy or safety in humans.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid: If the study included human pilot data or phase 1 trials alongside the mouse work, and the text simply emphasized the mouse findings. (Not supported by the text provided.)",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim: If the text made stronger claims about human benefit without any hedging. (The text does hedge, so mechanism_vs_evidence is more precise than overclaim.)",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation: If the study were observational in humans. (The study is experimental in mice, so this does not apply.)",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the mouse lifespan extension was measured to natural death or censored at a fixed age (affects interpretation of the 15-20% figure)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the cognitive and muscle improvements are direct effects of Klotho or secondary to systemic health improvements",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the viral vector delivery method used in mice is feasible or safe in humans",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the patent filings indicate active human development or are speculative",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific age of the 'middle-aged' mice and whether this is a good model for human aging",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overclassify? No. The text explicitly suggests human therapeutic application ('could help build a healthier society'), which is a human_therapeutic conclusion tier. The evidence is animal-only. This is a genuine mechanism_vs_evidence issue, not a false positive.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a bridge? The text provides no human data, no phase 1 trials, no biomarker studies in humans. The bridge is absent.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the hedging sufficient? No. Hedging language ('could,' 'with suitable delivery') acknowledges uncertainty but does not provide evidence. This is decorative uncertainty.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I conflate overclaim with mechanism_vs_evidence? Correctly distinguished: the text is not claiming certainty (so not overclaim), but it is implying human benefit from animal evidence (mechanism_vs_evidence).",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the study itself flawed or just the reporting? The study appears sound (animal model, multiple outcomes, lifespan extension). The issue is the leap from mice to humans in the summary/framing.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.375
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.375
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.5333333333333333
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.45454545454545453
+          },
+          {
+            "source_idx": 26,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.46153846153846156
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          29
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [
+          "5. MECHANISM VS. EVIDENCE CHECK: The text describes a plausible biological mechanism (Klotho production → neurogenesis, immune activity, physiological"
+        ],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'mechanism_vs_evidence...'"
+        ],
+        "unsupported_claims": [
+          "mechanism_vs_evidence"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "mechanism_vs_evidence",
+        "label_correct": true,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [
+          "unsupported_generalization"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [
+            "could help"
+          ],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph: conclusion not well grounded",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.78)",
+        "5/5 substantive assumptions",
+        "5 uncertainties (5 substantive)",
+        "Confidence 0.88",
+        "3 alternative hypotheses considered",
+        "2/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept + describes mechanism (not grounded to case)",
+        "Signal density: 0.71, 670 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:01:07.047691+00:00",
+  "metadata": {}
+}

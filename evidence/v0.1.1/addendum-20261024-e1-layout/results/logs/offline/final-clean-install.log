@@ -1,0 +1,23 @@
+{
+  "venv": "<WORK>/final-clean-env",
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "wheel": "inspektorium-0.1.1-py3-none-any.whl",
+  "wheel_sha256": "f8452a4f8d9b7be1778d1ef33a70de083ace95ad2c6e1bbf375388de8650da9c",
+  "freeze": [
+    "annotated-types==0.8.0",
+    "inspektorium @ file://<WORK>/layout-build/wheels/inspektorium-0.1.1-py3-none-any.whl#sha256=f8452a4f8d9b7be1778d1ef33a70de083ace95ad2c6e1bbf375388de8650da9c",
+    "pip==23.2.1",
+    "pydantic==2.14.1",
+    "pydantic_core==2.50.1",
+    "setuptools==65.5.0",
+    "typing-inspection==0.4.4",
+    "typing_extensions==4.16.0"
+  ],
+  "guard": {
+    "venv": "<WORK>/final-clean-env",
+    "guard_module": "<WORK>/final-clean-env/lib/python3.11/site-packages/evidence_netguard.py",
+    "guard_sha256": "1e36c64181d0890a4d49955cff84015c6203c2edd280a1bba6b83accf8f4a84b",
+    "source_sha256": "1e36c64181d0890a4d49955cff84015c6203c2edd280a1bba6b83accf8f4a84b"
+  },
+  "created": "2026-10-24T18:35:22+00:00"
+}

@@ -1,0 +1,4 @@
++ env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<scratch>/tools .venv/bin/python -m pytest -p no:cacheprovider -p pytest_netguard_plugin --basetemp <scratch>/pytest-a2a4 -q tests/test_v1_closeout_report.py
+...................                                                      [100%]
+19 passed in 22.65s
+[pytest_netguard] {"refused_real_network_attempts": 0, "by_kind": {"httpx.HTTPTransport.handle_request": 0, "httpx.AsyncHTTPTransport.handle_async_request": 0, "socket.connect": 0, "socket.connect_ex": 0, "socket.create_connection": 0}}

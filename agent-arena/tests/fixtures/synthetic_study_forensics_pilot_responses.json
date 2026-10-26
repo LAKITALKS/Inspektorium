@@ -1,0 +1,48 @@
+{
+  "fixture_role": "pipeline_qa_regression_only",
+  "synthetic": true,
+  "responses": {
+    "study-forensics-001": {
+      "final_answer": "solid",
+      "steps": ["The experimental design supports the bounded claim."],
+      "key_claims": ["The evidence matches the claim."],
+      "confidence": 0.8,
+      "confidence_state": "VALID"
+    },
+    "study-forensics-004": {
+      "final_answer": "solid",
+      "steps": ["The randomized design and cautious wording match the evidence."],
+      "key_claims": ["The reported effect is appropriately qualified."],
+      "confidence": 0.8,
+      "confidence_state": "VALID"
+    },
+    "study-forensics-007": {
+      "final_answer": "overclaim",
+      "steps": ["The conclusion exceeds the null primary result."],
+      "key_claims": ["A weak secondary signal is framed too strongly."],
+      "confidence": 0.8,
+      "confidence_state": "VALID"
+    },
+    "study-forensics-009": {
+      "final_answer": "overclaim",
+      "steps": ["The interpretation generalizes beyond the studied population."],
+      "key_claims": ["The conclusion exceeds the results."],
+      "confidence": 0.8,
+      "confidence_state": "VALID"
+    },
+    "study-forensics-013": {
+      "final_answer": "mechanism_vs_evidence",
+      "steps": ["An animal mechanism does not establish a human treatment effect."],
+      "key_claims": ["The proposed human mechanism remains unsupported."],
+      "confidence": 0.8,
+      "confidence_state": "VALID"
+    },
+    "study-forensics-019": {
+      "final_answer": "correlation_vs_causation",
+      "steps": ["A cross-sectional association cannot establish causation."],
+      "key_claims": ["Confounding prevents the stated causal conclusion."],
+      "confidence": 0.8,
+      "confidence_state": "VALID"
+    }
+  }
+}

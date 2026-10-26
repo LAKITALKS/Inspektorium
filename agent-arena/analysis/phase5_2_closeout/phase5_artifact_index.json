@@ -1,0 +1,159 @@
+{
+  "current_commit": "6838964844a474863d052356884d2c2ed6e246cc",
+  "current_tag": "v0.8.12-holdout-freeze",
+  "phase5_checkpoint_tags": [
+    {
+      "tag": "v0.8.0-active-library-diagnostics",
+      "commit": "19eabea8769a7049dc5bd77b8899b4c7b4eb73d0",
+      "message": "Phase 5.0 offline active-library diagnostics (49 active + 1 retired)"
+    },
+    {
+      "tag": "v0.8.1-blind-iaa-design",
+      "commit": "7ba5fb390333e9c8ed66aaf181ebacbeba5ab0e1",
+      "message": "Phase 5.05 blind inter-annotator agreement study design (20-case stratified sample)"
+    },
+    {
+      "tag": "v0.8.10-final-revalidation-prep",
+      "commit": "2aa15fbf7980ba8e90d55aba5f33d2a8fcfb6852",
+      "message": "Freeze final BIAA-013 v3 blind revalidation design before collection"
+    },
+    {
+      "tag": "v0.8.11-final-revalidation-results",
+      "commit": "f8efe474d3068b7fbc4d149d9be1816b12b1e9cd",
+      "message": "Approve final BIAA-013 v3 blind revalidation and close remediation loop"
+    },
+    {
+      "tag": "v0.8.11a-holdout-pool-augmentation",
+      "commit": "babeb11dec4f52feced708626c9f090f61c8afaa",
+      "message": "Add three deterministically selected blind packets for balanced holdout feasibility"
+    },
+    {
+      "tag": "v0.8.12-holdout-freeze",
+      "commit": "6838964844a474863d052356884d2c2ed6e246cc",
+      "message": "Freeze the 16-case prospective Agent Arena v1.0 holdout"
+    },
+    {
+      "tag": "v0.8.2-multi-annotator-blind-packets",
+      "commit": "44287d9da69910477c5c27162a1c903b5fdcb263",
+      "message": "Strongly anonymized multi-annotator blind IAA packets (20 cases, A/B/C)"
+    },
+    {
+      "tag": "v0.8.3-adversarial-evidence-roadmap",
+      "commit": "2bb6f4abc03c5c64ad28c9171db9b295bfd92c21",
+      "message": "Documentation-only: integrate adversarial evidence principles into the living roadmap"
+    },
+    {
+      "tag": "v0.8.4-iaa-analysis-prep",
+      "commit": "d99d6f649ae93333ac6af451453912547518287b",
+      "message": "Phase 5.05c prep: deterministic multi-annotator proxy-IAA analyzer (no responses yet)"
+    },
+    {
+      "tag": "v0.8.5-proxy-iaa-curator-review",
+      "commit": "a4027d7a6e67095b91b4af411949b5dbdcd9011d",
+      "message": "Archive four-rater proxy IAA and Phase 5.05d curator disposition"
+    },
+    {
+      "tag": "v0.8.6-targeted-curation",
+      "commit": "4da78d5b09526516eb837ed7cb846519c6eb9b32",
+      "message": "Finalize approved Phase 5.05e remediation before targeted revalidation"
+    },
+    {
+      "tag": "v0.8.7-targeted-revalidation-prep",
+      "commit": "902fea74bf00b85f1effe0dbef2c9f3b7aa5e75e",
+      "message": "Freeze Phase 5.05f blind revalidation design before collection"
+    },
+    {
+      "tag": "v0.8.8-targeted-revalidation-results",
+      "commit": "31c6310ad01d3be061f81a4a13ae2e86210ee46c",
+      "message": "Archive Phase 5.05f results and final BIAA-013 remediation decision"
+    },
+    {
+      "tag": "v0.8.9-biaa013-v3-remediation",
+      "commit": "6420303760e8dab37c1feaeb23069b562db3d703",
+      "message": "Approve and archive BIAA-013 v3 before final blind revalidation"
+    }
+  ],
+  "committed_phase5_workspaces": [
+    "phase4_9_retrospective",
+    "phase5_05_blind_iaa_design",
+    "phase5_05_blind_iaa_packets",
+    "phase5_05c_iaa_results",
+    "phase5_05d_curator_review",
+    "phase5_05e_targeted_curation",
+    "phase5_05f_targeted_revalidation",
+    "phase5_05g_biaa013_final_remediation",
+    "phase5_05h_final_blind_revalidation",
+    "phase5_0_active_library_diagnostics",
+    "phase5_1_holdout_freeze",
+    "phase5_1a_holdout_pool_augmentation",
+    "phase5_2_closeout",
+    "phase5a"
+  ],
+  "curator_decision_paths": [
+    "analysis/phase5_05c_iaa_results/iaa_20260801_162800/review_queues/curator_review_queue.md",
+    "analysis/phase5_05d_curator_review/iaa_20260801_162800/curator_decision.md",
+    "analysis/phase5_05d_curator_review/iaa_20260801_162800/curator_recommendations.md",
+    "analysis/phase5_05e_targeted_curation/curator_approval.md",
+    "analysis/phase5_05f_targeted_revalidation/curator_preparation_approval.md",
+    "analysis/phase5_05f_targeted_revalidation/results/reval_20260802_145257/curator_decision.md",
+    "analysis/phase5_05f_targeted_revalidation/results/reval_20260802_145257/curator_review_queue.md",
+    "analysis/phase5_05g_biaa013_final_remediation/curator_approval.md",
+    "analysis/phase5_05h_final_blind_revalidation/curator_preparation_approval.md",
+    "analysis/phase5_05h_final_blind_revalidation/results/final_reval_20260802_190208/curator_decision.md",
+    "analysis/phase5_05h_final_blind_revalidation/results/final_reval_20260802_190208/curator_review_queue.md",
+    "analysis/phase5_1_holdout_freeze/curator_approval.md",
+    "analysis/phase5_1a_holdout_pool_augmentation/curator_approval.md"
+  ],
+  "validation_report_paths": [
+    "analysis/phase5_1_holdout_freeze/validation_report.md",
+    "analysis/phase5_1a_holdout_pool_augmentation/validation_report.md"
+  ],
+  "taxonomy": {
+    "path": "analysis/phase5_05_blind_iaa_packets/annotator_facing/annotator_taxonomy_reference.md",
+    "sha256": "c8c9f5c35da6d62e4a9dcffcb6b0c0b3c1604fc66b0e94795832b7f792bc872e"
+  },
+  "canonical_case_ledger": {
+    "path": "analysis/phase5_05_blind_iaa_packets/internal_only/blind_case_index.csv",
+    "sha256": "3aa1fdb9c9d5f7c94760272f99cf0ea9e6f22ebb80f00553f91b4704b41c7b0b"
+  },
+  "latest_approved_biaa_packets": {
+    "BIAA-001.md": "87c4e9272929644477eb5f46778323a259d3cc994b708412abf0ff0f9ef8525c",
+    "BIAA-002.md": "da468af26561df2081290cbb39ca7ffd39ffcff890b1cb1a8cd7fa0fd0611c36",
+    "BIAA-003.md": "d32a4c965ed3b384b19edea3a2592c0ca403887943c59cd5e4106c186f16b30e",
+    "BIAA-004.md": "a614f061e8b1562abce34611cbcace9df3b315dddf773a82841d02cbb8ee773e",
+    "BIAA-005.md": "469a939d8e5e98897d8afc27916358a4b79d876910212c668de7c02778e271bf",
+    "BIAA-006.md": "1b3ad0de7f2777a21b52930e73338dc9b5f67eb899ac132f09b9066bca72593a",
+    "BIAA-007.md": "8ac2f3a5457795ea26650ac7694562237f917b99869bf987c16483be81d820d1",
+    "BIAA-008.md": "28eed7b904d5d77295e4c89410cee1ec8c5662b0b60d3307a8b012e20e8a8b3c",
+    "BIAA-009.md": "d09caa23b885ad9aa4268ebf250d8a1e76f8b56325a398422ad9f979b01fe50a",
+    "BIAA-010.md": "ea09697fa0e3b68be2d648e489f35ced1614cca4a883505a303da4ab1aa8ffd7",
+    "BIAA-011.md": "682f6aea71623ec5594748a316dcb02b9cbae292ad61da658525be02298adce8",
+    "BIAA-012.md": "346ed73299b5fabe038755b621d143e021c874a93b284baabe9bdd7918856f8c",
+    "BIAA-013.md": "d01cb9c4f7e650af2e89ba07cf32433d31f014d3ae62fbed71e172b21ebe246a",
+    "BIAA-014.md": "141af35a7de4a57d4c375742eebe29551ac8e5a0c8db406b624df00ab5fdc71f",
+    "BIAA-015.md": "2c6342b3bf745f53404155b299b8cbf3e89796c8b9f66e0a4db400ef749448e8",
+    "BIAA-016.md": "8ec356bec8e0993e3ef130b1636ad51f275eeef05ec4033e19af6df8b78a79d5",
+    "BIAA-017.md": "e5766f90dbe429d91c93dbed52d3e9a90445cfe3f9f20d4bc064c5718d950337",
+    "BIAA-018.md": "8a05f7050337b4affef37b950ab179aead98aa87a02ce2dc4a6ca76e52fd9250",
+    "BIAA-019.md": "87199a67d6b6b910aab7fc911ec60fffed869c289405729f8dea80b6033302aa",
+    "BIAA-020.md": "fe5c3722a00142ced16a1e895ac8fcdcd22122eb632b128cb9d283616250d840",
+    "BIAA-013_v3.md": "1f6eadad2d28f325244e95be73a3ed153fafd34250ef8afd1536b38e1d6bec29",
+    "BIAA-016_v2.md": "6baa9ed28a8adb87ca10099f642a5986c1f4bd3bd388f597ee6f8ac6128a21db",
+    "BIAA-021_v1.md": "c6a6a947a9a51ee71a23705b22ada247bacff82e191adceac87b8676433df89d",
+    "BIAA-022_v1.md": "560b29eb419a8a50cfcc525ba0ab1369482624a770b478d57e04d65d5c6dbc92",
+    "BIAA-023_v1.md": "a88a75a5d5577e829ad29eae1fee9271708c8a684d6d6aa99df69830fc195507"
+  },
+  "phase5_1_public_manifest": {
+    "path": "analysis/phase5_1_holdout_freeze/holdout_public_manifest.json",
+    "sha256": "d6ffb4146cf08a2001225c6d3c3ec764e6256ec8d43263fea8c707bd941c2091"
+  },
+  "phase5_1_private_material_commitment": {
+    "path": "analysis/phase5_1_holdout_freeze/private_material_commitment.json",
+    "sha256": "819e524b0872b839da2dfa6d43369d4d83da71b97494d552210b5b51dba13fa9"
+  },
+  "phase5_1_freeze_policy": {
+    "path": "analysis/phase5_1_holdout_freeze/freeze_policy.md",
+    "sha256": "f240903d786a2582412d175f57a5c1c0670eef3b81127999fc4366612b1fca32"
+  },
+  "note": "Public committed evidence only. No private contents, no HLD-to-source mapping, no per-HLD gold."
+}

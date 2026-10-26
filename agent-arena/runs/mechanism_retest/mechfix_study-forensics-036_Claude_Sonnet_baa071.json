@@ -1,0 +1,922 @@
+{
+  "run_id": "mechfix_study-forensics-036_Claude_Sonnet_baa071",
+  "task": {
+    "id": "study-forensics-036",
+    "title": "Study Forensics: Antioxidant blend improves memory in aged mice",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "Researchers administered a blend of natural antioxidants to aged mice and found that the animals navigated mazes faster and remembered previously learned routes. Muscle endurance was also improved. The authors see potential for preventing age-related memory loss in humans but warn that correct dosing is complex and excessive vitamin intake can be harmful. Clinical studies in humans are still pending.\n",
+    "context": "Classic preclinical-to-human translation case. The mechanism is demonstrated in mice\nonly, yet human therapeutic potential is implied. The warning about dosing is present\nbut does not prevent the human application claim.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The text describes preclinical results in mice and links them to potential benefits for humans. Although the need for further research is acknowledged, the conclusion implies a transfer to humans without supporting evidence. The central weakness is the mechanism-to-evidence gap.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "aged mice",
+          "animal"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "translation gap",
+        "variants": [
+          "clinical studies pending",
+          "humans",
+          "potential"
+        ],
+        "functional_descriptions": [
+          "human therapeutic claims go beyond preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating animal results as sufficient evidence for human claims",
+      "classifying as generic overclaim instead of mechanism_vs_evidence"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify the animal-to-human translation gap despite partial hedging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "Preclinical antioxidant study in mice with implied human therapeutic potential. Classic mechanism-vs-evidence gap with partial hedging.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "animals navigated mazes faster and remembered previously learned routes",
+        "why_it_matters": "Describes success in the animal model.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "potential for preventing age-related memory loss in humans",
+        "why_it_matters": "Transfers animal data to humans without direct evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "Clinical studies in humans are still pending",
+        "why_it_matters": "Confirms the lack of human evidence.",
+        "supports_finding": "mechanism_not_demonstrated"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The text describes preclinical results in mice and connects them to possible human\nbenefits. While cautioning about dosing and noting pending human trials, it still implies\ntherapeutic potential for age-related memory loss in humans. The mechanism is demonstrated\nonly in an animal model. The implicit assumption of human benefit without evidence is the\ncore issue.\n",
+    "gold_alternative_reading": "One could argue that the warnings about dosing and the acknowledgment of missing human\nstudies sufficiently qualify the conclusion, making the case more moderate than\nproblematic. However, the implicit therapeutic promise for humans remains unsupported.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Imported from Dataset 6 (CaseD05). Originally German, translated to English. Classic\nanimal-to-human mechanism case in nutrition domain. Complements case028 (NAD+/Alzheimer's)\nand case030 (APJ exercise mimetic) with a different substance but same structural pattern.\nBased on EurekAlert antioxidant supplement study.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Sonnet",
+        "model": "claude-sonnet-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\"The study was conducted only in aged mice\", \"No human data exists yet\", \"The antioxidant blend showed cognitive and physical benefits in the animal model\", \"Authors are discussing human therapeutic potential based on mouse results\"],\n  \"steps\": [\"Identified evidence tier: animal studies in aged mice showing cognitive and physical improvements\", \"Identified conclusion tier: text discusses 'potential for preventing age-related memory loss in humans'\", \"Checked for bridge evidence: no human studies mentioned, only 'clinical studies in humans are still pending'\", \"Evaluated hedging: while authors include appropriate caveats about dosing complexity and pending human trials, they still imply therapeutic potential for humans\", \"Applied key rule: cautious wording does not resolve evidence-tier mismatch - mouse benefits do not establish human therapeutic potential\"],\n  \"alternative_hypotheses\": [\"Could be classified as 'solid' if focus is only on mouse results\", \"Might consider 'overclaim' but the core issue is the evidence tier gap\"],\n  \"uncertainties\": [\"Exact wording of 'potential for preventing' - how strongly is human benefit implied\", \"Whether the hedging language is sufficient to keep conclusions within evidence tier\"],\n  \"key_claims\": [\"Mouse study shows cognitive and physical benefits from antioxidant blend\", \"Authors suggest human therapeutic potential despite lack of human evidence\", \"Appropriate safety warnings and acknowledgment of pending human trials included\"],\n  \"self_check\": [\"Confirmed this is not overclaim - the issue is specifically about evidence tier mismatch\", \"Verified the text does imply human benefit despite only having animal evidence\", \"Checked that hedging language acknowledges but does not close the evidence gap\"],\n  \"confidence\": 0.90\n}",
+        "parsed": {
+          "final_answer": "mechanism_vs_evidence",
+          "assumptions": [
+            "The study was conducted only in aged mice",
+            "No human data exists yet",
+            "The antioxidant blend showed cognitive and physical benefits in the animal model",
+            "Authors are discussing human therapeutic potential based on mouse results"
+          ],
+          "steps": [
+            "Identified evidence tier: animal studies in aged mice showing cognitive and physical improvements",
+            "Identified conclusion tier: text discusses 'potential for preventing age-related memory loss in humans'",
+            "Checked for bridge evidence: no human studies mentioned, only 'clinical studies in humans are still pending'",
+            "Evaluated hedging: while authors include appropriate caveats about dosing complexity and pending human trials, they still imply therapeutic potential for humans",
+            "Applied key rule: cautious wording does not resolve evidence-tier mismatch - mouse benefits do not establish human therapeutic potential"
+          ],
+          "alternative_hypotheses": [
+            "Could be classified as 'solid' if focus is only on mouse results",
+            "Might consider 'overclaim' but the core issue is the evidence tier gap"
+          ],
+          "uncertainties": [
+            "Exact wording of 'potential for preventing' - how strongly is human benefit implied",
+            "Whether the hedging language is sufficient to keep conclusions within evidence tier"
+          ],
+          "self_check": [
+            "Confirmed this is not overclaim - the issue is specifically about evidence tier mismatch",
+            "Verified the text does imply human benefit despite only having animal evidence",
+            "Checked that hedging language acknowledges but does not close the evidence gap"
+          ],
+          "key_claims": [
+            "Mouse study shows cognitive and physical benefits from antioxidant blend",
+            "Authors suggest human therapeutic potential despite lack of human evidence",
+            "Appropriate safety warnings and acknowledgment of pending human trials included"
+          ],
+          "confidence": 0.9,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11256
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.7200000000000001,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.20000000000000004,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 5",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Evaluated hedging: while authors include appropriate caveats about dosing complexity and pending human trials, they still imply therapeutic potential ",
+              "source_field": "steps[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 reasoning steps",
+            "Low step utility: 0/5 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.85)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.7200000000000001,
+          "weight": 6,
+          "weighted_score": 4.3,
+          "evidence": [
+            {
+              "text": "The study was conducted only in aged mice",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The antioxidant blend showed cognitive and physical benefits in the animal model",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions",
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Exact wording of 'potential for preventing' - how strongly is human benefit implied",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 uncertainties (2 substantive)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "Might consider 'overclaim' but the core issue is the evidence tier gap",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "1/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.20000000000000004,
+          "weight": 8,
+          "weighted_score": 1.6,
+          "evidence": [
+            {
+              "text": "Confirmed this is not overclaim - the issue is specifically about evidence tier mismatch",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Verified the text does imply human benefit despite only having animal evidence",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "3 self-check items",
+            "Self-check quality: 0 deep, 1 arithmetic, 2 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.77, 235 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "and physical benefits in the animal model authors are discussing human",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'animal model' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The study was conducted only in aged mice...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The study was conducted only in aged mice",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/9 content words)",
+          "evidence": [
+            {
+              "text": "Mouse study shows cognitive and physical benefits from antioxidant blend",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (1/8 content words)",
+          "evidence": [
+            {
+              "text": "Authors suggest human therapeutic potential despite lack of human evidence",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Appropriate safety warnings and acknowledgment of pending human trials included",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 1 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "The study was conducted only in aged mice",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be classified as 'solid' if focus is only on mouse results",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted only in aged mice",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "No human data exists yet",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The antioxidant blend showed cognitive and physical benefits in the animal model",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Authors are discussing human therapeutic potential based on mouse results",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence tier: animal studies in aged mice showing cognitive and physical improvements",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified conclusion tier: text discusses 'potential for preventing age-related memory loss in humans'",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for bridge evidence: no human studies mentioned, only 'clinical studies in humans are still pending'",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated hedging: while authors include appropriate caveats about dosing complexity and pending human trials, they still imply therapeutic potential for humans",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Applied key rule: cautious wording does not resolve evidence-tier mismatch - mouse benefits do not establish human therapeutic potential",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mouse study shows cognitive and physical benefits from antioxidant blend",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Authors suggest human therapeutic potential despite lack of human evidence",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Appropriate safety warnings and acknowledgment of pending human trials included",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be classified as 'solid' if focus is only on mouse results",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Might consider 'overclaim' but the core issue is the evidence tier gap",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Exact wording of 'potential for preventing' - how strongly is human benefit implied",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the hedging language is sufficient to keep conclusions within evidence tier",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Confirmed this is not overclaim - the issue is specifically about evidence tier mismatch",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified the text does imply human benefit despite only having animal evidence",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked that hedging language acknowledges but does not close the evidence gap",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.375
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.5
+          }
+        ],
+        "unused_assumptions": [
+          0
+        ],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          19
+        ],
+        "fluff_self_checks": [
+          17,
+          18
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'mechanism_vs_evidence...'"
+        ],
+        "unsupported_claims": [
+          "mechanism_vs_evidence"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "mechanism_vs_evidence",
+        "label_correct": true,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "mechanism_not_demonstrated"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": false
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 5",
+        "Reasoning graph: conclusion not well grounded",
+        "5 reasoning steps",
+        "Low step utility: 0/5 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.85)",
+        "4/4 substantive assumptions",
+        "1 unused assumption(s)",
+        "2 uncertainties (2 substantive)",
+        "Confidence 0.9",
+        "2 alternative hypotheses considered",
+        "1/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "3 self-check items",
+        "Self-check quality: 0 deep, 1 arithmetic, 2 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.77, 235 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T16:43:44.686328+00:00",
+  "metadata": {}
+}

@@ -1,0 +1,1272 @@
+{
+  "schema": "aa-p10-live-retest-summary/1.1",
+  "authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
+  "run": "ended",
+  "starts": [
+    {
+      "at": "2026-10-12T15:07:42.775801+00:00",
+      "head": "63399dd1c3093d21a9307630ba85a6f85e4fa450",
+      "freeze_commit": "63399dd1c3093d21a9307630ba85a6f85e4fa450",
+      "restart": false,
+      "accepted": true,
+      "precheck_errors": []
+    }
+  ],
+  "ledger_state": "REVOKED",
+  "attempts_total": 8,
+  "technical_retries": 0,
+  "confirmed_or_reserved_microusd": 549599,
+  "executable_remaining_microusd": 0,
+  "review_cap_claims": [
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+    "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability"
+  ],
+  "work_order_limits": {
+    "attempts_max": 12,
+    "retries_max": 2,
+    "per_call_ceiling_microusd": 300000,
+    "authorized_microusd": 763064,
+    "calls_above_per_call_ceiling": [],
+    "overruns": {}
+  },
+  "closure": {
+    "authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
+    "checked_at": "2026-10-12T15:15:08.836060+00:00",
+    "action": "revoked",
+    "authorization_expired": false,
+    "ledger_state": "REVOKED",
+    "revocation_reason": "ORDER_COMPLETE: C25/P9 live retest under the order of 11.10.2026 finished; the remaining budget is not carried over and no further execution is authorized. Replay of the captures stays possible.",
+    "executable_remaining_microusd": 0,
+    "reserved_or_confirmed_microusd": 549599,
+    "attempts": 8,
+    "technical_retries": 0,
+    "unresolved_attempts": [],
+    "unknown_billing_attempts": [],
+    "ledger_sha256": "ccbbdc4fdc47fa0a62e9fcf87d117a036ef33de589f56be0ea1706299fda2cac",
+    "successor_claim": {
+      "path": "analysis/live_smoke_20261011/repair_r1/successor_claim.json",
+      "sha256": "061c414f1fc43362ef92ba92aa21a48222870799007c45b5621f558e98319e94"
+    },
+    "replay_possible": true
+  },
+  "replay_check": {
+    "installation": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-b/venv/lib/python3.11/site-packages/agent_arena",
+    "installation_inside_repository": false,
+    "target": {
+      "profile": "claude-sonnet-5-5@3",
+      "case": "LR-03",
+      "rule": "the first slot in the fixed order with a sent live review request; else the first slot in the fixed order with a terminal primary capture (normally Haiku LR-03); chosen by replay_retest.py from the ledger",
+      "chosen_because": "first slot with a sent live review request"
+    },
+    "status": "REVIEW_REQUIRED",
+    "live_status": "REVIEW_REQUIRED",
+    "live_bundle": "bundles/claude-sonnet-5-5@3/cab93a7a-9b80-4d9c-bae7-14e8676941f2",
+    "errors": [
+      "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+    ],
+    "bundle_valid": true,
+    "execution_mode": "offline_replay_of_live",
+    "current_execution": "offline_replay",
+    "new_generation": false,
+    "capture_verified": true,
+    "request_identical": true,
+    "replay_ledger_sha256": "ccbbdc4fdc47fa0a62e9fcf87d117a036ef33de589f56be0ea1706299fda2cac",
+    "original_request_id": "req_011CfxZHY8mDZhGVkTCkiWDU",
+    "replay_facts": {
+      "model": "unsupported",
+      "host": "unknown",
+      "effective": "unknown",
+      "route": "HUMAN_REVIEW_REQUIRED",
+      "attempts": [
+        [
+          "counterreview",
+          "completed"
+        ],
+        [
+          "stability",
+          "completed"
+        ]
+      ]
+    },
+    "live_facts": {
+      "model": "unsupported",
+      "host": "unknown",
+      "effective": "unknown",
+      "route": "HUMAN_REVIEW_REQUIRED",
+      "attempts": [
+        [
+          "counterreview",
+          "completed"
+        ],
+        [
+          "stability",
+          "completed"
+        ]
+      ]
+    },
+    "same_as_live": true,
+    "provider_network_attempts": 0,
+    "retest_directory_unchanged": true,
+    "blocked_network_attempts": 0,
+    "network_measurement": "httpx.Client.send, socket.connect and socket.connect_ex are replaced by a refusing counter before the package is imported"
+  },
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "slot": "aa-p10-live-retest-LR-03|claude-haiku-5-5@3|primary",
+      "kind": "primary",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxYzvooQ9bNMXiD6MPzs",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-haiku-5-5"
+      },
+      "tokens": {
+        "input_tokens": 14984,
+        "output_tokens": 25198,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 28088,
+      "confirmed_cost_microusd": 14098,
+      "overrun_microusd": null,
+      "latency_ms": 96111,
+      "capture_sha256": "c2400d2ff713730e53e0e88189794b90770fcf1a892578bf9926acd6c42b22f9"
+    },
+    {
+      "attempt_id": "attempt-002",
+      "slot": "aa-p10-live-retest-LR-01|claude-haiku-5-5@3|primary",
+      "kind": "primary",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZ85KTFyppPqN1xA9v6",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-haiku-5-5"
+      },
+      "tokens": {
+        "input_tokens": 15054,
+        "output_tokens": 20667,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 28111,
+      "confirmed_cost_microusd": 11839,
+      "overrun_microusd": null,
+      "latency_ms": 76495,
+      "capture_sha256": "dcee81e242b14dd21b50826cef0dc7c35c25a50ad761c460c095b0889e0fc2b9"
+    },
+    {
+      "attempt_id": "attempt-003",
+      "slot": "aa-p10-live-retest-LR-02|claude-haiku-5-5@3|primary",
+      "kind": "primary",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZDnHT8TojgvjiFmpQZ",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-haiku-5-5"
+      },
+      "tokens": {
+        "input_tokens": 14991,
+        "output_tokens": 13632,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 28087,
+      "confirmed_cost_microusd": 8316,
+      "overrun_microusd": null,
+      "latency_ms": 49657,
+      "capture_sha256": "133d16e982165dbe1ce1eec66299d59da01d81cacda1387d7f371baaa5682edf"
+    },
+    {
+      "attempt_id": "attempt-004",
+      "slot": "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|primary",
+      "kind": "primary",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZHY8mDZhGVkTCkiWDU",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-sonnet-5-5"
+      },
+      "tokens": {
+        "input_tokens": 14984,
+        "output_tokens": 8318,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 241756,
+      "confirmed_cost_microusd": 113148,
+      "overrun_microusd": null,
+      "latency_ms": 49127,
+      "capture_sha256": "b01f10a117838692c3f8b6d39dd2b2a6dfc1a0dc6e64189767c06ac1e28680f2"
+    },
+    {
+      "attempt_id": "attempt-005",
+      "slot": "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+      "kind": "counterreview",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZMACGLj4HMqXdrjYkc",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-sonnet-5-5"
+      },
+      "tokens": {
+        "input_tokens": 16102,
+        "output_tokens": 7268,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 248444,
+      "confirmed_cost_microusd": 104884,
+      "overrun_microusd": null,
+      "latency_ms": 40985,
+      "capture_sha256": "202af910bd11afc8dceb009edea5367bf513923a18eb83cfe8c6dd8d408848b1"
+    },
+    {
+      "attempt_id": "attempt-006",
+      "slot": "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability",
+      "kind": "stability",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZQCF8BMGius1n6U2o9",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-sonnet-5-5"
+      },
+      "tokens": {
+        "input_tokens": 16102,
+        "output_tokens": 7079,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 248444,
+      "confirmed_cost_microusd": 102994,
+      "overrun_microusd": null,
+      "latency_ms": 39416,
+      "capture_sha256": "b4f73c5c4414127d7e9695a4cdcf196802fd7f93ea714e8a8a00d7568127c773"
+    },
+    {
+      "attempt_id": "attempt-007",
+      "slot": "aa-p10-live-retest-LR-01|claude-sonnet-5-5@3|primary",
+      "kind": "primary",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZTFuj7bDahVtC7QWB1",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-sonnet-5-5"
+      },
+      "tokens": {
+        "input_tokens": 15054,
+        "output_tokens": 6722,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 242210,
+      "confirmed_cost_microusd": 97328,
+      "overrun_microusd": null,
+      "latency_ms": 35583,
+      "capture_sha256": "df356e9eff6b1036941273eea8195b7be21fc5589517a75968281bda6e7371ee"
+    },
+    {
+      "attempt_id": "attempt-008",
+      "slot": "aa-p10-live-retest-LR-02|claude-sonnet-5-5@3|primary",
+      "kind": "primary",
+      "state": "COMPLETED",
+      "billing": "confirmed_from_usage",
+      "retry_of": null,
+      "transport": {
+        "request_sent": true,
+        "http_status": 200,
+        "request_id": "req_011CfxZVwrcDhJ2ziUYv2uLF",
+        "error_type": null,
+        "error": null
+      },
+      "format": {
+        "stop_reason": "end_turn",
+        "completion_state": "complete",
+        "returned_model": "claude-sonnet-5-5"
+      },
+      "tokens": {
+        "input_tokens": 14991,
+        "output_tokens": 6701,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "reserved_microusd": 241726,
+      "confirmed_cost_microusd": 96992,
+      "overrun_microusd": null,
+      "latency_ms": 38327,
+      "capture_sha256": "24c6687c7077c298a725821ee46482e398c383318f9b8282e05a332bbce2d95e"
+    }
+  ],
+  "slots": [
+    {
+      "profile": "claude-haiku-5-5@3",
+      "case": "LR-03",
+      "case_label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "role": "conflict-capable: a before-after change in one group with a stated confounder and no comparison figures; unsupported versus unknown is a genuine judgment call (same trap template as library case 063, a before-after policy change with a concurrent confounder and no comparison group, and topic close to library case 022; different topic and wording, copied from neither)",
+      "invoked": true,
+      "status": "ANALYSIS_INCOMPLETE",
+      "log_records": 1,
+      "executed_outside_the_runner_log": false,
+      "reserve_check": {
+        "remaining_microusd": 763064,
+        "primary_exposure_microusd": 28088,
+        "counterreview_reserve_microusd": 30337,
+        "counterreview_allowance_claimed": false,
+        "required_microusd": 58425
+      },
+      "stop_reasons": [],
+      "wall_seconds": 97.0,
+      "ledger_attempts": [
+        "attempt-001"
+      ],
+      "requests_sent": 1,
+      "review_allowance_claims": [],
+      "bundles_on_disk": [
+        "bundles/claude-haiku-5-5@3/d856f044-59f8-4f74-8b04-b48cc9250d9e"
+      ],
+      "bundle": "bundles/claude-haiku-5-5@3/d856f044-59f8-4f74-8b04-b48cc9250d9e",
+      "bundle_valid": true,
+      "evidence_completeness": "incomplete",
+      "transformation_findings": [],
+      "model_judgment": null,
+      "host_state": null,
+      "effective_state": "unknown",
+      "model_label": "correlation_vs_causation",
+      "derived_label": null,
+      "propositions": [],
+      "host_reasons": {},
+      "host_route": "not_evaluable",
+      "host_route_per_proposition": {},
+      "model_host_conflicts": [],
+      "p9_route": "HUMAN_REVIEW_REQUIRED",
+      "p9_mandatory": true,
+      "p9_triggers": [
+        [
+          "critical_source_binding",
+          true,
+          "original"
+        ],
+        [
+          "failed_mandatory_control",
+          true,
+          "original"
+        ]
+      ],
+      "p9_reviews": {
+        "counterreview": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        },
+        "stability": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        }
+      },
+      "p9_review_positions": {},
+      "p9_position_conflicts": [],
+      "p9_status": {
+        "routing_reached": false,
+        "model_call_made": "no",
+        "response_processed": false,
+        "conflict": "none recorded (analysis technically incomplete)"
+      },
+      "review_resolution": "pending",
+      "expectation_checks": {
+        "model": "not_evaluable",
+        "host": "not_evaluable",
+        "effective": "not_evaluable",
+        "status": "not_acceptable"
+      },
+      "within_expectations": false,
+      "host_deviation_likely_string_artifact": false,
+      "host_within_representation_artifact": false,
+      "not_evaluable_cause": {
+        "reason": "technical",
+        "status": "ANALYSIS_INCOMPLETE",
+        "technical_status": "incomplete",
+        "completion_states": [
+          "complete"
+        ],
+        "reasons": [
+          "claim:p1: original span mismatch",
+          "claim:p2: original span mismatch",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: claim:p1: original span mismatch; claim:p2: original span mismatch"
+        ]
+      }
+    },
+    {
+      "profile": "claude-haiku-5-5@3",
+      "case": "LR-01",
+      "case_label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "role": "supported: a randomized between-group comparison whose population, intervention, comparator, endpoint and horizon are worded identically in claim and source (template sibling of LS-01's positive-control role on a new topic)",
+      "invoked": true,
+      "status": "READY_FOR_RELEASE",
+      "log_records": 1,
+      "executed_outside_the_runner_log": false,
+      "reserve_check": {
+        "remaining_microusd": 748966,
+        "primary_exposure_microusd": 28111,
+        "counterreview_reserve_microusd": 30427,
+        "counterreview_allowance_claimed": false,
+        "required_microusd": 58538
+      },
+      "stop_reasons": [],
+      "wall_seconds": 77.4,
+      "ledger_attempts": [
+        "attempt-002"
+      ],
+      "requests_sent": 1,
+      "review_allowance_claims": [],
+      "bundles_on_disk": [
+        "bundles/claude-haiku-5-5@3/2b3197b1-8a36-454c-af11-68bbd343d03a"
+      ],
+      "bundle": "bundles/claude-haiku-5-5@3/2b3197b1-8a36-454c-af11-68bbd343d03a",
+      "bundle_valid": true,
+      "evidence_completeness": "completed",
+      "transformation_findings": [],
+      "model_judgment": "supported",
+      "host_state": "supported",
+      "effective_state": "supported",
+      "model_label": "solid",
+      "derived_label": "solid",
+      "propositions": [
+        {
+          "proposition_id": "claim:p1",
+          "required": true,
+          "reported_verdict": "supported",
+          "host_state": "supported",
+          "derived_state": "supported",
+          "model_host_conflict": false
+        }
+      ],
+      "host_reasons": {
+        "claim:p1": [
+          "binding 1: descriptive inference permitted",
+          "evidence dependence: unknown; no independent corroboration inferred"
+        ]
+      },
+      "host_route": "none",
+      "host_route_per_proposition": {},
+      "model_host_conflicts": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "p9_triggers": [],
+      "p9_reviews": {
+        "counterreview": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        },
+        "stability": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        }
+      },
+      "p9_review_positions": {},
+      "p9_position_conflicts": [],
+      "p9_status": {
+        "routing_reached": false,
+        "model_call_made": "no",
+        "response_processed": false,
+        "conflict": "none"
+      },
+      "review_resolution": "not_required",
+      "expectation_checks": {
+        "model": "within",
+        "host": "within",
+        "effective": "within",
+        "status": "within"
+      },
+      "within_expectations": true,
+      "host_deviation_likely_string_artifact": false,
+      "host_within_representation_artifact": false,
+      "not_evaluable_cause": null,
+      "test_release": {
+        "status": "RELEASED",
+        "path": "released/claude-haiku-5-5@3/LR-01/c0d46d8c-5e3a-4f61-9a7a-6588a77f21fd",
+        "errors": [],
+        "released_revisions": [
+          {
+            "path": "released/claude-haiku-5-5@3/LR-01/c0d46d8c-5e3a-4f61-9a7a-6588a77f21fd",
+            "valid": true,
+            "status": "RELEASED"
+          }
+        ],
+        "expected": "RELEASED",
+        "as_expected": true
+      },
+      "released_with_open_material_conflict_or_review": false
+    },
+    {
+      "profile": "claude-haiku-5-5@3",
+      "case": "LR-02",
+      "case_label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "role": "clearly unsupported with sufficient evidence: a single cross-sectional association used for a causal, longitudinal claim (shares the observational-confounding element of LS-06, without its RCT)",
+      "invoked": true,
+      "status": "READY_FOR_RELEASE",
+      "log_records": 1,
+      "executed_outside_the_runner_log": false,
+      "reserve_check": {
+        "remaining_microusd": 737127,
+        "primary_exposure_microusd": 28087,
+        "counterreview_reserve_microusd": 30331,
+        "counterreview_allowance_claimed": false,
+        "required_microusd": 58418
+      },
+      "stop_reasons": [],
+      "wall_seconds": 50.9,
+      "ledger_attempts": [
+        "attempt-003"
+      ],
+      "requests_sent": 1,
+      "review_allowance_claims": [],
+      "bundles_on_disk": [
+        "bundles/claude-haiku-5-5@3/39abb806-d9db-4c35-a6d4-d3736e21ca0d"
+      ],
+      "bundle": "bundles/claude-haiku-5-5@3/39abb806-d9db-4c35-a6d4-d3736e21ca0d",
+      "bundle_valid": true,
+      "evidence_completeness": "completed",
+      "transformation_findings": [],
+      "model_judgment": "unsupported",
+      "host_state": "unsupported",
+      "effective_state": "unsupported",
+      "model_label": "correlation_vs_causation",
+      "derived_label": "correlation_vs_causation",
+      "propositions": [
+        {
+          "proposition_id": "claim:p1",
+          "required": true,
+          "reported_verdict": "unsupported",
+          "host_state": "unsupported",
+          "derived_state": "unsupported",
+          "model_host_conflict": false
+        }
+      ],
+      "host_reasons": {
+        "claim:p1": [
+          "binding 1: preserved observation: inconclusive",
+          "binding 2: preserved observation: inconclusive",
+          "required bridge 1: required bridge unsupported, capable evidence unresolved",
+          "evidence dependence: unknown; no independent corroboration inferred"
+        ]
+      },
+      "host_route": "capability",
+      "host_route_per_proposition": {
+        "claim:p1": "capability"
+      },
+      "model_host_conflicts": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "p9_triggers": [],
+      "p9_reviews": {
+        "counterreview": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        },
+        "stability": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        }
+      },
+      "p9_review_positions": {},
+      "p9_position_conflicts": [],
+      "p9_status": {
+        "routing_reached": false,
+        "model_call_made": "no",
+        "response_processed": false,
+        "conflict": "none"
+      },
+      "review_resolution": "not_required",
+      "expectation_checks": {
+        "model": "within",
+        "host": "within",
+        "effective": "within",
+        "status": "within"
+      },
+      "within_expectations": true,
+      "host_deviation_likely_string_artifact": false,
+      "host_within_representation_artifact": false,
+      "not_evaluable_cause": null,
+      "test_release": {
+        "status": "RELEASED",
+        "path": "released/claude-haiku-5-5@3/LR-02/732a4d49-2f45-48f8-b4f9-adb502de6ad2",
+        "errors": [],
+        "released_revisions": [
+          {
+            "path": "released/claude-haiku-5-5@3/LR-02/732a4d49-2f45-48f8-b4f9-adb502de6ad2",
+            "valid": true,
+            "status": "RELEASED"
+          }
+        ],
+        "expected": "RELEASED",
+        "as_expected": true
+      },
+      "released_with_open_material_conflict_or_review": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@3",
+      "case": "LR-03",
+      "case_label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "role": "conflict-capable: a before-after change in one group with a stated confounder and no comparison figures; unsupported versus unknown is a genuine judgment call (same trap template as library case 063, a before-after policy change with a concurrent confounder and no comparison group, and topic close to library case 022; different topic and wording, copied from neither)",
+      "invoked": true,
+      "status": "REVIEW_REQUIRED",
+      "log_records": 1,
+      "executed_outside_the_runner_log": false,
+      "reserve_check": {
+        "remaining_microusd": 728811,
+        "primary_exposure_microusd": 241756,
+        "counterreview_reserve_microusd": 286722,
+        "counterreview_allowance_claimed": false,
+        "required_microusd": 528478
+      },
+      "stop_reasons": [],
+      "wall_seconds": 132.0,
+      "ledger_attempts": [
+        "attempt-004",
+        "attempt-005",
+        "attempt-006"
+      ],
+      "requests_sent": 3,
+      "review_allowance_claims": [
+        "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|counterreview",
+        "aa-p10-live-retest-LR-03|claude-sonnet-5-5@3|stability"
+      ],
+      "bundles_on_disk": [
+        "bundles/claude-sonnet-5-5@3/cab93a7a-9b80-4d9c-bae7-14e8676941f2"
+      ],
+      "bundle": "bundles/claude-sonnet-5-5@3/cab93a7a-9b80-4d9c-bae7-14e8676941f2",
+      "bundle_valid": true,
+      "evidence_completeness": "completed",
+      "transformation_findings": [],
+      "model_judgment": "unsupported",
+      "host_state": "unknown",
+      "effective_state": "unknown",
+      "model_label": "correlation_vs_causation",
+      "derived_label": null,
+      "propositions": [
+        {
+          "proposition_id": "claim:p1",
+          "required": true,
+          "reported_verdict": "unsupported",
+          "host_state": "unknown",
+          "derived_state": "unknown",
+          "model_host_conflict": true
+        }
+      ],
+      "host_reasons": {
+        "claim:p1": [
+          "binding 1: preserved observation: inconclusive",
+          "binding 2: preserved observation: inconclusive",
+          "binding 3: preserved observation: inconclusive",
+          "evidence dependence: unknown; no independent corroboration inferred"
+        ]
+      },
+      "host_route": "capability",
+      "host_route_per_proposition": {
+        "claim:p1": "capability"
+      },
+      "model_host_conflicts": [
+        [
+          "proposition",
+          "claim:p1",
+          "unsupported",
+          "unknown"
+        ],
+        [
+          "composite",
+          null,
+          "unsupported",
+          "unknown"
+        ]
+      ],
+      "p9_route": "HUMAN_REVIEW_REQUIRED",
+      "p9_mandatory": true,
+      "p9_triggers": [
+        [
+          "causality_conflict",
+          true,
+          "review"
+        ],
+        [
+          "evidence_direction_or_selection",
+          true,
+          "review"
+        ],
+        [
+          "label_conflict",
+          true,
+          "review"
+        ],
+        [
+          "model_host_conflict",
+          true,
+          "original"
+        ],
+        [
+          "model_host_conflict",
+          true,
+          "review"
+        ],
+        [
+          "necessary_unknown",
+          true,
+          "original"
+        ],
+        [
+          "necessary_unknown",
+          true,
+          "review"
+        ],
+        [
+          "proposition_conflict",
+          true,
+          "review"
+        ],
+        [
+          "search_scope_conflict",
+          true,
+          "review"
+        ]
+      ],
+      "p9_reviews": {
+        "counterreview": {
+          "outcome": "completed",
+          "allowance_claimed": true,
+          "ledger_attempts": [
+            "attempt-005"
+          ],
+          "request_sent": "yes",
+          "response_received": true,
+          "response_processed": true,
+          "reason": "",
+          "independence": "Model and host positions of the open conflicts supplied as untrusted data; shared original sources and extraction IDs. Live output of the same model profile under AA-P10-LIVE/1.0; no empirical model independence established."
+        },
+        "stability": {
+          "outcome": "completed",
+          "allowance_claimed": true,
+          "ledger_attempts": [
+            "attempt-006"
+          ],
+          "request_sent": "yes",
+          "response_received": true,
+          "response_processed": true,
+          "reason": "",
+          "independence": "Model and host positions of the open conflicts supplied as untrusted data; shared original sources and extraction IDs. Live output of the same model profile under AA-P10-LIVE/1.0; no empirical model independence established."
+        }
+      },
+      "p9_review_positions": {
+        "counterreview": {
+          "technical_status": "completed",
+          "model_composite_state": "unsupported",
+          "host_composite_state": "unknown",
+          "composite_state": "unknown"
+        },
+        "stability": {
+          "technical_status": "completed",
+          "model_composite_state": "unsupported",
+          "host_composite_state": "unknown",
+          "composite_state": "unknown"
+        }
+      },
+      "p9_position_conflicts": [
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "evidence",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "causal_strength",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "causal_strength",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "evidence",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "label",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "evidence",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "search_scope",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "search_scope",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "evidence",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "label",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "evidence",
+          "material": true,
+          "resolution": "unresolved"
+        },
+        {
+          "dimension": "proposition",
+          "material": true,
+          "resolution": "unresolved"
+        }
+      ],
+      "p9_status": {
+        "routing_reached": true,
+        "model_call_made": "yes",
+        "response_processed": true,
+        "conflict": "open_material"
+      },
+      "review_resolution": "pending",
+      "expectation_checks": {
+        "model": "within",
+        "host": "within",
+        "effective": "within",
+        "status": "within"
+      },
+      "within_expectations": true,
+      "host_deviation_likely_string_artifact": false,
+      "host_within_representation_artifact": false,
+      "not_evaluable_cause": null,
+      "test_release": {
+        "status": "RELEASE_BLOCKED",
+        "path": null,
+        "errors": [
+          "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+        ],
+        "released_revisions": [],
+        "expected": "RELEASE_BLOCKED",
+        "as_expected": true
+      },
+      "released_with_open_material_conflict_or_review": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@3",
+      "case": "LR-01",
+      "case_label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "role": "supported: a randomized between-group comparison whose population, intervention, comparator, endpoint and horizon are worded identically in claim and source (template sibling of LS-01's positive-control role on a new topic)",
+      "invoked": true,
+      "status": "READY_FOR_RELEASE",
+      "log_records": 1,
+      "executed_outside_the_runner_log": false,
+      "reserve_check": {
+        "remaining_microusd": 407785,
+        "primary_exposure_microusd": 242210,
+        "counterreview_reserve_microusd": 0,
+        "counterreview_allowance_claimed": true,
+        "required_microusd": 242210
+      },
+      "stop_reasons": [],
+      "wall_seconds": 36.5,
+      "ledger_attempts": [
+        "attempt-007"
+      ],
+      "requests_sent": 1,
+      "review_allowance_claims": [],
+      "bundles_on_disk": [
+        "bundles/claude-sonnet-5-5@3/0055a768-d145-437e-8b8f-6dea67819abf"
+      ],
+      "bundle": "bundles/claude-sonnet-5-5@3/0055a768-d145-437e-8b8f-6dea67819abf",
+      "bundle_valid": true,
+      "evidence_completeness": "completed",
+      "transformation_findings": [],
+      "model_judgment": "supported",
+      "host_state": "supported",
+      "effective_state": "supported",
+      "model_label": "solid",
+      "derived_label": "solid",
+      "propositions": [
+        {
+          "proposition_id": "claim:p1",
+          "required": true,
+          "reported_verdict": "supported",
+          "host_state": "supported",
+          "derived_state": "supported",
+          "model_host_conflict": false
+        }
+      ],
+      "host_reasons": {
+        "claim:p1": [
+          "binding 1: identified effect in studied setting permitted",
+          "evidence dependence: unknown; no independent corroboration inferred"
+        ]
+      },
+      "host_route": "none",
+      "host_route_per_proposition": {},
+      "model_host_conflicts": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "p9_triggers": [],
+      "p9_reviews": {
+        "counterreview": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        },
+        "stability": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        }
+      },
+      "p9_review_positions": {},
+      "p9_position_conflicts": [],
+      "p9_status": {
+        "routing_reached": false,
+        "model_call_made": "no",
+        "response_processed": false,
+        "conflict": "none"
+      },
+      "review_resolution": "not_required",
+      "expectation_checks": {
+        "model": "within",
+        "host": "within",
+        "effective": "within",
+        "status": "within"
+      },
+      "within_expectations": true,
+      "host_deviation_likely_string_artifact": false,
+      "host_within_representation_artifact": false,
+      "not_evaluable_cause": null,
+      "test_release": {
+        "status": "RELEASED",
+        "path": "released/claude-sonnet-5-5@3/LR-01/8127951d-d846-4193-bbe4-fedcdb46a697",
+        "errors": [],
+        "released_revisions": [
+          {
+            "path": "released/claude-sonnet-5-5@3/LR-01/8127951d-d846-4193-bbe4-fedcdb46a697",
+            "valid": true,
+            "status": "RELEASED"
+          }
+        ],
+        "expected": "RELEASED",
+        "as_expected": true
+      },
+      "released_with_open_material_conflict_or_review": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@3",
+      "case": "LR-02",
+      "case_label": "synthetic sketch written for this retest; not a real study, not a library case, no gold label",
+      "role": "clearly unsupported with sufficient evidence: a single cross-sectional association used for a causal, longitudinal claim (shares the observational-confounding element of LS-06, without its RCT)",
+      "invoked": true,
+      "status": "REVIEW_REQUIRED",
+      "log_records": 1,
+      "executed_outside_the_runner_log": false,
+      "reserve_check": {
+        "remaining_microusd": 310457,
+        "primary_exposure_microusd": 241726,
+        "counterreview_reserve_microusd": 0,
+        "counterreview_allowance_claimed": true,
+        "required_microusd": 241726
+      },
+      "stop_reasons": [],
+      "wall_seconds": 39.3,
+      "ledger_attempts": [
+        "attempt-008"
+      ],
+      "requests_sent": 1,
+      "review_allowance_claims": [],
+      "bundles_on_disk": [
+        "bundles/claude-sonnet-5-5@3/44b587d3-0d46-41c0-9984-97dbbc14c6bf"
+      ],
+      "bundle": "bundles/claude-sonnet-5-5@3/44b587d3-0d46-41c0-9984-97dbbc14c6bf",
+      "bundle_valid": true,
+      "evidence_completeness": "completed",
+      "transformation_findings": [],
+      "model_judgment": "unsupported",
+      "host_state": "unknown",
+      "effective_state": "unknown",
+      "model_label": "correlation_vs_causation",
+      "derived_label": "correlation_vs_causation",
+      "propositions": [
+        {
+          "proposition_id": "claim:p1",
+          "required": true,
+          "reported_verdict": "unsupported",
+          "host_state": "unknown",
+          "derived_state": "unknown",
+          "model_host_conflict": true
+        }
+      ],
+      "host_reasons": {
+        "claim:p1": [
+          "binding 1: preserved observation: inconclusive",
+          "binding 2: preserved observation: inconclusive",
+          "evidence dependence: unknown; no independent corroboration inferred"
+        ]
+      },
+      "host_route": "capability",
+      "host_route_per_proposition": {
+        "claim:p1": "capability"
+      },
+      "model_host_conflicts": [
+        [
+          "proposition",
+          "claim:p1",
+          "unsupported",
+          "unknown"
+        ],
+        [
+          "composite",
+          null,
+          "unsupported",
+          "unknown"
+        ]
+      ],
+      "p9_route": "UNRESOLVED",
+      "p9_mandatory": true,
+      "p9_triggers": [
+        [
+          "model_host_conflict",
+          true,
+          "original"
+        ],
+        [
+          "necessary_unknown",
+          true,
+          "original"
+        ]
+      ],
+      "p9_reviews": {
+        "counterreview": {
+          "outcome": "denied",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "Review cap for this model reached (1 counterreview per profile under AA-P10-LIVE-RETEST-20261011-004); the review stays open",
+          "independence": ""
+        },
+        "stability": {
+          "outcome": "not reached",
+          "allowance_claimed": false,
+          "ledger_attempts": [],
+          "request_sent": "no",
+          "response_received": false,
+          "response_processed": false,
+          "reason": "",
+          "independence": ""
+        }
+      },
+      "p9_review_positions": {},
+      "p9_position_conflicts": [],
+      "p9_status": {
+        "routing_reached": true,
+        "model_call_made": "no",
+        "response_processed": false,
+        "conflict": "open_material"
+      },
+      "review_resolution": "unresolved",
+      "expectation_checks": {
+        "model": "within",
+        "host": "conservative",
+        "effective": "conservative",
+        "status": "within"
+      },
+      "within_expectations": false,
+      "host_deviation_likely_string_artifact": false,
+      "host_within_representation_artifact": false,
+      "not_evaluable_cause": null,
+      "test_release": {
+        "status": "RELEASE_BLOCKED",
+        "path": null,
+        "errors": [
+          "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+        ],
+        "released_revisions": [],
+        "expected": "RELEASE_BLOCKED",
+        "as_expected": true
+      },
+      "released_with_open_material_conflict_or_review": false
+    }
+  ]
+}

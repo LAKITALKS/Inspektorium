@@ -1,0 +1,170 @@
+id: P7A-ADV-009
+title: "Adversarial A5: aducanumab (Aduhelm) 'reduces amyloid plaques, so treats Alzheimer's' (surrogate endpoint framed as clinical benefit - Shape B)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: surrogate_endpoint_as_clinical_benefit
+ambiguity_level: low
+prompt: |
+  Marketing for the Alzheimer's drug aducanumab (Aduhelm) states: "Aduhelm is the first treatment to address a defining pathology of Alzheimer's disease by clearing the amyloid-beta plaques that build up in the brain — a breakthrough that treats Alzheimer's."
+
+  Aducanumab received FDA accelerated approval (June 2021) on the basis of a SURROGATE endpoint — reduction of amyloid-beta plaques on brain imaging — which the FDA judged "reasonably likely" to predict clinical benefit. It did not rest on established clinical benefit: the two phase 3 trials (EMERGE and ENGAGE) were halted for futility and gave conflicting results on cognition, the FDA advisory committee voted overwhelmingly against approval, and no clear cognitive benefit was demonstrated. Biogen withdrew the drug from the market in early 2024.
+context: |
+  Evidence tier: an FDA accelerated approval on a surrogate biomarker (amyloid PET) whose link to
+  clinical benefit was unproven, against conflicting/futility-halted phase 3 cognition trials. The claim
+  frames a surrogate (amyloid-plaque reduction) as an established clinical outcome ("treats
+  Alzheimer's"). Per the taxonomy, a surrogate endpoint framed as clinical benefit (Shape B) routes to
+  overclaim, not mechanism_vs_evidence, even when dressed in mechanistic (amyloid-hypothesis) language.
+expected_answer: "overclaim"
+reference_solution: |
+  Aducanumab clears amyloid plaques (a surrogate biomarker), and the marketing frames that as treating
+  Alzheimer's. But amyloid reduction is a surrogate whose clinical benefit was not established: the
+  phase 3 trials were halted for futility with conflicting cognition results, the advisory committee
+  voted against approval, and the drug was later withdrawn. A surrogate endpoint framed as clinical
+  benefit is overclaim (Shape B, routed to overclaim by the taxonomy). It is not mechanism_vs_evidence:
+  Shape B (biomarker-to-clinical gap) is explicitly excluded from that category.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: Aduhelm treats Alzheimer's disease by clearing amyloid-beta plaques.
+  2. What the strongest evidence establishes: the drug reduces amyloid plaques (a surrogate on imaging);
+     clinical (cognitive) benefit was not established - phase 3 trials halted for futility with
+     conflicting results, advisory committee against, later market withdrawal.
+  3. Adversarial surface feature: the amyloid hypothesis and an FDA approval make "clears a defining
+     pathology" sound like a mechanistic, evidence-backed cure.
+  4. Actual forensic mismatch: clearing amyloid is a surrogate; it is framed as the clinical outcome
+     (treating the disease), which was not demonstrated.
+  5. Primary frozen label: overclaim - a surrogate endpoint framed as clinical benefit (Shape B).
+  6. Why precedence routes here: the taxonomy explicitly EXCLUDES the biomarker/surrogate-to-clinical
+     gap (Shape B) from mechanism_vs_evidence and routes it to overclaim (docs/taxonomy_precedence.md;
+     study_forensics_taxonomy.md).
+  7. Strongest competing label: mechanism_vs_evidence - amyloid clearance is a biological "mechanism",
+     tempting that category.
+  8. Why it loses: no animal/preclinical-mechanism-to-human leap is the structure; the defect is a
+     human surrogate (amyloid PET) framed as a clinical outcome, which is Shape B -> overclaim, not
+     mechanism_vs_evidence.
+  9. What would change the verdict: trials showing a clear cognitive/functional benefit would make the
+     claim solid; if the basis were an animal mechanism extrapolated to humans it would be
+     mechanism_vs_evidence.
+gold_alternative_reading: |
+  Alternative: mechanism_vs_evidence. Plausible because amyloid clearance is a described biological
+  mechanism, so a reviewer might route it there. It loses because the taxonomy explicitly excludes the
+  surrogate/biomarker-to-clinical gap (Shape B) from mechanism_vs_evidence and routes surrogate
+  endpoints framed as clinical outcomes to overclaim; the defect here is a human surrogate (amyloid PET)
+  sold as clinical benefit, not an animal-mechanism-to-human leap.
+gold_summary: |
+  Aduhelm clears amyloid plaques (a surrogate) and is marketed as treating Alzheimer's, but clinical
+  benefit was not established (futility-halted phase 3, advisory committee against, later withdrawn). A
+  surrogate framed as clinical benefit (Shape B) = overclaim (mechanism_vs_evidence is the excluded
+  competitor).
+curator_notes: |
+  Adversarial family A5 (surrogate endpoint -> clinical benefit, 'Shape B'; positive control that
+  Shape-B routing to overclaim holds under mechanistic dressing). Real public claim: Biogen's Aduhelm
+  amyloid-clearance marketing; FDA accelerated approval on the amyloid surrogate. Distinct from A5
+  antibacterial soap (P7A-ADV-010) and from Boundary Shape-B cases (Avastin 015, ginkgo 016, calcium+D
+  018). Gold frozen before any model output.
+expected_findings:
+  - finding: surrogate_framed_as_clinical_benefit
+    severity: major
+    confidence: high
+    note: "Amyloid-plaque reduction (surrogate) framed as treating Alzheimer's (clinical outcome)"
+  - finding: clinical_benefit_not_established
+    severity: major
+    confidence: high
+    note: "Phase 3 futility/conflicting cognition results; advisory committee against; later withdrawn"
+gold_evidence_spans:
+  - span: "clearing the amyloid-beta plaques that build up in the brain - a breakthrough that treats Alzheimer's"
+    why_it_matters: "Frames a surrogate biomarker change as an established clinical cure."
+    supports_finding: surrogate_framed_as_clinical_benefit
+  - span: "the two phase 3 trials (EMERGE and ENGAGE) were halted for futility"
+    why_it_matters: "Clinical (cognitive) benefit was not demonstrated."
+    supports_finding: clinical_benefit_not_established
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "surrogate vs clinical"
+    variants: ["amyloid PET", "accelerated approval", "reasonably likely"]
+    functional_descriptions:
+      - "Amyloid reduction is a surrogate, not a demonstrated clinical outcome"
+  - keyword: "Shape B routes to overclaim"
+    variants: ["biomarker-to-clinical", "not mechanism_vs_evidence", "futility"]
+    functional_descriptions:
+      - "A surrogate framed as clinical benefit is overclaim, not mechanism_vs_evidence"
+common_errors:
+  - routing a biomarker/surrogate case to mechanism_vs_evidence
+  - treating amyloid clearance as proof of clinical benefit
+expected_failure_modes:
+  - shape_b_read_as_mechanism
+  - surrogate_read_as_clinical
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+  - mechanism_quality
+diagnostic_focus: "Can the agent route a human surrogate-framed-as-clinical-benefit (Shape B) to overclaim, resisting the mechanism_vs_evidence pull of the amyloid narrative?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-009
+  case_family: adversarial
+  adversarial_family_id: A5
+  adversarial_family: "surrogate endpoint -> clinical benefit (Shape B)"
+  adversarial_mechanism: |
+    A human surrogate endpoint (amyloid-beta plaque reduction on imaging) is framed as an established
+    clinical outcome (treating Alzheimer's), dressed in mechanistic amyloid-hypothesis language and an
+    FDA accelerated approval. The surface pressure is that clearing "a defining pathology" sounds
+    mechanistic and evidence-backed, pulling toward mechanism_vs_evidence or solid. The pressure to
+    resist: mistaking a surrogate-to-clinical gap (Shape B) for demonstrated clinical benefit, or
+    routing it to mechanism_vs_evidence when the taxonomy routes Shape B to overclaim.
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    Two plausible failure modes compete (mechanism_vs_evidence via the amyloid mechanism vs overclaim
+    via Shape B), an FDA approval creates evidence-tier tension (approved yet clinical benefit
+    unproven), and the precedence routing (Shape B -> overclaim) is subtle. Property-based; D3.
+  precedence_rationale: |
+    Amyloid-plaque reduction is a human SURROGATE endpoint framed as clinical benefit. The taxonomy
+    (study_forensics_taxonomy.md; docs/taxonomy_precedence.md) explicitly excludes the
+    surrogate/biomarker-to-clinical gap (Shape B) from mechanism_vs_evidence and routes surrogate
+    endpoints framed as clinical outcomes to overclaim. No animal-preclinical-mechanism-to-human leap is
+    present, so mechanism_vs_evidence is a documented but rejected alternative and overclaim is primary.
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary under the frozen Shape-B routing rule;
+    mechanism_vs_evidence is the strongest but rejected alternative (excluded by taxonomy).
+  steelman_challenge: |
+    Strongest case the gold is wrong: aducanumab genuinely engages the amyloid hypothesis and one phase
+    3 trial (EMERGE) suggested a possible high-dose signal, and the FDA did approve it - so a reader
+    might call it solid or route the amyloid mechanism to mechanism_vs_evidence. Counter-evidence
+    weighed: both phase 3 trials were halted for futility with conflicting cognition results, the
+    advisory committee voted against approval, approval rested on the amyloid SURROGATE, and the drug was
+    withdrawn; the taxonomy routes Shape B to overclaim. Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "FDA grants accelerated approval of aducanumab (Aduhelm) on the amyloid-beta surrogate endpoint (Biogen's amyloid-clearance treatment claim)"
+    claim_source_url: "https://www.fda.gov/drugs/news-events-human-drugs/fdas-decision-approve-new-treatment-alzheimers-disease"
+    claim_source_publisher: "Biogen (manufacturer of Aduhelm/aducanumab); the claim and the surrogate-based accelerated approval are documented by the US FDA"
+    claim_source_date: "2021"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Biogen promoted aducanumab as the first Alzheimer's treatment to address a defining pathology by clearing amyloid-beta plaques. The FDA granted accelerated approval (June 2021) on the amyloid-plaque surrogate endpoint judged 'reasonably likely' to predict clinical benefit, over its advisory committee's objection and amid futility-halted, conflicting phase 3 trials; the drug was withdrawn in early 2024. The frozen span is the bounded surrogate-as-clinical-benefit claim."
+    claim_exact_span: "clearing the amyloid-beta plaques that build up in the brain - a breakthrough that treats Alzheimer's"
+    evidence_sources:
+      - citation: "US Food and Drug Administration. FDA's Decision to Approve New Treatment for Alzheimer's Disease (aducanumab accelerated approval on the amyloid-beta surrogate endpoint), June 2021"
+        url: "https://www.fda.gov/drugs/news-events-human-drugs/fdas-decision-approve-new-treatment-alzheimers-disease"
+        design: "Regulatory accelerated-approval decision based on a surrogate endpoint"
+        population: "Patients with Alzheimer's disease (phase 3 EMERGE/ENGAGE participants)"
+        intervention_or_exposure: "Aducanumab (anti-amyloid monoclonal antibody)"
+        comparator: "Placebo (phase 3 trials, halted for futility)"
+        endpoint: "Surrogate: amyloid-beta plaque reduction; clinical: cognition/function"
+        result: "Approved on the amyloid surrogate 'reasonably likely' to predict benefit; clinical cognitive benefit not established (futility-halted, conflicting trials; advisory committee against); withdrawn 2024"
+        source_role: regulatory_assessment
+        evidence_tier: "Regulatory decision + phase 3 trial context"
+        limitations: "Accelerated approval explicitly rests on a surrogate, not confirmed clinical benefit"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: mechanism_vs_evidence
+    probes: "Shape-B positive control: human surrogate (amyloid) framed as clinical benefit routes to overclaim, not mechanism_vs_evidence"
+  case_fingerprint: "10b04f62dcb58ff5818e53b3a9c3caba4656b61e649f9f313e8eca5fd8635b85"

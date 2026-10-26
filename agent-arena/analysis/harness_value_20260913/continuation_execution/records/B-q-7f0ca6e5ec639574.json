@@ -1,0 +1,54 @@
+{
+  "slot_key": "B:q-7f0ca6e5ec639574",
+  "id": "q-7f0ca6e5ec639574",
+  "arm": "B",
+  "input_sha256": "9b8e42488c0934de100322b9edc4603f0162007ae65603dbbe4093b404aac3cf",
+  "request_sha256": "32fef8d987651e2bc3ceabdc2de49eec3a94be951ce7e8159273f3c0e98432f2",
+  "raw_text": "```json\n{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The claim 'establish longer survival for solid-tumor patients' implies human clinical benefit\",\n    \"The evidence packet describes mouse xenograft and immunocompetent mouse models, not human trials\",\n    \"The mechanism (CD47-SIRP-alpha interaction) is established in vitro and in animal models\",\n    \"Human tumor tissue was used to establish xenografts but not to test therapeutic outcomes in humans\"\n  ],\n  \"steps\": [\n    \"Identified evidence tier: Animal models (immunodeficient mice with patient-derived xenografts, immunocompetent mouse breast-tumor model)\",\n    \"Identified conclusion tier: Human therapeutic ('establish longer survival for solid-tumor patients')\",\n    \"Confirmed bridge gap: The claim moves from mouse survival data to human patient survival without intervening human clinical evidence\",\n    \"Confirmed mechanism description: The text explicitly describes the CD47-SIRP-alpha biological mechanism and how antibodies block it\",\n    \"Classified as mechanism_vs_evidence: A described biological mechanism (CD47-SIRP-alpha pathway) demonstrated in animal models is used to imply human clinical benefit ('longer survival for solid-tumor patients') that has not been demonstrated by human evidence\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could classify as overclaim if the core error is simply inflated scope rather than mechanism-to-human leap — but the specific mechanism-pathway-to-therapeutic structure is present and captures the error more precisely\",\n    \"Could classify as solid if 'establish' is interpreted as 'establish the biological basis for' rather than 'establish clinical benefit in' — but the natural reading of 'establish longer survival for patients' is a therapeutic claim\"\n  ],\n  \"uncertainties\": [\n    \"Whether the 2012 publication date means subsequent human trials have since been conducted (outside the evidence packet); the packet itself contains only preclinical and animal data\",\n    \"The exact wording of the original abstract — the packet summary may compress or paraphrase the original claim; however, the claim as stated in the task clearly exceeds the evidence tier\"\n  ],\n  \"key_claims\": [\n    \"The claim asserts human patient benefit ('longer survival for solid-tumor patients') based on animal model evidence\",\n    \"The mechanism is well-characterized in vitro and in mice, but mechanism characterization does not substitute for human clinical evidence\",\n    \"Human tumor tissue was used for xenografts and expression studies, but therapeutic outcomes were measured only in mice, not in human subjects\"\n  ],\n  \"self_check\": [\n    \"Did I correctly identify the evidence tier? Yes — the packet explicitly states 'in immunodeficient mice' and 'immunocompetent mouse breast-tumor model'; no human clinical trials are described\",\n    \"Did I correctly identify the conclusion tier? Yes — 'establish longer survival for solid-tumor patients' is a human therapeutic claim\",\n    \"Is the mechanism-vs-evidence trigger genuinely present? Yes — a described biological pathway (CD47-SIRP-alpha) is used to imply unproven human clinical benefit\",\n    \"Did I confuse this with overclaim? No — while overclaim could apply, the specific structural failure (mechanism pathway → human therapeutic leap) is the core error and takes precedence\",\n    \"Did I confuse this with correlation_vs_causation? No — the causal mechanism is established in controlled experiments; the problem is the species/population leap, not causality within the evidence\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n### Summary\n\nThe claim **\"establish longer survival for solid-tumor patients\"** asserts a human therapeutic benefit, but the evidence is limited to animal models (mouse xenografts and immunocompetent mouse tumors). While the biological mechanism (CD47-SIRP-alpha interaction) is well-characterized in vitro and in mice, and while human tumor tissue was used to establish xenografts, **no human clinical outcomes are reported**.\n\nThis is a textbook **mechanism_vs_evidence** error: a described preclinical/animal biological mechanism is used to imply human clinical benefit that has not been demonstrated. The mechanism is real and the animal data are positive, but the leap from mouse survival to human patient survival is unsupported by the evidence packet.",
+  "raw_sha256": "6017024eeb31ec26ab687879ac538135b484f8a5f2d3e785ef2209e33ce2d6e4",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 11364066625,
+  "attempt_ids": [
+    "attempt-012"
+  ],
+  "usage": {
+    "input_tokens": 1979,
+    "output_tokens": 1017,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": true,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "mechanism_vs_evidence",
+    "label_readable": true,
+    "confidence": 0.92,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "mechanism_vs_evidence",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 4454
+    },
+    "B_parser_ns": 104208,
+    "C_incremental_interpretation_ns": 109542
+  }
+}

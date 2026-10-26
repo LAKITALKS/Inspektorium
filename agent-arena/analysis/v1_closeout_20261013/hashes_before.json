@@ -1,0 +1,49 @@
+{
+  "purpose": "Hashes of the protected historical live evidence and closed ledgers before the v1 closeout work (13.10.2026)",
+  "ledgers": {
+    "-002": {
+      "path": "analysis/live_smoke_20261011/live_run/ledger.json",
+      "sha256": "e6ef0f5aff3b6bdd3c841fc0a5982449a83eecac004f73e42f9a19a66b0c64b5",
+      "state": "REVOKED",
+      "executable_remaining_microusd": 0,
+      "reserved_microusd": 487679,
+      "attempts": 12
+    },
+    "-003": {
+      "path": "analysis/live_smoke_20261011/repair_r1/ledger.json",
+      "sha256": "124ffab09ad94b9c751b50fe2888e48a2e585d41f16a6e21d2062d99e69497da",
+      "state": "REVOKED",
+      "executable_remaining_microusd": 0,
+      "reserved_microusd": 749257,
+      "attempts": 12
+    },
+    "-004": {
+      "path": "analysis/c25_p9_20261011/live_retest/ledger.json",
+      "sha256": "ccbbdc4fdc47fa0a62e9fcf87d117a036ef33de589f56be0ea1706299fda2cac",
+      "state": "REVOKED",
+      "executable_remaining_microusd": 0,
+      "reserved_microusd": 549599,
+      "attempts": 8
+    }
+  },
+  "trees": {
+    "analysis/live_smoke_20261011/live_run": {
+      "files": 22,
+      "aggregate_sha256": "010aafde519896edadec2cd08631336be9d656ccb80db7a281adf0184ec37895"
+    },
+    "analysis/live_smoke_20261011/repair_r1": {
+      "files": 45,
+      "aggregate_sha256": "6995408f71f5ea7fd7c0a7948d15b9b36bd09c35850c44babd3533f584f682d6"
+    },
+    "analysis/c25_p9_20261011/live_retest": {
+      "files": 79,
+      "aggregate_sha256": "5b9bb1f8099fdad2a6c661ef2eb2efec76dbfd415ea4c966a11c4554056372d8"
+    },
+    "analysis/live_smoke_20261011/evidence": {
+      "files": 20,
+      "aggregate_sha256": "9fbe8e18e885b1e51bb62a1c5da13cd3ab68df5f3b02f8186c35cefba90b91ec"
+    }
+  },
+  "successor_claim_sha256": "061c414f1fc43362ef92ba92aa21a48222870799007c45b5621f558e98319e94",
+  "head": "558e920e481a7fdf56809a882b5374a15d4b1578"
+}

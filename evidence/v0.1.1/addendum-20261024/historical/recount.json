@@ -1,0 +1,38 @@
+[
+  {
+    "file": "fae1824_noto-default.json",
+    "sha256": "d77b5cd463492602c6f3aa76ca66a1c2ad3818c3fe1413d506093eee10f0651b",
+    "cases": 75,
+    "dom_pass": 75,
+    "overlap_cases_at_least_10px": 39,
+    "rows_with_unmeasured_host_text_or_box": 28,
+    "note": "Historical n=0 comparison skipped changed host text/boxes; counts retained, not current acceptance."
+  },
+  {
+    "file": "fae1824_github-like-css.json",
+    "sha256": "a69fff3d3d7b6ca4d33a5775d7bc6fc5632a94870cbd4c0da2754d42ce4788c9",
+    "cases": 75,
+    "dom_pass": 75,
+    "overlap_cases_at_least_10px": 36,
+    "rows_with_unmeasured_host_text_or_box": 28,
+    "note": "Historical n=0 comparison skipped changed host text/boxes; counts retained, not current acceptance."
+  },
+  {
+    "file": "prototype-cap4_noto-default.json",
+    "sha256": "26e207a25e003804d18f468d5b19e7b001d82b2f4169dae29ff74a619f4cbf56",
+    "cases": 75,
+    "dom_pass": 75,
+    "overlap_cases_at_least_10px": 0,
+    "rows_with_unmeasured_host_text_or_box": 28,
+    "note": "Historical n=0 comparison skipped changed host text/boxes; counts retained, not current acceptance."
+  },
+  {
+    "file": "prototype-cap4_github-like-css.json",
+    "sha256": "a0e29c4d19453b6fe6ab7658b06975506743811fc6c64b829575b94f3de9674d",
+    "cases": 75,
+    "dom_pass": 75,
+    "overlap_cases_at_least_10px": 0,
+    "rows_with_unmeasured_host_text_or_box": 28,
+    "note": "Historical n=0 comparison skipped changed host text/boxes; counts retained, not current acceptance."
+  }
+]

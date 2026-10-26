@@ -1,0 +1,12 @@
+{
+  "library_run_id": "lib_20260701_182058_fbdcc6",
+  "timestamp": "2026-07-01T18:21:45.004312+00:00",
+  "provider": "anthropic",
+  "model": "claude-opus-4-5",
+  "runs_per_case": 3,
+  "total_cases": 1,
+  "total_runs": 3,
+  "cases": [
+    "study-forensics-053"
+  ]
+}

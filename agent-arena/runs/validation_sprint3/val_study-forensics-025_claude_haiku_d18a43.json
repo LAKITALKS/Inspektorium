@@ -1,0 +1,1084 @@
+{
+  "run_id": "val_study-forensics-025_claude_haiku_d18a43",
+  "task": {
+    "id": "study-forensics-025",
+    "title": "Study Forensics: AI instruction outperforms human teachers",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "An opinionated business article argued that specialized AI systems are rapidly making human teachers obsolete. Citing pilot programs in the United States and United Kingdom, it claimed that students taught by AI outperform peers in physics, mathematics and literacy, with some reports suggesting a 65 percent rise in test scores. The article described a two-times learning effect, where an AI tutor purportedly taught material twice as effectively and in less time than active-learning classrooms. It concluded that the role of educators as the primary source of knowledge is being dismantled and that AI instruction represents a data-backed reality for all subjects.\n",
+    "context": "A media article that extrapolates from limited pilots to sweeping claims about AI\nreplacing teachers. No study design, sample sizes, or contexts are described.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The article presents sweeping claims that AI instruction makes human teachers obsolete and delivers massive learning gains across subjects. It generalises from limited pilot programs without describing study design, sample size, or context, making this a clear overclaim.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "unsupported generalization",
+        "variants": [
+          "all subjects",
+          "data-backed reality",
+          "obsolete"
+        ],
+        "functional_descriptions": [
+          "the article extends limited pilot findings to universal claims"
+        ]
+      },
+      {
+        "keyword": "no methodology",
+        "variants": [
+          "no study design",
+          "no sample size",
+          "citing pilot programs"
+        ],
+        "functional_descriptions": [
+          "the evidence base is not described in sufficient detail"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting sweeping claims because they mention studies",
+      "missing the absence of methodological detail"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "media_inflated_overclaim",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "missing_overclaim"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify media-inflated overclaim in education/AI?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "The article presents sweeping claims that AI instruction makes human teachers obsolete and delivers massive learning gains across subjects. It generalises from limited pilot programs and does not describe study design, sample size or context.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "students taught by AI outperform peers in physics, mathematics and literacy, with some reports suggesting a 65 percent rise in test scores",
+        "why_it_matters": "Key overclaim linking AI instruction to large performance gains without context or methodology.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "the role of educators as the primary source of knowledge is being dismantled and that AI instruction represents a data-backed reality for all subjects",
+        "why_it_matters": "Sweeping conclusion extrapolating from limited evidence to universal claim.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The narrative extrapolates from isolated pilots to a universal claim that AI instruction\nis superior in all core subjects and implies the end of human teaching. No evidence is\nprovided to support the 65 percent test-score increase or to show that AI can replace\neducators; thus the conclusion exceeds the evidence and constitutes unsupported\ngeneralisation.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Sharp overclaim case with clear rhetorical inflation. No ambiguity — the claims are\nsweeping and the evidence base is thin. Good contrast to Case021 (solid education RCT).\nTests whether agents can identify media hype vs actual evidence.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\n    \"The article cites real pilot programs but may misrepresent their scope, duration, or findings\",\n    \"The 65% test score increase figure is presented as a general finding rather than context-specific\",\n    \"The 'two-times learning effect' is treated as a universal principle rather than a specific measurement from limited studies\",\n    \"The article conflates evidence from specific subjects (physics, mathematics, literacy) with 'all subjects'\",\n    \"Pilot programs are assumed to be representative of broader educational outcomes\",\n    \"The article assumes AI tutoring effects are causal rather than potentially confounded by selection bias, novelty effects, or measurement artifacts\"\n  ],\n  \"steps\": [\n    \"Identified the core claim: AI systems are making human teachers obsolete across all subjects, with quantified performance gains\",\n    \"Examined the evidence base: pilot programs in two countries with reported improvements in three specific subjects\",\n    \"Assessed generalization: the article moves from limited pilot data to sweeping conclusions about 'all subjects' and the dismantling of educator roles\",\n    \"Evaluated the 65% figure: presented without context (baseline, sample size, duration, control conditions, or whether this is an outlier)\",\n    \"Analyzed the 'two-times learning effect' claim: described as a general principle but likely derived from specific studies with unknown methodological rigor\",\n    \"Checked for confounders: no mention of selection bias (who participated?), novelty effects (students excited by new technology), teacher quality variation, or measurement differences\",\n    \"Assessed causal language: 'outperform' and 'taught' imply causation, but pilot programs are typically correlational or quasi-experimental\",\n    \"Evaluated scope creep: evidence from three subjects generalized to 'all subjects' without justification\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The study is solid but the article misrepresents it: The underlying research may be methodologically sound, but the article overstates findings and scope\",\n    \"Correlation vs. causation: Improvements could reflect selection effects (motivated students), novelty effects, or better measurement rather than AI superiority\",\n    \"Mechanism vs. evidence: The 'two-times learning effect' may describe a specific context (e.g., one-on-one tutoring in mathematics) but is applied universally\"\n  ],\n  \"uncertainties\": [\n    \"Without access to the original pilot studies, I cannot verify whether the 65% figure or 'two-times effect' are accurately reported or cherry-picked\",\n    \"The article may cite legitimate research but frame it misleadingly; the underlying studies could be solid while the article's interpretation is not\",\n    \"It is unclear whether 'pilot programs' involved rigorous RCTs, quasi-experimental designs, or informal comparisons\",\n    \"The baseline performance of comparison groups is unknown—a 65% increase from a very low baseline is different from a 65% increase from a high baseline\",\n    \"Duration of pilots is not specified; short-term novelty effects could inflate results\"\n  ],\n  \"key_claims\": [\n    \"The article makes a causal claim ('AI outperform peers') from what are likely correlational or quasi-experimental pilot data\",\n    \"Evidence from three subjects is generalized to 'all subjects' without justification—a clear overclaim\",\n    \"Quantified claims (65% increase, two-times effect) lack context and appear decontextualized from their original studies\",\n    \"The conclusion that educators' roles are 'being dismantled' is a dramatic extrapolation from limited pilot evidence\",\n    \"The phrase 'data-backed reality for all subjects' contradicts the actual evidence base (pilots in specific subjects only)\",\n    \"No discussion of confounders (selection bias, novelty effects, measurement differences, teacher quality variation) despite their obvious relevance\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problems? No—the article explicitly claims 'all subjects' and 'dismantling' of educator roles, which are clear overclaims given pilot-level evidence\",\n    \"Did I miss potential strengths? The article does cite specific programs and quantified results, which is better than pure speculation, but the generalization is still unjustified\",\n    \"Is this a correlation vs. causation issue? Yes, partially—pilots likely lack rigorous causal designs, but the primary issue is overclaim and scope creep\",\n    \"Should I flag decorative uncertainty? The article shows no meaningful uncertainty language; it presents speculative conclusions as established facts\",\n    \"Did I assume facts not in evidence? I noted that I cannot verify the studies without seeing them, but the article's own framing (pilot programs → universal claims) is the problem\"\n  ],\n  \"confidence\": 0.88\n}\n```\n\n---\n\n### Summary\n\nThis article exhibits **clear overclaim**. The core problems:\n\n1. **Scope creep**: Evidence from pilot programs in three subjects (physics, mathematics, literacy) is generalized to \"all subjects.\"\n2. **Uncontextualized quantification**: The 65% increase and \"two-times learning effect\" lack baseline information, sample details, or methodological context.\n3. **Causal language from correlational data**: Pilot programs typically cannot establish causation; confounders like selection bias, novelty effects, and measurement differences are ignored.\n4. **Dramatic conclusion from limited evidence**: \"Educators' roles are being dismantled\" is an extreme extrapolation from pilot-level findings.\n5. **No uncertainty**: The article presents speculative conclusions as \"data-backed reality\" without acknowledging limitations.\n\nThe article may cite real studies, but it misrepresents their scope and certainty. A more honest framing would be: \"Some pilot programs show promising results in specific subjects, but broader claims require larger, longer-term studies with rigorous controls.\"",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The article cites real pilot programs but may misrepresent their scope, duration, or findings",
+            "The 65% test score increase figure is presented as a general finding rather than context-specific",
+            "The 'two-times learning effect' is treated as a universal principle rather than a specific measurement from limited studies",
+            "The article conflates evidence from specific subjects (physics, mathematics, literacy) with 'all subjects'",
+            "Pilot programs are assumed to be representative of broader educational outcomes",
+            "The article assumes AI tutoring effects are causal rather than potentially confounded by selection bias, novelty effects, or measurement artifacts"
+          ],
+          "steps": [
+            "Identified the core claim: AI systems are making human teachers obsolete across all subjects, with quantified performance gains",
+            "Examined the evidence base: pilot programs in two countries with reported improvements in three specific subjects",
+            "Assessed generalization: the article moves from limited pilot data to sweeping conclusions about 'all subjects' and the dismantling of educator roles",
+            "Evaluated the 65% figure: presented without context (baseline, sample size, duration, control conditions, or whether this is an outlier)",
+            "Analyzed the 'two-times learning effect' claim: described as a general principle but likely derived from specific studies with unknown methodological rigor",
+            "Checked for confounders: no mention of selection bias (who participated?), novelty effects (students excited by new technology), teacher quality variation, or measurement differences",
+            "Assessed causal language: 'outperform' and 'taught' imply causation, but pilot programs are typically correlational or quasi-experimental",
+            "Evaluated scope creep: evidence from three subjects generalized to 'all subjects' without justification"
+          ],
+          "alternative_hypotheses": [
+            "The study is solid but the article misrepresents it: The underlying research may be methodologically sound, but the article overstates findings and scope",
+            "Correlation vs. causation: Improvements could reflect selection effects (motivated students), novelty effects, or better measurement rather than AI superiority",
+            "Mechanism vs. evidence: The 'two-times learning effect' may describe a specific context (e.g., one-on-one tutoring in mathematics) but is applied universally"
+          ],
+          "uncertainties": [
+            "Without access to the original pilot studies, I cannot verify whether the 65% figure or 'two-times effect' are accurately reported or cherry-picked",
+            "The article may cite legitimate research but frame it misleadingly; the underlying studies could be solid while the article's interpretation is not",
+            "It is unclear whether 'pilot programs' involved rigorous RCTs, quasi-experimental designs, or informal comparisons",
+            "The baseline performance of comparison groups is unknown—a 65% increase from a very low baseline is different from a 65% increase from a high baseline",
+            "Duration of pilots is not specified; short-term novelty effects could inflate results"
+          ],
+          "self_check": [
+            "Did I overstate the problems? No—the article explicitly claims 'all subjects' and 'dismantling' of educator roles, which are clear overclaims given pilot-level evidence",
+            "Did I miss potential strengths? The article does cite specific programs and quantified results, which is better than pure speculation, but the generalization is still unjustified",
+            "Is this a correlation vs. causation issue? Yes, partially—pilots likely lack rigorous causal designs, but the primary issue is overclaim and scope creep",
+            "Should I flag decorative uncertainty? The article shows no meaningful uncertainty language; it presents speculative conclusions as established facts",
+            "Did I assume facts not in evidence? I noted that I cannot verify the studies without seeing them, but the article's own framing (pilot programs → universal claims) is the problem"
+          ],
+          "key_claims": [
+            "The article makes a causal claim ('AI outperform peers') from what are likely correlational or quasi-experimental pilot data",
+            "Evidence from three subjects is generalized to 'all subjects' without justification—a clear overclaim",
+            "Quantified claims (65% increase, two-times effect) lack context and appear decontextualized from their original studies",
+            "The conclusion that educators' roles are 'being dismantled' is a dramatic extrapolation from limited pilot evidence",
+            "The phrase 'data-backed reality for all subjects' contradicts the actual evidence base (pilots in specific subjects only)",
+            "No discussion of confounders (selection bias, novelty effects, measurement differences, teacher quality variation) despite their obvious relevance"
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 15340
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.15,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.55,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.9166666666666667,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Analyzed the 'two-times learning effect' claim: described as a general principle but likely derived from specific studies with unknown methodological ",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.77)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.55,
+          "weight": 6,
+          "weighted_score": 3.3,
+          "evidence": [
+            {
+              "text": "The article assumes AI tutoring effects are causal rather than potentially confounded by selection bias, novelty effects, or measurement artifacts",
+              "source_field": "assumptions[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6/6 substantive assumptions",
+            "Many assumptions (6)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "The baseline performance of comparison groups is unknown—a 65% increase from a very low baseline is different from a 65% increase from a high baseline",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.9166666666666667,
+          "weight": 6,
+          "weighted_score": 5.5,
+          "evidence": [
+            {
+              "text": "Correlation vs. causation: Improvements could reflect selection effects (motivated students), novelty effects, or better measurement rather than AI superiority",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "2/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Did I miss potential strengths? The article does cite specific programs and quantified results, which is better than pure speculation, but the generalization is still unjustified",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.72, 615 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Missing: no methodology",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no methodology' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['bias', 'effect', 'principle'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/13 content words)",
+          "evidence": [
+            {
+              "text": "The article makes a causal claim ('AI outperform peers') from what are likely correlational or quasi-experimental pilot data",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (1/11 content words)",
+          "evidence": [
+            {
+              "text": "Evidence from three subjects is generalized to 'all subjects' without justification—a clear overclaim",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/13 content words)",
+          "evidence": [
+            {
+              "text": "Quantified claims (65% increase, two-times effect) lack context and appear decontextualized from their original studies",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The conclusion that educators' roles are 'being dismantled' is a dramatic extrapolation from limited pilot evidence",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The phrase 'data-backed reality for all subjects' contradicts the actual evidence base (pilots in specific subjects only)",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 6 has low overlap with final answer (0/14 content words)",
+          "evidence": [
+            {
+              "text": "No discussion of confounders (selection bias, novelty effects, measurement differences, teacher quality variation) despite their obvious relevance",
+              "source_field": "key_claims[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Correlation vs. causation: Improvements could reflect selection effects (motivated students), novelty effects, or better measurement rather than AI superiority",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias, effect, principle",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The article cites real pilot programs but may misrepresent their scope, duration, or findings",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 65% test score increase figure is presented as a general finding rather than context-specific",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 'two-times learning effect' is treated as a universal principle rather than a specific measurement from limited studies",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The article conflates evidence from specific subjects (physics, mathematics, literacy) with 'all subjects'",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Pilot programs are assumed to be representative of broader educational outcomes",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The article assumes AI tutoring effects are causal rather than potentially confounded by selection bias, novelty effects, or measurement artifacts",
+            "source_field": "assumptions[5]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the core claim: AI systems are making human teachers obsolete across all subjects, with quantified performance gains",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the evidence base: pilot programs in two countries with reported improvements in three specific subjects",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed generalization: the article moves from limited pilot data to sweeping conclusions about 'all subjects' and the dismantling of educator roles",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated the 65% figure: presented without context (baseline, sample size, duration, control conditions, or whether this is an outlier)",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Analyzed the 'two-times learning effect' claim: described as a general principle but likely derived from specific studies with unknown methodological rigor",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for confounders: no mention of selection bias (who participated?), novelty effects (students excited by new technology), teacher quality variation, or measurement differences",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed causal language: 'outperform' and 'taught' imply causation, but pilot programs are typically correlational or quasi-experimental",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated scope creep: evidence from three subjects generalized to 'all subjects' without justification",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The article makes a causal claim ('AI outperform peers') from what are likely correlational or quasi-experimental pilot data",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evidence from three subjects is generalized to 'all subjects' without justification—a clear overclaim",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Quantified claims (65% increase, two-times effect) lack context and appear decontextualized from their original studies",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The conclusion that educators' roles are 'being dismantled' is a dramatic extrapolation from limited pilot evidence",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The phrase 'data-backed reality for all subjects' contradicts the actual evidence base (pilots in specific subjects only)",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No discussion of confounders (selection bias, novelty effects, measurement differences, teacher quality variation) despite their obvious relevance",
+            "source_field": "key_claims[5]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study is solid but the article misrepresents it: The underlying research may be methodologically sound, but the article overstates findings and scope",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Correlation vs. causation: Improvements could reflect selection effects (motivated students), novelty effects, or better measurement rather than AI superiority",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism vs. evidence: The 'two-times learning effect' may describe a specific context (e.g., one-on-one tutoring in mathematics) but is applied universally",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Without access to the original pilot studies, I cannot verify whether the 65% figure or 'two-times effect' are accurately reported or cherry-picked",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The article may cite legitimate research but frame it misleadingly; the underlying studies could be solid while the article's interpretation is not",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "It is unclear whether 'pilot programs' involved rigorous RCTs, quasi-experimental designs, or informal comparisons",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The baseline performance of comparison groups is unknown—a 65% increase from a very low baseline is different from a 65% increase from a high baseline",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Duration of pilots is not specified; short-term novelty effects could inflate results",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problems? No—the article explicitly claims 'all subjects' and 'dismantling' of educator roles, which are clear overclaims given pilot-level evidence",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss potential strengths? The article does cite specific programs and quantified results, which is better than pure speculation, but the generalization is still unjustified",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this a correlation vs. causation issue? Yes, partially—pilots likely lack rigorous causal designs, but the primary issue is overclaim and scope creep",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Should I flag decorative uncertainty? The article shows no meaningful uncertainty language; it presents speculative conclusions as established facts",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I assume facts not in evidence? I noted that I cannot verify the studies without seeing them, but the article's own framing (pilot programs → universal claims) is the problem",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.5454545454545454
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 13,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 12,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 5,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.25
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias",
+          "effect",
+          "principle"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'overclaim...' <- step 15 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 1 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph confirms conclusion grounding",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.77)",
+        "6/6 substantive assumptions",
+        "Many assumptions (6)",
+        "5 uncertainties (5 substantive)",
+        "Confidence 0.88",
+        "3 alternative hypotheses considered",
+        "2/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.72, 615 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T14:31:38.116711+00:00",
+  "metadata": {}
+}

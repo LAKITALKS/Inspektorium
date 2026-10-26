@@ -1,0 +1,162 @@
+id: P7A-BND-009
+title: "Boundary: 'clear your zombie cells to reverse aging' (senolytics, mouse mechanism to human)"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: mechanism_vs_evidence
+trap_type: animal_mechanism_to_human_benefit
+ambiguity_level: low
+prompt: |
+  A longevity brand promotes a senolytic supplement: "Aging is caused by 'zombie' senescent cells that poison your body. Clear them out with senolytics and you can reverse aging, restore youthful function, and add healthy years to your life."
+
+  The science cited is a 2018 study in Nature Medicine (Xu et al.). In naturally aged MICE, the senolytic combination dasatinib plus quercetin selectively eliminated senescent cells, improved physical function (walking speed, endurance, grip), and extended remaining lifespan; transplanting senescent cells into young mice caused persistent physical dysfunction. In humans, senolytics have so far been tested only in small early-phase (Phase 1/2) pilot studies in specific diseases (e.g. idiopathic pulmonary fibrosis, diabetic kidney disease) measuring feasibility and biomarkers — not in trials showing that senolytics reverse aging or extend healthy human lifespan.
+context: |
+  Evidence tier: a mouse mechanistic/interventional study (Shape A: animal-to-human leap) plus small
+  early-phase human pilots in unrelated diseases. The described biological mechanism (clearance of
+  senescent cells improves function/lifespan in mice) is used to imply a human anti-aging clinical
+  benefit that has not been demonstrated. This is the mechanism_vs_evidence trigger operating as the
+  central failure.
+expected_answer: "mechanism_vs_evidence"
+reference_solution: |
+  A described biological mechanism demonstrated in MICE (senescent-cell clearance improving physical
+  function and extending lifespan) is used to promise a human clinical benefit — reversing aging and
+  adding healthy years — that has not been demonstrated in humans (only small early-phase disease
+  pilots exist). This animal-mechanism-to-human-benefit leap is the central defect =
+  mechanism_vs_evidence (Shape A). A generic overclaim reading also fits (it is inflated marketing),
+  but the specific mechanism-to-human structure captures the core error.
+gold_label: mechanism_vs_evidence
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: senolytics clear senescent cells and thereby reverse aging, restore
+     youthful function, and add healthy years to human life.
+  2. What the evidence establishes: in aged MICE, senolytics eliminate senescent cells, improve
+     physical function, and extend lifespan; in humans only small early-phase pilots in specific
+     diseases exist (no anti-aging/lifespan demonstration).
+  3. Mismatch: an animal mechanism and animal outcomes are presented as an established human
+     anti-aging benefit.
+  4. Frozen label triggered: mechanism_vs_evidence — a described biological (animal/preclinical)
+     mechanism used to imply human clinical benefit not demonstrated (Shape A).
+  5. Why overclaim is tempting: the marketing is clearly inflated ("reverse aging"), so a generic
+     overclaim reading is available.
+  6. Why precedence keeps the specific label primary: the core error is structural — an animal
+     mechanism (senescent-cell clearance) extrapolated to a human clinical benefit with no human
+     evidence for that benefit — exactly the mechanism_vs_evidence trigger, which outranks generic
+     overclaim when genuinely present and central (docs/taxonomy_precedence.md rule 1). overclaim is
+     the secondary reading.
+  7. What would change the classification: if adequately powered human trials had shown senolytics
+     reverse aging, the claim would be supported; if the claim rested only on a surrogate biomarker
+     in humans framed as clinical benefit, it would route to overclaim (Shape B).
+gold_alternative_reading: |
+  Alternative: overclaim. Plausible because the language is inflated marketing. It is the secondary
+  reading; it loses as PRIMARY because the decisive, structural defect is the animal-mechanism-to-
+  human-benefit leap (Shape A), which is the mechanism_vs_evidence trigger and captures the core
+  error.
+gold_summary: |
+  A brand says senolytics "reverse aging" in humans, citing mouse studies where clearing senescent
+  cells improved function and extended lifespan; human data are only small early-phase disease
+  pilots. Animal mechanism to human clinical benefit = mechanism_vs_evidence (overclaim secondary).
+curator_notes: |
+  Boundary family B2 (overclaim <-> mechanism_vs_evidence), mechanism_vs_evidence direction — a
+  counter-directional (specific-that-looks-overclaim) anchor. Sourced from Xu et al. 2018 (Nature
+  Medicine) and the state of human senolytic trials. Distinct mechanism/endpoint from Class-A mouse
+  cases (NAD/Alzheimer's case028, memory/dementia case044) — this is senescent-cell clearance and
+  physical function/lifespan. Gold frozen before any model output.
+expected_findings:
+  - finding: animal_mechanism_to_human_leap
+    severity: major
+    confidence: high
+    note: "Mouse senolytic benefits presented as human anti-aging clinical benefit"
+  - finding: human_benefit_not_demonstrated
+    severity: major
+    confidence: high
+    note: "Human data limited to small early-phase disease pilots, not anti-aging/lifespan"
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+    note: "'Reverse aging / add healthy years' is also inflated marketing (secondary overclaim)"
+gold_evidence_spans:
+  - span: "Clear them out with senolytics and you can reverse aging, restore youthful function, and add healthy years to your life"
+    why_it_matters: "Human clinical benefit asserted from an animal mechanism."
+    supports_finding: animal_mechanism_to_human_leap
+  - span: "tested only in small early-phase (Phase 1/2) pilot studies in specific diseases"
+    why_it_matters: "Shows the human anti-aging benefit is undemonstrated."
+    supports_finding: human_benefit_not_demonstrated
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "animal to human leap"
+    variants: ["mice", "Shape A", "not demonstrated in humans"]
+    functional_descriptions:
+      - "A mouse mechanism does not establish human clinical benefit"
+  - keyword: "early-phase pilots only"
+    variants: ["Phase 1", "feasibility/biomarkers", "specific diseases"]
+    functional_descriptions:
+      - "Human trials are early-phase and disease-specific, not anti-aging"
+common_errors:
+  - defaulting to overclaim because the marketing is inflated
+  - accepting mouse lifespan extension as human anti-aging proof
+  - missing that human data are early-phase and off-target to the claim
+expected_failure_modes:
+  - specific_to_overclaim
+  - animal_to_human_overreach
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+  - mechanism_quality
+diagnostic_focus: "Can the agent keep mechanism_vs_evidence primary for an animal-mechanism-to-human-benefit leap, resisting the generic overclaim reading?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-009
+  case_family: boundary
+  boundary_family_id: B2
+  boundary: "overclaim <-> mechanism_vs_evidence"
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (mechanism_vs_evidence) with a genuinely plausible alternate (overclaim, invited by
+    the inflated marketing); precedence decides. The animal-to-human structure is clear (Shape A),
+    keeping this at D2. Property-based tagging.
+  precedence_rationale: |
+    A described animal/preclinical mechanism (senescent-cell clearance in mice) used to imply an
+    undemonstrated human clinical benefit is the mechanism_vs_evidence trigger (Shape A). It is
+    genuinely present and central, so under docs/taxonomy_precedence.md rule 1 it outranks the generic
+    overclaim reading, which is retained as secondary.
+  ambiguity_note: |
+    Determinate: mechanism_vs_evidence is the single defensible primary; overclaim is a real
+    secondary reading, not an equal competitor.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the copy is textbook marketing hype, so plain overclaim is
+    tempting. Counter-evidence weighed: the decisive structure is an animal mechanism extrapolated to
+    a human clinical benefit with no supporting human anti-aging trials — the mechanism_vs_evidence
+    trigger (Shape A). Resolution: gold remains mechanism_vs_evidence, overclaim secondary.
+  provenance:
+    claim_source_title: "Senolytic 'clear zombie cells to reverse aging' longevity-supplement marketing claim"
+    claim_source_url: "https://www.cedars-sinai.org/stories-and-insights/expert-advice/are-senolytic-supplements-right-for-me"
+    claim_source_publisher: "Senolytic-supplement industry (fisetin/quercetin 'clear zombie/senescent cells' anti-aging products); the marketed claim is documented and cautioned by Cedars-Sinai"
+    claim_source_date: "2018-2026 (ongoing senolytic-supplement marketing)"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Over-the-counter 'senolytic' supplements are widely marketed on the narrative that clearing senescent 'zombie' cells reverses aging, drawing on Xu 2018 and related mouse work. Cedars-Sinai documents this marketed claim and notes these products have not been shown to clear senescent cells or reverse aging in humans. The frozen span is the bounded human-benefit ('reverse aging ... add healthy years') proposition that leaps past the animal evidence."
+    claim_exact_span: "Clear them out with senolytics and you can reverse aging, restore youthful function, and add healthy years to your life"
+    evidence_sources:
+      - citation: "Xu M, Pirtskhalava T, Farr JN, et al. Senolytics improve physical function and increase lifespan in old age. Nat Med 2018;24(8):1246-1256"
+        url: "https://www.nature.com/articles/s41591-018-0092-9"
+        design: "Preclinical interventional study (mice) + human senescent-cell explant work"
+        population: "Naturally aged mice; transplant models"
+        intervention_or_exposure: "Senolytics (dasatinib + quercetin) clearing senescent cells"
+        comparator: "Vehicle-treated aged mice"
+        endpoint: "Physical function (walking speed, endurance, grip) and remaining lifespan"
+        result: "Senolytics improved physical function and extended remaining lifespan in aged mice; senescent-cell transplant caused persistent dysfunction"
+        source_role: primary_research
+        evidence_tier: "Animal (preclinical) interventional evidence"
+        limitations: "Human senolytic data limited to small early-phase (Phase 1/2) pilots in specific diseases (e.g. IPF, diabetic kidney disease); no human anti-aging/lifespan demonstration"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: mechanism_vs_evidence
+    most_plausible_competing_label: overclaim
+    probes: "counter-direction: specific gold that also looks like generic overclaim"
+  case_fingerprint: "19a710bc2cf484bbbc83a2feb4571c5bb5c65b8d58b672c4fb2aa6a73f90acda"

@@ -1,0 +1,355 @@
+{
+  "plan_document_schema_version": "agent_arena.condition_plan_document/v1",
+  "definition": {
+    "plan_id": "AA-P5A-MEOV-PAIRED-001",
+    "comparison_id": "AA-P5A-MEOV-COMPARISON-001",
+    "research_question": "Under contemporary matched execution, does replacing the historically visible ME-versus-OV instruction with the existing normative taxonomy and precedence rule reduce contract-discordant primary labels on deliberately exposed cases without degrading relevant controls?",
+    "hypothesis": "The taxonomy-aligned prompt will reduce ME-versus-OV contract-discordant primary labels in the genuine-overlap and Shape-B strata; it is not assumed to improve every label, model, calibration measure or individual unit.",
+    "model_keys": [
+      "haiku",
+      "sonnet"
+    ],
+    "n_replications": 3,
+    "execution_mode": "independent_model_adjudication",
+    "qa_profile": "phase5a-condition-contract-production-qa/v2",
+    "unit_selection_rule": "Use only active Phase-7A Class-B independent base units already available before prospective model output. Exclude nested perturbation variants, retired units and holdout material. Predeclare all active A2/A7 mechanism-adversarial units as genuine ME/OV overlap; the three neutral/boundary ME anchors as ME-specific controls; four explicit A5/B2 surrogate Shape-B units; four clear non-mechanistic OV units spanning A1, neutral and B1; and two clear solid plus two clear CvC controls. Selection uses taxonomy exposure and family coverage, never historical prediction correctness.",
+    "unit_strata": [
+      {
+        "stratum_id": "genuine_me_overclaim_overlap",
+        "purpose": "Genuine documented biological-mechanism trigger coexists with rhetorically inflated human benefit.",
+        "unit_ids": [
+          "P7A-ADV-003",
+          "P7A-ADV-004",
+          "P7A-ADV-013",
+          "P7A-ADV-017"
+        ]
+      },
+      {
+        "stratum_id": "mechanism_specific_controls",
+        "purpose": "Clear ME anchors testing preservation of the documented specific trigger.",
+        "unit_ids": [
+          "P7A-BND-009",
+          "P7A-BND-010",
+          "P7A-NEU-004"
+        ]
+      },
+      {
+        "stratum_id": "shape_b_surrogate_controls",
+        "purpose": "Explicit biomarker or surrogate-to-clinical Shape-B cases that must not be stretched into ME.",
+        "unit_ids": [
+          "P7A-ADV-009",
+          "P7A-ADV-010",
+          "P7A-BND-015",
+          "P7A-BND-016"
+        ]
+      },
+      {
+        "stratum_id": "nonmechanistic_overclaim_controls",
+        "purpose": "Clear rhetorical inflation without a genuine ME or CvC trigger.",
+        "unit_ids": [
+          "P7A-ADV-001",
+          "P7A-ADV-002",
+          "P7A-NEU-002",
+          "P7A-BND-001"
+        ]
+      },
+      {
+        "stratum_id": "solid_and_cvc_controls",
+        "purpose": "Relevant other-label controls for unintended solid or CvC precedence regressions.",
+        "unit_ids": [
+          "P7A-NEU-001",
+          "P7A-BND-012",
+          "P7A-NEU-003",
+          "P7A-ADV-005"
+        ]
+      }
+    ],
+    "arms": [
+      {
+        "arm_id": "contemporary_historical_prompt_control",
+        "analytical_condition_id": "AA-P5A-COND-HISTORICAL-001",
+        "prompt_version": "study_forensics_prompt/v1-historical-phase7",
+        "artifact_namespace": "analysis/phase5a_scientific_contract/runs/contemporary-historical-control"
+      },
+      {
+        "arm_id": "prospective_taxonomy_aligned_prompt",
+        "analytical_condition_id": "AA-P5A-COND-TAXONOMY-ALIGNED-001",
+        "prompt_version": "study_forensics_prompt/v2-taxonomy-aligned-phase5a",
+        "artifact_namespace": "analysis/phase5a_scientific_contract/runs/prospective-taxonomy-aligned"
+      }
+    ],
+    "analysis_contract": {
+      "analysis_contract_schema_version": "agent_arena.condition_analysis_contract/v1",
+      "analysis_contract_id": "AA-P5A-ANALYSIS-CONTRACT-001",
+      "implementation": "agent_arena.condition_analysis",
+      "classification_predicate": "agent_arena.phase7a_execution.is_classification_valid",
+      "calibration_predicate": "agent_arena.phase7a_execution.is_calibration_valid",
+      "aggregation": {
+        "planned_votes_per_unit": 3,
+        "vote_eligibility": "classification-valid responses only",
+        "resolved_label_requirement": "at least 2 matching valid labels",
+        "two_matching_plus_missing_or_invalid": "RESOLVED",
+        "three_different_valid_labels": "UNRESOLVED",
+        "two_conflicting_valid_plus_missing_or_invalid": "UNRESOLVED",
+        "one_or_zero_valid_responses": "UNRESOLVED",
+        "invalid_confidence_effect_on_label_vote": "NONE",
+        "gold_access_order": "after label aggregation, for scoring only",
+        "tie_breakers": {
+          "gold": "PROHIBITED",
+          "confidence": "PROHIBITED",
+          "response_order": "PROHIBITED",
+          "model_preference": "PROHIBITED"
+        },
+        "retain_raw_labels_and_validity_states": true
+      },
+      "populations": {
+        "primary": {
+          "stratum_ids": [
+            "genuine_me_overclaim_overlap",
+            "shape_b_surrogate_controls"
+          ],
+          "expected_units_per_model_arm": 8
+        },
+        "controls": {
+          "stratum_ids": [
+            "mechanism_specific_controls",
+            "nonmechanistic_overclaim_controls",
+            "solid_and_cvc_controls"
+          ],
+          "expected_units_per_model_arm": 11
+        }
+      },
+      "population_accounting": {
+        "required_fields": [
+          "expected_units",
+          "resolved_units",
+          "correct_resolved_units",
+          "incorrect_resolved_units",
+          "unresolved_units",
+          "classification_valid_response_slots",
+          "calibration_valid_response_slots",
+          "missing_invalid_error_slots"
+        ],
+        "unit_invariant": "expected_units = correct_resolved_units + incorrect_resolved_units + unresolved_units"
+      },
+      "classification_metrics": {
+        "coverage_adjusted_correct_unit_rate": {
+          "numerator": "correct_resolved_units",
+          "denominator": "fixed expected_units",
+          "unresolved_treatment": "retained in denominator; not called incorrect"
+        },
+        "resolved_unit_accuracy": {
+          "numerator": "correct_resolved_units",
+          "denominator": "resolved_units"
+        },
+        "response_level_accuracy": {
+          "eligibility": "is_classification_valid(response)",
+          "numerator": "eligible responses whose label equals gold",
+          "denominator": "classification_valid_response_slots"
+        }
+      },
+      "calibration_metrics": {
+        "confidence_eligibility": "is_calibration_valid(response)",
+        "missing_or_invalid_confidence": "NONNUMERIC_AND_EXCLUDED",
+        "invalid_confidence_effect_on_classification": "NONE",
+        "brier_top_label": {
+          "implementation": "agent_arena.calibration.brier_top_label",
+          "formula": "mean((confidence - binary_top_label_correctness)^2)",
+          "denominator": "calibration_valid_response_slots"
+        },
+        "ece_5bin": {
+          "implementations": [
+            "agent_arena.calibration.reliability_table",
+            "agent_arena.calibration.ece_from_table"
+          ],
+          "fixed_bin_edges": [
+            0.0,
+            0.2,
+            0.4,
+            0.6,
+            0.8,
+            1.0
+          ],
+          "bin_semantics": "left-closed/right-open; confidence 1.0 in final bin",
+          "formula": "sum((bin_n / calibration_valid_response_slots) * abs_gap)",
+          "denominator": "calibration_valid_response_slots",
+          "empty_bins": "RETAINED"
+        }
+      },
+      "directional_decision_order": [
+        {
+          "order": 1,
+          "verdict": "INCONCLUSIVE_INCOMPLETE",
+          "condition": "any unresolved primary or control unit prevents the complete comparison"
+        },
+        {
+          "order": 2,
+          "verdict": "ADVERSE",
+          "condition": "either model loses primary correct units or loses more than one control correct unit"
+        },
+        {
+          "order": 3,
+          "verdict": "SUPPORTIVE_DIRECTIONAL",
+          "condition": "both models gain primary correct units and neither loses more than one control correct unit"
+        },
+        {
+          "order": 4,
+          "verdict": "INCONCLUSIVE",
+          "condition": "otherwise"
+        }
+      ],
+      "supportive_directional_scope": "descriptive direction only; no statistical significance, generalization, or proof that every harness repair improved accuracy",
+      "paired_sign_test": {
+        "unit_pair_eligibility": "same model and unit with resolved labels in both prompt arms",
+        "discordant_pair_eligibility": "eligible pair where exactly one arm's resolved label is correct",
+        "exclusions": [
+          "unresolved label in either arm",
+          "both arms correct",
+          "both arms incorrect"
+        ],
+        "implementation": "exact two-sided binomial sign test with p=0.5",
+        "significance_threshold": "NONE_PREDECLARED",
+        "independent_unit": "unit, never an individual repetition"
+      },
+      "completeness": {
+        "classification": "all expected unit labels resolved",
+        "calibration": "all planned response slots calibration-valid",
+        "transport_missingness": "no missing slots and no provider-error slots",
+        "separate_reporting_required": true
+      },
+      "stopping": {
+        "prompt_tuning_after_results": "PROHIBITED",
+        "case_replacement_after_results": "PROHIBITED",
+        "additional_repetitions_after_results": "PROHIBITED",
+        "semantic_retries": "PROHIBITED"
+      }
+    },
+    "registered_identity_contract": {
+      "identity_contract_schema_version": "agent_arena.condition_registry_bindings/v1",
+      "model_registry_source": "agent_arena.runtime_contract.MODELS",
+      "models": [
+        {
+          "model_key": "haiku",
+          "exact_model_id": "claude-haiku-4-5-20251001",
+          "model_revision": "20251001",
+          "agent_config_path": "agents/claude_haiku.yaml"
+        },
+        {
+          "model_key": "sonnet",
+          "exact_model_id": "claude-sonnet-4-5-20250929",
+          "model_revision": "20250929",
+          "agent_config_path": "agents/claude_sonnet.yaml"
+        }
+      ],
+      "prompt_registry_source": "agent_arena.runner._STUDY_FORENSICS_PROMPT_REGISTRY",
+      "prompts": [
+        {
+          "prompt_version": "study_forensics_prompt/v1-historical-phase7",
+          "prompt_condition_id": "study_forensics.historical.v1",
+          "system_prompt_sha256": "f7704fa50a7689ae56f8fc6d7a383205a5aca34d0c400be36335d6ad8abfcfd5"
+        },
+        {
+          "prompt_version": "study_forensics_prompt/v2-taxonomy-aligned-phase5a",
+          "prompt_condition_id": "study_forensics.taxonomy_aligned.v2",
+          "system_prompt_sha256": "37d91b813bee2b4febb9dba5da66fa8e2bda1e091989785adf6ca5acc132b7ef"
+        }
+      ],
+      "unit_registry_source": "agent_arena.phase7a_execution.resolve_evaluated_units",
+      "runtime_contract_builder": "agent_arena.condition_contract.condition_runtime_contract",
+      "analysis_contract_implementation": "agent_arena.condition_analysis",
+      "retry_contract_source": "agent_arena.condition_retry.build_retry_contract"
+    },
+    "call_accounting": {
+      "model_count": 2,
+      "prompt_arm_count": 2,
+      "independent_units": 19,
+      "repetitions": 3,
+      "formula": "2 models × 2 prompt arms × 19 units × 3 repetitions",
+      "analytical_slots_total": 228,
+      "analytical_slots_per_model_arm_batch": 57,
+      "analytical_slots_per_model_across_arms": 114,
+      "analytical_slots_per_arm_across_models": 114,
+      "guarded_batch_invocations_in_schedule": 4,
+      "primary_units_per_model_arm": 8,
+      "control_units_per_model_arm": 11,
+      "provider_invocations_are_not_analytical_slots": true,
+      "http_attempts_are_not_provider_invocations": true
+    },
+    "retry_contract": {
+      "retry_contract_schema_version": "agent_arena.condition_retry_contract/v1",
+      "retry_contract_id": "AA-P5A-RETRY-ACCOUNTING-001",
+      "layers": [
+        {
+          "layer_id": "anthropic_sdk_transport",
+          "configuration_source": "agent_arena.providers.anthropic.MAX_TRANSPORT_RETRIES",
+          "initial_attempts_per_provider_invocation": 1,
+          "retry_attempts_after_initial_max": 2,
+          "http_attempts_per_provider_invocation_max": 3,
+          "retry_scope": "one AnthropicProvider.generate invocation",
+          "counter_resets_on": "each provider-method invocation"
+        },
+        {
+          "layer_id": "outer_provider_error_passes",
+          "configuration_source": "agent_arena.condition_retry.PROVIDER_ERROR_PASSES_PER_GUARDED_INVOCATION",
+          "passes_per_guarded_invocation_max": 3,
+          "pass_count_includes_initial_pass": true,
+          "provider_reissues_after_initial_max": 2,
+          "eligible_for_reissue": "provider/transport error only",
+          "terminal_semantic_reissue": "PROHIBITED",
+          "retry_scope": "one analytical slot within one guarded invocation",
+          "counter_resets_on": "each later guarded invocation or resume"
+        },
+        {
+          "layer_id": "checkpoint_resume",
+          "configuration_source": "agent_arena.phase7a_execution.is_terminal_attempt and agent_arena.resume_integrity.validate_resume_checkpoint",
+          "terminal_slots_reused_without_provider_call": true,
+          "authenticated_nonterminal_provider_failures_reeligible": true,
+          "adds_automatic_attempts_within_invocation": false,
+          "persistent_cross_invocation_attempt_counter": "NOT_ENFORCED",
+          "counter_resets_on": "not applicable; this layer has no attempt counter"
+        },
+        {
+          "layer_id": "scheduled_reentry",
+          "configuration_source": "AA-P5A-MEOV-PAIRED-001",
+          "guarded_invocations_per_batch_in_schedule": 1,
+          "additional_invocations_or_restarts_in_schedule": 0,
+          "additional_invocation_policy": "REQUIRES_SEPARATELY_REVIEWED_BUDGET_AND_EXECUTION_AUTHORIZATION",
+          "additional_invocation_policy_runtime_enforcement": "NOT_ENFORCED_BY_A_PERSISTENT_CUMULATIVE_COUNTER",
+          "counter_resets_on": "not applicable; fixed schedule permits one invocation"
+        }
+      ],
+      "schedule": {
+        "analytical_slots": 228,
+        "guarded_batch_invocations": 4,
+        "slots_per_batch": 57,
+        "provider_method_invocations_per_batch_max": 171,
+        "provider_method_invocations_schedule_max": 684,
+        "sdk_retry_http_attempts_schedule_max": 1368,
+        "http_attempts_per_batch_max": 513,
+        "http_attempts_schedule_max": 2052
+      },
+      "persistent_cross_invocation_spending_cap_enforced": false,
+      "availability_probe_http_attempts_in_guarded_path": 0,
+      "additional_automatic_retry_layers": []
+    },
+    "provider_state": {
+      "model_availability": "UNKNOWN_PENDING_SEPARATELY_AUTHORIZED_PROVIDER_CHECK",
+      "pricing": "UNKNOWN_PENDING_SEPARATELY_AUTHORIZED_CURRENT_PRICE_CHECK",
+      "verification_authorized": false
+    }
+  },
+  "authorization": {
+    "status": "NOT_AUTHORIZED_FOR_REAL_EXECUTION",
+    "specification_fingerprint": "333fc4d265b5cf336cc371080aad1317bcc00826178b6c088f02bf3657db65a6",
+    "authorization_source": "NO_PRODUCTION_APPROVAL_COMMITTED",
+    "authorized_budget_calls": 0
+  },
+  "progress": {
+    "status": "NOT_EXECUTED",
+    "completed_calls": 0,
+    "arm_progress": {
+      "contemporary_historical_prompt_control": "NOT_EXECUTED",
+      "prospective_taxonomy_aligned_prompt": "NOT_EXECUTED"
+    }
+  }
+}

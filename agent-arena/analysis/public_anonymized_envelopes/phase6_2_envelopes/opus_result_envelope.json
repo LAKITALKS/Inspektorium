@@ -1,0 +1,264 @@
+{
+  "envelope_version": "6.2.0",
+  "protocol_version": "6.1",
+  "manifest_id": "AA-DEVPOOL-6100",
+  "public_commitment": "679233c6e8ccadf49045bd183c11e8f47d8dac3c6759eb99cc49b88026ae4332",
+  "run_id": "opus-878636c64fc8",
+  "model": "claude-opus-4-5-20251101",
+  "provider": "anthropic",
+  "prompt_contract_version": "f7704fa50a7689ae56f8fc6d7a383205a5aca34d0c400be36335d6ad8abfcfd5",
+  "generated_at": "2026-08-05T08:25:11.107598+00:00",
+  "expected_record_count": 27,
+  "declared_gold_aggregate": {
+    "solid": 8,
+    "overclaim": 15,
+    "correlation_vs_causation": 2,
+    "mechanism_vs_evidence": 2,
+    "total": 27
+  },
+  "records": [
+    {
+      "dev_id": "DEV-0001",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0002",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0003",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "correlation_vs_causation",
+      "gold_label": "correlation_vs_causation",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0004",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "mechanism_vs_evidence",
+      "gold_label": "mechanism_vs_evidence",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0005",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0006",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0007",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0008",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0009",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.82,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0010",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.82,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0011",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0012",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0013",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "development_only",
+      "confidence": 0.92,
+      "gold_case_type": "borderline"
+    },
+    {
+      "dev_id": "DEV-0014",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "mechanism_vs_evidence",
+      "gold_label": "mechanism_vs_evidence",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0015",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "correlation_vs_causation",
+      "gold_label": "correlation_vs_causation",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0016",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.95,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0017",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.95,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0018",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.95,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0019",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "solid",
+      "gold_label": "solid",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0020",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0021",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.95,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0022",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.95,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0023",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.88,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0024",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0025",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0026",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    },
+    {
+      "dev_id": "DEV-0027",
+      "model": "claude-opus-4-5-20251101",
+      "predicted_label": "overclaim",
+      "gold_label": "overclaim",
+      "stratum": "clear",
+      "confidence": 0.92,
+      "gold_case_type": "clear"
+    }
+  ]
+}

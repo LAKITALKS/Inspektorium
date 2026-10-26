@@ -172,6 +172,13 @@ class ValidatedFinding(ProposedFinding):
                 )
         if self.evidence_field_count > 0 and self.evidence_span_verified is None:
             raise ValueError("a proposed citation requires an evidence span result")
+        if (
+            self.evidence_span_verified is True
+            and not self.has_complete_evidence_reference
+        ):
+            raise ValueError(
+                "a verified citation requires a complete evidence reference"
+            )
 
         if self.deterministic_validation_status is DeterministicValidationStatus.PASSED:
             if not self.claim_span_verified:

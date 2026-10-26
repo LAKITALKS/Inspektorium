@@ -1,0 +1,54 @@
+{
+  "slot_key": "A:q-7f0ca6e5ec639574",
+  "id": "q-7f0ca6e5ec639574",
+  "arm": "A",
+  "input_sha256": "9b8e42488c0934de100322b9edc4603f0162007ae65603dbbe4093b404aac3cf",
+  "request_sha256": "bd810c18429b4f054a0013c1447e86716ded1a6d436adf8dddea2c0ff9496b28",
+  "raw_text": "```json\n{\n  \"final_answer\": \"mechanism_vs_evidence\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"Mouse tumor models accurately predict human patient survival outcomes\",\n    \"In vitro macrophage phagocytosis translates to therapeutic benefit in humans\",\n    \"Tumor growth inhibition in mice correlates with clinical survival improvement in patients\"\n  ],\n  \"steps\": [\n    \"Evidence establishes CD47-SIRP-alpha mechanism in vitro\",\n    \"Evidence demonstrates tumor growth inhibition and mouse survival in xenograft/immunocompetent models\",\n    \"Claim extrapolates to human patient survival without human clinical trial data\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Anti-CD47 antibodies may show different efficacy in human tumors due to immune system complexity differences\",\n    \"Mouse survival improvements may not translate to clinically meaningful human survival extension\",\n    \"Human tumors may have compensatory immune evasion mechanisms not present in mouse models\"\n  ],\n  \"uncertainties\": [\n    \"No human clinical trial data provided; only preclinical mouse models and in vitro studies\",\n    \"Xenograft models use immunodeficient mice, limiting relevance to human immune context\",\n    \"Unknown whether mouse survival improvements translate to human therapeutic benefit\",\n    \"No dosing, safety, or efficacy data from human patients\"\n  ],\n  \"key_claims\": [\n    \"Anti-CD47 antibodies enable macrophage phagocytosis (supported in vitro)\",\n    \"Antibody treatment increases mouse survival (supported in animal models)\",\n    \"These experiments establish longer survival for solid-tumor patients (NOT supported by evidence)\"\n  ],\n  \"self_check\": [\n    \"The claim uses 'establish' language suggesting clinical proof, but evidence is limited to animal models\",\n    \"The mechanism is well-characterized, but the leap from mouse survival to human patient survival is unsupported\",\n    \"This is a preclinical-to-therapeutic gap: animal pathway evidence does not constitute human clinical evidence\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n**Rationale:** The claim asserts that these experiments \"establish longer survival for solid-tumor patients,\" but the evidence packet contains only preclinical data: in vitro macrophage studies, mouse xenograft models, and immunocompetent mouse tumor models. No human clinical trial data demonstrating patient survival benefit is provided. This is a classic mechanism_vs_evidence error—a well-characterized biological mechanism (CD47-SIRP-alpha interaction) and animal model efficacy are used to imply human clinical benefit that has not been demonstrated. The bridge from mouse survival to human patient survival is not supported by the supplied evidence.",
+  "raw_sha256": "10a318db9ed71bde29988590ca379aa3f5933d47949640d4854b6cb0afd767a0",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 7692458959,
+  "attempt_ids": [
+    "attempt-013"
+  ],
+  "usage": {
+    "input_tokens": 852,
+    "output_tokens": 650,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": false,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "mechanism_vs_evidence",
+    "label_readable": true,
+    "confidence": 0.92,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "mechanism_vs_evidence",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 2763
+    },
+    "B_parser_ns": 254500,
+    "C_incremental_interpretation_ns": 183292
+  }
+}

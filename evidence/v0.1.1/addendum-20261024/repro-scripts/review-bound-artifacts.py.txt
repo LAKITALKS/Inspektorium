@@ -1,0 +1,125 @@
+"""Recount saved E1/E2 evidence independently; does not run the renderer."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import subprocess
+import unicodedata
+import zipfile
+from collections import Counter
+from itertools import groupby
+from pathlib import Path
+
+import numpy as np
+from PIL import Image
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--repo', type=Path, required=True)
+parser.add_argument('--work', type=Path, required=True)
+args = parser.parse_args()
+repo, work = args.repo.resolve(), args.work.resolve()
+catalog = repo/'evidence/v0.1.1/addendum-20261024/catalog.json'
+cases = json.loads(catalog.read_text())['cases']
+case_by_id = {c['id']: c for c in cases}
+assert len(case_by_id) == len(cases) == 87
+assert Counter(c['kind'] for c in cases) == {'combining':75, 'email':9, 'clean':3}
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def max_run(text):
+    return max((sum(1 for _ in chars) for yes, chars in groupby(
+        text, key=lambda c: unicodedata.category(c) in {'Mn','Me'}) if yes), default=0)
+
+report = {'catalog_sha256': sha(catalog), 'runs': {}}
+all_outputs = {}
+for version in ('baseline','candidate'):
+    folder = work/f'{version}-results'
+    manifest = json.loads((folder/'manifest.json').read_text())
+    product = json.loads((folder/'product.json').read_text())
+    outputs = json.loads((folder/'outputs.json').read_text())
+    texts = json.loads((folder/'text_measurements.json').read_text())
+    visuals = json.loads((folder/'visual_measurements.json').read_text())
+    assert manifest['catalog_sha256'] == sha(catalog)
+    assert manifest['harness_sha256'] == sha(repo/'evidence/v0.1.1/addendum-20261024/tools/check_addendum.py')
+    assert len(outputs) == 87 and {r['id'] for r in outputs} == set(case_by_id)
+    assert len(texts) == 348
+    assert len({(r['id'],r['renderer']) for r in texts}) == 348
+    assert Counter(r['kind'] for r in texts) == {'combining':300,'email':36,'clean':12}
+    by_id = {r['id']:r for r in outputs}
+    all_outputs[version] = by_id
+    for item in outputs:
+        c = case_by_id[item['id']]
+        assert item['json']['findings'][c['finding']][c['field']] == c['proposals']['findings'][c['finding']][c['field']]
+        assert len(item['calls']) == 2 and all(call['exit_code'] == 0 for call in item['calls'])
+        assert item['markdown_sha256'] == hashlib.sha256(item['markdown'].encode()).hexdigest()
+    for t in texts:
+        raw = max_run(by_id[t['id']]['markdown'])
+        shown = max_run(t['visible_text'])
+        assert raw == t['raw_markdown_max_run'] and shown == t['rendered_max_run']
+        assert t['E1_text_pass'] == (max(raw,shown) <= 4)
+        assert t['K7_no_links'] == (len(t['links']) == 0)
+    assert len(visuals) == 150 and len({(v['id'],v['style']) for v in visuals}) == 150
+    visual_counts = {}
+    for style in ('noto-serif','github-like'):
+        subset = [v for v in visuals if v['style'] == style]
+        assert len(subset) == 75
+        assert {v['id'] for v in subset} == {c['id'] for c in cases if c['kind']=='combining'}
+        measured, invalid, overlaps, critical_overlaps = 0,0,0,0
+        for v in subset:
+            stem = folder/'screenshots'/f'{v["id"]}-{style}'
+            actual = Path(str(stem)+'-actual.png')
+            twin = Path(str(stem)+'-twin.png')
+            assert sha(actual) == v['png_sha256'] and sha(twin) == v['twin_png_sha256']
+            if v['status'] != 'MEASURED':
+                assert v['status']=='INVALID' and v['overlap'] is None
+                invalid += 1
+                continue
+            measured += 1
+            a = np.array(Image.open(actual).convert('L'))
+            b = np.array(Image.open(twin).convert('L'))
+            assert v['critical_rows'] == 3
+            original_rows = [r for r in v['original_dom']['rows'] if not r['payload']]
+            assert len(original_rows) == len(v['rows'])
+            for row in v['rows']:
+                other = row['twin_box']
+                assert abs(row['w']-other['w'])<=0.01 and abs(row['h']-other['h'])<=0.01
+                def crop(arr, r):
+                    return arr[round(r['y'])-2:round(r['y']+r['h'])+2,
+                               round(r['x'])-2:round(r['x']+r['w'])+2]
+                aa,bb = crop(a,row),crop(b,other)
+                assert aa.shape == bb.shape
+                ink = int(np.count_nonzero(np.logical_and(aa < 160,bb >= 160)))
+                assert ink == row['added_ink_px'] and row['overlap'] == (ink>=10)
+            assert v['overlap'] == any(r['overlap'] for r in v['rows'])
+            overlaps += v['overlap']
+            critical_overlaps += v['critical_overlaps']
+        visual_counts[style] = dict(measured=measured,invalid=invalid,overlaps=overlaps,critical_overlaps=critical_overlaps)
+    provenance = product['build_provenance']
+    assert provenance['commit'] == manifest['commit']
+    wheel = work/f'{version}-build'/'wheels'/provenance['wheel']
+    assert sha(wheel) == provenance['wheel_sha256']
+    checked_files = 0
+    with zipfile.ZipFile(wheel) as z:
+        for member in z.namelist():
+            if member.startswith('inspektorium/') and not member.endswith('/'):
+                tracked = subprocess.check_output(['git','show',f'{manifest["commit"]}:src/{member}'], cwd=repo)
+                assert z.read(member) == tracked
+                assert hashlib.sha256(tracked).hexdigest() == product['installed_files_sha256'][member]
+                checked_files += 1
+    counts = dict(cases=len(outputs),text_renderings=len(texts),
+        E1_text_failures=sum(not t['E1_text_pass'] for t in texts),
+        K7_link_violations=sum(not t['K7_no_links'] for t in texts),
+        raw_preserved=len(outputs),visuals=visual_counts)
+    summary = json.loads((folder/'summary.json').read_text())
+    for key,value in counts.items():
+        assert value == summary[key]
+    report['runs'][version] = dict(commit=manifest['commit'],wheel_package_files_checked=checked_files,**counts)
+
+assert all(all_outputs['baseline'][c]['json']==all_outputs['candidate'][c]['json'] for c in case_by_id)
+assert all(all_outputs['baseline'][c]['json_sha256']==all_outputs['candidate'][c]['json_sha256'] for c in case_by_id)
+report['byte_identical_json_reports'] = len(cases)
+report['limitations'] = 'Read-only recount of saved outputs and images, not a new browser run or universal visual guarantee.'
+(work/'review-bound-artifacts-results.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report,indent=2))

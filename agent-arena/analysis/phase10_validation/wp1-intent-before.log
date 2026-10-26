@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "analysis/phase10_validation/wp1-intent-repro.py", line 32, in <module>
+    assert not result.valid, 'Changed release intent must not reuse the existing release revision and checked reports'
+AssertionError: Changed release intent must not reuse the existing release revision and checked reports
+Original record/reports/subject unchanged; only intent and outer hashes replaced.
+{"valid":true,"status":"RELEASED","errors":[]}
+
+exit_code=1

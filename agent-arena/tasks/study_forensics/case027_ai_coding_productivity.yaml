@@ -1,0 +1,76 @@
+id: study-forensics-027
+title: "Study Forensics: AI coding assistant productivity claims"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: survivorship_bias_overclaim
+ambiguity_level: low
+prompt: |
+  A comprehensive study of AI-powered coding assistants reveals transformative productivity gains for software development teams. The research tracked 450 developers using an AI code completion tool over three months, measuring code commits, pull request completion times, and feature delivery velocity. Developers using the AI assistant showed 42 percent faster completion times on coding tasks and produced 35 percent more code commits per week compared to baseline measurements taken before tool adoption. The study concludes that AI coding assistants fundamentally enhance developer productivity and will reshape software engineering workflows across the industry. The researchers recommend immediate enterprise adoption to maintain competitive advantage. Notably, 78 percent of developers initially enrolled in the study continued active use of the tool through the study period, indicating high satisfaction and sustained utility. The productivity gains were consistent across both junior and senior developers, suggesting universal applicability regardless of experience level.
+context: |
+  A technology study with severe survivorship bias, no control group, and inappropriate
+  generalization from voluntary early adopters to enterprise-wide mandates.
+expected_answer: "overclaim"
+reference_solution: |
+  Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment. The 78% retention is framed as success but actually signals selection bias.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The 22% attrition rate is mentioned but dismissed as "high satisfaction" rather than
+  acknowledged as potential selection bias. No control group exists — productivity gains
+  could reflect Hawthorne effects, seasonal variation, or project complexity differences.
+  "Continued active use" filters out users who abandoned the tool. The jump from
+  "voluntary adopters in study" to "enterprise adoption recommendations" ignores the
+  difference between self-selected enthusiasts and mandated users.
+gold_alternative_reading: |
+  The 22% who discontinued may represent users who found the tool counterproductive.
+  Early voluntary adopters likely differ systematically from reluctant enterprise-mandated
+  users. Without a control group, the 42% improvement could be entirely artifactual.
+gold_summary: |
+  Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment.
+curator_notes: |
+  Excellent overclaim case that tests survivorship-bias detection. The 78% retention
+  is a subtle tell — most readers see "high satisfaction" but it actually signals
+  selection bias. Different failure mode than Case025 (media hype vs methodological flaw).
+  From Dataset 2 (v0.2_003), adapted to use existing finding types.
+expected_findings:
+  - finding: conclusion_exceeds_results
+    severity: major
+    confidence: high
+  - finding: unsupported_generalization
+    severity: major
+    confidence: high
+gold_evidence_spans:
+  - span: "78 percent of developers initially enrolled in the study continued active use"
+    why_it_matters: "22% attrition likely non-random (frustrated users quit), creating survivorship bias."
+    supports_finding: conclusion_exceeds_results
+  - span: "compared to baseline measurements taken before tool adoption"
+    why_it_matters: "No concurrent control group; cannot distinguish tool effect from Hawthorne/seasonality."
+    supports_finding: conclusion_exceeds_results
+  - span: "recommend immediate enterprise adoption to maintain competitive advantage"
+    why_it_matters: "Generalizes from voluntary early adopters to mandatory enterprise users without justification."
+    supports_finding: unsupported_generalization
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "survivorship bias"
+    variants: ["attrition", "continued active use", "selection bias"]
+    functional_descriptions:
+      - "the 22% dropout is non-random and biases results upward"
+  - keyword: "no control group"
+    variants: ["baseline measurements", "before adoption", "pre-post comparison"]
+    functional_descriptions:
+      - "without concurrent controls, gains could be artifactual"
+common_errors:
+  - accepting 78% retention as evidence of success rather than selection bias
+  - missing the lack of control group
+expected_failure_modes:
+  - missing_overclaim
+  - accepting_survivorship_as_evidence
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent detect survivorship bias framed as a success metric?"

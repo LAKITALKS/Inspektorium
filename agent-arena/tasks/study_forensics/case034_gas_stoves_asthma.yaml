@@ -1,0 +1,101 @@
+id: study-forensics-034
+title: "Study Forensics: Gas stoves and childhood asthma — hedged association report"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: overflagging_hedged_association
+ambiguity_level: medium
+prompt: |
+  An analysis of household air quality in the United States estimates that approximately 12.7 percent of childhood asthma cases may be attributable to the use of gas stoves. During cooking, nitrogen oxides are released that often significantly exceed recommended limits. However, experts emphasize that exposure depends heavily on ventilation, room size, frequency of use, and sociodemographic factors. Many families also use range hoods, which reduces exposure. Further research is therefore recommended before policy measures are taken.
+context: |
+  The text presents a statistical attribution (12.7% of asthma cases) with a plausible
+  mechanism (nitrogen oxides) but simultaneously flags numerous confounders and calls for
+  more research before policy action. The hedging is substantive, not decorative.
+expected_answer: "solid"
+reference_solution: |
+  The text reports a statistical association with appropriate hedging. It uses cautious language ("may be attributable," "estimates"), acknowledges numerous confounders (ventilation, room size, sociodemographic factors), and explicitly recommends further research before policy action. The claims match the evidence tier — no overclaim or unsupported causal leap is made.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The text uses consistently cautious language: "estimates," "may be attributable," "could."
+  It explicitly acknowledges numerous confounders (ventilation, room size, usage frequency,
+  sociodemographic factors, range hood use). It recommends further research before policy
+  action. No causal claim is made — the association is reported at the appropriate evidence
+  tier. The hedging is substantive: it genuinely constrains interpretation rather than
+  serving as decoration. This is solid reporting of an epidemiological association.
+gold_alternative_reading: |
+  A strict reader might argue that the 12.7% attributable fraction figure implicitly
+  invites causal interpretation, since "attributable" carries causal connotations in
+  epidemiological language. Under this reading, the text could be classified as
+  correlation_vs_causation. However, the explicit confounder acknowledgment and the call
+  for further research before policy action effectively hedge this implication.
+gold_summary: |
+  Hedged epidemiological association report. Claims match evidence tier with substantive uncertainty language and explicit confounder acknowledgment.
+curator_notes: |
+  RELABELED 2026-04-08: Gold label changed from correlation_vs_causation to solid.
+
+  Reason: Mini-validation sprint (8 new cases × 3 models) showed all 3 models
+  (Sonnet, Haiku, Opus) unanimously classify this as solid. All 3 models explicitly
+  considered correlation_vs_causation as an alternative and rejected it because the
+  text's hedging language is substantive and effective. The text makes no explicit
+  causal claim — "may be attributable" with confounder acknowledgment and a call for
+  further research is appropriately cautious reporting.
+
+  Original label from Dataset 6 (CaseM03) was correlation_vs_causation. The original
+  German text was translated to English. The translation is faithful. The issue is
+  not translation quality but the original labeling: the text was always too well-hedged
+  for a correlation_vs_causation classification.
+
+  This case now serves as an overflagging test: can the agent recognize that an alarming
+  statistic (12.7%) with proper hedging is solid, not a correlation-causation slip?
+  Based on Columbia University gas stove analysis.
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: high
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: high
+gold_evidence_spans:
+  - span: "approximately 12.7 percent of childhood asthma cases may be attributable to the use of gas stoves"
+    why_it_matters: "Reports a statistical association using appropriately cautious language."
+    supports_finding: evidence_matches_claim
+  - span: "exposure depends heavily on ventilation, room size, frequency of use, and sociodemographic factors"
+    why_it_matters: "Substantive confounder acknowledgment that constrains interpretation."
+    supports_finding: cautious_scope_control
+  - span: "Further research is therefore recommended before policy measures are taken"
+    why_it_matters: "Explicitly limits the policy implications — evidence-appropriate restraint."
+    supports_finding: cautious_scope_control
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "confounders acknowledged"
+    variants: ["ventilation", "room size", "sociodemographic", "range hoods"]
+    functional_descriptions:
+      - "multiple confounding factors are explicitly acknowledged"
+  - keyword: "cautious language"
+    variants: ["may be attributable", "estimates", "further research"]
+    functional_descriptions:
+      - "hedging language is substantive and constrains interpretation"
+common_errors:
+  - flagging a well-hedged association as correlation_vs_causation
+  - treating alarming statistics as automatic overclaim signals
+  - ignoring that the text's hedging effectively prevents causal inference
+expected_failure_modes:
+  - false_positive_flagging
+  - overclaiming
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent recognize that an alarming statistical association with proper hedging is solid reporting?"
+source_dataset: dataset_6
+source_id: CaseM03
+relabel_history:
+  - date: "2026-04-08"
+    old_label: correlation_vs_causation
+    new_label: solid
+    reason: "3/3 models unanimously classify as solid. Hedging language is substantive and effective."
+    evidence: "Mini-validation sprint: Sonnet (conf=0.85), Haiku (conf=0.82), Opus (conf=0.85) all say solid"

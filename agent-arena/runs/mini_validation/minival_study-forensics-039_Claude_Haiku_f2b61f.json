@@ -1,0 +1,1105 @@
+{
+  "run_id": "minival_study-forensics-039_Claude_Haiku_f2b61f",
+  "task": {
+    "id": "study-forensics-039",
+    "title": "Study Forensics: NLP benchmark performance with well-calibrated limitations",
+    "domain": "study_forensics",
+    "difficulty": "easy",
+    "task_type": "study_forensics",
+    "prompt": "Our language model achieved 91.3% accuracy on the standard reading comprehension benchmark in controlled evaluation. However, several important limitations should be noted. The benchmark was published prior to our training cutoff, raising the possibility that some test items appeared in pretraining data, which could inflate measured performance. The evaluation was conducted in a zero-shot setting using a single prompt formulation; performance varies with prompt phrasing by an estimated 4 to 9 percentage points across tested variants. Additionally, the benchmark was designed on English-language news and encyclopedia text; we have not evaluated generalization to conversational, technical, or multilingual input. Given these constraints, we recommend treating the reported figure as an upper-bound estimate rather than a reliable operational performance guarantee.\n",
+    "context": "Well-calibrated model evaluation with three validity threats identified and the headline\nnumber explicitly downgraded. The hedge is substantive, not performative. Essential\npositive anchor to prevent evaluation drift toward paranoid labeling.\n",
+    "expected_answer": "solid",
+    "reference_solution": "Three validity threats are identified — training contamination, prompt sensitivity, distribution shift — and the headline number is explicitly downgraded to an upper-bound estimate. The hedge is substantive, changing the recommended interpretation of the result. This is a well-calibrated evaluation that should be classified as solid.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "contamination",
+        "variants": [
+          "pretraining data",
+          "training cutoff",
+          "inflate"
+        ],
+        "functional_descriptions": [
+          "benchmark contamination is acknowledged as a threat to validity"
+        ]
+      },
+      {
+        "keyword": "upper-bound estimate",
+        "variants": [
+          "not a reliable guarantee",
+          "constraints",
+          "limitations"
+        ],
+        "functional_descriptions": [
+          "the reported figure is explicitly downgraded"
+        ]
+      },
+      {
+        "keyword": "prompt sensitivity",
+        "variants": [
+          "4 to 9 percentage points",
+          "varies with prompt",
+          "single prompt"
+        ],
+        "functional_descriptions": [
+          "evaluation acknowledges measurement instability"
+        ]
+      }
+    ],
+    "common_errors": [
+      "flagging well-calibrated limitations as evidence of overclaim",
+      "treating any AI performance claim as automatically suspicious"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_solid_study",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "false_positive_flagging",
+      "overclaiming"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise genuinely well-calibrated AI evaluation without paranoid over-flagging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "Well-calibrated AI benchmark evaluation that identifies three validity threats and explicitly downgrades the headline metric. Substantive hedging, not performative.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "raising the possibility that some test items appeared in pretraining data, which could inflate measured performance",
+        "why_it_matters": "Identifies training contamination as a specific validity threat.",
+        "supports_finding": "cautious_scope_control"
+      },
+      {
+        "span": "we recommend treating the reported figure as an upper-bound estimate rather than a reliable operational performance guarantee",
+        "why_it_matters": "Explicitly downgrades the headline number — substantive, not performative hedging.",
+        "supports_finding": "evidence_matches_claim"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "Three validity threats are identified — training contamination, prompt sensitivity,\ndistribution shift — and the headline number is explicitly downgraded to an upper-bound\nestimate. The hedge is substantive, not performative: it changes the recommended\ninterpretation of the result. This is a necessary positive anchor for evaluation systems\nthat would otherwise flag every confident number as an overclaim.\n",
+    "gold_alternative_reading": "A strict reviewer might argue that even 'upper-bound estimate' overclaims without a\nformal contamination analysis — if contamination is severe enough, no bound can be\nestablished from this benchmark at all.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Imported from Dataset 5 (AA-NEW-002). Critical true-positive anchor for the solid\ncategory. Tests whether agents recognize genuinely well-calibrated reasoning in an AI/ML\ncontext. Without cases like this, evaluation drift toward paranoid flagging is likely.\nThe label was originally 'solid_with_limitations' — normalized to 'solid' because the\nlimitations are part of what makes it solid (honest reporting).\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\n    \"The 91.3% figure is accurately measured from the stated benchmark\",\n    \"The authors have genuine knowledge of their training cutoff date and benchmark publication timeline\",\n    \"The 4-9 percentage point prompt sensitivity estimate is based on actual testing, not speculation\",\n    \"The benchmark is indeed a 'standard' one (implying it's well-established and recognized)\",\n    \"The authors are being truthful about limitations rather than strategically obscuring them\"\n  ],\n  \"steps\": [\n    \"Identified the main claim: 91.3% accuracy on a standard reading comprehension benchmark\",\n    \"Checked for overclaim: The authors explicitly frame this as an 'upper-bound estimate' and 'not a reliable operational performance guarantee,' which directly constrains the claim\",\n    \"Evaluated uncertainty language: The text contains specific, quantified limitations (4-9 percentage point variance, identified data leakage risk, named domain restrictions) rather than vague 'more research needed' statements\",\n    \"Assessed confounders: The authors proactively identify three major confounders: (1) potential data leakage from pretraining, (2) prompt sensitivity, (3) domain mismatch\",\n    \"Checked for mechanism vs. evidence issues: No mechanistic claims are made; the report stays at the level of empirical performance measurement\",\n    \"Checked for correlation vs. causation: Not applicable; no causal claims are made\",\n    \"Evaluated decorative uncertainty: The uncertainty is not decorative—it actively downgrades the strength of the main claim and provides specific reasons why\",\n    \"Assessed specificity: Limitations are concrete (English-only, news/encyclopedia text, zero-shot, single prompt) rather than generic\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Overclaim: Could argue the authors should have reported the lower bound (e.g., 82.3%) instead of the upper bound, but they explicitly label it as upper-bound, so this is transparent rather than overclaimed\",\n    \"Decorative uncertainty: Could argue the caveats are mentioned but the headline figure still dominates, but the text explicitly recommends treating the figure as an upper bound, which is a strong epistemic downgrade\"\n  ],\n  \"uncertainties\": [\n    \"Whether the 4-9 percentage point prompt sensitivity range is based on systematic testing or rough estimates\",\n    \"Whether the data leakage risk is speculative or based on detected overlap analysis\",\n    \"Whether the authors tested enough prompt variants to justify the 4-9 range, or if this is a conservative estimate\",\n    \"The actual magnitude of performance drop in conversational/technical/multilingual settings (not quantified, only noted as untested)\"\n  ],\n  \"key_claims\": [\n    \"The authors report a strong result (91.3%) but immediately contextualize it with specific, quantified limitations\",\n    \"Data leakage is identified as a concrete risk, not dismissed\",\n    \"Prompt sensitivity is quantified (4-9 points), providing readers with a sense of measurement instability\",\n    \"Domain generalization is explicitly not claimed; the benchmark's narrow source (English news/encyclopedia) is noted\",\n    \"The framing as 'upper-bound estimate' rather than 'performance' is an appropriate epistemic move that prevents overclaim\"\n  ],\n  \"self_check\": [\n    \"Did I mistake transparency for overclaim? No—the authors actively downgrade their own result\",\n    \"Did I miss any unsupported causal claims? No—the text makes no causal claims\",\n    \"Did I flag uncertainty language as decorative when it's actually substantive? No—the caveats are specific and quantified\",\n    \"Did I assume problems that aren't stated? I checked for mechanism-vs-evidence issues (none present), correlation-vs-causation (not applicable), and confounders (proactively identified by authors)\",\n    \"Is this a case where the study is simply well-conducted and well-reported? Yes—this appears to be the case\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n**Summary**: This is a solid report. The authors make a strong empirical claim (91.3% accuracy) but immediately and substantively constrain it with specific, quantified limitations. They identify data leakage risk, prompt sensitivity (4-9 points), and domain mismatch as concrete confounders. Critically, they reframe the headline number as an \"upper-bound estimate\" rather than operational performance, which is an appropriate epistemic move. The uncertainty language is not decorative—it actively downgrades the claim's scope. No overclaims, mechanism-vs-evidence errors, or correlation-vs-causation confusions are present.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The 91.3% figure is accurately measured from the stated benchmark",
+            "The authors have genuine knowledge of their training cutoff date and benchmark publication timeline",
+            "The 4-9 percentage point prompt sensitivity estimate is based on actual testing, not speculation",
+            "The benchmark is indeed a 'standard' one (implying it's well-established and recognized)",
+            "The authors are being truthful about limitations rather than strategically obscuring them"
+          ],
+          "steps": [
+            "Identified the main claim: 91.3% accuracy on a standard reading comprehension benchmark",
+            "Checked for overclaim: The authors explicitly frame this as an 'upper-bound estimate' and 'not a reliable operational performance guarantee,' which directly constrains the claim",
+            "Evaluated uncertainty language: The text contains specific, quantified limitations (4-9 percentage point variance, identified data leakage risk, named domain restrictions) rather than vague 'more research needed' statements",
+            "Assessed confounders: The authors proactively identify three major confounders: (1) potential data leakage from pretraining, (2) prompt sensitivity, (3) domain mismatch",
+            "Checked for mechanism vs. evidence issues: No mechanistic claims are made; the report stays at the level of empirical performance measurement",
+            "Checked for correlation vs. causation: Not applicable; no causal claims are made",
+            "Evaluated decorative uncertainty: The uncertainty is not decorative—it actively downgrades the strength of the main claim and provides specific reasons why",
+            "Assessed specificity: Limitations are concrete (English-only, news/encyclopedia text, zero-shot, single prompt) rather than generic"
+          ],
+          "alternative_hypotheses": [
+            "Overclaim: Could argue the authors should have reported the lower bound (e.g., 82.3%) instead of the upper bound, but they explicitly label it as upper-bound, so this is transparent rather than overclaimed",
+            "Decorative uncertainty: Could argue the caveats are mentioned but the headline figure still dominates, but the text explicitly recommends treating the figure as an upper bound, which is a strong epistemic downgrade"
+          ],
+          "uncertainties": [
+            "Whether the 4-9 percentage point prompt sensitivity range is based on systematic testing or rough estimates",
+            "Whether the data leakage risk is speculative or based on detected overlap analysis",
+            "Whether the authors tested enough prompt variants to justify the 4-9 range, or if this is a conservative estimate",
+            "The actual magnitude of performance drop in conversational/technical/multilingual settings (not quantified, only noted as untested)"
+          ],
+          "self_check": [
+            "Did I mistake transparency for overclaim? No—the authors actively downgrade their own result",
+            "Did I miss any unsupported causal claims? No—the text makes no causal claims",
+            "Did I flag uncertainty language as decorative when it's actually substantive? No—the caveats are specific and quantified",
+            "Did I assume problems that aren't stated? I checked for mechanism-vs-evidence issues (none present), correlation-vs-causation (not applicable), and confounders (proactively identified by authors)",
+            "Is this a case where the study is simply well-conducted and well-reported? Yes—this appears to be the case"
+          ],
+          "key_claims": [
+            "The authors report a strong result (91.3%) but immediately contextualize it with specific, quantified limitations",
+            "Data leakage is identified as a concrete risk, not dismissed",
+            "Prompt sensitivity is quantified (4-9 points), providing readers with a sense of measurement instability",
+            "Domain generalization is explicitly not claimed; the benchmark's narrow source (English news/encyclopedia) is noted",
+            "The framing as 'upper-bound estimate' rather than 'performance' is an appropriate epistemic move that prevents overclaim"
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 12034
+      },
+      "scores": {
+        "correctness": 0.85,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.55,
+        "insight_depth": 0.85,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Evaluated uncertainty language: The text contains specific, quantified limitations (4-9 percentage point variance, identified data leakage risk, named",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.80)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The authors have genuine knowledge of their training cutoff date and benchmark publication timeline",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "The actual magnitude of performance drop in conversational/technical/multilingual settings (not quantified, only noted as untested)",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the data leakage risk is speculative or based on detected overlap analysis",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Decorative uncertainty: Could argue the caveats are mentioned but the headline figure still dominates, but the text explicitly recommends treating the figure as an upper bound, which is a strong epist",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.55,
+          "weight": 8,
+          "weighted_score": 4.4,
+          "evidence": [
+            {
+              "text": "Did I assume problems that aren't stated? I checked for mechanism-vs-evidence issues (none present), correlation-vs-causation (not applicable), and confounders (proactively identified by authors)",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Did I miss any unsupported causal claims? No—the text makes no causal claims",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 1 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 495 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "explicitly frame this as an 'upper-bound estimate' and 'not a reliable operatio",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'upper-bound estimate' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "leakage from pretraining, (2) prompt sensitivity, (3) domain mismatch checked",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'prompt sensitivity' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 3 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the data leakage risk is speculative or based on det...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the data leakage risk is speculative or based on detected overlap analysis",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "overclaiming",
+          "severity": "major",
+          "description": "False positive: agent flagged 'overclaim' in a solid case",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent hallucinated a major issue in a solid study",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The authors report a strong result (91.3%) but immediately contextualize it with specific, quantified limitations",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "Data leakage is identified as a concrete risk, not dismissed",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "Prompt sensitivity is quantified (4-9 points), providing readers with a sense of measurement instability",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "Domain generalization is explicitly not claimed; the benchmark's narrow source (English news/encyclopedia) is noted",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The framing as 'upper-bound estimate' rather than 'performance' is an appropriate epistemic move that prevents overclaim",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether the data leakage risk is speculative or based on detected overlap analysis",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "easy_task_caveat",
+          "description": "Answer robust only because task is easy — performance on harder tasks may differ",
+          "evidence": [],
+          "severity": "stylistic"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: conclusion_exceeds_results, decorative_uncertainty, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The 91.3% figure is accurately measured from the stated benchmark",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors have genuine knowledge of their training cutoff date and benchmark publication timeline",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 4-9 percentage point prompt sensitivity estimate is based on actual testing, not speculation",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The benchmark is indeed a 'standard' one (implying it's well-established and recognized)",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors are being truthful about limitations rather than strategically obscuring them",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the main claim: 91.3% accuracy on a standard reading comprehension benchmark",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaim: The authors explicitly frame this as an 'upper-bound estimate' and 'not a reliable operational performance guarantee,' which directly constrains the claim",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated uncertainty language: The text contains specific, quantified limitations (4-9 percentage point variance, identified data leakage risk, named domain restrictions) rather than vague 'more research needed' statements",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed confounders: The authors proactively identify three major confounders: (1) potential data leakage from pretraining, (2) prompt sensitivity, (3) domain mismatch",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for mechanism vs. evidence issues: No mechanistic claims are made; the report stays at the level of empirical performance measurement",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for correlation vs. causation: Not applicable; no causal claims are made",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated decorative uncertainty: The uncertainty is not decorative—it actively downgrades the strength of the main claim and provides specific reasons why",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed specificity: Limitations are concrete (English-only, news/encyclopedia text, zero-shot, single prompt) rather than generic",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors report a strong result (91.3%) but immediately contextualize it with specific, quantified limitations",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Data leakage is identified as a concrete risk, not dismissed",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Prompt sensitivity is quantified (4-9 points), providing readers with a sense of measurement instability",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Domain generalization is explicitly not claimed; the benchmark's narrow source (English news/encyclopedia) is noted",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The framing as 'upper-bound estimate' rather than 'performance' is an appropriate epistemic move that prevents overclaim",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overclaim: Could argue the authors should have reported the lower bound (e.g., 82.3%) instead of the upper bound, but they explicitly label it as upper-bound, so this is transparent rather than overclaimed",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Decorative uncertainty: Could argue the caveats are mentioned but the headline figure still dominates, but the text explicitly recommends treating the figure as an upper bound, which is a strong epistemic downgrade",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the 4-9 percentage point prompt sensitivity range is based on systematic testing or rough estimates",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the data leakage risk is speculative or based on detected overlap analysis",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the authors tested enough prompt variants to justify the 4-9 range, or if this is a conservative estimate",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The actual magnitude of performance drop in conversational/technical/multilingual settings (not quantified, only noted as untested)",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I mistake transparency for overclaim? No—the authors actively downgrade their own result",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any unsupported causal claims? No—the text makes no causal claims",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I flag uncertainty language as decorative when it's actually substantive? No—the caveats are specific and quantified",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I assume problems that aren't stated? I checked for mechanism-vs-evidence issues (none present), correlation-vs-causation (not applicable), and confounders (proactively identified by authors)",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is this a case where the study is simply well-conducted and well-reported? Yes—this appears to be the case",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 12,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 26,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          21
+        ],
+        "unsupported_conclusions": [
+          29
+        ],
+        "fluff_self_checks": [
+          25
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [
+          "overclaim"
+        ],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [
+            "percentage point"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.15
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "decorative_uncertainty",
+        "unsupported_intermediate_step",
+        "missed_key_insight",
+        "overclaiming"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 3 full / 3",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph: conclusion not well grounded",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.80)",
+        "5/5 substantive assumptions",
+        "4 uncertainties (4 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 1 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.71, 495 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T07:57:18.977226+00:00",
+  "metadata": {}
+}

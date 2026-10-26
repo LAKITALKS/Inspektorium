@@ -1,0 +1,946 @@
+{
+  "run_id": "mc2_study-forensics-031_claude_opus_c66e41",
+  "task": {
+    "id": "study-forensics-031",
+    "title": "Study Forensics: Rapamycin for human longevity — promise vs proof",
+    "domain": "study_forensics",
+    "difficulty": "hard",
+    "task_type": "study_forensics",
+    "prompt": "Rapamycin is an immunosuppressant that inhibits the mTOR pathway. In mice it reliably extends lifespan by about ten to twenty-five percent, and these results have been replicated across multiple laboratories. Enthusiasts now take the drug off-label to slow aging. However, the first well-designed human trial reported that rapamycin was safe but failed to reduce abdominal fat, its primary goal, and only modestly increased lean muscle in women. The study did not test whether the drug slows biological aging. Experts caution that no clinical evidence yet shows rapamycin slows aging in people, and off-label use carries risks, especially for those with conditions like active cancer.\n",
+    "context": "A longevity case juxtaposing strong, replicated preclinical evidence with\nlimited human data. The first human trial was safe but missed its primary\nendpoint. The reporting is cautious but the gap between animal mechanism\nand human evidence remains.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The article presents rapamycin's strong preclinical track record (reliable 10-25% lifespan extension in mice, replicated) alongside limited human data (safe but failed primary endpoint, modest secondary effects). It honestly notes that no clinical evidence shows rapamycin slows aging in humans. The mechanism is robust in animals but undemonstrated in humans.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "preclinical vs clinical",
+        "variants": [
+          "mice",
+          "replicated",
+          "human trial",
+          "failed to reduce"
+        ],
+        "functional_descriptions": [
+          "strong animal evidence does not transfer automatically to humans"
+        ]
+      },
+      {
+        "keyword": "cautious reporting",
+        "variants": [
+          "experts caution",
+          "no clinical evidence",
+          "off-label use carries risks"
+        ],
+        "functional_descriptions": [
+          "honest reporting of the gap may mask the mechanism-vs-evidence issue"
+        ]
+      }
+    ],
+    "common_errors": [
+      "classifying as solid due to honest caveats",
+      "missing the mechanism-evidence gap behind cautious language",
+      "classifying as generic overclaim"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "strong_preclinical_weak_human",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "mislabel_as_solid",
+      "mislabel_as_overclaim"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent handle genuine ambiguity where strong preclinical evidence meets cautious reporting and limited human data?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "Borderline mechanism_vs_evidence case. Strong replicated preclinical evidence meets a failed human primary endpoint, with honest cautious reporting that makes the case genuinely ambiguous.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "decorative_uncertainty",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "In mice it reliably extends lifespan by about ten to twenty-five percent",
+        "why_it_matters": "Highlights robust mechanistic evidence from animal studies.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "the first well-designed human trial reported that rapamycin was safe but failed to reduce abdominal fat, its primary goal, and only modestly increased lean muscle in women",
+        "why_it_matters": "Shows that human evidence is limited and clinical benefits are minimal.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "Experts caution that no clinical evidence yet shows rapamycin slows aging in people, and off-label use carries risks",
+        "why_it_matters": "Emphasises the uncertainty and potential harms, marking the case as cautious but still mechanism_vs_evidence.",
+        "supports_finding": "decorative_uncertainty"
+      }
+    ],
+    "gold_confidence": "medium",
+    "gold_justification": "The article states that rapamycin consistently extends lifespan in mice, leading\nmany people to take it off-label, yet the first rigorous human trial showed\nsafety but no reduction in the primary outcome and only modest improvements.\nIt emphasises that the trial did not measure biological aging and that no evidence\nyet shows rapamycin slows aging in humans. This creates a tension between robust\npreclinical mechanism and insufficient human evidence, without overt hype.\nThe reporting is honest and cautious, which could lead some to label it \"solid\".\n",
+    "gold_alternative_reading": "Some readers may interpret the cautious reporting as responsible communication of\nearly data and view the article as primarily highlighting what remains unknown\nrather than implying efficacy. Because of the strong preclinical evidence, one\nmight argue that enthusiasm is warranted; therefore the case is borderline rather\nthan clearly problematic. A reasonable analyst could label this \"solid\" due to\nthe honest caveats.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Shape D of mechanism_vs_evidence: borderline longevity case where strong\npreclinical evidence meets sparse human data. The cautious reporting makes\nthis genuinely ambiguous — models may classify as \"solid\" (honest reporting)\nor \"mechanism_vs_evidence\" (animal-human gap). This is by design. Similar\nto Case007 (vitamin D) in borderline nature but in the mechanism domain.\nExpect model disagreement; analyze outputs to determine whether the weakness\nis in the case design or model capability.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\"The text accurately represents the state of rapamycin research\", \"The human trial mentioned was appropriately powered for its endpoints\", \"The experts quoted are qualified in aging/longevity research\"],\n  \"steps\": [\"1. Examined claims about mouse studies - presented as reliable with replication across labs\", \"2. Checked for overclaiming - text explicitly states human trial 'did not test whether the drug slows biological aging'\", \"3. Looked for correlation/causation issues - none present; mechanism (mTOR inhibition) is stated without causal overclaim\", \"4. Assessed mechanism vs evidence gap - text clearly distinguishes between mouse evidence (lifespan extension) and human evidence (safety, no fat reduction)\", \"5. Evaluated uncertainty language - appears genuine, not decorative (experts 'caution' about lack of clinical evidence)\", \"6. Checked for ignored confounders - text acknowledges risks for specific populations\"],\n  \"alternative_hypotheses\": [\"Could be classified as 'mechanism_vs_evidence' if the text implied mouse results translate to humans, but it explicitly avoids this\", \"Could be 'overclaim' if enthusiasts' behavior was endorsed, but text presents it neutrally with expert caution\"],\n  \"uncertainties\": [\"Whether the human trial was adequately designed to test its endpoints\", \"The specific qualifications of the experts mentioned\", \"Whether 'modest' muscle increase in women is statistically or clinically significant\"],\n  \"key_claims\": [\"Text maintains clear epistemic boundaries between species\", \"Acknowledges gap between mechanism and human aging outcomes\", \"Presents off-label use as occurring despite lack of evidence\", \"Includes appropriate caveats about risks and lack of human aging data\"],\n  \"self_check\": [\"Re-read for any implied claims about human aging benefits - found none\", \"Verified that uncertainty language matches the evidence gaps described\", \"Confirmed that mouse-to-human translation is not assumed\", \"Checked if any strong claims exceed the evidence - they do not\"],\n  \"confidence\": 0.90\n}",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The text accurately represents the state of rapamycin research",
+            "The human trial mentioned was appropriately powered for its endpoints",
+            "The experts quoted are qualified in aging/longevity research"
+          ],
+          "steps": [
+            "1. Examined claims about mouse studies - presented as reliable with replication across labs",
+            "2. Checked for overclaiming - text explicitly states human trial 'did not test whether the drug slows biological aging'",
+            "3. Looked for correlation/causation issues - none present; mechanism (mTOR inhibition) is stated without causal overclaim",
+            "4. Assessed mechanism vs evidence gap - text clearly distinguishes between mouse evidence (lifespan extension) and human evidence (safety, no fat reduction)",
+            "5. Evaluated uncertainty language - appears genuine, not decorative (experts 'caution' about lack of clinical evidence)",
+            "6. Checked for ignored confounders - text acknowledges risks for specific populations"
+          ],
+          "alternative_hypotheses": [
+            "Could be classified as 'mechanism_vs_evidence' if the text implied mouse results translate to humans, but it explicitly avoids this",
+            "Could be 'overclaim' if enthusiasts' behavior was endorsed, but text presents it neutrally with expert caution"
+          ],
+          "uncertainties": [
+            "Whether the human trial was adequately designed to test its endpoints",
+            "The specific qualifications of the experts mentioned",
+            "Whether 'modest' muscle increase in women is statistically or clinically significant"
+          ],
+          "self_check": [
+            "Re-read for any implied claims about human aging benefits - found none",
+            "Verified that uncertainty language matches the evidence gaps described",
+            "Confirmed that mouse-to-human translation is not assumed",
+            "Checked if any strong claims exceed the evidence - they do not"
+          ],
+          "key_claims": [
+            "Text maintains clear epistemic boundaries between species",
+            "Acknowledges gap between mechanism and human aging outcomes",
+            "Presents off-label use as occurring despite lack of evidence",
+            "Includes appropriate caveats about risks and lack of human aging data"
+          ],
+          "confidence": 0.9,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 18172
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.15000000000000002,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.0,
+          "weight": 30,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "No match (got: solid)"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "4. Assessed mechanism vs evidence gap - text clearly distinguishes between mouse evidence (lifespan extension) and human evidence (safety, no fat redu",
+              "source_field": "steps[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 0/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.89)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The human trial mentioned was appropriately powered for its endpoints",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3/3 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether 'modest' muscle increase in women is statistically or clinically significant",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether 'modest' muscle increase in women is statistically or clinically significant",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Could be classified as 'mechanism_vs_evidence' if the text implied mouse results translate to humans, but it explicitly avoids this",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.15000000000000002,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "Re-read for any implied claims about human aging benefits - found none",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Re-read for any implied claims about human aging benefits - found none",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 1 arithmetic, 3 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.77, 266 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Missing: cautious reporting",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'cautious reporting' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'mechanism_vs_evidence'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether 'modest' muscle increase in women is statistically o...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether 'modest' muscle increase in women is statistically or clinically significant",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'mechanism_vs_evidence', detected 'solid'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "Text maintains clear epistemic boundaries between species",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "Acknowledges gap between mechanism and human aging outcomes",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "Presents off-label use as occurring despite lack of evidence",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Includes appropriate caveats about risks and lack of human aging data",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether 'modest' muscle increase in women is statistically or clinically significant",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "well_reasoned_wrong",
+          "description": "Wrong answer but structured reasoning — may have a subtle logic error",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Wrong despite good reasoning",
+              "role": "supporting"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The text accurately represents the state of rapamycin research",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The human trial mentioned was appropriately powered for its endpoints",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The experts quoted are qualified in aging/longevity research",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "1. Examined claims about mouse studies - presented as reliable with replication across labs",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "2. Checked for overclaiming - text explicitly states human trial 'did not test whether the drug slows biological aging'",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "3. Looked for correlation/causation issues - none present; mechanism (mTOR inhibition) is stated without causal overclaim",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "4. Assessed mechanism vs evidence gap - text clearly distinguishes between mouse evidence (lifespan extension) and human evidence (safety, no fat reduction)",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "5. Evaluated uncertainty language - appears genuine, not decorative (experts 'caution' about lack of clinical evidence)",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "6. Checked for ignored confounders - text acknowledges risks for specific populations",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Text maintains clear epistemic boundaries between species",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Acknowledges gap between mechanism and human aging outcomes",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Presents off-label use as occurring despite lack of evidence",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Includes appropriate caveats about risks and lack of human aging data",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be classified as 'mechanism_vs_evidence' if the text implied mouse results translate to humans, but it explicitly avoids this",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be 'overclaim' if enthusiasts' behavior was endorsed, but text presents it neutrally with expert caution",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the human trial was adequately designed to test its endpoints",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific qualifications of the experts mentioned",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether 'modest' muscle increase in women is statistically or clinically significant",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Re-read for any implied claims about human aging benefits - found none",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified that uncertainty language matches the evidence gaps described",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Confirmed that mouse-to-human translation is not assumed",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked if any strong claims exceed the evidence - they do not",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 4,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 19,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.2857142857142857
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          17
+        ],
+        "unsupported_conclusions": [
+          22
+        ],
+        "fluff_self_checks": [
+          18,
+          19,
+          21
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "solid",
+        "label_correct": false,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "decorative_uncertainty"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "decorative_uncertainty"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "unsupported_conclusion",
+        "decorative_uncertainty",
+        "wrong_answer"
+      ],
+      "notes": [
+        "No match (got: solid)",
+        "Key insights: 1 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+        "Reasoning graph: conclusion not well grounded",
+        "6 reasoning steps",
+        "Low step utility: 0/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.89)",
+        "3/3 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.9",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 1 arithmetic, 3 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.77, 266 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T16:25:12.138075+00:00",
+  "metadata": {}
+}

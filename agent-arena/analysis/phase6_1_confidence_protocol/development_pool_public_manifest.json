@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.1.0",
+  "artifact": "development_pool_public_manifest",
+  "manifest_id": "AA-DEVPOOL-6100",
+  "commitment_algorithm": "salted-sha256",
+  "commitment_version": "v1",
+  "commitment": "679233c6e8ccadf49045bd183c11e8f47d8dac3c6759eb99cc49b88026ae4332",
+  "aggregate": {
+    "solid": 8,
+    "overclaim": 15,
+    "correlation_vs_causation": 2,
+    "mechanism_vs_evidence": 2,
+    "total": 27
+  },
+  "status": "aggregate_frozen; identity_provisioned"
+}

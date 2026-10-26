@@ -1,0 +1,44 @@
+{
+  "status": "READY_FOR_PUBLICATION_REVIEW",
+  "tested_product_commit": "5ace2797e4a9075ca53ccd780be616719923c288",
+  "tests": {
+    "passed": 1355,
+    "failed": 0,
+    "skipped": 0,
+    "coverage_percent": 98.04,
+    "coverage_definition": "overall coverage with branch measurement enabled, not pure branch coverage",
+    "source": "results/logs/offline/final-pytest.log"
+  },
+  "ruff_exit": 0,
+  "mypy_exit": 0,
+  "clean_install_exit": 0,
+  "installed_examples_byte_identical": 10,
+  "measurements": {
+    "cases": 87,
+    "text_renderings": 348,
+    "E1_text_failures": 0,
+    "K7_link_violations": 0,
+    "raw_preserved": 87,
+    "visuals": {
+      "noto-serif": {
+        "measured": 75,
+        "invalid": 0,
+        "overlaps": 0,
+        "critical_overlaps": 0
+      },
+      "github-like": {
+        "measured": 75,
+        "invalid": 0,
+        "overlaps": 0,
+        "critical_overlaps": 0
+      }
+    },
+    "guard_armed_processes": 176,
+    "guard_refusals": 0,
+    "browser_blocked_requests": 0
+  },
+  "review_sha256": "a07332f738ca295cd3191bd405352bf3e2abb342f86c47fc019ba7cf6d2e3787",
+  "product_identity_files": 59,
+  "publication_decisions": "four PREPARED, not approved",
+  "public_actions": "none"
+}

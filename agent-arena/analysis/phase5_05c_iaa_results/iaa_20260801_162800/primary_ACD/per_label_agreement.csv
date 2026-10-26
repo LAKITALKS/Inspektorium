@@ -1,0 +1,13 @@
+annotator,label,gold_count,annotator_count,exact_match_count,gold_reproduction_rate,annotator_label_purity
+A,solid,6,6,6,1.0000,1.0000
+A,overclaim,9,9,9,1.0000,1.0000
+A,correlation_vs_causation,3,3,3,1.0000,1.0000
+A,mechanism_vs_evidence,2,2,2,1.0000,1.0000
+C,solid,6,7,6,1.0000,0.8571
+C,overclaim,9,6,6,0.6667,1.0000
+C,correlation_vs_causation,3,4,3,1.0000,0.7500
+C,mechanism_vs_evidence,2,3,2,1.0000,0.6667
+D,solid,6,6,6,1.0000,1.0000
+D,overclaim,9,9,9,1.0000,1.0000
+D,correlation_vs_causation,3,3,3,1.0000,1.0000
+D,mechanism_vs_evidence,2,2,2,1.0000,1.0000

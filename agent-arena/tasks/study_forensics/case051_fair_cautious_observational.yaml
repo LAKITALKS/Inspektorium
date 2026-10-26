@@ -1,0 +1,70 @@
+id: study-forensics-051
+title: 'Study Forensics: Fairly communicated observational finding (positive control)'
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: cautious_fair_communication
+ambiguity_level: low
+origin: synthetic_fixture
+prompt: |
+  A cohort study reports that higher fibre intake is associated with modestly lower colorectal cancer risk. The authors write that the study is observational, that residual confounding cannot be excluded, that the association does not prove causation, and that randomised trials would be needed to confirm a causal effect. Media coverage repeats these caveats.
+context: |
+  Positive control: an observational association communicated with correct, non-decorative caveats and no causal overreach. Should NOT be penalised.
+expected_answer: solid
+reference_solution: |
+  The conclusions stay within the evidence tier: an association is reported as an association, causation is explicitly not claimed, confounding is acknowledged, and the need for RCTs is stated. This is fair, solid communication.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The communication matches the evidence: association framed as association, causation disclaimed, confounding and the need for trials acknowledged. No overclaim, no tier gap, no decorative hedging — a solid case.
+gold_alternative_reading: null
+gold_summary: |
+  A fibre-cancer association is reported with correct caveats: observational, confounding possible, causation not claimed, RCTs needed. Solid.
+curator_notes: |
+  Positive control for over-flagging. Pairs with case033/case038. Discrimination: catches trigger-happy models that hallucinate problems in fair reporting.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: evidence_matches_claim
+  severity: minor
+  confidence: high
+- finding: cautious_scope_control
+  severity: minor
+  confidence: high
+- finding: none_or_minor
+  severity: minor
+  confidence: high
+gold_evidence_spans:
+- span: the association does not prove causation, and that randomised trials would be needed
+  why_it_matters: Explicit, correct causal caveat — not decorative.
+  supports_finding: cautious_scope_control
+- span: higher fibre intake is associated with modestly lower colorectal cancer risk
+  why_it_matters: Association framed as association, matching the evidence.
+  supports_finding: evidence_matches_claim
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: appropriate caveats
+  variants:
+  - does not prove causation
+  - residual confounding
+  functional_descriptions:
+  - caveats are substantive and correct
+- keyword: stays within evidence
+  variants:
+  - observational
+  - association
+  functional_descriptions:
+  - conclusions match the evidence tier
+common_errors:
+- hallucinating overclaim in fair reporting
+- treating honest caveats as decorative
+expected_failure_modes:
+- false_positive_overclaim
+- over_flagging
+discriminative_dimensions:
+- correctness
+- insight_depth
+diagnostic_focus: Can the agent recognise fair, well-caveated communication and NOT over-flag?

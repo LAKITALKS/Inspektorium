@@ -1,0 +1,2 @@
+Original record/reports/subject unchanged; only intent and outer hashes replaced.
+{"valid":false,"status":"RELEASE_BLOCKED","errors":["Verification failed: Release intent differs from the immutable revision core; create a new revision. Rebuild from original inputs; do not release."]}

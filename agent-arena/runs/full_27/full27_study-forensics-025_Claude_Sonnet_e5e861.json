@@ -1,0 +1,959 @@
+{
+  "run_id": "full27_study-forensics-025_Claude_Sonnet_e5e861",
+  "task": {
+    "id": "study-forensics-025",
+    "title": "Study Forensics: AI instruction outperforms human teachers",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "An opinionated business article argued that specialized AI systems are rapidly making human teachers obsolete. Citing pilot programs in the United States and United Kingdom, it claimed that students taught by AI outperform peers in physics, mathematics and literacy, with some reports suggesting a 65 percent rise in test scores. The article described a two-times learning effect, where an AI tutor purportedly taught material twice as effectively and in less time than active-learning classrooms. It concluded that the role of educators as the primary source of knowledge is being dismantled and that AI instruction represents a data-backed reality for all subjects.\n",
+    "context": "A media article that extrapolates from limited pilots to sweeping claims about AI\nreplacing teachers. No study design, sample sizes, or contexts are described.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The article presents sweeping claims that AI instruction makes human teachers obsolete and delivers massive learning gains across subjects. It generalises from limited pilot programs without describing study design, sample size, or context, making this a clear overclaim.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "unsupported generalization",
+        "variants": [
+          "all subjects",
+          "data-backed reality",
+          "obsolete"
+        ],
+        "functional_descriptions": [
+          "the article extends limited pilot findings to universal claims"
+        ]
+      },
+      {
+        "keyword": "no methodology",
+        "variants": [
+          "no study design",
+          "no sample size",
+          "citing pilot programs"
+        ],
+        "functional_descriptions": [
+          "the evidence base is not described in sufficient detail"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting sweeping claims because they mention studies",
+      "missing the absence of methodological detail"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "media_inflated_overclaim",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "missing_overclaim"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify media-inflated overclaim in education/AI?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "The article presents sweeping claims that AI instruction makes human teachers obsolete and delivers massive learning gains across subjects. It generalises from limited pilot programs and does not describe study design, sample size or context.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "students taught by AI outperform peers in physics, mathematics and literacy, with some reports suggesting a 65 percent rise in test scores",
+        "why_it_matters": "Key overclaim linking AI instruction to large performance gains without context or methodology.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "the role of educators as the primary source of knowledge is being dismantled and that AI instruction represents a data-backed reality for all subjects",
+        "why_it_matters": "Sweeping conclusion extrapolating from limited evidence to universal claim.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The narrative extrapolates from isolated pilots to a universal claim that AI instruction\nis superior in all core subjects and implies the end of human teaching. No evidence is\nprovided to support the 65 percent test-score increase or to show that AI can replace\neducators; thus the conclusion exceeds the evidence and constitutes unsupported\ngeneralisation.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Sharp overclaim case with clear rhetorical inflation. No ambiguity — the claims are\nsweeping and the evidence base is thin. Good contrast to Case021 (solid education RCT).\nTests whether agents can identify media hype vs actual evidence.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Sonnet",
+        "model": "claude-sonnet-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"overclaim\",\n  \"evidence_tier\": \"limited_human\",\n  \"conclusion_tier\": \"human_policy\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\"The pilot programs mentioned are small-scale studies\", \"The 65% test score improvement and 2x learning effect claims are from limited trials\", \"The article is making broad policy/implementation claims based on early evidence\"],\n  \"steps\": [\"Identified evidence as pilot programs (limited human studies)\", \"Noted conclusion implies broad educational policy changes ('making human teachers obsolete', 'data-backed reality for all subjects')\", \"Found multiple overclaims: 65% improvement without context, 2x effectiveness claim, generalization across all subjects\", \"Detected unsupported leap from limited pilots to universal educational transformation\", \"Recognized strong causal language ('dismantled', 'obsolete') exceeding pilot study evidence\"],\n  \"alternative_hypotheses\": [\"Could be mechanism_vs_evidence if focusing on AI technology development\", \"Could be correlation_vs_causation if emphasizing test score improvements\", \"Considered solid but rejected due to sweeping generalizations\"],\n  \"uncertainties\": [\"Exact methodology and sample sizes of the pilot programs\", \"Whether the 65% and 2x claims are accurately reported\", \"Scope and duration of the cited studies\"],\n  \"key_claims\": [\"Pilot studies show promise but cannot support claims of universal teacher obsolescence\", \"Specific performance metrics (65%, 2x) lack proper context and caveats\", \"Generalization from limited subjects/contexts to 'all subjects' is unsupported\", \"Strong causal claims about educational transformation exceed evidence base\"],\n  \"self_check\": [\"Confirmed this is overclaim rather than mechanism_vs_evidence - the issue is scope of conclusions not evidence tier mismatch\", \"Verified I'm not overflagging - the language is genuinely overreaching\", \"Double-checked that pilot programs constitute limited human evidence\"],\n  \"confidence\": 0.92\n}",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The pilot programs mentioned are small-scale studies",
+            "The 65% test score improvement and 2x learning effect claims are from limited trials",
+            "The article is making broad policy/implementation claims based on early evidence"
+          ],
+          "steps": [
+            "Identified evidence as pilot programs (limited human studies)",
+            "Noted conclusion implies broad educational policy changes ('making human teachers obsolete', 'data-backed reality for all subjects')",
+            "Found multiple overclaims: 65% improvement without context, 2x effectiveness claim, generalization across all subjects",
+            "Detected unsupported leap from limited pilots to universal educational transformation",
+            "Recognized strong causal language ('dismantled', 'obsolete') exceeding pilot study evidence"
+          ],
+          "alternative_hypotheses": [
+            "Could be mechanism_vs_evidence if focusing on AI technology development",
+            "Could be correlation_vs_causation if emphasizing test score improvements",
+            "Considered solid but rejected due to sweeping generalizations"
+          ],
+          "uncertainties": [
+            "Exact methodology and sample sizes of the pilot programs",
+            "Whether the 65% and 2x claims are accurately reported",
+            "Scope and duration of the cited studies"
+          ],
+          "self_check": [
+            "Confirmed this is overclaim rather than mechanism_vs_evidence - the issue is scope of conclusions not evidence tier mismatch",
+            "Verified I'm not overflagging - the language is genuinely overreaching",
+            "Double-checked that pilot programs constitute limited human evidence"
+          ],
+          "key_claims": [
+            "Pilot studies show promise but cannot support claims of universal teacher obsolescence",
+            "Specific performance metrics (65%, 2x) lack proper context and caveats",
+            "Generalization from limited subjects/contexts to 'all subjects' is unsupported",
+            "Strong causal claims about educational transformation exceed evidence base"
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11965
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.09,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.65,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.8333333333333333,
+        "self_monitoring_quality": 0.20000000000000004,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 5",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Noted conclusion implies broad educational policy changes ('making human teachers obsolete', 'data-backed reality for all subjects')",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 reasoning steps",
+            "Low step utility: 0/5 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.92)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.65,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "The 65% test score improvement and 2x learning effect claims are from limited trials",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3/3 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Exact methodology and sample sizes of the pilot programs",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.8333333333333333,
+          "weight": 6,
+          "weighted_score": 5.0,
+          "evidence": [
+            {
+              "text": "Could be correlation_vs_causation if emphasizing test score improvements",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "1/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.20000000000000004,
+          "weight": 8,
+          "weighted_score": 1.6,
+          "evidence": [
+            {
+              "text": "Confirmed this is overclaim rather than mechanism_vs_evidence - the issue is scope of conclusions not evidence tier mismatch",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Verified I'm not overflagging - the language is genuinely overreaching",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "3 self-check items",
+            "Self-check quality: 0 deep, 1 arithmetic, 2 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.79, 217 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Missing: no methodology",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no methodology' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "Pilot studies show promise but cannot support claims of universal teacher obsolescence",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Specific performance metrics (65%, 2x) lack proper context and caveats",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "Generalization from limited subjects/contexts to 'all subjects' is unsupported",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Strong causal claims about educational transformation exceed evidence base",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 2 not well supported in reasoning steps (1/8 content words found)",
+          "evidence": [
+            {
+              "text": "Specific performance metrics (65%, 2x) lack proper context and caveats",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be mechanism_vs_evidence if focusing on AI technology development",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be correlation_vs_causation if emphasizing test score improvements",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The pilot programs mentioned are small-scale studies",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 65% test score improvement and 2x learning effect claims are from limited trials",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The article is making broad policy/implementation claims based on early evidence",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified evidence as pilot programs (limited human studies)",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted conclusion implies broad educational policy changes ('making human teachers obsolete', 'data-backed reality for all subjects')",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Found multiple overclaims: 65% improvement without context, 2x effectiveness claim, generalization across all subjects",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Detected unsupported leap from limited pilots to universal educational transformation",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Recognized strong causal language ('dismantled', 'obsolete') exceeding pilot study evidence",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Pilot studies show promise but cannot support claims of universal teacher obsolescence",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Specific performance metrics (65%, 2x) lack proper context and caveats",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Generalization from limited subjects/contexts to 'all subjects' is unsupported",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Strong causal claims about educational transformation exceed evidence base",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be mechanism_vs_evidence if focusing on AI technology development",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be correlation_vs_causation if emphasizing test score improvements",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Considered solid but rejected due to sweeping generalizations",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Exact methodology and sample sizes of the pilot programs",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 65% and 2x claims are accurately reported",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Scope and duration of the cited studies",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Confirmed this is overclaim rather than mechanism_vs_evidence - the issue is scope of conclusions not evidence tier mismatch",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified I'm not overflagging - the language is genuinely overreaching",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Double-checked that pilot programs constitute limited human evidence",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 3,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 20,
+            "target_idx": 3,
+            "relation": "checks",
+            "strength": 0.5714285714285714
+          },
+          {
+            "source_idx": 20,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.2857142857142857
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [
+          19,
+          20
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'overclaim...'"
+        ],
+        "unsupported_claims": [
+          "overclaim"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 1 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 5",
+        "Reasoning graph confirms conclusion grounding",
+        "5 reasoning steps",
+        "Low step utility: 0/5 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.92)",
+        "3/3 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "Confidence 0.92",
+        "3 alternative hypotheses considered",
+        "1/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "3 self-check items",
+        "Self-check quality: 0 deep, 1 arithmetic, 2 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.79, 217 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:01:34.683469+00:00",
+  "metadata": {}
+}

@@ -1,0 +1,21 @@
+import hashlib,io,json,subprocess,zipfile
+from pathlib import Path
+from fontTools.ttLib import TTFont
+out=Path('fonts-2.015');out.mkdir(exist_ok=False)
+rows=[]
+for family in ('NotoSerif','NotoSans'):
+ url=f'https://github.com/notofonts/latin-greek-cyrillic/releases/download/{family}-v2.015/{family}-v2.015.zip'
+ data=subprocess.run(['curl','--fail','--location','--silent','--show-error',url],capture_output=True,check=True).stdout
+ (out/(family+'.zip')).write_bytes(data)
+ with zipfile.ZipFile(io.BytesIO(data)) as z:
+  for w in ('Regular','Bold'):
+   names=[n for n in z.namelist() if n.endswith('/'+family+'-'+w+'.ttf') and '/hinted/ttf/' in n]
+   if not names: names=[n for n in z.namelist() if n.endswith('/'+family+'-'+w+'.ttf')]
+   print(names)
+   assert names
+   n=sorted(names)[0]; f=out/(family+'-'+w+'.ttf');f.write_bytes(z.read(n));font=TTFont(f)
+   r={'file':f.name,'archive_url':url,'archive_sha256':hashlib.sha256(data).hexdigest(),'member':n,'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'version':font['name'].getDebugName(5),'fontRevision':font['head'].fontRevision}
+   rows.append(r);print(json.dumps(r))
+  licenses=[n for n in z.namelist() if n.endswith('OFL.txt')]
+  if licenses:(out/(family+'-OFL.txt')).write_bytes(z.read(licenses[0]))
+(out/'manifest.json').write_text(json.dumps(rows,indent=2)+'\n')

@@ -1,0 +1,13 @@
+{"argv": ["Python", "verify_clean.py", "--repo"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92255, "time": 1792866922.629}
+{"argv": ["Python", "-I", "-c"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92257, "time": 1792866922.663}
+{"argv": ["Python", "-m", "pip"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92259, "time": 1792866923.111}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92260, "time": 1792866923.492}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92261, "time": 1792866923.592}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92262, "time": 1792866923.688}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92263, "time": 1792866923.801}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92275, "time": 1792866923.904}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92276, "time": 1792866924.006}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92277, "time": 1792866924.102}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92278, "time": 1792866924.198}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92279, "time": 1792866924.395}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 92280, "time": 1792866924.5}

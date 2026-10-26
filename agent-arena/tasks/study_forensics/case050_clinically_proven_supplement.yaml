@@ -1,0 +1,66 @@
+id: study-forensics-050
+title: 'Study Forensics: ''Clinically proven'' supplement on uncontrolled evidence'
+domain: study_forensics
+difficulty: easy
+task_type: study_forensics
+task_family: overclaim
+trap_type: clinically_proven_weak_evidence
+ambiguity_level: low
+origin: synthetic_fixture
+prompt: |
+  A marketing page calls a joint-health supplement 'clinically proven to rebuild cartilage'. The only cited study is an uncontrolled, unblinded 20-person survey in which participants self-rated less joint pain after 30 days. No imaging or control group was used.
+context: |
+  'Clinically proven' attached to an uncontrolled, unblinded self-report survey with no objective cartilage measure. Weak-evidence overclaim; easy discriminator.
+expected_answer: overclaim
+reference_solution: |
+  'Clinically proven' implies rigorous controlled evidence. The cited study is uncontrolled, unblinded, small, self-reported, and measured pain rather than cartilage. The proof language and the mechanistic 'rebuild cartilage' claim far exceed the evidence.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  A marketing 'clinically proven ... rebuild cartilage' claim rests on an uncontrolled self-report survey with no objective endpoint. The proof framing is inflated well beyond the weak evidence — an overclaim.
+gold_alternative_reading: null
+gold_summary: |
+  'Clinically proven to rebuild cartilage' is based on a 20-person uncontrolled self-report survey measuring pain, not cartilage. Weak-evidence overclaim.
+curator_notes: |
+  Easy 'clinically proven' overclaim — should be caught by all but the weakest models. Serves as a low-difficulty anchor in the library.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: conclusion_exceeds_results
+  severity: major
+  confidence: high
+- finding: unsupported_generalization
+  severity: minor
+  confidence: medium
+gold_evidence_spans:
+- span: '''clinically proven to rebuild cartilage'''
+  why_it_matters: '''Proven'' plus a mechanistic claim not measured by the study.'
+  supports_finding: conclusion_exceeds_results
+- span: uncontrolled, unblinded 20-person survey ... self-rated less joint pain
+  why_it_matters: Weak design measuring pain, not cartilage.
+  supports_finding: conclusion_exceeds_results
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: clinically proven
+  variants:
+  - proven
+  - clinically
+  functional_descriptions:
+  - proof language on weak evidence
+- keyword: uncontrolled
+  variants:
+  - unblinded
+  - self-rated
+  - survey
+  functional_descriptions:
+  - no control, no objective endpoint
+common_errors:
+- accepting 'clinically proven' at face value
+- missing the pain-vs-cartilage endpoint swap
+expected_failure_modes:
+- missing_overclaim
+discriminative_dimensions:
+- correctness
+diagnostic_focus: Can the agent reject 'clinically proven' backed by uncontrolled self-report?

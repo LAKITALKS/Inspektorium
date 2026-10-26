@@ -1,0 +1,24 @@
+{
+  "preparation_commit": "2aa15fbf7980ba8e90d55aba5f33d2a8fcfb6852",
+  "preparation_tag": "v0.8.10-final-revalidation-prep",
+  "acceptance_criteria_version": "5.05h/1.0",
+  "bundle_sha256": "2a4e360a4c8321829bc0cd8b632bdbf10666fef76042fe0695f7e225b6c27324",
+  "P": {
+    "model_family": "Anthropic",
+    "displayed_model_name": "Opus 5",
+    "verified_canonical_sha256": "4b6f503721134abdcb806de200e0fae7cdc6483674dc92ecacc56498bc6df836",
+    "canonical_size_bytes": 1930,
+    "manifest_validation": "PASSED"
+  },
+  "Q": {
+    "model_family": "GLM",
+    "displayed_model_name": "GLM 5.2",
+    "ingestion_method": "pasted_output",
+    "verified_canonical_sha256": "db1ca2e103dd81406b721de07af348310b4a8b0e7fb2c7f59d5ad4113fd76f98",
+    "canonical_size_bytes": 1041,
+    "manifest_validation": "PASSED"
+  },
+  "both_preserved_before_comparison": true,
+  "neither_excluded": true,
+  "note": "No private file contents included."
+}

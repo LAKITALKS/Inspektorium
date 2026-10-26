@@ -1,0 +1,212 @@
+{
+  "schema": "final-publication-provenance-review/v1",
+  "date": "2026-10-26",
+  "review_scope_status": "PASSED_FOR_FROZEN_HISTORY_LISTED_ASSETS_AND_REVIEWED_WORKING_DELTA",
+  "public_base": "4bd0ba9218df80a69089838f824ae0ac28881ac4",
+  "frozen_commit": "b87858c5674dd034a69f4d40b623a74077baa239",
+  "frozen_tree": "f21c995edcc3e82bf6eee4375d87796d960defcb",
+  "new_commit_metadata": [
+    {
+      "commit": "0424d450103654669b0a200e460c48ef5fc6dbec",
+      "commit_object_sha256": "73d143febbe8044ac00e6ed9dff6e3301c7f4bc919ec6facebabeb3ecbcc499c",
+      "expected_identity": true,
+      "coauthor_trailer_present": false
+    },
+    {
+      "commit": "dd739ebfe35a9c5aba46b8ae4ede133304da74b8",
+      "commit_object_sha256": "1da1b3e18eaab67fbd98ceeb88ac8409c24a600208e057aae4423e3c4a6c4ec8",
+      "expected_identity": true,
+      "coauthor_trailer_present": false
+    },
+    {
+      "commit": "b87858c5674dd034a69f4d40b623a74077baa239",
+      "commit_object_sha256": "5ffc235f8b4899fa1c51b3c034a36dd7596ce4171c0ee84e2a1d435243cb3c71",
+      "expected_identity": true,
+      "coauthor_trailer_present": false
+    }
+  ],
+  "covered_unique_git_blobs": 3496,
+  "covered_blob_set_sha256": "7404ca16ef29d579d2c988485527c2b0eed1737020e90f3b41f1eb46bb7762cd",
+  "scan_and_identity_proofs": {
+    "corrected-history-scan.json": {
+      "sha256": "3f869769905175a6703d708dc2aa575870071e58b8fc443e0127b56a061db0df",
+      "status": "PASSED_FOCUSED_SCAN",
+      "public_copy_equal": true
+    },
+    "corrected-release-assets-scan.json": {
+      "sha256": "e11e0be18561561e37e0a13e34a641b3c52f6a3dc4ff80f1ec4c4fd79efaaeed",
+      "status": "PASSED_FOCUSED_SCAN",
+      "public_copy_equal": true
+    },
+    "arena-sdist-normalization.json": {
+      "sha256": "10948f599e354fb66463582786eaba6590e221c978073f35c8bff48682556db8",
+      "status": null,
+      "public_copy_equal": true
+    },
+    "final-package-member-identity.json": {
+      "sha256": "15a1f3dc52fa02c93e3d9ebb4e369677d41a5ad4d643b77cc2717e6fedb57fe7",
+      "status": "identity_manifest",
+      "public_copy_equal": true
+    }
+  },
+  "actual_assets": {
+    "core/inspektorium-0.1.1-publication-e1-evidence.zip": {
+      "sha256": "7fad066f094e8fcba385ebd39d86ae4a3676d87b7981c3a06dd0e72f58246e1a",
+      "bytes": 169329312
+    },
+    "core/inspektorium-0.1.1.tar.gz": {
+      "sha256": "665d4011927c7e0b959ac5e5593e19f7e622b0af02bb6d127ff4d84b07e1ca70",
+      "bytes": 32530151
+    },
+    "core/inspektorium-0.1.1-py3-none-any.whl": {
+      "sha256": "7191276995f9f87cb4e7a699ca020d6aa2decd844c123d97601d96fb08c0c721",
+      "bytes": 38849
+    },
+    "core/SHA256SUMS.txt": {
+      "sha256": "3f7da952677b224d2fc1f6bd36c12ae3d6c7f01147cd9b33a8c7785bc3c4ae0e",
+      "bytes": 307
+    },
+    "arena/agent_arena-1.0.1.tar.gz": {
+      "sha256": "0b17f88bfc1c1b274295ec4fc9912c5b32f1f36e747570ebc19759aabe66a598",
+      "bytes": 29219400
+    },
+    "arena/agent_arena-1.0.1-py3-none-any.whl": {
+      "sha256": "0899b28bd3c02e97a814b7a8c43fc251ced61ab79d178f6a26ddfdf7e892ccd1",
+      "bytes": 486600
+    },
+    "arena/SHA256SUMS.txt": {
+      "sha256": "d0d26cc36413be2f5d6aeae8d9a854ac0c0cd4edefe6179a0674675fa335fcb2",
+      "bytes": 192
+    }
+  },
+  "sha256sum_checks": [
+    {
+      "path": "core/inspektorium-0.1.1-publication-e1-evidence.zip",
+      "matches_sha256sums": true
+    },
+    {
+      "path": "core/inspektorium-0.1.1-py3-none-any.whl",
+      "matches_sha256sums": true
+    },
+    {
+      "path": "core/inspektorium-0.1.1.tar.gz",
+      "matches_sha256sums": true
+    },
+    {
+      "path": "arena/agent_arena-1.0.1-py3-none-any.whl",
+      "matches_sha256sums": true
+    },
+    {
+      "path": "arena/agent_arena-1.0.1.tar.gz",
+      "matches_sha256sums": true
+    }
+  ],
+  "package_identity_checks": [
+    {
+      "asset": "inspektorium-0.1.1.tar.gz",
+      "hash_matches_actual": true,
+      "source_module_identity_reviewed": true,
+      "module_count": 19
+    },
+    {
+      "asset": "inspektorium-0.1.1-py3-none-any.whl",
+      "hash_matches_actual": true,
+      "source_module_identity_reviewed": true,
+      "module_count": 19
+    },
+    {
+      "asset": "agent_arena-1.0.1.tar.gz",
+      "hash_matches_actual": true,
+      "source_module_identity_reviewed": true,
+      "module_count": 74
+    },
+    {
+      "asset": "agent_arena-1.0.1-py3-none-any.whl",
+      "hash_matches_actual": true,
+      "source_module_identity_reviewed": true,
+      "module_count": 74
+    }
+  ],
+  "working_delta": {
+    "frozen_commit": "b87858c5674dd034a69f4d40b623a74077baa239",
+    "working_delta_files": {
+      "publication/2026-10-26/logs/offline/arena-fixture-corrections.log": {
+        "sha256": "e7b6c317f8c6c6476f4aef4a87dcff0a7034f6005426590510b48d574c904f1c",
+        "bytes": 98
+      },
+      "publication/2026-10-26/results/arena-sdist-normalization.json": {
+        "sha256": "10948f599e354fb66463582786eaba6590e221c978073f35c8bff48682556db8",
+        "bytes": 1496316
+      },
+      "publication/2026-10-26/results/corrected-history-scan.json": {
+        "sha256": "3f869769905175a6703d708dc2aa575870071e58b8fc443e0127b56a061db0df",
+        "bytes": 402
+      },
+      "publication/2026-10-26/results/corrected-release-assets-scan.json": {
+        "sha256": "e11e0be18561561e37e0a13e34a641b3c52f6a3dc4ff80f1ec4c4fd79efaaeed",
+        "bytes": 363
+      },
+      "publication/2026-10-26/results/delta-audit-controls.json": {
+        "sha256": "f969ffdc680360355b15f7e36bbc7d5142f58ef49344d406e3523253f4183652",
+        "bytes": 331
+      },
+      "publication/2026-10-26/results/final-package-member-identity.json": {
+        "sha256": "15a1f3dc52fa02c93e3d9ebb4e369677d41a5ad4d643b77cc2717e6fedb57fe7",
+        "bytes": 1002
+      },
+      "publication/2026-10-26/results/release-assets-sha256.json": {
+        "sha256": "366858f5769c52ad8d45864a2813b73cdbb59e2a461ea48781c7bf450da98ac9",
+        "bytes": 570
+      },
+      "publication/2026-10-26/results/repair-report.json": {
+        "sha256": "9810a15af13ac330b4c38fa858a2d54b0471d08e80bc70bca62889eb4bc5f3aa",
+        "bytes": 1934
+      },
+      "publication/2026-10-26/tools/normalize_release_sdist.py": {
+        "sha256": "da07bf6bf12738e235c1479276f79a9c0c4db4ba9494253b5ee54914201c1355",
+        "bytes": 5772
+      },
+      "publication/2026-10-26/tools/publication_audit.py": {
+        "sha256": "420150c647bcaba94326a0cb5c61ab3c7614aa936fcbe8e3ff6b5132f238209a",
+        "bytes": 7160
+      },
+      "publication/2026-10-26/tools/publication_delta_audit.py": {
+        "sha256": "27851f23c233a6a7743aa12aa798e8f8555a597725784ca60bcfe5261384e626",
+        "bytes": 5638
+      }
+    },
+    "findings": [],
+    "counts": {
+      "objects": 11
+    },
+    "status": "PASSED_FOCUSED_SCAN",
+    "scanner_private_pattern_semantically_unchanged": true,
+    "prior_scanner_definition_false_positive_resolved": true,
+    "final_evidence_commit_not_yet_created": true
+  },
+  "findings": [],
+  "final_gate_pending": [
+    "Corrected full-suite result and independent final acceptance report",
+    "Final evidence commit delta scan covering all newly reachable commit metadata and new blob IDs after frozen commit",
+    "Final source archive content scan",
+    "Postpublication fresh retrieval/hash verification"
+  ],
+  "limitations": [
+    "Focused scanner is not exhaustive secret detection or OCR of every image.",
+    "Source snapshots do not reproduce unavailable private Git associations or sealed input mappings.",
+    "Public authorization derivatives are INERT and cannot authorize native historical replay/live operation.",
+    "No new live provider execution or scientific efficacy validation performed."
+  ],
+  "no_original_or_integration_edits_by_reviewer": true,
+  "subsequent_public_verifier_scan": {
+    "report_sha256": "0090f5085219ff6afb15b718176487df020f48c9ff2dc60fb8f30f63c044de01",
+    "status": "PASSED_FOCUSED_SCAN",
+    "counts": {
+      "objects": 7
+    },
+    "findings": [],
+    "review_basis": "Orchestrator executed seven-file scan; result read by reviewer B; all later additions still require final committed delta scan."
+  },
+  "current_publication_pycache_absent": true,
+  "overall_acceptance_scope": "Full suite and D acceptance are separate; B approves only the explicitly audited publication scope."
+}

@@ -1,0 +1,493 @@
+[
+  {
+    "name": "clone",
+    "command": [
+      "git",
+      "clone",
+      "--quiet",
+      "--no-hardlinks",
+      "--no-checkout",
+      "<PUBLIC_CHECKOUT>",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch",
+    "exit_code": 0
+  },
+  {
+    "name": "checkout",
+    "command": [
+      "git",
+      "checkout",
+      "--quiet",
+      "--detach",
+      "dd739ebfe35a9c5aba46b8ae4ede133304da74b8"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout",
+    "exit_code": 0
+  },
+  {
+    "name": "initial-status",
+    "command": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "venv",
+    "command": [
+      "<PUBLICATION_WORK>/arena-dev/bin/python",
+      "-m",
+      "venv",
+      "<PUBLICATION_WORK>/arena-final-scratch/venv"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "install",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      ".[dev,providers]"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "wheel-site",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-c",
+      "import sysconfig; print(sysconfig.get_path('purelib'))"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "wheel-canary",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "scripts/offline_canary.py"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "installed-origin",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-c",
+      "import agent_arena,sys; print(agent_arena.__file__); print(sys.version)"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "installed-code",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-c",
+      "import json; from agent_arena.phase10_pipeline import code_identity; print(json.dumps(code_identity()))"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "installed-packages",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "cli-help",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "--help"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "validate",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "validate",
+      "--task",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/positive-task.json"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "run-positive",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "run",
+      "--offline",
+      "--task",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/positive-task.json",
+      "--recording",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/positive-recording.json",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "release-positive",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/3654ca63-4497-4bac-9be4-5c4cab14ffe5",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Explicit synthetic local artifact release for installation verification"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "inspect-positive",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/07824ba0-7ca5-4ebb-b81f-2b03c7781e53"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "run-negative",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "run",
+      "--offline",
+      "--task",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/negative-task.json",
+      "--recording",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/negative-recording.json",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "release-negative",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/4d562d6b-3280-4493-bdaf-5a1ff6b658aa",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Explicit synthetic local artifact release for installation verification"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "inspect-negative",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/17507aad-3fca-4e3f-a3c5-9cfe3c77cc50"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "run-unknown",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "run",
+      "--offline",
+      "--task",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/unknown-task.json",
+      "--recording",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/unknown-recording.json",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 2
+  },
+  {
+    "name": "inspect-blocked",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/58133b44-88da-464c-b843-4ec77451cfe3"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "release-blocked",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/58133b44-88da-464c-b843-4ec77451cfe3",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles",
+      "--reviewer",
+      "Offline operator",
+      "--reason",
+      "Test refusal"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 2
+  },
+  {
+    "name": "human-review",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "review",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/58133b44-88da-464c-b843-4ec77451cfe3",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles",
+      "--state-dir",
+      "<PUBLICATION_WORK>/arena-final-results/human-state",
+      "--select",
+      "p9position:f01714b088247965dfbe59a0",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Resolve represented design uncertainty from supplied source",
+      "--correction",
+      "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena/examples/phase10/positive-recording.json"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "release-human-review",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "release",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/21d34ca2-e96a-4f8f-ba91-27cf6ee39ed0",
+      "--output-root",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles",
+      "--reviewer",
+      "Clean-checkout offline operator",
+      "--reason",
+      "Explicit synthetic local artifact release for installation verification"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "inspect-human-review",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/agent-arena",
+      "audit",
+      "inspect",
+      "--bundle",
+      "<PUBLICATION_WORK>/arena-final-results/cli-bundles/31405f63-8d76-4174-87a6-eadaafd7aee7"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "acceptance",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "scripts/phase10_acceptance.py",
+      "--output",
+      "<PUBLICATION_WORK>/arena-final-results/acceptance"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "ruff",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "src/agent_arena/phase10_bundle.py",
+      "src/agent_arena/phase10_cli.py",
+      "src/agent_arena/phase10_live.py",
+      "src/agent_arena/phase10_models.py",
+      "src/agent_arena/phase10_pipeline.py",
+      "src/agent_arena/phase10_projection.py",
+      "src/agent_arena/phase10_render.py",
+      "src/agent_arena/cli.py",
+      "tests/test_phase10_bundle.py",
+      "tests/test_phase10_live.py",
+      "tests/test_phase10_render.py",
+      "scripts/phase10_acceptance.py",
+      "scripts/phase10_clean_reproduce.py",
+      "scripts/phase10_print_qa.py",
+      "src/agent_arena/condition_contract.py",
+      "scripts/extract_recorded_capture.py",
+      "scripts/offline_netguard.py",
+      "scripts/offline_canary.py",
+      "tests/test_capture_derivation.py",
+      "tests/test_monorepo_plan_binding.py",
+      "tests/test_reproduction_guard_counter.py"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "compileall",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-m",
+      "compileall",
+      "-q",
+      "src/agent_arena"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "wheel-phase10-tests",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_phase10_bundle.py",
+      "tests/test_phase10_render.py"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-venv",
+    "command": [
+      "<PUBLICATION_WORK>/arena-dev/bin/python",
+      "-m",
+      "venv",
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-install",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "-c",
+      "<PUBLICATION_WORK>/arena-final-results/wheel-dependency-constraints.txt",
+      "-e",
+      ".[dev,providers]"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-site",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "-c",
+      "import sysconfig; print(sysconfig.get_path('purelib'))"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-canary",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "scripts/offline_canary.py"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-origin",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "-c",
+      "import agent_arena,sys; print(agent_arena.__file__); print(sys.version)"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-code",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "-c",
+      "import json; from agent_arena.phase10_pipeline import code_identity; print(json.dumps(code_identity()))"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "development-packages",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 0
+  },
+  {
+    "name": "full-suite",
+    "command": [
+      "<PUBLICATION_WORK>/arena-final-scratch/development-venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "<PUBLICATION_WORK>/arena-final-scratch/checkout/agent-arena",
+    "exit_code": 1
+  }
+]

@@ -1,0 +1,1082 @@
+{
+  "run_id": "full27_study-forensics-023_Claude_Haiku_b67e1f",
+  "task": {
+    "id": "study-forensics-023",
+    "title": "Study Forensics: Urban green space and mental health",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "Researchers used a neighbourhood NatureScore to measure the amount and quality of green space across over a thousand ZIP codes in urban Texas. They linked these scores to aggregated outpatient records for depression, bipolar disorder, stress and anxiety among more than 61 million encounters. Neighbourhoods with higher NatureScores had about 50 percent fewer mental health visits, and residents living in areas scoring above 40 points were reported to have a 51 percent lower likelihood of depression and a 63 percent lower likelihood of bipolar disorder. The authors suggested that increasing green space in cities could promote well-being and improve mental health outcomes.\n",
+    "context": "A cross-sectional analysis linking green-space scores to mental health service utilisation.\nStrong associations are reported and policy suggestions made, but no causation is established.\n",
+    "expected_answer": "correlation_vs_causation",
+    "reference_solution": "The summary describes a cross-sectional analysis linking green-space scores to mental health at the ZIP-code level. It reports strong associations and speculates about benefits of increasing urban greenness but does not establish causation. Socioeconomic confounders are not controlled for.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "cross-sectional",
+        "variants": [
+          "ZIP codes",
+          "linked scores to records",
+          "aggregated"
+        ],
+        "functional_descriptions": [
+          "no causal inference possible from a cross-sectional ecological design"
+        ]
+      },
+      {
+        "keyword": "confounders",
+        "variants": [
+          "socioeconomic",
+          "wealthier neighbourhoods",
+          "income"
+        ],
+        "functional_descriptions": [
+          "the observed association may be driven by confounding variables"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting impressive effect sizes as evidence of causation",
+      "missing ecological fallacy in ZIP-code-level analysis"
+    ],
+    "task_family": "correlation_vs_causation",
+    "trap_type": "correlation_as_causation",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_correlation_as_causation",
+      "missing_confounders"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent resist impressive effect sizes and identify correlation-as-causation?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "correlation_vs_causation",
+    "gold_summary": "Cross-sectional analysis with strong associations but no causal design. Policy recommendations imply causation from correlational data.\n",
+    "expected_findings": [
+      {
+        "finding": "correlation_as_causation",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "Neighbourhoods with higher NatureScores had about 50 percent fewer mental health visits",
+        "why_it_matters": "Shows the strength of the reported association, which may be mistaken for causation.",
+        "supports_finding": "correlation_as_causation"
+      },
+      {
+        "span": "residents living in areas scoring above 40 points were reported to have a 51 percent lower likelihood of depression and a 63 percent lower likelihood of bipolar disorder",
+        "why_it_matters": "Impressive percentage reductions that could lead to overinterpretation of causality.",
+        "supports_finding": "correlation_as_causation"
+      },
+      {
+        "span": "The authors suggested that increasing green space in cities could promote well-being and improve mental health outcomes",
+        "why_it_matters": "Indicates scope overreach: policy recommendation based on correlational data.",
+        "supports_finding": "unsupported_generalization"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The study measured correlations between green space and mental health at the ZIP-code\nlevel. Without experimental or longitudinal design, one cannot infer that green space\ncauses better mental health. Socioeconomic differences (wealthier neighbourhoods have\nmore green space and better mental health access) are an obvious confounder. The policy\nrecommendation to \"increase green space\" implies causation from correlation.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Clear correlation_vs_causation case in environment/public health domain. Similar\nstructure to Case019 (houseplants) but with larger dataset and more impressive\nstatistics, which makes the correlation-causation trap more seductive. Tests whether\nagents resist impressive effect sizes (51%, 63%) without causal design.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"correlation_vs_causation\",\n  \"assumptions\": [\n    \"The study design is observational (linking NatureScore to aggregated health records), not experimental\",\n    \"NatureScore is a valid measure of green space quantity and quality\",\n    \"The aggregated outpatient records accurately reflect depression, bipolar disorder, stress, and anxiety prevalence\",\n    \"The text does not mention randomization, control groups, or causal inference methods\",\n    \"ZIP code-level aggregation masks individual-level confounders\"\n  ],\n  \"steps\": [\n    \"Identified the study design: observational/correlational (linking neighborhood characteristics to health outcomes)\",\n    \"Examined the causal claim: 'increasing green space in cities could promote well-being and improve mental health outcomes' is presented as a suggestion from correlational data\",\n    \"Identified major confounders not addressed: socioeconomic status, education, income, access to mental health care, population density, air quality, crime rates, and social cohesion all vary by neighborhood and correlate with both green space and mental health\",\n    \"Noted the ecological fallacy risk: aggregated data at ZIP code level cannot establish individual-level causal relationships\",\n    \"Recognized that residents in high-NatureScore areas may differ systematically in ways unrelated to green space (e.g., wealthier neighborhoods often have more parks AND better mental health outcomes for economic reasons)\",\n    \"Evaluated the strength of language: 'could promote' is appropriately cautious, but the framing of 50% and 63% reductions suggests causal magnitude without causal evidence\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Solid study: If the authors used instrumental variables, propensity score matching, or other causal inference methods not mentioned in this summary, the causal claim would be more justified\",\n    \"Overclaim: If the authors made stronger causal claims in the full paper than 'could promote,' this would be an overclaim rather than correlation_vs_causation\"\n  ],\n  \"uncertainties\": [\n    \"Whether the full paper includes causal inference methods (e.g., difference-in-differences, instrumental variables) that are omitted from this summary\",\n    \"Whether confounders were statistically controlled for in the analysis\",\n    \"Whether the authors explicitly acknowledge the ecological fallacy and limitations of aggregated data\",\n    \"The direction of potential confounding: does green space cause better mental health, or do healthier/wealthier populations self-select into greener neighborhoods?\"\n  ],\n  \"key_claims\": [\n    \"The core finding is correlational: higher NatureScore neighborhoods have fewer mental health visits (50% fewer, 51% lower depression likelihood, 63% lower bipolar likelihood)\",\n    \"The causal inference is unsupported by the study design as described: the leap from 'neighborhoods with higher NatureScores had fewer mental health visits' to 'increasing green space could improve mental health' requires causal evidence\",\n    \"Major confounders (SES, healthcare access, population density, air quality, social factors) are not mentioned as controlled, creating substantial alternative explanations\",\n    \"Aggregated data at ZIP code level introduces ecological fallacy risk: neighborhood-level correlations do not prove individual-level causal effects\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problem? No—correlation_vs_causation is the appropriate flag for observational data with a causal suggestion and unaddressed confounders\",\n    \"Did I assume the study is poorly designed without evidence? No—I flagged the design as observational and noted that causal methods might exist but are not mentioned in this summary\",\n    \"Did I miss evidence of causal inference? I acknowledged this uncertainty and set confidence accordingly\",\n    \"Is the language 'could promote' actually a problem? It is appropriately cautious, but the presentation of large effect sizes (50%, 63%) without causal evidence still constitutes a correlation_vs_causation issue\"\n  ],\n  \"confidence\": 0.78\n}\n```\n\n**Summary**: This is a classic observational study presenting correlational findings with a causal suggestion. The 50% and 63% reductions are striking, but they emerge from linking neighborhood green space scores to aggregated health records—a design vulnerable to confounding by socioeconomic status, healthcare access, population density, and other factors that cluster geographically. The authors appropriately use cautious language (\"could promote\"), but the framing of large effect sizes without addressing confounders or ecological fallacy risks constitutes a correlation_vs_causation issue. The confidence is moderate (0.78) because the summary may omit causal inference methods present in the full paper.",
+        "parsed": {
+          "final_answer": "correlation_vs_causation",
+          "assumptions": [
+            "The study design is observational (linking NatureScore to aggregated health records), not experimental",
+            "NatureScore is a valid measure of green space quantity and quality",
+            "The aggregated outpatient records accurately reflect depression, bipolar disorder, stress, and anxiety prevalence",
+            "The text does not mention randomization, control groups, or causal inference methods",
+            "ZIP code-level aggregation masks individual-level confounders"
+          ],
+          "steps": [
+            "Identified the study design: observational/correlational (linking neighborhood characteristics to health outcomes)",
+            "Examined the causal claim: 'increasing green space in cities could promote well-being and improve mental health outcomes' is presented as a suggestion from correlational data",
+            "Identified major confounders not addressed: socioeconomic status, education, income, access to mental health care, population density, air quality, crime rates, and social cohesion all vary by neighborhood and correlate with both green space and mental health",
+            "Noted the ecological fallacy risk: aggregated data at ZIP code level cannot establish individual-level causal relationships",
+            "Recognized that residents in high-NatureScore areas may differ systematically in ways unrelated to green space (e.g., wealthier neighborhoods often have more parks AND better mental health outcomes for economic reasons)",
+            "Evaluated the strength of language: 'could promote' is appropriately cautious, but the framing of 50% and 63% reductions suggests causal magnitude without causal evidence"
+          ],
+          "alternative_hypotheses": [
+            "Solid study: If the authors used instrumental variables, propensity score matching, or other causal inference methods not mentioned in this summary, the causal claim would be more justified",
+            "Overclaim: If the authors made stronger causal claims in the full paper than 'could promote,' this would be an overclaim rather than correlation_vs_causation"
+          ],
+          "uncertainties": [
+            "Whether the full paper includes causal inference methods (e.g., difference-in-differences, instrumental variables) that are omitted from this summary",
+            "Whether confounders were statistically controlled for in the analysis",
+            "Whether the authors explicitly acknowledge the ecological fallacy and limitations of aggregated data",
+            "The direction of potential confounding: does green space cause better mental health, or do healthier/wealthier populations self-select into greener neighborhoods?"
+          ],
+          "self_check": [
+            "Did I overstate the problem? No—correlation_vs_causation is the appropriate flag for observational data with a causal suggestion and unaddressed confounders",
+            "Did I assume the study is poorly designed without evidence? No—I flagged the design as observational and noted that causal methods might exist but are not mentioned in this summary",
+            "Did I miss evidence of causal inference? I acknowledged this uncertainty and set confidence accordingly",
+            "Is the language 'could promote' actually a problem? It is appropriately cautious, but the presentation of large effect sizes (50%, 63%) without causal evidence still constitutes a correlation_vs_causation issue"
+          ],
+          "key_claims": [
+            "The core finding is correlational: higher NatureScore neighborhoods have fewer mental health visits (50% fewer, 51% lower depression likelihood, 63% lower bipolar likelihood)",
+            "The causal inference is unsupported by the study design as described: the leap from 'neighborhoods with higher NatureScores had fewer mental health visits' to 'increasing green space could improve mental health' requires causal evidence",
+            "Major confounders (SES, healthcare access, population density, air quality, social factors) are not mentioned as controlled, creating substantial alternative explanations",
+            "Aggregated data at ZIP code level introduces ecological fallacy risk: neighborhood-level correlations do not prove individual-level causal effects"
+          ],
+          "confidence": 0.78,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11377
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.64,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.6000000000000001,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Identified major confounders not addressed: socioeconomic status, education, income, access to mental health care, population density, air quality, cr",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 0/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.77)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.64,
+          "weight": 6,
+          "weighted_score": 3.8,
+          "evidence": [
+            {
+              "text": "The aggregated outpatient records accurately reflect depression, bipolar disorder, stress, and anxiety prevalence",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The text does not mention randomization, control groups, or causal inference methods",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The aggregated outpatient records accurately reflect depression, bipolar disorder, stress, and anxiety prevalence",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "2 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "The direction of potential confounding: does green space cause better mental health, or do healthier/wealthier populations self-select into greener neighborhoods?",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.78",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 uncertainties (4 substantive)",
+            "Confidence 0.78"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "Solid study: If the authors used instrumental variables, propensity score matching, or other causal inference methods not mentioned in this summary, the causal claim would be more justified",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "1/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Is the language 'could promote' actually a problem? It is appropriately cautious, but the presentation of large effect sizes (50%, 63%) without causal evidence still constitutes a correlation_vs_causa",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.72, 498 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "ational data identified major confounders not addressed: socioeconomic",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'confounders' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The aggregated outpatient records accurately reflect depress...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The aggregated outpatient records accurately reflect depression, bipolar disorder, stress, and anxiety prevalence",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The text does not mention randomization, control groups, or ...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The text does not mention randomization, control groups, or causal inference methods",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['fallacy', 'effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/17 content words)",
+          "evidence": [
+            {
+              "text": "The core finding is correlational: higher NatureScore neighborhoods have fewer mental health visits (50% fewer, 51% lower depression likelihood, 63% lower bipolar likelihood)",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/23 content words)",
+          "evidence": [
+            {
+              "text": "The causal inference is unsupported by the study design as described: the leap from 'neighborhoods with higher NatureScores had fewer mental health visits' to 'increasing green space could improve mental health' requires causal evidence",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/16 content words)",
+          "evidence": [
+            {
+              "text": "Major confounders (SES, healthcare access, population density, air quality, social factors) are not mentioned as controlled, creating substantial alternative explanations",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/14 content words)",
+          "evidence": [
+            {
+              "text": "Aggregated data at ZIP code level introduces ecological fallacy risk: neighborhood-level correlations do not prove individual-level causal effects",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Overclaim: If the authors made stronger causal claims in the full paper than 'could promote,' this would be an overclaim rather than correlation_vs_causation",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "fallacy, effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study design is observational (linking NatureScore to aggregated health records), not experimental",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "NatureScore is a valid measure of green space quantity and quality",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The aggregated outpatient records accurately reflect depression, bipolar disorder, stress, and anxiety prevalence",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The text does not mention randomization, control groups, or causal inference methods",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "ZIP code-level aggregation masks individual-level confounders",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the study design: observational/correlational (linking neighborhood characteristics to health outcomes)",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the causal claim: 'increasing green space in cities could promote well-being and improve mental health outcomes' is presented as a suggestion from correlational data",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified major confounders not addressed: socioeconomic status, education, income, access to mental health care, population density, air quality, crime rates, and social cohesion all vary by neighborhood and correlate with both green space and mental health",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted the ecological fallacy risk: aggregated data at ZIP code level cannot establish individual-level causal relationships",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Recognized that residents in high-NatureScore areas may differ systematically in ways unrelated to green space (e.g., wealthier neighborhoods often have more parks AND better mental health outcomes for economic reasons)",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated the strength of language: 'could promote' is appropriately cautious, but the framing of 50% and 63% reductions suggests causal magnitude without causal evidence",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The core finding is correlational: higher NatureScore neighborhoods have fewer mental health visits (50% fewer, 51% lower depression likelihood, 63% lower bipolar likelihood)",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The causal inference is unsupported by the study design as described: the leap from 'neighborhoods with higher NatureScores had fewer mental health visits' to 'increasing green space could improve mental health' requires causal evidence",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Major confounders (SES, healthcare access, population density, air quality, social factors) are not mentioned as controlled, creating substantial alternative explanations",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Aggregated data at ZIP code level introduces ecological fallacy risk: neighborhood-level correlations do not prove individual-level causal effects",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Solid study: If the authors used instrumental variables, propensity score matching, or other causal inference methods not mentioned in this summary, the causal claim would be more justified",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overclaim: If the authors made stronger causal claims in the full paper than 'could promote,' this would be an overclaim rather than correlation_vs_causation",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the full paper includes causal inference methods (e.g., difference-in-differences, instrumental variables) that are omitted from this summary",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether confounders were statistically controlled for in the analysis",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the authors explicitly acknowledge the ecological fallacy and limitations of aggregated data",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The direction of potential confounding: does green space cause better mental health, or do healthier/wealthier populations self-select into greener neighborhoods?",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problem? No—correlation_vs_causation is the appropriate flag for observational data with a causal suggestion and unaddressed confounders",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I assume the study is poorly designed without evidence? No—I flagged the design as observational and noted that causal methods might exist but are not mentioned in this summary",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss evidence of causal inference? I acknowledged this uncertainty and set confidence accordingly",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the language 'could promote' actually a problem? It is appropriately cautious, but the presentation of large effect sizes (50%, 63%) without causal evidence still constitutes a correlation_vs_causation issue",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 21,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 10,
+            "relation": "checks",
+            "strength": 0.35
+          }
+        ],
+        "unused_assumptions": [
+          2,
+          3
+        ],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          25
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "fallacy",
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'correlation_vs_causation...'"
+        ],
+        "unsupported_claims": [
+          "correlation_vs_causation"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "correlation_vs_causation",
+        "detected_label": "correlation_vs_causation",
+        "label_correct": true,
+        "expected_findings": [
+          "correlation_as_causation",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "correlation_as_causation"
+        ],
+        "missed_findings": [
+          "unsupported_generalization"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "mechanism_not_demonstrated"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.5,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": false
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.5,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unused_assumption",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+        "Reasoning graph: conclusion not well grounded",
+        "6 reasoning steps",
+        "Low step utility: 0/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.77)",
+        "5/5 substantive assumptions",
+        "2 unused assumption(s)",
+        "4 uncertainties (4 substantive)",
+        "Confidence 0.78",
+        "2 alternative hypotheses considered",
+        "1/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.72, 498 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T08:15:33.001457+00:00",
+  "metadata": {}
+}

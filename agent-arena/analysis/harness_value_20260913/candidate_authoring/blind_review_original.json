@@ -1,0 +1,1366 @@
+{
+  "schema_version": "blind_source_gold_review.v1",
+  "reviewer_type": "isolated AI reviewer, not human expert review",
+  "review_date_utc": "2026-09-13T16:56:01.235125+00:00",
+  "scope": "One blind pass over the 32 shuffled cases, using only the three supplied local input files plus read-only primary records/notices. No repository, candidate labels/rationales, experiments, evaluated-model API, paid service or additional agents were used.",
+  "local_inputs": [
+    {
+      "path": "/tmp/arena-blind-source-review-20260913/cases.json",
+      "sha256": "1763c194eeb9a32e18c2f471fb1aee75da6121d5513d61c2d780a4348fd0808b"
+    },
+    {
+      "path": "/tmp/arena-blind-source-review-20260913/definitions.txt",
+      "sha256": "3b7828a06cf585ef08521cc60c7f00b9ed42ac5ff242b7f127f8a4cdaae3e299"
+    },
+    {
+      "path": "/tmp/arena-blind-source-review-20260913/source_status.json",
+      "sha256": "ac769ae1bf4eedcda0a1ced8ae5d7b3bb1c540f4e82884c905f18b4c1301e6be"
+    }
+  ],
+  "definitions": "Choose one label for the supplied claim relative to the supplied evidence packet.\nsolid: Claims accurately report the evidence with appropriate scope and caveats. Weak, observational, preclinical or mixed evidence can be reported accurately.\noverclaim: The conclusion exceeds the evidence. This is the residual category for inflated framing, unsupported positive or negative generalization, extrapolation to unstudied populations, and surrogate endpoints presented as clinical outcomes.\ncorrelation_vs_causation: A causal claim is drawn from a non-causal, uncontrolled or confounded design; correlation is treated as causation without the needed counterfactual/comparison.\nmechanism_vs_evidence: A described biological mechanism (an animal or preclinical pathway) is used to imply human clinical benefit not demonstrated by the evidence. This includes animal-to-human therapeutic and preclinical-pathway-to-therapeutic leaps. A biomarker/surrogate-to-clinical gap alone is excluded from this category.\nPrecedence: A specific label (correlation_vs_causation or mechanism_vs_evidence) takes precedence over generic overclaim only when its defining trigger is present and captures the core error. Do not stretch a specific definition; otherwise use overclaim. If the claim is appropriately bounded by the evidence, use solid.\n",
+  "source_review_limitations": [
+    "Primary article abstracts, identifiers and disclosed correction notices were checked; full article bodies, raw data and all figures/supplements were not exhaustively audited.",
+    "Most independent source retrieval used Europe PMC's indexed primary-article abstracts by PMID. Direct PubMed, PMC and JAMA record/notice content was also used for the flagged cases.",
+    "The JAMA PDF and direct PMC correction rendering initially failed; primary-site indexed notice text supplied the correction checks. Exact TEAM-AD old/new display values remain uncertain.",
+    "A no-retraction result in a linked-notice list is not a universal guarantee of source validity.",
+    "Historical publication dates do not by themselves identify the retrieved corrected/final content."
+  ],
+  "summary": {
+    "cases_reviewed": 32,
+    "distinct_sources_reviewed": 24,
+    "same_source_pairs": 8,
+    "label_counts_posthoc": {
+      "solid": 8,
+      "mechanism_vs_evidence": 8,
+      "correlation_vs_causation": 8,
+      "overclaim": 8
+    },
+    "class_balance_assumed_or_forced": false,
+    "label_underdetermined_cases": [],
+    "case_ids_with_material_source_or_version_issues": [
+      "q-d5854a68f0d77776",
+      "q-bbc556c3e270d1c6",
+      "q-2707244776dcbae5",
+      "q-5c8ebf600bd85d3a",
+      "q-3a7480df1ae448f2"
+    ],
+    "source_content_contradictions_affecting_labels": [],
+    "candidate_label_disagreements": "Not assessable: no candidate labels, candidate rationales or experimental results were supplied or inspected.",
+    "material_findings": [
+      "CRASH-2 original-report citation should be rebound from West Indian Medical Journal PMID 21702233 to original Lancet PMID 20554319. Label is unaffected.",
+      "RECOVERY, TEAM-AD and screen-time source version fields are publication dates, not exact identifiers for final/corrected bodies. Current decisive body content matches the packets.",
+      "TEAM-AD correction scope is verified but individual corrected table/figure values were not independently recovered; those values are unused. Screen-time corrected decisive coefficients are verified.",
+      "All 32 packets are sufficient for the requested label under the supplied definitions. This is a bounded AI judgment, not validation by human experts or an independent full-text scientific peer review."
+    ]
+  },
+  "reviews": [
+    {
+      "id": "q-6d0f876dfad53e80",
+      "label": "solid",
+      "rationale": "The randomized DAPA-HF comparison supports a lower risk of its specified clinical composite in the enrolled symptomatic HFrEF population. The claim retains the treatment add-on, comparator and composite endpoint.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The causal wording is supported by random assignment; this is not merely an exposure association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1911303",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/31535829/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31535829/"
+      ]
+    },
+    {
+      "id": "q-b9c30be2f05cac0f",
+      "label": "mechanism_vs_evidence",
+      "rationale": "The claim turns removal of scar-mediated axon inhibition and functional recovery in rats into established restoration of mobility in people. Human clinical treatment outcomes are absent.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "Generic extrapolation is present, but the explicit preclinical biological mechanism and animal-to-human therapeutic leap satisfy the more specific definition.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/416636a",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      ]
+    },
+    {
+      "id": "q-39524b4a80588199",
+      "label": "correlation_vs_causation",
+      "rationale": "PURE observed reported sleep and subsequent outcomes. Adjustment and longitudinal follow-up do not establish the effect of deliberately shortening an individual long sleeper's sleep. The claimed intervention counterfactual was not tested.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The central error is converting the observed sleep-risk association into a causal intervention effect, which triggers the specific label.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1093/eurheartj/ehy695",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30517670/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30517670/"
+      ]
+    },
+    {
+      "id": "q-d5854a68f0d77776",
+      "label": "overclaim",
+      "rationale": "The randomized report enrolled patients within eight hours of injury. It does not establish equal mortality benefit when treatment begins beyond that eligibility window.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "This is an extrapolation outside a randomized trial's studied timing window, not conversion of a noncausal association into causation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_with_material_provenance_issue",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/s0140-6736(10)60835-5",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/21702233/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "No formal correction was required to resolve the decisive figures; the original abstract was independently checked. The supplied reprint should not serve as an exact original-version citation."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The supplied URL/PMID 21702233 is a West Indian Medical Journal record dated December 2010, carrying the Lancet DOI and a republication of the trial abstract. Its indexed body has formatting errors (for example placebo mortality appears as 160%). The original Lancet record is PMID 20554319, epub 2010-06-14, print 2010-07-03. Its eligibility and mortality figures support the packet. Replace the URL, source title punctuation and version with the original record if the packet is intended to cite the original randomized report. This is a source-binding repair, not evidence supporting treatment after eight hours.",
+      "correction_uncertainty": "No formal correction was required to resolve the decisive figures; the original abstract was independently checked. The supplied reprint should not serve as an exact original-version citation.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/21702233/",
+        "https://pubmed.ncbi.nlm.nih.gov/20554319/"
+      ]
+    },
+    {
+      "id": "q-8639aab55d4707e8",
+      "label": "mechanism_vs_evidence",
+      "rationale": "Macrophage phagocytosis was tested in vitro and treatment-related survival was demonstrated in mice. Human tumor tissue and patient expression data do not constitute human therapeutic survival evidence.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "Although the source also reports an expression-survival correlation, the claim's core inference is from anti-CD47 mechanism and preclinical intervention outcomes to human benefit.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1073/pnas.1121623109",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      ]
+    },
+    {
+      "id": "q-bbc556c3e270d1c6",
+      "label": "correlation_vs_causation",
+      "rationale": "Temporal ordering and control of stable between-person differences do not remove all time-varying confounding or establish a causal effect. This observational model supports a directional association, not proof of developmental harm.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The additional inflation of screening performance into impairment is secondary to the explicit causal inference from observed temporal association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_correction_checked",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jamapediatrics.2018.5056",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30688984/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "Screening performance is not a definitive clinical diagnosis, but this does not compete with the explicit causal error.",
+          "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The disclosed correction is real. The packet uses the corrected 36-month beta -0.06 (CI -0.10 to -0.01) and 60-month beta -0.08 (CI -0.13 to -0.02). The notice also describes five other figure-CI digit changes and a model-clarification sentence, with conclusions unchanged. The source version 2019-03-01 predates the correction posted 2019-03-25; identify the packet as a corrected online abstract. No numerical packet repair is indicated.",
+      "correction_uncertainty": "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6503492/"
+      ]
+    },
+    {
+      "id": "q-ba27e5d9d3450650",
+      "label": "mechanism_vs_evidence",
+      "rationale": "Channelrhodopsin expression and retinal/cortical light responses in rodents establish a preclinical feasibility result. They do not establish restoration of vision in human patients.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "There is an endpoint leap as well, but the biological pathway plus rodent-to-human therapeutic inference captures the core error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/j.neuron.2006.02.026",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/16600853/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16600853/"
+      ]
+    },
+    {
+      "id": "q-b19caeb1f5ac40c9",
+      "label": "overclaim",
+      "rationale": "KEYNOTE-024 selected tumors with PD-L1 expression on at least 50% of cells. Its benefit estimate does not establish the same effect across every PD-L1 expression category.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "PD-L1 is an eligibility biomarker here, and the packet reports human randomized outcomes. The claim is a population-generalization error rather than a preclinical pathway leap.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1606774",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/27718847/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27718847/"
+      ]
+    },
+    {
+      "id": "q-a4722100223cc7c9",
+      "label": "correlation_vs_causation",
+      "rationale": "NutriNet-Sante measured diet and mortality in a prospective observational cohort. The adjusted hazard ratio does not identify what would happen if ultraprocessed food intake alone were reduced in otherwise unchanged participants.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit intervention counterfactual derived from an observational association is the defining error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jamainternmed.2018.7289",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30742202/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30742202/"
+      ]
+    },
+    {
+      "id": "q-d128840f749edb7e",
+      "label": "correlation_vs_causation",
+      "rationale": "The England analysis compared observed residential greenery and deprivation-related mortality patterns. It did not assign added green space or establish the causal effect of that neighborhood intervention on inequality.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The claim explicitly converts an observational association into an intervention effect; this is more specific than generic inflation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/s0140-6736(08)61689-x",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      ]
+    },
+    {
+      "id": "q-2707244776dcbae5",
+      "label": "solid",
+      "rationale": "The final randomized RECOVERY results show lower 28-day mortality in the oxygen and invasive-ventilation subgroups. The no-support subgroup did not demonstrate benefit. The wording avoids claiming proof of no effect or proof of harm in that subgroup.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The subgroup limitation is retained and the claim does not generalize the supported result to all patients.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_with_version_caveat",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2021436",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/32678530/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "Failure to demonstrate benefit in the no-support subgroup is not proof of zero effect or established harm.",
+          "The current abstract explicitly calls these final results and matches all subgroup figures. An archived July 2020 body was not inspected; exact historical version identity remains unverified."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The packet correctly uses the final results now present in the indexed abstract. Its version field 2020-07-17 is the first-publication date, not a distinct identifier for the final 2021 article content. Label the version as the final report/current indexed abstract and retain its retrieval date or content hash.",
+      "correction_uncertainty": "The current abstract explicitly calls these final results and matches all subgroup figures. An archived July 2020 body was not inspected; exact historical version identity remains unverified.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32678530/"
+      ]
+    },
+    {
+      "id": "q-059a0a3da48b95dc",
+      "label": "mechanism_vs_evidence",
+      "rationale": "Preferential mutant-allele disruption, preserved hair cells and hearing responses were shown in neonatal Beethoven mice. These mechanistic and animal treatment findings do not establish prevention of hearing loss in human patients.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The animal-to-human therapeutic inference is explicit and meets the specific mechanism definition.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/nature25164",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/29258297/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29258297/"
+      ]
+    },
+    {
+      "id": "q-19472ddd3521fb31",
+      "label": "overclaim",
+      "rationale": "SELECT required established cardiovascular disease. This claim extends that evidence to people without established disease, a primary-prevention population absent from the packet.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The packet is randomized; the failure is external validity to an unstudied population, not causal inference from correlation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2307563",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      ]
+    },
+    {
+      "id": "q-6894c5e659fdfd2e",
+      "label": "solid",
+      "rationale": "STEP 1 randomized eligible adults without diabetes and found greater mean weight loss at 68 weeks with semaglutide plus lifestyle intervention. In this trial-reporting context, the plural group statement describes the average comparison rather than guaranteeing every participant's response.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The population, duration and concurrent lifestyle intervention are bounded to the trial; no universal individual guarantee is asserted.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2032183",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": [
+          "Ordinary group-average interpretation; neither sentence guarantees an effect for each participant."
+        ]
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      ]
+    },
+    {
+      "id": "q-b61dfb593470c4cc",
+      "label": "mechanism_vs_evidence",
+      "rationale": "The scar-molecule mechanism and functional rat results are promoted to established human mobility restoration. No treated human patients are described.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The preclinical pathway and animal-to-human therapeutic leap trigger the specific category.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/416636a",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      ]
+    },
+    {
+      "id": "q-82b3cd8a9e85360c",
+      "label": "solid",
+      "rationale": "The claim explicitly limits the findings to reported mouse experiments and accurately reports aged muscle stem-cell improvement and increased mouse lifespan. Preclinical evidence can be reported solidly within its scope.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "There is no implied human clinical benefit; merely reporting a mouse mechanism and mouse outcome does not trigger this label.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1126/science.aaf2693",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/27127236/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27127236/"
+      ]
+    },
+    {
+      "id": "q-e1ca97d5210731af",
+      "label": "solid",
+      "rationale": "The randomized eight-week DASH comparison found a greater mean systolic reduction with the combination diet, with weight and sodium held constant. The claim reports the measured endpoint at the studied duration.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "It does not convert blood pressure into a claim about prevention of cardiovascular events.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejm199704173361601",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      ]
+    },
+    {
+      "id": "q-e596b96be010e8a0",
+      "label": "overclaim",
+      "rationale": "A nonsignificant result for two primary outcomes at 2000 IU/day in older adults cannot rule out every clinical benefit across adult populations and doses. The confidence intervals also do not establish exact absence of benefit.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The trial is randomized. The error is an unsupported negative generalization, which the definitions assign to overclaim.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1809944",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      ]
+    },
+    {
+      "id": "q-55a74bc7a9c2a190",
+      "label": "mechanism_vs_evidence",
+      "rationale": "NLRP3 inhibition and attenuation of mouse EAE, plus ex vivo activity in Muckle-Wells samples, do not establish treatment efficacy for multiple sclerosis in human patients.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit preclinical inflammatory pathway-to-human therapeutic inference takes precedence.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/nm.3806",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/25686105/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25686105/"
+      ]
+    },
+    {
+      "id": "q-e5add0335d3c30cc",
+      "label": "solid",
+      "rationale": "The claim correctly describes greater average weight loss at 68 weeks in STEP 1's eligible adults without diabetes and keeps the lifestyle cointervention and placebo comparator.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "There is no extension to other populations, longer follow-up, or every individual response.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2032183",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": [
+          "Ordinary group-average interpretation; neither sentence guarantees an effect for each participant."
+        ]
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      ]
+    },
+    {
+      "id": "q-433b89f442ca9ed3",
+      "label": "solid",
+      "rationale": "The claim reports an association in the specific Greek cohort over its reported follow-up. That matches the observational design and adjusted mortality association.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The statement uses association language and does not claim that changing the diet causes longer life.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa025039",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/12826634/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12826634/"
+      ]
+    },
+    {
+      "id": "q-537b9ea8d86c6722",
+      "label": "overclaim",
+      "rationale": "ATTIRE did not demonstrate prevention of the composite: the adjusted odds ratio was 0.98 with a confidence interval spanning benefit and harm. Claiming established prevention reverses the evidential result.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "Serum albumin targeting is a treatment goal in a human randomized clinical-outcome trial. The claim does not infer benefit from an animal pathway; a biomarker/target alone is insufficient for the mechanism label.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2022166",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/33657293/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": [
+          "The null result does not prove exact equivalence; the claim nevertheless asserts a positive preventive benefit not established by the trial."
+        ]
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33657293/"
+      ]
+    },
+    {
+      "id": "q-e3d5fdfcbd5203ed",
+      "label": "correlation_vs_causation",
+      "rationale": "The cohorts measured nut intake rather than randomly increasing it. Multivariable adjustment does not establish that nut consumption itself prevents death.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The direct conversion from intake-mortality association into an intervention's causal prevention effect is the specific trigger.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1307352",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/24256379/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24256379/"
+      ]
+    },
+    {
+      "id": "q-24f3e1ac6625ed8a",
+      "label": "correlation_vs_causation",
+      "rationale": "The cross-sectional survey cannot establish direction of effect or the result of reducing social media use. Reverse direction and shared causes remain possible despite demographic adjustment.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "A causal intervention claim is being drawn directly from a cross-sectional association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/j.ypmed.2016.01.001",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/26791323/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26791323/"
+      ]
+    },
+    {
+      "id": "q-5c8ebf600bd85d3a",
+      "label": "overclaim",
+      "rationale": "TEAM-AD studied slower daily-function decline in people who already had mild-to-moderate Alzheimer disease. That does not establish prevention of disease onset in cognitively healthy adults.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "The packet is a human clinical trial and describes no preclinical pathway used to infer benefit. This is a population and clinical-question extrapolation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_correction_scope_checked",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jama.2013.282834",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/24381967/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "The primary notice available through the web index states affected locations but does not list each old/new value. Direct PDF access was blocked. Exact table/figure changes remain unaudited; this cannot turn a treatment-of-existing-AD study into prevention in healthy people."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The JAMA correction notice confirms one erroneous Table 2 value and erroneous Figure 4/eFigure values, corrected online. The current indexed abstract confirms the established-AD population and ADCS-ADL difference used in the packet. The source version 2014-01-01 predates the 2014-03-19 correction; identify the body as the corrected online abstract. The abstract reports 613 randomized but 561 analyzed after exclusion of 52 without follow-up; the packet does not falsely claim all 613 were analyzed, though this is a useful completeness caveat.",
+      "correction_uncertainty": "The primary notice available through the web index states affected locations but does not list each old/new value. Direct PDF access was blocked. Exact table/figure changes remain unaudited; this cannot turn a treatment-of-existing-AD study into prevention in healthy people.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+        "https://jamanetwork.com/journals/jama/fullarticle/1841950"
+      ]
+    },
+    {
+      "id": "q-3bba7049197e9e00",
+      "label": "correlation_vs_causation",
+      "rationale": "The observed greenery-by-deprivation mortality pattern does not establish that creating greenery would causally narrow mortality differences. Neighborhood assignment and remaining confounding are unresolved.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The causal intervention inference from an observational analysis is the defining error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/s0140-6736(08)61689-x",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      ]
+    },
+    {
+      "id": "q-6aa6692ed5967cce",
+      "label": "overclaim",
+      "rationale": "The VITAL primary-outcome findings cannot prove no clinical benefit at any dose in all adults. Nonsignificance is not equivalence, and dose, age and outcome scope are limited.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The study is randomized, so unsupported negative generalization is the appropriate residual category.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1809944",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      ]
+    },
+    {
+      "id": "q-7f0ca6e5ec639574",
+      "label": "mechanism_vs_evidence",
+      "rationale": "The claim treats anti-CD47 phagocytosis and mouse survival experiments as established longer survival in human solid-tumor patients. Tissue originating from patients does not make the treated mice human clinical evidence.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The central leap concerns preclinical therapeutic evidence and mechanism, rather than the separate expression-survival association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1073/pnas.1121623109",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      ]
+    },
+    {
+      "id": "q-f84fb93fcf1862d4",
+      "label": "solid",
+      "rationale": "Within the identified DASH eight-week comparison, the combination diet produced the reported larger average systolic reduction while sodium and weight were controlled. It stays at the measured blood-pressure endpoint.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The sentence is a bounded trial-result report and does not assert a downstream clinical-event benefit.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejm199704173361601",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      ]
+    },
+    {
+      "id": "q-3a7480df1ae448f2",
+      "label": "correlation_vs_causation",
+      "rationale": "Earlier observed screen exposure predicting later screening scores does not identify a causal developmental impairment. The model controls stable differences but cannot by itself supply the required causal counterfactual.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit causal conclusion from temporal association is the core error; the stronger impairment wording is an additional inflation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_correction_checked",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jamapediatrics.2018.5056",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30688984/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "Screening performance is not a definitive clinical diagnosis, but this does not compete with the explicit causal error.",
+          "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The disclosed correction is real. The packet uses the corrected 36-month beta -0.06 (CI -0.10 to -0.01) and 60-month beta -0.08 (CI -0.13 to -0.02). The notice also describes five other figure-CI digit changes and a model-clarification sentence, with conclusions unchanged. The source version 2019-03-01 predates the correction posted 2019-03-25; identify the packet as a corrected online abstract. No numerical packet repair is indicated.",
+      "correction_uncertainty": "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6503492/"
+      ]
+    },
+    {
+      "id": "q-55c13bdbd3b6a47d",
+      "label": "mechanism_vs_evidence",
+      "rationale": "CRISPR exon removal restored some dystrophin and increased force in mdx mice. The claim uses that mechanism and animal outcome to establish strength improvement in human DMD patients, who were not studied.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit mechanistic animal-to-human treatment leap fits the specific category.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1126/science.aad5143",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/26721684/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26721684/"
+      ]
+    },
+    {
+      "id": "q-c375bcc3535a420a",
+      "label": "overclaim",
+      "rationale": "The source establishes a benefit in adults with established cardiovascular disease, not adults who have never had it. The claim extrapolates to unstudied primary prevention.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "Randomized evidence supports causality within the enrolled population; generalizing beyond it is the actual error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2307563",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      ]
+    }
+  ],
+  "same_source_pairs": [
+    {
+      "doi": "10.1038/416636a",
+      "case_ids": [
+        "q-b9c30be2f05cac0f",
+        "q-b61dfb593470c4cc"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent therapeutic assertion: both infer established human mobility restoration from chondroitinase scar/axon experiments in rats.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "mechanism_vs_evidence",
+        "mechanism_vs_evidence"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1073/pnas.1121623109",
+      "case_ids": [
+        "q-8639aab55d4707e8",
+        "q-7f0ca6e5ec639574"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent therapeutic assertion: both infer longer survival in human solid-tumor patients from CD47 blockade, phagocytosis and mouse outcomes.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "mechanism_vs_evidence",
+        "mechanism_vs_evidence"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1001/jamapediatrics.2018.5056",
+      "case_ids": [
+        "q-bbc556c3e270d1c6",
+        "q-3a7480df1ae448f2"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent causal assertion: both treat earlier screen exposure and later screening scores as proof/identification of causal developmental impairment.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "correlation_vs_causation",
+        "correlation_vs_causation"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1016/s0140-6736(08)61689-x",
+      "case_ids": [
+        "q-d128840f749edb7e",
+        "q-3bba7049197e9e00"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent intervention assertion: adding/creating greenery is claimed to causally narrow deprivation-related mortality differences.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "correlation_vs_causation",
+        "correlation_vs_causation"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1056/nejmoa2307563",
+      "case_ids": [
+        "q-19472ddd3521fb31",
+        "q-c375bcc3535a420a"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Both extend SELECT to adults without established cardiovascular disease. Never having cardiovascular disease is narrower than no established disease, but neither population was the trial target; the semantic nuance does not change the label.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "overclaim",
+        "overclaim"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1056/nejmoa2032183",
+      "case_ids": [
+        "q-6894c5e659fdfd2e",
+        "q-e5add0335d3c30cc"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent trial-average comparison. One says adults lost more weight and the other explicitly says greater average loss; in context both report the group outcome with the same eligibility, duration and lifestyle cointervention.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "solid",
+        "solid"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1056/nejm199704173361601",
+      "case_ids": [
+        "q-e1ca97d5210731af",
+        "q-f84fb93fcf1862d4"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent trial result: greater average systolic reduction during eight-week DASH feeding with sodium and weight maintained.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "solid",
+        "solid"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    },
+    {
+      "doi": "10.1056/nejmoa1809944",
+      "case_ids": [
+        "q-e596b96be010e8a0",
+        "q-6aa6692ed5967cce"
+      ],
+      "same_source": true,
+      "packet_text_identical": true,
+      "claim_meaning_comparison": "Equivalent unsupported universal negative: both rule out all clinical benefits across adult populations and dosing. Rule out and proves differ rhetorically, not in the evidential demand.",
+      "meaning_materially_differs_for_label": false,
+      "labels": [
+        "overclaim",
+        "overclaim"
+      ],
+      "labels_differ": false,
+      "assessment_basis": "Each case was labeled on its own wording and packet before this pair comparison; identical source did not determine label."
+    }
+  ],
+  "source_audits": [
+    {
+      "doi": "10.1056/nejmoa2032183",
+      "supplied_title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A33567185+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejmoa025039",
+      "supplied_title": "Adherence to a Mediterranean diet and survival in a Greek population.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/12826634/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/12826634/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A12826634+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejmoa2021436",
+      "supplied_title": "Dexamethasone in Hospitalized Patients with Covid-19.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/32678530/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/32678530/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A32678530+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label_with_version_caveat",
+      "exact_correction_or_packet_issue": "The packet correctly uses the final results now present in the indexed abstract. Its version field 2020-07-17 is the first-publication date, not a distinct identifier for the final 2021 article content. Label the version as the final report/current indexed abstract and retain its retrieval date or content hash.",
+      "correction_uncertainty": "The current abstract explicitly calls these final results and matches all subgroup figures. An archived July 2020 body was not inspected; exact historical version identity remains unverified.",
+      "additional_verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32678530/"
+      ]
+    },
+    {
+      "doi": "10.1056/nejmoa1911303",
+      "supplied_title": "Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/31535829/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/31535829/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A31535829+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejm199704173361601",
+      "supplied_title": "A clinical trial of the effects of dietary patterns on blood pressure. DASH Collaborative Research Group.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/9099655/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/9099655/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A9099655+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1126/science.aaf2693",
+      "supplied_title": "NAD⁺ repletion improves mitochondrial and stem cell function and enhances life span in mice.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/27127236/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/27127236/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A27127236+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejmoa2307563",
+      "supplied_title": "Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A37952131+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejmoa1809944",
+      "supplied_title": "Vitamin D Supplements and Prevention of Cancer and Cardiovascular Disease.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30415629+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1016/s0140-6736(10)60835-5",
+      "supplied_title": "Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage (CRASH-2) A randomised, placebo-controlled trial.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/21702233/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/21702233/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A21702233+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": false,
+      "decisive_content_comparison_detail": "The supplied republication abstract contains numeric formatting corruption. The packet matches the independently verified original Lancet abstract at PMID 20554319, including the within-eight-hours criterion and 14.5% versus 16.0% mortality.",
+      "verified_original_primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/20554319/",
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label_with_material_provenance_issue",
+      "exact_correction_or_packet_issue": "The supplied URL/PMID 21702233 is a West Indian Medical Journal record dated December 2010, carrying the Lancet DOI and a republication of the trial abstract. Its indexed body has formatting errors (for example placebo mortality appears as 160%). The original Lancet record is PMID 20554319, epub 2010-06-14, print 2010-07-03. Its eligibility and mortality figures support the packet. Replace the URL, source title punctuation and version with the original record if the packet is intended to cite the original randomized report. This is a source-binding repair, not evidence supporting treatment after eight hours.",
+      "correction_uncertainty": "No formal correction was required to resolve the decisive figures; the original abstract was independently checked. The supplied reprint should not serve as an exact original-version citation.",
+      "additional_verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/21702233/",
+        "https://pubmed.ncbi.nlm.nih.gov/20554319/"
+      ]
+    },
+    {
+      "doi": "10.1056/nejmoa1606774",
+      "supplied_title": "Pembrolizumab versus Chemotherapy for PD-L1-Positive Non-Small-Cell Lung Cancer.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/27718847/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/27718847/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A27718847+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejmoa2022166",
+      "supplied_title": "A Randomized Trial of Albumin Infusions in Hospitalized Patients with Cirrhosis.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/33657293/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/33657293/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A33657293+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1001/jama.2013.282834",
+      "supplied_title": "Effect of vitamin E and memantine on functional decline in Alzheimer disease: the TEAM-AD VA cooperative randomized trial.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A24381967+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "Indexed erratum exists; independently checked notice content/scope as described.",
+      "source_sufficiency": "sufficient_for_label_correction_scope_checked",
+      "exact_correction_or_packet_issue": "The JAMA correction notice confirms one erroneous Table 2 value and erroneous Figure 4/eFigure values, corrected online. The current indexed abstract confirms the established-AD population and ADCS-ADL difference used in the packet. The source version 2014-01-01 predates the 2014-03-19 correction; identify the body as the corrected online abstract. The abstract reports 613 randomized but 561 analyzed after exclusion of 52 without follow-up; the packet does not falsely claim all 613 were analyzed, though this is a useful completeness caveat.",
+      "correction_uncertainty": "The primary notice available through the web index states affected locations but does not list each old/new value. Direct PDF access was blocked. Exact table/figure changes remain unaudited; this cannot turn a treatment-of-existing-AD study into prevention in healthy people.",
+      "additional_verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+        "https://jamanetwork.com/journals/jama/fullarticle/1841950"
+      ]
+    },
+    {
+      "doi": "10.1016/j.ypmed.2016.01.001",
+      "supplied_title": "The association between social media use and sleep disturbance among young adults.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/26791323/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/26791323/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A26791323+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1056/nejmoa1307352",
+      "supplied_title": "Association of nut consumption with total and cause-specific mortality.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/24256379/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/24256379/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A24256379+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1001/jamainternmed.2018.7289",
+      "supplied_title": "Association Between Ultraprocessed Food Consumption and Risk of Mortality Among Middle-aged Adults in France.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/30742202/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/30742202/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30742202+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1001/jamapediatrics.2018.5056",
+      "supplied_title": "Association Between Screen Time and Children's Performance on a Developmental Screening Test.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30688984+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "Indexed erratum exists; independently checked notice content/scope as described.",
+      "source_sufficiency": "sufficient_for_label_correction_checked",
+      "exact_correction_or_packet_issue": "The disclosed correction is real. The packet uses the corrected 36-month beta -0.06 (CI -0.10 to -0.01) and 60-month beta -0.08 (CI -0.13 to -0.02). The notice also describes five other figure-CI digit changes and a model-clarification sentence, with conclusions unchanged. The source version 2019-03-01 predates the correction posted 2019-03-25; identify the packet as a corrected online abstract. No numerical packet repair is indicated.",
+      "correction_uncertainty": "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet.",
+      "additional_verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6503492/"
+      ]
+    },
+    {
+      "doi": "10.1093/eurheartj/ehy695",
+      "supplied_title": "Association of estimated sleep duration and naps with mortality and cardiovascular events: a study of 116 632 people from 21 countries.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/30517670/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/30517670/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30517670+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1016/s0140-6736(08)61689-x",
+      "supplied_title": "Effect of exposure to natural environment on health inequalities: an observational population study.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/18994663/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/18994663/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A18994663+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1038/nature25164",
+      "supplied_title": "Treatment of autosomal dominant hearing loss by in vivo delivery of genome editing agents.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/29258297/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/29258297/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A29258297+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1126/science.aad5143",
+      "supplied_title": "In vivo genome editing improves muscle function in a mouse model of Duchenne muscular dystrophy.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/26721684/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/26721684/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A26721684+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1038/416636a",
+      "supplied_title": "Chondroitinase ABC promotes functional recovery after spinal cord injury.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/11948352/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/11948352/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A11948352+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1073/pnas.1121623109",
+      "supplied_title": "The CD47-signal regulatory protein alpha (SIRPa) interaction is a therapeutic target for human solid tumors.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/22451913/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/22451913/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A22451913+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1016/j.neuron.2006.02.026",
+      "supplied_title": "Ectopic expression of a microbial-type rhodopsin restores visual responses in mice with photoreceptor degeneration.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/16600853/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/16600853/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16600853+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    },
+    {
+      "doi": "10.1038/nm.3806",
+      "supplied_title": "A small-molecule inhibitor of the NLRP3 inflammasome for the treatment of inflammatory diseases.",
+      "supplied_url": "https://pubmed.ncbi.nlm.nih.gov/25686105/",
+      "source_title_and_doi_match_indexed_record": true,
+      "verification_method": "Independent read-only Europe PMC core-record retrieval by supplied PMID; compared indexed primary-article abstract with packet. Additional primary record/notice checks are listed where needed.",
+      "primary_record_url": "https://pubmed.ncbi.nlm.nih.gov/25686105/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A25686105+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+      "decisive_packet_content_matches_current_abstract": true,
+      "full_article_body_audited": false,
+      "indexed_notice_result": "No retraction notice was returned in the independently retrieved linked-notice list. This is not an exhaustive postpublication validity review.",
+      "source_sufficiency": "sufficient_for_label",
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific issue found in the returned linked notices; no blanket claim that all possible later issues are absent."
+    }
+  ]
+}

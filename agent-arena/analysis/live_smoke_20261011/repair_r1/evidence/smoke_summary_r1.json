@@ -1,0 +1,1214 @@
+{
+  "ledger": {
+    "state": "ACTIVE",
+    "attempts": 12,
+    "bound_or_confirmed_microusd": 749257,
+    "remaining_microusd": 763064,
+    "retries": 0,
+    "unknown_billing": [],
+    "by_kind": {
+      "primary": 12,
+      "counterreview": 0,
+      "stability": 0
+    }
+  },
+  "slots": [
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-01",
+      "exit_code": 0,
+      "status": "READY_FOR_RELEASE",
+      "errors": [],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-haiku-5-5@2/c7ff296d-9ccb-42f7-b30f-d8e42f339e50",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "request_id": "req_011CfvfQasbgcGWxvhHabE3A",
+        "attempt_ids": [
+          "attempt-001"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "completed",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0"
+        ]
+      },
+      "semantics": {
+        "composite": "supported",
+        "original_label": "solid",
+        "derived_label": "solid",
+        "propositions": [
+          [
+            "claim:p1",
+            "supported"
+          ],
+          [
+            "claim:p2",
+            "supported"
+          ]
+        ]
+      },
+      "taxonomy": "completed",
+      "review": {
+        "route": "AUTO_RESOLVABLE",
+        "mandatory": false,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14799,
+        "output_tokens": 25300
+      },
+      "cost_microusd_primary": 14130,
+      "review_cost_microusd": 0,
+      "latency_ms": 94612,
+      "expectation": {
+        "expected_composite": [
+          "supported"
+        ],
+        "not_acceptable": [
+          "contradicted"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "Randomized comparison supports better reading proficiency in this population; no broader claim."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-02",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-haiku-5-5@2/e2228d2e-0e73-481d-82e9-61495f4fece3",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "request_id": "req_011CfvfXcL6tSTk9a95Q498L",
+        "attempt_ids": [
+          "attempt-002"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t-internal-p1: output state hides or changes unknown",
+          "t-summary-c1: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t-internal-p1: output state hides or changes unknown; t-summary-c1: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "mechanism_vs_evidence",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14722,
+        "output_tokens": 14354
+      },
+      "cost_microusd_primary": 8650,
+      "review_cost_microusd": 0,
+      "latency_ms": 51815,
+      "expectation": {
+        "expected_composite": [
+          "unknown",
+          "unsupported"
+        ],
+        "not_acceptable": [
+          "supported"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "In-vitro cell kill does not establish treatment of patients (species/population transfer); expected derived label mechanism_vs_evidence or overclaim."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-03",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-haiku-5-5@2/1b850911-579a-4d5b-aedf-694fc8a0a078",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "request_id": "req_011CfvfbVQFHrNm9QUrR8cqE",
+        "attempt_ids": [
+          "attempt-003"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "tx:internal:p1: output state hides or changes unknown",
+          "tx:summary:cf:p1: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; tx:internal:p1: output state hides or changes unknown; tx:summary:cf:p1: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "overclaim",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ],
+          [
+            "claim:p2",
+            "unsupported"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14880,
+        "output_tokens": 27962
+      },
+      "cost_microusd_primary": 15469,
+      "review_cost_microusd": 0,
+      "latency_ms": 104171,
+      "expectation": {
+        "expected_composite": [
+          "unknown",
+          "unsupported"
+        ],
+        "not_acceptable": [
+          "supported"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "LDL reduction component supported; heart-attack component not measured (no events tracked), so the AND claim is not supported."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-04",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-haiku-5-5@2/4f1c6325-3fb8-417a-ade9-9ff0c9931d0c",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "request_id": "req_011CfvfjF3mHb8QFvw1xWYsd",
+        "attempt_ids": [
+          "attempt-004"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "tr:internal:p1: output state hides or changes unknown",
+          "tr:internal:p2: output state hides or changes unknown",
+          "tr:summary:cf1: output state hides or changes unknown",
+          "tr:summary:cf2: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; tr:internal:p1: output state hides or changes unknown; tr:internal:p2: output state hides or changes unknown; tr:summary:cf1: output state hides or changes unknown; tr:summary:cf2: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "solid",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ],
+          [
+            "claim:p2",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14807,
+        "output_tokens": 31121
+      },
+      "cost_microusd_primary": 17042,
+      "review_cost_microusd": 0,
+      "latency_ms": 119264,
+      "expectation": {
+        "expected_composite": [
+          "supported"
+        ],
+        "not_acceptable": [
+          "contradicted"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "Reading-progress alternative supported by the randomized trial; absenteeism not addressed. A correct OR is supported if one alternative is supported. Disputed: whether an unaddressed OR component is treated as nonmaterial."
+      },
+      "expected_composite_hit": false,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-05",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-haiku-5-5@2/f9a76ad5-f77f-4f6e-b99f-8f3bfaa40dc6",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "request_id": "req_011Cfvft7fG4Xi8gf3ka6f6E",
+        "attempt_ids": [
+          "attempt-005"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t-internal-p1: output state hides or changes unknown",
+          "t-summary-c1: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t-internal-p1: output state hides or changes unknown; t-summary-c1: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "overclaim",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14696,
+        "output_tokens": 12903
+      },
+      "cost_microusd_primary": 7922,
+      "review_cost_microusd": 0,
+      "latency_ms": 49154,
+      "expectation": {
+        "expected_composite": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "contradicted",
+          "supported"
+        ],
+        "acceptable_status": [
+          "REVIEW_REQUIRED",
+          "READY_FOR_RELEASE"
+        ],
+        "boundary": "No serious adverse events in 60 people over four weeks neither establishes nor refutes long-term liver damage; absence of evidence is not refutation."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-06",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-haiku-5-5@2/7a724720-926f-47ae-bbf2-668727a5910c",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "request_id": "req_011CfvfwoM3mXxWwFG7eqvzv",
+        "attempt_ids": [
+          "attempt-006"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "tx:internal:claim:p1: output state hides or changes unknown",
+          "tx:summary:client:claim:p1: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; tx:internal:claim:p1: output state hides or changes unknown; tx:summary:client:claim:p1: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "correlation_vs_causation",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14917,
+        "output_tokens": 21720
+      },
+      "cost_microusd_primary": 12352,
+      "review_cost_microusd": 0,
+      "latency_ms": 82988,
+      "expectation": {
+        "expected_composite": [
+          "contradicted",
+          "unknown"
+        ],
+        "not_acceptable": [
+          "supported"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "Observational association favours breakfast eaters; RCT meta-analysis found no weight loss from assigned breakfast. Causal weight-loss claim is contradicted by the randomized evidence; conflict may trigger review."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@2",
+      "case": "LS-01",
+      "exit_code": 0,
+      "status": "READY_FOR_RELEASE",
+      "errors": [],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-sonnet-5-5@2/25268a68-2ee5-4fba-93f3-2b7634f87028",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-sonnet-5-5",
+        "returned_model": "claude-sonnet-5-5",
+        "request_id": "req_011Cfvg7y6iYxs1G1JjJeon4",
+        "attempt_ids": [
+          "attempt-007"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "completed",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0"
+        ]
+      },
+      "semantics": {
+        "composite": "supported",
+        "original_label": "solid",
+        "derived_label": "solid",
+        "propositions": [
+          [
+            "claim:p1",
+            "supported"
+          ]
+        ]
+      },
+      "taxonomy": "completed",
+      "review": {
+        "route": "AUTO_RESOLVABLE",
+        "mandatory": false,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14799,
+        "output_tokens": 8577
+      },
+      "cost_microusd_primary": 115368,
+      "review_cost_microusd": 0,
+      "latency_ms": 48505,
+      "expectation": {
+        "expected_composite": [
+          "supported"
+        ],
+        "not_acceptable": [
+          "contradicted"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "Randomized comparison supports better reading proficiency in this population; no broader claim."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@2",
+      "case": "LS-02",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-sonnet-5-5@2/3fb05a1a-9599-44e4-b756-15c29c6642b8",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-sonnet-5-5",
+        "returned_model": "claude-sonnet-5-5",
+        "request_id": "req_011CfvgBbxLGCDxpHC9e6gFz",
+        "attempt_ids": [
+          "attempt-008"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t1: output state hides or changes unknown",
+          "t2: output state hides or changes unknown",
+          "t3: output state hides or changes unknown",
+          "t4: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t1: output state hides or changes unknown; t2: output state hides or changes unknown; t3: output state hides or changes unknown; t4: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "overclaim",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14722,
+        "output_tokens": 6301
+      },
+      "cost_microusd_primary": 92454,
+      "review_cost_microusd": 0,
+      "latency_ms": 35900,
+      "expectation": {
+        "expected_composite": [
+          "unknown",
+          "unsupported"
+        ],
+        "not_acceptable": [
+          "supported"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "In-vitro cell kill does not establish treatment of patients (species/population transfer); expected derived label mechanism_vs_evidence or overclaim."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@2",
+      "case": "LS-03",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-sonnet-5-5@2/806cb89c-ac5e-45ea-b8aa-49765f0e8af1",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-sonnet-5-5",
+        "returned_model": "claude-sonnet-5-5",
+        "request_id": "req_011CfvgEJr2wTGqcHqMQC2so",
+        "attempt_ids": [
+          "attempt-009"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t1: semantic transformation changes population",
+          "t1: semantic transformation changes species",
+          "t1: semantic transformation changes intervention",
+          "t1: semantic transformation changes endpoint",
+          "t1: semantic transformation changes endpoint_type",
+          "t1: semantic transformation changes relation",
+          "t1: semantic transformation changes effect_direction",
+          "t1: semantic transformation changes certainty",
+          "t3: output state hides or changes unknown",
+          "t4: semantic transformation changes population",
+          "t4: semantic transformation changes species",
+          "t4: semantic transformation changes intervention",
+          "t4: semantic transformation changes endpoint",
+          "t4: semantic transformation changes endpoint_type",
+          "t4: semantic transformation changes relation",
+          "t4: semantic transformation changes effect_direction",
+          "t4: semantic transformation changes certainty",
+          "t6: output state hides or changes unknown",
+          "t7: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t1: semantic transformation changes population; t1: semantic transformation changes species; t1: semantic transformation changes intervention; t1: semantic transformation changes endpoint; t1: semantic transformation changes endpoint_type; t1: semantic transformation changes relation; t1: semantic transformation changes effect_direction; t1: semantic transformation changes certainty; t3: output state hides or changes unknown; t4: semantic transformation changes population; t4: semantic transformation changes species; t4: semantic transformation changes intervention; t4: semantic transformation changes endpoint; t4: semantic transformation changes endpoint_type; t4: semantic transformation changes relation; t4: semantic transformation changes effect_direction; t4: semantic transformation changes certainty; t6: output state hides or changes unknown; t7: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "overclaim",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ],
+          [
+            "claim:p2",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14880,
+        "output_tokens": 10569
+      },
+      "cost_microusd_primary": 135450,
+      "review_cost_microusd": 0,
+      "latency_ms": 60408,
+      "expectation": {
+        "expected_composite": [
+          "unknown",
+          "unsupported"
+        ],
+        "not_acceptable": [
+          "supported"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "LDL reduction component supported; heart-attack component not measured (no events tracked), so the AND claim is not supported."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@2",
+      "case": "LS-04",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-sonnet-5-5@2/30ba8a3f-3be6-4ec1-a250-1dbfd284af87",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-sonnet-5-5",
+        "returned_model": "claude-sonnet-5-5",
+        "request_id": "req_011CfvgJqLTFatWry6NNZQFW",
+        "attempt_ids": [
+          "attempt-010"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t4: semantic transformation changes population",
+          "t4: semantic transformation changes species",
+          "t4: semantic transformation changes intervention",
+          "t4: semantic transformation changes endpoint",
+          "t4: semantic transformation changes endpoint_type",
+          "t4: semantic transformation changes relation",
+          "t4: semantic transformation changes effect_direction",
+          "t4: semantic transformation changes certainty",
+          "t7: output state hides or changes unsupported",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t4: semantic transformation changes population; t4: semantic transformation changes species; t4: semantic transformation changes intervention; t4: semantic transformation changes endpoint; t4: semantic transformation changes endpoint_type; t4: semantic transformation changes relation; t4: semantic transformation changes effect_direction; t4: semantic transformation changes certainty; t7: output state hides or changes unsupported"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "solid",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unsupported"
+          ],
+          [
+            "claim:p2",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14807,
+        "output_tokens": 10376
+      },
+      "cost_microusd_primary": 133374,
+      "review_cost_microusd": 0,
+      "latency_ms": 59360,
+      "expectation": {
+        "expected_composite": [
+          "supported"
+        ],
+        "not_acceptable": [
+          "contradicted"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "Reading-progress alternative supported by the randomized trial; absenteeism not addressed. A correct OR is supported if one alternative is supported. Disputed: whether an unaddressed OR component is treated as nonmaterial."
+      },
+      "expected_composite_hit": false,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@2",
+      "case": "LS-05",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-sonnet-5-5@2/662fbdc3-70d3-4911-aee7-25a17538dd49",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-sonnet-5-5",
+        "returned_model": "claude-sonnet-5-5",
+        "request_id": "req_011CfvgPH29VMWjACJHxX7S3",
+        "attempt_ids": [
+          "attempt-011"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t1: semantic transformation changes population",
+          "t1: semantic transformation changes species",
+          "t1: semantic transformation changes intervention",
+          "t1: semantic transformation changes endpoint",
+          "t1: semantic transformation changes endpoint_type",
+          "t1: semantic transformation changes relation",
+          "t1: semantic transformation changes follow_up",
+          "t1: semantic transformation changes certainty",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t1: semantic transformation changes population; t1: semantic transformation changes species; t1: semantic transformation changes intervention; t1: semantic transformation changes endpoint; t1: semantic transformation changes endpoint_type; t1: semantic transformation changes relation; t1: semantic transformation changes follow_up; t1: semantic transformation changes certainty"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "overclaim",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14696,
+        "output_tokens": 6398
+      },
+      "cost_microusd_primary": 93372,
+      "review_cost_microusd": 0,
+      "latency_ms": 38495,
+      "expectation": {
+        "expected_composite": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "contradicted",
+          "supported"
+        ],
+        "acceptable_status": [
+          "REVIEW_REQUIRED",
+          "READY_FOR_RELEASE"
+        ],
+        "boundary": "No serious adverse events in 60 people over four weeks neither establishes nor refutes long-term liver damage; absence of evidence is not refutation."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    },
+    {
+      "profile": "claude-sonnet-5-5@2",
+      "case": "LS-06",
+      "exit_code": 2,
+      "status": "ANALYSIS_INCOMPLETE",
+      "errors": [
+        "analysis_source: Reparsed raw, supplied source spans and nonempty claim/evidence/output traces checked",
+        "finding_artifact_binding: Evaluated client_findings",
+        "phase8_semantics_taxonomy: Current semantic and separate taxonomy analysis required",
+        "phase9_history_review: All original/review/adjudication carriers and mandatory review revalidated"
+      ],
+      "bundle": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/live_smoke_20261011/repair_r1/bundles/claude-sonnet-5-5@2/b7d8770e-a048-46d3-90c8-109416aa5f8b",
+      "execution_mode": "live_generation",
+      "inspect_valid": true,
+      "transport": {
+        "http_status": 200,
+        "completion": "complete",
+        "stop_reason": "end_turn",
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "requested_model": "claude-sonnet-5-5",
+        "returned_model": "claude-sonnet-5-5",
+        "request_id": "req_011CfvgSB5HqDm3hHFC8gDBG",
+        "attempt_ids": [
+          "attempt-012"
+        ]
+      },
+      "syntax": {
+        "parse_ok": true,
+        "finish_reason": "stop"
+      },
+      "extraction": {
+        "phase8_technical": "incomplete",
+        "reasons": [
+          "Ledger, evidence constraints and transformations evaluated under AA-P8/1.0",
+          "t1: semantic transformation changes population",
+          "t1: semantic transformation changes species",
+          "t1: semantic transformation changes intervention",
+          "t1: semantic transformation changes comparator",
+          "t1: semantic transformation changes endpoint",
+          "t1: semantic transformation changes endpoint_type",
+          "t1: semantic transformation changes relation",
+          "t1: semantic transformation changes effect_direction",
+          "t1: semantic transformation changes certainty",
+          "t3: output state hides or changes unknown",
+          "t4: output state hides or changes unknown",
+          "Phase 7 artifact_source_binding_drift: Phase-8 output binding incomplete: Ledger, evidence constraints and transformations evaluated under AA-P8/1.0; t1: semantic transformation changes population; t1: semantic transformation changes species; t1: semantic transformation changes intervention; t1: semantic transformation changes comparator; t1: semantic transformation changes endpoint; t1: semantic transformation changes endpoint_type; t1: semantic transformation changes relation; t1: semantic transformation changes effect_direction; t1: semantic transformation changes certainty; t3: output state hides or changes unknown; t4: output state hides or changes unknown"
+        ]
+      },
+      "semantics": {
+        "composite": "unknown",
+        "original_label": "correlation_vs_causation",
+        "derived_label": null,
+        "propositions": [
+          [
+            "claim:p1",
+            "unknown"
+          ]
+        ]
+      },
+      "taxonomy": "incomplete",
+      "review": {
+        "route": "HUMAN_REVIEW_REQUIRED",
+        "mandatory": true,
+        "execution_status": "not_executed",
+        "attempts": {},
+        "positions": [
+          "original"
+        ],
+        "history_validation": null,
+        "review_request_ids": []
+      },
+      "controls_failed": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 14917,
+        "output_tokens": 7384
+      },
+      "cost_microusd_primary": 103674,
+      "review_cost_microusd": 0,
+      "latency_ms": 40955,
+      "expectation": {
+        "expected_composite": [
+          "contradicted",
+          "unknown"
+        ],
+        "not_acceptable": [
+          "supported"
+        ],
+        "acceptable_status": [
+          "READY_FOR_RELEASE",
+          "REVIEW_REQUIRED"
+        ],
+        "boundary": "Observational association favours breakfast eaters; RCT meta-analysis found no weight loss from assigned breakfast. Causal weight-loss claim is contradicted by the randomized evidence; conflict may trigger review."
+      },
+      "expected_composite_hit": true,
+      "not_acceptable_hit": false
+    }
+  ]
+}

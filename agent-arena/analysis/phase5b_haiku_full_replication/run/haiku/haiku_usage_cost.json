@@ -1,0 +1,20 @@
+{
+  "usage_cost_schema_version": "agent_arena.full_replication_usage_cost/v1",
+  "records": 420,
+  "records_with_token_usage": 420,
+  "records_with_http_attempt_accounting": 420,
+  "input_tokens": 599105,
+  "output_tokens": 617314,
+  "http_attempts": 421,
+  "transport_retries": 1,
+  "provider_failures": 0,
+  "pricing": {
+    "currency": "USD",
+    "input_usd_per_million_tokens": 1.0,
+    "output_usd_per_million_tokens": 5.0,
+    "cache_included": false,
+    "batch_discount_included": false
+  },
+  "calculated_cost_usd": 3.685675,
+  "usage_cost_fingerprint": "205f7696b9ad48ca2d3dd81b8ec92eea9aea86a63b7e7d3ce6d2a3580914506d"
+}

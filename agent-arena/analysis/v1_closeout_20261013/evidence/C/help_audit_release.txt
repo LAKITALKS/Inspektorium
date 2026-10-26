@@ -1,0 +1,14 @@
+$ (cd __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/help_cwd && env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 COLUMNS=100 __LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/agent-arena audit release --help)
+--- output (stdout+stderr) ---
+Usage: agent-arena audit release [OPTIONS]
+
+  Explicit local-artifact release of final checked MD/HTML. 0: RELEASED; 2:
+  blocked.
+
+Options:
+  --bundle PATH       [required]
+  --output-root PATH  [required]
+  --reviewer TEXT     [required]
+  --reason TEXT       [required]
+  --help              Show this message and exit.
+--- exit_code: 0

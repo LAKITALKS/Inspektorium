@@ -1,0 +1,31 @@
+"""Inspect an existing host-line pixel measurement without changing its criterion."""
+import argparse
+import json
+from pathlib import Path
+import numpy as np
+from PIL import Image
+
+p = argparse.ArgumentParser()
+p.add_argument('--results', type=Path, required=True)
+p.add_argument('--case', default='E1-answer_claim_below-02')
+p.add_argument('--style', default='noto-serif')
+args = p.parse_args()
+folder = args.results
+v = next(v for v in json.loads((folder/'visual_measurements.json').read_text())
+         if v['id']==args.case and v['style']==args.style)
+stem = folder/'screenshots'/f'{args.case}-{args.style}'
+a=np.array(Image.open(Path(str(stem)+'-actual.png')).convert('L'))
+b=np.array(Image.open(Path(str(stem)+'-twin.png')).convert('L'))
+out=[]
+for r in [r for r in v['rows'] if r['added_ink_px']]:
+    def box(r):
+        return round(r['x'])-2,round(r['y'])-2,round(r['x']+r['w'])+2,round(r['y']+r['h'])+2
+    x0,y0,x1,y1=box(r)
+    tx0,ty0,tx1,ty1=box(r['twin_box'])
+    diff=(a[y0:y1,x0:x1]<160)&(b[ty0:ty1,tx0:tx1]>=160)
+    ys,xs=np.where(diff)
+    out.append({'row':r,'added_ink_bounds':{'x':[int(xs.min()+x0),int(xs.max()+x0)],
+        'y':[int(ys.min()+y0),int(ys.max()+y0)]},
+        'y_counts_abs':{str(y+y0):int(np.count_nonzero(ys==y)) for y in np.unique(ys)},
+        'unpadded_rounded_box_count':int(diff[2:-2,2:-2].sum())})
+print(json.dumps({'id':args.case,'style':args.style,'rows':out},indent=2))

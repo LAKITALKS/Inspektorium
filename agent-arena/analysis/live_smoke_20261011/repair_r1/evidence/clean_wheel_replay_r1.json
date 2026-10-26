@@ -1,0 +1,15 @@
+{
+  "installation": "clean wheel from commit 6142dcd (scripts/phase10_clean_reproduce.py; same code as f885aae)",
+  "case": "LS-01",
+  "profile": "claude-sonnet-5-5@2",
+  "status": "READY_FOR_RELEASE",
+  "execution_mode": "offline_replay_of_live",
+  "origin": "live_generation",
+  "current_execution": "offline_replay",
+  "new_generation": false,
+  "original_request_id": "req_011Cfvg7y6iYxs1G1JjJeon4",
+  "capture_verified": true,
+  "system_prompt_version": "study_forensics_prompt/v3-phase8-contract-r1",
+  "code_fingerprint": "4d6c1711e61ea66d2cce6906b106a7bd82b90d1388f4b1eb25fc6616077f8aa3",
+  "verified_source_commit": null
+}

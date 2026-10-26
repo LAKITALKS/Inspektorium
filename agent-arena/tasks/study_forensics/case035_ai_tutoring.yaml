@@ -1,0 +1,77 @@
+id: study-forensics-035
+title: "Study Forensics: AI tutors show moderate gains compared to human tutors"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: borderline_solid_with_caveats
+ambiguity_level: low
+prompt: |
+  Two independent studies compared learning support systems based on language models with human tutors. In the first study, students using an AI assistant achieved a success rate of 66 percent compared to 61 percent with human tutoring and 56 percent with written hints. Tutors confirmed 76.4 percent of AI answers without major corrections. A second study with an AI tool to support tutoring sessions increased topic mastery by 4 percentage points; for inexperienced tutors, the advantage was as high as 9 points. The authors emphasize that AI does not replace human tutoring but complements it.
+context: |
+  Two small but randomized studies with concrete success rates. The text avoids
+  overstatement and positions AI as complementary, not replacing human tutors.
+  Moderate effect sizes honestly reported.
+expected_answer: "solid"
+reference_solution: |
+  Two randomized studies report moderate performance improvements with AI-based tutoring support. The text avoids overclaims, reports concrete metrics, and positions AI as complementary to human instruction. Despite small sample sizes, the claims match the evidence.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The studies are small but randomized and report concrete success rates. The text avoids
+  exaggeration and explicitly states that AI complements rather than replaces human tutoring.
+  The effects are moderate but honestly reported. This makes it solid, though the moderate
+  effect sizes and small samples keep confidence at medium.
+gold_alternative_reading: |
+  Critics could argue that the sample sizes are small and results may not generalize to
+  other educational contexts. This could lower the status to borderline, but remains within
+  what counts as solid improvement honestly reported.
+gold_summary: |
+  Two independent randomized studies show moderate AI tutoring gains with cautious conclusions. Solid case with moderate confidence.
+curator_notes: |
+  Imported from Dataset 6 (CaseM04). Originally German, translated to English. Extends
+  the dataset into education technology domain. Tests whether agents correctly recognize
+  moderate improvements without overhyping or dismissing them. Based on Stanford NSSA
+  research notes on AI tutoring.
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: medium
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: medium
+gold_evidence_spans:
+  - span: "66 percent compared to 61 percent with human tutoring"
+    why_it_matters: "Concrete difference between AI and human support."
+    supports_finding: evidence_matches_claim
+  - span: "Tutors confirmed 76.4 percent of AI answers without major corrections"
+    why_it_matters: "Shows quality control and acceptance by professionals."
+    supports_finding: evidence_matches_claim
+  - span: "AI does not replace human tutoring but complements it"
+    why_it_matters: "Cautious framing that limits the conclusion."
+    supports_finding: cautious_scope_control
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "complementary"
+    variants: ["complements", "does not replace", "supplementary"]
+    functional_descriptions:
+      - "AI is positioned as augmenting, not replacing human instruction"
+  - keyword: "moderate effect"
+    variants: ["4 percentage points", "66 vs 61", "small but"]
+    functional_descriptions:
+      - "effect sizes are moderate and honestly reported"
+common_errors:
+  - dismissing moderate improvements as insufficient
+  - overhyping AI capabilities based on small studies
+expected_failure_modes:
+  - overclaiming
+  - false_positive_flagging
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent recognise moderate, honestly reported improvements as solid?"
+source_dataset: dataset_6
+source_id: CaseM04

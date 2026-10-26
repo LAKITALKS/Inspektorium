@@ -1,0 +1,17 @@
+{
+  "phase": "5.05g",
+  "repository_commit": "31c6310ad01d3be061f81a4a13ae2e86210ee46c",
+  "repository_tag": "v0.8.8-targeted-revalidation-results",
+  "timestamp": "2026-08-02T15:58:52.479652+00:00",
+  "created_files": {
+    "analysis/phase5_05g_biaa013_final_remediation/candidate_claim_audit.md": "0efb4242a6455197e9dd124e74c5bbcb198eae39d78407ab301d3704b07d3e7c",
+    "analysis/phase5_05g_biaa013_final_remediation/remediation_plan.md": "3fcc4c9d52924a0183da224b458bec9e8d0891c5dcf41eb42a2e192a603202c6",
+    "analysis/phase5_05g_biaa013_final_remediation/revised_packet/annotator_facing/BIAA-013_v3.md": "1f6eadad2d28f325244e95be73a3ed153fafd34250ef8afd1536b38e1d6bec29",
+    "analysis/phase5_05g_biaa013_final_remediation/revised_packet/internal_only/claim_selection_record.md": "af3ea139b43709595cfe065034cb57bb1ab24c07b3d6f8cdfcf6e5a4821b0b08",
+    "analysis/phase5_05g_biaa013_final_remediation/revised_packet/internal_only/contamination_audit.md": "0ad9bdb1167740fe6efba5bad948c15ac3a45fe9e2c1092e59a7a2e4d8d33393",
+    "analysis/phase5_05g_biaa013_final_remediation/revised_packet/internal_only/revision_manifest.json": "86520a5a6e33fddf77a7cc383781c22966fc815e4d9fd676bb3f4501488b7aec",
+    "analysis/phase5_05g_biaa013_final_remediation/revised_packet/internal_only/semantic_diff_v2_to_v3.md": "6f04b2fd60324eef785378908c494550de7492b30981cc1cf969ff413adec77c"
+  },
+  "modified_tracked_files": [],
+  "note": "No private response material included. BIAA-013_v2 and source YAML unchanged."
+}

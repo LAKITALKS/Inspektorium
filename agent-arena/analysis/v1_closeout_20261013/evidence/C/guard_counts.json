@@ -1,0 +1,249 @@
+{
+ "note": "Refusing counters per guarded invocation (guard_cli.py) and per pytest session (areac_netguard.py). Expected 0 everywhere except the canary self-test, which must count each patched path.",
+ "invocations": {
+  "audit_inspect_candidate": {
+   "argv": [
+    "cli",
+    "audit",
+    "inspect",
+    "--bundle",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/supported/runs/e58ce16c-ea05-4b89-a364-e91b61111be6"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "audit_inspect_release": {
+   "argv": [
+    "cli",
+    "audit",
+    "inspect",
+    "--bundle",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/supported/release/cdd0ba7b-157d-4303-9d7a-5fd1a16b77c5"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "audit_release": {
+   "argv": [
+    "cli",
+    "audit",
+    "release",
+    "--bundle",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/supported/runs/e58ce16c-ea05-4b89-a364-e91b61111be6",
+    "--output-root",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/supported/release",
+    "--reviewer",
+    "area-c-evidence",
+    "--reason",
+    "v1 closeout area C supported-path demonstration (offline recorded example)"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "audit_run_offline": {
+   "argv": [
+    "cli",
+    "audit",
+    "run",
+    "--offline",
+    "--task",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/examples/phase10/positive-task.json",
+    "--recording",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/examples/phase10/positive-recording.json",
+    "--output-root",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/supported/runs"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "audit_validate": {
+   "argv": [
+    "cli",
+    "audit",
+    "validate",
+    "--task",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/examples/phase10/positive-task.json"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "canary": {
+   "argv": [
+    "canary"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 1,
+    "socket_connect_ex": 1,
+    "socket_create_connection": 1,
+    "httpx_client_send": 1,
+    "httpx_transport_handle_request": 1,
+    "get_provider_calls": 2,
+    "provider_constructions": 1
+   }
+  },
+  "help_root": {
+   "argv": [
+    "cli",
+    "--help"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "help_run_library": {
+   "argv": [
+    "run_library",
+    "--help"
+   ],
+   "exit_code": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "official_release": {
+   "argv": [
+    "cli",
+    "official-release",
+    "--input",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/dummy_release_input.json",
+    "--output-root",
+    "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/official_out/out",
+    "--repo-root",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena"
+   ],
+   "exit_code": 2,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "pytest_test_release_boundary": {
+   "exitstatus": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0
+   }
+  },
+  "pytest_test_v1_entry_point": {
+   "exitstatus": 0,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0
+   }
+  },
+  "run_anthropic": {
+   "argv": [
+    "cli",
+    "run",
+    "--task",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/examples/phase10/positive-task.json",
+    "--agents",
+    "anthropic"
+   ],
+   "exit_code": 2,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  },
+  "run_yaml": {
+   "argv": [
+    "cli",
+    "run",
+    "--task",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/examples/phase10/positive-task.json",
+    "--agents",
+    "__LOCAL_HOME__/Documents/Projects/agent-arena/agents/claude_sonnet.yaml"
+   ],
+   "exit_code": 2,
+   "counts": {
+    "socket_connect": 0,
+    "socket_connect_ex": 0,
+    "socket_create_connection": 0,
+    "httpx_client_send": 0,
+    "httpx_transport_handle_request": 0,
+    "get_provider_calls": 0,
+    "provider_constructions": 0
+   }
+  }
+ },
+ "total_excluding_canary": {
+  "socket_connect": 0,
+  "socket_connect_ex": 0,
+  "socket_create_connection": 0,
+  "httpx_client_send": 0,
+  "httpx_transport_handle_request": 0,
+  "get_provider_calls": 0,
+  "provider_constructions": 0
+ }
+}

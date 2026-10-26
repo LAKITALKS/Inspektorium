@@ -1,0 +1,191 @@
+id: P7A-BND-016
+title: "Boundary: ginkgo 'increases blood flow to the brain, so it protects your memory and prevents dementia' (mechanism + surrogate framed as clinical benefit)"
+domain: study_forensics
+task_type: study_forensics
+difficulty: hard
+task_family: overclaim
+trap_type: surrogate_endpoint_overclaim
+ambiguity_level: medium
+prompt: |
+  A brain-supplement label claims: "Ginkgo biloba increases blood flow to your brain, delivering the oxygen and nutrients your neurons need. By boosting cerebral circulation it sharpens your memory and protects you against age-related cognitive decline and dementia."
+
+  Ginkgo's proposed mechanism is real and is the basis of the marketing: ginkgo extract (EGb 761) has antioxidant and platelet-activating-factor-antagonist properties and has been reported to increase cerebral blood flow (a physiological surrogate). But the clinical outcome has been tested directly in humans. The Ginkgo Evaluation of Memory (GEM) study (DeKosky et al., JAMA 2008), a randomized, double-blind, placebo-controlled trial of 3,069 adults aged 75+ followed for a median of about six years, found that ginkgo did NOT reduce the incidence of dementia or Alzheimer's disease (277 dementia cases on ginkgo vs 246 on placebo; not significant). The GuidAge trial (Lancet Neurology 2012) likewise found no reduction in Alzheimer's over five years, and reviews find ginkgo does not reliably improve memory in healthy adults. Cerebral blood flow is a surrogate; dementia incidence and everyday memory are the clinical outcomes that matter.
+context: |
+  Evidence tier: a large randomized, placebo-controlled trial with a clinical endpoint (incident
+  dementia), plus a second prevention RCT. Ginkgo's cerebral-blood-flow / antioxidant MECHANISM is
+  real and is materially invoked, and a physiological SURROGATE (blood flow) is claimed — but the
+  CLINICAL outcome (dementia prevention, memory) was tested directly in humans and not supported.
+  The label sells the mechanism + surrogate as the clinical benefit. Under the frozen taxonomy this
+  "Shape B" surrogate-to-clinical framing routes to overclaim, not mechanism_vs_evidence.
+expected_answer: "overclaim"
+reference_solution: |
+  Ginkgo has a real, marketed mechanism (increased cerebral blood flow, antioxidant/PAF-antagonist
+  activity) and a physiological surrogate, but the clinical claim — protects memory and prevents
+  dementia — was tested head-on in randomized human trials (GEM, GuidAge) and NOT supported. Selling
+  the mechanism and surrogate as the clinical benefit is a surrogate-framed-as-clinical-outcome
+  overclaim; the claim also directly contradicts the human RCT evidence. Under the frozen taxonomy,
+  surrogate-to-clinical ("Shape B") routes to overclaim. It is not mechanism_vs_evidence: that label
+  is for a described animal/preclinical pathway extrapolated to a human benefit with no direct human
+  outcome data; here direct human outcome trials exist (and are contradicted), so the failure is
+  inflation of a surrogate/mechanism against human clinical data = overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: because ginkgo increases blood flow to the brain (a mechanism), it
+     sharpens memory and prevents age-related cognitive decline and dementia (a clinical benefit).
+  2. What the evidence establishes: the mechanism/surrogate (cerebral blood flow) is real and
+     invoked, but randomized human trials (GEM, GuidAge) show no reduction in dementia/Alzheimer's
+     incidence and no reliable memory benefit in healthy adults.
+  3. Mismatch: a mechanism plus a physiological surrogate is presented as a clinical benefit that
+     direct human trials do not support (and contradict).
+  4. Frozen label triggered: overclaim — a surrogate/mechanism framed as a clinical benefit
+     (rhetorical inflation); per docs/study_forensics_taxonomy.md this "Shape B" routes to overclaim.
+  5. Why mechanism_vs_evidence is tempting: the cerebral-blood-flow mechanism is real and is the
+     explicit rhetorical basis of the claim, so the mechanism boundary looks directly relevant.
+  6. Why precedence rejects it as primary: mechanism_vs_evidence applies when a described animal/
+     preclinical PATHWAY is extrapolated to a human benefit with NO direct human outcome data. Here
+     the human clinical outcome (dementia incidence, memory) has been tested directly in RCTs and not
+     supported; the decisive gap is surrogate/mechanism-to-clinical against existing human data, which
+     the taxonomy routes to overclaim (Shape B; docs/taxonomy_precedence.md; case054 precedent).
+  7. What would change the classification: had the label said "may increase cerebral blood flow but
+     has not been shown to prevent dementia or improve memory," it would be solid; had it rested only
+     on an animal blood-flow model with no human trials, mechanism_vs_evidence could apply.
+gold_alternative_reading: |
+  Alternative: mechanism_vs_evidence. Plausible because ginkgo's cerebral-blood-flow / antioxidant
+  mechanism is real and is the explicit basis of the claim. It loses under precedence because this is
+  not a preclinical-only extrapolation: the human clinical outcome (dementia, memory) was tested
+  directly in RCTs (GEM, GuidAge) and not supported, so the failure is a surrogate/mechanism inflated
+  against human clinical data. The taxonomy routes surrogate-to-clinical ("Shape B") to overclaim.
+gold_summary: |
+  Ginkgo's real cerebral-blood-flow mechanism and surrogate are sold as memory protection and
+  dementia prevention, but randomized human trials (GEM, GuidAge) show no dementia reduction and no
+  reliable memory benefit. Mechanism + surrogate framed as clinical benefit = overclaim (Shape B),
+  not mechanism_vs_evidence, because direct human outcome trials exist and are contradicted.
+curator_notes: |
+  Boundary family B2 (overclaim <-> mechanism_vs_evidence), overclaim direction. Independent
+  replacement for retired P7A-BND-008; supersedes it. Unlike 008 (vitamin C, where no described
+  mechanism did rhetorical work), here a described mechanism — increased cerebral blood flow — is the
+  explicit rhetorical basis, so mechanism_vs_evidence is a genuine attractor; but frozen Shape-B
+  routing (surrogate/mechanism framed as a clinical benefit, contradicted by direct human RCTs) keeps
+  overclaim primary. Distinct from P7A-BND-006 (bone/BMD) and P7A-BND-015 (oncology/PFS): different
+  agent (herbal cognitive supplement), different surrogate (cerebral blood flow), neuro domain.
+  Sourced from ginkgo memory-supplement marketing + GEM (JAMA 2008). Gold frozen before any model
+  output.
+expected_findings:
+  - finding: surrogate_framed_as_clinical
+    severity: major
+    confidence: high
+    note: "Cerebral blood flow (surrogate/mechanism) sold as memory protection and dementia prevention (clinical outcomes)"
+  - finding: claim_contradicted_by_rct
+    severity: major
+    confidence: high
+    note: "GEM (JAMA 2008) and GuidAge RCTs show no reduction in dementia/Alzheimer's incidence"
+  - finding: mechanism_as_proof_of_benefit
+    severity: moderate
+    confidence: high
+    note: "A real blood-flow mechanism is invoked as if it were proof of a cognitive/dementia benefit"
+gold_evidence_spans:
+  - span: "By boosting cerebral circulation it sharpens your memory and protects you against age-related cognitive decline and dementia"
+    why_it_matters: "Frames a mechanism/surrogate (blood flow) as clinical benefits (memory, dementia prevention)."
+    supports_finding: surrogate_framed_as_clinical
+  - span: "did NOT reduce the incidence of dementia or Alzheimer's disease"
+    why_it_matters: "The direct human RCT outcome that contradicts the clinical claim and rules out a preclinical-only reading."
+    supports_finding: claim_contradicted_by_rct
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "surrogate endpoint"
+    variants: ["cerebral blood flow", "mechanism", "not dementia incidence"]
+    functional_descriptions:
+      - "Blood flow is a surrogate; dementia incidence and everyday memory are the clinical outcomes"
+  - keyword: "Shape B routes to overclaim"
+    variants: ["surrogate-to-clinical", "not mechanism_vs_evidence", "human RCT exists"]
+    functional_descriptions:
+      - "A real mechanism/surrogate framed as clinical benefit is overclaim, not a preclinical-to-human leap"
+common_errors:
+  - labelling a blood-flow / antioxidant mechanism claim mechanism_vs_evidence
+  - accepting increased cerebral blood flow as proof of memory/dementia benefit
+  - missing that RCTs tested dementia prevention directly and found none
+expected_failure_modes:
+  - overclaim_to_over_specific
+  - surrogate_to_clinical_leap
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Does the agent route a real-mechanism, surrogate-to-clinical supplement claim (contradicted by human RCTs) to overclaim rather than mechanism_vs_evidence?"
+origin: curated
+supersedes: P7A-BND-008
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-016
+  case_family: boundary
+  boundary_family_id: B2
+  boundary: "overclaim <-> mechanism_vs_evidence"
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) plus a genuine alternate (mechanism_vs_evidence, invited by the real
+    cerebral-blood-flow mechanism that is the explicit basis of the claim); precedence decides via
+    Shape-B routing. Evidence-tier nuance (surrogate/mechanism vs a clinical RCT endpoint that was
+    tested directly and not supported). Property-based tagging.
+  precedence_rationale: |
+    mechanism_vs_evidence requires a described animal/preclinical pathway extrapolated to a human
+    benefit with no direct human outcome evidence. Here the human clinical outcome (dementia
+    incidence, memory) was tested directly in RCTs (GEM, GuidAge) and not supported, so the decisive
+    gap is a surrogate/mechanism inflated against human clinical data. The taxonomy routes this
+    surrogate-to-clinical gap ("Shape B") to overclaim (docs/taxonomy_precedence.md; case054).
+    Primary = overclaim.
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary under the frozen Shape-B routing;
+    mechanism_vs_evidence is a genuine but documented-and-rejected alternative (the mechanism is real
+    and invoked, but direct human clinical trials exist and are contradicted).
+  steelman_challenge: |
+    Strongest case the gold is wrong: ginkgo's cerebral-blood-flow / antioxidant mechanism is real and
+    is the explicit rhetorical basis, so the claim could be read as a mechanism-to-human leap
+    (mechanism_vs_evidence). Counter-evidence weighed: this is not a preclinical-only extrapolation —
+    randomized human trials (GEM 2008, GuidAge 2012) tested the clinical outcome (dementia, memory)
+    directly and found no benefit; the failure is a surrogate/mechanism inflated against human clinical
+    data. The taxonomy routes surrogate-to-clinical to overclaim (Shape B; case054 precedent).
+    Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "Ginkgo biloba brain/memory supplement marketing: 'increases blood flow to the brain' to protect memory and prevent cognitive decline"
+    claim_source_url: "https://www.nccih.nih.gov/health/ginkgo"
+    claim_source_publisher: "Ginkgo memory-supplement marketing (e.g. Ginkgold and category labels); documented by NIH NCCIH's ginkgo consumer page and Slate (2007) on Ginkgold's memory claims"
+    claim_source_date: "2020-01-01"
+    claim_source_role: public_claim_source
+    claim_context: "Ginkgo is one of the top-selling 'brain' supplements, marketed on the explicit mechanism that it increases blood flow to the brain to sharpen memory and protect against cognitive decline/dementia. As an OTC supplement the memory claim was never FDA-evaluated. The frozen span is the bounded mechanism-plus-clinical-benefit proposition; NCCIH documents that ginkgo does not prevent dementia or reliably improve memory."
+    claim_source_type: marketing_claim
+    claim_exact_span: "increases blood flow to your brain ... By boosting cerebral circulation it sharpens your memory and protects you against age-related cognitive decline and dementia"
+    evidence_sources:
+      - citation: "DeKosky ST, Williamson JD, Fitzpatrick AL, et al. Ginkgo biloba for prevention of dementia: a randomized controlled trial (GEM Study). JAMA 2008;300(19):2253-2262"
+        url: "https://pubmed.ncbi.nlm.nih.gov/19017911/"
+        design: "Randomized, double-blind, placebo-controlled trial"
+        population: "3,069 community-dwelling adults aged 75+ (normal cognition or MCI); median ~6.1 yr follow-up"
+        intervention_or_exposure: "Ginkgo biloba EGb 761, 120 mg twice daily"
+        comparator: "Placebo"
+        endpoint: "Incident all-cause dementia and Alzheimer's disease (clinical)"
+        result: "No reduction in dementia/Alzheimer's incidence (277 ginkgo vs 246 placebo dementia cases; HR ~1.12, not significant)"
+        source_role: primary_research
+        evidence_tier: "Large prevention RCT with a clinical endpoint (highest human-evidence tier)"
+        limitations: "Enrolled elderly volunteers; tested prevention, not treatment of established dementia"
+      - citation: "Vellas B, Coley N, Ousset PJ, et al. Long-term use of standardised ginkgo biloba extract for the prevention of Alzheimer's disease (GuidAge). Lancet Neurol 2012;11(10):851-859"
+        url: "https://pubmed.ncbi.nlm.nih.gov/22959217/"
+        design: "Randomized, double-blind, placebo-controlled prevention trial"
+        population: "2,854 adults 70+ with memory complaints; 5-year follow-up"
+        intervention_or_exposure: "Ginkgo biloba EGb 761"
+        comparator: "Placebo"
+        endpoint: "Progression to Alzheimer's disease"
+        result: "No significant reduction in Alzheimer's incidence over 5 years"
+        source_role: primary_research
+        evidence_tier: "Prevention RCT with a clinical endpoint"
+        limitations: "Prevention population with subjective memory complaints"
+    access_date: "2026-08-16"
+    claim_access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: mechanism_vs_evidence
+    probes: "overclaim -> over-specific (mechanism) attractor; Shape-B routing with a genuine mechanism attractor"
+  case_fingerprint: "771ce00f4d13cd6f83ba26b9a1d28561298b1ac3e2458b0492ea583db7f94314"

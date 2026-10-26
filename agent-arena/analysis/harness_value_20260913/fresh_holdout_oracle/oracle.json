@@ -1,0 +1,1165 @@
+[
+  {
+    "id": "q-6894c5e659fdfd2e",
+    "root_id": "q-6894c5e659fdfd2e",
+    "role": "primary",
+    "authoring_id": "C01",
+    "gold": "solid",
+    "rationale": "Claim preserves intervention, comparator, enrolled population and measured outcome.",
+    "source_packet_sha256": "a985be08868b8fbd918651e69f7a17c7c21798e56f3115c1c2b2095b2474cce3",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-6894c5e659fdfd2e",
+      "label": "solid",
+      "rationale": "STEP 1 randomized eligible adults without diabetes and found greater mean weight loss at 68 weeks with semaglutide plus lifestyle intervention. In this trial-reporting context, the plural group statement describes the average comparison rather than guaranteeing every participant's response.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The population, duration and concurrent lifestyle intervention are bounded to the trial; no universal individual guarantee is asserted.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2032183",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": [
+          "Ordinary group-average interpretation; neither sentence guarantees an effect for each participant."
+        ]
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-433b89f442ca9ed3",
+    "root_id": "q-433b89f442ca9ed3",
+    "role": "primary",
+    "authoring_id": "C02",
+    "gold": "solid",
+    "rationale": "A bounded observational association can be solid; the study design alone must not force CvC.",
+    "source_packet_sha256": "c3b8026d25ee6d05b417ece8fc3d43771dca068583e215813c11d21edb5ab422",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-433b89f442ca9ed3",
+      "label": "solid",
+      "rationale": "The claim reports an association in the specific Greek cohort over its reported follow-up. That matches the observational design and adjusted mortality association.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The statement uses association language and does not claim that changing the diet causes longer life.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa025039",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/12826634/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12826634/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-2707244776dcbae5",
+    "root_id": "q-2707244776dcbae5",
+    "role": "primary",
+    "authoring_id": "C03",
+    "gold": "solid",
+    "rationale": "Qualified subgroup-specific conclusion; adjudicator must check the negative clause does not assert equivalence.",
+    "source_packet_sha256": "d98a7f7ccfae78ae257cdd191cceed4dccc820d22f8d51ee44377aeb5b8a8cdd",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-2707244776dcbae5",
+      "label": "solid",
+      "rationale": "The final randomized RECOVERY results show lower 28-day mortality in the oxygen and invasive-ventilation subgroups. The no-support subgroup did not demonstrate benefit. The wording avoids claiming proof of no effect or proof of harm in that subgroup.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The subgroup limitation is retained and the claim does not generalize the supported result to all patients.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_with_version_caveat",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2021436",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/32678530/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "Failure to demonstrate benefit in the no-support subgroup is not proof of zero effect or established harm.",
+          "The current abstract explicitly calls these final results and matches all subgroup figures. An archived July 2020 body was not inspected; exact historical version identity remains unverified."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The packet correctly uses the final results now present in the indexed abstract. Its version field 2020-07-17 is the first-publication date, not a distinct identifier for the final 2021 article content. Label the version as the final report/current indexed abstract and retain its retrieval date or content hash.",
+      "correction_uncertainty": "The current abstract explicitly calls these final results and matches all subgroup figures. An archived July 2020 body was not inspected; exact historical version identity remains unverified.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32678530/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-6d0f876dfad53e80",
+    "root_id": "q-6d0f876dfad53e80",
+    "role": "primary",
+    "authoring_id": "C04",
+    "gold": "solid",
+    "rationale": "Supported trial-specific composite-outcome statement, not a claim that every component improved equally.",
+    "source_packet_sha256": "aa50461d29b2eda7d3e378c2338f0d5a9c1e030d50a78afc416c59c052840742",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-6d0f876dfad53e80",
+      "label": "solid",
+      "rationale": "The randomized DAPA-HF comparison supports a lower risk of its specified clinical composite in the enrolled symptomatic HFrEF population. The claim retains the treatment add-on, comparator and composite endpoint.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The causal wording is supported by random assignment; this is not merely an exposure association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1911303",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/31535829/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31535829/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-e1ca97d5210731af",
+    "root_id": "q-e1ca97d5210731af",
+    "role": "primary",
+    "authoring_id": "C05",
+    "gold": "solid",
+    "rationale": "Accurate outcome and experimental-control statement.",
+    "source_packet_sha256": "2375ab1903b6ef9f3abbdb4dfc64f7d571460b0c39b8accff09c8c45c59c69af",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-e1ca97d5210731af",
+      "label": "solid",
+      "rationale": "The randomized eight-week DASH comparison found a greater mean systolic reduction with the combination diet, with weight and sodium held constant. The claim reports the measured endpoint at the studied duration.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "It does not convert blood pressure into a claim about prevention of cardiovascular events.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejm199704173361601",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-82b3cd8a9e85360c",
+    "root_id": "q-82b3cd8a9e85360c",
+    "role": "primary",
+    "authoring_id": "C06",
+    "gold": "solid",
+    "rationale": "A bounded preclinical result can be solid; documented mechanism is not itself a mechanism-versus-evidence error.",
+    "source_packet_sha256": "4082cb5e61a4d5c00d5a667e6ad5b9582fede45de7baa67364c2abb2cdb33dbc",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-82b3cd8a9e85360c",
+      "label": "solid",
+      "rationale": "The claim explicitly limits the findings to reported mouse experiments and accurately reports aged muscle stem-cell improvement and increased mouse lifespan. Preclinical evidence can be reported solidly within its scope.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "There is no implied human clinical benefit; merely reporting a mouse mechanism and mouse outcome does not trigger this label.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1126/science.aaf2693",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/27127236/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27127236/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-c375bcc3535a420a",
+    "root_id": "q-c375bcc3535a420a",
+    "role": "primary",
+    "authoring_id": "C07",
+    "gold": "overclaim",
+    "rationale": "Extends secondary-prevention evidence to a population without established cardiovascular disease. No mechanism claim or observational causal inference is needed.",
+    "source_packet_sha256": "49b8398f62e82edc150d373f187a26b294ac4d130fcac449a9b7c1c967c460fa",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-c375bcc3535a420a",
+      "label": "overclaim",
+      "rationale": "The source establishes a benefit in adults with established cardiovascular disease, not adults who have never had it. The claim extrapolates to unstudied primary prevention.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "Randomized evidence supports causality within the enrolled population; generalizing beyond it is the actual error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2307563",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-6aa6692ed5967cce",
+    "root_id": "q-6aa6692ed5967cce",
+    "role": "primary",
+    "authoring_id": "C08",
+    "gold": "overclaim",
+    "rationale": "Unsupported negative generalization across doses, populations and outcomes. Null significance is not an equivalence result.",
+    "source_packet_sha256": "f22c05b8381b5cf77151e1f1e8b64109e9141bc3099b677983f0eb3c1975ee00",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-6aa6692ed5967cce",
+      "label": "overclaim",
+      "rationale": "The VITAL primary-outcome findings cannot prove no clinical benefit at any dose in all adults. Nonsignificance is not equivalence, and dose, age and outcome scope are limited.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The study is randomized, so unsupported negative generalization is the appropriate residual category.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1809944",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-d5854a68f0d77776",
+    "root_id": "q-d5854a68f0d77776",
+    "role": "primary",
+    "authoring_id": "C09",
+    "gold": "overclaim",
+    "rationale": "Extrapolates treatment timing beyond the enrolled window. The claim is about what this source supports, not all subsequent evidence.",
+    "source_packet_sha256": "3294abadc1a7b81e8b43581bcbe44b0354dfa2a3d0571ed23c49e964ffe68ec7",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-d5854a68f0d77776",
+      "label": "overclaim",
+      "rationale": "The randomized report enrolled patients within eight hours of injury. It does not establish equal mortality benefit when treatment begins beyond that eligibility window.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "This is an extrapolation outside a randomized trial's studied timing window, not conversion of a noncausal association into causation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_with_material_provenance_issue",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/s0140-6736(10)60835-5",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/21702233/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "No formal correction was required to resolve the decisive figures; the original abstract was independently checked. The supplied reprint should not serve as an exact original-version citation."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The supplied URL/PMID 21702233 is a West Indian Medical Journal record dated December 2010, carrying the Lancet DOI and a republication of the trial abstract. Its indexed body has formatting errors (for example placebo mortality appears as 160%). The original Lancet record is PMID 20554319, epub 2010-06-14, print 2010-07-03. Its eligibility and mortality figures support the packet. Replace the URL, source title punctuation and version with the original record if the packet is intended to cite the original randomized report. This is a source-binding repair, not evidence supporting treatment after eight hours.",
+      "correction_uncertainty": "No formal correction was required to resolve the decisive figures; the original abstract was independently checked. The supplied reprint should not serve as an exact original-version citation.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/21702233/",
+        "https://pubmed.ncbi.nlm.nih.gov/20554319/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-b19caeb1f5ac40c9",
+    "root_id": "q-b19caeb1f5ac40c9",
+    "role": "primary",
+    "authoring_id": "C10",
+    "gold": "overclaim",
+    "rationale": "Expands a biomarker-selected population to patients regardless of the biomarker.",
+    "source_packet_sha256": "583a2527e25616abac45dc9c1be69b295b1919cdc953247651dd5a34c0672f1d",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-b19caeb1f5ac40c9",
+      "label": "overclaim",
+      "rationale": "KEYNOTE-024 selected tumors with PD-L1 expression on at least 50% of cells. Its benefit estimate does not establish the same effect across every PD-L1 expression category.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "PD-L1 is an eligibility biomarker here, and the packet reports human randomized outcomes. The claim is a population-generalization error rather than a preclinical pathway leap.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1606774",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/27718847/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27718847/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-537b9ea8d86c6722",
+    "root_id": "q-537b9ea8d86c6722",
+    "role": "primary",
+    "authoring_id": "C11",
+    "gold": "overclaim",
+    "rationale": "Claims established clinical benefit despite the reported randomized primary outcome not demonstrating it; adjudicate against the complete estimate.",
+    "source_packet_sha256": "63e138d2e448b38024fec314a8e29883b011475fb4abebe44db9fda0846e538a",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-537b9ea8d86c6722",
+      "label": "overclaim",
+      "rationale": "ATTIRE did not demonstrate prevention of the composite: the adjusted odds ratio was 0.98 with a confidence interval spanning benefit and harm. Claiming established prevention reverses the evidential result.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "Serum albumin targeting is a treatment goal in a human randomized clinical-outcome trial. The claim does not infer benefit from an animal pathway; a biomarker/target alone is insufficient for the mechanism label.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2022166",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/33657293/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": [
+          "The null result does not prove exact equivalence; the claim nevertheless asserts a positive preventive benefit not established by the trial."
+        ]
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33657293/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-5c8ebf600bd85d3a",
+    "root_id": "q-5c8ebf600bd85d3a",
+    "role": "primary",
+    "authoring_id": "C12",
+    "gold": "overclaim",
+    "rationale": "Both population and endpoint are expanded from treatment of established disease to primary prevention.",
+    "source_packet_sha256": "01c7449bb76a09cc0e48fe629a70e77d4c2eb7eabe7c27b545dbd8b878cfe822",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-5c8ebf600bd85d3a",
+      "label": "overclaim",
+      "rationale": "TEAM-AD studied slower daily-function decline in people who already had mild-to-moderate Alzheimer disease. That does not establish prevention of disease onset in cognitively healthy adults.",
+      "competing_label_considered": "mechanism_vs_evidence",
+      "why_competing_label_not_selected": "The packet is a human clinical trial and describes no preclinical pathway used to infer benefit. This is a population and clinical-question extrapolation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_correction_scope_checked",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jama.2013.282834",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/24381967/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "The primary notice available through the web index states affected locations but does not list each old/new value. Direct PDF access was blocked. Exact table/figure changes remain unaudited; this cannot turn a treatment-of-existing-AD study into prevention in healthy people."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The JAMA correction notice confirms one erroneous Table 2 value and erroneous Figure 4/eFigure values, corrected online. The current indexed abstract confirms the established-AD population and ADCS-ADL difference used in the packet. The source version 2014-01-01 predates the 2014-03-19 correction; identify the body as the corrected online abstract. The abstract reports 613 randomized but 561 analyzed after exclusion of 52 without follow-up; the packet does not falsely claim all 613 were analyzed, though this is a useful completeness caveat.",
+      "correction_uncertainty": "The primary notice available through the web index states affected locations but does not list each old/new value. Direct PDF access was blocked. Exact table/figure changes remain unaudited; this cannot turn a treatment-of-existing-AD study into prevention in healthy people.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24381967/",
+        "https://jamanetwork.com/journals/jama/fullarticle/1841950"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-24f3e1ac6625ed8a",
+    "root_id": "q-24f3e1ac6625ed8a",
+    "role": "primary",
+    "authoring_id": "C13",
+    "gold": "correlation_vs_causation",
+    "rationale": "A causal intervention effect is asserted from a cross-sectional observational association.",
+    "source_packet_sha256": "ae7c0abf76962c5bbcf620919ca79a974deb01ebc482c2efb28785c98e5bbdeb",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-24f3e1ac6625ed8a",
+      "label": "correlation_vs_causation",
+      "rationale": "The cross-sectional survey cannot establish direction of effect or the result of reducing social media use. Reverse direction and shared causes remain possible despite demographic adjustment.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "A causal intervention claim is being drawn directly from a cross-sectional association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/j.ypmed.2016.01.001",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/26791323/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26791323/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-e3d5fdfcbd5203ed",
+    "root_id": "q-e3d5fdfcbd5203ed",
+    "role": "primary",
+    "authoring_id": "C14",
+    "gold": "correlation_vs_causation",
+    "rationale": "Asserts causality from an observational analysis; cited randomized studies in the introduction are not this study's design.",
+    "source_packet_sha256": "b5980f68a67b7a0d710f13f185091b2969e5cbf3e5e110aa0b94cfb92d8f88d9",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-e3d5fdfcbd5203ed",
+      "label": "correlation_vs_causation",
+      "rationale": "The cohorts measured nut intake rather than randomly increasing it. Multivariable adjustment does not establish that nut consumption itself prevents death.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The direct conversion from intake-mortality association into an intervention's causal prevention effect is the specific trigger.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1307352",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/24256379/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24256379/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-a4722100223cc7c9",
+    "root_id": "q-a4722100223cc7c9",
+    "role": "primary",
+    "authoring_id": "C15",
+    "gold": "correlation_vs_causation",
+    "rationale": "A counterfactual intervention conclusion exceeds the observational design.",
+    "source_packet_sha256": "679c192cb130d05072cc3529c23b4c438a2e19c0f28536cfc15ecadcf93ad245",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-a4722100223cc7c9",
+      "label": "correlation_vs_causation",
+      "rationale": "NutriNet-Sante measured diet and mortality in a prospective observational cohort. The adjusted hazard ratio does not identify what would happen if ultraprocessed food intake alone were reduced in otherwise unchanged participants.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit intervention counterfactual derived from an observational association is the defining error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jamainternmed.2018.7289",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30742202/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30742202/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-bbc556c3e270d1c6",
+    "root_id": "q-bbc556c3e270d1c6",
+    "role": "primary",
+    "authoring_id": "C16",
+    "gold": "correlation_vs_causation",
+    "rationale": "Temporal ordering and a cross-lagged model do not alone identify the claimed causal effect; boundary/adversarial item.",
+    "source_packet_sha256": "65655363b24fc860155b251e34deb71dacd1128c7a41ec1258aad7ec0aab46ac",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-bbc556c3e270d1c6",
+      "label": "correlation_vs_causation",
+      "rationale": "Temporal ordering and control of stable between-person differences do not remove all time-varying confounding or establish a causal effect. This observational model supports a directional association, not proof of developmental harm.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The additional inflation of screening performance into impairment is secondary to the explicit causal inference from observed temporal association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_correction_checked",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jamapediatrics.2018.5056",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30688984/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "Screening performance is not a definitive clinical diagnosis, but this does not compete with the explicit causal error.",
+          "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The disclosed correction is real. The packet uses the corrected 36-month beta -0.06 (CI -0.10 to -0.01) and 60-month beta -0.08 (CI -0.13 to -0.02). The notice also describes five other figure-CI digit changes and a model-clarification sentence, with conclusions unchanged. The source version 2019-03-01 predates the correction posted 2019-03-25; identify the packet as a corrected online abstract. No numerical packet repair is indicated.",
+      "correction_uncertainty": "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6503492/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-39524b4a80588199",
+    "root_id": "q-39524b4a80588199",
+    "role": "primary",
+    "authoring_id": "C17",
+    "gold": "correlation_vs_causation",
+    "rationale": "Baseline measured obesity prevalence is associated with reported light exposure. No lighting intervention was assigned, so a claim that eliminating light prevents obesity is a causal conclusion beyond this non-causal design.",
+    "source_packet_sha256": "ab34aae9a96878056d7c7c50ad91e9cf75054997dd81e959e31c74614a717ef2",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "AUTHOR_RECHECK_ONLY",
+    "competing_label": "overclaim",
+    "competing_label_disposition": "Generic inflation is secondary; the causal-from-noncausal trigger captures the core error.",
+    "controlling_definition": "correlation_vs_causation; canonical precedence specific trigger + core error",
+    "source_sufficiency": "Primary abstract contains complete baseline result, population, measured exposure/outcome and CI needed for this claim. Prospective outcome estimates are outside the packet scope; no decisive evidence is missing.",
+    "ambiguity": "RESOLVED_NONE"
+  },
+  {
+    "id": "q-d128840f749edb7e",
+    "root_id": "q-d128840f749edb7e",
+    "role": "primary",
+    "authoring_id": "C18",
+    "gold": "correlation_vs_causation",
+    "rationale": "Causal interpretation of an observational area-level comparison; adversarial title cue.",
+    "source_packet_sha256": "256e397b2d896f83f9b893e05b306cdc2a6b7aa3138eebd82fe986f33a4af683",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-d128840f749edb7e",
+      "label": "correlation_vs_causation",
+      "rationale": "The England analysis compared observed residential greenery and deprivation-related mortality patterns. It did not assign added green space or establish the causal effect of that neighborhood intervention on inequality.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The claim explicitly converts an observational association into an intervention effect; this is more specific than generic inflation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/s0140-6736(08)61689-x",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-059a0a3da48b95dc",
+    "root_id": "q-059a0a3da48b95dc",
+    "role": "primary",
+    "authoring_id": "C19",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "f4e01fc7263f2e7d99c2b232f4e44f61b55bbc9689681c746423697484846c31",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-059a0a3da48b95dc",
+      "label": "mechanism_vs_evidence",
+      "rationale": "Preferential mutant-allele disruption, preserved hair cells and hearing responses were shown in neonatal Beethoven mice. These mechanistic and animal treatment findings do not establish prevention of hearing loss in human patients.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The animal-to-human therapeutic inference is explicit and meets the specific mechanism definition.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/nature25164",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/29258297/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29258297/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-55c13bdbd3b6a47d",
+    "root_id": "q-55c13bdbd3b6a47d",
+    "role": "primary",
+    "authoring_id": "C20",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "e491f98403cd66a3f061d797b3648b0d2aa614d26a684d8dce5a19dc9d7feb7c",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-55c13bdbd3b6a47d",
+      "label": "mechanism_vs_evidence",
+      "rationale": "CRISPR exon removal restored some dystrophin and increased force in mdx mice. The claim uses that mechanism and animal outcome to establish strength improvement in human DMD patients, who were not studied.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit mechanistic animal-to-human treatment leap fits the specific category.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1126/science.aad5143",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/26721684/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26721684/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-b9c30be2f05cac0f",
+    "root_id": "q-b9c30be2f05cac0f",
+    "role": "primary",
+    "authoring_id": "C21",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "0daa6ca37652a268b20d4caff11756b1a9cca8852c8603fce8b86b2fb95b2fa0",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-b9c30be2f05cac0f",
+      "label": "mechanism_vs_evidence",
+      "rationale": "The claim turns removal of scar-mediated axon inhibition and functional recovery in rats into established restoration of mobility in people. Human clinical treatment outcomes are absent.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "Generic extrapolation is present, but the explicit preclinical biological mechanism and animal-to-human therapeutic leap satisfy the more specific definition.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/416636a",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-8639aab55d4707e8",
+    "root_id": "q-8639aab55d4707e8",
+    "role": "primary",
+    "authoring_id": "C22",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "a634f41a95e6f2263f748595588553abcfcfe4d5ac3946b04e0432363a34e69b",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-8639aab55d4707e8",
+      "label": "mechanism_vs_evidence",
+      "rationale": "Macrophage phagocytosis was tested in vitro and treatment-related survival was demonstrated in mice. Human tumor tissue and patient expression data do not constitute human therapeutic survival evidence.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "Although the source also reports an expression-survival correlation, the claim's core inference is from anti-CD47 mechanism and preclinical intervention outcomes to human benefit.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1073/pnas.1121623109",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-ba27e5d9d3450650",
+    "root_id": "q-ba27e5d9d3450650",
+    "role": "primary",
+    "authoring_id": "C23",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "ecf860dd0e6710d0079a487595dde10b3bc8b91fe008763e41a835192f5346d7",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-ba27e5d9d3450650",
+      "label": "mechanism_vs_evidence",
+      "rationale": "Channelrhodopsin expression and retinal/cortical light responses in rodents establish a preclinical feasibility result. They do not establish restoration of vision in human patients.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "There is an endpoint leap as well, but the biological pathway plus rodent-to-human therapeutic inference captures the core error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/j.neuron.2006.02.026",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/16600853/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16600853/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-55a74bc7a9c2a190",
+    "root_id": "q-55a74bc7a9c2a190",
+    "role": "primary",
+    "authoring_id": "C24",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "89103f2081461cfc5ecab546787e0ea0c5bbdbd80952980e65bec91f1564c1e0",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "independent_review": {
+      "id": "q-55a74bc7a9c2a190",
+      "label": "mechanism_vs_evidence",
+      "rationale": "NLRP3 inhibition and attenuation of mouse EAE, plus ex vivo activity in Muckle-Wells samples, do not establish treatment efficacy for multiple sclerosis in human patients.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit preclinical inflammatory pathway-to-human therapeutic inference takes precedence.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/nm.3806",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/25686105/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25686105/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-e5add0335d3c30cc",
+    "root_id": "q-6894c5e659fdfd2e",
+    "role": "variant",
+    "authoring_id": "V01",
+    "gold": "solid",
+    "rationale": "Claim preserves intervention, comparator, enrolled population and measured outcome.",
+    "source_packet_sha256": "a985be08868b8fbd918651e69f7a17c7c21798e56f3115c1c2b2095b2474cce3",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-e5add0335d3c30cc",
+      "label": "solid",
+      "rationale": "The claim correctly describes greater average weight loss at 68 weeks in STEP 1's eligible adults without diabetes and keeps the lifestyle cointervention and placebo comparator.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "There is no extension to other populations, longer follow-up, or every individual response.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2032183",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": [
+          "Ordinary group-average interpretation; neither sentence guarantees an effect for each participant."
+        ]
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33567185/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-f84fb93fcf1862d4",
+    "root_id": "q-e1ca97d5210731af",
+    "role": "variant",
+    "authoring_id": "V02",
+    "gold": "solid",
+    "rationale": "Accurate outcome and experimental-control statement.",
+    "source_packet_sha256": "2375ab1903b6ef9f3abbdb4dfc64f7d571460b0c39b8accff09c8c45c59c69af",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-f84fb93fcf1862d4",
+      "label": "solid",
+      "rationale": "Within the identified DASH eight-week comparison, the combination diet produced the reported larger average systolic reduction while sodium and weight were controlled. It stays at the measured blood-pressure endpoint.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The sentence is a bounded trial-result report and does not assert a downstream clinical-event benefit.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejm199704173361601",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/9099655/"
+      ]
+    },
+    "controlling_definition": "Canonical solid definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-19472ddd3521fb31",
+    "root_id": "q-c375bcc3535a420a",
+    "role": "variant",
+    "authoring_id": "V03",
+    "gold": "overclaim",
+    "rationale": "Extends secondary-prevention evidence to a population without established cardiovascular disease. No mechanism claim or observational causal inference is needed.",
+    "source_packet_sha256": "49b8398f62e82edc150d373f187a26b294ac4d130fcac449a9b7c1c967c460fa",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-19472ddd3521fb31",
+      "label": "overclaim",
+      "rationale": "SELECT required established cardiovascular disease. This claim extends that evidence to people without established disease, a primary-prevention population absent from the packet.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The packet is randomized; the failure is external validity to an unstudied population, not causal inference from correlation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa2307563",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37952131/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-e596b96be010e8a0",
+    "root_id": "q-6aa6692ed5967cce",
+    "role": "variant",
+    "authoring_id": "V04",
+    "gold": "overclaim",
+    "rationale": "Unsupported negative generalization across doses, populations and outcomes. Null significance is not an equivalence result.",
+    "source_packet_sha256": "f22c05b8381b5cf77151e1f1e8b64109e9141bc3099b677983f0eb3c1975ee00",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-e596b96be010e8a0",
+      "label": "overclaim",
+      "rationale": "A nonsignificant result for two primary outcomes at 2000 IU/day in older adults cannot rule out every clinical benefit across adult populations and doses. The confidence intervals also do not establish exact absence of benefit.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The trial is randomized. The error is an unsupported negative generalization, which the definitions assign to overclaim.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1056/nejmoa1809944",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+      ]
+    },
+    "controlling_definition": "Canonical overclaim definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-3a7480df1ae448f2",
+    "root_id": "q-bbc556c3e270d1c6",
+    "role": "variant",
+    "authoring_id": "V05",
+    "gold": "correlation_vs_causation",
+    "rationale": "Temporal ordering and a cross-lagged model do not alone identify the claimed causal effect; boundary/adversarial item.",
+    "source_packet_sha256": "65655363b24fc860155b251e34deb71dacd1128c7a41ec1258aad7ec0aab46ac",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-3a7480df1ae448f2",
+      "label": "correlation_vs_causation",
+      "rationale": "Earlier observed screen exposure predicting later screening scores does not identify a causal developmental impairment. The model controls stable differences but cannot by itself supply the required causal counterfactual.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The explicit causal conclusion from temporal association is the core error; the stronger impairment wording is an additional inflation.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label_correction_checked",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1001/jamapediatrics.2018.5056",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/30688984/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": true,
+        "details": [
+          "Screening performance is not a definitive clinical diagnosis, but this does not compete with the explicit causal error.",
+          "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet."
+        ]
+      },
+      "exact_correction_or_packet_issue": "The disclosed correction is real. The packet uses the corrected 36-month beta -0.06 (CI -0.10 to -0.01) and 60-month beta -0.08 (CI -0.13 to -0.02). The notice also describes five other figure-CI digit changes and a model-clarification sentence, with conclusions unchanged. The source version 2019-03-01 predates the correction posted 2019-03-25; identify the packet as a corrected online abstract. No numerical packet repair is indicated.",
+      "correction_uncertainty": "The correction text was obtained from indexed primary PMC content after direct rendering was challenged. The five other figure intervals and archived uncorrected displays were not individually re-audited; they are unused in the packet.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30688984/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6503492/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-3bba7049197e9e00",
+    "root_id": "q-d128840f749edb7e",
+    "role": "variant",
+    "authoring_id": "V06",
+    "gold": "correlation_vs_causation",
+    "rationale": "Causal interpretation of an observational area-level comparison; adversarial title cue.",
+    "source_packet_sha256": "256e397b2d896f83f9b893e05b306cdc2a6b7aa3138eebd82fe986f33a4af683",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-3bba7049197e9e00",
+      "label": "correlation_vs_causation",
+      "rationale": "The observed greenery-by-deprivation mortality pattern does not establish that creating greenery would causally narrow mortality differences. Neighborhood assignment and remaining confounding are unresolved.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The causal intervention inference from an observational analysis is the defining error.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1016/s0140-6736(08)61689-x",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/18994663/"
+      ]
+    },
+    "controlling_definition": "Canonical correlation_vs_causation definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-b61dfb593470c4cc",
+    "root_id": "q-b9c30be2f05cac0f",
+    "role": "variant",
+    "authoring_id": "V07",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "0daa6ca37652a268b20d4caff11756b1a9cca8852c8603fce8b86b2fb95b2fa0",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-b61dfb593470c4cc",
+      "label": "mechanism_vs_evidence",
+      "rationale": "The scar-molecule mechanism and functional rat results are promoted to established human mobility restoration. No treated human patients are described.",
+      "competing_label_considered": "overclaim",
+      "why_competing_label_not_selected": "The preclinical pathway and animal-to-human therapeutic leap trigger the specific category.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1038/416636a",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/11948352/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  },
+  {
+    "id": "q-7f0ca6e5ec639574",
+    "root_id": "q-8639aab55d4707e8",
+    "role": "variant",
+    "authoring_id": "V08",
+    "gold": "mechanism_vs_evidence",
+    "rationale": "A documented preclinical biological mechanism is used to establish human clinical benefit; the supplied study did not treat human participants for that clinical outcome.",
+    "source_packet_sha256": "a634f41a95e6f2263f748595588553abcfcfe4d5ac3946b04e0432363a34e69b",
+    "independence": "Distinct underlying study and claim family after local overlap screening; foundation pretraining exposure UNKNOWN",
+    "adjudication": "ISOLATED_AI_REVIEW_AND_AUTHOR_SOURCE_METADATA_CORRECTION",
+    "equivalence": "Independently confirmed; decisive wording unchanged after metadata correction",
+    "independent_review": {
+      "id": "q-7f0ca6e5ec639574",
+      "label": "mechanism_vs_evidence",
+      "rationale": "The claim treats anti-CD47 phagocytosis and mouse survival experiments as established longer survival in human solid-tumor patients. Tissue originating from patients does not make the treated mice human clinical evidence.",
+      "competing_label_considered": "correlation_vs_causation",
+      "why_competing_label_not_selected": "The central leap concerns preclinical therapeutic evidence and mechanism, rather than the separate expression-survival association.",
+      "source_sufficiency": {
+        "for_label": true,
+        "assessment": "sufficient_for_label",
+        "basis": "Exact packet design, studied population/species and decisive outcome were compared with the current indexed primary abstract.",
+        "doi": "10.1073/pnas.1121623109",
+        "primary_url": "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      },
+      "material_ambiguity": {
+        "label_ambiguous": false,
+        "provenance_or_version_ambiguity": false,
+        "details": []
+      },
+      "exact_correction_or_packet_issue": null,
+      "correction_uncertainty": "No correction-specific uncertainty affecting this decision was identified in the returned indexed notices.",
+      "source_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22451913/"
+      ]
+    },
+    "controlling_definition": "Canonical mechanism_vs_evidence definition; precedence applied as described in independent_review rationale"
+  }
+]

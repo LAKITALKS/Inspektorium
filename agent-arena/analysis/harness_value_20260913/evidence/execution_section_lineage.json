@@ -1,0 +1,771 @@
+[
+  {
+    "slot_key": "A:q-059a0a3da48b95dc",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "187950716c184b20a49a71c3dcaa31cba6c7ccab80e5f0e705f4218b609590b5",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "3154eb5da8d6ab47efa45b447efbe433c5c97aa23ffb4babf486609cd8c79889",
+    "raw_sha256": "2aeb237561d29604983bc52e5938a24b27d8f81a6771bda35ad166544d8f08dc",
+    "attempt_ids": [
+      "attempt-028"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-19472ddd3521fb31",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "ae63a3628845b5f63d3b88d30ea0b10177cf50ac6e8e4e233847d1fa1f124484",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "21623d19a06423fe4da99bf8503b2a70d91db4d1c45afda4bc2f4d1fbd2d3207",
+    "raw_sha256": "26c75ef4288f5caa0f4f5856b23596a49071085bf9af3ac2c8e9c6f27cc89f0e",
+    "attempt_ids": [
+      "attempt-042"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-24f3e1ac6625ed8a",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "b57572a4ef9bfddbe1cbe2c4a4b79d0115ddb5d3444885b8f89aaf27c0ade243",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "8c1fd0aa979d030897bfd13290d873f0f65256718d64e3c3d567809f19f41532",
+    "raw_sha256": "839a5c02846536821bc5c68af906ef8566ca76deea876e61dcef05a70b57a605",
+    "attempt_ids": [
+      "attempt-022"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-2707244776dcbae5",
+    "generation_section": "before_user_pause",
+    "record_sha256": "3b7d9920f7f8ec569cb5ae81af40176bc6f052bb13ee2d3010012943677aaea2",
+    "generation_commit": "7a8dc33a0e22b8b128a5d92a30073e28651f084b",
+    "request_sha256": "fe6d287dc8e3da3fab40d3bb4064a9c3ded5bade93d0a5e453ee25a02adcff2f",
+    "raw_sha256": "e73c7315ca7a7299d71e34297808b090213401e55195517b823f0667222c3b4c",
+    "attempt_ids": [
+      "attempt-001"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-39524b4a80588199",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "4fb83d1c6ee715d4b5df5c853b5bf2877b0b5570c61b5c525fc153ad1dbf1eef",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "b2215a33865c1dfe8a7ddad5d48534a167ddbc7d527c8b124a23acfc143aa6ac",
+    "raw_sha256": "481ef4fc3475926cefdcc4e6ac6c0177b9b69c372b1f8e82c471a71fef483364",
+    "attempt_ids": [
+      "attempt-035"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-3a7480df1ae448f2",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "43f317650f87fc6a916e7216e6ab59dbb2b8cdd468acbede326fe2ceb8a27590",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "96ea98b9e8b2db37b6e3068c1eb58b597a16f8973fa36314aeda66fbfbed0bf7",
+    "raw_sha256": "ad5a8f1ce752ff45620f81ecbe8d72577d693299cc1a16bd7a119bb52106dd9d",
+    "attempt_ids": [
+      "attempt-032"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-3bba7049197e9e00",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "6e14acf3203fa8b5ecadb05050a0363e306748b1dd7aa958e1fc3e5de3c3cb2a",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "f1e72cb9022faeac2358c1ae775fcf9b63ccfed0a97864c0de351ab0ddfd249f",
+    "raw_sha256": "73522218aa24636e17375ee446b8924751ffd792b33c88a1a5f44441989248f6",
+    "attempt_ids": [
+      "attempt-065"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-433b89f442ca9ed3",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "aac6b16e63e26465b1694a737b9beaff6f7919d56957da2a8bbadb7a25627991",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "9b0eefdcac7d8e539d90ec1fca7b2e19d03ddeb0fdb62a1acbe8889f10f6f989",
+    "raw_sha256": "372734cf8e75fcc8bb382890915c645d1df311e703bcee69d26a9f9b345d2bbd",
+    "attempt_ids": [
+      "attempt-055"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-537b9ea8d86c6722",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "d015df5ec1673bba320f02fd828bd1cd0b3ffc1df12f15871baee37b8617ee5f",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "ca4585454b7a1dbcc7d8aba33b26b3199d368f5a539f93f090a7e67037c99f47",
+    "raw_sha256": "a314f6d33f9583b30403947401eb3ce0777ebcfd1de8ea5e1ce1a0cd86c563e2",
+    "attempt_ids": [
+      "attempt-009"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-55a74bc7a9c2a190",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "315fbe2a69680e774c9015583fac716c9507c44daa58e8434a06b315ed573065",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "0bfece875eb50922e1adf0cc86975c0853025c9ab25d02494bbd2f80b388f858",
+    "raw_sha256": "27ccdf84cfdced3e9da0b83c61c1442f5d836d7b4f33e921348e8c2ad43456e3",
+    "attempt_ids": [
+      "attempt-016"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-55c13bdbd3b6a47d",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "c2fdb934f39e4a2bc695c39512be24d70a8fe1af67ee9d8a3b5cb3fffbf66801",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "19bff9bb77fd12f64ca511ebbfdc5f67c3c8fc758ae70573af35ea70f20747d7",
+    "raw_sha256": "0df109c2cec1c737098d058b17d994f29f2caeb3beb209a4495b97d691aff00b",
+    "attempt_ids": [
+      "attempt-044"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-5c8ebf600bd85d3a",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "af6bc81c19b6716a3a4e7f7144a6d4029ee60e82cf351aa0f60cb2bf73527393",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "5f8b1c6bbe1aa7dd3fe6ca3bd5818f84bf081b5adf42fa486a4c28d2f994340c",
+    "raw_sha256": "14ac73d8d7220f9077a5779aade22540565bfdfb3b44b30d322d6018723357b2",
+    "attempt_ids": [
+      "attempt-051"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-6894c5e659fdfd2e",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "f5a23e8c22c061156c1fbfc6e0ae05f6bc315ce2e0cb8af247308eb345efcf95",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "5b5eac357dc1dd2deb046829b17bb4109e9e136ce45945e47b93768b661adbc6",
+    "raw_sha256": "cc163ed7b034cda01fb274305128bf62c785c58c1bcd9f4958cd058a88142e7d",
+    "attempt_ids": [
+      "attempt-049"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-6aa6692ed5967cce",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "d215f4ea193d6d224d3fbf6592a30f93472e6c25501f17cef5f1e0722d8927fb",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "99bca60d942c1e938d186771a686458e13e9c7680ab12633cd5a09bf9358597d",
+    "raw_sha256": "81d34bb6da4e48f3750d6ae9e40a5c1d405f5113784f435a15c3d455d64644a1",
+    "attempt_ids": [
+      "attempt-047"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-6d0f876dfad53e80",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "ac0c0090aa925acc99e8c2723043c6cb32d43b418167c00bc14ae960d9e1a3e6",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "05cda7b56bbaf23ea032c62c2f23d7ebe18337141a9d6a1e6ac42165852a8b73",
+    "raw_sha256": "dd36f97d50c0a87b70c5bc13d54f724f733065d3a783833b237d638d48e87e71",
+    "attempt_ids": [
+      "attempt-018"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-7f0ca6e5ec639574",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "b5f46630efba9a81a8e312b0f3da225d60e0ec9a8aeed022b1d7fd4d557acd8e",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "bd810c18429b4f054a0013c1447e86716ded1a6d436adf8dddea2c0ff9496b28",
+    "raw_sha256": "10a318db9ed71bde29988590ca379aa3f5933d47949640d4854b6cb0afd767a0",
+    "attempt_ids": [
+      "attempt-013"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-82b3cd8a9e85360c",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "450ae25831cced4c58b03c70b1dd5862978d234e63ca3af23a8a64f722bf3a72",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "1acabf666f9e207e9bdc6ec9e0f3a8fe0775266aa2419f1bc4dab54672f1ece1",
+    "raw_sha256": "f4b4f2d9daf7de0fa19e8bd7cd74b65b88237765cbb3aef01820676938ed3d69",
+    "attempt_ids": [
+      "attempt-005",
+      "attempt-006"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-8639aab55d4707e8",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "f21c868a078322178ddd7471156e98c9bbc1a08d06c161ef42b7bb2a4bc812e8",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "cfe9cdb447595f89210e7aaa8257951bbd7c9a10ef798136d783d14b3d55f212",
+    "raw_sha256": "fd616b21ae848932efeafad1a36801033777c46468758052a7d1821fb569e1d5",
+    "attempt_ids": [
+      "attempt-021"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-a4722100223cc7c9",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "16cc10e6a42a48449023af83b8107c53d6ef71568088b524d2f49c6686fe8b16",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "dd2fb1c0f6c70e0721a2e0f305b97bb49895728e4b460e8f8cd9a4bc78403d18",
+    "raw_sha256": "98ea1c4fe9983cfc8a909b9ebb0b3e1fb61fc7200b004e5f828469b8ccbcb5d9",
+    "attempt_ids": [
+      "attempt-024"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-b19caeb1f5ac40c9",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "b0789878f9d0e0bdc65b6a3c813f5cf654574e9ad00d38ee71dca5e964994cb7",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "cb16cf27bdbfa099f4e0649b61a54c498f0ce2e6dbd2cc2d95985cc0e7f46fbd",
+    "raw_sha256": "32dab5220d4a1909fd35e03e6cb06f31ac0503afeb40e0e0efe4a48dd48bb2a8",
+    "attempt_ids": [
+      "attempt-063"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-b61dfb593470c4cc",
+    "generation_section": "before_user_pause",
+    "record_sha256": "4dd76b6d438549b8ab97fb4edc759b190c7c4d079b001342ad41d1f6c0524d19",
+    "generation_commit": "7a8dc33a0e22b8b128a5d92a30073e28651f084b",
+    "request_sha256": "4eaa746bdb245799c7eb56e6b4ea901095c2403cae60f2e74b525ac8a86c82c2",
+    "raw_sha256": "7fb00171fd442822c33ee8330dc8b40cecfbc911309a5b43d8fd1aba40714a42",
+    "attempt_ids": [
+      "attempt-004"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-b9c30be2f05cac0f",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "d13e67047a0976ad33c3a8943fd26b3271a3da52509299b1961b2f092d96f94c",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "ecbb9d9d14eb4f6c14b1828bc20711278826edc627a4c41bd8208bb071d7053b",
+    "raw_sha256": "d257c6978469cdbc57370cbabb60d507392ccc894925cedc880c15e1facef0ea",
+    "attempt_ids": [
+      "attempt-011"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-ba27e5d9d3450650",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "b71df7377cb0c7a5682e03a920d8b32157a57a9eebf6c302e50f8d7be00cde99",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "3179f2ec3b3f254c12eba8f3345e263a02956e8bffc62bfb4e3658d1f7d37635",
+    "raw_sha256": "39210a78fe2614a05f430c4cc222029a7f2113e1d176b6cd37d86b912cab9a89",
+    "attempt_ids": [
+      "attempt-015"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-bbc556c3e270d1c6",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "4c4a6bf6957f5040d1c5d433cd39d0e00866dd212912cd4c9a39eb30ebe4cc36",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "fd093e7f8496644332dfd90bf58b7fce71db57bbc78be40ac49b1daa9f3aadf0",
+    "raw_sha256": "bf9f71ed83f58714e5adafcb43822f8e6ed3a0737002575dc59cbbf193bf1494",
+    "attempt_ids": [
+      "attempt-039"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-c375bcc3535a420a",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "c72994f363988307c692d230ddc739fe8d9be3f817819f35dae450b11ff2b9dd",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "bf77897f90756094f15db7ac3502d2db22ed07db2549578267570cc6b00a8d5b",
+    "raw_sha256": "3e91f71f851b0993fe727bf1f82912eefad1b89f8fd551bda7a22c0b33c94d21",
+    "attempt_ids": [
+      "attempt-040"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-d128840f749edb7e",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "06d6a824ffc59de9749d4ae2ee96068ed2bc34e8277574c65fe48941ed264be4",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "5a97ccf63908b5489410998255e63c7a7a9b63eea9dbd3603cbd2518ccebf66c",
+    "raw_sha256": "0d40f3f66005c8b87ae05fda69916b869d870eb75dae308d8385f6f205b52f84",
+    "attempt_ids": [
+      "attempt-058"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-d5854a68f0d77776",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "a208afeb8686a7fa58b4fb18c80c39bd3b096ea82594086cf6aa8e6cc95201ee",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "bf520f60e3248b4e475e99492043a718d7649a4d1f35fbdb66cb01013530a5fb",
+    "raw_sha256": "1615e6959e41b03e68d06f1659417517388fecdeac5e759526817ec077427a2f",
+    "attempt_ids": [
+      "attempt-026"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-e1ca97d5210731af",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "cf2f1529115612677073bd66f196e638bc3a69da9518687fc6ff7af24297a12f",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "d78b87e04bfbb5afe4cd95eb0052eeadfb73a2203ce4c29d7c41385d022c5274",
+    "raw_sha256": "db931ed96514537172be08e90c83b6d6dd74265b5862f315828f150f2a92da92",
+    "attempt_ids": [
+      "attempt-036"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-e3d5fdfcbd5203ed",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "65d12aaaeb7eefcb392c9e28d865d290b24e0209f2ee58bedf073954f7cdf949",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "4e742f5ee9bdb8c39cfa949f10b954a225af78f5de1a1fadbd28cb55630f1d1a",
+    "raw_sha256": "8e4c28a702a10a4961f3a08a30d7c6c6e8b8365a91d49283ab5579ceb5696441",
+    "attempt_ids": [
+      "attempt-060"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-e596b96be010e8a0",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "67474e03ec1996eda3248ce1063fc1985568571169aa3be47cab739cada4447a",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "9e0e7c1f012095f40a34468780482b8e16101bea49158b04f7710eb712b16729",
+    "raw_sha256": "0acc64c675260bf9cc25d02b4192b8809fc525cf42cd3cc23b34a0b224d27ae5",
+    "attempt_ids": [
+      "attempt-053"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-e5add0335d3c30cc",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "beeb25407c8a2c63eb287687da1aa68e9b75f4dadd4f47fa22f9951ddf5c64e7",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "1bfd9f54e5fdca9cdbc7bd5455c11a742c4547e26f792555abedce1d66ba2546",
+    "raw_sha256": "0462ac3c8738becdac6f9798e1652d2c0af7f09063ed062e7a1dd5e28c057b0a",
+    "attempt_ids": [
+      "attempt-030"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "A:q-f84fb93fcf1862d4",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "b0a33119164f10de092a3c28d9eefddcdb0419170f94b9ce5a3c617720ff97dc",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "b7c9ede290de0d7aa94e19b838d6d9ffe1b9d521a6ebba65e41849dd92269aa6",
+    "raw_sha256": "f901a53489a82edb711fd767638aecc46ff6ab5413fa16bb8ba62563ebd62212",
+    "attempt_ids": [
+      "attempt-057"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-059a0a3da48b95dc",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "3d3507f060484863eb457cf1e095cb3601b7e504cf55390a60b61ac0cd9981ca",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "b47930d602da6dc610d791b3158d0290cf13af66f6e1cd4935eec2c62b607f81",
+    "raw_sha256": "f8c98088bbf81e4e72cc30bc004a73c76c449b930bb313c0a49848b699ce330c",
+    "attempt_ids": [
+      "attempt-029"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-19472ddd3521fb31",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "3831740ac96d18e58e9da28ad650e80503f86a11ce06aa1ed05a13395d6a03dc",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "1f670db4ecff70e8f61b1b83d641e2147a27fe85152f5e541013624dc15504fc",
+    "raw_sha256": "1c439f7c4f32b252d493cb1516d3b6be691df7ab1408964bd23c85fc75280383",
+    "attempt_ids": [
+      "attempt-043"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-24f3e1ac6625ed8a",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "ba998cef9f40b1d1b5942b3033183f0b65973f815f967218f05cd91fa25d2645",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "2f35688d984d51b26ecda3961187aaa07de5b58b0e4f4f0bdbe228e940cd3843",
+    "raw_sha256": "8b1ab1ffcd815a98dac3734e2421c0fcce8be48b5ceea9ad9e8cf9d7d8de42f9",
+    "attempt_ids": [
+      "attempt-023"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-2707244776dcbae5",
+    "generation_section": "before_user_pause",
+    "record_sha256": "075fc029657f7d4a165f5d3003e54363817d157788f89b912cf6f3b316b94eb2",
+    "generation_commit": "7a8dc33a0e22b8b128a5d92a30073e28651f084b",
+    "request_sha256": "28dd8ab73cb60aa3fe12ab6bd1fede23f3abe21fb5c55209a43bd99d40ac9e6d",
+    "raw_sha256": "80f0e6c0f6507dbb061578e9fdd1a3344be5127c8126db89adef12b85d3a4898",
+    "attempt_ids": [
+      "attempt-002"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-39524b4a80588199",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "80e19fa3707fdcee3240ff85229bc922b978e7949316586042c5270feba3f5fe",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "f40e302efca81cb2753bb45323d64c985fb744035446c14a29c67896bb8ed3ec",
+    "raw_sha256": "acd59ec89b0d5edf15f52d0390f797ca33b48e27a57acf8835f92d1980249c98",
+    "attempt_ids": [
+      "attempt-034"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-3a7480df1ae448f2",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "cd32ab2975973d329c55bb5662a8594ebcfa4053af1aa7dcaf453429b1387fd9",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "ac9d33a493d387d160a812ba349e5cd968bfafbab20b79872c8081c045ec1d51",
+    "raw_sha256": "94e62f962086a26f422b4b8acaa8da50aed68118439d2c19507b6961e39b2770",
+    "attempt_ids": [
+      "attempt-033"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-3bba7049197e9e00",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "7175971ebf53dfeabce8d3ac3a9867fbf0ee202064955e39347e6c830a2bc7e6",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "bb9cf092dcdfb164dd3d840e825eb12c6867f1c467d8a757e62e9d3c5674ea72",
+    "raw_sha256": "bdbd32187a6b17e940914dfe3def05b960a997f635990899ba2a0c302192cadc",
+    "attempt_ids": [
+      "attempt-064"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-433b89f442ca9ed3",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "2f8d14c9d5c29f31db192d1c3c45eebe417ccf5885812a5437278001df49b35e",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "9c16f2b4bc8e424db1f5b658a62b957e9541d98f21ba2d09241c2a37ae35151b",
+    "raw_sha256": "14d77e102a6a76e7f60ef5e68fb6a9f17918c7c5729aa2f90c094807e30c70a6",
+    "attempt_ids": [
+      "attempt-054"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-537b9ea8d86c6722",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "95800cb30faa06801d85516aa17173f9a2d96ca1d487661b5c0b636938550b52",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "a374fc888f7c274de2227e8c6ef741c645800bad44a80819d89207eabb7351a3",
+    "raw_sha256": "35c1e56715bceaf53dd49a1efb22c65d99a389ba7b692ce4ae6c19312717063c",
+    "attempt_ids": [
+      "attempt-008"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-55a74bc7a9c2a190",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "47bc59ea0b4f8b12e44d9ec9eee2404104b97f21871b00fdf2ccc9070b0a930c",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "308a8d6df8ec67e4c2bdf574be3831651b030531746da4193cb5868a605ac24b",
+    "raw_sha256": "58baa83f584e68a161cf2bc5c3d696eba81fd9e85277aeb3a04a07011f4ed8b9",
+    "attempt_ids": [
+      "attempt-017"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-55c13bdbd3b6a47d",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "ed24453ff6244909f042c7bd4f462c8b23f132e7a8610f056f9ecdce1356b6c4",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "57a272e774d421d58a1fc12631e99336a415849b63ac02a06692f7bf311bc45e",
+    "raw_sha256": "83d691dfb4a90176e82523f0ba3cd008bac440757ec823beb05c87f58bf1eb25",
+    "attempt_ids": [
+      "attempt-045"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-5c8ebf600bd85d3a",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "d30ba7761650155cba9b94d9e1e1632b7e840138a0b56619a4ad8ca1fe03be42",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "9be43c9fdcf7adff64b1d34f1856d65fb458076e17cbf9850b63809d6cc0fd15",
+    "raw_sha256": "36718fd66f83912c9033ab11ae402fd4873c12a8f67d38c014dfb44d74b07406",
+    "attempt_ids": [
+      "attempt-050"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-6894c5e659fdfd2e",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "589fc1d8d986cfea462f32361e838af7eab1425eadd4a2c71e21ca7a174d98ec",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "2a988ca05ebae37b9c99d2605d9acaa475c503750deed267063aa9040a9b8c19",
+    "raw_sha256": "06470afb5d47f7dd838ea2f72b94729655425d865ad8d25b8bf581600e522113",
+    "attempt_ids": [
+      "attempt-048"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-6aa6692ed5967cce",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "cd19e057c8fbeb4dd5a0006783f1147ebe4ccd5184306f76c466565a43ad8bb6",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "9df6e086d9824cd05335488723849f9d63307f60aee97245c072d8c20df9134a",
+    "raw_sha256": "4a1cf47d0f078df5025c533f077ccd11001f362236b4b001e1ce490ac2ddd2a2",
+    "attempt_ids": [
+      "attempt-046"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-6d0f876dfad53e80",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "7514d5797ecb26794ee8d91fe28a34411e15e12c907437c56f164a5894839784",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "76caa12f0c4ddecbc1a6653255cc63b352d100288cbc89adfd602471c6120a44",
+    "raw_sha256": "612dd76d5417971b973b80719edfd8e8a0e2494ae061843573f54167f75ea952",
+    "attempt_ids": [
+      "attempt-019"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-7f0ca6e5ec639574",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "40b719eccd9a698e8cfbac1d1e02f301a978ee34aaae84e2a8cffadec8b6cc0c",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "32fef8d987651e2bc3ceabdc2de49eec3a94be951ce7e8159273f3c0e98432f2",
+    "raw_sha256": "6017024eeb31ec26ab687879ac538135b484f8a5f2d3e785ef2209e33ce2d6e4",
+    "attempt_ids": [
+      "attempt-012"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-82b3cd8a9e85360c",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "2bef096becd2437205b35bdfae32815b3a6394a3739b6ffc6663bb5056e38cf3",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "221aca4cf827e50d2de7c98dfeed4c8cd967998f26c473f64c63fe5d8a4c5fc6",
+    "raw_sha256": "84ecb64543d2455645bd5cf0d12e342231cb0d8a7a3252ec7e64c1047f232f92",
+    "attempt_ids": [
+      "attempt-007"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-8639aab55d4707e8",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "cdf6ef9f4e34af4d103453737c495efd44d253872d728ada3fbe6493f055d2eb",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "491c8c36a3645c78bb77ce97535d5abc25e437b11f67c7567a1096bf544c363b",
+    "raw_sha256": "6e19fd582d15526455dfdbed75097a1d6a8791fab4b3aad87cd30e61360b51d2",
+    "attempt_ids": [
+      "attempt-020"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-a4722100223cc7c9",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "58f97697b7e8359e4f7bfc77d08bc1f2f2e32e43145437b2a8b9e82e3228e338",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "8c6cf9f62d2ee742c19e19f74a35fa0433042537e4f704578be990649775f1a2",
+    "raw_sha256": "6248e85ba68498adc9fb7184d00f284ef426058f23f4824e004fea2f45be5ae3",
+    "attempt_ids": [
+      "attempt-025"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-b19caeb1f5ac40c9",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "2d0ca1becc303ca2d2d3aaf68706f1730eb3a85512aaf3866ad2ce40c8e8f7fa",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "c05c0b3927fb7e4a35b81d8c3a593a0906291c197360ea242c4fdc4586a07a6d",
+    "raw_sha256": "c3e67cec58556938946674a3eca105f7bd18c47f543dd29dda51ed2c3e504fcc",
+    "attempt_ids": [
+      "attempt-062"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-b61dfb593470c4cc",
+    "generation_section": "before_user_pause",
+    "record_sha256": "21c4e2ea37a0237557e5a6f6cab2aa4cf0d0b34315c41ef15684cb1f7eae24ea",
+    "generation_commit": "7a8dc33a0e22b8b128a5d92a30073e28651f084b",
+    "request_sha256": "ed921981cc4c3329eeffe8d53ba60c159126bb7e29e0e846d8d487af4625aae3",
+    "raw_sha256": "8d47cd2459573afe81c8792293c0644f8974933cbbccaa15cdc2f040f97c085a",
+    "attempt_ids": [
+      "attempt-003"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-b9c30be2f05cac0f",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "6a01470ee905dca55872a93ebe21e2d3f90b2ba5a96d2ef2efffaecdbe06bd5a",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "f6f887edb8c3837de889d272553d4c7c51cda657059c5e3308a21405ed27af9e",
+    "raw_sha256": "1dce8464fc40f830f46a49a1723b15d7d8e439752562f4427030903f089ba44b",
+    "attempt_ids": [
+      "attempt-010"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-ba27e5d9d3450650",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "57b97f045a22fd65c92d233000c54f7e7f76fff2b9b20c3110fa9f15f003735a",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "275be52e79c4e568429834beb646706587c6accc26e1b68f1b0b6b005da3e329",
+    "raw_sha256": "b1a51d1b786b44adb65807bdd1155de2738be4ae0a15df9671fde1ee87d8bb7d",
+    "attempt_ids": [
+      "attempt-014"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-bbc556c3e270d1c6",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "8876d02727144228d09e7029df626494c93687d062cba17dfea040265b70ccf9",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "e3ee20cd39e8845448456e17b19287b03beba279eafa939499b7694bb61fecd2",
+    "raw_sha256": "cf0f06d61c95cc884716154cc1ddb90ccf3d19f5698542d7db9863544b098c8c",
+    "attempt_ids": [
+      "attempt-038"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-c375bcc3535a420a",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "492c1913783793b106813ce9fcdf5e3cbff34c7fe1218d7e983882cd09dc8a55",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "48245dffad168c1dc2c9b9b2c916c2aedc1a3e3cefe7fc44ae0eb346576b5203",
+    "raw_sha256": "58e1bae5b44aa1caa6bb389cef073ef69a4c34a08e9b96b41d15ad69c2d7fe70",
+    "attempt_ids": [
+      "attempt-041"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-d128840f749edb7e",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "194a6caa51257f3450e6002d12311f8bd2e686fb65c5eb153c3fd28db440f6b1",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "8a594c0c05003324aff77604058faa1973f32e433fef24145ee37e4239249776",
+    "raw_sha256": "329c8524ee2cd35772777b2c05173f760b501ff3a851b02b305c7cdf84a63ac9",
+    "attempt_ids": [
+      "attempt-059"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-d5854a68f0d77776",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "462deb10e7dd809ae728ca4d1b27fbab5e622aa78ac6c105ffb49e1ab75d6bfd",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "eb7848a6e12a17008d4e0ca9802860d4fcffb984e18ff92978b01bb59240d5ec",
+    "raw_sha256": "32be4ece94c758803a9a015ce58f39a6f583be839f18f57bf3a908c2539d1070",
+    "attempt_ids": [
+      "attempt-027"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-e1ca97d5210731af",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "d466fea78373567b8e6490da73f90d8fbedf83dcbd5128011c78219625e918e3",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "4195dcab7efb4d0c4baf462c7c973ee9f51f88c06ac1df22d09dfb0d27ac6f4b",
+    "raw_sha256": "3f72027fe5cc1f4a1a16483eb0982d9c59275df29c0bbb6c5a76722481f0bfaa",
+    "attempt_ids": [
+      "attempt-037"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-e3d5fdfcbd5203ed",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "cb9f2c83c0507696b2a488e954da0eee8b8afc636dac928f9c2889faabd2e01a",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "496381e9e58e209fe06cc53f9ef871d38ba52c3a3e4bca3b358fe9dc789d0ace",
+    "raw_sha256": "26164c5109736d875422ec84a78050dbebff82ac98a71274e733d78ac018e2bb",
+    "attempt_ids": [
+      "attempt-061"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-e596b96be010e8a0",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "0e224d8b7fd707df9b299ed79622af4e9ef089f0ea4cbfdde5746ff8f0aa35ac",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "5282b70b4a19fa2f39ffff822cee9c34e2ade72e8fd15fc6668cfb04e9c68863",
+    "raw_sha256": "1faed56363461434f462aca01d246b52e34c6a382afb4422caf8ed53f386f75d",
+    "attempt_ids": [
+      "attempt-052"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-e5add0335d3c30cc",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "636569aef85a705df3d4c32509cd89b1624d3d4fa868ed2a0be4da8083da2f29",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "e440bb3601ee0ce63309d3d3793856e638bffd126627c3fcec0c4165c4d2a6f2",
+    "raw_sha256": "49be58ca7664ac88b36d1e416b4a1a29584fcbf3fc0b7bf4eaa8f7ea7e8f05e4",
+    "attempt_ids": [
+      "attempt-031"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  },
+  {
+    "slot_key": "B:q-f84fb93fcf1862d4",
+    "generation_section": "authorized_continuation",
+    "record_sha256": "306aac9ae247c580ec4b00648b49992ee6eaffaad92060035e0c37bb2da45626",
+    "generation_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "request_sha256": "63d24140e5f6fcac8e336443acf66dd3648fe78636fa11faca3211b53df43dc5",
+    "raw_sha256": "f7d68ff25f12298a05f8c7abae3ab2d4174acdb5c116dea34342543be96a98cf",
+    "attempt_ids": [
+      "attempt-056"
+    ],
+    "response_model": "claude-haiku-4-5-20251001"
+  }
+]

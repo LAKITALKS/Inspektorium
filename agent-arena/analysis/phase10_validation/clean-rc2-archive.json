@@ -1,0 +1,8 @@
+{
+  "file": "clean-rc2.tar.gz",
+  "sha256": "1750772adb3d6e6ec1ef22eb77fa71d3bc72584a703a2c2dc321c4a6f05941c2",
+  "members": 198,
+  "bytes": 945182,
+  "all_members_byte_verified": true,
+  "status": "Preserved wheel-layout full-suite failure; canonical installed path passed"
+}

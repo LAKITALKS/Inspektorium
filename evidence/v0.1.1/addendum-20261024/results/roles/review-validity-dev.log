@@ -1,0 +1,135 @@
+{
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "baseline": "5ee4f40a53f817973517af5f9a7ff4fc3cef413b",
+  "candidate": "403bd3fac27f2406a150b2243a691ba4d0b12fbb",
+  "harness_sha256": "065559f31627bce79d6b6da4e2def7eb7f33ba0dd1310f727242b9a735324d38",
+  "setup_sha256": "4a3b19c60c49eb9a92c05e99b257420b3cb33e34004326fab5d823115487adc8",
+  "probe_sha256": "ad94313ab7820d5fc7aef0fc30796437b4efee5ac7c42909cc51d8f8e1b6a82e",
+  "image_canaries": [
+    {
+      "name": "ink-0",
+      "status": "MEASURED",
+      "overlap": false
+    },
+    {
+      "name": "ink-9",
+      "status": "MEASURED",
+      "overlap": false
+    },
+    {
+      "name": "ink-10",
+      "status": "MEASURED",
+      "overlap": true
+    },
+    {
+      "name": "missing-actual-image",
+      "status": "INVALID",
+      "reason": "missing screenshot"
+    },
+    {
+      "name": "missing-twin-image",
+      "status": "INVALID",
+      "reason": "missing screenshot"
+    },
+    {
+      "name": "corrupt-image",
+      "status": "INVALID",
+      "reason": "cannot identify image file <_io.BytesIO object at 0x105f249a0>"
+    },
+    {
+      "name": "missing-failed-guard-both-twins",
+      "status": "INVALID",
+      "reason": "missing actual failed guard/reportability/warning line"
+    },
+    {
+      "name": "missing-failed-reportability-both-twins",
+      "status": "INVALID",
+      "reason": "missing actual failed guard/reportability/warning line"
+    },
+    {
+      "name": "missing-warning-both-twins",
+      "status": "INVALID",
+      "reason": "missing actual failed guard/reportability/warning line"
+    },
+    {
+      "name": "changed-w",
+      "status": "INVALID",
+      "reason": "host box dimensions changed"
+    },
+    {
+      "name": "changed-h",
+      "status": "INVALID",
+      "reason": "host box dimensions changed"
+    },
+    {
+      "name": "changed-visible",
+      "status": "INVALID",
+      "reason": "host text changed or invisible"
+    },
+    {
+      "name": "changed-text",
+      "status": "INVALID",
+      "reason": "host text changed or invisible"
+    },
+    {
+      "name": "missing-host-row-one-twin",
+      "status": "INVALID",
+      "reason": "missing or ambiguous payload/host rows"
+    },
+    {
+      "name": "missing-critical-heading-both",
+      "status": "INVALID",
+      "reason": "missing critical headings"
+    },
+    {
+      "name": "missing-payload",
+      "status": "INVALID",
+      "reason": "missing or ambiguous payload/host rows"
+    },
+    {
+      "name": "crop-outside-image",
+      "status": "INVALID",
+      "reason": "host crop outside screenshot"
+    }
+  ],
+  "setup_sentinel_counterexamples": [
+    {
+      "version": "baseline",
+      "command": "product_venv",
+      "outcome": "StopBeforeSubprocess",
+      "sentinel_preserved": false
+    },
+    {
+      "version": "baseline",
+      "command": "tools_venv",
+      "outcome": "StopBeforeSubprocess",
+      "sentinel_preserved": false
+    },
+    {
+      "version": "baseline",
+      "command": "build_venv",
+      "outcome": "StopBeforeSubprocess",
+      "sentinel_preserved": false
+    },
+    {
+      "version": "candidate",
+      "command": "product_venv",
+      "outcome": "SystemExit",
+      "sentinel_preserved": true
+    },
+    {
+      "version": "candidate",
+      "command": "tools_venv",
+      "outcome": "SystemExit",
+      "sentinel_preserved": true
+    },
+    {
+      "version": "candidate",
+      "command": "build_venv",
+      "outcome": "SystemExit",
+      "sentinel_preserved": true
+    }
+  ],
+  "network_guard_log": "review-validity-dev-netguard.jsonl",
+  "limitations": "No browser or product renderer run here; image canaries validate compare() with synthetic DOM/PNG fixtures. Setup attempts are stopped before subprocess creation; only disposable baseline sentinels were removed."
+}

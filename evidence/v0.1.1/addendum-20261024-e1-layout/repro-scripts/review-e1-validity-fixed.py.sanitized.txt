@@ -1,0 +1,40 @@
+from pathlib import Path
+import copy, hashlib, importlib.util, json
+W=Path('<WORK>');R=Path('<REPO>')
+H=R/'evidence/v0.1.1/addendum-20261024-e1-layout/tools/check_addendum.py'
+spec=importlib.util.spec_from_file_location('h',H);h=importlib.util.module_from_spec(spec);spec.loader.exec_module(h)
+v=json.loads((W/'preflight-results/visual_measurements.json').read_text())[0];base=W/'preflight-results/screenshots'/f"{v['id']}-{v['style']}"
+png=Path(str(base)+'-actual.png').read_bytes();twin=Path(str(base)+'-twin.png').read_bytes(); results=[]
+def probe(name,mutate,expected='INVALID'):
+    a,b=copy.deepcopy(v['original_dom']),copy.deepcopy(v['twin_dom']);p,q=png,twin
+    a,b,p,q=mutate(a,b,p,q)
+    try:r=h.compare(a,b,p,q); result={'name':name,'status':r['status'],'overlap':r['overlap']}
+    except (ValueError,OSError) as e:result={'name':name,'status':'INVALID','reason':str(e)}
+    assert result['status']==expected,result
+    results.append(result)
+probe('clean_unchanged_actual',lambda a,b,p,q:(a,b,p,q),'MEASURED')
+labels=('Atomic claim:','Answer span:','Claim span check:','Proposed relationship (evaluator judgment):','Reportable proposed relationship:','Deterministic guard:','Citation text and offset check:','Evidence sufficiency (evaluator judgment):','Evaluator certainty:','Rationale (evaluator-generated):')
+for number in (1,2,3):
+    for label in labels:
+        def remove(a,b,p,q):
+            for d in (a,b):d['rows']=[r for r in d['rows'] if not (r['section']=='Findings' and r['number']==number and r['text'].startswith(label))]
+            return a,b,p,q
+        probe(f'missing_both_{number}_{label}',remove)
+def misclassify(a,b,p,q):
+    for d in (a,b):
+        for r in d['rows']:r['payload']=(r['number']==1 and r['text'].startswith('Answer span:'))
+    return a,b,p,q
+probe('answer_replaces_true_payload',misclassify)
+def duplicate(a,b,p,q):
+    for d in (a,b):
+        r=copy.deepcopy(next(r for r in d['rows'] if r['text'].startswith('Atomic claim:')));r['tag']='LI';d['rows'].append(r)
+    return a,b,p,q
+probe('duplicate_claim_LI_P_container',duplicate)
+def changed(a,b,p,q):
+    next(r for r in b['rows'] if r['text'].startswith('Answer span:'))['text']='Answer span: changed';return a,b,p,q
+probe('changed_answer_text',changed)
+probe('missing_actual_png',lambda a,b,p,q:(a,b,b'',q))
+probe('missing_twin_png',lambda a,b,p,q:(a,b,p,b''))
+probe('corrupt_actual_png',lambda a,b,p,q:(a,b,b'broken',q))
+out={'harness_sha256':hashlib.sha256(H.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'case':v['id'],'style':v['style'],'probes':results}
+(W/'review-e1-validity-fixed.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'harness_sha256':out['harness_sha256'],'positive':1,'negative':len(results)-1,'all_expected':True},indent=2))

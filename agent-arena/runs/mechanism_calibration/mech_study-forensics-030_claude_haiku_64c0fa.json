@@ -1,0 +1,1064 @@
+{
+  "run_id": "mech_study-forensics-030_claude_haiku_64c0fa",
+  "task": {
+    "id": "study-forensics-030",
+    "title": "Study Forensics: APJ agonist as pharmacological exercise mimetic",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A biotechnology company reported preclinical results for an apelin receptor agonist that stimulates the APJ pathway, an \"exercise hormone\" system. In obese and diabetic mice, the drug improved glycemic control and reduced HbA1c to levels seen in lean controls. Combined with an incretin therapy, it nearly doubled weight loss and restored healthy body composition while preserving muscle mass. In a heart-failure model it reduced cardiac hypertrophy and markers of injury. The company claims that activating the apelin/APJ pathway could serve as a pharmacological exercise mimetic and is preparing to translate the approach into human trials.\n",
+    "context": "A press release describing preclinical results for a molecular pathway\n(apelin/APJ) with impressive animal effects and a strong therapeutic framing\n(\"exercise mimetic\"). Evidence is entirely preclinical.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The summary presents a molecular pathway (apelin/APJ) with impressive preclinical benefits in mice — glycemic control, doubled weight loss, cardioprotection. The company claims this could be a pharmacological exercise mimetic and is advancing it toward human trials. No human efficacy data exist.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "preclinical only",
+        "variants": [
+          "obese and diabetic mice",
+          "heart-failure model",
+          "preclinical results"
+        ],
+        "functional_descriptions": [
+          "all evidence is from animal models, no human data"
+        ]
+      },
+      {
+        "keyword": "commercial framing",
+        "variants": [
+          "biotechnology company",
+          "claims",
+          "preparing to translate"
+        ],
+        "functional_descriptions": [
+          "promotional language wrapping preclinical data as therapeutic promise"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting impressive effect sizes in animals as evidence of human efficacy",
+      "classifying as generic marketing hype instead of mechanism_vs_evidence"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "preclinical_to_therapeutic_leap",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify that a detailed molecular mechanism with dramatic animal results does not constitute evidence of therapeutic efficacy?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "Preclinical-only results for a molecular pathway (apelin/APJ) with impressive animal effects. The therapeutic claim of a \"pharmacological exercise mimetic\" has not been demonstrated in humans.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "improved glycemic control and reduced HbA1c to levels seen in lean controls",
+        "why_it_matters": "Results are derived from animal models, not humans.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "Combined with an incretin therapy, it nearly doubled weight loss and restored healthy body composition while preserving muscle mass",
+        "why_it_matters": "Demonstrates strong preclinical effects that may not translate to humans.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "The company claims that activating the apelin/APJ pathway could serve as a pharmacological exercise mimetic and is preparing to translate the approach into human trials",
+        "why_it_matters": "Shows the leap from mechanism to therapeutic implication without human evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The press release reports enhanced glycemic control, doubled weight loss, and\ncardioprotective effects in preclinical models, and then asserts that APJ agonism\ncould be a pharmacological exercise mimetic being advanced toward human trials.\nNo human efficacy data exist, so the leap from mechanism to therapy is unproven.\nThe commercial context (biotech company press release) adds a promotional dimension.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Shape C of mechanism_vs_evidence: molecular pathway pressed into service as a\npharmacological exercise mimetic. Company press release with promotional framing.\nTests whether models can identify that detailed molecular mechanism and dramatic\nanimal results do not constitute evidence of therapeutic efficacy in people.\nDifferent domain (metabolic disease) from other mechanism cases.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\n    \"The study is preclinical (mouse models) based on the text describing 'obese and diabetic mice' and 'heart-failure model'\",\n    \"The company is making claims about human therapeutic potential based on animal data\",\n    \"The results reported are accurate as stated\",\n    \"No human efficacy or safety data are presented\",\n    \"The 'exercise hormone' framing is the company's characterization, not necessarily validated\"\n  ],\n  \"steps\": [\n    \"Identified that all evidence is from preclinical mouse models, not human studies\",\n    \"Noted the company claims the drug 'could serve as a pharmacological exercise mimetic' and is 'preparing to translate' to humans\",\n    \"Recognized that mouse models of obesity, diabetes, and heart failure have limited predictive validity for human disease\",\n    \"Assessed whether the mechanism (APJ pathway activation) is established in humans at the doses/exposures being tested\",\n    \"Evaluated whether 'exercise mimetic' is supported: the drug activates one pathway associated with exercise, but exercise involves hundreds of physiological changes; activating one pathway does not replicate exercise\",\n    \"Checked for confounders: combination therapy (incretin + agonist) makes it unclear which component drives effects\",\n    \"Examined language: 'could serve as' is appropriately cautious, but the framing of apelin as an 'exercise hormone system' and the claim about translation to humans exceed the evidence\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The study could be solid if the company is simply reporting preclinical findings with appropriate caveats and the 'exercise mimetic' claim is clearly labeled as a hypothesis rather than a conclusion\",\n    \"This could be mechanism_vs_evidence if the company is claiming the human mechanism will match the mouse mechanism without evidence\"\n  ],\n  \"uncertainties\": [\n    \"Whether the original peer-reviewed publication (if one exists) contains appropriate caveats that are absent from this summary\",\n    \"Whether the company's full regulatory submission includes discussion of translational limitations\",\n    \"The specificity of the APJ pathway's role in human exercise physiology and whether it is rate-limiting\",\n    \"Whether the combination therapy results (incretin + agonist) are presented as synergistic or merely additive in the original data\",\n    \"The degree to which the company is overselling versus appropriately positioning early-stage findings\"\n  ],\n  \"key_claims\": [\n    \"The core overclaim: calling this an 'exercise mimetic' based on activation of one pathway in mice. Exercise is a complex, multi-system stimulus; activating the apelin/APJ pathway is not equivalent to exercise.\",\n    \"Mechanism-to-human translation gap: Preclinical efficacy in mice (HbA1c reduction, weight loss, cardiac remodeling) does not predict human efficacy. Mice and humans differ in metabolism, pharmacokinetics, and disease pathophysiology.\",\n    \"Confounding in combination therapy: The synergistic effect with incretin therapy is presented without clarity on whether the agonist alone drives the benefits or whether the combination is required.\",\n    \"Appropriate caution is present ('could serve as,' 'preparing to translate') but is undermined by the framing of apelin as an 'exercise hormone system' and the confident claim about translation potential.\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problems? No—the core issue is real: preclinical mouse data do not support claims about human 'exercise mimicry' or translation readiness.\",\n    \"Did I miss that this might be a solid preclinical report? The preclinical work may be solid, but the company's claims about what it means for humans exceed the evidence.\",\n    \"Did I conflate the study quality with the claims? Yes, partially—the preclinical study may be well-executed, but the interpretation and translation claims are overclaimed.\",\n    \"Is 'exercise mimetic' a fair characterization to flag? Yes—it is a specific, strong claim that requires evidence of functional equivalence to exercise, not just activation of one pathway.\",\n    \"Should I have flagged correlation vs. causation? The preclinical work likely includes mechanistic studies (e.g., genetic knockouts, pathway inhibitors), so causation is probably established in mice. The overclaim is about human translation, not causation in mice.\"\n  ],\n  \"confidence\": 0.78\n}\n```\n\n---\n\n### Summary\n\nThe text reports **preclinical results** (mouse models) for an apelin receptor agonist and claims it could serve as a \"pharmacological exercise mimetic\" ready for human translation. This is an **overclaim** for several reasons:\n\n1. **Mechanism ≠ Exercise**: Activating the apelin/APJ pathway is not equivalent to exercise. Exercise triggers hundreds of physiological changes; one pathway activation does not replicate this.\n\n2. **Preclinical-to-human gap**: Mouse models of obesity, diabetes, and heart failure have limited predictive validity for human disease. Efficacy in mice does not establish efficacy in humans.\n\n3. **Confounding in combination therapy**: The synergistic effect with incretin therapy obscures whether the agonist alone is responsible for benefits.\n\n4. **Framing exceeds evidence**: Calling apelin an \"exercise hormone system\" and claiming readiness for human translation are stronger statements than preclinical mouse data support.\n\nThe preclinical work may be solid, but the company's interpretation and translation claims overreach. Appropriate language (\"could serve as,\" \"preparing to translate\") is present but insufficient to offset the strong framing.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study is preclinical (mouse models) based on the text describing 'obese and diabetic mice' and 'heart-failure model'",
+            "The company is making claims about human therapeutic potential based on animal data",
+            "The results reported are accurate as stated",
+            "No human efficacy or safety data are presented",
+            "The 'exercise hormone' framing is the company's characterization, not necessarily validated"
+          ],
+          "steps": [
+            "Identified that all evidence is from preclinical mouse models, not human studies",
+            "Noted the company claims the drug 'could serve as a pharmacological exercise mimetic' and is 'preparing to translate' to humans",
+            "Recognized that mouse models of obesity, diabetes, and heart failure have limited predictive validity for human disease",
+            "Assessed whether the mechanism (APJ pathway activation) is established in humans at the doses/exposures being tested",
+            "Evaluated whether 'exercise mimetic' is supported: the drug activates one pathway associated with exercise, but exercise involves hundreds of physiological changes; activating one pathway does not replicate exercise",
+            "Checked for confounders: combination therapy (incretin + agonist) makes it unclear which component drives effects",
+            "Examined language: 'could serve as' is appropriately cautious, but the framing of apelin as an 'exercise hormone system' and the claim about translation to humans exceed the evidence"
+          ],
+          "alternative_hypotheses": [
+            "The study could be solid if the company is simply reporting preclinical findings with appropriate caveats and the 'exercise mimetic' claim is clearly labeled as a hypothesis rather than a conclusion",
+            "This could be mechanism_vs_evidence if the company is claiming the human mechanism will match the mouse mechanism without evidence"
+          ],
+          "uncertainties": [
+            "Whether the original peer-reviewed publication (if one exists) contains appropriate caveats that are absent from this summary",
+            "Whether the company's full regulatory submission includes discussion of translational limitations",
+            "The specificity of the APJ pathway's role in human exercise physiology and whether it is rate-limiting",
+            "Whether the combination therapy results (incretin + agonist) are presented as synergistic or merely additive in the original data",
+            "The degree to which the company is overselling versus appropriately positioning early-stage findings"
+          ],
+          "self_check": [
+            "Did I overstate the problems? No—the core issue is real: preclinical mouse data do not support claims about human 'exercise mimicry' or translation readiness.",
+            "Did I miss that this might be a solid preclinical report? The preclinical work may be solid, but the company's claims about what it means for humans exceed the evidence.",
+            "Did I conflate the study quality with the claims? Yes, partially—the preclinical study may be well-executed, but the interpretation and translation claims are overclaimed.",
+            "Is 'exercise mimetic' a fair characterization to flag? Yes—it is a specific, strong claim that requires evidence of functional equivalence to exercise, not just activation of one pathway.",
+            "Should I have flagged correlation vs. causation? The preclinical work likely includes mechanistic studies (e.g., genetic knockouts, pathway inhibitors), so causation is probably established in mice. The overclaim is about human translation, not causation in mice."
+          ],
+          "key_claims": [
+            "The core overclaim: calling this an 'exercise mimetic' based on activation of one pathway in mice. Exercise is a complex, multi-system stimulus; activating the apelin/APJ pathway is not equivalent to exercise.",
+            "Mechanism-to-human translation gap: Preclinical efficacy in mice (HbA1c reduction, weight loss, cardiac remodeling) does not predict human efficacy. Mice and humans differ in metabolism, pharmacokinetics, and disease pathophysiology.",
+            "Confounding in combination therapy: The synergistic effect with incretin therapy is presented without clarity on whether the agonist alone drives the benefits or whether the combination is required.",
+            "Appropriate caution is present ('could serve as,' 'preparing to translate') but is undermined by the framing of apelin as an 'exercise hormone system' and the confident claim about translation potential."
+          ],
+          "confidence": 0.78,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 14840
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.09,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.64,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.0,
+          "weight": 30,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "No match (got: overclaim)"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Evaluated whether 'exercise mimetic' is supported: the drug activates one pathway associated with exercise, but exercise involves hundreds of physiolo",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.71)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.64,
+          "weight": 6,
+          "weighted_score": 3.8,
+          "evidence": [
+            {
+              "text": "The study is preclinical (mouse models) based on the text describing 'obese and diabetic mice' and 'heart-failure model'",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The results reported are accurate as stated",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The study is preclinical (mouse models) based on the text describing 'obese and diabetic mice' and 'heart-failure model'",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "2 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether the combination therapy results (incretin + agonist) are presented as synergistic or merely additive in the original data",
+              "source_field": "uncertainties[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.78",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "Confidence 0.78"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "The study could be solid if the company is simply reporting preclinical findings with appropriate caveats and the 'exercise mimetic' claim is clearly labeled as a hypothesis rather than a conclusion",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Should I have flagged correlation vs. causation? The preclinical work likely includes mechanistic studies (e.g., genetic knockouts, pathway inhibitors), so causation is probably established in mice. T",
+              "source_field": "self_check[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.67, 579 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'mechanism_vs_evidence'",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The study is preclinical (mouse models) based on the text de...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The study is preclinical (mouse models) based on the text describing 'obese and diabetic mice' and 'heart-failure model'",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The results reported are accurate as stated...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The results reported are accurate as stated",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'mechanism_vs_evidence', detected 'overclaim'",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/17 content words)",
+          "evidence": [
+            {
+              "text": "The core overclaim: calling this an 'exercise mimetic' based on activation of one pathway in mice. Exercise is a complex, multi-system stimulus; activating the apelin/APJ pathway is not equivalent to exercise.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/21 content words)",
+          "evidence": [
+            {
+              "text": "Mechanism-to-human translation gap: Preclinical efficacy in mice (HbA1c reduction, weight loss, cardiac remodeling) does not predict human efficacy. Mice and humans differ in metabolism, pharmacokinetics, and disease pathophysiology.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/17 content words)",
+          "evidence": [
+            {
+              "text": "Confounding in combination therapy: The synergistic effect with incretin therapy is presented without clarity on whether the agonist alone drives the benefits or whether the combination is required.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (1/18 content words)",
+          "evidence": [
+            {
+              "text": "Appropriate caution is present ('could serve as,' 'preparing to translate') but is undermined by the framing of apelin as an 'exercise hormone system' and the confident claim about translation potential.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 3 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "The results reported are accurate as stated",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "The study could be solid if the company is simply reporting preclinical findings with appropriate caveats and the 'exercise mimetic' claim is clearly labeled as a hypothesis rather than a conclusion",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "This could be mechanism_vs_evidence if the company is claiming the human mechanism will match the mouse mechanism without evidence",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "well_reasoned_wrong",
+          "description": "Wrong answer but structured reasoning — may have a subtle logic error",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Wrong despite good reasoning",
+              "role": "supporting"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study is preclinical (mouse models) based on the text describing 'obese and diabetic mice' and 'heart-failure model'",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The company is making claims about human therapeutic potential based on animal data",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The results reported are accurate as stated",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "No human efficacy or safety data are presented",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 'exercise hormone' framing is the company's characterization, not necessarily validated",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified that all evidence is from preclinical mouse models, not human studies",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted the company claims the drug 'could serve as a pharmacological exercise mimetic' and is 'preparing to translate' to humans",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Recognized that mouse models of obesity, diabetes, and heart failure have limited predictive validity for human disease",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed whether the mechanism (APJ pathway activation) is established in humans at the doses/exposures being tested",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated whether 'exercise mimetic' is supported: the drug activates one pathway associated with exercise, but exercise involves hundreds of physiological changes; activating one pathway does not replicate exercise",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for confounders: combination therapy (incretin + agonist) makes it unclear which component drives effects",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined language: 'could serve as' is appropriately cautious, but the framing of apelin as an 'exercise hormone system' and the claim about translation to humans exceed the evidence",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The core overclaim: calling this an 'exercise mimetic' based on activation of one pathway in mice. Exercise is a complex, multi-system stimulus; activating the apelin/APJ pathway is not equivalent to exercise.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism-to-human translation gap: Preclinical efficacy in mice (HbA1c reduction, weight loss, cardiac remodeling) does not predict human efficacy. Mice and humans differ in metabolism, pharmacokinetics, and disease pathophysiology.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Confounding in combination therapy: The synergistic effect with incretin therapy is presented without clarity on whether the agonist alone drives the benefits or whether the combination is required.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Appropriate caution is present ('could serve as,' 'preparing to translate') but is undermined by the framing of apelin as an 'exercise hormone system' and the confident claim about translation potential.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study could be solid if the company is simply reporting preclinical findings with appropriate caveats and the 'exercise mimetic' claim is clearly labeled as a hypothesis rather than a conclusion",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This could be mechanism_vs_evidence if the company is claiming the human mechanism will match the mouse mechanism without evidence",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the original peer-reviewed publication (if one exists) contains appropriate caveats that are absent from this summary",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the company's full regulatory submission includes discussion of translational limitations",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specificity of the APJ pathway's role in human exercise physiology and whether it is rate-limiting",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the combination therapy results (incretin + agonist) are presented as synergistic or merely additive in the original data",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The degree to which the company is overselling versus appropriately positioning early-stage findings",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problems? No—the core issue is real: preclinical mouse data do not support claims about human 'exercise mimicry' or translation readiness.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss that this might be a solid preclinical report? The preclinical work may be solid, but the company's claims about what it means for humans exceed the evidence.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I conflate the study quality with the claims? Yes, partially—the preclinical study may be well-executed, but the interpretation and translation claims are overclaimed.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is 'exercise mimetic' a fair characterization to flag? Yes—it is a specific, strong claim that requires evidence of functional equivalence to exercise, not just activation of one pathway.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Should I have flagged correlation vs. causation? The preclinical work likely includes mechanistic studies (e.g., genetic knockouts, pathway inhibitors), so causation is probably established in mice. The overclaim is about human translation, not causation in mice.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 4,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          }
+        ],
+        "unused_assumptions": [
+          0,
+          2
+        ],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'overclaim...'"
+        ],
+        "unsupported_claims": [
+          "overclaim"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "overclaim",
+        "label_correct": false,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "unused_assumption",
+        "unused_assumption",
+        "named_not_explained",
+        "named_not_explained",
+        "wrong_answer"
+      ],
+      "notes": [
+        "No match (got: overclaim)",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph confirms conclusion grounding",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.71)",
+        "5/5 substantive assumptions",
+        "2 unused assumption(s)",
+        "5 uncertainties (5 substantive)",
+        "Confidence 0.78",
+        "2 alternative hypotheses considered",
+        "2/2 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.67, 579 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T15:44:53.220059+00:00",
+  "metadata": {}
+}

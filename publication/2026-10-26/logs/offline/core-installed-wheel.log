@@ -1,0 +1,285 @@
+{
+  "import": {
+    "version": "0.1.1",
+    "file": "<VENV>/lib/python3.11/site-packages/inspektorium/__init__.py",
+    "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "pydantic": "2.14.1"
+  },
+  "source_file_hashes": {
+    "__init__.py": "93d65998af13fa8c3ffdfe52bc47cd2a3de6c5dd24b32208e4fffdb53a6a9651",
+    "cli.py": "45c6fc847610af6f3c32e9ecd0d7772402917fa5943ac98b725d9e54ec71220a",
+    "__main__.py": "64dcd91944bb7518c82c57a6e3cf43dbbcab38a628204c92216b7aefc04b03a7",
+    "core/strict_json.py": "cb36e9d7058292e0df4058550e43dcf05a04ae44715fb5bf7f692c31a3c05e44",
+    "core/models.py": "a189e3df13e3d65c3d6b771975a02c017853046d612162848c705c6e4e481805",
+    "core/relations.py": "201bcbd6cbe3fa43659acb035a22a244e315cbd908d0d10b214ae16193b2687f",
+    "core/__init__.py": "d0ad72344e79aff20c090d2c07218bff7457a7aeb9e985a50483e8fcddef0257",
+    "core/inspection.py": "79968ae5865dc5001fd0937e9557f7d07b241fcc451c0aac5cd40d5f5c2e3597",
+    "core/fingerprints.py": "fcc9ac356e18462ccf13d16327d841687dd85f57a1a3082ec4467bdb51dd7765",
+    "core/normalization.py": "9fe8ed2617bacde5ddeff5bdf75d3016d7926c14edb7f6171b3df456cde43c09",
+    "core/validation.py": "9a4dc8e4f537eb39c4c9ffc89b1fd414a5ffb94659abebebad16687e82ac1060",
+    "providers/parsing.py": "904537e2df2bcb137dba5ac1085b74724891a3f4be8321e5f0b950197c50f134",
+    "providers/__init__.py": "ed8542141dd640c03c5362ed0dd8f77a93556c8fdec992a339c924aac29a1bab",
+    "providers/anthropic.py": "df5540e76d15694d5c513f94da860af9f442a63de472be1dff6cec5e8b8791cf",
+    "providers/base.py": "153cd55fdb1d776df27fdf7400e9af3bb332a292bc1c2672184a8ea55daf95ae",
+    "report/markdown_report.py": "f7e9802bc9d02f5e6d1e80d68f4820f4be99ce4b257fc4b48786adff392e2448",
+    "report/__init__.py": "58e4bd70e0abe8b5fbed1a6c1971b1ca11af4425fce6628276a8826e098596e7",
+    "report/display.py": "e1f69766a5711eb5b870179796b0100abd1066e304f0e9fba4e1c4cddb3deb74",
+    "report/json_report.py": "45d6cc09e9cb54fad66980293788f3b4f928da0d650ce4e8d40d6e907157dd20"
+  },
+  "examples": [
+    {
+      "example": "01_supported",
+      "format": "json",
+      "sha256": "b43236b009925e49ba73af0464568aeb709f979be46a02bed12f7ecf1f930647",
+      "matches_expected": true
+    },
+    {
+      "example": "01_supported",
+      "format": "markdown",
+      "sha256": "3b4ef54cc032dfee3c4b8f0624091f6dbf94f51b4d8b3151cf35e8a3818b4515",
+      "matches_expected": true
+    },
+    {
+      "example": "02_contradicted",
+      "format": "json",
+      "sha256": "6369623c5f45a0694237280df7c29ecc38df75b90c2d22a664b4d6c994feb4f0",
+      "matches_expected": true
+    },
+    {
+      "example": "02_contradicted",
+      "format": "markdown",
+      "sha256": "23554b7b477fd3186fb162c59e21a87b2665f06984f9dce394778244e1ea8871",
+      "matches_expected": true
+    },
+    {
+      "example": "03_not_established",
+      "format": "json",
+      "sha256": "a96c2e598c43897e6ec3af6e52b11f3bb2778e1f78d397575a1adcb8dcb96eea",
+      "matches_expected": true
+    },
+    {
+      "example": "03_not_established",
+      "format": "markdown",
+      "sha256": "a0b6691e3ce3ed5c43da0e8b13141cb928f12a38e607e93736488fc8d311aabc",
+      "matches_expected": true
+    },
+    {
+      "example": "04_attribution_mismatch",
+      "format": "json",
+      "sha256": "411d228dbd3a8b8298b9ec27ef96d8fd69489f7de5b58c17a567d959c826ebc8",
+      "matches_expected": true
+    },
+    {
+      "example": "04_attribution_mismatch",
+      "format": "markdown",
+      "sha256": "7124e4b8bf90fc4f21a65bb904acbfa130a1014bc12a854f7500f91e0e475413",
+      "matches_expected": true
+    },
+    {
+      "example": "05_mixed_and_fabricated_quote",
+      "format": "json",
+      "sha256": "a492187a971dea447ee599840036b21f40a6f44a6d15c663b84c64cf0383d49a",
+      "matches_expected": true
+    },
+    {
+      "example": "05_mixed_and_fabricated_quote",
+      "format": "markdown",
+      "sha256": "852b012dc39872b180ef348a28c83852844d74b35429cfed7d01353e34a2edf0",
+      "matches_expected": true
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "<VENV>/bin/python",
+        "-I",
+        "-c",
+        "import json,sys,inspektorium,importlib.metadata as m;print(json.dumps({'version':inspektorium.__version__,'file':inspektorium.__file__,'python':sys.version,'pydantic':m.version('pydantic')}))"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"version\": \"0.1.1\", \"file\": \"<VENV>/lib/python3.11/site-packages/inspektorium/__init__.py\", \"python\": \"3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]\", \"pydantic\": \"2.14.1\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/01_supported/input.json",
+        "--proposals",
+        "<REPO>/examples/01_supported/proposals.json",
+        "--format",
+        "json",
+        "--output",
+        "<OUT>/01_supported.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/01_supported/input.json",
+        "--proposals",
+        "<REPO>/examples/01_supported/proposals.json",
+        "--format",
+        "markdown",
+        "--output",
+        "<OUT>/01_supported.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/02_contradicted/input.json",
+        "--proposals",
+        "<REPO>/examples/02_contradicted/proposals.json",
+        "--format",
+        "json",
+        "--output",
+        "<OUT>/02_contradicted.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/02_contradicted/input.json",
+        "--proposals",
+        "<REPO>/examples/02_contradicted/proposals.json",
+        "--format",
+        "markdown",
+        "--output",
+        "<OUT>/02_contradicted.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/03_not_established/input.json",
+        "--proposals",
+        "<REPO>/examples/03_not_established/proposals.json",
+        "--format",
+        "json",
+        "--output",
+        "<OUT>/03_not_established.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/03_not_established/input.json",
+        "--proposals",
+        "<REPO>/examples/03_not_established/proposals.json",
+        "--format",
+        "markdown",
+        "--output",
+        "<OUT>/03_not_established.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/04_attribution_mismatch/input.json",
+        "--proposals",
+        "<REPO>/examples/04_attribution_mismatch/proposals.json",
+        "--format",
+        "json",
+        "--output",
+        "<OUT>/04_attribution_mismatch.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/04_attribution_mismatch/input.json",
+        "--proposals",
+        "<REPO>/examples/04_attribution_mismatch/proposals.json",
+        "--format",
+        "markdown",
+        "--output",
+        "<OUT>/04_attribution_mismatch.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/05_mixed_and_fabricated_quote/input.json",
+        "--proposals",
+        "<REPO>/examples/05_mixed_and_fabricated_quote/proposals.json",
+        "--format",
+        "json",
+        "--output",
+        "<OUT>/05_mixed_and_fabricated_quote.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "<VENV>/bin/inspektorium",
+        "inspect",
+        "--input",
+        "<REPO>/examples/05_mixed_and_fabricated_quote/input.json",
+        "--proposals",
+        "<REPO>/examples/05_mixed_and_fabricated_quote/proposals.json",
+        "--format",
+        "markdown",
+        "--output",
+        "<OUT>/05_mixed_and_fabricated_quote.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

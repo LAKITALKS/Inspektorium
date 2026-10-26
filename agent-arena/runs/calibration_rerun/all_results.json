@@ -1,0 +1,1335 @@
+[
+  {
+    "case_id": "study-forensics-001",
+    "gold_label": "solid",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-001_claude_haiku_97cc84",
+    "parse_ok": true,
+    "total_score": 69.8,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 11,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 7980,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "This is a randomized controlled trial, which supports causal inference about the effect of restricting social media use",
+      "The authors appropriately limit claims to the studied population (college students) and platforms (Facebook, Snapchat, Instagram)",
+      "No unsupported mechanistic claims are made in the summary",
+      "The study design with objective usage monitoring (screenshots) is methodologically sound"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-001_claude_haiku_97cc84.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-001_claude_haiku_97cc84.md"
+  },
+  {
+    "case_id": "study-forensics-001",
+    "gold_label": "solid",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-001_claude_sonnet_995ac5",
+    "parse_ok": true,
+    "total_score": 61.5,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 9,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_self_check",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 4,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 8616,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "This is a well-designed RCT that supports causal inference",
+      "The authors appropriately limit their conclusions to the studied population",
+      "The experimental manipulation allows for causal claims about social media restriction"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-001_claude_sonnet_995ac5.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-001_claude_sonnet_995ac5.md"
+  },
+  {
+    "case_id": "study-forensics-001",
+    "gold_label": "solid",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-001_claude_opus_775f40",
+    "parse_ok": true,
+    "total_score": 67.3,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "conclusion_exceeds_results",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 7,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 4,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 15291,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "This appears to be a well-designed RCT with appropriate caveats",
+      "The causal claim is supported by the experimental design",
+      "The authors acknowledge limitations regarding external validity",
+      "No overclaiming is evident in this summary"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-001_claude_opus_775f40.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-001_claude_opus_775f40.md"
+  },
+  {
+    "case_id": "study-forensics-004",
+    "gold_label": "solid",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-004_claude_haiku_2b4a40",
+    "parse_ok": true,
+    "total_score": 67.5,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.5,
+    "n_failures": 7,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 10542,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study is well-designed (double-blind RCT, large sample, long follow-up) and supports a causal claim about multivitamin effects",
+      "The authors appropriately characterize the effect as modest, avoiding overclaim",
+      "No mechanism is proposed; authors correctly identify this as a gap requiring further research",
+      "Generalizability limitations are explicitly acknowledged",
+      "The text exhibits appropriate epistemic restraint throughout"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-004_claude_haiku_2b4a40.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-004_claude_haiku_2b4a40.md"
+  },
+  {
+    "case_id": "study-forensics-004",
+    "gold_label": "solid",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-004_claude_sonnet_500538",
+    "parse_ok": true,
+    "total_score": 70.2,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.5,
+    "n_failures": 9,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 13651,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "This appears to be a well-conducted RCT with appropriate interpretation",
+      "Authors acknowledge limitations regarding population diversity",
+      "Effect size is honestly characterized as modest",
+      "No overclaiming about generalizability or mechanisms"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-004_claude_sonnet_500538.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-004_claude_sonnet_500538.md"
+  },
+  {
+    "case_id": "study-forensics-004",
+    "gold_label": "solid",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-004_claude_opus_93bc6f",
+    "parse_ok": true,
+    "total_score": 66.0,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.5,
+    "n_failures": 9,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 18156,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study design (double-blind RCT) is appropriate for making causal claims",
+      "The authors appropriately characterize the effect size as modest",
+      "Limitations regarding generalizability are explicitly acknowledged",
+      "The call for mechanism research is appropriately framed as future work, not current conclusions"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-004_claude_opus_93bc6f.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-004_claude_opus_93bc6f.md"
+  },
+  {
+    "case_id": "study-forensics-021",
+    "gold_label": "solid",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-021_claude_haiku_fff7ea",
+    "parse_ok": true,
+    "total_score": 71.4,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 9,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 10901,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "RCT design is appropriate and supports causal inference about program effectiveness",
+      "Quantified outcome (2 months progress for ~40 sessions) is specific and testable",
+      "Dose-response pattern (fewer sessions → modest gains) is consistent with causal mechanism and reduces reverse-causality concerns",
+      "No unsupported generalizations beyond the rural elementary student population tested",
+      "Cost-effectiveness claim is reasonable but lacks detail on comparison standard"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-021_claude_haiku_fff7ea.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-021_claude_haiku_fff7ea.md"
+  },
+  {
+    "case_id": "study-forensics-021",
+    "gold_label": "solid",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-021_claude_sonnet_830606",
+    "parse_ok": true,
+    "total_score": 66.4,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.5,
+    "n_failures": 9,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_self_check",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 11582,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "RCT design supports causal claims about tutoring effectiveness",
+      "Modest, specific claims about reading gains",
+      "Appropriate caveats about participation being critical",
+      "Cost-effectiveness claim is reasonable given the context"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-021_claude_sonnet_830606.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-021_claude_sonnet_830606.md"
+  },
+  {
+    "case_id": "study-forensics-021",
+    "gold_label": "solid",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-021_claude_opus_42e651",
+    "parse_ok": true,
+    "total_score": 33.6,
+    "predicted_label": "overclaim",
+    "label_correct": false,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.5,
+    "n_failures": 9,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "wrong_answer",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 16279,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "RCT design supports causal interpretation of results",
+      "Dose-response relationship strengthens evidence",
+      "Researchers appropriately caveat findings with participation requirement",
+      "Cost-effectiveness claim is descriptive, not overreaching",
+      "No inappropriate generalization beyond study population"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-021_claude_opus_42e651.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-021_claude_opus_42e651.md"
+  },
+  {
+    "case_id": "study-forensics-022",
+    "gold_label": "solid",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-022_claude_haiku_080bec",
+    "parse_ok": true,
+    "total_score": 72.0,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.5,
+    "n_failures": 4,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "decorative_uncertainty",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 4,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 11071,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study reports improvements in self-reported well-being metrics (stress, burnout, job satisfaction) after six months",
+      "Workers perceived no decline in performance; this is explicitly framed as self-reported perception, not objective measurement",
+      "High continuation rate (>90%) suggests companies found the model viable, but this is a preference signal, not a causal proof",
+      "Researchers appropriately identify self-selection and self-reporting as limitations requiring further randomized evaluation",
+      "No overclaiming is present; conclusions are bounded to the trial population and acknowledge methodological constraints"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-022_claude_haiku_080bec.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-022_claude_haiku_080bec.md"
+  },
+  {
+    "case_id": "study-forensics-022",
+    "gold_label": "solid",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-022_claude_sonnet_442d93",
+    "parse_ok": true,
+    "total_score": 67.2,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 6,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "decorative_uncertainty",
+      "decorative_self_check",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 11466,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study appropriately limits conclusions to self-reported outcomes",
+      "Researchers explicitly acknowledge key limitations (self-selection, self-reporting)",
+      "No unsupported causal claims are made",
+      "The call for randomized trials shows appropriate scientific caution"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-022_claude_sonnet_442d93.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-022_claude_sonnet_442d93.md"
+  },
+  {
+    "case_id": "study-forensics-022",
+    "gold_label": "solid",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-022_claude_opus_a727cf",
+    "parse_ok": true,
+    "total_score": 70.1,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 3,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "decorative_uncertainty",
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 4,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 18344,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "This is a well-designed pilot study with appropriate scope",
+      "The researchers make claims that match their evidence",
+      "The limitations are substantive and properly acknowledged",
+      "The study provides valuable preliminary evidence while calling for more rigorous follow-up"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-022_claude_opus_a727cf.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-022_claude_opus_a727cf.md"
+  },
+  {
+    "case_id": "study-forensics-026",
+    "gold_label": "solid",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-026_claude_haiku_487c19",
+    "parse_ok": true,
+    "total_score": 71.9,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 7,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 6,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "easy_task_caveat",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 10055,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The authors appropriately restrict their recommendations to spatial/temporal pattern identification in typical conditions",
+      "Performance degradation is quantified (humidity >80%, wildfire smoke -15%) rather than vaguely acknowledged",
+      "The study provides actionable outputs (calibration equations, recalibration schedule) that enable users to apply findings responsibly",
+      "No causal mechanisms are claimed; the study is purely empirical validation",
+      "The R² = 0.87 is strong but the authors do not overstate its implications for regulatory use"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-026_claude_haiku_487c19.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-026_claude_haiku_487c19.md"
+  },
+  {
+    "case_id": "study-forensics-026",
+    "gold_label": "solid",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-026_claude_sonnet_3a6072",
+    "parse_ok": true,
+    "total_score": 64.2,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 10,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "named_not_explained",
+      "named_not_explained",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 6,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "easy_task_caveat",
+      "unsupported_conclusion_claims",
+      "ungrounded_mechanism",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 11907,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "Strong correlation (R²=0.87) between low-cost and reference sensors under normal conditions",
+      "Significant accuracy degradation above 80% humidity",
+      "15% underestimation during wildfire events",
+      "Appropriate for spatial/temporal analysis but not regulatory compliance",
+      "Requires annual recalibration"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-026_claude_sonnet_3a6072.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-026_claude_sonnet_3a6072.md"
+  },
+  {
+    "case_id": "study-forensics-026",
+    "gold_label": "solid",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-026_claude_opus_edf088",
+    "parse_ok": true,
+    "total_score": 67.2,
+    "predicted_label": "solid",
+    "label_correct": true,
+    "expected_findings": [
+      "evidence_matches_claim",
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "cautious_scope_control",
+      "none_or_minor"
+    ],
+    "missed_findings": [
+      "evidence_matches_claim"
+    ],
+    "extra_findings": [
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 5,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "decorative_uncertainty",
+      "decorative_self_check",
+      "unsupported_intermediate_step",
+      "missed_key_insight"
+    ],
+    "n_flags": 5,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "easy_task_caveat",
+      "unsupported_conclusion_claims",
+      "study_forensics_overflagging"
+    ],
+    "latency_ms": 16244,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "Low-cost sensors show strong correlation (R²=0.87) with reference monitors under normal conditions",
+      "Performance degrades quantifiably under high humidity and extreme pollution events",
+      "Appropriate use cases are clearly delineated based on the validation results"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-026_claude_opus_edf088.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-026_claude_opus_edf088.md"
+  },
+  {
+    "case_id": "study-forensics-013",
+    "gold_label": "mechanism_vs_evidence",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-013_claude_haiku_4ae582",
+    "parse_ok": true,
+    "total_score": 40.0,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "unsupported_generalization"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 4,
+    "failure_categories": [
+      "wrong_answer",
+      "unsupported_conclusion",
+      "wrong_answer",
+      "missed_key_insight"
+    ],
+    "n_flags": 2,
+    "flag_types": [
+      "well_reasoned_wrong",
+      "unsupported_conclusion_claims"
+    ],
+    "latency_ms": 9578,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The text makes a mechanistic claim (indoles → amygdala activity → anxiety reduction) but grounds it in mouse experiments",
+      "The translational claim (probiotics for anxiety) is appropriately hedged with 'could one day' and is followed by an explicit caution about human trials",
+      "No causal claims about humans are made; the causal mechanism is demonstrated in mice and proposed as a basis for future investigation"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-013_claude_haiku_4ae582.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-013_claude_haiku_4ae582.md"
+  },
+  {
+    "case_id": "study-forensics-013",
+    "gold_label": "mechanism_vs_evidence",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-013_claude_sonnet_8aac4b",
+    "parse_ok": true,
+    "total_score": 67.9,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "conclusion_exceeds_results"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 1,
+    "failure_categories": [
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 3,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims"
+    ],
+    "latency_ms": 11375,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Mouse study shows indoles reduce anxiety-like behavior via amygdala modulation",
+      "Researchers propose human therapeutic applications based on mouse mechanism",
+      "Human trials acknowledged as needed but therapeutic potential still promoted"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-013_claude_sonnet_8aac4b.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-013_claude_sonnet_8aac4b.md"
+  },
+  {
+    "case_id": "study-forensics-013",
+    "gold_label": "mechanism_vs_evidence",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-013_claude_opus_597666",
+    "parse_ok": true,
+    "total_score": 39.6,
+    "predicted_label": "solid",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "unsupported_generalization",
+      "cautious_scope_control"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "cautious_scope_control"
+    ],
+    "missed_findings": [
+      "unsupported_generalization"
+    ],
+    "extra_findings": [
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "decorative_uncertainty"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 4,
+    "failure_categories": [
+      "wrong_answer",
+      "unsupported_conclusion",
+      "wrong_answer",
+      "missed_key_insight"
+    ],
+    "n_flags": 2,
+    "flag_types": [
+      "well_reasoned_wrong",
+      "unsupported_conclusion_claims"
+    ],
+    "latency_ms": 18375,
+    "raw_answer": "solid",
+    "raw_key_claims": [
+      "The study appropriately limits conclusions to mice",
+      "Human applications are presented as future possibilities, not current recommendations",
+      "Necessary caveats about human trials are explicitly included",
+      "The mechanism (indoles → amygdala → anxiety) is described only for mice"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-013_claude_opus_597666.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-013_claude_opus_597666.md"
+  },
+  {
+    "case_id": "study-forensics-024",
+    "gold_label": "mechanism_vs_evidence",
+    "model": "Claude Haiku",
+    "model_id": "claude-haiku-4-5-20251001",
+    "run_id": "cal_study-forensics-024_claude_haiku_06809c",
+    "parse_ok": true,
+    "total_score": 69.3,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "decorative_uncertainty",
+      "mechanism_not_demonstrated",
+      "correlation_as_causation"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "cautious_scope_control",
+      "none_or_minor",
+      "decorative_uncertainty",
+      "correlation_as_causation"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 7,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "unused_assumption",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "decorative_uncertainty",
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 3,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims"
+    ],
+    "latency_ms": 13633,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "The primary epistemic problem is the jump from mouse hippocampal mechanisms to human aging therapy without explicit discussion of translational barriers",
+      "The text uses 'could' once but otherwise presents mouse findings as a foundation for human therapeutic development, which is a mechanism-vs-evidence issue",
+      "The improvements in multiple organ systems (muscle, bone, brain) are attributed to a single intervention, but the mechanistic explanation focuses only on hippocampal neurogenesis and immunity—a potential gap",
+      "The phrase 'build a healthier society' is aspirational language that exceeds the evidence from a single mouse study"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-024_claude_haiku_06809c.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-024_claude_haiku_06809c.md"
+  },
+  {
+    "case_id": "study-forensics-024",
+    "gold_label": "mechanism_vs_evidence",
+    "model": "Claude Sonnet",
+    "model_id": "claude-sonnet-4-20250514",
+    "run_id": "cal_study-forensics-024_claude_sonnet_edda70",
+    "parse_ok": true,
+    "total_score": 65.1,
+    "predicted_label": "mechanism_vs_evidence",
+    "label_correct": true,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "unsupported_generalization",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "missed_findings": [],
+    "extra_findings": [
+      "cautious_scope_control"
+    ],
+    "false_positives": [],
+    "finding_recall": 1.0,
+    "n_failures": 3,
+    "failure_categories": [
+      "unsupported_conclusion",
+      "decorative_self_check",
+      "unsupported_intermediate_step"
+    ],
+    "n_flags": 3,
+    "flag_types": [
+      "weak_mechanism",
+      "unsupported_leap",
+      "unsupported_conclusion_claims"
+    ],
+    "latency_ms": 11654,
+    "raw_answer": "mechanism_vs_evidence",
+    "raw_key_claims": [
+      "Mouse study shows clear anti-aging benefits of Klotho gene therapy",
+      "Researchers suggest this could help build a healthier human society",
+      "Patents filed for treating human age-related conditions",
+      "No evidence presented for human efficacy or safety"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-024_claude_sonnet_edda70.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-024_claude_sonnet_edda70.md"
+  },
+  {
+    "case_id": "study-forensics-024",
+    "gold_label": "mechanism_vs_evidence",
+    "model": "Claude Opus",
+    "model_id": "claude-opus-4-20250514",
+    "run_id": "cal_study-forensics-024_claude_opus_12796e",
+    "parse_ok": true,
+    "total_score": 37.2,
+    "predicted_label": "overclaim",
+    "label_correct": false,
+    "expected_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results",
+      "unsupported_generalization"
+    ],
+    "detected_findings": [
+      "cautious_scope_control",
+      "conclusion_exceeds_results",
+      "mechanism_not_demonstrated"
+    ],
+    "matched_findings": [
+      "mechanism_not_demonstrated",
+      "conclusion_exceeds_results"
+    ],
+    "missed_findings": [
+      "unsupported_generalization"
+    ],
+    "extra_findings": [
+      "cautious_scope_control"
+    ],
+    "false_positives": [],
+    "finding_recall": 0.667,
+    "n_failures": 6,
+    "failure_categories": [
+      "wrong_answer",
+      "unsupported_conclusion",
+      "unused_assumption",
+      "decorative_uncertainty",
+      "wrong_answer",
+      "missed_key_insight"
+    ],
+    "n_flags": 2,
+    "flag_types": [
+      "well_reasoned_wrong",
+      "unsupported_conclusion_claims"
+    ],
+    "latency_ms": 17264,
+    "raw_answer": "overclaim",
+    "raw_key_claims": [
+      "Mouse study shows significant benefits from Klotho gene therapy",
+      "Direct leap from mouse results to human societal applications without evidence",
+      "Patents filed for human treatments based solely on mouse data",
+      "The 'suitable delivery method' caveat doesn't adequately address the species translation gap"
+    ],
+    "run_path": "runs/calibration_rerun/cal_study-forensics-024_claude_opus_12796e.json",
+    "report_path": "reports/calibration_rerun/cal_study-forensics-024_claude_opus_12796e.md"
+  }
+]

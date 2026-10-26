@@ -1,0 +1,150 @@
+{
+  "schema": "aa-p10-live-retest-expectations/2.1",
+  "note": "Held separately from model inputs; never read by the product code or sent to a model. AI-authored development expectations for three synthetic sketches, not gold labels. Disputed points stay disputed. Three synthetic cases measure nothing about model accuracy; this is a functional retest of the AA-P8/1.2 + AA-P9/1.2 path, not an efficacy benchmark.",
+  "contract": "AA-P8/1.2 + AA-P9/1.2 (host_rule_version AA-P8-HOST/1.1; prompts v3-phase8-contract-r2 / -r2-review-p9-2; docs/phase8_9_conflict_addendum.md §2-§8)",
+  "state_vocabulary": "ScientificState: supported, unsupported, contradicted, unknown. The model composite applies the claim logic to the model's own per-proposition judgments, the host composite applies it to the host derivations, and the effective composite applies it to the per-proposition effective states, in which a proposition with a model/host conflict is unknown. The effective composite is unknown whenever transformation findings or Phase-7 gate errors make the analysis technically incomplete. It equals the host composite when no model/host conflict exists at any level and the analysis is technically complete; otherwise it can differ from both sides.",
+  "evaluation_rule": "For each executed slot, three sides are checked separately: the model composite (model_composite_state), the host composite (host_composite_state) and the effective composite (composite_state), plus the final status. A side of a technically complete analysis is classified as 'within' (in acceptable), 'conservative' (in conservative) or 'not_acceptable'. A side without a value, and every side of a technically incomplete slot (status RUN_FAILED, ANALYSIS_INCOMPLETE, PREFLIGHT_BLOCKED or RELEASE_BLOCKED, or a phase8 technical_status other than completed, including transformation and Phase-7 findings), is 'not_evaluable': it is reported with its technical cause and its recorded values, is never counted as a model or host deviation, and the slot is not within expectations (reason: technical). An effective 'unknown' forced by technical incompleteness is never classified. A slot is within expectations only if every side is within and the status is acceptable. An effective 'unknown' caused by an open conflict never counts as acceptance of either side. Every deviation is reported per side together with the per-proposition host reasons. For every technically complete slot the host route is recorded over the required propositions (all propositions if none is marked required) whose host state is not supported: 'string_mismatch_only' when the final host reason of every evidence binding of each such proposition is an attribute-string reason ('semantic mismatch: ...', 'unsupported product/dose/formulation/route transfer', 'semantic transfer unresolved', 'product transfer unresolved') and no unresolved claim attribute, support/contradiction conflict or unresolved required bridge constrains it; 'capability' when no binding of these propositions ends in an attribute-string reason; 'mixed' otherwise; 'none' when every such proposition is host-supported. A host deviation with route 'string_mismatch_only' is additionally labelled as a likely representation artifact, but it still counts as a deviation. A host 'within' with route 'string_mismatch_only' is reported as 'within (representation artifact)': it still counts as within by the frozen sets, but the report must not attribute it to the reasoning the case was designed to test.",
+  "shared_process_rule": "A material model/host conflict (always at composite level; at proposition level when it can change the composite, a decisive summary statement or the derived taxonomy label) or a necessary UNKNOWN routes REVIEW_RECOMMENDED with mandatory=true if the analysis is technically complete. The counterreview then runs if the profile's cap and the budget allow it. Its packet carries both positions of every model/host conflict, whatever their materiality; only a case without any model/host conflict (for example an agreed UNKNOWN) gets a blind packet. After a completed counterreview the single stability variant (the same packet with its evidence order reversed) follows. It is sent only if the reversal changes the packet (in practice at least two different evidence items), the profile's stability cap allows it and the budget covers it; otherwise it is recorded as rejected (no-op, no call) or denied, and a claimed stability allowance counts as used. The route is HUMAN_REVIEW_REQUIRED only if the counterreview and the stability both completed; it is UNRESOLVED when either was denied (per-profile cap or budget), rejected as a no-op, failed or not sent. In all these cases the status is REVIEW_REQUIRED and the labelled test release must be RELEASE_BLOCKED. A technically incomplete analysis is ANALYSIS_INCOMPLETE (route HUMAN_REVIEW_REQUIRED) and gets no review call. A non-material conflict stays visible as bounded_model_host_conflict, is not reviewed and does not block release. Without any mandatory trigger the regular path applies (AUTO_RESOLVABLE, READY_FOR_RELEASE) and the labelled test release must succeed. Because review caps are 1/1 per profile and Haiku LR-03 runs first, a second mandatory review of the same profile is normally denied by the cap and ends UNRESOLVED.",
+  "p9_reporting": "For every slot, the counterreview and the stability are reported separately: outcome (completed, failed, denied, rejected_noop, interrupted, or not reached), request sent (yes if a review capture records request_sent; 'possibly' if a review ledger attempt is still RESERVED_POSSIBLY_BILLABLE without a capture; no otherwise), response received (a review capture with HTTP status 200) and response processed (a review position built from an HTTP-200 model response was assessed by Phase 8/9; transport-failed and unsent reviews count as no response). The four order statuses are then: (1) P9 routing reached (a mandatory REVIEW_RECOMMENDED trigger fired, a review allowance was claimed, or a P9 attempt exists); (2) P9 model call made (any review request sent, or 'possibly' as above); (3) response processed (any review response processed as defined); (4) conflict: 'resolved by human adjudication', 'open_material' (a mandatory model_host_conflict trigger), 'open_bounded' (only bounded_model_host_conflict triggers) or 'none'; for a technically incomplete analysis the value carries the suffix '(analysis technically incomplete)' and 'none' becomes 'none recorded'. P9 position-versus-position conflicts after a review are reported separately with their materiality. No human adjudication is performed in this retest, so every material conflict stays open. For a slot without a bundle the statuses are derived from the ledger, its review allowance claims and the captures, and the conflict is 'not determinable (no bundle)'.",
+  "cases": {
+    "LR-01": {
+      "role": "supported (positive control)",
+      "model_judgment": {
+        "acceptable": [
+          "supported"
+        ],
+        "conservative": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "unsupported",
+          "contradicted"
+        ]
+      },
+      "host_derivation": {
+        "acceptable": [
+          "supported"
+        ],
+        "conservative": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "unsupported",
+          "contradicted"
+        ]
+      },
+      "effective_composite": {
+        "acceptable": [
+          "supported"
+        ],
+        "conservative": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "unsupported",
+          "contradicted"
+        ]
+      },
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "likely_host_route": "Relation 'description' (the claim reports a trial result): 'descriptive inference permitted' derives supported when the bound attributes match the identically worded claim; with this relation design limitations, randomization and comparison are not consulted. Relation 'association' with controlled_intervention evidence: 'observed association permitted' derives supported. A causal relation ('causal', 'causal_effect') or a clinical one ('preventive', 'therapeutic', 'human_clinical_benefit') with controlled_intervention evidence derives supported only without a recorded design limitation, with randomized true (or a bound identification argument), comparison 'between' and, for the clinical relations, species 'human' and an endpoint_type among clinical, clinical_event, mortality, functional and symptom. Under such a relation a recorded design limitation ('unresolved design/identification limitation'), randomized null ('causal identification not established') or a missing comparison ('comparison design not represented') derives unknown: a conservative host deviation and, against a model 'supported', a material conflict. Randomized false, comparison 'within', a non-human or non-clinical endpoint, or evidence typed observational, descriptive, mechanistic, in_vitro or animal under such a relation derives unsupported; evidence typed unknown derives unknown. Unknown also arises from a non-decisive binding or an unresolved attribute, and unsupported from an attribute-string mismatch (see host route).",
+      "boundary": "A randomized between-group comparison in community-dwelling adults aged 70 and older reports 31 percent fewer falls over twelve months for a home-based balance training program than for general health advice; claim and source use the same wording for population, intervention, comparator, endpoint and horizon, and falls were counted in the same way in both groups. The claim makes no broader statement. Unsupported or contradicted would misread the source unless the host reasons show an attribute-string artifact."
+    },
+    "LR-02": {
+      "role": "clearly unsupported with sufficient evidence",
+      "model_judgment": {
+        "acceptable": [
+          "unsupported"
+        ],
+        "conservative": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "supported",
+          "contradicted"
+        ]
+      },
+      "host_derivation": {
+        "acceptable": [
+          "unsupported"
+        ],
+        "conservative": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "supported",
+          "contradicted"
+        ]
+      },
+      "effective_composite": {
+        "acceptable": [
+          "unsupported"
+        ],
+        "conservative": [
+          "unknown"
+        ],
+        "not_acceptable": [
+          "supported",
+          "contradicted"
+        ]
+      },
+      "acceptable_status": [
+        "READY_FOR_RELEASE",
+        "REVIEW_REQUIRED"
+      ],
+      "likely_host_route": "An observational association bound to a causal/preventive claim derives unsupported ('observational evidence alone cannot establish this inference'); a weakening/inconclusive or no-evidence binding (for example of the confounding statement) makes the host state unknown, which against a model 'unsupported' is a material conflict.",
+      "boundary": "A one-time cross-sectional survey (single memory test, no follow-up, confounding by activity and education not adjusted) cannot establish that daily green tea prevents memory decline in adults aged 65 and older. Supported would accept a causal, longitudinal reading of a single association; contradicted would treat missing evidence as evidence against. A correlation_vs_causation taxonomy label is plausible but not required."
+    },
+    "LR-03": {
+      "role": "conflict-capable",
+      "model_judgment": {
+        "acceptable": [
+          "unsupported",
+          "unknown"
+        ],
+        "conservative": [],
+        "not_acceptable": [
+          "supported",
+          "contradicted"
+        ]
+      },
+      "host_derivation": {
+        "acceptable": [
+          "unsupported",
+          "unknown"
+        ],
+        "conservative": [],
+        "not_acceptable": [
+          "supported",
+          "contradicted"
+        ]
+      },
+      "effective_composite": {
+        "acceptable": [
+          "unsupported",
+          "unknown"
+        ],
+        "conservative": [],
+        "not_acceptable": [
+          "supported",
+          "contradicted"
+        ]
+      },
+      "acceptable_status": [
+        "REVIEW_REQUIRED",
+        "READY_FOR_RELEASE"
+      ],
+      "likely_host_route": "Observational or descriptive evidence typing, or randomized=false, derives unsupported ('observational evidence alone cannot establish this inference', 'descriptive evidence cannot establish stronger inference' or 'causal identification not established'); randomized=null, a recorded design limitation, or a no-evidence/inconclusive binding derives unknown. The comparison 'within' rule is reachable only with randomized=true or an identification argument, which the source does not support. A claim relation typed 'description' would derive supported ('descriptive inference permitted'), which is outside the acceptable host set.",
+      "boundary": "A before-after change within the office staff of one company, with a stated influenza confound in the previous year and no figures for staff on a five-day week, does not establish that the four-day week reduced recorded sick days. Whether this is unsupported or unknown is a judgment call; model and host may legitimately differ here, which is why this case can trigger the conflict route. If they differ, the shared process rule applies; if they agree on a decisive state without another mandatory trigger, the regular path applies; an agreed unknown without any model/host conflict takes the necessary_unknown route with a blind packet."
+    }
+  },
+  "global_process_expectations": [
+    "No released bundle may carry an open material model/host conflict or an open mandatory review.",
+    "A completed model counterreview never resolves a conflict; only a documented human adjudication does (none is performed in this retest).",
+    "Every carrier binds the @3 profile fingerprint and the r2 prompt version and SHA-256; live and replay carriers are never mixed.",
+    "Technical incompleteness (transport failure, format/parse, Phase-7 or transformation findings) is reported as RUN_FAILED or ANALYSIS_INCOMPLETE and is not a scientific judgment; its sides are 'not_evaluable'.",
+    "Test releases carry reviewer 'TEST ONLY - not a scientific release' and name the synthetic case."
+  ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "component": "scientific_v2",
+    "category": "generation",
+    "file": "src/agent_arena/runner.py",
+    "entrypoint": "STUDY_FORENSICS_PROMPT_PROSPECTIVE",
+    "actual_behavior": "Existing exact v2 component; two prospective rules differ from historical v1",
+    "endpoint": "B-A semantic/format effect"
+  },
+  {
+    "component": "common_request",
+    "category": "generation",
+    "file": "src/agent_arena/providers/anthropic.py",
+    "entrypoint": "AnthropicProvider.generate",
+    "actual_behavior": "One system prompt, one user packet; model/temperature/max_tokens identical, top_p/tools/retrieval absent; 96 captured views of 64 fake requests",
+    "endpoint": "dry_request_captures.json"
+  },
+  {
+    "component": "standard_parser",
+    "category": "post_generation",
+    "file": "src/agent_arena/bounded_harness_mission.py",
+    "entrypoint": "interpretation",
+    "actual_behavior": "Common JSON/schema/label/finite-confidence checks; no semantic repair",
+    "endpoint": "common operational validity and raw label"
+  },
+  {
+    "component": "C_interpretation",
+    "category": "post_generation",
+    "file": "src/agent_arena/output_contract.py; src/agent_arena/study_forensics_checker.py",
+    "entrypoint": "parse_structured_output; _detect_label",
+    "actual_behavior": "Existing extraction/normalization and deterministic final label detection; may recover extra prose or use existing keyword fallback",
+    "endpoint": "final interpreted labels and latency; no raw B-C contrast"
+  },
+  {
+    "component": "C_record_validity",
+    "category": "governance",
+    "file": "src/agent_arena/phase7a_execution.py",
+    "entrypoint": "is_classification_valid; is_calibration_valid; analytical_state",
+    "actual_behavior": "Existing terminal/parse/label/confidence flags; no gold truth rejection",
+    "endpoint": "research diagnostic acceptance; F1/F2 and semantic probes"
+  },
+  {
+    "component": "C_checkpoint",
+    "category": "governance",
+    "file": "src/agent_arena/resume_integrity.py",
+    "entrypoint": "seal_new_record; validate_resume_checkpoint; checkpoint_record_accounting",
+    "actual_behavior": "Existing source/unit/raw/manifest/slot/code/runtime bindings at record/run scope",
+    "endpoint": "F3-F6 and C post-freeze research checkpoint"
+  },
+  {
+    "component": "C_research_freeze",
+    "category": "reproducibility",
+    "file": "src/agent_arena/phase7a_real_run.py",
+    "entrypoint": "build_condition_raw_freeze",
+    "actual_behavior": "Existing diagnostic_validation_raw_freeze completeness; exercised with historical synthetic mates",
+    "endpoint": "fixed run-artifact completeness acceptance"
+  },
+  {
+    "component": "official_release",
+    "category": "governance",
+    "file": "src/agent_arena/release_boundary.py",
+    "entrypoint": "release_official_artifact",
+    "actual_behavior": "Requires ForensicRecord and SourceExecutionBinding; no existing automatic converter for classification-run records; never invoked by this pilot",
+    "endpoint": "N/A; false release flags, no scientific-verifier credit"
+  },
+  {
+    "component": "authorization",
+    "category": "governance",
+    "file": "src/agent_arena/condition_contract.py",
+    "entrypoint": "_read_authenticated_plan_artifact; resolve_registered_plan; production_authorization_errors",
+    "actual_behavior": "Existing tracked-HEAD trust/state gate; one added compiled mission ID with fixed spec. Legacy IDs unchanged and consumed",
+    "endpoint": "shared pre-execution controls, not B-C treatment"
+  },
+  {
+    "component": "source_environment_QA",
+    "category": "governance",
+    "file": "src/agent_arena/preflight_integrity.py",
+    "entrypoint": "inspect_source_state; compare_source_binding; execute_full_replication_qa; validate_full_replication_qa_record",
+    "actual_behavior": "Existing canonical source/environment/QA gates run before provider construction. F7/F8 use existing synthetic-only production seam",
+    "endpoint": "shared fail-closed evidence"
+  },
+  {
+    "component": "mission_lease_budget",
+    "category": "reproducibility",
+    "file": "src/agent_arena/bounded_harness_mission.py",
+    "entrypoint": "BudgetLedger; _run_mission",
+    "actual_behavior": "NEW common infrastructure: one-shot namespace, per-HTTP atomic reservation, raw wire observer, no resume, revocation. Not credited as pre-existing C advantage",
+    "endpoint": "dollar/attempt bound, raw lineage and cost"
+  },
+  {
+    "component": "analysis",
+    "category": "post_generation",
+    "file": "analysis/harness_value_20260913/analyze.py",
+    "entrypoint": "main; paired; calibration",
+    "actual_behavior": "NEW frozen deterministic scorer; gold joins only after raw freeze; no provider operation",
+    "endpoint": "24-root pairing; calibration, release, robustness and costs"
+  }
+]

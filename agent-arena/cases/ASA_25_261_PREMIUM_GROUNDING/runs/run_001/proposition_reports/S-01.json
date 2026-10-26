@@ -1,0 +1,176 @@
+{
+  "analysis_status": "complete",
+  "claim": {
+    "claim_context": "Active atomic proposition S-01 from the frozen ASA 25/261 Premium Grounding claim registry (origin F01/F04/F09; type EXPLICIT; SUBJECTIVE/CLINICAL; THERAPEUTIC; PRODUCT-SPECIFIC). Frozen evidence-preparation state: MIXED / CONFLICTING. Routing: STANDARD BIOMEDICAL ADJUDICATION",
+    "claim_scope": "REPORTING-SENSITIVE | PRODUCT EQUIVALENCE UNCERTAIN",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding improves sleep quality.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "development_or_production_status": "production",
+  "evidence": {
+    "contradicting_or_limiting": [
+      "H30 day-31 ISI p=.275, PSQI p=.562, ESS p=.962, BEPSI p=.756",
+      "H26 GEE group coefficient p=.053 with 31.8 percent attrition",
+      "H30 denominator and baseline conflicts; actigraphy timepoint contradiction unresolved",
+      "H33 sleep signal arises inside an inseparable combined programme",
+      "No exact-product protocol replication"
+    ],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "H26",
+        "text": "Lin et al. 2022: week-12 PSQI grounded 0.3 plus/minus 0.7 (n=8) versus control 3.0 plus/minus 1.9 (n=7), Mann-Whitney p=.006.",
+        "tier": "limited_human",
+        "why_it_matters": "The strongest controlled sleep signal located; a pointwise comparison in 15 completers."
+      },
+      {
+        "role": "supporting",
+        "source_reference": "H30",
+        "text": "Park et al. 2025: actigraphy signal reported, but the prose points to day 31 while a parenthetical says 'Day 38: p<.01, t=3.5'; absolute values are absent.",
+        "tier": "limited_human",
+        "why_it_matters": "A positive objective signal whose measurement timepoint is internally contradictory and is left unresolved; it cannot be assigned by inference."
+      },
+      {
+        "role": "supporting",
+        "source_reference": "H02/H22/H24/H33",
+        "text": "Ghaly & Teplitz 2004 (uncontrolled n=12), Chevalier et al. 2019 (16 massage therapists) and Kim 2020 (observational mat users) report subjective sleep improvement; H33 reports a secondary sleep time-by-group F=7.53, p=.008.",
+        "tier": "limited_human",
+        "why_it_matters": "Additional narrow signals, each uncontrolled, self-selected, one dataset, or confounded by a combined barefoot walking programme."
+      },
+      {
+        "role": "contradictory",
+        "source_reference": "H30",
+        "text": "Park et al. 2025 day-31 between-group results: ISI p=.275, PSQI p=.562, ESS p=.962, BEPSI p=.756.",
+        "tier": "limited_human",
+        "why_it_matters": "The most complete set of prespecified between-group sleep comparisons in the substrate is uniformly null."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "H26",
+        "text": "Lin et al. 2022 GEE group coefficient B=-1.407, SE=.7278, 95 percent Wald CI -2.834 to .019, p=.053; attrition 7/22 (31.8 percent); registration posted February 2022 for a trial completed July 2020.",
+        "tier": "limited_human",
+        "why_it_matters": "The model-based estimate does not reach significance and is not a group-by-time interaction; retrospective registration cannot secure prespecification."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "H30",
+        "text": "Park et al. 2025 participant-flow conflicts: 60 stated, three exclusions stated, 56 analysed, text 26/30 versus Table 3 30/28; baseline ISI 7.6 plus/minus .7 versus 12 plus/minus 1.2, p<.001.",
+        "tier": "limited_human",
+        "why_it_matters": "Denominator contradictions and a large baseline imbalance prevent a stable effect estimate."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "Evidence exists on both sides and no stable decisive effect estimate survives the reporting conflicts.",
+    "missing_causal_chain": false,
+    "missing_comparison_group": false,
+    "missing_human_evidence": false,
+    "supporting": [
+      "H26 week-12 pointwise PSQI p=.006",
+      "H30 selected actigraphy signal (timepoint unresolved)",
+      "H02/H22/H24 subjective sleep signals",
+      "H33 secondary sleep time-by-group F=7.53, p=.008"
+    ]
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "H30",
+          "H26"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "An established general effect is advertised while the most complete prespecified between-group comparisons were null and the strongest positive model estimate did not reach significance."
+      },
+      {
+        "evidence_refs": [
+          "H26",
+          "H02",
+          "H22",
+          "H24"
+        ],
+        "mode": "inappropriate_generalization",
+        "rationale": "Signals from mild Alzheimer patients, 12 uncontrolled participants, 16 massage therapists and self-selected mat users are generalised to a general customer audience."
+      }
+    ],
+    "none_detected": false
+  },
+  "generated_at": "2026-08-23",
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "audit_trail": [
+      "input validated against forensic_report schema 6.3.0",
+      "analysis_status=complete",
+      "confidence classified as VALID (no coercion to 0.0)",
+      "2 failure mode(s) echoed from analysis (not inferred)",
+      "rewrite guard: no rewrite supplied"
+    ],
+    "input_digest_sha256": "de86f03aafa1946b3d576df95b44efe6772a2e9147d6ebca190b0256074dfc17",
+    "model": "claude-opus-5",
+    "parser_status": "ok",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "report_generation_digest_sha256": "079f0f3f78e0d8dac31502d79e467241036a9e24275519b1ae8ff39d2f2c70d3",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0",
+    "warnings": []
+  },
+  "reader_impact": {
+    "affected_decision_type": "Purchase; possible deferral of insomnia care.",
+    "likely_reader_misunderstanding": "That sleep improvement is an established, reliable effect of the product.",
+    "not_a_harm_probability_note": "Reader-impact risk is a qualitative category describing how a non-specialist might misread the claim. It is NOT a computed medical, legal, or financial harm probability.",
+    "risk_level": "moderate",
+    "risk_rationale": "Sleep is the headline benefit and the most likely purchase driver; readers are unlikely to see the null results.",
+    "risk_uncertainty": null
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_available": false,
+    "rewrite_guard": {
+      "checked": true,
+      "status": "no_rewrite",
+      "unsupported_new_facts": []
+    },
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze.",
+    "rewrite_verification": "no_rewrite_supplied",
+    "rewrite_verification_note": "This rewrite is an UNVERIFIED proposal copied from the analysis input. The numeric-containment guard only checks that it introduces no unsupported number; it does NOT verify factual or semantic accuracy. Its factual support still requires human review."
+  },
+  "report_id": "ASA-25-261-run_001-S-01",
+  "report_schema_version": "6.3.0",
+  "status_banner": [
+    "DEVELOPMENT PROTOTYPE — claim-forensics report (Phase 6.3)"
+  ],
+  "synthetic_fixture": false,
+  "uncertainty": {
+    "alternative_label_rationale": "A solid reading was considered: several controlled studies do report sleep benefit and the underlying evidence really is mixed rather than empty. It is rejected because the advertised wording reports the effect as established for a general audience while the largest set of prespecified between-group questionnaire comparisons was null.",
+    "alternative_plausible_label": "solid",
+    "ambiguity": "MATERIAL — Steelman defended a real positive lean; the adversarial layer showed the prespecified comparisons are null. Resolved by verdicting the advertised certainty as overclaim while recording the evidence state as genuinely mixed rather than empty.",
+    "confidence_caveat": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "development_caveat": null,
+    "missing_evidence": [
+      "H30 day-31 ISI p=.275, PSQI p=.562, ESS p=.962, BEPSI p=.756",
+      "H26 GEE group coefficient p=.053 with 31.8 percent attrition",
+      "H30 denominator and baseline conflicts; actigraphy timepoint contradiction unresolved",
+      "H33 sleep signal arises inside an inseparable combined programme",
+      "No exact-product protocol replication"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "H30's actigraphy timepoint (day 31 versus day 38) is irreducibly contradictory in the source and is left unresolved; a registered, powered exact-product sleep RCT with co-primary endpoints does not exist."
+    ]
+  },
+  "verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.82,
+    "predicted_label": "overclaim",
+    "verdict_summary": "Sleep is the best-studied advertised outcome and the evidence genuinely points both ways. A 12-week pilot found a large pointwise PSQI difference but its model group coefficient was p=.053 with 31.8 percent attrition; a one-month double-blind trial found no day-31 difference on ISI, PSQI, ESS or perceived stress. Neither the advertised certainty nor a general-audience effect is established.",
+    "verdict_title": "Claim goes beyond the available evidence"
+  }
+}

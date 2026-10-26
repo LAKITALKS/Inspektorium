@@ -1,0 +1,4 @@
+blind_case_id,gold_label,majority_label,majority_matches_gold,dissenter
+BIAA-003,overclaim,overclaim,yes,C
+BIAA-007,overclaim,overclaim,yes,C
+BIAA-016,overclaim,overclaim,yes,C

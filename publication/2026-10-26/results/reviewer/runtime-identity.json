@@ -1,0 +1,24 @@
+{
+  "core": {
+    "origin": "5ace2797e4a9075ca53ccd780be616719923c288",
+    "files": 19,
+    "changed": []
+  },
+  "arena": {
+    "origin": "9de4b76953aed778c42df994535cb29a4e0f9f5c",
+    "files": 74,
+    "changed": [
+      {
+        "path": "agent-arena/src/agent_arena/__init__.py",
+        "origin_sha256": "945c9f112e4811c051912f56029e09526a4857453c5335a3d81a585c377cc8c3",
+        "candidate_sha256": "59bb29ee7392b3a591ebad2ead252526d8514aac50bea9680b9542a90c12e01a"
+      },
+      {
+        "path": "agent-arena/src/agent_arena/condition_contract.py",
+        "origin_sha256": "95bce5d127717014974a1587cc02ee24f553fd3d0846b25397e403c851b52c41",
+        "candidate_sha256": "b2c71a11b6090db515676360972c8670663d1e0dd81b04ecb16a0768b0311954"
+      }
+    ]
+  },
+  "root_license_equals_public_base": true
+}

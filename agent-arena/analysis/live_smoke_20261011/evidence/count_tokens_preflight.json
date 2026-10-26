@@ -1,0 +1,22 @@
+{
+  "operation": "messages.count_tokens",
+  "model_generations": 0,
+  "checks": [
+    {
+      "profile": "claude-haiku-5-5@1",
+      "http_status": 200,
+      "request_id": "req_011CfuRjxNKMdGARz62vsfC4",
+      "input_tokens": 11024,
+      "error_type": null,
+      "reservation_input_bound": 28989
+    },
+    {
+      "profile": "claude-sonnet-5-5@1",
+      "http_status": 200,
+      "request_id": "req_011CfuRjyZW81uy29SSJpmHr",
+      "input_tokens": 11024,
+      "error_type": null,
+      "reservation_input_bound": 28989
+    }
+  ]
+}

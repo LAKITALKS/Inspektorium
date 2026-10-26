@@ -1,0 +1,55 @@
+{
+  "slot_key": "A:q-82b3cd8a9e85360c",
+  "id": "q-82b3cd8a9e85360c",
+  "arm": "A",
+  "input_sha256": "069f24422401ff605d71fbf358b7e6b32c6599601c9b0a4b4cbd780760123f9e",
+  "request_sha256": "1acabf666f9e207e9bdc6ec9e0f3a8fe0775266aa2419f1bc4dab54672f1ece1",
+  "raw_text": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"animal\",\n  \"conclusion_tier\": \"same as evidence\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"Mouse physiology is sufficiently similar to test basic biological mechanisms\",\n    \"The reported outcomes reflect actual experimental results\"\n  ],\n  \"steps\": [\n    \"Claim specifies mouse experiments (appropriate scope)\",\n    \"Evidence confirms NR improved aged muscle stem-cell function in mice\",\n    \"Evidence confirms increased mouse lifespan was reported\",\n    \"Both components of the claim are directly supported by the evidence packet\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Results may not translate to human aging or therapeutic benefit\",\n    \"Lifespan extension mechanism may differ between mice and humans\"\n  ],\n  \"uncertainties\": [\n    \"Generalizability to human aging remains unstudied\",\n    \"Clinical relevance of stem-cell function improvements unknown\",\n    \"Magnitude and robustness of lifespan extension not specified in abstract\"\n  ],\n  \"key_claims\": [\n    \"NR improved aged muscle stem-cell function\",\n    \"NR increased mouse lifespan\",\n    \"Both outcomes occurred in mouse experiments\"\n  ],\n  \"self_check\": [\n    \"Claim is bounded to mouse experiments—no human extrapolation\",\n    \"Both stated outcomes (stem-cell function and lifespan) are explicitly mentioned in evidence\",\n    \"No causal mechanism is claimed beyond what the evidence supports\",\n    \"Appropriate scope and caveats present\"\n  ],\n  \"confidence\": 0.95\n}\n```",
+  "raw_sha256": "f4b4f2d9daf7de0fa19e8bd7cd74b65b88237765cbb3aef01820676938ed3d69",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 4475285916,
+  "attempt_ids": [
+    "attempt-005",
+    "attempt-006"
+  ],
+  "usage": {
+    "input_tokens": 818,
+    "output_tokens": 387,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": false,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "solid",
+    "label_readable": true,
+    "confidence": 0.95,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "solid",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 1503
+    },
+    "B_parser_ns": 137125,
+    "C_incremental_interpretation_ns": 190958
+  }
+}

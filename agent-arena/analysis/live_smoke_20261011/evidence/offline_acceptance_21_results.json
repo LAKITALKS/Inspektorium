@@ -1,0 +1,299 @@
+{
+  "version": "AA-P10-ACCEPTANCE/1.1",
+  "harness_version": "AA-P10-HARNESS/1.1",
+  "contract": "AA-P10/1.0",
+  "expectations_sha256": "cd3ca457019c25e3b83688d5694c5d9f6eb5402b187e4307c073ddac79019f17",
+  "harness_sha256": "7e54de8d7398fa603599ffca5366965de5402b7caf0b3b72c3cf328b1339280a",
+  "passed": 21,
+  "total": 21,
+  "results": [
+    {
+      "id": "positive_full_path",
+      "passed": true,
+      "expected": {
+        "released": true,
+        "scientific": "supported",
+        "provider_calls": 1
+      },
+      "actual": {
+        "released": true,
+        "scientific": "supported",
+        "provider_calls": 1,
+        "candidate": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/positive_full_path/ec84bfac-251f-40c3-9f74-9d37631b8e90",
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/positive_full_path/bb5570af-eeab-4b5d-8a7f-b6a074a2640a"
+      }
+    },
+    {
+      "id": "negative_full_path",
+      "passed": true,
+      "expected": {
+        "released": true,
+        "scientific": "contradicted",
+        "provider_calls": 1
+      },
+      "actual": {
+        "released": true,
+        "scientific": "contradicted",
+        "provider_calls": 1,
+        "candidate": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/negative_full_path/52ecf10f-6b09-490c-b90e-3467b7acade8",
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/negative_full_path/6e56051e-3328-4df8-ad17-66cac3f5a4af"
+      }
+    },
+    {
+      "id": "material_unknown",
+      "passed": true,
+      "expected": {
+        "released": false,
+        "scientific": "unknown",
+        "mandatory_review": true
+      },
+      "actual": {
+        "released": false,
+        "scientific": "unknown",
+        "mandatory_review": true,
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/material_unknown/789cf5ba-dd67-4f14-b2d3-ce9d0861d9fb"
+      }
+    },
+    {
+      "id": "optional_unknown",
+      "passed": true,
+      "expected": {
+        "released": true,
+        "unknown_visible": true,
+        "mandatory_review": false
+      },
+      "actual": {
+        "released": true,
+        "unknown_visible": true,
+        "mandatory_review": false,
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/optional_unknown/13181515-41a2-4f27-9dab-505f708190d7"
+      }
+    },
+    {
+      "id": "empty_trace_population",
+      "passed": true,
+      "expected": {
+        "released": false
+      },
+      "actual": {
+        "released": false,
+        "status": "ANALYSIS_INCOMPLETE"
+      }
+    },
+    {
+      "id": "phase8_source_failure",
+      "passed": true,
+      "expected": {
+        "released": false
+      },
+      "actual": {
+        "released": false,
+        "status": "ANALYSIS_INCOMPLETE"
+      }
+    },
+    {
+      "id": "missing_control",
+      "passed": true,
+      "expected": {
+        "released": false
+      },
+      "actual": {
+        "released": false,
+        "valid": false,
+        "errors": [
+          "Verification failed: Stored decision/controls differ from current raw-bound recomputation. Rebuild from original inputs; do not release."
+        ]
+      }
+    },
+    {
+      "id": "stale_control",
+      "passed": true,
+      "expected": {
+        "released": false
+      },
+      "actual": {
+        "released": false,
+        "valid": false,
+        "errors": [
+          "Verification failed: Stored decision/controls differ from current raw-bound recomputation. Rebuild from original inputs; do not release."
+        ]
+      }
+    },
+    {
+      "id": "gate_registry_bypass",
+      "passed": true,
+      "expected": {
+        "released": false
+      },
+      "actual": {
+        "released": false,
+        "status": "RELEASE_BLOCKED"
+      }
+    },
+    {
+      "id": "foreign_case",
+      "passed": true,
+      "expected": {
+        "valid": false
+      },
+      "actual": {
+        "valid": false,
+        "errors": [
+          "Verification failed: Stale operational status: expected REVIEW_REQUIRED, recorded READY_FOR_RELEASE. Rebuild from original inputs; do not release."
+        ]
+      }
+    },
+    {
+      "id": "modified_report",
+      "passed": true,
+      "expected": {
+        "valid": false
+      },
+      "actual": {
+        "valid": false,
+        "errors": [
+          "Verification failed: Unexpected HTML element placement. Rebuild from original inputs; do not release."
+        ]
+      }
+    },
+    {
+      "id": "modified_manifest",
+      "passed": true,
+      "expected": {
+        "valid": false
+      },
+      "actual": {
+        "valid": false,
+        "errors": [
+          "Verification failed: Manifest and canonical record disagree. Rebuild from original inputs; do not release."
+        ]
+      }
+    },
+    {
+      "id": "missing_format",
+      "passed": true,
+      "expected": {
+        "valid": false
+      },
+      "actual": {
+        "valid": false,
+        "errors": [
+          "Verification failed: Bundle must contain exactly the five canonical files. Rebuild from original inputs; do not release."
+        ]
+      }
+    },
+    {
+      "id": "human_import_history",
+      "passed": true,
+      "expected": {
+        "silent_loss": false,
+        "accepted_consistent_control": true
+      },
+      "actual": {
+        "silent_loss": false,
+        "accepted_consistent_control": true,
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/human_import_history/05832275-95f2-4a25-8dc8-8fb93b355b4c"
+      }
+    },
+    {
+      "id": "durable_variant_limit",
+      "passed": true,
+      "expected": {
+        "additional_calls_after_reopen": 0
+      },
+      "actual": {
+        "additional_calls_after_reopen": 0,
+        "recorded_calls_before_reopen": 1,
+        "valid_variants_executed": 2,
+        "durable_rejection": {
+          "kind": "stability",
+          "status": "rejected",
+          "reason": "Rejected: only exact reversal of the complete evidence ordering is permitted.",
+          "timestamp": "2026-10-10T23:02:12.701154+00:00",
+          "packet_sha256": "8e8fe114f0e279d4a9b31adcfc42e0b0b1f96feffddc09455d78dde26613fbde",
+          "code_version": "7ee135cfa8923de374848a04545ab840b8399b8c9b9840c3c8e2ae2da1c75200",
+          "contract_version": "AA-P9/1.0"
+        }
+      }
+    },
+    {
+      "id": "long_hostile_render",
+      "passed": true,
+      "expected": {
+        "complete": true,
+        "active_content": false,
+        "parity": true
+      },
+      "actual": {
+        "complete": true,
+        "active_content": false,
+        "parity": true,
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/long_hostile_render/705da4d6-273f-41f1-81b8-b3f48353ffa2"
+      }
+    },
+    {
+      "id": "malformed_render",
+      "passed": true,
+      "expected": {
+        "released": false
+      },
+      "actual": {
+        "released": false,
+        "status": "RELEASE_BLOCKED"
+      }
+    },
+    {
+      "id": "inspect_replay",
+      "passed": true,
+      "expected": {
+        "additional_calls": 0,
+        "history_unchanged": true
+      },
+      "actual": {
+        "additional_calls": 0,
+        "history_unchanged": true
+      }
+    },
+    {
+      "id": "offline_provider_isolation",
+      "passed": true,
+      "expected": {
+        "provider_calls": 0,
+        "released": false
+      },
+      "actual": {
+        "provider_calls": 0,
+        "released": false,
+        "status": "PREFLIGHT_BLOCKED"
+      }
+    },
+    {
+      "id": "explicit_human_revision",
+      "passed": true,
+      "expected": {
+        "released": true,
+        "history_unchanged": true,
+        "new_revision": true
+      },
+      "actual": {
+        "released": true,
+        "history_unchanged": true,
+        "new_revision": true,
+        "bundle": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/acceptance-live-integration-1/explicit_human_revision/1b74b3be-b158-4d92-9686-5bb1988fd2ff"
+      }
+    },
+    {
+      "id": "invalid_input",
+      "passed": true,
+      "expected": {
+        "provider_calls": 0,
+        "released": false
+      },
+      "actual": {
+        "provider_calls": 0,
+        "released": false,
+        "status": "PREFLIGHT_BLOCKED"
+      }
+    }
+  ]
+}

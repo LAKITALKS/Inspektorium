@@ -1,0 +1,6 @@
+Choose one label for the supplied claim relative to the supplied evidence packet.
+solid: Claims accurately report the evidence with appropriate scope and caveats. Weak, observational, preclinical or mixed evidence can be reported accurately.
+overclaim: The conclusion exceeds the evidence. This is the residual category for inflated framing, unsupported positive or negative generalization, extrapolation to unstudied populations, and surrogate endpoints presented as clinical outcomes.
+correlation_vs_causation: A causal claim is drawn from a non-causal, uncontrolled or confounded design; correlation is treated as causation without the needed counterfactual/comparison.
+mechanism_vs_evidence: A described biological mechanism (an animal or preclinical pathway) is used to imply human clinical benefit not demonstrated by the evidence. This includes animal-to-human therapeutic and preclinical-pathway-to-therapeutic leaps. A biomarker/surrogate-to-clinical gap alone is excluded from this category.
+Precedence: A specific label (correlation_vs_causation or mechanism_vs_evidence) takes precedence over generic overclaim only when its defining trigger is present and captures the core error. Do not stretch a specific definition; otherwise use overclaim. If the claim is appropriately bounded by the evidence, use solid.

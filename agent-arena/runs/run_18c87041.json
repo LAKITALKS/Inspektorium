@@ -1,0 +1,1412 @@
+{
+  "run_id": "run_18c87041",
+  "task": {
+    "id": "study-forensics-034",
+    "title": "Study Forensics: Aleniglipron GLP-1 Claim — Signal Strength vs Evidence Integrity",
+    "domain": "study_forensics",
+    "difficulty": "hard",
+    "task_type": "study_forensics",
+    "prompt": "Structure Therapeutics reported that its oral GLP-1 receptor agonist aleniglipron helped\npatients lose up to 16.3 percent of their body weight after 44 weeks in a Phase 2\nmid-stage clinical trial. Analysts described the drug as showing the highest efficacy\namong oral GLP-1 receptor agonists, with potentially comparable efficacy to injectable\nGLP-1 treatments such as those from Eli Lilly and Novo Nordisk. The company and\ncommentators noted that no weight-loss plateau had been observed at 44 weeks and\npositioned aleniglipron as a potential best-in-class oral obesity drug. Structure\nTherapeutics announced plans to begin a late-stage (Phase 3) trial in the second half\nof 2026.\n\n<!-- SOURCE TEXT PLACEHOLDER ──────────────────────────────────────────────\nPaste the exact Reuters article text (March 16, 2026) or the official\nStructure Therapeutics press release excerpt below this line.\nThe analysis should be grounded in the actual source language.\n\nNOTE: This is a Reuters-based structured excerpt, not a full article\nreproduction. The analysis should be grounded in these reported claims\nand limitations. Do not reproduce any full Reuters article in final\nreports. Use short excerpts, paraphrase, and cite Reuters.\n\nSOURCE EXCERPT — Reuters, March 16, 2026,\n\"Structure's obesity pill shows up to 16.3% weight loss in study\"\n\nReuters reported that Structure Therapeutics said its once-daily oral\nGLP-1 drug aleniglipron helped patients lose up to 16.3% of their body\nweight after 44 weeks in a mid-stage trial. Patients on the 180 mg dose\nlost up to 39 pounds compared with placebo, and the report noted that\nthere was no observed weight-loss plateau. Reuters also reported that\nStructure's shares rose after the announcement and that the company\nplanned to start a late-stage trial in the second half of 2026.\n\nThe Reuters report positioned the result in the competitive race against\nEli Lilly and Novo Nordisk, whose injectable GLP-1 drugs dominate the\nobesity market. It also described market momentum shifting toward oral\ntreatments that may be easier to produce and more acceptable to patients\nwho prefer to avoid injections.\n\nThe article reported analyst reactions around tolerability,\ndiscontinuation, vomiting rates, and potential best-in-class positioning.\nIt stated that at least three analysts said aleniglipron showed potential\nbest-in-class weight loss compared with the roughly 12% weight loss\nreported for Eli Lilly's oral GLP-1 drug orforglipron. The report also\nquoted analyst language describing the aleniglipron weight-loss benefits\nas among the highest achieved by an oral GLP-1 therapy and potentially\ncomparable to injectable formulations.\n\nKnown limitations for this case:\n* The Reuters article is a secondary news report, not the full\n  clinical-trial publication.\n* The aleniglipron data described are mid-stage / Phase 2 data.\n* Comparisons to Lilly, Novo Nordisk, oral GLP-1 drugs, and injectable\n  GLP-1 formulations are indirect cross-trial or market-context\n  comparisons, not direct head-to-head evidence.\n* \"Potential best-in-class\" and \"potentially comparable to injectables\"\n  are positioning phrases that should be evaluated separately from the\n  underlying clinical signal.\n\n──────────────────────────────────────────────────────────────────────── -->\n\nEvaluate the following central claim:\n\"Structure Therapeutics' oral GLP-1 drug aleniglipron showed up to 16.3% weight loss\nafter 44 weeks in a mid-stage trial and is being positioned as having potential\nbest-in-class efficacy among oral GLP-1 drugs, with efficacy potentially comparable\nto injectable GLP-1 treatments.\"\n\nSubclaims to evaluate:\n\nA. \"highest efficacy among oral GLP-1 receptor agonists\"\n   Is this supported by direct head-to-head evidence, or does it rely on indirect\n   cross-trial comparison?\n\nB. \"potentially comparable efficacy to injectable GLP-1 treatments\"\n   Is comparison to injectable GLP-1 drugs justified by the available evidence, or is\n   this an evidential overextension?\n\nC. \"potential best-in-class\"\n   Does Phase 2 / mid-stage evidence support best-in-class positioning, or does this\n   language exceed the maturity level of the evidence?\n\nD. \"no weight-loss plateau observed\"\n   Is absence of a plateau after 44 weeks a confirmed advantage, or also an unresolved\n   uncertainty about final effect size and durability?\n\nFor each subclaim provide: verdict, evidence strength, overclaim risk, and reasoning.\n\nRequired analysis dimensions:\n- evidence support\n- overclaim detection\n- cross-trial comparison risk\n- phase/maturity mismatch\n- hedge language analysis (especially \"potentially\")\n- market/readiness language vs clinical evidence\n- distinction between strong clinical signal and overextended commercial positioning\n",
+    "context": "Strong Phase 2 signal for an oral GLP-1 drug in the obesity space. The clinical result\n(16.3% weight loss at 44 weeks) is a genuinely noteworthy data point. However, the\nsurrounding communication layers on cross-trial comparisons to injectables, best-in-class\npositioning, and absence-of-plateau narratives that go beyond what a single mid-stage\ntrial can support. This is a case where the data is real but the framing exceeds the\nevidence maturity. The hedge word \"potentially\" is used heavily but may not adequately\nconstrain the implied claims.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The Phase 2 result of 16.3% weight loss at 44 weeks is a strong clinical signal for\nan oral GLP-1 drug. However, the communication overextends from this mid-stage data\nin several ways: (1) best-in-class claims rely on indirect cross-trial comparison, not\nhead-to-head evidence; (2) comparisons to injectable GLP-1 drugs are premature without\ndirect comparator trials; (3) Phase 2 data cannot support best-in-class positioning —\nthat requires Phase 3 confirmation; (4) absence of a plateau is an observation, not a\nconfirmed advantage, and the final effect size remains unknown. The hedge word\n\"potentially\" provides some linguistic qualification but the overall framing creates a\nstronger impression than the evidence warrants. Verdict: solid clinical signal, but\ncommunication overextends from Phase 2 data toward class-leading / market-readiness\npositioning.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "cross-trial comparison",
+        "variants": [
+          "indirect comparison",
+          "head-to-head",
+          "no comparator trial",
+          "across trials"
+        ],
+        "functional_descriptions": [
+          "best-in-class and injectable-comparability claims rely on cross-trial inference, not direct evidence"
+        ]
+      },
+      {
+        "keyword": "phase maturity",
+        "variants": [
+          "Phase 2",
+          "mid-stage",
+          "Phase 3 needed",
+          "not confirmed"
+        ],
+        "functional_descriptions": [
+          "Phase 2 data cannot establish best-in-class positioning or market readiness"
+        ]
+      },
+      {
+        "keyword": "hedge language",
+        "variants": [
+          "potentially",
+          "potential",
+          "may",
+          "could"
+        ],
+        "functional_descriptions": [
+          "hedge words are present but may be insufficient to constrain the overall framing"
+        ]
+      },
+      {
+        "keyword": "no plateau",
+        "variants": [
+          "absence of plateau",
+          "weight loss continued",
+          "no leveling off"
+        ],
+        "functional_descriptions": [
+          "lack of plateau is an observation, not a confirmed durability advantage"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting the claim because the clinical data is genuinely impressive",
+      "treating hedge words as sufficient to prevent overclaim",
+      "missing the cross-trial comparison problem",
+      "confusing strong Phase 2 signal with Phase 3 confirmation"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "phase_maturity_overreach",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "accepting_hedged_overclaim",
+      "missing_phase_maturity_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth",
+      "hedge_detection"
+    ],
+    "diagnostic_focus": "Can the agent distinguish a strong clinical signal from overextended market positioning in pharma communication?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Aleniglipron showed 16.3% weight loss at 44 weeks in Phase 2, a strong oral GLP-1\nsignal. Communication overextends via indirect cross-trial comparisons, best-in-class\npositioning, and injectable-comparability claims that exceed Phase 2 evidence maturity.\nHedge language is present but insufficient to contain the implied positioning.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "high"
+      },
+      {
+        "finding": "cross_trial_comparison_without_head_to_head",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "phase_maturity_mismatch",
+        "severity": "moderate",
+        "confidence": "high"
+      },
+      {
+        "finding": "hedge_language_insufficient",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "showing the highest efficacy among oral GLP-1 receptor agonists",
+        "why_it_matters": "Best-in-class claim based on indirect cross-trial comparison, not head-to-head evidence.",
+        "supports_finding": "cross_trial_comparison_without_head_to_head"
+      },
+      {
+        "span": "with potentially comparable efficacy to injectable GLP-1 treatments",
+        "why_it_matters": "Comparison to injectables without direct comparator data; hedge word 'potentially' present but overall framing implies near-parity.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "potential best-in-class oral obesity drug",
+        "why_it_matters": "Best-in-class positioning from Phase 2 data, which cannot establish class leadership without Phase 3 confirmation.",
+        "supports_finding": "phase_maturity_mismatch"
+      },
+      {
+        "span": "no weight-loss plateau had been observed at 44 weeks",
+        "why_it_matters": "Absence of plateau treated as advantage rather than open question about final effect size and durability.",
+        "supports_finding": "unsupported_generalization"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The underlying data (16.3% weight loss at 44 weeks, oral formulation) represents a\ngenuinely strong Phase 2 signal. However, multiple layers of communication exceed the\nevidence maturity:\n- Best-in-class positioning from a single Phase 2 arm without head-to-head comparisons\n- Cross-trial comparisons to injectables without direct comparator evidence\n- Phase 2 data used to support claims that require Phase 3 confirmation\n- No-plateau narrative treated as an advantage rather than an open question\nThe hedge \"potentially\" is present but insufficient to prevent overclaim because the\noverall framing and analyst language imply near-certainty about competitive positioning.\nThis is a phase-maturity overclaim: the signal is real, but the positioning language\noutpaces what a mid-stage trial can establish.\n",
+    "gold_alternative_reading": "A more generous reading would note that the hedge word \"potentially\" appears throughout,\nthat analysts (not the company) may be driving the strongest comparative language, and\nthat the 16.3% result is genuinely unprecedented for an oral GLP-1 drug. Under this\nreading the communication is optimistic but adequately hedged. However, the cumulative\neffect of best-in-class + comparable-to-injectables + no-plateau framing still exceeds\nPhase 2 evidence maturity, even with hedges.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Showcase case for pharma/biotech claim forensics. Tests whether agents can distinguish\nbetween a genuinely strong clinical signal and overextended market positioning.\nKey challenge: the data is real and impressive, so the overclaim is subtle — it lives\nin the framing and comparison language, not in fabricated results.\nSource: Reuters report, March 16, 2026. Source text should be pasted into the\nplaceholder section of the prompt before running.\nParallel to Case032 (cholesterol drug biomarker) in the pharma overclaim space, but\nwith a more complex hedge-language dimension and cross-trial comparison trap.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"evidence_tier\": \"limited_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The Phase 2 trial was adequately powered and controlled (standard assumption for mid-stage trials)\",\n    \"The 16.3% weight loss figure is the maximum observed in the treatment arm, not a mean or median\",\n    \"Comparisons to other oral GLP-1 drugs (orforglipron ~12%) and injectables are indirect cross-trial comparisons, not head-to-head\",\n    \"The Reuters report accurately reflects Structure Therapeutics' press release and analyst commentary\",\n    \"No major safety signals or discontinuation issues are being hidden (though the report mentions these were discussed by analysts)\",\n    \"The 44-week timepoint is interim; Phase 3 will extend follow-up\"\n  ],\n  \"steps\": [\n    \"EVIDENCE TIER IDENTIFICATION: This is a Phase 2 mid-stage clinical trial in humans. Phase 2 trials are typically small (50–300 patients), designed to assess efficacy signal and safety, and are NOT powered to establish superiority or best-in-class status. Evidence tier = limited_human.\",\n    \"CONCLUSION TIER IDENTIFICATION: The text implies therapeutic benefit for obesity treatment in a general patient population and positions the drug as a competitive leader ('best-in-class,' 'highest efficacy'). Conclusion tier = human_therapeutic (with market/competitive framing).\",\n    \"BRIDGE STEP ANALYSIS: The text bridges from Phase 2 data to best-in-class and injectable-comparable claims. This is a significant leap. Phase 2 is designed to detect signal, not to establish superiority. Best-in-class claims require Phase 3 data, head-to-head comparisons, or meta-analytic evidence.\",\n    \"SUBCLAIM A — 'Highest efficacy among oral GLP-1 receptor agonists': The evidence is indirect cross-trial comparison (aleniglipron 16.3% vs. orforglipron ~12%). Cross-trial comparisons are confounded by differences in patient populations, trial design, dosing schedules, and endpoints. No head-to-head trial is cited. Analysts made this claim, but analyst opinion is not clinical evidence. VERDICT: Unsupported by direct evidence; relies on indirect comparison and analyst positioning.\",\n    \"SUBCLAIM B — 'Potentially comparable efficacy to injectable GLP-1 treatments': Injectable GLP-1 drugs (semaglutide, tirzepatide) achieve ~20–22% weight loss in Phase 3 trials. Aleniglipron achieved 16.3% in Phase 2. The gap is ~4–6 percentage points. The word 'potentially' hedges the claim, but the comparison itself is premature: (1) Phase 2 vs. Phase 3 data are not directly comparable; (2) no head-to-head trial exists; (3) Phase 3 results for aleniglipron are unknown. The claim implies therapeutic parity before Phase 3 evidence. VERDICT: Overclaimed. The hedge 'potentially' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The comparison is presented as a competitive positioning claim, not a hypothesis.\",\n    \"SUBCLAIM C — 'Potential best-in-class': Best-in-class status is a regulatory and clinical designation that requires Phase 3 data, ideally head-to-head comparisons, and FDA approval. Phase 2 data cannot support best-in-class positioning, even with the hedge 'potential.' The phrase is market-facing language used to drive investor and analyst interest. VERDICT: Overclaimed. Phase 2 evidence does not support best-in-class positioning, even prospectively.\",\n    \"SUBCLAIM D — 'No weight-loss plateau observed at 44 weeks': This is a factual observation from the trial. However, the implication is that weight loss may continue beyond 44 weeks, which is speculative. Phase 2 trials are short; durability and final effect size are unknown. The absence of a plateau at 44 weeks is not an advantage until Phase 3 data show sustained or continued weight loss. The claim is presented as a positive signal, but it is an unresolved uncertainty. VERDICT: Partially supported as observation; overclaimed as advantage.\",\n    \"HEDGE LANGUAGE ANALYSIS: The text uses 'potentially' and 'could' in analyst quotes, but these hedges are applied to comparative claims ('potentially comparable,' 'potential best-in-class'), not to the underlying efficacy signal. The 16.3% weight loss is stated as fact (correct), but the competitive positioning is hedged while still being actively promoted. This is decorative uncertainty: the hedges acknowledge the gap but do not prevent the text from selling the drug as a competitive leader.\",\n    \"MARKET/READINESS LANGUAGE VS. CLINICAL EVIDENCE: The text emphasizes 'highest efficacy,' 'best-in-class,' 'comparable to injectables,' and 'no plateau'—all market-facing language designed to position aleniglipron as a breakthrough. These claims are made by Structure Therapeutics and analysts, not by independent clinical reviewers. The language is promotional, not analytical.\",\n    \"PHASE/MATURITY MISMATCH: Phase 2 trials are proof-of-concept studies. They are not designed to establish superiority, best-in-class status, or parity with approved drugs. The jump from Phase 2 to best-in-class positioning is a maturity mismatch. Phase 3 is required to validate these claims.\",\n    \"CROSS-TRIAL COMPARISON RISK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded. Different trials use different patient populations, inclusion/exclusion criteria, dosing schedules, and endpoints. The 16.3% figure for aleniglipron is the maximum observed, not necessarily the mean or the final effect size. Cross-trial comparisons are inherently weak evidence.\",\n    \"CLASSIFICATION DECISION: The primary forensic finding is OVERCLAIM. The text actively sells clinical benefit and competitive advantage ('highest efficacy,' 'best-in-class,' 'comparable to injectables') based on Phase 2 data. These claims exceed the evidence tier. The hedges ('potentially,' 'could') are present but do not resolve the overclaim; they are decorative. The text is promotional in tone and intent, not analytical. The evidence-tier mismatch is secondary to the rhetorical inflation.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"MECHANISM_VS_EVIDENCE: If the text were more cautious and analytical (e.g., 'Phase 2 data suggest a potential signal; Phase 3 will test whether aleniglipron is best-in-class'), the classification would be mechanism_vs_evidence. However, the text actively promotes competitive positioning, making overclaim the primary finding.\",\n    \"SOLID: If the text were limited to reporting the Phase 2 efficacy data (16.3% weight loss) without comparative claims or best-in-class positioning, it would be solid. However, the comparative and competitive claims push it into overclaim territory.\",\n    \"CORRELATION_VS_CAUSATION: Not applicable. The trial is randomized and controlled; causation is appropriately inferred from the design.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the Phase 2 trial was adequately powered and whether the 16.3% figure is the maximum, mean, or median weight loss (the text says 'up to 16.3%,' suggesting maximum)\",\n    \"Whether the Reuters report accurately reflects the full clinical trial data or emphasizes the most favorable findings\",\n    \"Whether Structure Therapeutics' press release or analyst commentary is the primary source of the comparative claims\",\n    \"Whether the trial included a comparator arm for an oral GLP-1 drug (e.g., orforglipron) or whether the comparison is purely cross-trial\",\n    \"What the discontinuation rate, adverse event profile, and vomiting rates were (the text mentions these were discussed by analysts but does not provide details)\",\n    \"Whether Phase 3 trial design will include head-to-head comparisons to injectable GLP-1 drugs or other oral GLP-1 drugs\"\n  ],\n  \"key_claims\": [\n    \"OVERCLAIM FINDING: The text positions aleniglipron as 'highest efficacy among oral GLP-1 receptor agonists' and 'potentially comparable to injectable GLP-1 treatments' based on Phase 2 data. These are best-in-class and competitive parity claims that require Phase 3 evidence and head-to-head comparisons. Phase 2 data alone do not support such positioning.\",\n    \"HEDGE LANGUAGE IS DECORATIVE: The use of 'potentially' and 'could' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The hedges are applied to comparative claims while the underlying efficacy signal is stated as fact. This is a common pattern in promotional reporting: hedging the leap while still making the leap.\",\n    \"CROSS-TRIAL COMPARISON IS WEAK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded by trial design, patient population, and dosing differences. The 16.3% figure is the maximum observed, not a mean or final effect size. These comparisons do not constitute evidence of superiority.\",\n    \"PHASE/MATURITY MISMATCH: Best-in-class positioning is premature for a Phase 2 drug. Phase 3 is required to validate efficacy, durability, and safety. The text conflates a positive Phase 2 signal with competitive leadership.\",\n    \"MARKET-FACING LANGUAGE: The text emphasizes investor-relevant claims ('highest efficacy,' 'best-in-class,' 'no plateau') rather than clinical caveats. This is promotional reporting, not analytical reporting.\"\n  ],\n  \"self_check\": [\n    \"Did I correctly identify the evidence tier? Yes. Phase 2 is a limited human trial, not a full clinical trial (Phase 3/4 or meta-analysis).\",\n    \"Did I correctly identify the conclusion tier? Yes. The text implies therapeutic benefit and competitive advantage for obesity treatment in a general patient population.\",\n    \"Did I correctly assess the bridge step? Yes. The text bridges from Phase 2 data to best-in-class and injectable-comparable claims without Phase 3 evidence or head-to-head data.\",\n    \"Did I apply the PRIORITY RULE correctly? Yes. The text actively sells clinical benefit and competitive advantage using promotional language ('highest efficacy,' 'best-in-class,' 'potentially comparable'). This is rhetorical inflation, not just an evidence-tier mismatch. Overclaim is the correct classification.\",\n    \"Did I overweight the hedges? No. I correctly identified that 'potentially' and 'could' are decorative hedges that do not resolve the overclaim. The hedges acknowledge uncertainty but do not prevent the text from making unsupported comparative claims.\",\n    \"Did I miss any solid aspects? No. The Phase 2 efficacy data (16.3% weight loss) are appropriately reported. The overclaim is in the comparative and best-in-class positioning, not in the underlying efficacy signal.\",\n    \"Did I conflate analyst opinion with clinical evidence? No. I correctly noted that analyst commentary is not clinical evidence and that analysts are incentivized to promote positive interpretations.\",\n    \"Did I assume confounders that are not evident? No. I noted that cross-trial comparisons are inherently confounded, which is a standard limitation of indirect comparisons, not an assumption.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## **Detailed Forensic Summary**\n\n### **Central Finding: OVERCLAIM**\n\nThe text reports a legitimate Phase 2 efficacy signal (16.3% weight loss after 44 weeks) but **actively promotes competitive positioning claims that exceed the evidence tier**. Specifically:\n\n1. **\"Highest efficacy among oral GLP-1 receptor agonists\"** — Unsupported by head-to-head evidence; relies on indirect cross-trial comparison (aleniglipron 16.3% vs. orforglipron ~12%), which is confounded by trial design differences.\n\n2. **\"Potentially comparable efficacy to injectable GLP-1 treatments\"** — Overclaimed. Phase 2 data (16.3%) vs. Phase 3 injectable data (~20–22%) are not directly comparable. The gap is ~4–6 percentage points. The hedge \"potentially\" does not resolve the evidence-tier mismatch; it merely acknowledges it while still making the claim.\n\n3. **\"Potential best-in-class\"** — Premature. Best-in-class status requires Phase 3 data, ideally head-to-head comparisons, and regulatory approval. Phase 2 cannot support best-in-class positioning, even prospectively.\n\n4. **\"No weight-loss plateau observed at 44 weeks\"** — Factually accurate but presented as an advantage without evidence of sustained or continued weight loss beyond 44 weeks. This is speculative positioning.\n\n---\n\n### **Why This Is Overclaim, Not Mechanism_vs_Evidence**\n\nThe text uses **promotional language** (\"highest efficacy,\" \"best-in-class,\" \"potentially comparable\") to actively sell competitive advantage. The hedges (\"potentially,\" \"could\") are present but **decorative**—they acknowledge uncertainty while still making unsupported claims. The primary forensic problem is **rhetorical inflation**, not just an evidence-tier mismatch. If the text were more cautious (e.g., \"Phase 2 data suggest a potential signal; Phase 3 will test whether aleniglipron is best-in-class\"), it would be mechanism_vs_evidence. But the active promotion of competitive positioning makes overclaim the correct classification.\n\n---\n\n### **Cross-Trial Comparison Risk**\n\nComparisons to orforglipron and injectable GLP-1 drugs are **indirect and confounded**:\n- Different patient populations, inclusion/exclusion criteria, and baseline characteristics\n- Different dosing schedules and trial durations\n- Different endpoints and measurement methods\n- The 16.3% figure is the **maximum observed**, not the mean or final effect size\n\nThese comparisons do not constitute evidence of superiority and should not be used to position aleniglipron as best-in-class.\n\n---\n\n### **Phase/Maturity Mismatch**\n\nPhase 2 trials are **proof-of-concept studies** designed to detect efficacy signals and assess safety. They are **not designed to establish superiority, best-in-class status, or parity with approved drugs**. The jump from Phase 2 to best-in-class positioning is a maturity mismatch. Phase 3 is required to validate these claims.\n\n---\n\n### **Hedge Language Analysis**\n\nThe text uses hedges (\"potentially,\" \"could\") but applies them to **comparative claims**, not to the underlying efficacy signal. This is a common pattern in promotional reporting:\n- **Stated as fact**: \"16.3% weight loss\" (correct)\n- **Hedged while still promoted**: \"potentially comparable to injectables,\" \"potential best-in-class\"\n\nThe hedges are **decorative**—they acknowledge the gap but do not prevent the text from selling the drug as a competitive leader.\n\n---\n\n### **Market-Facing Language**\n\nThe text emphasizes investor-relevant claims (\"highest efficacy,\" \"best-in-class,\" \"no plateau\") rather than clinical caveats. This is **promotional reporting**, not analytical reporting. The language is designed to drive investor interest and analyst upgrades, not to communicate clinical evidence accurately.\n\n---\n\n### **Confidence: 0.92**\n\nHigh confidence in the overclaim classification. The evidence-tier mismatch is clear (Phase 2 → best-in-class claims), the promotional language is evident, and the hedges are decorative. The only uncertainty is whether the Reuters report accurately reflects the full clinical trial data or emphasizes the most favorable findings, but the overclaim is present in the text as reported.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The Phase 2 trial was adequately powered and controlled (standard assumption for mid-stage trials)",
+            "The 16.3% weight loss figure is the maximum observed in the treatment arm, not a mean or median",
+            "Comparisons to other oral GLP-1 drugs (orforglipron ~12%) and injectables are indirect cross-trial comparisons, not head-to-head",
+            "The Reuters report accurately reflects Structure Therapeutics' press release and analyst commentary",
+            "No major safety signals or discontinuation issues are being hidden (though the report mentions these were discussed by analysts)",
+            "The 44-week timepoint is interim; Phase 3 will extend follow-up"
+          ],
+          "steps": [
+            "EVIDENCE TIER IDENTIFICATION: This is a Phase 2 mid-stage clinical trial in humans. Phase 2 trials are typically small (50–300 patients), designed to assess efficacy signal and safety, and are NOT powered to establish superiority or best-in-class status. Evidence tier = limited_human.",
+            "CONCLUSION TIER IDENTIFICATION: The text implies therapeutic benefit for obesity treatment in a general patient population and positions the drug as a competitive leader ('best-in-class,' 'highest efficacy'). Conclusion tier = human_therapeutic (with market/competitive framing).",
+            "BRIDGE STEP ANALYSIS: The text bridges from Phase 2 data to best-in-class and injectable-comparable claims. This is a significant leap. Phase 2 is designed to detect signal, not to establish superiority. Best-in-class claims require Phase 3 data, head-to-head comparisons, or meta-analytic evidence.",
+            "SUBCLAIM A — 'Highest efficacy among oral GLP-1 receptor agonists': The evidence is indirect cross-trial comparison (aleniglipron 16.3% vs. orforglipron ~12%). Cross-trial comparisons are confounded by differences in patient populations, trial design, dosing schedules, and endpoints. No head-to-head trial is cited. Analysts made this claim, but analyst opinion is not clinical evidence. VERDICT: Unsupported by direct evidence; relies on indirect comparison and analyst positioning.",
+            "SUBCLAIM B — 'Potentially comparable efficacy to injectable GLP-1 treatments': Injectable GLP-1 drugs (semaglutide, tirzepatide) achieve ~20–22% weight loss in Phase 3 trials. Aleniglipron achieved 16.3% in Phase 2. The gap is ~4–6 percentage points. The word 'potentially' hedges the claim, but the comparison itself is premature: (1) Phase 2 vs. Phase 3 data are not directly comparable; (2) no head-to-head trial exists; (3) Phase 3 results for aleniglipron are unknown. The claim implies therapeutic parity before Phase 3 evidence. VERDICT: Overclaimed. The hedge 'potentially' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The comparison is presented as a competitive positioning claim, not a hypothesis.",
+            "SUBCLAIM C — 'Potential best-in-class': Best-in-class status is a regulatory and clinical designation that requires Phase 3 data, ideally head-to-head comparisons, and FDA approval. Phase 2 data cannot support best-in-class positioning, even with the hedge 'potential.' The phrase is market-facing language used to drive investor and analyst interest. VERDICT: Overclaimed. Phase 2 evidence does not support best-in-class positioning, even prospectively.",
+            "SUBCLAIM D — 'No weight-loss plateau observed at 44 weeks': This is a factual observation from the trial. However, the implication is that weight loss may continue beyond 44 weeks, which is speculative. Phase 2 trials are short; durability and final effect size are unknown. The absence of a plateau at 44 weeks is not an advantage until Phase 3 data show sustained or continued weight loss. The claim is presented as a positive signal, but it is an unresolved uncertainty. VERDICT: Partially supported as observation; overclaimed as advantage.",
+            "HEDGE LANGUAGE ANALYSIS: The text uses 'potentially' and 'could' in analyst quotes, but these hedges are applied to comparative claims ('potentially comparable,' 'potential best-in-class'), not to the underlying efficacy signal. The 16.3% weight loss is stated as fact (correct), but the competitive positioning is hedged while still being actively promoted. This is decorative uncertainty: the hedges acknowledge the gap but do not prevent the text from selling the drug as a competitive leader.",
+            "MARKET/READINESS LANGUAGE VS. CLINICAL EVIDENCE: The text emphasizes 'highest efficacy,' 'best-in-class,' 'comparable to injectables,' and 'no plateau'—all market-facing language designed to position aleniglipron as a breakthrough. These claims are made by Structure Therapeutics and analysts, not by independent clinical reviewers. The language is promotional, not analytical.",
+            "PHASE/MATURITY MISMATCH: Phase 2 trials are proof-of-concept studies. They are not designed to establish superiority, best-in-class status, or parity with approved drugs. The jump from Phase 2 to best-in-class positioning is a maturity mismatch. Phase 3 is required to validate these claims.",
+            "CROSS-TRIAL COMPARISON RISK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded. Different trials use different patient populations, inclusion/exclusion criteria, dosing schedules, and endpoints. The 16.3% figure for aleniglipron is the maximum observed, not necessarily the mean or the final effect size. Cross-trial comparisons are inherently weak evidence.",
+            "CLASSIFICATION DECISION: The primary forensic finding is OVERCLAIM. The text actively sells clinical benefit and competitive advantage ('highest efficacy,' 'best-in-class,' 'comparable to injectables') based on Phase 2 data. These claims exceed the evidence tier. The hedges ('potentially,' 'could') are present but do not resolve the overclaim; they are decorative. The text is promotional in tone and intent, not analytical. The evidence-tier mismatch is secondary to the rhetorical inflation."
+          ],
+          "alternative_hypotheses": [
+            "MECHANISM_VS_EVIDENCE: If the text were more cautious and analytical (e.g., 'Phase 2 data suggest a potential signal; Phase 3 will test whether aleniglipron is best-in-class'), the classification would be mechanism_vs_evidence. However, the text actively promotes competitive positioning, making overclaim the primary finding.",
+            "SOLID: If the text were limited to reporting the Phase 2 efficacy data (16.3% weight loss) without comparative claims or best-in-class positioning, it would be solid. However, the comparative and competitive claims push it into overclaim territory.",
+            "CORRELATION_VS_CAUSATION: Not applicable. The trial is randomized and controlled; causation is appropriately inferred from the design."
+          ],
+          "uncertainties": [
+            "Whether the Phase 2 trial was adequately powered and whether the 16.3% figure is the maximum, mean, or median weight loss (the text says 'up to 16.3%,' suggesting maximum)",
+            "Whether the Reuters report accurately reflects the full clinical trial data or emphasizes the most favorable findings",
+            "Whether Structure Therapeutics' press release or analyst commentary is the primary source of the comparative claims",
+            "Whether the trial included a comparator arm for an oral GLP-1 drug (e.g., orforglipron) or whether the comparison is purely cross-trial",
+            "What the discontinuation rate, adverse event profile, and vomiting rates were (the text mentions these were discussed by analysts but does not provide details)",
+            "Whether Phase 3 trial design will include head-to-head comparisons to injectable GLP-1 drugs or other oral GLP-1 drugs"
+          ],
+          "self_check": [
+            "Did I correctly identify the evidence tier? Yes. Phase 2 is a limited human trial, not a full clinical trial (Phase 3/4 or meta-analysis).",
+            "Did I correctly identify the conclusion tier? Yes. The text implies therapeutic benefit and competitive advantage for obesity treatment in a general patient population.",
+            "Did I correctly assess the bridge step? Yes. The text bridges from Phase 2 data to best-in-class and injectable-comparable claims without Phase 3 evidence or head-to-head data.",
+            "Did I apply the PRIORITY RULE correctly? Yes. The text actively sells clinical benefit and competitive advantage using promotional language ('highest efficacy,' 'best-in-class,' 'potentially comparable'). This is rhetorical inflation, not just an evidence-tier mismatch. Overclaim is the correct classification.",
+            "Did I overweight the hedges? No. I correctly identified that 'potentially' and 'could' are decorative hedges that do not resolve the overclaim. The hedges acknowledge uncertainty but do not prevent the text from making unsupported comparative claims.",
+            "Did I miss any solid aspects? No. The Phase 2 efficacy data (16.3% weight loss) are appropriately reported. The overclaim is in the comparative and best-in-class positioning, not in the underlying efficacy signal.",
+            "Did I conflate analyst opinion with clinical evidence? No. I correctly noted that analyst commentary is not clinical evidence and that analysts are incentivized to promote positive interpretations.",
+            "Did I assume confounders that are not evident? No. I noted that cross-trial comparisons are inherently confounded, which is a standard limitation of indirect comparisons, not an assumption."
+          ],
+          "key_claims": [
+            "OVERCLAIM FINDING: The text positions aleniglipron as 'highest efficacy among oral GLP-1 receptor agonists' and 'potentially comparable to injectable GLP-1 treatments' based on Phase 2 data. These are best-in-class and competitive parity claims that require Phase 3 evidence and head-to-head comparisons. Phase 2 data alone do not support such positioning.",
+            "HEDGE LANGUAGE IS DECORATIVE: The use of 'potentially' and 'could' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The hedges are applied to comparative claims while the underlying efficacy signal is stated as fact. This is a common pattern in promotional reporting: hedging the leap while still making the leap.",
+            "CROSS-TRIAL COMPARISON IS WEAK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded by trial design, patient population, and dosing differences. The 16.3% figure is the maximum observed, not a mean or final effect size. These comparisons do not constitute evidence of superiority.",
+            "PHASE/MATURITY MISMATCH: Best-in-class positioning is premature for a Phase 2 drug. Phase 3 is required to validate efficacy, durability, and safety. The text conflates a positive Phase 2 signal with competitive leadership.",
+            "MARKET-FACING LANGUAGE: The text emphasizes investor-relevant claims ('highest efficacy,' 'best-in-class,' 'no plateau') rather than clinical caveats. This is promotional reporting, not analytical reporting."
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 34483
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.15,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.6200000000000001,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 1.0,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.7
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.15,
+          "weight": 8,
+          "weighted_score": 1.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 12",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "SUBCLAIM B — 'Potentially comparable efficacy to injectable GLP-1 treatments': Injectable GLP-1 drugs (semaglutide, tirzepatide) achieve ~20–22% weigh",
+              "source_field": "steps[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "12 reasoning steps",
+            "Low step utility: 0/12 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.72)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.6200000000000001,
+          "weight": 6,
+          "weighted_score": 3.7,
+          "evidence": [
+            {
+              "text": "No major safety signals or discontinuation issues are being hidden (though the report mentions these were discussed by analysts)",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Comparisons to other oral GLP-1 drugs (orforglipron ~12%) and injectables are indirect cross-trial comparisons, not head-to-head",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6/6 substantive assumptions",
+            "Many assumptions (6)",
+            "1 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether the Phase 2 trial was adequately powered and whether the 16.3% figure is the maximum, mean, or median weight loss (the text says 'up to 16.3%,' suggesting maximum)",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "What the discontinuation rate, adverse event profile, and vomiting rates were (the text mentions these were discussed by analysts but does not provide details)",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 uncertainties (6 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "MECHANISM_VS_EVIDENCE: If the text were more cautious and analytical (e.g., 'Phase 2 data suggest a potential signal; Phase 3 will test whether aleniglipron is best-in-class'), the classification woul",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 alternative hypotheses considered",
+            "3/3 include rejection reasoning",
+            "3/3 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "Did I apply the PRIORITY RULE correctly? Yes. The text actively sells clinical benefit and competitive advantage using promotional language ('highest efficacy,' 'best-in-class,' 'potentially comparabl",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 self-check items",
+            "Self-check quality: 0 deep, 8 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.7,
+          "weight": 10,
+          "weighted_score": 7.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 1467 words",
+            "Verbose (1467 words)"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "ts': the evidence is indirect cross-trial comparison (aleniglipron 16.3% vs. orfor",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'cross-trial comparison' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "on; overclaimed as advantage. hedge language analysis: the text uses 'pote",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'hedge language' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "parable to injectables,' and 'no plateau'—all market-facing language d",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no plateau' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 4 full / 4"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'No major safety signals or discontinuation issues are being ...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "No major safety signals or discontinuation issues are being hidden (though the report mentions these were discussed by analysts)",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'What the discontinuation rate, adverse event profile, and vo...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "What the discontinuation rate, adverse event profile, and vomiting rates were (the text mentions these were discussed by analysts but does not provide details)",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "oververbose_without_gain",
+          "severity": "stylistic",
+          "description": "Output is verbose (1467 words, density 0.71)",
+          "evidence": [
+            {
+              "text": "1467 words, density 0.71",
+              "source_field": "(computed)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Length/density metrics",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "communication_efficiency",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "major",
+          "description": "Missed expected finding: cross_trial_comparison_without_head_to_head",
+          "evidence": [
+            {
+              "text": "Expected: cross_trial_comparison_without_head_to_head",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'cross_trial_comparison_without_head_to_head' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: phase_maturity_mismatch",
+          "evidence": [
+            {
+              "text": "Expected: phase_maturity_mismatch",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'phase_maturity_mismatch' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: hedge_language_insufficient",
+          "evidence": [
+            {
+              "text": "Expected: hedge_language_insufficient",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'hedge_language_insufficient' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/32 content words)",
+          "evidence": [
+            {
+              "text": "OVERCLAIM FINDING: The text positions aleniglipron as 'highest efficacy among oral GLP-1 receptor agonists' and 'potentially comparable to injectable GLP-1 treatments' based on Phase 2 data. These are best-in-class and competitive parity claims that require Phase 3 evidence and head-to-head comparisons. Phase 2 data alone do not support such positioning.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/28 content words)",
+          "evidence": [
+            {
+              "text": "HEDGE LANGUAGE IS DECORATIVE: The use of 'potentially' and 'could' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The hedges are applied to comparative claims while the underlying efficacy signal is stated as fact. This is a common pattern in promotional reporting: hedging the leap while still making the leap.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/27 content words)",
+          "evidence": [
+            {
+              "text": "CROSS-TRIAL COMPARISON IS WEAK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded by trial design, patient population, and dosing differences. The 16.3% figure is the maximum observed, not a mean or final effect size. These comparisons do not constitute evidence of superiority.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/19 content words)",
+          "evidence": [
+            {
+              "text": "PHASE/MATURITY MISMATCH: Best-in-class positioning is premature for a Phase 2 drug. Phase 3 is required to validate efficacy, durability, and safety. The text conflates a positive Phase 2 signal with competitive leadership.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/17 content words)",
+          "evidence": [
+            {
+              "text": "MARKET-FACING LANGUAGE: The text emphasizes investor-relevant claims ('highest efficacy,' 'best-in-class,' 'no plateau') rather than clinical caveats. This is promotional reporting, not analytical reporting.",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The Phase 2 trial was adequately powered and controlled (standard assumption for mid-stage trials)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 16.3% weight loss figure is the maximum observed in the treatment arm, not a mean or median",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Comparisons to other oral GLP-1 drugs (orforglipron ~12%) and injectables are indirect cross-trial comparisons, not head-to-head",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The Reuters report accurately reflects Structure Therapeutics' press release and analyst commentary",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No major safety signals or discontinuation issues are being hidden (though the report mentions these were discussed by analysts)",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The 44-week timepoint is interim; Phase 3 will extend follow-up",
+            "source_field": "assumptions[5]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "EVIDENCE TIER IDENTIFICATION: This is a Phase 2 mid-stage clinical trial in humans. Phase 2 trials are typically small (50–300 patients), designed to assess efficacy signal and safety, and are NOT powered to establish superiority or best-in-class status. Evidence tier = limited_human.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CONCLUSION TIER IDENTIFICATION: The text implies therapeutic benefit for obesity treatment in a general patient population and positions the drug as a competitive leader ('best-in-class,' 'highest efficacy'). Conclusion tier = human_therapeutic (with market/competitive framing).",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "BRIDGE STEP ANALYSIS: The text bridges from Phase 2 data to best-in-class and injectable-comparable claims. This is a significant leap. Phase 2 is designed to detect signal, not to establish superiority. Best-in-class claims require Phase 3 data, head-to-head comparisons, or meta-analytic evidence.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SUBCLAIM A — 'Highest efficacy among oral GLP-1 receptor agonists': The evidence is indirect cross-trial comparison (aleniglipron 16.3% vs. orforglipron ~12%). Cross-trial comparisons are confounded by differences in patient populations, trial design, dosing schedules, and endpoints. No head-to-head trial is cited. Analysts made this claim, but analyst opinion is not clinical evidence. VERDICT: Unsupported by direct evidence; relies on indirect comparison and analyst positioning.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SUBCLAIM B — 'Potentially comparable efficacy to injectable GLP-1 treatments': Injectable GLP-1 drugs (semaglutide, tirzepatide) achieve ~20–22% weight loss in Phase 3 trials. Aleniglipron achieved 16.3% in Phase 2. The gap is ~4–6 percentage points. The word 'potentially' hedges the claim, but the comparison itself is premature: (1) Phase 2 vs. Phase 3 data are not directly comparable; (2) no head-to-head trial exists; (3) Phase 3 results for aleniglipron are unknown. The claim implies therapeutic parity before Phase 3 evidence. VERDICT: Overclaimed. The hedge 'potentially' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The comparison is presented as a competitive positioning claim, not a hypothesis.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SUBCLAIM C — 'Potential best-in-class': Best-in-class status is a regulatory and clinical designation that requires Phase 3 data, ideally head-to-head comparisons, and FDA approval. Phase 2 data cannot support best-in-class positioning, even with the hedge 'potential.' The phrase is market-facing language used to drive investor and analyst interest. VERDICT: Overclaimed. Phase 2 evidence does not support best-in-class positioning, even prospectively.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SUBCLAIM D — 'No weight-loss plateau observed at 44 weeks': This is a factual observation from the trial. However, the implication is that weight loss may continue beyond 44 weeks, which is speculative. Phase 2 trials are short; durability and final effect size are unknown. The absence of a plateau at 44 weeks is not an advantage until Phase 3 data show sustained or continued weight loss. The claim is presented as a positive signal, but it is an unresolved uncertainty. VERDICT: Partially supported as observation; overclaimed as advantage.",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "HEDGE LANGUAGE ANALYSIS: The text uses 'potentially' and 'could' in analyst quotes, but these hedges are applied to comparative claims ('potentially comparable,' 'potential best-in-class'), not to the underlying efficacy signal. The 16.3% weight loss is stated as fact (correct), but the competitive positioning is hedged while still being actively promoted. This is decorative uncertainty: the hedges acknowledge the gap but do not prevent the text from selling the drug as a competitive leader.",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "MARKET/READINESS LANGUAGE VS. CLINICAL EVIDENCE: The text emphasizes 'highest efficacy,' 'best-in-class,' 'comparable to injectables,' and 'no plateau'—all market-facing language designed to position aleniglipron as a breakthrough. These claims are made by Structure Therapeutics and analysts, not by independent clinical reviewers. The language is promotional, not analytical.",
+            "source_field": "steps[8]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "PHASE/MATURITY MISMATCH: Phase 2 trials are proof-of-concept studies. They are not designed to establish superiority, best-in-class status, or parity with approved drugs. The jump from Phase 2 to best-in-class positioning is a maturity mismatch. Phase 3 is required to validate these claims.",
+            "source_field": "steps[9]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CROSS-TRIAL COMPARISON RISK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded. Different trials use different patient populations, inclusion/exclusion criteria, dosing schedules, and endpoints. The 16.3% figure for aleniglipron is the maximum observed, not necessarily the mean or the final effect size. Cross-trial comparisons are inherently weak evidence.",
+            "source_field": "steps[10]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CLASSIFICATION DECISION: The primary forensic finding is OVERCLAIM. The text actively sells clinical benefit and competitive advantage ('highest efficacy,' 'best-in-class,' 'comparable to injectables') based on Phase 2 data. These claims exceed the evidence tier. The hedges ('potentially,' 'could') are present but do not resolve the overclaim; they are decorative. The text is promotional in tone and intent, not analytical. The evidence-tier mismatch is secondary to the rhetorical inflation.",
+            "source_field": "steps[11]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "OVERCLAIM FINDING: The text positions aleniglipron as 'highest efficacy among oral GLP-1 receptor agonists' and 'potentially comparable to injectable GLP-1 treatments' based on Phase 2 data. These are best-in-class and competitive parity claims that require Phase 3 evidence and head-to-head comparisons. Phase 2 data alone do not support such positioning.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "HEDGE LANGUAGE IS DECORATIVE: The use of 'potentially' and 'could' acknowledges uncertainty but does not resolve the evidence-tier mismatch. The hedges are applied to comparative claims while the underlying efficacy signal is stated as fact. This is a common pattern in promotional reporting: hedging the leap while still making the leap.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CROSS-TRIAL COMPARISON IS WEAK: Comparisons to orforglipron (~12%) and injectables (~20–22%) are indirect and confounded by trial design, patient population, and dosing differences. The 16.3% figure is the maximum observed, not a mean or final effect size. These comparisons do not constitute evidence of superiority.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "PHASE/MATURITY MISMATCH: Best-in-class positioning is premature for a Phase 2 drug. Phase 3 is required to validate efficacy, durability, and safety. The text conflates a positive Phase 2 signal with competitive leadership.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "MARKET-FACING LANGUAGE: The text emphasizes investor-relevant claims ('highest efficacy,' 'best-in-class,' 'no plateau') rather than clinical caveats. This is promotional reporting, not analytical reporting.",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "MECHANISM_VS_EVIDENCE: If the text were more cautious and analytical (e.g., 'Phase 2 data suggest a potential signal; Phase 3 will test whether aleniglipron is best-in-class'), the classification would be mechanism_vs_evidence. However, the text actively promotes competitive positioning, making overclaim the primary finding.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "SOLID: If the text were limited to reporting the Phase 2 efficacy data (16.3% weight loss) without comparative claims or best-in-class positioning, it would be solid. However, the comparative and competitive claims push it into overclaim territory.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "CORRELATION_VS_CAUSATION: Not applicable. The trial is randomized and controlled; causation is appropriately inferred from the design.",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the Phase 2 trial was adequately powered and whether the 16.3% figure is the maximum, mean, or median weight loss (the text says 'up to 16.3%,' suggesting maximum)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the Reuters report accurately reflects the full clinical trial data or emphasizes the most favorable findings",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether Structure Therapeutics' press release or analyst commentary is the primary source of the comparative claims",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the trial included a comparator arm for an oral GLP-1 drug (e.g., orforglipron) or whether the comparison is purely cross-trial",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "What the discontinuation rate, adverse event profile, and vomiting rates were (the text mentions these were discussed by analysts but does not provide details)",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether Phase 3 trial design will include head-to-head comparisons to injectable GLP-1 drugs or other oral GLP-1 drugs",
+            "source_field": "uncertainties[5]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I correctly identify the evidence tier? Yes. Phase 2 is a limited human trial, not a full clinical trial (Phase 3/4 or meta-analysis).",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly identify the conclusion tier? Yes. The text implies therapeutic benefit and competitive advantage for obesity treatment in a general patient population.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I correctly assess the bridge step? Yes. The text bridges from Phase 2 data to best-in-class and injectable-comparable claims without Phase 3 evidence or head-to-head data.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I apply the PRIORITY RULE correctly? Yes. The text actively sells clinical benefit and competitive advantage using promotional language ('highest efficacy,' 'best-in-class,' 'potentially comparable'). This is rhetorical inflation, not just an evidence-tier mismatch. Overclaim is the correct classification.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I overweight the hedges? No. I correctly identified that 'potentially' and 'could' are decorative hedges that do not resolve the overclaim. The hedges acknowledge uncertainty but do not prevent the text from making unsupported comparative claims.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any solid aspects? No. The Phase 2 efficacy data (16.3% weight loss) are appropriately reported. The overclaim is in the comparative and best-in-class positioning, not in the underlying efficacy signal.",
+            "source_field": "self_check[5]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I conflate analyst opinion with clinical evidence? No. I correctly noted that analyst commentary is not clinical evidence and that analysts are incentivized to promote positive interpretations.",
+            "source_field": "self_check[6]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I assume confounders that are not evident? No. I noted that cross-trial comparisons are inherently confounded, which is a standard limitation of indirect comparisons, not an assumption.",
+            "source_field": "self_check[7]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.4444444444444444
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 12,
+            "relation": "assumes",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 13,
+            "relation": "assumes",
+            "strength": 0.3
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 16,
+            "relation": "assumes",
+            "strength": 0.4
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.5454545454545454
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 16,
+            "relation": "assumes",
+            "strength": 0.36363636363636365
+          },
+          {
+            "source_idx": 32,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 33,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.625
+          },
+          {
+            "source_idx": 33,
+            "target_idx": 17,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 34,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 34,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.5625
+          },
+          {
+            "source_idx": 34,
+            "target_idx": 11,
+            "relation": "checks",
+            "strength": 0.3125
+          },
+          {
+            "source_idx": 34,
+            "target_idx": 17,
+            "relation": "checks",
+            "strength": 0.3125
+          },
+          {
+            "source_idx": 35,
+            "target_idx": 17,
+            "relation": "checks",
+            "strength": 0.48148148148148145
+          },
+          {
+            "source_idx": 36,
+            "target_idx": 13,
+            "relation": "checks",
+            "strength": 0.4444444444444444
+          },
+          {
+            "source_idx": 37,
+            "target_idx": 13,
+            "relation": "checks",
+            "strength": 0.29411764705882354
+          },
+          {
+            "source_idx": 38,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.35714285714285715
+          },
+          {
+            "source_idx": 39,
+            "target_idx": 16,
+            "relation": "checks",
+            "strength": 0.3076923076923077
+          }
+        ],
+        "unused_assumptions": [
+          4
+        ],
+        "unaddressed_uncertainties": [
+          30
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'overclaim...' <- step 18 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "cross_trial_comparison_without_head_to_head",
+          "phase_maturity_mismatch",
+          "hedge_language_insufficient"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [
+          "unsupported_generalization",
+          "cross_trial_comparison_without_head_to_head",
+          "phase_maturity_mismatch",
+          "hedge_language_insufficient"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.2,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.2,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unused_assumption",
+        "decorative_uncertainty",
+        "named_not_explained",
+        "oververbose_without_gain",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "missed_key_insight",
+        "missed_key_insight",
+        "missed_key_insight",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 4 full / 4",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 12",
+        "Reasoning graph confirms conclusion grounding",
+        "12 reasoning steps",
+        "Low step utility: 0/12 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.72)",
+        "6/6 substantive assumptions",
+        "Many assumptions (6)",
+        "1 unused assumption(s)",
+        "6 uncertainties (6 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "3 alternative hypotheses considered",
+        "3/3 include rejection reasoning",
+        "3/3 genuinely diverse alternatives",
+        "8 self-check items",
+        "Self-check quality: 0 deep, 8 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.71, 1467 words",
+        "Verbose (1467 words)"
+      ]
+    }
+  ],
+  "timestamp": "2026-06-28T16:34:54.822357+00:00",
+  "metadata": {}
+}

@@ -1,0 +1,336 @@
+{
+  "qa": {
+    "qa_kind": "full_replication_canonical_pytest_execution",
+    "produced_by": "agent_arena.preflight_integrity.execute_full_replication_qa",
+    "authorization_source": "fresh_internal_canonical_executor",
+    "canonical_specification": {
+      "version": "phase5b-full-replication-production-qa/v2",
+      "pytest_flags": [
+        "--tb=no",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts="
+      ],
+      "test_paths": [
+        "tests/test_runtime_contract.py",
+        "tests/test_packet_integrity.py",
+        "tests/test_output_contract.py",
+        "tests/test_confidence_validity.py",
+        "tests/test_provider_contract.py",
+        "tests/test_provider_runtime.py",
+        "tests/test_run_library.py",
+        "tests/test_phase7a_boundary_pool.py",
+        "tests/test_phase7a_adversarial_pool.py",
+        "tests/test_phase7a_perturbation_pool.py",
+        "tests/test_condition_contract.py",
+        "tests/test_condition_analysis_contract.py",
+        "tests/test_scientific_contract_alignment.py",
+        "tests/test_preflight_integrity.py",
+        "tests/test_full_replication_contract.py"
+      ],
+      "expected_collected": 369,
+      "required_terminal_state": "all_collected_tests_passed",
+      "caller_selectable": false,
+      "supplements_condition_contract_scope": true
+    },
+    "canonical_specification_fingerprint": "5f8756cb243a6fa587cae5618568e4e9dfe72d51656462abc54c65155c1ea61f",
+    "command": [
+      "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+      "-m",
+      "pytest",
+      "--tb=no",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "addopts=",
+      "tests/test_runtime_contract.py",
+      "tests/test_packet_integrity.py",
+      "tests/test_output_contract.py",
+      "tests/test_confidence_validity.py",
+      "tests/test_provider_contract.py",
+      "tests/test_provider_runtime.py",
+      "tests/test_run_library.py",
+      "tests/test_phase7a_boundary_pool.py",
+      "tests/test_phase7a_adversarial_pool.py",
+      "tests/test_phase7a_perturbation_pool.py",
+      "tests/test_condition_contract.py",
+      "tests/test_condition_analysis_contract.py",
+      "tests/test_scientific_contract_alignment.py",
+      "tests/test_preflight_integrity.py",
+      "tests/test_full_replication_contract.py"
+    ],
+    "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+    "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+    "commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "tree": "3892001b1158dfc0513bc03fe609f518e2aeb92b",
+    "tracked_source_fingerprint": "0688298dff2eac7ffdbe43b9e2236424cc7f3d361d3f65609f28b4c4e4f671b9",
+    "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+    "python_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+    "python_version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+    "python_base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+    "python_environment_fingerprint": "10f7d6a8964014531e6059054aef8223024453e6ae0c9e81f25395510c053cd8",
+    "material_environment": {
+      "material_environment_schema_version": "agent_arena.material_python_environment/v1",
+      "repository": {
+        "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "authenticated_git_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+        "commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+        "tree": "3892001b1158dfc0513bc03fe609f518e2aeb92b",
+        "tracked_source_fingerprint": "0688298dff2eac7ffdbe43b9e2236424cc7f3d361d3f65609f28b4c4e4f671b9",
+        "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+        "clean_tracked": true
+      },
+      "canonical_qa_specification_fingerprint": "5f8756cb243a6fa587cae5618568e4e9dfe72d51656462abc54c65155c1ea61f",
+      "python": {
+        "canonical_invoked_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+        "resolved_python_binary": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+        "resolved_python_binary_sha256": "907c3e17ed3d1b34f6c6b4e8b57b2f1cbe12f0ea35d8e4c2ed8f731c4c995853",
+        "implementation": "CPython",
+        "version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "version_info": [
+          3,
+          11,
+          7,
+          "final",
+          0
+        ],
+        "prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+        "base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+        "virtual_environment_active": true,
+        "virtual_environment_identity": "48abe2451ae51b161910460b187a61e1e87812b60d67340cebf64a837202e76d"
+      },
+      "site_packages": {
+        "applicable_roots": [
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages"
+        ],
+        "user_site_root": "__LOCAL_HOME__/Library/Python/3.11/lib/python/site-packages",
+        "user_site_enabled": false
+      },
+      "distribution": {
+        "distribution_name": "agent-arena",
+        "distribution_version": "0.1.0",
+        "distribution_root": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+        "direct_url": {
+          "url": "file://__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "dir_info": {
+            "editable": true
+          }
+        },
+        "direct_url_sha256": "5d2c27db66a13ed546851832686127d71dbba452ebabbb0ac419f618d6754b33",
+        "editable_path_files": [
+          {
+            "path": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages/__editable__.agent_arena-0.1.0.pth",
+            "sha256": "4b8a3d53a2be932ecea5c4ab64355e9974944758c0d564f8227875b090e148e9"
+          }
+        ]
+      },
+      "distribution_repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+      "package_origins": {
+        "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+        "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+        "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+        "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py",
+        "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+        "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+        "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+        "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+        "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+        "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+        "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+        "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+        "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py"
+      },
+      "effective_import_precedence": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+      ],
+      "unexpected_import_precedence_paths": [],
+      "environment_controls": {
+        "caller_overrides": {},
+        "virtual_env_override": null,
+        "user_site_enabled": false
+      },
+      "runtime_contract": {
+        "contract_source": "agent_arena.runtime_contract.build_contract",
+        "contract_fingerprints": {
+          "haiku": "7bd5509aeb8ef0d11567996a80e40452c50e727977f84b78a8f8d85d4e3b9d0f",
+          "opus": "92d9954884a2482fa6e47c1f42f309335928e5548f43ffbf8e3077ab0f61f0db",
+          "sonnet": "d3e175f3aea0403be977fb080c9ca4850e29be58dd65c570075c131bb7217cb3"
+        },
+        "shared_runtime_fingerprint": "8730f7bea2dc655aaccfc5b1fc05fb72cb3f37bf216b3dac8cebc85888ec778d"
+      }
+    },
+    "material_environment_fingerprint": "38f340d15fd7025018deb138791c32d398b17fef9064db2dbcc1cf39563edd7b",
+    "package_origins": {
+      "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+      "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+      "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+      "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py",
+      "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+      "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+      "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+      "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+      "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+      "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+      "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+      "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+      "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py"
+    },
+    "subprocess_probe": {
+      "command": [
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+        "-c",
+        "import json,os;from agent_arena.preflight_integrity import canonical_material_environment;value=canonical_material_environment(os.environ['AGENT_ARENA_CANONICAL_QA_ROOT'],os.environ['AGENT_ARENA_CANONICAL_QA_SPEC']);print(json.dumps(value,sort_keys=True))"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "launcher_observation": {
+        "normalizations": [
+          {
+            "canonical": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+            "index": 0,
+            "raw": "",
+            "reason": "authenticated_working_directory_representation"
+          }
+        ],
+        "observed_python_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+        "observed_sys_path": [
+          "",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+        ],
+        "working_directory": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "working_directory_matches_repository": true
+      },
+      "material_environment": {
+        "canonical_qa_specification_fingerprint": "5f8756cb243a6fa587cae5618568e4e9dfe72d51656462abc54c65155c1ea61f",
+        "distribution": {
+          "direct_url": {
+            "dir_info": {
+              "editable": true
+            },
+            "url": "file://__LOCAL_HOME__/Documents/Projects/agent-arena"
+          },
+          "direct_url_sha256": "5d2c27db66a13ed546851832686127d71dbba452ebabbb0ac419f618d6754b33",
+          "distribution_name": "agent-arena",
+          "distribution_root": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "distribution_version": "0.1.0",
+          "editable_path_files": [
+            {
+              "path": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages/__editable__.agent_arena-0.1.0.pth",
+              "sha256": "4b8a3d53a2be932ecea5c4ab64355e9974944758c0d564f8227875b090e148e9"
+            }
+          ]
+        },
+        "distribution_repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "effective_import_precedence": [
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+        ],
+        "environment_controls": {
+          "caller_overrides": {},
+          "user_site_enabled": false,
+          "virtual_env_override": null
+        },
+        "material_environment_schema_version": "agent_arena.material_python_environment/v1",
+        "package_origins": {
+          "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+          "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+          "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+          "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+          "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py",
+          "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+          "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+          "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+          "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+          "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+          "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+          "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+          "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py"
+        },
+        "python": {
+          "base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+          "canonical_invoked_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+          "implementation": "CPython",
+          "prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+          "resolved_python_binary": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+          "resolved_python_binary_sha256": "907c3e17ed3d1b34f6c6b4e8b57b2f1cbe12f0ea35d8e4c2ed8f731c4c995853",
+          "version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+          "version_info": [
+            3,
+            11,
+            7,
+            "final",
+            0
+          ],
+          "virtual_environment_active": true,
+          "virtual_environment_identity": "48abe2451ae51b161910460b187a61e1e87812b60d67340cebf64a837202e76d"
+        },
+        "repository": {
+          "authenticated_git_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "clean_tracked": true,
+          "commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+          "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+          "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+          "tracked_source_fingerprint": "0688298dff2eac7ffdbe43b9e2236424cc7f3d361d3f65609f28b4c4e4f671b9",
+          "tree": "3892001b1158dfc0513bc03fe609f518e2aeb92b"
+        },
+        "runtime_contract": {
+          "contract_fingerprints": {
+            "haiku": "7bd5509aeb8ef0d11567996a80e40452c50e727977f84b78a8f8d85d4e3b9d0f",
+            "opus": "92d9954884a2482fa6e47c1f42f309335928e5548f43ffbf8e3077ab0f61f0db",
+            "sonnet": "d3e175f3aea0403be977fb080c9ca4850e29be58dd65c570075c131bb7217cb3"
+          },
+          "contract_source": "agent_arena.runtime_contract.build_contract",
+          "shared_runtime_fingerprint": "8730f7bea2dc655aaccfc5b1fc05fb72cb3f37bf216b3dac8cebc85888ec778d"
+        },
+        "site_packages": {
+          "applicable_roots": [
+            "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages"
+          ],
+          "user_site_enabled": false,
+          "user_site_root": "__LOCAL_HOME__/Library/Python/3.11/lib/python/site-packages"
+        },
+        "unexpected_import_precedence_paths": []
+      },
+      "material_environment_fingerprint": "38f340d15fd7025018deb138791c32d398b17fef9064db2dbcc1cf39563edd7b"
+    },
+    "environment_isolation": {
+      "removed_environment_variables": [],
+      "python_no_user_site": true,
+      "python_no_bytecode": true,
+      "pytest_addopts_cleared_by_command": true
+    },
+    "execution_status": "QA_EXECUTED_AND_PASSED",
+    "exit_code": 0,
+    "tests_collected": 369,
+    "tests_passed": 369,
+    "tests_failed": 0,
+    "tests_errors": 0,
+    "tests_skipped": 0,
+    "tests_xfailed": 0,
+    "tests_xpassed": 0,
+    "tests_deselected": 0,
+    "log_output": "============================= test session starts ==============================\nplatform darwin -- Python 3.11.7, pytest-9.0.2, pluggy-1.6.0\nrootdir: __LOCAL_HOME__/Documents/Projects/agent-arena\nconfigfile: pyproject.toml\nplugins: anyio-4.13.0\ncollected 369 items\n\ntests/test_runtime_contract.py ..............................            [  8%]\ntests/test_packet_integrity.py ...................                       [ 13%]\ntests/test_output_contract.py .......................................... [ 24%]\n..                                                                       [ 25%]\ntests/test_confidence_validity.py .............................          [ 33%]\ntests/test_provider_contract.py ...................                      [ 38%]\ntests/test_provider_runtime.py ..........                                [ 40%]\ntests/test_run_library.py ..........................                     [ 47%]\ntests/test_phase7a_boundary_pool.py .....................                [ 53%]\ntests/test_phase7a_adversarial_pool.py ......................            [ 59%]\ntests/test_phase7a_perturbation_pool.py ...........................      [ 66%]\ntests/test_condition_contract.py ...........................             [ 74%]\ntests/test_condition_analysis_contract.py .......................        [ 80%]\ntests/test_scientific_contract_alignment.py ................             [ 84%]\ntests/test_preflight_integrity.py ...................................... [ 95%]\n......                                                                   [ 96%]\ntests/test_full_replication_contract.py ............                     [100%]\n\n======================== 369 passed in 73.25s (0:01:13) ========================",
+    "log_sha256": "e64d344a818e40bc0da5260f551aca65bc24b3aa27ce4befd1fe6917e49c105a",
+    "summary_line": "======================== 369 passed in 73.25s (0:01:13) ========================",
+    "runtime_seconds": 73.58,
+    "timestamp": "2026-09-13T17:32:53.696009+00:00",
+    "qa_record_fingerprint": "d38fc54462b306b8e8a6f1e4ef356b992f657b4ef9f5544620c3843db0c715c1"
+  },
+  "validation_status": "QA_EXECUTED_AND_PASSED",
+  "validation_errors": []
+}

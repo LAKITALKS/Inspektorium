@@ -1,0 +1,22 @@
+$ (cd __LOCAL_HOME__/Documents/Projects/agent-arena && env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 COLUMNS=100 PYTHONPATH=__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/plugins AREAC_NETGUARD_OUT=__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/counts/pytest_test_v1_entry_point.json __LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python -B -m pytest -p areac_netguard -p no:cacheprovider --basetemp __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/pt_test_v1_entry_point -q -rA tests/test_v1_entry_point.py)
+................                                                                             [100%]
+============================================== PASSES ==============================================
+===================================== short test summary info ======================================
+PASSED tests/test_v1_entry_point.py::test_legacy_run_is_rejected_before_task_or_provider[anthropic]
+PASSED tests/test_v1_entry_point.py::test_legacy_run_is_rejected_before_task_or_provider[anthropic,openai]
+PASSED tests/test_v1_entry_point.py::test_legacy_run_is_rejected_before_task_or_provider[__LOCAL_HOME__/Documents/Projects/agent-arena/agents/claude_sonnet.yaml]
+PASSED tests/test_v1_entry_point.py::test_run_keeps_its_options_and_cli_keeps_get_provider_patchable
+PASSED tests/test_v1_entry_point.py::test_official_release_cli_is_rejected_before_any_release_object
+PASSED tests/test_v1_entry_point.py::test_root_help_names_the_v1_path_and_marks_every_other_command[80]
+PASSED tests/test_v1_entry_point.py::test_root_help_names_the_v1_path_and_marks_every_other_command[200]
+PASSED tests/test_v1_entry_point.py::test_command_help_keeps_the_addendum_without_stray_indentation[run]
+PASSED tests/test_v1_entry_point.py::test_command_help_keeps_the_addendum_without_stray_indentation[report]
+PASSED tests/test_v1_entry_point.py::test_command_help_keeps_the_addendum_without_stray_indentation[client-report]
+PASSED tests/test_v1_entry_point.py::test_command_help_keeps_the_addendum_without_stray_indentation[forensic-report]
+PASSED tests/test_v1_entry_point.py::test_command_help_keeps_the_addendum_without_stray_indentation[official-release]
+PASSED tests/test_v1_entry_point.py::test_run_library_help_states_it_is_not_a_v1_audit
+PASSED tests/test_v1_entry_point.py::test_disabled_commands_say_so_in_their_own_help[run]
+PASSED tests/test_v1_entry_point.py::test_disabled_commands_say_so_in_their_own_help[official-release]
+PASSED tests/test_v1_entry_point.py::test_audit_run_help_names_a_current_profile
+16 passed in 0.19s
+--- exit_code: 0

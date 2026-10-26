@@ -1,0 +1,28 @@
+{
+  "reproduction_version": "AA-P10-REPRO/1.2",
+  "wheel_installation": "normal_noneditable",
+  "development": {
+    "installation": "editable_same_clean_commit",
+    "environment": "<PUBLICATION_WORK>/arena-corrected-scratch/development-venv",
+    "origin": "<PUBLICATION_WORK>/arena-corrected-scratch/checkout/agent-arena/src/agent_arena/__init__.py\n3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "module_bytes_match_source": true,
+    "code_fingerprint": "af900f1e8be2a8157cc9faba7b1edc92f631f679e8c84ded849548b00b92b2fd"
+  },
+  "source_commit": "b87858c5674dd034a69f4d40b623a74077baa239",
+  "checkout": "<PUBLICATION_WORK>/arena-corrected-scratch/checkout",
+  "environment": "<PUBLICATION_WORK>/arena-corrected-scratch/venv",
+  "python_creator": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-14.6.1-arm64-arm-64bit",
+  "installed_origin": "<PUBLICATION_WORK>/arena-corrected-scratch/venv/lib/python3.11/site-packages/agent_arena/__init__.py\n3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "full_suite_executed": true,
+  "installed_code_fingerprint": "af900f1e8be2a8157cc9faba7b1edc92f631f679e8c84ded849548b00b92b2fd",
+  "installed_bytes_match_source": true,
+  "final_checkout_status": "",
+  "network_monitor": {
+    "armed_records": 31,
+    "refused_operations": 0,
+    "scope": "Python socket hook in installed execution environments; setup downloads and native networking are outside this measure"
+  },
+  "runtime_mode": "recorded_offline",
+  "success": true
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "agent_arena.phase5b_sonnet_delivered_state_qa/v1",
+  "suite": "full tracked (tests/)",
+  "collected": 1905,
+  "passed": 1905,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "canonical_full_replication_qa": {
+    "collected": 369,
+    "passed": 369,
+    "failed": 0,
+    "errors": 0
+  },
+  "post_run_governance_test_fix": "authorized minimal fix: two Sonnet resting-state assertions now accept {NOT_AUTHORIZED, CONSUMED}; no production/prompt/gold/cases/contract change",
+  "s1_aggregate_result_set_fingerprint": "0c61370bc3cadf36e58f5b9b6f63a856b45a575fbdc38bf1abd179b4dac56e70",
+  "immutability": {
+    "H0": "b994672ec89bd05f34b67ac2ea24384fd822787a3795febc639b6039136ced8f",
+    "S0": "e1741121c55e522130a0522bb42ed14f7a6a5c0733b333456c1185c067f32fe8",
+    "H1": "79ddfa509d302dfcaf5464060e3df4f8a25f7e76ecdf7a68a9a409281aca01ec"
+  },
+  "final_authorization": {
+    "status": "CONSUMED_AFTER_SINGLE_GUARDED_INVOCATION",
+    "authorized_budget_calls": 0,
+    "authorized_model_keys": [],
+    "non_executable": true
+  }
+}

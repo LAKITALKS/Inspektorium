@@ -1,0 +1,10 @@
+blind_case_id,gold_label,flags,clear_border
+BIAA-002,solid,A:claim_isolated=uncertain; B:claim_isolated=uncertain,borderline
+BIAA-006,overclaim,A:source_voice=uncertain; B:source_voice=no,unspecified
+BIAA-007,overclaim,B:source_voice=uncertain,borderline
+BIAA-010,solid,A:claim_isolated=uncertain; B:claim_isolated=uncertain,borderline
+BIAA-013,correlation_vs_causation,A:source_voice=uncertain; A:claim_isolated=no; B:source_voice=no; B:claim_isolated=no; C:source_voice=no; C:claim_isolated=no; D:claim_isolated=uncertain,clear
+BIAA-014,solid,A:claim_isolated=uncertain; B:claim_isolated=uncertain,clear
+BIAA-016,overclaim,A:claim_isolated=uncertain; B:claim_isolated=no; C:claim_isolated=no,borderline
+BIAA-017,overclaim,B:claim_isolated=no,borderline
+BIAA-019,solid,A:source_voice=uncertain; A:claim_isolated=no; B:source_voice=uncertain; B:claim_isolated=no; D:source_voice=uncertain; D:claim_isolated=uncertain,borderline

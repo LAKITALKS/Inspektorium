@@ -1,0 +1,35 @@
+{
+  "file": "<PRODUCT_VENV>/lib/python3.11/site-packages/inspektorium/__init__.py",
+  "version": "0.1.1",
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "unicode": "14.0.0",
+  "installed_files_sha256": {
+    "inspektorium/__init__.py": "93d65998af13fa8c3ffdfe52bc47cd2a3de6c5dd24b32208e4fffdb53a6a9651",
+    "inspektorium/__main__.py": "64dcd91944bb7518c82c57a6e3cf43dbbcab38a628204c92216b7aefc04b03a7",
+    "inspektorium/cli.py": "45c6fc847610af6f3c32e9ecd0d7772402917fa5943ac98b725d9e54ec71220a",
+    "inspektorium/core/__init__.py": "d0ad72344e79aff20c090d2c07218bff7457a7aeb9e985a50483e8fcddef0257",
+    "inspektorium/core/fingerprints.py": "fcc9ac356e18462ccf13d16327d841687dd85f57a1a3082ec4467bdb51dd7765",
+    "inspektorium/core/inspection.py": "79968ae5865dc5001fd0937e9557f7d07b241fcc451c0aac5cd40d5f5c2e3597",
+    "inspektorium/core/models.py": "a189e3df13e3d65c3d6b771975a02c017853046d612162848c705c6e4e481805",
+    "inspektorium/core/normalization.py": "9fe8ed2617bacde5ddeff5bdf75d3016d7926c14edb7f6171b3df456cde43c09",
+    "inspektorium/core/relations.py": "201bcbd6cbe3fa43659acb035a22a244e315cbd908d0d10b214ae16193b2687f",
+    "inspektorium/core/strict_json.py": "cb36e9d7058292e0df4058550e43dcf05a04ae44715fb5bf7f692c31a3c05e44",
+    "inspektorium/core/validation.py": "9a4dc8e4f537eb39c4c9ffc89b1fd414a5ffb94659abebebad16687e82ac1060",
+    "inspektorium/providers/__init__.py": "ed8542141dd640c03c5362ed0dd8f77a93556c8fdec992a339c924aac29a1bab",
+    "inspektorium/providers/anthropic.py": "df5540e76d15694d5c513f94da860af9f442a63de472be1dff6cec5e8b8791cf",
+    "inspektorium/providers/base.py": "153cd55fdb1d776df27fdf7400e9af3bb332a292bc1c2672184a8ea55daf95ae",
+    "inspektorium/providers/parsing.py": "904537e2df2bcb137dba5ac1085b74724891a3f4be8321e5f0b950197c50f134",
+    "inspektorium/report/__init__.py": "58e4bd70e0abe8b5fbed1a6c1971b1ca11af4425fce6628276a8826e098596e7",
+    "inspektorium/report/display.py": "e1f69766a5711eb5b870179796b0100abd1066e304f0e9fba4e1c4cddb3deb74",
+    "inspektorium/report/json_report.py": "45d6cc09e9cb54fad66980293788f3b4f928da0d650ce4e8d40d6e907157dd20",
+    "inspektorium/report/markdown_report.py": "f7e9802bc9d02f5e6d1e80d68f4820f4be99ce4b257fc4b48786adff392e2448"
+  },
+  "build_provenance": {
+    "archive_sha256": "6186692c01a251dc5e02c8294de80c66861125f8d14974fa9ca4b3992eb81187",
+    "commit": "5ace2797e4a9075ca53ccd780be616719923c288",
+    "created": "2026-10-24T18:29:13+00:00",
+    "source_kind": "git-archive",
+    "wheel": "inspektorium-0.1.1-py3-none-any.whl",
+    "wheel_sha256": "f8452a4f8d9b7be1778d1ef33a70de083ace95ad2c6e1bbf375388de8650da9c"
+  }
+}

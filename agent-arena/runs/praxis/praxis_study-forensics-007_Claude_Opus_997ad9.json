@@ -1,0 +1,997 @@
+{
+  "run_id": "praxis_study-forensics-007_Claude_Opus_997ad9",
+  "task": {
+    "id": "study-forensics-007",
+    "title": "Study Forensics: Vitamin D supplements and long COVID",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A randomised controlled trial involving 1,747 adults tested whether high-dose vitamin D3 could affect COVID-19 outcomes. Supplementation did not change the severity of acute infection. When researchers looked at lingering symptoms eight weeks later, 21 percent of people taking vitamin D reported at least one ongoing symptom compared with 25 percent in the placebo group. The senior author called this difference a \"promising signal,\" but emphasised that larger trials are needed. The study was conducted remotely and started supplementation after infection onset, limiting interpretation.\n",
+    "context": "The press piece highlights a very small absolute difference (4 percentage points) in long-COVID symptoms\nas evidence that vitamin D might help, despite no effect on acute outcomes and numerous limitations.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The press piece highlights a very small absolute difference (4 percentage points) in long-COVID symptoms as evidence that vitamin D might help, despite no effect on acute outcomes and numerous limitations. This constitutes mild overclaim because the results are statistically and clinically weak.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "null primary outcome",
+        "variants": [
+          "no effect on acute",
+          "did not change severity"
+        ],
+        "functional_descriptions": [
+          "the main outcome was negative, making secondary findings weaker"
+        ]
+      },
+      {
+        "keyword": "small absolute difference",
+        "variants": [
+          "4 percentage points",
+          "21 vs 25 percent"
+        ],
+        "functional_descriptions": [
+          "the difference is clinically marginal"
+        ]
+      },
+      {
+        "keyword": "decorative uncertainty",
+        "variants": [
+          "promising signal",
+          "larger trials needed"
+        ],
+        "functional_descriptions": [
+          "uncertainty language is present but does not constrain the optimistic framing"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting the framing as solid because uncertainty is mentioned",
+      "missing the null primary outcome"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "small_effect_overinterpretation",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "accepting_decorative_uncertainty"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth",
+      "mechanism_quality"
+    ],
+    "diagnostic_focus": "Can the agent detect overclaim when uncertainty language is present but decorative?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "The press piece highlights a very small absolute difference (4 percentage points) in long-COVID symptoms as evidence that vitamin D might help, despite no effect on acute outcomes and numerous limitations. This constitutes mild overclaim because the results are statistically and clinically weak.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "decorative_uncertainty",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "Supplementation did not change the severity of acute infection",
+        "why_it_matters": "Establishes that primary outcomes were null.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "21 percent ... versus 25 percent",
+        "why_it_matters": "Shows the tiny difference touted as promising.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "promising signal ... larger trials are needed",
+        "why_it_matters": "The article wraps a weak finding in optimistic rhetoric while mentioning further research.",
+        "supports_finding": "decorative_uncertainty"
+      }
+    ],
+    "gold_confidence": "medium",
+    "gold_justification": "The primary outcome was null (no effect on acute infection severity). The secondary\nfinding (4 percentage points) is small and framed with 'promising signal' — optimistic\nlanguage that exceeds what a null primary + weak secondary warrants. The hedge 'larger\ntrials are needed' accompanies but does not constrain the optimism. This pattern of\ndecorative uncertainty + small effect + null primary = mild overclaim.\n",
+    "gold_alternative_reading": "A 'solid' reading is defensible: the senior author explicitly calls for larger trials,\nthe effect size is not exaggerated (reported accurately as 21% vs 25%), and 'promising\nsignal' could be seen as appropriately tentative language for a secondary finding. All\nthree Claude models (Haiku, Sonnet, Opus) consistently classify this as 'solid' across\ntwo validation sprints (0/6 correct). This systematic disagreement suggests the case\nsits on the overclaim/solid boundary.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Central calibration case. 0/6 model runs across two sprints agree with the gold label.\nAll models see 'promising signal' + 'larger trials needed' as responsible science\ncommunication. Consider whether this case is better classified as borderline-solid or\nwhether the gold standard reflects a stricter epistemic norm than current LLMs apply.\nRetain as overclaim for now to test whether future model improvements or prompt changes\ncan detect the decorative uncertainty pattern. The hedge-overclaim detector correctly\nflags the suspicious pattern in Sprint 2 (Opus).\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Opus",
+        "model": "claude-opus-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\"This was an RCT with 1,747 participants\", \"The study measured both acute infection severity and lingering symptoms at 8 weeks\", \"The 21% vs 25% difference in lingering symptoms was observed but not claimed as definitive\", \"The study was conducted remotely with supplementation starting after infection onset\"],\n  \"steps\": [\"First, I identified the study design: RCT with substantial sample size (1,747)\", \"Second, I noted the primary finding: no effect on acute infection severity\", \"Third, I examined the secondary finding: 21% vs 25% difference in lingering symptoms\", \"Fourth, I evaluated how this finding was presented: senior author called it a 'promising signal' not a definitive result\", \"Fifth, I checked for appropriate caveats: the text explicitly mentions need for larger trials and study limitations\", \"Sixth, I verified no causal claims were made beyond what the RCT design supports\"],\n  \"alternative_hypotheses\": [\"overclaim - but the 'promising signal' language is appropriately tentative given the secondary outcome\", \"decorative uncertainty - but the uncertainty appears genuine given explicit mention of study limitations and need for larger trials\"],\n  \"uncertainties\": [\"Whether the 21% vs 25% difference was statistically significant is not stated\", \"Whether lingering symptoms was a pre-specified secondary outcome or post-hoc analysis\", \"The exact nature of the remote conduct and how it might affect results\"],\n  \"key_claims\": [\"The study appropriately reports a null result for the primary outcome\", \"The secondary finding is presented with appropriate uncertainty\", \"Study limitations are explicitly acknowledged\", \"No overclaiming of results is evident in the text\"],\n  \"self_check\": [\"Did I look for problems that aren't there? The text is careful about claims\", \"Is 'promising signal' an overclaim? No, it's appropriate for a secondary finding that needs replication\", \"Are the limitations real or decorative? They appear substantive (remote conduct, post-infection start)\", \"Did I miss any red flags? No causal claims beyond RCT warrant, no mechanism speculation\"],\n  \"confidence\": 0.90\n}",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "This was an RCT with 1,747 participants",
+            "The study measured both acute infection severity and lingering symptoms at 8 weeks",
+            "The 21% vs 25% difference in lingering symptoms was observed but not claimed as definitive",
+            "The study was conducted remotely with supplementation starting after infection onset"
+          ],
+          "steps": [
+            "First, I identified the study design: RCT with substantial sample size (1,747)",
+            "Second, I noted the primary finding: no effect on acute infection severity",
+            "Third, I examined the secondary finding: 21% vs 25% difference in lingering symptoms",
+            "Fourth, I evaluated how this finding was presented: senior author called it a 'promising signal' not a definitive result",
+            "Fifth, I checked for appropriate caveats: the text explicitly mentions need for larger trials and study limitations",
+            "Sixth, I verified no causal claims were made beyond what the RCT design supports"
+          ],
+          "alternative_hypotheses": [
+            "overclaim - but the 'promising signal' language is appropriately tentative given the secondary outcome",
+            "decorative uncertainty - but the uncertainty appears genuine given explicit mention of study limitations and need for larger trials"
+          ],
+          "uncertainties": [
+            "Whether the 21% vs 25% difference was statistically significant is not stated",
+            "Whether lingering symptoms was a pre-specified secondary outcome or post-hoc analysis",
+            "The exact nature of the remote conduct and how it might affect results"
+          ],
+          "self_check": [
+            "Did I look for problems that aren't there? The text is careful about claims",
+            "Is 'promising signal' an overclaim? No, it's appropriate for a secondary finding that needs replication",
+            "Are the limitations real or decorative? They appear substantive (remote conduct, post-infection start)",
+            "Did I miss any red flags? No causal claims beyond RCT warrant, no mechanism speculation"
+          ],
+          "key_claims": [
+            "The study appropriately reports a null result for the primary outcome",
+            "The secondary finding is presented with appropriate uncertainty",
+            "Study limitations are explicitly acknowledged",
+            "No overclaiming of results is evident in the text"
+          ],
+          "confidence": 0.9,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 16503
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.65,
+        "uncertainty_handling": 0.6499999999999999,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.45,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.0,
+          "weight": 30,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "No match (got: solid)"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Fourth, I evaluated how this finding was presented: senior author called it a 'promising signal' not a definitive result",
+              "source_field": "steps[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 0/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.74)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.65,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "The 21% vs 25% difference in lingering symptoms was observed but not claimed as definitive",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6499999999999999,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Whether lingering symptoms was a pre-specified secondary outcome or post-hoc analysis",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "decorative uncertainty - but the uncertainty appears genuine given explicit mention of study limitations and need for larger trials",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.45,
+          "weight": 8,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Is 'promising signal' an overclaim? No, it's appropriate for a secondary finding that needs replication",
+              "source_field": "self_check[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Did I look for problems that aren't there? The text is careful about claims",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 3 arithmetic, 1 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.70, 293 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.6666666666666666,
+          "weight": 8,
+          "weighted_score": 5.3,
+          "evidence": [
+            {
+              "text": "Missing: small absolute difference",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'small absolute difference' not found",
+              "role": "missing_expected"
+            },
+            {
+              "text": "e given the secondary outcome decorative uncertainty - but the uncertainty appears",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'decorative uncertainty' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'overclaim'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'overclaim', detected 'solid'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "The study appropriately reports a null result for the primary outcome",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "The secondary finding is presented with appropriate uncertainty",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/4 content words)",
+          "evidence": [
+            {
+              "text": "Study limitations are explicitly acknowledged",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/4 content words)",
+          "evidence": [
+            {
+              "text": "No overclaiming of results is evident in the text",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "well_reasoned_wrong",
+          "description": "Wrong answer but structured reasoning — may have a subtle logic error",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Wrong despite good reasoning",
+              "role": "supporting"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "This was an RCT with 1,747 participants",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study measured both acute infection severity and lingering symptoms at 8 weeks",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 21% vs 25% difference in lingering symptoms was observed but not claimed as definitive",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study was conducted remotely with supplementation starting after infection onset",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "First, I identified the study design: RCT with substantial sample size (1,747)",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Second, I noted the primary finding: no effect on acute infection severity",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Third, I examined the secondary finding: 21% vs 25% difference in lingering symptoms",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Fourth, I evaluated how this finding was presented: senior author called it a 'promising signal' not a definitive result",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Fifth, I checked for appropriate caveats: the text explicitly mentions need for larger trials and study limitations",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Sixth, I verified no causal claims were made beyond what the RCT design supports",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study appropriately reports a null result for the primary outcome",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The secondary finding is presented with appropriate uncertainty",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Study limitations are explicitly acknowledged",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No overclaiming of results is evident in the text",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim - but the 'promising signal' language is appropriately tentative given the secondary outcome",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "decorative uncertainty - but the uncertainty appears genuine given explicit mention of study limitations and need for larger trials",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the 21% vs 25% difference was statistically significant is not stated",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether lingering symptoms was a pre-specified secondary outcome or post-hoc analysis",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The exact nature of the remote conduct and how it might affect results",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I look for problems that aren't there? The text is careful about claims",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is 'promising signal' an overclaim? No, it's appropriate for a secondary finding that needs replication",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Are the limitations real or decorative? They appear substantive (remote conduct, post-infection start)",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any red flags? No causal claims beyond RCT warrant, no mechanism speculation",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 20,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 22,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.375
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [],
+        "unsupported_conclusions": [
+          23
+        ],
+        "fluff_self_checks": [
+          19
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "solid",
+        "label_correct": false,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "decorative_uncertainty"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "decorative_uncertainty"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": true,
+          "hedge_phrases": [
+            "promising signal"
+          ],
+          "null_outcome_markers": [
+            "did not change"
+          ],
+          "limitation_markers": [
+            "conducted remotely",
+            "after infection"
+          ],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "unsupported_conclusion",
+        "named_not_explained",
+        "named_not_explained",
+        "wrong_answer"
+      ],
+      "notes": [
+        "No match (got: solid)",
+        "Key insights: 2 full / 3",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+        "Reasoning graph: conclusion not well grounded",
+        "6 reasoning steps",
+        "Low step utility: 0/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.74)",
+        "4/4 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "Confidence 0.9",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 3 arithmetic, 1 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.70, 293 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-07T07:48:11.800753+00:00",
+  "metadata": {}
+}

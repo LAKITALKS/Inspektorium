@@ -1,0 +1,742 @@
+{
+  "run_id": "pilot_6ffdaea7",
+  "task": {
+    "id": "study-forensics-009",
+    "title": "Study Forensics: Mindfulness app for autistic adults",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "In an open-access randomised controlled trial, 89 adults diagnosed with autism practiced mindfulness using a smartphone app for six weeks. Compared with a wait-list control group, the intervention group reported significant reductions in anxiety and perceived stress; when the control group later used the app, they replicated the improvements. Gains persisted six weeks after practice stopped. Lead investigator John Gabrieli said he and his colleagues were already convinced the app could help autistic adults and suggested it might benefit people of all ages.\n",
+    "context": "Although the trial design is solid and results are promising, the lead investigator's assertion\nthat mindfulness apps will help autistic adults and potentially everyone else goes beyond the\navailable evidence.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "Although the trial design is solid and results are promising, the lead investigator's assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "unsupported generalization",
+        "variants": [
+          "overgeneralization",
+          "beyond the data",
+          "all ages"
+        ],
+        "functional_descriptions": [
+          "the investigator extends findings to populations not studied"
+        ]
+      },
+      {
+        "keyword": "investigator conviction",
+        "variants": [
+          "already convinced",
+          "strong conviction"
+        ],
+        "functional_descriptions": [
+          "the researcher expresses certainty beyond what the data supports"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating the study as fully solid because the trial design is good",
+      "missing the investigator's overclaim"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "investigator_overclaim",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "confusing_study_quality_with_claim_quality"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent separate solid study design from investigator overclaim?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Although the trial design is solid and results are promising, the lead investigator's assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.\n",
+    "expected_findings": [
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      },
+      {
+        "finding": "decorative_uncertainty",
+        "severity": "minor",
+        "confidence": "low"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "reported significant reductions in anxiety and perceived stress",
+        "why_it_matters": "Summarises the actual findings.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "already convinced the app could help autistic adults and ... people of all ages",
+        "why_it_matters": "Shows explicit overgeneralization and strong conviction beyond data.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "gains persisted six weeks after practice stopped",
+        "why_it_matters": "Suggests lasting effect, which could be overinterpreted without long-term follow-up.",
+        "supports_finding": "decorative_uncertainty"
+      }
+    ]
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "synthetic",
+        "model": "synthetic-pilot-v1",
+        "raw_output": "{\n  \"final_answer\": \"This is an overclaim case. Although the trial design is solid, the lead investigator's claim that they are 'already convinced' the app could help autistic adults and suggests it might benefit 'people of all ages' is an unsupported generalization that goes beyond the evidence.\",\n  \"assumptions\": [\n    \"The RCT design was properly executed\",\n    \"Replication by the wait-list control is a strength\"\n  ],\n  \"steps\": [\n    \"The trial design is solid: RCT with wait-list control and replication.\",\n    \"Results are promising: significant reductions in anxiety and stress.\",\n    \"However, the investigator's statement goes beyond the data: 'already convinced' suggests premature certainty.\",\n    \"Extending the claim to 'people of all ages' is an unsupported generalization \\u2014 only 89 autistic adults were studied.\",\n    \"The conclusion exceeds the results when the investigator speaks beyond the trial's scope.\",\n    \"This is a case where a good study leads to overclaim through investigator rhetoric.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Could this be solid? The study itself is, but the claims made about it are not.\"\n  ],\n  \"uncertainties\": [\n    \"Six-week persistence may not indicate long-term durability\",\n    \"Wait-list controls can inflate effect sizes\"\n  ],\n  \"key_claims\": [\n    \"The investigator's generalization to all ages is unsupported\",\n    \"The conclusion exceeds what the data can support\",\n    \"Good study design does not prevent overclaim in interpretation\"\n  ],\n  \"self_check\": [\n    \"Am I separating the study quality from the claim quality? Yes \\u2014 the study is solid but the framing is not.\"\n  ],\n  \"confidence\": 0.85\n}",
+        "parsed": {
+          "final_answer": "This is an overclaim case. Although the trial design is solid, the lead investigator's claim that they are 'already convinced' the app could help autistic adults and suggests it might benefit 'people of all ages' is an unsupported generalization that goes beyond the evidence.",
+          "assumptions": [
+            "The RCT design was properly executed",
+            "Replication by the wait-list control is a strength"
+          ],
+          "steps": [
+            "The trial design is solid: RCT with wait-list control and replication.",
+            "Results are promising: significant reductions in anxiety and stress.",
+            "However, the investigator's statement goes beyond the data: 'already convinced' suggests premature certainty.",
+            "Extending the claim to 'people of all ages' is an unsupported generalization — only 89 autistic adults were studied.",
+            "The conclusion exceeds the results when the investigator speaks beyond the trial's scope.",
+            "This is a case where a good study leads to overclaim through investigator rhetoric."
+          ],
+          "alternative_hypotheses": [
+            "Could this be solid? The study itself is, but the claims made about it are not."
+          ],
+          "uncertainties": [
+            "Six-week persistence may not indicate long-term durability",
+            "Wait-list controls can inflate effect sizes"
+          ],
+          "self_check": [
+            "Am I separating the study quality from the claim quality? Yes — the study is solid but the framing is not."
+          ],
+          "key_claims": [
+            "The investigator's generalization to all ages is unsupported",
+            "The conclusion exceeds what the data can support",
+            "Good study design does not prevent overclaim in interpretation"
+          ],
+          "confidence": 0.85,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 0
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.48000000000000004,
+        "structural_reasoning": 0.8916666666666666,
+        "assumption_discipline": 0.65,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 0.8,
+        "self_monitoring_quality": 0.30000000000000004,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.3,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.9,
+          "weight": 30,
+          "weighted_score": 27.0,
+          "evidence": [
+            {
+              "text": "This is an overclaim case. Although the trial design is solid, the lead investigator's claim that they are 'already convinced' the app could help autistic adults and suggests it might benefit 'people ",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Contains expected answer"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.48000000000000004,
+          "weight": 8,
+          "weighted_score": 3.8,
+          "evidence": [
+            {
+              "text": "This is an overclaim case. Although the trial design is solid, the lead investigator's claim that they are 'already conv",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 2 supporting, 1 mentioned / 6",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.8916666666666666,
+          "weight": 8,
+          "weighted_score": 7.1,
+          "evidence": [
+            {
+              "text": "However, the investigator's statement goes beyond the data: 'already convinced' suggests premature certainty.",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Step utility: 5/6 steps contribute to answer",
+            "Steps introduce new information consistently",
+            "High step density (0.69)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.65,
+          "weight": 6,
+          "weighted_score": 3.9,
+          "evidence": [
+            {
+              "text": "Replication by the wait-list control is a strength",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2/2 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Six-week persistence may not indicate long-term durability",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Six-week persistence may not indicate long-term durability",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.85",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 uncertainties (2 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.85"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Could this be solid? The study itself is, but the claims made about it are not.",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 alternative hypotheses considered",
+            "1/1 include rejection reasoning"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.30000000000000004,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "Am I separating the study quality from the claim quality? Yes — the study is solid but the framing is not.",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "1 self-check items",
+            "Self-check quality: 0 deep, 1 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.3,
+          "weight": 10,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "This is a case where a good study leads to overclaim through investigator rhetoric.",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Mechanism description",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Describes mechanism but does not name concept"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.64, 212 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "it 'people of all ages' is an unsupported generalization that goes beyond the evidence",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'unsupported generalization' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Six-week persistence may not indicate long-term durability...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Six-week persistence may not indicate long-term durability",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: decorative_uncertainty",
+          "evidence": [
+            {
+              "text": "Expected: decorative_uncertainty",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'decorative_uncertainty' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 1 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Six-week persistence may not indicate long-term durability",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "minor",
+          "description": "Causal mechanism described but underlying concept not named",
+          "evidence": [
+            {
+              "text": "This is an overclaim case. Although the trial design is solid, the lead investigator's claim that they are 'already convinced' the app could help auti",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Describes mechanism without naming concept",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The RCT design was properly executed",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Replication by the wait-list control is a strength",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The trial design is solid: RCT with wait-list control and replication.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Results are promising: significant reductions in anxiety and stress.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "However, the investigator's statement goes beyond the data: 'already convinced' suggests premature certainty.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Extending the claim to 'people of all ages' is an unsupported generalization — only 89 autistic adults were studied.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The conclusion exceeds the results when the investigator speaks beyond the trial's scope.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is a case where a good study leads to overclaim through investigator rhetoric.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The investigator's generalization to all ages is unsupported",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The conclusion exceeds what the data can support",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Good study design does not prevent overclaim in interpretation",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could this be solid? The study itself is, but the claims made about it are not.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Six-week persistence may not indicate long-term durability",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Wait-list controls can inflate effect sizes",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Am I separating the study quality from the claim quality? Yes — the study is solid but the framing is not.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is an overclaim case. Although the trial design is solid, the lead investigator's claim that they are 'already convinced' the app could help autistic adults and suggests it might benefit 'people of all ages' is an unsupported generalization that goes beyond the evidence.",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 2,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 2,
+            "relation": "assumes",
+            "strength": 0.5
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.5454545454545454
+          },
+          {
+            "source_idx": 5,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.7777777777777778
+          },
+          {
+            "source_idx": 8,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.75
+          },
+          {
+            "source_idx": 10,
+            "target_idx": 15,
+            "relation": "supports",
+            "strength": 0.3333333333333333
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          12
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 1,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [
+          "This is a case where a good study leads to overclaim through investigator rhetoric."
+        ],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 2,
+        "directly_supported": 0,
+        "indirectly_supported": 2,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'This is an overclaim case...' <- step 7 (no conclusion marker)",
+          "INDIRECT: 'Although the trial design is solid, the lead investigator's ...' <- step 5 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "unsupported_generalization",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "matched_findings": [
+          "unsupported_generalization",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [
+          "decorative_uncertainty"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Contains expected answer",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 2 supporting, 1 mentioned / 6",
+        "Reasoning graph confirms conclusion grounding",
+        "6 reasoning steps",
+        "Step utility: 5/6 steps contribute to answer",
+        "Steps introduce new information consistently",
+        "High step density (0.69)",
+        "2/2 substantive assumptions",
+        "2 uncertainties (2 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.85",
+        "1 alternative hypotheses considered",
+        "1/1 include rejection reasoning",
+        "1 self-check items",
+        "Self-check quality: 0 deep, 1 arithmetic, 0 fluff",
+        "Describes mechanism but does not name concept",
+        "Signal density: 0.64, 212 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T08:19:47.240367+00:00",
+  "metadata": {}
+}

@@ -1,0 +1,2814 @@
+{
+  "record_schema_version": "0.1.0",
+  "record_id": "ASA_25_261_PREMIUM_GROUNDING-run_001",
+  "synthetic_fixture": false,
+  "fixture_class": "pipeline_qa",
+  "provenance": [
+    {
+      "provenance_id": "PV-M-01a",
+      "exact_claim_text": "A conductive grounding path can alter measurable electrical potential, voltage, or current associated with the human body.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "eb5dae0ca2850bb9b7d379226938434c706a0cce3f923e5d80748617db9366ce",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-M-01b",
+      "exact_claim_text": "During grounding, electrons originating from Earth flow into the human body in the direction, quantity, and biological distribution implied by the advertisement.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "588ca9c52853323af01c4a1305a49df9da363aff659934a9f07c1f9443a80196",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-M-02",
+      "exact_claim_text": "That electron flow neutralises free radicals in humans.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "c3b1c3235f278dc4e7e70f56d24bac782931f4628da7a0335449334d26874336",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-M-03",
+      "exact_claim_text": "That process reduces oxidative stress in humans.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "542bd5888902aff598c7a8c9bc2bf9f6f1a76f1fa9dcfe8fbf7b69b3fd42579b",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-I-01",
+      "exact_claim_text": "Premium Grounding reduces inflammation.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "2dbd7b0fddd7eb0d91fc50327065d9f3c548d0f866be7b5b9e8e58494a8a2672",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-I-02",
+      "exact_claim_text": "Premium Grounding boosts immune function.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "84afbc3f11c833f4f061ad49220ecbaf01e844f4c88a09adec88bf60af319d03",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-S-01",
+      "exact_claim_text": "Premium Grounding improves sleep quality.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "ebe4a183510ecff991b3fb26f1c5b40d16f8b29a33708f2a6dfe437b24eb2168",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-S-02",
+      "exact_claim_text": "Premium Grounding is relevant to/alleviates insomnia.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "51b82dd5a416ea1eb793dc22718898fb765bbab967e962a15a0c96f5cf5e9d68",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-S-03",
+      "exact_claim_text": "Premium Grounding lowers stress levels.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "be1dec3208133a25b75cd481f9ff27b98a30bf46b82f685a75a7039aad6bb73f",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-S-04",
+      "exact_claim_text": "Premium Grounding lowers cortisol production.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "2f3e8e42fc034abdd007dac48f4f9907b60c4b68ece90ff8f719553c82aafd96",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-P-01",
+      "exact_claim_text": "Premium Grounding reduces aches and pain.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "473b6b220540a285479fb37518e27bd96b00ac2b5867857a3b1b33f551043849",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-P-02",
+      "exact_claim_text": "Premium Grounding is relevant to/alleviates arthritis.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "d9b6b89ee48a7c22ade630c2bfd2fcc1c698dabf63a918fa7a68230e1edeba31",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-P-03",
+      "exact_claim_text": "Premium Grounding reduces muscle stiffness.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "53d6a4f0968f5532f07e5d7078cf5ba7d53869d814e060f7402d586601c02a44",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-P-04",
+      "exact_claim_text": "Premium Grounding reduces back and neck pain.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "5eab5c19bd2f2ee10bae709398ad64b87a4a76bbb34080dfd22f0d11b1f30513",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-P-05",
+      "exact_claim_text": "Premium Grounding is relevant to/alleviates headaches.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "5b3045f3d89659b89fe53dcce232a89a7a4a4d54810e4bf0c9106771f03011a2",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-V-01",
+      "exact_claim_text": "Premium Grounding is relevant to/alleviates varicose veins.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "7b73d19b0d28b938775f2c321042481a6d859eaf4b9406e69fa8041544407d30",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-E-01",
+      "exact_claim_text": "Premium Grounding boosts energy/alleviates lack of energy.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "4e7ad52006beb5d02d46fbd81806896b34172e0798f7fdc3dda27324e4c25e5a",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-E-02",
+      "exact_claim_text": "Premium Grounding is relevant to/alleviates brain fog.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "54bb6d72b35f76813559bf7cbd3d5b383ac5a10805cc240157a313315ed88f6a",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-E-03",
+      "exact_claim_text": "Premium Grounding is relevant to/alleviates menopause symptoms.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "5b5c98cbb3a8e1bde876e790edd55556b1cbfdab1298b9777618db76e42b8c8d",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-C-01",
+      "exact_claim_text": "Premium Grounding enhances cardiovascular health.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "844b044afdf839a1594aabcbe157296dd4f166b498d59636e61a1b5dde7164a0",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-R-01",
+      "exact_claim_text": "Premium Grounding accelerates recovery from exercise.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "cfb3995497856fd0600cc0167cfc7e371fab7bd9c0135726ab7ee32adb5ba900",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-W-01",
+      "exact_claim_text": "Premium Grounding restores the body's natural balance.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "55b643fa213e7e36d63f5316654b25ee3f44565c041f006605af0114285467a8",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-X-01",
+      "exact_claim_text": "Premium Grounding produces the advertised benefits across the general audience and listed conditions.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "d4028717c608ae2d5c04aba6df480829f7418c4146caf3e73954d090aac1c442",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-X-02",
+      "exact_claim_text": "Premium Grounding is the most powerful natural health upgrade available for purchase.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "191fa29b435623c2e8ff375d4dbed573f321e8fe5141c9140ed762330f661f61",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-Q-01",
+      "exact_claim_text": "Thousands trust the product for the stated benefits.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "a3465bae99e3492ab0d1341415d9be9f10f9863150145526df703a97d33dd2e6",
+      "context_before": null,
+      "context_after": null
+    },
+    {
+      "provenance_id": "PV-Q-02",
+      "exact_claim_text": "The advertised 40% sale was ending soon.",
+      "source_id": "ASA-25-261-FINAL-EVIDENCE-FREEZE-v1",
+      "provenance_state": "published_literature",
+      "canonical_url": null,
+      "page_title": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1 (sections 12/48)",
+      "retrieved_at": "2026-08-23",
+      "content_fingerprint": "bf83028d5195d9e211a87d5bd330c22f3b41af362f00f83f714a020d9ac6878b",
+      "context_before": null,
+      "context_after": null
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EV-M-01a-1",
+      "source_id": "H09",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H09",
+      "text": "Sokal & Sokal 2012: under Faraday-cage conditions, measured potentials at tongue, teeth and nails and venous blood values changed with grounding.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-01a-2",
+      "source_id": "H18",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H18",
+      "text": "Chevalier & Brown 2016: human body voltage and current quantified under configured grounding.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-01a-3",
+      "source_id": "H19",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H19",
+      "text": "Passi et al. 2017: preterm-infant skin voltage fell from 415.3 plus/minus 277.5 to 19.1 plus/minus 16.8 mV, a decrease of 95.6 plus/minus 1.1 percent SE, p<.001, n=26.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-01a-4",
+      "source_id": "Freeze section 39",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 39",
+      "text": "Exact conductor percentage, dimensions, cable configuration, safety resistor, ground-continuity verification and exposure protocol of the advertised 2025 product are unverified; no evidence line receives DIRECT PRODUCT MATCH.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-01b-1",
+      "source_id": "H09/H18/H19",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H09/H18/H19",
+      "text": "Configured human voltage and current observations are compatible with charge movement across a conductive path.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-01b-2",
+      "source_id": "Freeze sections 26/41/52",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 26/41/52",
+      "text": "No tracer, isotope-labelling, biologically relevant dose, direction or tissue-distribution study was located in the assembled mechanism evidence.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-01b-3",
+      "source_id": "Freeze sections 15/41",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 15/41",
+      "text": "Evidence for M-01a must not be counted automatically as evidence for M-01b; the historical conflated M-01 is superseded precisely because it merged the two.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-02-1",
+      "source_id": "R02/R03",
+      "role": "supporting",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "R02/R03",
+      "text": "Oschman 2007 and Oschman, Chevalier & Brown 2015 propose electron-donation antioxidant action as a mechanism.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-02-2",
+      "source_id": "Giulivi & Kotz 2025",
+      "role": "supporting",
+      "endpoint": "cell",
+      "material": true,
+      "exact_reference": "Giulivi & Kotz 2025",
+      "text": "Giulivi & Kotz 2025: ex-vivo mouse-liver mitochondria showed ATP approximately +5 to 11 percent and H2O2/ROS approximately -22 to 33 percent under reported conditions.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-02-3",
+      "source_id": "Freeze sections 51/52/55",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 51/52/55",
+      "text": "No direct in-vivo human free-radical assay under sham control was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-02-4",
+      "source_id": "H26",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H26",
+      "text": "Lin et al. 2022 reported that the proposed electrochemical signal was non-supportive.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-03-1",
+      "source_id": "H21",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H21",
+      "text": "Chevalier et al. 2018: selected oxidative and inflammatory markers changed in a 16-participant massage-therapist stepped-wedge design.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-03-2",
+      "source_id": "Giulivi & Kotz 2025",
+      "role": "supporting",
+      "endpoint": "cell",
+      "material": true,
+      "exact_reference": "Giulivi & Kotz 2025",
+      "text": "Non-human and ex-vivo oxidative signals, including the Giulivi & Kotz 2025 mitochondrial ROS reduction.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-03-3",
+      "source_id": "Freeze sections 53/58/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 53/58/63",
+      "text": "No prespecified human oxidative-stress endpoint with mediation from electrical exposure was located; the causal electron mediation is absent.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-M-03-4",
+      "source_id": "H26",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H26",
+      "text": "Lin et al. 2022 reported the proposed electrochemical signal as non-supportive.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-01-1",
+      "source_id": "H16/H21",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H16/H21",
+      "text": "Brown, Chevalier & Hill 2015 and Chevalier et al. 2018 report selected inflammatory and CK-related marker differences across many outcomes and timepoints.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-01-2",
+      "source_id": "H31",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H31",
+      "text": "Sokal et al. 2025: CRP 15.34 to 24.42 versus 24.54 to 57.42 mg/L, p=.000033, with sign, mean, median and unit conflicts preserved.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-01-3",
+      "source_id": "H34",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H34",
+      "text": "Kim JS et al. 2024: full-sample salivary CRP sneaker 98.74 to 129.11 to 185.15 pg/mL, pre to final p=.046; barefoot 144.80 to 196.94 to 123.67, p=.608. Baseline-CRP at or above 100 post hoc subset: sneaker n=9 p=.963; barefoot n=14 282.13 to 254.26 to 113.11, p=.010.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-01-4",
+      "source_id": "Freeze sections 27/51/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 27/51/63",
+      "text": "No clinical inflammatory-disease trial and no validated clinical inflammation endpoint were located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-01-5",
+      "source_id": "H29",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H29",
+      "text": "Estiningtyas et al. 2024 reported wound-score improvement in 21 patients with no comparator and incomplete methods.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-02-1",
+      "source_id": "H16/H21",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H16/H21",
+      "text": "Brown, Chevalier & Hill 2015 and Chevalier et al. 2018 report immune-cell and cytokine markers.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-02-2",
+      "source_id": "H34",
+      "role": "contradictory",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H34",
+      "text": "Kim JS et al. 2024 salivary IFN-gamma: sneaker pre to session 10 p=.004, barefoot p=.115; sneaker pre to session 20 p=.082, barefoot p=.167.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-02-3",
+      "source_id": "Freeze sections 27/34/51",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 27/34/51",
+      "text": "No immune competence, infection, pathogen-clearance or vaccine-response endpoint was measured in any located study.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-I-02-4",
+      "source_id": "Freeze sections 19/70/73",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 19/70/73",
+      "text": "Documented proposition-specific search across PubMed (6 found/6 screened), Europe PMC title/abstract (6/6) and full text (67/25) and OpenAlex (54 deduplicated) with grounding, earthing, barefoot, soil-contact and Earth-contact terminology to the 22 August 2026 cut-off: class A, negative search state confirmed.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-01-1",
+      "source_id": "H26",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H26",
+      "text": "Lin et al. 2022: week-12 PSQI grounded 0.3 plus/minus 0.7 (n=8) versus control 3.0 plus/minus 1.9 (n=7), Mann-Whitney p=.006.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-01-2",
+      "source_id": "H30",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H30",
+      "text": "Park et al. 2025: actigraphy signal reported, but the prose points to day 31 while a parenthetical says 'Day 38: p<.01, t=3.5'; absolute values are absent.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-01-3",
+      "source_id": "H02/H22/H24/H33",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H02/H22/H24/H33",
+      "text": "Ghaly & Teplitz 2004 (uncontrolled n=12), Chevalier et al. 2019 (16 massage therapists) and Kim 2020 (observational mat users) report subjective sleep improvement; H33 reports a secondary sleep time-by-group F=7.53, p=.008.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-01-4",
+      "source_id": "H30",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H30",
+      "text": "Park et al. 2025 day-31 between-group results: ISI p=.275, PSQI p=.562, ESS p=.962, BEPSI p=.756.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-01-5",
+      "source_id": "H26",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H26",
+      "text": "Lin et al. 2022 GEE group coefficient B=-1.407, SE=.7278, 95 percent Wald CI -2.834 to .019, p=.053; attrition 7/22 (31.8 percent); registration posted February 2022 for a trial completed July 2020.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-01-6",
+      "source_id": "H30",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H30",
+      "text": "Park et al. 2025 participant-flow conflicts: 60 stated, three exclusions stated, 56 analysed, text 26/30 versus Table 3 30/28; baseline ISI 7.6 plus/minus .7 versus 12 plus/minus 1.2, p<.001.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-02-1",
+      "source_id": "H02/H30",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H02/H30",
+      "text": "Ghaly & Teplitz 2004 (n=12 with sleep dysfunction) and Park et al. 2025 enrolled participants with sleep complaints.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-02-2",
+      "source_id": "H30",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H30",
+      "text": "Park et al. 2025 day-31 Insomnia Severity Index between-group p=.275.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-02-3",
+      "source_id": "Freeze sections 51/55/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 51/55/63",
+      "text": "No diagnosed-insomnia trial with response or remission endpoints, harms ascertainment or durable follow-up was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-03-1",
+      "source_id": "H07",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H07",
+      "text": "Chevalier & Sinatra 2011 (n=27) reported acute heart-rate variability changes interpreted as reduced stress.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-03-2",
+      "source_id": "H02/H22",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H02/H22",
+      "text": "Ghaly & Teplitz 2004 and Chevalier et al. 2019 report subjective stress improvement.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-03-3",
+      "source_id": "H33",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H33",
+      "text": "Kim M-H & Lee E-Y 2025 reported stress z=-3.58, p<.001.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-03-4",
+      "source_id": "H30",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H30",
+      "text": "Park et al. 2025 day-31 perceived stress (BEPSI) between-group p=.756.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-03-5",
+      "source_id": "H26",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H26",
+      "text": "Lin et al. 2022 reported no between-group anxiety or depression effect.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-04-1",
+      "source_id": "H02",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H02",
+      "text": "Ghaly & Teplitz 2004: uncontrolled n=12 with sleep dysfunction, pain and stress; night cortisol pattern and subjective measures reportedly improved over 8 weeks.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-04-2",
+      "source_id": "Freeze sections 36/54/58",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 36/54/58",
+      "text": "A time-specific salivary cortisol profile is not equivalent to general cortisol production; the prohibited transition is pattern to general production lowering.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-S-04-3",
+      "source_id": "Freeze sections 51/60",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 51/60",
+      "text": "No controlled independent replication of the H02 cortisol observation was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-01-1",
+      "source_id": "H31",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H31",
+      "text": "Sokal et al. 2025: randomised, 42 active versus 42 sham ankle pads for one postoperative night with paracetamol for all. VAS mean change 2.50 versus 1.5952, exact p=.010511. Table 2 medians 2.5 versus 1; narrative and abstract give 2.0 versus 1.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-01-2",
+      "source_id": "H16/H22",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H16/H22",
+      "text": "Brown, Chevalier & Hill 2015 (randomised double-blind, 16 active/16 sham) and Chevalier et al. 2019 (16 massage therapists) report pain and soreness signals.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-01-3",
+      "source_id": "H16",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H16",
+      "text": "Brown, Chevalier & Hill 2015 reported pain occurring in both groups, with isolated biomarker differences among many outcomes and timepoints.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-01-4",
+      "source_id": "H31",
+      "role": "weakening",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H31",
+      "text": "Sokal et al. 2025 CK mean change 54.619 versus 40.5 U/L, p=.534106 — not significantly different between groups.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-01-5",
+      "source_id": "Freeze sections 32/55/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 32/55/63",
+      "text": "No condition-specific chronic-pain RCT with a minimal clinically important difference, medication use and follow-up was located; no registration was located for H31.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-02-1",
+      "source_id": "Freeze sections 50/52",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "Freeze sections 50/52",
+      "text": "Only nonspecific pain and inflammatory surrogates exist; no arthritis-specific trial was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-02-2",
+      "source_id": "Freeze section 71",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 71",
+      "text": "Shakoor & Block 2006 barefoot knee-osteoarthritis gait, Neogi et al. 2021 barefoot exposure and unstable-footwear studies were screened and excluded: ordinary gait, footwear or observational exposure with no conductive Earth or earthing intervention.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-02-3",
+      "source_id": "Freeze sections 19/70/73",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 19/70/73",
+      "text": "Documented proposition-specific search across PubMed (140 found/25 screened), Europe PMC title/abstract (140/25) and full text (479/25) and OpenAlex (62 deduplicated), with grounding, earthing, barefoot, soil-contact and Earth-contact terminology to the 22 August 2026 cut-off: class A, negative search state confirmed.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-02-4",
+      "source_id": "Freeze sections 54/55",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 54/55",
+      "text": "Arthritis disease-activity, function and progression endpoints are absent from the entire evidence base.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-03-1",
+      "source_id": "H01",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H01",
+      "text": "Ober 2000, ESD Journal grey report: grounded conductive sleep pad versus ungrounded/sham over one month, with large subjective sleep, stiffness and pain percentages. 60 said recruited but outcome-table totals reach 50.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-03-2",
+      "source_id": "H06/H16",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H06/H16",
+      "text": "Delayed-onset-muscle-soreness work provides indirect mechanism context only.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-03-3",
+      "source_id": "Freeze sections 54/55/60",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 54/55/60",
+      "text": "No validated stiffness endpoint in a defined population, and no replication of H01, were located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-04-1",
+      "source_id": "H25",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H25",
+      "text": "2021 Jing massage-plus-earthing grey report, n=12 with chronic low-back pain: massage in both arms plus grounded versus sham sleep; pain reduction 38 percent versus 17 percent reported.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-04-2",
+      "source_id": "H31",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H31",
+      "text": "Sokal et al. 2025 concerns post-lumbar-surgery recovery, an acute surgical context rather than chronic back pain.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-04-3",
+      "source_id": "Freeze sections 51/52",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 51/52",
+      "text": "No separate neck-pain trial was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-04-4",
+      "source_id": "Freeze section 63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 63",
+      "text": "No back or neck trial without confounded cointerventions was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-05-1",
+      "source_id": "Freeze section 50",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 50",
+      "text": "No headache-specific human grounding study was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-05-2",
+      "source_id": "Freeze section 71",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 71",
+      "text": "Screened and excluded: natural-environment exercise, aerobic walking and foot-reflexology migraine studies, plus incidental earthing records — no barefoot Earth-contact migraine intervention or qualifying endpoint combination.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-05-3",
+      "source_id": "Freeze sections 19/70/73",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 19/70/73",
+      "text": "Documented proposition-specific search across PubMed (5 found/5 screened), Europe PMC title/abstract (6/6) and full text (40/25) and OpenAlex (46 deduplicated) with grounding, earthing, barefoot, soil-contact and Earth-contact terminology to the 22 August 2026 cut-off: class A, negative search state confirmed.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-P-05-4",
+      "source_id": "Freeze section 54",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 54",
+      "text": "Headache frequency, intensity, disability and medication endpoints are absent from the entire evidence base.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-V-01-1",
+      "source_id": "H10/H13/H17",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H10/H13/H17",
+      "text": "Perfusion, blood-viscosity, zeta-potential and plantar-pump material is indirect only.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-V-01-2",
+      "source_id": "Freeze section 71",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 71",
+      "text": "Tsimba et al. 2023 barefoot treadmill plantar venous-pump study was screened and excluded: healthy volunteers, treadmill surface, no Earth contact and no venous-disease treatment endpoint.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-V-01-3",
+      "source_id": "Freeze sections 19/70/73",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 19/70/73",
+      "text": "Documented proposition-specific search across PubMed (1 found/1 screened), Europe PMC title/abstract (1/1) and full text (6/6) and OpenAlex (34 deduplicated) with grounding, earthing, barefoot, soil-contact and Earth-contact terminology to the 22 August 2026 cut-off: class A, negative search state confirmed.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-V-01-4",
+      "source_id": "Freeze section 54",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 54",
+      "text": "Varicose symptoms, duplex anatomy, reflux and progression endpoints are absent from the entire evidence base.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-01-1",
+      "source_id": "H22",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H22",
+      "text": "Chevalier et al. 2019: small energy and fatigue self-report improvements in 16 massage therapists.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-01-2",
+      "source_id": "H27",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H27",
+      "text": "Muniz-Pardos et al. 2022: randomised crossover in 10 elite male runners found no difference in oxygen uptake, heart rate, lactate, fatigue or running economy (51.1 plus/minus 4.2 versus 50.9 plus/minus 5.1).",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-01-3",
+      "source_id": "Freeze sections 54/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 54/63",
+      "text": "The energy and fatigue construct is inconsistently defined across the evidence; no validated fatigue or energy scale with objective function in a representative population was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-02-1",
+      "source_id": "Freeze section 50",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 50",
+      "text": "No brain-fog-specific human grounding study exists in the located evidence.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-02-2",
+      "source_id": "Freeze sections 34/71",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 34/71",
+      "text": "Kim T et al. 2024 (PMID 38926837) is an ordinary barefoot-versus-sneaker playground exercise and cognition study; conductivity, electrical Earth connection and brain fog were not tested. It receives no H identifier and is distinct from H34 (Kim JS et al. 2024).",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-02-3",
+      "source_id": "Freeze sections 19/70/73",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 19/70/73",
+      "text": "Documented proposition-specific search across PubMed (0 found/0 screened), Europe PMC title/abstract (0/0) and full text (0/0) and OpenAlex (40 deduplicated) with grounding, earthing, barefoot, soil-contact and Earth-contact terminology to the 22 August 2026 cut-off: class A, negative search state confirmed.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-02-4",
+      "source_id": "Freeze sections 54/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 54/63",
+      "text": "Brain fog and cognitive fog were never operationalised as endpoints; no validated cognition or cognitive-fatigue measure appears in the substrate.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-03-1",
+      "source_id": "H33",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H33",
+      "text": "Kim M-H & Lee E-Y 2025: quasi-experimental nonequivalent control, 73 enrolled and 60 analysed (29 intervention, 31 control), women with Menopause Rating Scale at or above 8; 60 minutes, three times weekly for 12 weeks on a maintained 2.7 km soil forest trail with barefoot soil contact. Menopausal symptoms z=-5.59, p<.001; stress z=-3.58, p<.001; quality of life z=-3.47, p=.001; sleep time-by-group F=7.53, p=.008.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-03-2",
+      "source_id": "H33",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H33",
+      "text": "Allocation was nonrandom, collection partly nonconcurrent, some prior controls were later re-enrolled, outcomes were self-reported, attrition was differential (10 of 39 intervention dropouts versus 3 of 34 controls), and there was no preregistration.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-03-3",
+      "source_id": "H33",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H33",
+      "text": "There was no equal-exercise, shod-walking or sham-grounding control; exercise, walking, forest and nature exposure, social and group contact, researcher support, sensory stimulation and soil contact are inseparable.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-E-03-4",
+      "source_id": "H33",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "H33",
+      "text": "No Premium Grounding product was used; the intervention was barefoot walking on a soil forest trail. Replication is absent.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-C-01-1",
+      "source_id": "H10",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H10",
+      "text": "Chevalier et al. 2013: red-cell zeta potential -5.28 to -14.3 mV, a 2.70-fold ratio of magnitude, individual ratios 1.27 to 5.63, paired p=3.57 x 10 to the -4, uncontrolled n=10.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-C-01-2",
+      "source_id": "H13/H17",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H13/H17",
+      "text": "Chevalier 2014 laser-speckle facial perfusion changes and Brown & Chevalier 2015 blood-viscosity differences during yoga, p=.03, n=28 women.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-C-01-3",
+      "source_id": "H12/H20/H28/H32",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H12/H20/H28/H32",
+      "text": "Teli et al. 2015, Elkin & Winter 2018/2019, Estiningtyas et al. 2023 and Wedri et al. 2025 report blood-pressure reductions in weak or uncontrolled designs.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-C-01-4",
+      "source_id": "Freeze sections 27/51/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 27/51/63",
+      "text": "No cardiovascular event or function trial, and no durable risk-modification outcome, were located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-C-01-5",
+      "source_id": "Freeze sections 36/40",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 36/40",
+      "text": "Blood-property and imaging surrogates are of uncertain clinical meaning; the prohibited transition is blood property or image to cardiovascular clinical outcome.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-R-01-1",
+      "source_id": "H23",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H23",
+      "text": "Müller et al. 2019: randomised triple-blind, 22 sport and physiotherapy students (12 grounded, 10 sham), grounded versus sham sleep for 10 nights after downhill treadmill running; smaller decline in selected performance measures and a smaller creatine-kinase rise.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-R-01-2",
+      "source_id": "H16/H11",
+      "role": "supporting",
+      "endpoint": "biomarker",
+      "material": true,
+      "exact_reference": "H16/H11",
+      "text": "Brown, Chevalier & Hill 2015 DOMS biomarkers (creatine kinase day 2 p=.04, neutrophils p=.05) and Sokal et al. 2013 lower urea at sampled timepoints.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-R-01-3",
+      "source_id": "H27",
+      "role": "contradictory",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H27",
+      "text": "Muniz-Pardos et al. 2022: randomised crossover in 10 elite male runners, grounded versus non-grounded shoes over a 20-minute run; no difference in oxygen uptake, heart rate, lactate, fatigue or running economy.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-R-01-4",
+      "source_id": "H06",
+      "role": "weakening",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H06",
+      "text": "Brown, Chevalier & Hill 2010: randomised double-blind pilot in 8 healthy young men with selected differences among 48 outcomes under a nonstandard threshold of at least 10 percent.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-R-01-5",
+      "source_id": "Freeze section 63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 63",
+      "text": "No registered, powered recovery trial with multiplicity control and the exact product was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-W-01-1",
+      "source_id": "H22",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "H22",
+      "text": "Chevalier et al. 2019 reports improvement across several well-being symptoms in 16 massage therapists.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-W-01-2",
+      "source_id": "Freeze sections 53/54/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 53/54/63",
+      "text": "No operationalised 'natural balance' endpoint exists; no defined homeostatic variable was identified, so the mechanism cannot be tested as worded.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-W-01-3",
+      "source_id": "Freeze sections 56/57/58",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 56/57/58",
+      "text": "The undefined construct also prevents a population, timeframe or causal contrast from being specified.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-01-1",
+      "source_id": "Component adjudication, this run",
+      "role": "supporting",
+      "endpoint": "limited_human",
+      "material": true,
+      "exact_reference": "Component adjudication, this run",
+      "text": "Component benefits: no component proposition reaches SOLID. M-01a, P-01 and R-01 are QUALIFIED within narrow bounds; S-01, S-03, E-01 and R-01 are mixed; I-01, C-01, S-02, S-04, P-03, P-04 and E-03 are overclaims on surrogate, single, grey or non-isolable evidence.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-01-2",
+      "source_id": "Freeze sections 70/73",
+      "role": "contradictory",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 70/73",
+      "text": "Component conditions: arthritis, headache, varicose veins, brain fog and immune function retain NO MATERIAL DIRECT EVIDENCE LOCATED after documented proposition-specific negative search confirmed at class A.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-01-3",
+      "source_id": "Freeze section 37",
+      "role": "contradictory",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 37",
+      "text": "Component populations: healthy young men, elite runners, massage therapists, sport students, mild Alzheimer patients, preterm infants, postoperative and hypertensive patients and symptomatic middle-aged women. No representative multi-condition or general-audience cohort was studied.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-01-4",
+      "source_id": "Freeze section 38",
+      "role": "contradictory",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 38",
+      "text": "Component timeframes run from 20 minutes to 12 weeks, with durability largely unreported; the advertisement carries no duration qualifier and its present-tense wording cannot inherit durability that studies did not measure.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-01-5",
+      "source_id": "Freeze sections 39/43",
+      "role": "contradictory",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 39/43",
+      "text": "Component products: no evidence line receives DIRECT PRODUCT MATCH; every proposition carries PRODUCT EQUIVALENCE UNCERTAIN. No proposition has a confirmed exact-product replication.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-01-6",
+      "source_id": "Freeze sections 41/50/91",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 41/50/91",
+      "text": "No study of the full proposition exists; no single demonstrated mechanism spans all named conditions, and the chain link 'outcomes generalise to the exact product and all conditions' is frozen as NOT ESTABLISHED.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-02-1",
+      "source_id": "Freeze section 50",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze section 50",
+      "text": "No defined head-to-head superiority evidence was located.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-02-2",
+      "source_id": "Freeze sections 51/54/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 51/54/63",
+      "text": "The comparator universe and the ranking metric are both undefined; no superiority margin is specified.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-02-3",
+      "source_id": "Freeze sections 53/56",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 53/56",
+      "text": "No mechanism can establish comparative superiority, and the comparator market population is undefined.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-X-02-4",
+      "source_id": "Component adjudication, this run",
+      "role": "contradictory",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Component adjudication, this run",
+      "text": "The product's absolute effects are themselves unestablished: no component proposition reaches SOLID and no evidence line achieves DIRECT PRODUCT MATCH.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-Q-01-1",
+      "source_id": "Freeze sections 50/51/82",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 50/51/82",
+      "text": "The official record supplies no denominator, survey or trust measure, and no customer or sales substantiation was reported.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-Q-01-2",
+      "source_id": "Freeze sections 46/56/58",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 46/56/58",
+      "text": "Scientific numbers cannot verify commercial claims; scientific participants do not represent customers and scientific causality is inapplicable to a commercial trust fact.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-Q-02-1",
+      "source_id": "Freeze sections 50/51/63",
+      "role": "missing_expected",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 50/51/63",
+      "text": "No contemporaneous reference price, sale start or end date, or promotion history was reported in the official record.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    },
+    {
+      "evidence_id": "EV-Q-02-2",
+      "source_id": "Freeze sections 46/58",
+      "role": "weakening",
+      "endpoint": "not_applicable",
+      "material": true,
+      "exact_reference": "Freeze sections 46/58",
+      "text": "Commercial claims require customer and promotion records; scientific numbers cannot verify them and scientific causality is inapplicable to a promotion-history fact.",
+      "reported_value": null,
+      "value_origin": "source_reported",
+      "derivation_method": null,
+      "input_evidence_ids": [],
+      "derivation_note": null
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F-M-01a",
+      "provenance_id": "PV-M-01a",
+      "proposition": "A conductive grounding path can alter measurable electrical potential, voltage, or current associated with the human body.",
+      "verdict_summary": "Configured conductive Earth contact demonstrably changes measurable human electrical potential, voltage or current. The wording stays at the tier the evidence reaches; the only material bound is that the advertised 2025 device's own electrical equivalence is unverified.",
+      "supporting_evidence_ids": [
+        "EV-M-01a-1",
+        "EV-M-01a-2",
+        "EV-M-01a-3"
+      ],
+      "contrary_evidence_ids": [
+        "EV-M-01a-4"
+      ],
+      "allowed_summary_strength": "limited_support",
+      "confidence_status": "VALID",
+      "predicted_label": "solid"
+    },
+    {
+      "finding_id": "F-M-01b",
+      "provenance_id": "PV-M-01b",
+      "proposition": "During grounding, electrons originating from Earth flow into the human body in the direction, quantity, and biological distribution implied by the advertisement.",
+      "verdict_summary": "The advertisement states that electrons originating from Earth flow into the body. No located human study traces electron provenance or establishes direction, biologically relevant quantity or tissue distribution. Measured electrical change (M-01a) is compatible with charge movement but cannot substitute for that demonstration.",
+      "supporting_evidence_ids": [
+        "EV-M-01b-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-M-01b-2",
+        "EV-M-01b-3"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-M-02",
+      "provenance_id": "PV-M-02",
+      "proposition": "That electron flow neutralises free radicals in humans.",
+      "verdict_summary": "Free-radical neutralisation by grounding-delivered electrons is a theoretical proposal supported ex vivo in non-human tissue. No validated in-vivo human radical assay under sham control was located, and the proposition also inherits the unestablished provenance step (M-01b).",
+      "supporting_evidence_ids": [
+        "EV-M-02-1",
+        "EV-M-02-2"
+      ],
+      "contrary_evidence_ids": [
+        "EV-M-02-3",
+        "EV-M-02-4"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "mechanism_vs_evidence"
+    },
+    {
+      "finding_id": "F-M-03",
+      "provenance_id": "PV-M-03",
+      "proposition": "That process reduces oxidative stress in humans.",
+      "verdict_summary": "Some human oxidative and inflammatory markers have moved in grounding studies, and the mechanism layer is frozen as INDIRECTLY SUPPORTED. The proposition as worded, however, attributes that reduction to 'that process' — the electron delivery and radical neutralisation of M-01b and M-02, which are NOT ESTABLISHED and SPECULATIVE. No study mediates from electrical exposure to oxidative-stress change.",
+      "supporting_evidence_ids": [
+        "EV-M-03-1",
+        "EV-M-03-2"
+      ],
+      "contrary_evidence_ids": [
+        "EV-M-03-3",
+        "EV-M-03-4"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "mechanism_vs_evidence"
+    },
+    {
+      "finding_id": "F-I-01",
+      "provenance_id": "PV-I-01",
+      "proposition": "Premium Grounding reduces inflammation.",
+      "verdict_summary": "Human evidence for this claim is entirely surrogate: cytokines, CK, CRP, thermography and one uncontrolled wound series. No clinical inflammatory-disease trial exists, and the newest biomarker line (H34 CRP) rests on paired within-group and post hoc subgroup tests without a direct group contrast.",
+      "supporting_evidence_ids": [
+        "EV-I-01-1",
+        "EV-I-01-2",
+        "EV-I-01-3"
+      ],
+      "contrary_evidence_ids": [
+        "EV-I-01-4",
+        "EV-I-01-5"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-I-02",
+      "provenance_id": "PV-I-02",
+      "proposition": "Premium Grounding boosts immune function.",
+      "verdict_summary": "No study measuring immune competence, infection incidence, pathogen clearance, vaccine response or durable protection was located, after a documented proposition-specific search extended with barefoot and Earth-contact terminology. The only Earth-contact immune-related line (H34 IFN-gamma) is discordant and supplies no grounding-specific signal.",
+      "supporting_evidence_ids": [
+        "EV-I-02-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-I-02-2",
+        "EV-I-02-3",
+        "EV-I-02-4"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-S-01",
+      "provenance_id": "PV-S-01",
+      "proposition": "Premium Grounding improves sleep quality.",
+      "verdict_summary": "Sleep is the best-studied advertised outcome and the evidence genuinely points both ways. A 12-week pilot found a large pointwise PSQI difference but its model group coefficient was p=.053 with 31.8 percent attrition; a one-month double-blind trial found no day-31 difference on ISI, PSQI, ESS or perceived stress. Neither the advertised certainty nor a general-audience effect is established.",
+      "supporting_evidence_ids": [
+        "EV-S-01-1",
+        "EV-S-01-2",
+        "EV-S-01-3"
+      ],
+      "contrary_evidence_ids": [
+        "EV-S-01-4",
+        "EV-S-01-5",
+        "EV-S-01-6"
+      ],
+      "allowed_summary_strength": "mixed",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-S-02",
+      "provenance_id": "PV-S-02",
+      "proposition": "Premium Grounding is relevant to/alleviates insomnia.",
+      "verdict_summary": "No adequately powered, registered trial in a diagnosed insomnia population was located. The available samples are sleep-complaint convenience groups, and the one trial that used the standard insomnia instrument found no day-31 between-group difference on it.",
+      "supporting_evidence_ids": [
+        "EV-S-02-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-S-02-2",
+        "EV-S-02-3"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-S-03",
+      "provenance_id": "PV-S-03",
+      "proposition": "Premium Grounding lowers stress levels.",
+      "verdict_summary": "Positive stress signals are acute, self-reported, small or confounded by a combined walking programme, and they sit beside two null prespecified comparisons. No durable stress-reduction endpoint under sham control was located.",
+      "supporting_evidence_ids": [
+        "EV-S-03-1",
+        "EV-S-03-2",
+        "EV-S-03-3"
+      ],
+      "contrary_evidence_ids": [
+        "EV-S-03-4",
+        "EV-S-03-5"
+      ],
+      "allowed_summary_strength": "mixed",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-S-04",
+      "provenance_id": "PV-S-04",
+      "proposition": "Premium Grounding lowers cortisol production.",
+      "verdict_summary": "The entire evidence base for this claim is one uncontrolled 12-participant study reporting a night-time salivary cortisol pattern change. A time-specific salivary profile is not a measure of cortisol production, and no controlled independent replication exists.",
+      "supporting_evidence_ids": [
+        "EV-S-04-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-S-04-2",
+        "EV-S-04-3"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-P-01",
+      "provenance_id": "PV-P-01",
+      "proposition": "Premium Grounding reduces aches and pain.",
+      "verdict_summary": "This is the advertised outcome with the strongest direct human evidence: a randomised sham-controlled trial in 84 post-lumbar-surgery patients found a VAS mean change of 2.50 versus 1.5952, exact p=.010511. That supports a bounded conclusion in acute induced, occupational and postoperative contexts only. It does not support the broad chronic-pain framing the advertisement uses, and the trial reports no confidence interval and no formal minimal clinically important difference.",
+      "supporting_evidence_ids": [
+        "EV-P-01-1",
+        "EV-P-01-2"
+      ],
+      "contrary_evidence_ids": [
+        "EV-P-01-3",
+        "EV-P-01-4",
+        "EV-P-01-5"
+      ],
+      "allowed_summary_strength": "limited_support",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-P-02",
+      "provenance_id": "PV-P-02",
+      "proposition": "Premium Grounding is relevant to/alleviates arthritis.",
+      "verdict_summary": "No human Earth-contact or grounding intervention study with an arthritis-relevant clinical or functional endpoint was located, after the most extensive proposition-specific search in the case. Candidate barefoot-gait records were excluded because they involve no conductive Earth contact.",
+      "supporting_evidence_ids": [
+        "EV-P-02-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-P-02-2",
+        "EV-P-02-3",
+        "EV-P-02-4"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-P-03",
+      "provenance_id": "PV-P-03",
+      "proposition": "Premium Grounding reduces muscle stiffness.",
+      "verdict_summary": "The only direct support is a grey trade-journal report whose recruitment total (60) conflicts with its own outcome-table total (50), which used no validated stiffness instrument and has never been replicated.",
+      "supporting_evidence_ids": [
+        "EV-P-03-1",
+        "EV-P-03-2"
+      ],
+      "contrary_evidence_ids": [
+        "EV-P-03-3"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-P-04",
+      "provenance_id": "PV-P-04",
+      "proposition": "Premium Grounding reduces back and neck pain.",
+      "verdict_summary": "Back pain is addressed only by a 12-participant grey report in which both arms received massage, and by an acute postoperative lumbar context that is not chronic back pain. No neck-pain study of any kind was located.",
+      "supporting_evidence_ids": [
+        "EV-P-04-1",
+        "EV-P-04-2"
+      ],
+      "contrary_evidence_ids": [
+        "EV-P-04-3",
+        "EV-P-04-4"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-P-05",
+      "provenance_id": "PV-P-05",
+      "proposition": "Premium Grounding is relevant to/alleviates headaches.",
+      "verdict_summary": "No headache-specific human grounding or Earth-contact intervention study was located. Screened candidates were natural-environment exercise, aerobic walking and foot-reflexology migraine studies, none of which involves conductive Earth contact with a qualifying endpoint.",
+      "supporting_evidence_ids": [],
+      "contrary_evidence_ids": [
+        "EV-P-05-1",
+        "EV-P-05-2",
+        "EV-P-05-3",
+        "EV-P-05-4"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-V-01",
+      "provenance_id": "PV-V-01",
+      "proposition": "Premium Grounding is relevant to/alleviates varicose veins.",
+      "verdict_summary": "No varicose-vein or venous-insufficiency grounding trial was located. The available perfusion, viscosity and plantar-pump material is indirect and cannot speak to venous valve anatomy, reflux or disease progression.",
+      "supporting_evidence_ids": [
+        "EV-V-01-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-V-01-2",
+        "EV-V-01-3",
+        "EV-V-01-4"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-E-01",
+      "provenance_id": "PV-E-01",
+      "proposition": "Premium Grounding boosts energy/alleviates lack of energy.",
+      "verdict_summary": "'Energy' has no consistent operational definition in the evidence. The one small positive line is self-report in 16 massage therapists; the one direct objective test found no difference in fatigue, oxygen uptake, heart rate, lactate or running economy.",
+      "supporting_evidence_ids": [
+        "EV-E-01-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-E-01-2",
+        "EV-E-01-3"
+      ],
+      "allowed_summary_strength": "mixed",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-E-02",
+      "provenance_id": "PV-E-02",
+      "proposition": "Premium Grounding is relevant to/alleviates brain fog.",
+      "verdict_summary": "No grounding or Earth-contact study operationalising brain fog or cognitive fog was located; the structured routes returned zero records in PubMed and Europe PMC. The one superficially similar record, an ordinary playground barefoot exercise and cognition study, tested neither conductivity nor brain fog and is screening-ineligible.",
+      "supporting_evidence_ids": [],
+      "contrary_evidence_ids": [
+        "EV-E-02-1",
+        "EV-E-02-2",
+        "EV-E-02-3",
+        "EV-E-02-4"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-E-03",
+      "provenance_id": "PV-E-03",
+      "proposition": "Premium Grounding is relevant to/alleviates menopause symptoms.",
+      "verdict_summary": "This is the only advertised condition with a condition-relevant human Earth-contact study, and its reported effects are large. But allocation was nonrandom, the comparator equalised nothing, no product was involved, and exercise, walking, forest exposure, social contact, researcher attention, sensory stimulation and soil contact cannot be separated. Nothing in it is attributable to grounding.",
+      "supporting_evidence_ids": [
+        "EV-E-03-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-E-03-2",
+        "EV-E-03-3",
+        "EV-E-03-4"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-C-01",
+      "provenance_id": "PV-C-01",
+      "proposition": "Premium Grounding enhances cardiovascular health.",
+      "verdict_summary": "All supporting evidence is acute surrogate measurement — zeta potential, facial perfusion, blood viscosity — or blood-pressure change in mostly uncontrolled one-group designs. No cardiovascular event, function or durable risk-modification outcome was studied.",
+      "supporting_evidence_ids": [
+        "EV-C-01-1",
+        "EV-C-01-2",
+        "EV-C-01-3"
+      ],
+      "contrary_evidence_ids": [
+        "EV-C-01-4",
+        "EV-C-01-5"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-R-01",
+      "provenance_id": "PV-R-01",
+      "proposition": "Premium Grounding accelerates recovery from exercise.",
+      "verdict_summary": "An independent randomised triple-blind trial reported a smaller performance decline and a smaller creatine-kinase rise over ten nights after eccentric exercise, supported by biomarker signals from other groups. A separate randomised crossover found no acute effect, but it tested grounded footwear and running economy rather than recovery. Bounded support exists in eccentric-exercise recovery protocols; the advertised general claim does not follow.",
+      "supporting_evidence_ids": [
+        "EV-R-01-1",
+        "EV-R-01-2"
+      ],
+      "contrary_evidence_ids": [
+        "EV-R-01-3",
+        "EV-R-01-4",
+        "EV-R-01-5"
+      ],
+      "allowed_summary_strength": "mixed",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-W-01",
+      "provenance_id": "PV-W-01",
+      "proposition": "Premium Grounding restores the body's natural balance.",
+      "verdict_summary": "'Natural balance' names no measurable physiological variable. No homeostatic endpoint was defined or measured in any located study, so the claim cannot be tested as worded and therefore cannot be substantiated.",
+      "supporting_evidence_ids": [
+        "EV-W-01-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-W-01-2",
+        "EV-W-01-3"
+      ],
+      "allowed_summary_strength": "not_directly_established",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-X-01",
+      "provenance_id": "PV-X-01",
+      "proposition": "Premium Grounding produces the advertised benefits across the general audience and listed conditions.",
+      "verdict_summary": "Adjudicated by component rather than dismissed as untestable. Across the twenty-one biomedical component propositions, none reaches SOLID; three are QUALIFIED within narrow bounds; sleep, stress, energy and recovery are mixed; five named conditions have no material direct evidence after documented negative search; immune function is unsupported and its one Earth-contact marker line is discordant; the mechanism chain is broken at the provenance step; no proposition has an exact-product match; and no study tested the bundle, a general audience or durable outcomes.",
+      "supporting_evidence_ids": [
+        "EV-X-01-1"
+      ],
+      "contrary_evidence_ids": [
+        "EV-X-01-2",
+        "EV-X-01-3",
+        "EV-X-01-4",
+        "EV-X-01-5",
+        "EV-X-01-6"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-X-02",
+      "provenance_id": "PV-X-02",
+      "proposition": "Premium Grounding is the most powerful natural health upgrade available for purchase.",
+      "verdict_summary": "A superlative comparative claim requires a defined comparator universe, a ranking metric and head-to-head evidence. None of the three exists. No superiority trial of any kind was located, and the product's own absolute effects are unestablished at every component.",
+      "supporting_evidence_ids": [],
+      "contrary_evidence_ids": [
+        "EV-X-02-1",
+        "EV-X-02-2",
+        "EV-X-02-3",
+        "EV-X-02-4"
+      ],
+      "allowed_summary_strength": "not_supported",
+      "confidence_status": "VALID",
+      "predicted_label": "overclaim"
+    },
+    {
+      "finding_id": "F-Q-01",
+      "provenance_id": "PV-Q-01",
+      "proposition": "Thousands trust the product for the stated benefits.",
+      "verdict_summary": "This is a commercial fact about customer numbers and trust, not a biomedical proposition. The frozen substrate contains no customer records, sampling frame, trust definition or dates, and biomedical studies are incapable of establishing or refuting it. The required input class is absent, so no biomedical verdict is issued.",
+      "supporting_evidence_ids": [],
+      "contrary_evidence_ids": [
+        "EV-Q-01-1",
+        "EV-Q-01-2"
+      ],
+      "allowed_summary_strength": "not_assessed",
+      "confidence_status": "MISSING",
+      "predicted_label": null
+    },
+    {
+      "finding_id": "F-Q-02",
+      "provenance_id": "PV-Q-02",
+      "proposition": "The advertised 40% sale was ending soon.",
+      "verdict_summary": "This is a pricing and promotion-history fact. The frozen substrate contains no reference price, no sale start or end date and no promotion history, and biomedical evidence is categorically inapplicable. The required input class is absent, so no biomedical verdict is issued.",
+      "supporting_evidence_ids": [],
+      "contrary_evidence_ids": [
+        "EV-Q-02-1",
+        "EV-Q-02-2"
+      ],
+      "allowed_summary_strength": "not_assessed",
+      "confidence_status": "MISSING",
+      "predicted_label": null
+    }
+  ],
+  "client_findings": [
+    {
+      "client_finding_id": "CF-M-01a",
+      "parent_finding_id": "F-M-01a",
+      "display_claim": "A conductive grounding path can alter measurable electrical potential, voltage, or current associated with the human body.",
+      "client_explanation": "Configured conductive Earth contact demonstrably changes measurable human electrical potential, voltage or current. The wording stays at the tier the evidence reaches; the only material bound is that the advertised 2025 device's own electrical equivalence is unverified.",
+      "client_strength": "limited_support",
+      "referenced_evidence_ids": [
+        "EV-M-01a-1",
+        "EV-M-01a-2",
+        "EV-M-01a-3",
+        "EV-M-01a-4"
+      ],
+      "provenance_id": "PV-M-01a",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-M-01b",
+      "parent_finding_id": "F-M-01b",
+      "display_claim": "During grounding, electrons originating from Earth flow into the human body in the direction, quantity, and biological distribution implied by the advertisement.",
+      "client_explanation": "The advertisement states that electrons originating from Earth flow into the body. No located human study traces electron provenance or establishes direction, biologically relevant quantity or tissue distribution. Measured electrical change (M-01a) is compatible with charge movement but cannot substitute for that demonstration.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-M-01b-1",
+        "EV-M-01b-2",
+        "EV-M-01b-3"
+      ],
+      "provenance_id": "PV-M-01b",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-M-02",
+      "parent_finding_id": "F-M-02",
+      "display_claim": "That electron flow neutralises free radicals in humans.",
+      "client_explanation": "Free-radical neutralisation by grounding-delivered electrons is a theoretical proposal supported ex vivo in non-human tissue. No validated in-vivo human radical assay under sham control was located, and the proposition also inherits the unestablished provenance step (M-01b).",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-M-02-1",
+        "EV-M-02-2",
+        "EV-M-02-3",
+        "EV-M-02-4"
+      ],
+      "provenance_id": "PV-M-02",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-M-03",
+      "parent_finding_id": "F-M-03",
+      "display_claim": "That process reduces oxidative stress in humans.",
+      "client_explanation": "Some human oxidative and inflammatory markers have moved in grounding studies, and the mechanism layer is frozen as INDIRECTLY SUPPORTED. The proposition as worded, however, attributes that reduction to 'that process' — the electron delivery and radical neutralisation of M-01b and M-02, which are NOT ESTABLISHED and SPECULATIVE. No study mediates from electrical exposure to oxidative-stress change.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-M-03-1",
+        "EV-M-03-2",
+        "EV-M-03-3",
+        "EV-M-03-4"
+      ],
+      "provenance_id": "PV-M-03",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-I-01",
+      "parent_finding_id": "F-I-01",
+      "display_claim": "Premium Grounding reduces inflammation.",
+      "client_explanation": "Human evidence for this claim is entirely surrogate: cytokines, CK, CRP, thermography and one uncontrolled wound series. No clinical inflammatory-disease trial exists, and the newest biomarker line (H34 CRP) rests on paired within-group and post hoc subgroup tests without a direct group contrast.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-I-01-1",
+        "EV-I-01-2",
+        "EV-I-01-3",
+        "EV-I-01-4",
+        "EV-I-01-5"
+      ],
+      "provenance_id": "PV-I-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-I-02",
+      "parent_finding_id": "F-I-02",
+      "display_claim": "Premium Grounding boosts immune function.",
+      "client_explanation": "No study measuring immune competence, infection incidence, pathogen clearance, vaccine response or durable protection was located, after a documented proposition-specific search extended with barefoot and Earth-contact terminology. The only Earth-contact immune-related line (H34 IFN-gamma) is discordant and supplies no grounding-specific signal.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-I-02-1",
+        "EV-I-02-2",
+        "EV-I-02-3",
+        "EV-I-02-4"
+      ],
+      "provenance_id": "PV-I-02",
+      "value_claims": [],
+      "client_negative_assertions": [
+        {
+          "assertion_id": "NA-I-02",
+          "client_scope": "documented_search"
+        }
+      ]
+    },
+    {
+      "client_finding_id": "CF-S-01",
+      "parent_finding_id": "F-S-01",
+      "display_claim": "Premium Grounding improves sleep quality.",
+      "client_explanation": "Sleep is the best-studied advertised outcome and the evidence genuinely points both ways. A 12-week pilot found a large pointwise PSQI difference but its model group coefficient was p=.053 with 31.8 percent attrition; a one-month double-blind trial found no day-31 difference on ISI, PSQI, ESS or perceived stress. Neither the advertised certainty nor a general-audience effect is established.",
+      "client_strength": "mixed",
+      "referenced_evidence_ids": [
+        "EV-S-01-1",
+        "EV-S-01-2",
+        "EV-S-01-3",
+        "EV-S-01-4",
+        "EV-S-01-5",
+        "EV-S-01-6"
+      ],
+      "provenance_id": "PV-S-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-S-02",
+      "parent_finding_id": "F-S-02",
+      "display_claim": "Premium Grounding is relevant to/alleviates insomnia.",
+      "client_explanation": "No adequately powered, registered trial in a diagnosed insomnia population was located. The available samples are sleep-complaint convenience groups, and the one trial that used the standard insomnia instrument found no day-31 between-group difference on it.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-S-02-1",
+        "EV-S-02-2",
+        "EV-S-02-3"
+      ],
+      "provenance_id": "PV-S-02",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-S-03",
+      "parent_finding_id": "F-S-03",
+      "display_claim": "Premium Grounding lowers stress levels.",
+      "client_explanation": "Positive stress signals are acute, self-reported, small or confounded by a combined walking programme, and they sit beside two null prespecified comparisons. No durable stress-reduction endpoint under sham control was located.",
+      "client_strength": "mixed",
+      "referenced_evidence_ids": [
+        "EV-S-03-1",
+        "EV-S-03-2",
+        "EV-S-03-3",
+        "EV-S-03-4",
+        "EV-S-03-5"
+      ],
+      "provenance_id": "PV-S-03",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-S-04",
+      "parent_finding_id": "F-S-04",
+      "display_claim": "Premium Grounding lowers cortisol production.",
+      "client_explanation": "The entire evidence base for this claim is one uncontrolled 12-participant study reporting a night-time salivary cortisol pattern change. A time-specific salivary profile is not a measure of cortisol production, and no controlled independent replication exists.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-S-04-1",
+        "EV-S-04-2",
+        "EV-S-04-3"
+      ],
+      "provenance_id": "PV-S-04",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-P-01",
+      "parent_finding_id": "F-P-01",
+      "display_claim": "Premium Grounding reduces aches and pain.",
+      "client_explanation": "This is the advertised outcome with the strongest direct human evidence: a randomised sham-controlled trial in 84 post-lumbar-surgery patients found a VAS mean change of 2.50 versus 1.5952, exact p=.010511. That supports a bounded conclusion in acute induced, occupational and postoperative contexts only. It does not support the broad chronic-pain framing the advertisement uses, and the trial reports no confidence interval and no formal minimal clinically important difference.",
+      "client_strength": "limited_support",
+      "referenced_evidence_ids": [
+        "EV-P-01-1",
+        "EV-P-01-2",
+        "EV-P-01-3",
+        "EV-P-01-4",
+        "EV-P-01-5"
+      ],
+      "provenance_id": "PV-P-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-P-02",
+      "parent_finding_id": "F-P-02",
+      "display_claim": "Premium Grounding is relevant to/alleviates arthritis.",
+      "client_explanation": "No human Earth-contact or grounding intervention study with an arthritis-relevant clinical or functional endpoint was located, after the most extensive proposition-specific search in the case. Candidate barefoot-gait records were excluded because they involve no conductive Earth contact.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-P-02-1",
+        "EV-P-02-2",
+        "EV-P-02-3",
+        "EV-P-02-4"
+      ],
+      "provenance_id": "PV-P-02",
+      "value_claims": [],
+      "client_negative_assertions": [
+        {
+          "assertion_id": "NA-P-02",
+          "client_scope": "documented_search"
+        }
+      ]
+    },
+    {
+      "client_finding_id": "CF-P-03",
+      "parent_finding_id": "F-P-03",
+      "display_claim": "Premium Grounding reduces muscle stiffness.",
+      "client_explanation": "The only direct support is a grey trade-journal report whose recruitment total (60) conflicts with its own outcome-table total (50), which used no validated stiffness instrument and has never been replicated.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-P-03-1",
+        "EV-P-03-2",
+        "EV-P-03-3"
+      ],
+      "provenance_id": "PV-P-03",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-P-04",
+      "parent_finding_id": "F-P-04",
+      "display_claim": "Premium Grounding reduces back and neck pain.",
+      "client_explanation": "Back pain is addressed only by a 12-participant grey report in which both arms received massage, and by an acute postoperative lumbar context that is not chronic back pain. No neck-pain study of any kind was located.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-P-04-1",
+        "EV-P-04-2",
+        "EV-P-04-3",
+        "EV-P-04-4"
+      ],
+      "provenance_id": "PV-P-04",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-P-05",
+      "parent_finding_id": "F-P-05",
+      "display_claim": "Premium Grounding is relevant to/alleviates headaches.",
+      "client_explanation": "No headache-specific human grounding or Earth-contact intervention study was located. Screened candidates were natural-environment exercise, aerobic walking and foot-reflexology migraine studies, none of which involves conductive Earth contact with a qualifying endpoint.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-P-05-1",
+        "EV-P-05-2",
+        "EV-P-05-3",
+        "EV-P-05-4"
+      ],
+      "provenance_id": "PV-P-05",
+      "value_claims": [],
+      "client_negative_assertions": [
+        {
+          "assertion_id": "NA-P-05",
+          "client_scope": "documented_search"
+        }
+      ]
+    },
+    {
+      "client_finding_id": "CF-V-01",
+      "parent_finding_id": "F-V-01",
+      "display_claim": "Premium Grounding is relevant to/alleviates varicose veins.",
+      "client_explanation": "No varicose-vein or venous-insufficiency grounding trial was located. The available perfusion, viscosity and plantar-pump material is indirect and cannot speak to venous valve anatomy, reflux or disease progression.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-V-01-1",
+        "EV-V-01-2",
+        "EV-V-01-3",
+        "EV-V-01-4"
+      ],
+      "provenance_id": "PV-V-01",
+      "value_claims": [],
+      "client_negative_assertions": [
+        {
+          "assertion_id": "NA-V-01",
+          "client_scope": "documented_search"
+        }
+      ]
+    },
+    {
+      "client_finding_id": "CF-E-01",
+      "parent_finding_id": "F-E-01",
+      "display_claim": "Premium Grounding boosts energy/alleviates lack of energy.",
+      "client_explanation": "'Energy' has no consistent operational definition in the evidence. The one small positive line is self-report in 16 massage therapists; the one direct objective test found no difference in fatigue, oxygen uptake, heart rate, lactate or running economy.",
+      "client_strength": "mixed",
+      "referenced_evidence_ids": [
+        "EV-E-01-1",
+        "EV-E-01-2",
+        "EV-E-01-3"
+      ],
+      "provenance_id": "PV-E-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-E-02",
+      "parent_finding_id": "F-E-02",
+      "display_claim": "Premium Grounding is relevant to/alleviates brain fog.",
+      "client_explanation": "No grounding or Earth-contact study operationalising brain fog or cognitive fog was located; the structured routes returned zero records in PubMed and Europe PMC. The one superficially similar record, an ordinary playground barefoot exercise and cognition study, tested neither conductivity nor brain fog and is screening-ineligible.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-E-02-1",
+        "EV-E-02-2",
+        "EV-E-02-3",
+        "EV-E-02-4"
+      ],
+      "provenance_id": "PV-E-02",
+      "value_claims": [],
+      "client_negative_assertions": [
+        {
+          "assertion_id": "NA-E-02",
+          "client_scope": "documented_search"
+        }
+      ]
+    },
+    {
+      "client_finding_id": "CF-E-03",
+      "parent_finding_id": "F-E-03",
+      "display_claim": "Premium Grounding is relevant to/alleviates menopause symptoms.",
+      "client_explanation": "This is the only advertised condition with a condition-relevant human Earth-contact study, and its reported effects are large. But allocation was nonrandom, the comparator equalised nothing, no product was involved, and exercise, walking, forest exposure, social contact, researcher attention, sensory stimulation and soil contact cannot be separated. Nothing in it is attributable to grounding.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-E-03-1",
+        "EV-E-03-2",
+        "EV-E-03-3",
+        "EV-E-03-4"
+      ],
+      "provenance_id": "PV-E-03",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-C-01",
+      "parent_finding_id": "F-C-01",
+      "display_claim": "Premium Grounding enhances cardiovascular health.",
+      "client_explanation": "All supporting evidence is acute surrogate measurement — zeta potential, facial perfusion, blood viscosity — or blood-pressure change in mostly uncontrolled one-group designs. No cardiovascular event, function or durable risk-modification outcome was studied.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-C-01-1",
+        "EV-C-01-2",
+        "EV-C-01-3",
+        "EV-C-01-4",
+        "EV-C-01-5"
+      ],
+      "provenance_id": "PV-C-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-R-01",
+      "parent_finding_id": "F-R-01",
+      "display_claim": "Premium Grounding accelerates recovery from exercise.",
+      "client_explanation": "An independent randomised triple-blind trial reported a smaller performance decline and a smaller creatine-kinase rise over ten nights after eccentric exercise, supported by biomarker signals from other groups. A separate randomised crossover found no acute effect, but it tested grounded footwear and running economy rather than recovery. Bounded support exists in eccentric-exercise recovery protocols; the advertised general claim does not follow.",
+      "client_strength": "mixed",
+      "referenced_evidence_ids": [
+        "EV-R-01-1",
+        "EV-R-01-2",
+        "EV-R-01-3",
+        "EV-R-01-4",
+        "EV-R-01-5"
+      ],
+      "provenance_id": "PV-R-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-W-01",
+      "parent_finding_id": "F-W-01",
+      "display_claim": "Premium Grounding restores the body's natural balance.",
+      "client_explanation": "'Natural balance' names no measurable physiological variable. No homeostatic endpoint was defined or measured in any located study, so the claim cannot be tested as worded and therefore cannot be substantiated.",
+      "client_strength": "not_directly_established",
+      "referenced_evidence_ids": [
+        "EV-W-01-1",
+        "EV-W-01-2",
+        "EV-W-01-3"
+      ],
+      "provenance_id": "PV-W-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-X-01",
+      "parent_finding_id": "F-X-01",
+      "display_claim": "Premium Grounding produces the advertised benefits across the general audience and listed conditions.",
+      "client_explanation": "Adjudicated by component rather than dismissed as untestable. Across the twenty-one biomedical component propositions, none reaches SOLID; three are QUALIFIED within narrow bounds; sleep, stress, energy and recovery are mixed; five named conditions have no material direct evidence after documented negative search; immune function is unsupported and its one Earth-contact marker line is discordant; the mechanism chain is broken at the provenance step; no proposition has an exact-product match; and no study tested the bundle, a general audience or durable outcomes.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-X-01-1",
+        "EV-X-01-2",
+        "EV-X-01-3",
+        "EV-X-01-4",
+        "EV-X-01-5",
+        "EV-X-01-6"
+      ],
+      "provenance_id": "PV-X-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-X-02",
+      "parent_finding_id": "F-X-02",
+      "display_claim": "Premium Grounding is the most powerful natural health upgrade available for purchase.",
+      "client_explanation": "A superlative comparative claim requires a defined comparator universe, a ranking metric and head-to-head evidence. None of the three exists. No superiority trial of any kind was located, and the product's own absolute effects are unestablished at every component.",
+      "client_strength": "not_supported",
+      "referenced_evidence_ids": [
+        "EV-X-02-1",
+        "EV-X-02-2",
+        "EV-X-02-3",
+        "EV-X-02-4"
+      ],
+      "provenance_id": "PV-X-02",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-Q-01",
+      "parent_finding_id": "F-Q-01",
+      "display_claim": "Thousands trust the product for the stated benefits.",
+      "client_explanation": "This is a commercial fact about customer numbers and trust, not a biomedical proposition. The frozen substrate contains no customer records, sampling frame, trust definition or dates, and biomedical studies are incapable of establishing or refuting it. The required input class is absent, so no biomedical verdict is issued.",
+      "client_strength": "not_assessed",
+      "referenced_evidence_ids": [
+        "EV-Q-01-1",
+        "EV-Q-01-2"
+      ],
+      "provenance_id": "PV-Q-01",
+      "value_claims": [],
+      "client_negative_assertions": []
+    },
+    {
+      "client_finding_id": "CF-Q-02",
+      "parent_finding_id": "F-Q-02",
+      "display_claim": "The advertised 40% sale was ending soon.",
+      "client_explanation": "This is a pricing and promotion-history fact. The frozen substrate contains no reference price, no sale start or end date and no promotion history, and biomedical evidence is categorically inapplicable. The required input class is absent, so no biomedical verdict is issued.",
+      "client_strength": "not_assessed",
+      "referenced_evidence_ids": [
+        "EV-Q-02-1",
+        "EV-Q-02-2"
+      ],
+      "provenance_id": "PV-Q-02",
+      "value_claims": [],
+      "client_negative_assertions": []
+    }
+  ],
+  "search_scopes": [
+    {
+      "search_scope_id": "SS-I-02",
+      "scope_type": "documented_search",
+      "reviewed_source_ids": [],
+      "resources": [
+        "PubMed title/abstract",
+        "Europe PMC title/abstract",
+        "Europe PMC body/full text",
+        "OpenAlex",
+        "bounded broad scholarly/web screen"
+      ],
+      "query_terms": [
+        "grounding",
+        "earthing",
+        "barefoot",
+        "soil contact",
+        "direct Earth contact",
+        "conductive Earth contact",
+        "immune function",
+        "immune response",
+        "immunocompetence"
+      ],
+      "date_cutoff": "2026-08-22",
+      "search_completeness": "structured"
+    },
+    {
+      "search_scope_id": "SS-P-02",
+      "scope_type": "documented_search",
+      "reviewed_source_ids": [],
+      "resources": [
+        "PubMed title/abstract",
+        "Europe PMC title/abstract",
+        "Europe PMC body/full text",
+        "OpenAlex",
+        "bounded broad scholarly/web screen"
+      ],
+      "query_terms": [
+        "grounding",
+        "earthing",
+        "barefoot",
+        "bare feet",
+        "barefoot walking",
+        "soil contact",
+        "direct Earth contact",
+        "conductive Earth contact",
+        "arthritis",
+        "arthritic"
+      ],
+      "date_cutoff": "2026-08-22",
+      "search_completeness": "structured"
+    },
+    {
+      "search_scope_id": "SS-P-05",
+      "scope_type": "documented_search",
+      "reviewed_source_ids": [],
+      "resources": [
+        "PubMed title/abstract",
+        "Europe PMC title/abstract",
+        "Europe PMC body/full text",
+        "OpenAlex",
+        "bounded broad scholarly/web screen"
+      ],
+      "query_terms": [
+        "grounding",
+        "earthing",
+        "barefoot",
+        "soil contact",
+        "direct Earth contact",
+        "conductive Earth contact",
+        "headache",
+        "headaches",
+        "migraine",
+        "migraines"
+      ],
+      "date_cutoff": "2026-08-22",
+      "search_completeness": "structured"
+    },
+    {
+      "search_scope_id": "SS-V-01",
+      "scope_type": "documented_search",
+      "reviewed_source_ids": [],
+      "resources": [
+        "PubMed title/abstract",
+        "Europe PMC title/abstract",
+        "Europe PMC body/full text",
+        "OpenAlex",
+        "bounded broad scholarly/web screen"
+      ],
+      "query_terms": [
+        "grounding",
+        "earthing",
+        "barefoot",
+        "soil contact",
+        "direct Earth contact",
+        "conductive Earth contact",
+        "varicose veins",
+        "varicosis",
+        "venous insufficiency"
+      ],
+      "date_cutoff": "2026-08-22",
+      "search_completeness": "structured"
+    },
+    {
+      "search_scope_id": "SS-E-02",
+      "scope_type": "documented_search",
+      "reviewed_source_ids": [],
+      "resources": [
+        "PubMed title/abstract",
+        "Europe PMC title/abstract",
+        "Europe PMC body/full text",
+        "OpenAlex",
+        "bounded broad scholarly/web screen"
+      ],
+      "query_terms": [
+        "grounding",
+        "earthing",
+        "barefoot",
+        "soil contact",
+        "direct Earth contact",
+        "conductive Earth contact",
+        "brain fog",
+        "cognitive fog"
+      ],
+      "date_cutoff": "2026-08-22",
+      "search_completeness": "structured"
+    }
+  ],
+  "negative_assertions": [
+    {
+      "assertion_id": "NA-I-02",
+      "finding_id": "F-I-02",
+      "proposition": "No qualifying direct human Earth-contact intervention study with a I-02-relevant endpoint was identified.",
+      "assertion_scope": "documented_search",
+      "search_scope_id": "SS-I-02",
+      "source_local_evidence_ids": []
+    },
+    {
+      "assertion_id": "NA-P-02",
+      "finding_id": "F-P-02",
+      "proposition": "No qualifying direct human Earth-contact intervention study with a P-02-relevant endpoint was identified.",
+      "assertion_scope": "documented_search",
+      "search_scope_id": "SS-P-02",
+      "source_local_evidence_ids": []
+    },
+    {
+      "assertion_id": "NA-P-05",
+      "finding_id": "F-P-05",
+      "proposition": "No qualifying direct human Earth-contact intervention study with a P-05-relevant endpoint was identified.",
+      "assertion_scope": "documented_search",
+      "search_scope_id": "SS-P-05",
+      "source_local_evidence_ids": []
+    },
+    {
+      "assertion_id": "NA-V-01",
+      "finding_id": "F-V-01",
+      "proposition": "No qualifying direct human Earth-contact intervention study with a V-01-relevant endpoint was identified.",
+      "assertion_scope": "documented_search",
+      "search_scope_id": "SS-V-01",
+      "source_local_evidence_ids": []
+    },
+    {
+      "assertion_id": "NA-E-02",
+      "finding_id": "F-E-02",
+      "proposition": "No qualifying direct human Earth-contact intervention study with a E-02-relevant endpoint was identified.",
+      "assertion_scope": "documented_search",
+      "search_scope_id": "SS-E-02",
+      "source_local_evidence_ids": []
+    }
+  ]
+}

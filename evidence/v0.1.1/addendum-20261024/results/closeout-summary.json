@@ -1,0 +1,20 @@
+{
+  "status": "BLOCKED",
+  "blocker": "E1 host-textbox visual criterion: 6/75 Noto Serif and 5/75 local GitHub-like cases; not a failed raw-run rule",
+  "tested_product_commit": "403bd3fac27f2406a150b2243a691ba4d0b12fbb",
+  "full_suite": {
+    "passed": 1343,
+    "failed": 0,
+    "skipped": 0,
+    "branch_coverage_percent": 98.04,
+    "source": "results/logs/offline/final-pytest.log"
+  },
+  "ruff_exit": 0,
+  "mypy_exit": 0,
+  "clean_install_exit": 0,
+  "installed_examples_byte_identical": 10,
+  "review_sha256": "7d414da04ef0068cc34ffc2c69689ea9c89cf1bcea2a2e5b88fda14e243ba1a1",
+  "product_identity_files": 59,
+  "publication_decisions": "PREPARED, not approved",
+  "public_actions": "none"
+}

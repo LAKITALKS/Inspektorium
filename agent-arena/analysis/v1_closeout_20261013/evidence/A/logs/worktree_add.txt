@@ -1,0 +1,4 @@
+Preparing worktree (detached HEAD 558e920)
+HEAD is now at 558e920 Final report of the C25/P9/P1-P10 order, critic-checked once
+__LOCAL_HOME__/Documents/Projects/agent-arena                                                                                             5560e95 [c25-p9-conflict/aa-p8-p9-20261011]
+<scratch>/hist  558e920 (detached HEAD)

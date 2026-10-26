@@ -1,0 +1,1222 @@
+{
+  "run_id": "cal_study-forensics-001_claude_sonnet_995ac5",
+  "task": {
+    "id": "study-forensics-001",
+    "title": "Study Forensics: Social media use and well-being",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "Researchers at the University of Pennsylvania randomly assigned 143 college students either to continue their usual use of Facebook, Snapchat and Instagram or to limit each platform to ten minutes per day. Over three weeks they collected objective usage data from phone screenshots and measured depression and loneliness. Students who restricted social-media use reported significant declines in depressive symptoms and loneliness compared with the control group. The authors caution that the study involved only college students and three specific platforms and that the results may not generalise to other populations.\n",
+    "context": "This is a well-designed randomized trial with honest uncertainty.\nThe agent should recognize it as solid and not overflag.\n",
+    "expected_answer": "solid",
+    "reference_solution": "Randomised experimental evidence shows that limiting use of three social-media platforms reduces depression and loneliness in college students. The paper is careful not to overgeneralise and openly acknowledges its limitations, so there are no major epistemic failures.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "randomised",
+        "variants": [
+          "randomized",
+          "RCT",
+          "experimental design"
+        ],
+        "functional_descriptions": [
+          "the study uses random assignment, supporting causal claims"
+        ]
+      },
+      {
+        "keyword": "scope limitation",
+        "variants": [
+          "caution",
+          "may not generalise",
+          "limited population"
+        ],
+        "functional_descriptions": [
+          "authors acknowledge the study's limited generalisability"
+        ]
+      }
+    ],
+    "common_errors": [
+      "hallucinating major flaws in a solid study",
+      "flagging acknowledged limitations as if they were unacknowledged"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_solid_study",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "overclaiming",
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise a well-designed study without overflagging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "Randomised experimental evidence shows that limiting use of three social-media platforms reduces depression and loneliness in college students. The paper is careful not to overgeneralise and openly acknowledges its limitations, so there are no major epistemic failures.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "randomly assigned 143 college students either to continue their usual use ... or to limit each platform to ten minutes per day",
+        "why_it_matters": "Indicates a true randomised design, supporting causal inference.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "Students who restricted social-media use reported significant declines in depressive symptoms and loneliness",
+        "why_it_matters": "Direct evidence that limiting social-media use improved well-being.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "the study involved only college students and three specific platforms",
+        "why_it_matters": "Authors themselves restrict the scope and urge caution.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "Randomised experimental design with objective usage verification supports causal inference.\nAuthors explicitly restrict scope to college students and three platforms.\nNo overclaim or unsupported generalization detected in the text.\n",
+    "gold_alternative_reading": "One could argue the sample size (n=143) is small for strong causal claims, but the\nauthors acknowledge this. A 'solid with minor caveats' reading is reasonable but does\nnot change the label.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Clear solid case. Both LLM validation sprints correctly classify this across all models.\nGood calibration anchor for the 'solid' category.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Sonnet",
+        "model": "claude-sonnet-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\"The study used proper randomization as stated\", \"Objective usage data from phone screenshots is reliable\", \"The depression and loneliness measures were validated instruments\", \"The three-week duration was sufficient to detect meaningful changes\"],\n  \"steps\": [\"Identified this as a randomized controlled trial with proper experimental design\", \"Noted the study measured objective usage data, not just self-reports\", \"Confirmed the authors made appropriate causal claims given the experimental design\", \"Verified the authors included proper caveats about generalizability\", \"Found no evidence of overclaiming or unsupported generalizations\", \"Confirmed the conclusion matches the evidence presented\"],\n  \"alternative_hypotheses\": [\"Could be overclaim if the generalizability limitations were ignored\", \"Could be correlation_vs_causation if this were observational rather than experimental\"],\n  \"uncertainties\": [\"The specific measures used for depression and loneliness are not detailed\", \"The magnitude of the effects is not specified\", \"Whether there were any dropout rates or compliance issues\"],\n  \"key_claims\": [\"This is a well-designed RCT that supports causal inference\", \"The authors appropriately limit their conclusions to the studied population\", \"The experimental manipulation allows for causal claims about social media restriction\"],\n  \"self_check\": [\"Verified this is experimental not observational\", \"Confirmed I'm not fabricating problems that don't exist\", \"Double-checked that the conclusions match the study design\", \"Ensured I'm focusing on what the text actually says\"],\n  \"confidence\": 0.90\n}",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study used proper randomization as stated",
+            "Objective usage data from phone screenshots is reliable",
+            "The depression and loneliness measures were validated instruments",
+            "The three-week duration was sufficient to detect meaningful changes"
+          ],
+          "steps": [
+            "Identified this as a randomized controlled trial with proper experimental design",
+            "Noted the study measured objective usage data, not just self-reports",
+            "Confirmed the authors made appropriate causal claims given the experimental design",
+            "Verified the authors included proper caveats about generalizability",
+            "Found no evidence of overclaiming or unsupported generalizations",
+            "Confirmed the conclusion matches the evidence presented"
+          ],
+          "alternative_hypotheses": [
+            "Could be overclaim if the generalizability limitations were ignored",
+            "Could be correlation_vs_causation if this were observational rather than experimental"
+          ],
+          "uncertainties": [
+            "The specific measures used for depression and loneliness are not detailed",
+            "The magnitude of the effects is not specified",
+            "Whether there were any dropout rates or compliance issues"
+          ],
+          "self_check": [
+            "Verified this is experimental not observational",
+            "Confirmed I'm not fabricating problems that don't exist",
+            "Double-checked that the conclusions match the study design",
+            "Ensured I'm focusing on what the text actually says"
+          ],
+          "key_claims": [
+            "This is a well-designed RCT that supports causal inference",
+            "The authors appropriately limit their conclusions to the studied population",
+            "The experimental manipulation allows for causal claims about social media restriction"
+          ],
+          "confidence": 0.9,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 8616
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.64,
+        "uncertainty_handling": 0.49999999999999994,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.0,
+        "insight_depth": 0.667,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Confirmed the authors made appropriate causal claims given the experimental design",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 0/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.77)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.64,
+          "weight": 6,
+          "weighted_score": 3.8,
+          "evidence": [
+            {
+              "text": "The depression and loneliness measures were validated instruments",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The three-week duration was sufficient to detect meaningful changes",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The three-week duration was sufficient to detect meaningful changes",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions",
+            "2 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.49999999999999994,
+          "weight": 6,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "The specific measures used for depression and loneliness are not detailed",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "The specific measures used for depression and loneliness are not detailed",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The magnitude of the effects is not specified",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "Whether there were any dropout rates or compliance issues",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.9",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "3 decorative uncertainty(ies)",
+            "Confidence 0.9"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "Could be correlation_vs_causation if this were observational rather than experimental",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "Double-checked that the conclusions match the study design",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Verified this is experimental not observational",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 0 arithmetic, 4 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.69, 196 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Missing: scope limitation",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'scope limitation' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The depression and loneliness measures were validated instru...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The depression and loneliness measures were validated instruments",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The three-week duration was sufficient to detect meaningful ...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The three-week duration was sufficient to detect meaningful changes",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The specific measures used for depression and loneliness are...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The specific measures used for depression and loneliness are not detailed",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The magnitude of the effects is not specified...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The magnitude of the effects is not specified",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether there were any dropout rates or compliance issues...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether there were any dropout rates or compliance issues",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_self_check",
+          "severity": "minor",
+          "description": "All 4 self-checks appear to be fluff — no substantive verification",
+          "evidence": [
+            {
+              "text": "Verified this is experimental not observational",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Example fluff self-check",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "self_monitoring_quality",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: evidence_matches_claim",
+          "evidence": [
+            {
+              "text": "Expected: evidence_matches_claim",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'evidence_matches_claim' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/4 content words)",
+          "evidence": [
+            {
+              "text": "This is a well-designed RCT that supports causal inference",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/6 content words)",
+          "evidence": [
+            {
+              "text": "The authors appropriately limit their conclusions to the studied population",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "The experimental manipulation allows for causal claims about social media restriction",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 2 not well supported in reasoning steps (1/6 content words found)",
+          "evidence": [
+            {
+              "text": "The authors appropriately limit their conclusions to the studied population",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 3 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "The depression and loneliness measures were validated instruments",
+              "source_field": "assumptions[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "unused_assumption",
+          "status": "warning",
+          "description": "Assumption 4 appears unused in reasoning or answer",
+          "evidence": [
+            {
+              "text": "The three-week duration was sufficient to detect meaningful changes",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assumption",
+              "relevance": "Declared but not referenced in steps or answer",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 1 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The specific measures used for depression and loneliness are not detailed",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The magnitude of the effects is not specified",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether there were any dropout rates or compliance issues",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "self_check_depth",
+          "status": "minor",
+          "description": "Self-check 3 appears to be generic fluff rather than substantive verification",
+          "evidence": [
+            {
+              "text": "Double-checked that the conclusions match the study design",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Short or generic self-check",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be overclaim if the generalizability limitations were ignored",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Could be correlation_vs_causation if this were observational rather than experimental",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: conclusion_exceeds_results, unsupported_generalization, mechanism_not_demonstrated, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study used proper randomization as stated",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Objective usage data from phone screenshots is reliable",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The depression and loneliness measures were validated instruments",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The three-week duration was sufficient to detect meaningful changes",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Identified this as a randomized controlled trial with proper experimental design",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted the study measured objective usage data, not just self-reports",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Confirmed the authors made appropriate causal claims given the experimental design",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified the authors included proper caveats about generalizability",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Found no evidence of overclaiming or unsupported generalizations",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Confirmed the conclusion matches the evidence presented",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "This is a well-designed RCT that supports causal inference",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors appropriately limit their conclusions to the studied population",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The experimental manipulation allows for causal claims about social media restriction",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be overclaim if the generalizability limitations were ignored",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Could be correlation_vs_causation if this were observational rather than experimental",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The specific measures used for depression and loneliness are not detailed",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The magnitude of the effects is not specified",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether there were any dropout rates or compliance issues",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Verified this is experimental not observational",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Confirmed I'm not fabricating problems that don't exist",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Double-checked that the conclusions match the study design",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Ensured I'm focusing on what the text actually says",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 1,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 18,
+            "target_idx": 4,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 18,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 18,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.3333333333333333
+          }
+        ],
+        "unused_assumptions": [
+          2,
+          3
+        ],
+        "unaddressed_uncertainties": [
+          15,
+          16,
+          17
+        ],
+        "unsupported_conclusions": [
+          22
+        ],
+        "fluff_self_checks": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "missed_findings": [
+          "evidence_matches_claim"
+        ],
+        "extra_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.667,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.667,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "decorative_self_check",
+        "unsupported_intermediate_step",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 1 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 6",
+        "Reasoning graph: conclusion not well grounded",
+        "6 reasoning steps",
+        "Low step utility: 0/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.77)",
+        "4/4 substantive assumptions",
+        "2 unused assumption(s)",
+        "3 uncertainties (3 substantive)",
+        "3 decorative uncertainty(ies)",
+        "Confidence 0.9",
+        "2 alternative hypotheses considered",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 0 arithmetic, 4 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.69, 196 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-06T14:58:41.819557+00:00",
+  "metadata": {}
+}

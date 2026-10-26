@@ -1,0 +1,10 @@
+# Kritiker-Simulation (offline, KEINE Modellausgabe), ausgeführt 2026-10-11T14:54:16Z
+# Code: Arbeitsbaum der Reparaturrevision R1 (unveränderter Prüfer); Eingabe: die 12 gesicherten Antworten der Revision 1
+
+$ python scenarios.py <repo>
+### copy-only C1-C24,C26-C28: strict pass 0/12; C25 asserted_state mismatch in 12/12
+### + C12 via not_applicable: strict pass 2/12; C25 asserted_state mismatch in 10/12
+### + C12 + C14 copy into descriptions: strict pass 2/12; C25 asserted_state mismatch in 10/12
+
+$ python oracle.py <repo>   (asserted_state = host-derived state; reine Obergrenze, keine zulässige Reparatur)
+oracle strict pass 11 /12

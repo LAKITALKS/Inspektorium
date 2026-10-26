@@ -1,0 +1,163 @@
+id: P7A-NEU-002
+title: "Neutral anchor (overclaim): Sensa 'sprinkle it on and lose weight without dieting' (unsupported efficacy claim)"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: unsupported_efficacy
+ambiguity_level: low
+prompt: |
+  A weight-loss product is marketed as follows: "Sprinkle Sensa on everything you eat and watch the pounds come off - no dieting, no exercise, no calorie counting. In our studies, Sensa users lost an average of 30 pounds. It's the revolutionary, clinically studied way to lose weight."
+
+  Sensa is a flavoured "tastant" powder that users shake onto food. When the US Federal Trade Commission examined the marketing, it concluded that the claim that Sensa causes substantial weight loss was not supported by competent and reliable scientific evidence: the studies the marketers pointed to were not adequately controlled (no proper randomised comparison), and did not establish that the product caused the advertised weight loss. In 2014 the FTC charged the marketers with deceptive advertising and reached a settlement of $26.5 million for consumer refunds.
+context: |
+  Evidence tier: an FTC deceptive-advertising evidence assessment. The claim is a bare efficacy
+  assertion - substantial weight loss with no dieting or exercise - with no described biological
+  mechanism and no observational dataset being over-read. The "studies" invoked were not adequately
+  controlled, so the appeal to being "clinically studied" adds authority without support. The forensic
+  defect is a strong benefit claim that exceeds the (absent) supporting evidence: generic rhetorical
+  inflation. A conclusion sold as proven weight loss when the underlying evidence does not establish it
+  routes to overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  Sensa is marketed as causing substantial weight loss (an average of 30 pounds) with no dieting or
+  exercise, described as "clinically studied". The FTC found no competent and reliable scientific
+  evidence for the weight-loss claim: the invoked studies were not adequately controlled and did not
+  establish causation. A strong efficacy claim asserted as proven when the evidence does not support it
+  is rhetorical inflation = overclaim. It is not mechanism_vs_evidence (no biological mechanism is
+  described and extrapolated) and not correlation_vs_causation (no observational dataset is
+  over-interpreted); the defect is generic - a benefit claim beyond its evidence.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: Sensa causes substantial weight loss (an average of 30 pounds) without dieting
+     or exercise, and is "clinically studied".
+  2. What the strongest evidence establishes: the FTC found the weight-loss claim was not supported by
+     competent and reliable scientific evidence; the invoked studies were not adequately controlled and
+     did not establish that the product caused weight loss.
+  3. Defect: the claim's strength (proven, substantial weight loss) is supplied by assertion and an
+     empty appeal to being "clinically studied", not by evidence.
+  4. Primary frozen label: overclaim - a benefit conclusion framed as established that exceeds the
+     (absent) evidence.
+  5. Why: overclaim is the generic rhetorical-inflation category, and here the inflation is the entire
+     defect; no specific-label trigger is present.
+  6. Strongest competing label: solid - if the invoked studies were real adequate trials, faithful
+     reporting of them could be solid.
+  7. Why it loses: the studies were not adequately controlled and the FTC found no reliable supporting
+     evidence, so nothing asserted is actually established; a proven-weight-loss claim without proof is
+     overclaim.
+  8. What would change the verdict: an adequately powered, controlled trial showing Sensa causes the
+     advertised weight loss would move faithful reporting of it toward solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: the ad says Sensa is "clinically studied" and cites
+  an average 30-pound loss, which superficially sounds like the kind of quantified trial result a solid
+  claim rests on. It loses because the FTC found the underlying studies were not adequately controlled
+  and did not establish causation, and that there was no competent and reliable scientific evidence for
+  the claim; an unsupported efficacy assertion is overclaim, not solid.
+gold_summary: |
+  Sensa was marketed as causing ~30 pounds of weight loss with no dieting or exercise, "clinically
+  studied". The FTC found no competent and reliable scientific evidence and inadequately controlled
+  studies, and charged deceptive advertising ($26.5M settlement, 2014). A strong efficacy claim beyond
+  its evidence = overclaim (not mechanism or correlation).
+curator_notes: |
+  Neutral perturbation anchor for the gold label 'overclaim' (Phase-7A perturbation track, contract §5).
+  NOT selected from Boundary/Adversarial performance; a clean, representative overclaim whose defect is
+  generic unsupported efficacy (no decorative-citation, subgroup, surrogate, superiority, or
+  technically-true-numeric structure). Distinct decisive proposition from the brain-training overclaim
+  (P7A-BND-014) and from all adversarial overclaims (Airborne cold prevention A1, POM A1, gluten-free
+  A4, testosterone A4, antibacterial soap A5, Nexium A6, Lipitor A8, Colgate A8). Gold frozen before any
+  model output.
+expected_findings:
+  - finding: unsupported_efficacy_claim
+    severity: major
+    confidence: high
+    note: "Substantial weight loss asserted with no adequately controlled evidence of causation"
+  - finding: empty_clinically_studied_appeal
+    severity: major
+    confidence: high
+    note: "'Clinically studied' invoked, but the FTC found the studies inadequately controlled"
+gold_evidence_spans:
+  - span: "watch the pounds come off - no dieting, no exercise"
+    why_it_matters: "A strong efficacy claim asserted as established without adequate evidence."
+    supports_finding: unsupported_efficacy_claim
+  - span: "the revolutionary, clinically studied way to lose weight"
+    why_it_matters: "An authority appeal ('clinically studied') the FTC found unsupported by controlled evidence."
+    supports_finding: empty_clinically_studied_appeal
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "unsupported efficacy"
+    variants: ["no competent and reliable evidence", "not adequately controlled", "FTC"]
+    functional_descriptions:
+      - "A strong benefit claim asserted as proven without adequate evidence"
+  - keyword: "rhetorical inflation"
+    variants: ["clinically studied", "average of 30 pounds", "revolutionary"]
+    functional_descriptions:
+      - "The claim's strength comes from assertion, not from the evidence"
+common_errors:
+  - crediting a weight-loss claim because it says 'clinically studied'
+  - reading an unsupported efficacy claim as solid without checking the studies
+expected_failure_modes:
+  - overclaim_read_as_solid
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a strong, 'clinically studied' weight-loss claim with no adequately controlled evidence is a generic overclaim, not solid?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-NEU-002
+  case_family: neutral_perturbation_anchor
+  neutral_anchor_label: overclaim
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) with one genuinely plausible alternate (solid, invited by the "clinically
+    studied" and quantified 30-pound figure); recognising that the invoked studies are not adequately
+    controlled decides it. No mechanism or causal-inference structure, low number of competing failure
+    modes = D2. Property-based, pre-result.
+  precedence_rationale: |
+    No specific-label trigger is present: no biological mechanism is described and extrapolated (rules
+    out mechanism_vs_evidence) and no observational dataset is read causally (rules out
+    correlation_vs_causation). The defect is generic rhetorical inflation - a benefit claim exceeding
+    absent evidence - so the primary stays overclaim per docs/taxonomy_precedence.md (residual/generic
+    rule).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting only if the "clinically
+    studied" appeal is credited, which the FTC's inadequate-controls finding rules out.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the ad calls Sensa "clinically studied" and quotes a specific
+    average weight loss, the shape of a real trial result a solid claim would rest on. Counter-evidence
+    weighed: the FTC concluded the studies were not adequately controlled and that there was no
+    competent and reliable scientific evidence that Sensa causes weight loss. Resolution: the efficacy
+    claim is unsupported, so gold remains overclaim.
+  provenance:
+    claim_source_title: "FTC: Sensa and Three Other Marketers of Fad Weight-Loss Products Settle FTC Charges"
+    claim_source_url: "https://www.ftc.gov/news-events/news/press-releases/2014/01/sensa-three-other-marketers-fad-weight-loss-products-settle-ftc-charges"
+    claim_source_publisher: "Sensa Products, LLC (marketer); the claim and its disposition are documented by the US Federal Trade Commission"
+    claim_source_date: "2014"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Sensa ('sprinkle diet') was mass-marketed on TV, online, and in retail as causing substantial weight loss without dieting or exercise, described as clinically studied. The FTC charged the marketers with deceptive advertising, finding the weight-loss claims were not supported by competent and reliable scientific evidence and that the invoked studies were not adequately controlled; the marketers settled ($26.5 million for consumer refunds). The frozen span is the bounded efficacy claim plus its 'clinically studied' appeal."
+    claim_exact_span: "Sprinkle Sensa on everything you eat and watch the pounds come off - no dieting, no exercise ... the revolutionary, clinically studied way to lose weight"
+    evidence_sources:
+      - citation: "US Federal Trade Commission. Sensa and Three Other Marketers of Fad Weight-Loss Products Settle FTC Charges (2014); FTC v. Sensa Products, LLC."
+        url: "https://www.ftc.gov/news-events/news/press-releases/2014/01/sensa-three-other-marketers-fad-weight-loss-products-settle-ftc-charges"
+        design: "Regulatory deceptive-advertising action and evidence assessment"
+        population: "Consumers targeted by Sensa weight-loss advertising"
+        intervention_or_exposure: "Sensa 'tastant' powder marketed for weight loss"
+        comparator: "Standard of proof: competent and reliable scientific evidence (adequate controls)"
+        endpoint: "Substantiation of the weight-loss efficacy claim"
+        result: "No competent and reliable scientific evidence; the invoked studies were not adequately controlled and did not establish causation; marketers settled deceptive-advertising charges ($26.5M)"
+        source_role: regulatory_assessment
+        evidence_tier: "Regulatory evidence assessment / enforcement record"
+        limitations: "Enforcement/consumer-protection record, not itself a clinical trial; adjudicates substantiation rather than a specific effect size"
+    access_date: "2026-08-17"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "clean overclaim anchor: a strong, 'clinically studied' efficacy claim with no adequately controlled supporting evidence"
+  case_fingerprint: "254ab437034cae50441ebbc05567abfaa818bcdeec3ef9650fa6b4ab8eec3363"

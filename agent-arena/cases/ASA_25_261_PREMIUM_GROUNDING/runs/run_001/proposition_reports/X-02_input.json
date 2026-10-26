@@ -1,0 +1,130 @@
+{
+  "claim": {
+    "claim_context": "Active atomic proposition X-02 from the frozen ASA 25/261 Premium Grounding claim registry (origin F05; type EXPLICIT; SUPERIORITY/GENERAL-WELLNESS; PRODUCT-SPECIFIC). Frozen evidence-preparation state: NO MATERIAL DIRECT EVIDENCE LOCATED. Routing: SUPERIORITY CLAIM — COMPARATOR / METRIC UNDEFINED.",
+    "claim_scope": "COMPARATOR UNDEFINED | PRODUCT EQUIVALENCE UNCERTAIN | REPLICATION ABSENT",
+    "claim_source_reference": "INSPEKTORIUM Premium Grounding ASA 25/261 Final Evidence Freeze v1, sections 12/48; evidence cut-off 2026-08-22",
+    "claim_text": "Premium Grounding is the most powerful natural health upgrade available for purchase.",
+    "intended_reader_or_audience": "General consumer audience of a website health advertisement."
+  },
+  "evidence": {
+    "contradicting_or_limiting": [
+      "No head-to-head superiority evidence located",
+      "Comparator universe, ranking metric and margin all undefined",
+      "Absolute product effects unestablished at every component"
+    ],
+    "evidence_items": [
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze section 50",
+        "text": "No defined head-to-head superiority evidence was located.",
+        "tier": "not_applicable",
+        "why_it_matters": "A comparative claim has no comparative evidence behind it."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": "Freeze sections 51/54/63",
+        "text": "The comparator universe and the ranking metric are both undefined; no superiority margin is specified.",
+        "tier": "not_applicable",
+        "why_it_matters": "Even with data, the claim could not be evaluated without a defined comparison set and metric."
+      },
+      {
+        "role": "weakening",
+        "source_reference": "Freeze sections 53/56",
+        "text": "No mechanism can establish comparative superiority, and the comparator market population is undefined.",
+        "tier": "not_applicable",
+        "why_it_matters": "No indirect route to the claim exists either."
+      },
+      {
+        "role": "contradictory",
+        "source_reference": "Component adjudication, this run",
+        "text": "The product's absolute effects are themselves unestablished: no component proposition reaches SOLID and no evidence line achieves DIRECT PRODUCT MATCH.",
+        "tier": "not_applicable",
+        "why_it_matters": "A first-rank claim presupposes a demonstrated absolute effect, which does not exist here."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "No comparative evidence, no comparator definition and no ranking metric exist.",
+    "missing_causal_chain": false,
+    "missing_comparison_group": true,
+    "missing_human_evidence": true,
+    "supporting": []
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "Freeze sections 50/51/63"
+        ],
+        "mode": "unsupported_superiority_claim",
+        "rationale": "First rank among all purchasable natural health interventions is asserted with no head-to-head evidence, no defined comparator universe and no ranking metric."
+      },
+      {
+        "evidence_refs": [
+          "Freeze section 54"
+        ],
+        "mode": "missing_comparison_group",
+        "rationale": "A comparative claim is made where no comparator was ever specified or studied."
+      },
+      {
+        "evidence_refs": [
+          "Component adjudication, this run"
+        ],
+        "mode": "conclusion_exceeds_results",
+        "rationale": "A superlative is asserted while the product's absolute effects are unestablished at every component."
+      }
+    ]
+  },
+  "meta": {
+    "analysis_status": "complete",
+    "development_or_production_status": "production",
+    "generated_at": "2026-08-23",
+    "report_id": "ASA-25-261-run_001-X-02",
+    "synthetic_fixture": false
+  },
+  "parser": {
+    "parse_ok": true,
+    "strategy": "structured_adjudication"
+  },
+  "provenance": {
+    "analysis_source": "agent_arena claim-forensics adjudication",
+    "model": "claude-opus-5",
+    "prompt_contract_version": "ASA_25_261_MASTER_EXECUTION_PROMPT_RUN_001",
+    "provider": "anthropic",
+    "repository_commit": "84d75d4b3d931090500151a23c3ef939e910cde0"
+  },
+  "reader_impact": {
+    "affected_decision_type": "Choosing this product instead of an evidenced alternative.",
+    "likely_reader_misunderstanding": "That the product outperforms other natural health options.",
+    "risk_level": "high",
+    "risk_rationale": "A superlative invites readers to prefer this product over interventions that do have evidence."
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [],
+    "claims_to_remove_or_narrow": [],
+    "defensible_rewrite": null,
+    "evidence_qualifiers_to_add": [],
+    "rewrite_rationale": "Out of scope for RUN 001: this run adjudicates the frozen wording only. Replacement claim language occurs downstream after verdict freeze."
+  },
+  "uncertainty": {
+    "alternative_label_rationale": "No specific frozen label applies; unsupported_superiority is a frozen failure mode within the generic residual label.",
+    "alternative_plausible_label": null,
+    "ambiguity": "NONE MATERIAL.",
+    "missing_evidence": [
+      "No head-to-head superiority evidence located",
+      "Comparator universe, ranking metric and margin all undefined",
+      "Absolute product effects unestablished at every component"
+    ],
+    "scope_limitations": [
+      "Adjudication is bounded to the frozen evidence substrate at the 2026-08-22 cut-off. No new literature discovery was performed.",
+      "The ASA regulatory outcome is quarantined and contributes no scientific inference."
+    ],
+    "unresolved_questions": [
+      "A defined comparator universe, superiority margin and head-to-head trials do not exist."
+    ]
+  },
+  "verdict": {
+    "confidence": 0.93,
+    "predicted_label": "overclaim",
+    "verdict_summary": "A superlative comparative claim requires a defined comparator universe, a ranking metric and head-to-head evidence. None of the three exists. No superiority trial of any kind was located, and the product's own absolute effects are unestablished at every component."
+  }
+}

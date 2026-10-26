@@ -1,0 +1,35 @@
+{
+  "claim": {
+    "claim_context": "SYNTHETIC illustration — not a real scientific or medical conclusion.",
+    "claim_text": "This app makes you smarter."
+  },
+  "evidence": {
+    "evidence_items": []
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "mode": "conclusion_exceeds_results",
+        "rationale": "No evidence is supplied for a cognitive-benefit claim."
+      }
+    ]
+  },
+  "meta": {
+    "development_or_production_status": "development",
+    "generated_at": "2026-08-05T12:00:00+00:00",
+    "report_id": "FR-SYN-EMPTYEV-12",
+    "synthetic_fixture": true
+  },
+  "provenance": {
+    "analysis_source": "phase6_3 synthetic fixture",
+    "model": "SYNTHETIC-MODEL",
+    "prompt_contract_version": "SYNTHETIC-CONTRACT-0",
+    "provider": "synthetic",
+    "repository_commit": "5349ad0"
+  },
+  "reader_impact": {},
+  "verdict": {
+    "confidence": 0.6,
+    "predicted_label": "overclaim"
+  }
+}

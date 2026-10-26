@@ -1,0 +1,36 @@
+from pathlib import Path
+import copy, importlib.util, json, sys, hashlib
+W=Path('<WORK>')
+R=Path('<REPO>')
+H=R/'evidence/v0.1.1/addendum-20261024-e1-layout/tools/check_addendum.py'
+spec=importlib.util.spec_from_file_location('e1h',H); h=importlib.util.module_from_spec(spec); spec.loader.exec_module(h)
+v=json.loads((W/'preflight-results/visual_measurements.json').read_text())[0]
+base=W/'preflight-results/screenshots'/f"{v['id']}-{v['style']}"
+png=Path(str(base)+'-actual.png').read_bytes(); twin=Path(str(base)+'-twin.png').read_bytes()
+results=[]
+def probe(name, mutate):
+    a,b=copy.deepcopy(v['original_dom']),copy.deepcopy(v['twin_dom'])
+    mutate(a,b)
+    try:
+        r=h.compare(a,b,png,twin)
+        results.append({'name':name,'status':r['status'],'overlap':r['overlap'],'host_rows':len(r['rows'])})
+    except (ValueError,OSError) as e:
+        results.append({'name':name,'status':'INVALID','reason':str(e)})
+def remove_answer(a,b):
+    for d in (a,b):
+        d['rows']=[r for r in d['rows'] if not (r['number']==1 and r['text'].startswith('Answer span:'))]
+def remove_one(a,b):
+    b['rows']=[r for r in b['rows'] if not (r['number']==1 and r['text'].startswith('Answer span:'))]
+def changed_answer(a,b):
+    next(r for r in b['rows'] if r['number']==1 and r['text'].startswith('Answer span:'))['text']='Answer span: changed'
+def duplicate_payload(a,b):
+    for d in (a,b):
+        r=copy.deepcopy(next(r for r in d['rows'] if r['payload'])); r['tag']='LI'; d['rows'].append(r)
+probe('clean_actual', lambda a,b:None)
+probe('missing_first_answer_both_twins', remove_answer)
+probe('missing_first_answer_one_twin', remove_one)
+probe('changed_first_answer_twin', changed_answer)
+probe('duplicate_payload_container', duplicate_payload)
+out={'python':sys.version,'harness_sha256':hashlib.sha256(H.read_bytes()).hexdigest(),'case':v['id'],'style':v['style'],'probes':results}
+(W/'review-e1-probes.json').write_text(json.dumps(out,indent=2)+'\n')
+print(json.dumps(out,indent=2))

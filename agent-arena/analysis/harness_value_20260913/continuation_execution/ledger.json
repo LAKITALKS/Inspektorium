@@ -1,0 +1,2323 @@
+{
+  "binding": {
+    "plan_id": "AA-HARNESS-VALUE-20260913-001-CONTINUATION-001",
+    "specification_fingerprint": "3899318b506cf6512db5ef79f23decc63f8bd4cb9bbd1234fcb58af51eac6160",
+    "preregistration_commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+    "freeze_manifest_sha256": "a187a5e7cb43dbe61eb0e91eb01ccea461ee7460bbbb18be437309dff72e713d",
+    "source": {
+      "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+      "valid": true,
+      "errors": [],
+      "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+      "commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+      "tree": "3892001b1158dfc0513bc03fe609f518e2aeb92b",
+      "tracked_source_fingerprint": "0688298dff2eac7ffdbe43b9e2236424cc7f3d361d3f65609f28b4c4e4f671b9",
+      "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+      "clean_tracked": true,
+      "python_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+      "python_resolved_executable": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+      "python_implementation": "CPython",
+      "python_version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "python_prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+      "python_base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+      "virtual_environment_identity": "48abe2451ae51b161910460b187a61e1e87812b60d67340cebf64a837202e76d",
+      "site_packages_roots": [
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages"
+      ],
+      "effective_import_precedence": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+      ],
+      "installed_distribution": {
+        "distribution_name": "agent-arena",
+        "distribution_version": "0.1.0",
+        "distribution_root": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+        "direct_url": {
+          "url": "file://__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "dir_info": {
+            "editable": true
+          }
+        },
+        "direct_url_sha256": "5d2c27db66a13ed546851832686127d71dbba452ebabbb0ac419f618d6754b33",
+        "editable_path_files": [
+          {
+            "path": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages/__editable__.agent_arena-0.1.0.pth",
+            "sha256": "4b8a3d53a2be932ecea5c4ab64355e9974944758c0d564f8227875b090e148e9"
+          }
+        ]
+      },
+      "python_environment_fingerprint": "10f7d6a8964014531e6059054aef8223024453e6ae0c9e81f25395510c053cd8",
+      "material_environment": {
+        "material_environment_schema_version": "agent_arena.material_python_environment/v1",
+        "repository": {
+          "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "authenticated_git_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+          "commit": "15a2503f121b66c08562ec3ddaa7dbaa6f382a31",
+          "tree": "3892001b1158dfc0513bc03fe609f518e2aeb92b",
+          "tracked_source_fingerprint": "0688298dff2eac7ffdbe43b9e2236424cc7f3d361d3f65609f28b4c4e4f671b9",
+          "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+          "clean_tracked": true
+        },
+        "canonical_qa_specification_fingerprint": null,
+        "python": {
+          "canonical_invoked_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+          "resolved_python_binary": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+          "resolved_python_binary_sha256": "907c3e17ed3d1b34f6c6b4e8b57b2f1cbe12f0ea35d8e4c2ed8f731c4c995853",
+          "implementation": "CPython",
+          "version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+          "version_info": [
+            3,
+            11,
+            7,
+            "final",
+            0
+          ],
+          "prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+          "base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+          "virtual_environment_active": true,
+          "virtual_environment_identity": "48abe2451ae51b161910460b187a61e1e87812b60d67340cebf64a837202e76d"
+        },
+        "site_packages": {
+          "applicable_roots": [
+            "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages"
+          ],
+          "user_site_root": "__LOCAL_HOME__/Library/Python/3.11/lib/python/site-packages",
+          "user_site_enabled": false
+        },
+        "distribution": {
+          "distribution_name": "agent-arena",
+          "distribution_version": "0.1.0",
+          "distribution_root": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "direct_url": {
+            "url": "file://__LOCAL_HOME__/Documents/Projects/agent-arena",
+            "dir_info": {
+              "editable": true
+            }
+          },
+          "direct_url_sha256": "5d2c27db66a13ed546851832686127d71dbba452ebabbb0ac419f618d6754b33",
+          "editable_path_files": [
+            {
+              "path": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages/__editable__.agent_arena-0.1.0.pth",
+              "sha256": "4b8a3d53a2be932ecea5c4ab64355e9974944758c0d564f8227875b090e148e9"
+            }
+          ]
+        },
+        "distribution_repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "package_origins": {
+          "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+          "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+          "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+          "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py",
+          "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+          "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+          "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+          "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+          "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+          "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+          "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+          "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+          "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py"
+        },
+        "effective_import_precedence": [
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+        ],
+        "unexpected_import_precedence_paths": [],
+        "environment_controls": {
+          "caller_overrides": {},
+          "virtual_env_override": null,
+          "user_site_enabled": false
+        },
+        "runtime_contract": {
+          "contract_source": "agent_arena.runtime_contract.build_contract",
+          "contract_fingerprints": {
+            "haiku": "7bd5509aeb8ef0d11567996a80e40452c50e727977f84b78a8f8d85d4e3b9d0f",
+            "opus": "92d9954884a2482fa6e47c1f42f309335928e5548f43ffbf8e3077ab0f61f0db",
+            "sonnet": "d3e175f3aea0403be977fb080c9ca4850e29be58dd65c570075c131bb7217cb3"
+          },
+          "shared_runtime_fingerprint": "8730f7bea2dc655aaccfc5b1fc05fb72cb3f37bf216b3dac8cebc85888ec778d"
+        }
+      },
+      "material_environment_fingerprint": "10f7d6a8964014531e6059054aef8223024453e6ae0c9e81f25395510c053cd8",
+      "launcher_observation": {
+        "observed_python_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+        "observed_sys_path": [
+          "",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+        ],
+        "normalizations": [
+          {
+            "index": 0,
+            "raw": "",
+            "canonical": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+            "reason": "authenticated_working_directory_representation"
+          }
+        ],
+        "working_directory": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "working_directory_matches_repository": true
+      },
+      "package_origins": {
+        "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+        "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+        "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+        "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py",
+        "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+        "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+        "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+        "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+        "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+        "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+        "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+        "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+        "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py"
+      },
+      "material_untracked_overrides": [],
+      "control_environment_overrides": [],
+      "origin_mismatches": {},
+      "source_state_fingerprint": "e4a5ae06ae1d3b28f1dbe87e7c064ac7ad79bc3595775f6a58a7986ea46431bc"
+    },
+    "parent_raw_freeze_sha256": "8e4e9fbdacbf42299afa44c2b574e6010b2315ae1de57383b97343ff871b5521",
+    "continuation_manifest_sha256": "b92c423d6fe66e56ba54278ab5ebf4d45cc0b8b6e916fcc03a740ce4d7efbd3e",
+    "scientific_plan_id": "AA-HARNESS-VALUE-20260913-001",
+    "parent_source": {
+      "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+      "valid": true,
+      "errors": [],
+      "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+      "commit": "7a8dc33a0e22b8b128a5d92a30073e28651f084b",
+      "tree": "712a541694efccab05a7db71a199eae025be70fc",
+      "tracked_source_fingerprint": "69dc54c20b95011c808ba35547805ed80d3701c53d1cfde92c0925a0f3854d3c",
+      "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+      "clean_tracked": true,
+      "python_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+      "python_resolved_executable": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+      "python_implementation": "CPython",
+      "python_version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "python_prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+      "python_base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+      "virtual_environment_identity": "48abe2451ae51b161910460b187a61e1e87812b60d67340cebf64a837202e76d",
+      "site_packages_roots": [
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages"
+      ],
+      "effective_import_precedence": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+        "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+        "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+      ],
+      "installed_distribution": {
+        "distribution_name": "agent-arena",
+        "distribution_version": "0.1.0",
+        "distribution_root": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+        "direct_url": {
+          "url": "file://__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "dir_info": {
+            "editable": true
+          }
+        },
+        "direct_url_sha256": "5d2c27db66a13ed546851832686127d71dbba452ebabbb0ac419f618d6754b33",
+        "editable_path_files": [
+          {
+            "path": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages/__editable__.agent_arena-0.1.0.pth",
+            "sha256": "4b8a3d53a2be932ecea5c4ab64355e9974944758c0d564f8227875b090e148e9"
+          }
+        ]
+      },
+      "python_environment_fingerprint": "1837f67ac1e7d7e5600734c6fac467f1b0c50893f36a335dcb2242d492d2f449",
+      "material_environment": {
+        "material_environment_schema_version": "agent_arena.material_python_environment/v1",
+        "repository": {
+          "repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "authenticated_git_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+          "repository_identity": "3ca30b9c34fcf195c8fad2c53ea22a08ffc76022258339377686dda837be9cee",
+          "commit": "7a8dc33a0e22b8b128a5d92a30073e28651f084b",
+          "tree": "712a541694efccab05a7db71a199eae025be70fc",
+          "tracked_source_fingerprint": "69dc54c20b95011c808ba35547805ed80d3701c53d1cfde92c0925a0f3854d3c",
+          "tracked_config_fingerprint": "dbf1d0c0ed0713feb5a339788224ef7e51e74f44b2a8c8c542366a54612f185a",
+          "clean_tracked": true
+        },
+        "canonical_qa_specification_fingerprint": null,
+        "python": {
+          "canonical_invoked_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+          "resolved_python_binary": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+          "resolved_python_binary_sha256": "907c3e17ed3d1b34f6c6b4e8b57b2f1cbe12f0ea35d8e4c2ed8f731c4c995853",
+          "implementation": "CPython",
+          "version": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+          "version_info": [
+            3,
+            11,
+            7,
+            "final",
+            0
+          ],
+          "prefix": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv",
+          "base_prefix": "/Library/Frameworks/Python.framework/Versions/3.11",
+          "virtual_environment_active": true,
+          "virtual_environment_identity": "48abe2451ae51b161910460b187a61e1e87812b60d67340cebf64a837202e76d"
+        },
+        "site_packages": {
+          "applicable_roots": [
+            "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages"
+          ],
+          "user_site_root": "__LOCAL_HOME__/Library/Python/3.11/lib/python/site-packages",
+          "user_site_enabled": false
+        },
+        "distribution": {
+          "distribution_name": "agent-arena",
+          "distribution_version": "0.1.0",
+          "distribution_root": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "direct_url": {
+            "url": "file://__LOCAL_HOME__/Documents/Projects/agent-arena",
+            "dir_info": {
+              "editable": true
+            }
+          },
+          "direct_url_sha256": "5d2c27db66a13ed546851832686127d71dbba452ebabbb0ac419f618d6754b33",
+          "editable_path_files": [
+            {
+              "path": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages/__editable__.agent_arena-0.1.0.pth",
+              "sha256": "4b8a3d53a2be932ecea5c4ab64355e9974944758c0d564f8227875b090e148e9"
+            }
+          ]
+        },
+        "distribution_repository_root": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "package_origins": {
+          "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+          "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+          "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+          "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py",
+          "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+          "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+          "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+          "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+          "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+          "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+          "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+          "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+          "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py"
+        },
+        "effective_import_precedence": [
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+        ],
+        "unexpected_import_precedence_paths": [],
+        "environment_controls": {
+          "caller_overrides": {},
+          "virtual_env_override": null,
+          "user_site_enabled": false
+        },
+        "runtime_contract": {
+          "contract_source": "agent_arena.runtime_contract.build_contract",
+          "contract_fingerprints": {
+            "haiku": "7bd5509aeb8ef0d11567996a80e40452c50e727977f84b78a8f8d85d4e3b9d0f",
+            "opus": "92d9954884a2482fa6e47c1f42f309335928e5548f43ffbf8e3077ab0f61f0db",
+            "sonnet": "d3e175f3aea0403be977fb080c9ca4850e29be58dd65c570075c131bb7217cb3"
+          },
+          "shared_runtime_fingerprint": "8730f7bea2dc655aaccfc5b1fc05fb72cb3f37bf216b3dac8cebc85888ec778d"
+        }
+      },
+      "material_environment_fingerprint": "1837f67ac1e7d7e5600734c6fac467f1b0c50893f36a335dcb2242d492d2f449",
+      "launcher_observation": {
+        "observed_python_executable": "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python",
+        "observed_sys_path": [
+          "",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python311.zip",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11",
+          "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/.venv/lib/python3.11/site-packages",
+          "__LOCAL_HOME__/Documents/Projects/agent-arena/src"
+        ],
+        "normalizations": [
+          {
+            "index": 0,
+            "raw": "",
+            "canonical": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+            "reason": "authenticated_working_directory_representation"
+          }
+        ],
+        "working_directory": "__LOCAL_HOME__/Documents/Projects/agent-arena",
+        "working_directory_matches_repository": true
+      },
+      "package_origins": {
+        "agent_arena": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/__init__.py",
+        "agent_arena.phase7a_execution": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_execution.py",
+        "agent_arena.phase7a_real_run": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/phase7a_real_run.py",
+        "agent_arena.runtime_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/runtime_contract.py",
+        "agent_arena.robustness_pool": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/robustness_pool.py",
+        "agent_arena.output_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/output_contract.py",
+        "agent_arena.run_library": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/run_library.py",
+        "agent_arena.providers.anthropic": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/providers/anthropic.py",
+        "agent_arena.condition_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_analysis.py",
+        "agent_arena.condition_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_contract.py",
+        "agent_arena.condition_retry": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/condition_retry.py",
+        "agent_arena.full_replication_contract": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_contract.py",
+        "agent_arena.full_replication_analysis": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena/full_replication_analysis.py"
+      },
+      "material_untracked_overrides": [],
+      "control_environment_overrides": [],
+      "origin_mismatches": {},
+      "source_state_fingerprint": "1722b6b5c3e677516415892f09af55f2fc12ffd3f7e5ba737447a407e9b76e8d"
+    }
+  },
+  "state": "REVOKED",
+  "attempts": [
+    {
+      "attempt_id": "attempt-001",
+      "slot_key": "A:q-2707244776dcbae5",
+      "payload_sha256": "fe6d287dc8e3da3fab40d3bb4064a9c3ded5bade93d0a5e453ee25a02adcff2f",
+      "wire_sha256": "f8783d4a3bb1c58845bf1a255dcb51cdef69cc5be3e64e21adb7fac49354eb68",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 952,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 631,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4107,
+      "http_status": 200,
+      "response_sha256": "f8d98dc9be7c1653c3bef9731146c8c8b5697f4b859d25e69528b3b110d145aa",
+      "provider_message_id": "msg_011Cf1psCuqqJRDqQre1eN1R",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7261602958,
+      "request_id": "req_011Cf1psCU45WMaK3Y4caHnk"
+    },
+    {
+      "attempt_id": "attempt-002",
+      "slot_key": "B:q-2707244776dcbae5",
+      "payload_sha256": "28dd8ab73cb60aa3fe12ab6bd1fede23f3abe21fb5c55209a43bd99d40ac9e6d",
+      "wire_sha256": "3345c8d61f8eb4d7b28fa253672b26c95fd2d44a1dbdf8f40f5200ace146c1b5",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 2079,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1551,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 9834,
+      "http_status": 200,
+      "response_sha256": "b3423e21bab6b33378e2a9a0741a486385659e3b10c5acc5068df066de2da97d",
+      "provider_message_id": "msg_011Cf1psmadAHdm7cdF6Ji7g",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 17432695542,
+      "request_id": "req_011Cf1psmQxA7tyTNLMdmZ6M"
+    },
+    {
+      "attempt_id": "attempt-003",
+      "slot_key": "B:q-b61dfb593470c4cc",
+      "payload_sha256": "ed921981cc4c3329eeffe8d53ba60c159126bb7e29e0e846d8d487af4625aae3",
+      "wire_sha256": "ae662b35e096344480fb2943033949c66dcbf666ebb5336b49242e5cf7e79e4d",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1950,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1303,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8465,
+      "http_status": 200,
+      "response_sha256": "a50f519fbb4689bfb4de3484b138e03f68ff48621b118d8b067481c3b9f33658",
+      "provider_message_id": "msg_011Cf1pu5US7RvgJT3hSSpaU",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 16261072542,
+      "request_id": "req_011Cf1pu59L4daVNB7vkMDP7"
+    },
+    {
+      "attempt_id": "attempt-004",
+      "slot_key": "A:q-b61dfb593470c4cc",
+      "payload_sha256": "4eaa746bdb245799c7eb56e6b4ea901095c2403cae60f2e74b525ac8a86c82c2",
+      "wire_sha256": "8830281204115630c2a0c2be1a239d8c59556de0934669d7d6a2ca6551ea2627",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 823,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 573,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3688,
+      "http_status": 200,
+      "response_sha256": "dc74f00fb3fe43076b49ceae1603b354edb5f64e09eb3d21e16d3ae1a91378f4",
+      "provider_message_id": "msg_011Cf1pvJ9i3YqSsQk99Rec6",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6848645125,
+      "request_id": "req_011Cf1pvHn7zETDjmqw6swEa"
+    },
+    {
+      "attempt_id": "attempt-005",
+      "slot_key": "A:q-82b3cd8a9e85360c",
+      "payload_sha256": "1acabf666f9e207e9bdc6ec9e0f3a8fe0775266aa2419f1bc4dab54672f1ece1",
+      "wire_sha256": "cd5e7c75e1d6c97e2b9e082f0acc88a46d310a53f650dea35783e3da0917304e",
+      "reserved_microusd": 26480,
+      "state": "RESERVED_POSSIBLY_BILLABLE",
+      "usage": null,
+      "confirmed_token_cost_microusd": null
+    },
+    {
+      "attempt_id": "attempt-006",
+      "slot_key": "A:q-82b3cd8a9e85360c",
+      "payload_sha256": "1acabf666f9e207e9bdc6ec9e0f3a8fe0775266aa2419f1bc4dab54672f1ece1",
+      "wire_sha256": "cd5e7c75e1d6c97e2b9e082f0acc88a46d310a53f650dea35783e3da0917304e",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 818,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 387,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 2753,
+      "http_status": 200,
+      "response_sha256": "cdc8d20adb881c6583d5b9eed87fbe5128e6f71c577e98f8b3e0850804e142c5",
+      "provider_message_id": "msg_011Cf1qcaP8Zdj3EgWdDRVvp",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 4427568833,
+      "request_id": "req_011Cf1qcaAEKM6GdTitRVHVa"
+    },
+    {
+      "attempt_id": "attempt-007",
+      "slot_key": "B:q-82b3cd8a9e85360c",
+      "payload_sha256": "221aca4cf827e50d2de7c98dfeed4c8cd967998f26c473f64c63fe5d8a4c5fc6",
+      "wire_sha256": "618c12118b1d7a11067653b6c01addd93746fcc76111c3feadc329b5fdf53be1",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1945,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 940,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 6645,
+      "http_status": 200,
+      "response_sha256": "52cfad7f618953c19049e8b8c98f86faedc215858fab72afe79a0feedad79c80",
+      "provider_message_id": "msg_011Cf1qcvHCnzQ2KToFZQeey",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 9825983000,
+      "request_id": "req_011Cf1qcuwrXjpVzbpo249ww"
+    },
+    {
+      "attempt_id": "attempt-008",
+      "slot_key": "B:q-537b9ea8d86c6722",
+      "payload_sha256": "a374fc888f7c274de2227e8c6ef741c645800bad44a80819d89207eabb7351a3",
+      "wire_sha256": "4eef3071e534baf66819a963663ca9749f3f527354e21671c410352cbf81068e",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1998,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1174,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7868,
+      "http_status": 200,
+      "response_sha256": "ca34391d642e3dc4caefa2728f83c88954f1976de90c437df18dbb00a6b6cef7",
+      "provider_message_id": "msg_011Cf1qdf7ApGvUXUtyJcF9B",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 14669271875,
+      "request_id": "req_011Cf1qdeoZGHNxGrxMkEhxr"
+    },
+    {
+      "attempt_id": "attempt-009",
+      "slot_key": "A:q-537b9ea8d86c6722",
+      "payload_sha256": "ca4585454b7a1dbcc7d8aba33b26b3199d368f5a539f93f090a7e67037c99f47",
+      "wire_sha256": "5d72d27c0b3f7bce28bb5234a83befc95bc6ce70b83db66dbca785093f08e4f1",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 871,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 722,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4481,
+      "http_status": 200,
+      "response_sha256": "e5ce0d31755ee0e7c7ba6e9b94df14bbe81dd177220387f8d109f86df6387165",
+      "provider_message_id": "msg_011Cf1qejZLc8TrMA6Weebc9",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7688007417,
+      "request_id": "req_011Cf1qejGUEj4iShFDwqyKh"
+    },
+    {
+      "attempt_id": "attempt-010",
+      "slot_key": "B:q-b9c30be2f05cac0f",
+      "payload_sha256": "f6f887edb8c3837de889d272553d4c7c51cda657059c5e3308a21405ed27af9e",
+      "wire_sha256": "017aa463a58ddbba22d918ba741261c55f7538aab8c4da3d9af73b2ac8d7452b",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1954,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1111,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7509,
+      "http_status": 200,
+      "response_sha256": "8c7e1a2696d5eb24eed75d07b7465f07bcd410346c82dbcb98e5bc78f5a778be",
+      "provider_message_id": "msg_011Cf1qfMCTC2PK3Jabbzx8s",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 12015623166,
+      "request_id": "req_011Cf1qfLzYiEdkCLu1T35PT"
+    },
+    {
+      "attempt_id": "attempt-011",
+      "slot_key": "A:q-b9c30be2f05cac0f",
+      "payload_sha256": "ecbb9d9d14eb4f6c14b1828bc20711278826edc627a4c41bd8208bb071d7053b",
+      "wire_sha256": "53805b7d5389dfcf62c4e723726f2ed540461c935308ce2c3952d01030eda0b2",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 827,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 689,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4272,
+      "http_status": 200,
+      "response_sha256": "e8200bf19774d48c1366dcdf4329dce7de5f4123aeeade1b17604b7bef8a4747",
+      "provider_message_id": "msg_011Cf1qgG2gTzh9Gb1UWqtnr",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8677453208,
+      "request_id": "req_011Cf1qgFjKe3AgQNjgsnVCr"
+    },
+    {
+      "attempt_id": "attempt-012",
+      "slot_key": "B:q-7f0ca6e5ec639574",
+      "payload_sha256": "32fef8d987651e2bc3ceabdc2de49eec3a94be951ce7e8159273f3c0e98432f2",
+      "wire_sha256": "3e95fe0662df8ada91724ad5798c4b8be9483d456772354288998894e0fee0d7",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1979,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1017,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7064,
+      "http_status": 200,
+      "response_sha256": "cc2bc81e7c1c34110cb51bd323ff4b2080289411457c1f9b24ec3e3aed62c689",
+      "provider_message_id": "msg_011Cf1qgv2gb56iQFsf6drTY",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 11340807250,
+      "request_id": "req_011Cf1qguiaY5uW86igmirYU"
+    },
+    {
+      "attempt_id": "attempt-013",
+      "slot_key": "A:q-7f0ca6e5ec639574",
+      "payload_sha256": "bd810c18429b4f054a0013c1447e86716ded1a6d436adf8dddea2c0ff9496b28",
+      "wire_sha256": "197adeae955111d6aac834b909939df899735daf48e41fae475ed9b149cb3af4",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 852,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 650,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4102,
+      "http_status": 200,
+      "response_sha256": "0ad21cdb70783501d6a56303865de222cc09b529f01ec19beb042a62635a0b37",
+      "provider_message_id": "msg_011Cf1qhkBdYCTBH9uZHPK4S",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7666010125,
+      "request_id": "req_011Cf1qhjiqsjXoXzKApUjjc"
+    },
+    {
+      "attempt_id": "attempt-014",
+      "slot_key": "B:q-ba27e5d9d3450650",
+      "payload_sha256": "275be52e79c4e568429834beb646706587c6accc26e1b68f1b0b6b005da3e329",
+      "wire_sha256": "ae74ef55b95d782081bc2c1c2dec1bc7f836be842f3c4806350474d5b790514f",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1960,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1108,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7500,
+      "http_status": 200,
+      "response_sha256": "f65bb6249953a531822e1cc3c242d4386c2e8eb522957fe1396f8d3258465a0f",
+      "provider_message_id": "msg_011Cf1qiMxBso13Us2qcZ61x",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 12267669916,
+      "request_id": "req_011Cf1qiMcaw6fXsu8KFcHTd"
+    },
+    {
+      "attempt_id": "attempt-015",
+      "slot_key": "A:q-ba27e5d9d3450650",
+      "payload_sha256": "3179f2ec3b3f254c12eba8f3345e263a02956e8bffc62bfb4e3658d1f7d37635",
+      "wire_sha256": "935b8dc6770352b9aedc876011f0628ea8e0a07f291e091bc3f7f603ad867e4a",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 833,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 655,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4108,
+      "http_status": 200,
+      "response_sha256": "629196eb67de835fb1cc05a21987e17fc027bd665fb55869668f14eaa8e33c8d",
+      "provider_message_id": "msg_011Cf1qjGr8T8EM94CQ6LVzj",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7581056000,
+      "request_id": "req_011Cf1qjGZWinjrdjo7647x6"
+    },
+    {
+      "attempt_id": "attempt-016",
+      "slot_key": "A:q-55a74bc7a9c2a190",
+      "payload_sha256": "0bfece875eb50922e1adf0cc86975c0853025c9ab25d02494bbd2f80b388f858",
+      "wire_sha256": "1e2138e843e6caa9bddb209e78a63851c1239f7762e99fab362016638e977660",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 861,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 599,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3856,
+      "http_status": 200,
+      "response_sha256": "e55245081dee4f31d9d76148aeb1d264640f6d6efe1f6d6b7f2007362c9970a5",
+      "provider_message_id": "msg_011Cf1qjr4tXsKcGEMhFWuZB",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6246490083,
+      "request_id": "req_011Cf1qjqknbszV7wrnC6o5u"
+    },
+    {
+      "attempt_id": "attempt-017",
+      "slot_key": "B:q-55a74bc7a9c2a190",
+      "payload_sha256": "308a8d6df8ec67e4c2bdf574be3831651b030531746da4193cb5868a605ac24b",
+      "wire_sha256": "c8908f06d98501df96ba84fe4ca1d76a0d34ce14b24c54d3df968cc88c321c89",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1988,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1003,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7003,
+      "http_status": 200,
+      "response_sha256": "654b936baba3f255adddedaa0d3b5326a2d7ec17678a6c18395ba7718902d1f6",
+      "provider_message_id": "msg_011Cf1qkKUAJ31PA7eG5cEkQ",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 13200214917,
+      "request_id": "req_011Cf1qkK9ZNvBvHcMG1es7p"
+    },
+    {
+      "attempt_id": "attempt-018",
+      "slot_key": "A:q-6d0f876dfad53e80",
+      "payload_sha256": "05cda7b56bbaf23ea032c62c2f23d7ebe18337141a9d6a1e6ac42165852a8b73",
+      "wire_sha256": "22a1587c6fc5c32a7339651de36e5f56a127801435ce1800821b9cf2d4403a8b",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 882,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 574,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3752,
+      "http_status": 200,
+      "response_sha256": "d18900c2d7984c51348feef29df6c9626ecadfb210bd91bcb0e55a9061f497d7",
+      "provider_message_id": "msg_011Cf1qmHXrVkAEFNtvVGUa5",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6698198625,
+      "request_id": "req_011Cf1qmHFzGu6n9hL3kgv8i"
+    },
+    {
+      "attempt_id": "attempt-019",
+      "slot_key": "B:q-6d0f876dfad53e80",
+      "payload_sha256": "76caa12f0c4ddecbc1a6653255cc63b352d100288cbc89adfd602471c6120a44",
+      "wire_sha256": "9ed9167adee98cb0a5fe4e900f45bef17bc096e8fd2714b29fe7e207410cb608",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 2009,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1086,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7439,
+      "http_status": 200,
+      "response_sha256": "1b7b580eb14ed9fd3baf3e735a25002766aecd12fe3f69c90e3284abf9691513",
+      "provider_message_id": "msg_011Cf1qmpecdJE3vT99XYt9d",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 11170485458,
+      "request_id": "req_011Cf1qmpE4iKQXm55KAaDcD"
+    },
+    {
+      "attempt_id": "attempt-020",
+      "slot_key": "B:q-8639aab55d4707e8",
+      "payload_sha256": "491c8c36a3645c78bb77ce97535d5abc25e437b11f67c7567a1096bf544c363b",
+      "wire_sha256": "3f3ace336df09792fc671cb91ad697e0670a3c751e5b8f00ec10c6865afc4014",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1983,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1349,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8728,
+      "http_status": 200,
+      "response_sha256": "9b05dc088632309692a1880105037c64b47a32e1e35dec59757afa2b58d4e9e9",
+      "provider_message_id": "msg_011Cf1qnfSFv59Xp3UQKVamz",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 17024914375,
+      "request_id": "req_011Cf1qnezU8js6F7MSnMoP4"
+    },
+    {
+      "attempt_id": "attempt-021",
+      "slot_key": "A:q-8639aab55d4707e8",
+      "payload_sha256": "cfe9cdb447595f89210e7aaa8257951bbd7c9a10ef798136d783d14b3d55f212",
+      "wire_sha256": "064e25c7dca0adde88711d7d80e7b8fe689de058db2c07d2ecbfa230edd7b554",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 856,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 727,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4491,
+      "http_status": 200,
+      "response_sha256": "f12922dee0e4a6d7e54d26d53eedcad0dcf5d412f7f3c9821617ac08083ee4c7",
+      "provider_message_id": "msg_011Cf1qowALYhpia586noFBk",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8860827208,
+      "request_id": "req_011Cf1qovryjRNeLBhmVyvnD"
+    },
+    {
+      "attempt_id": "attempt-022",
+      "slot_key": "A:q-24f3e1ac6625ed8a",
+      "payload_sha256": "8c1fd0aa979d030897bfd13290d873f0f65256718d64e3c3d567809f19f41532",
+      "wire_sha256": "b22554162c1b20121638670114e32663af3fea2a8e3e9cdad633dcad956e12b6",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 834,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 711,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4389,
+      "http_status": 200,
+      "response_sha256": "679d295ec9a4e29c6395cdc18d8aa8bd2919bd8b05e922b4068d72fcd1b337f4",
+      "provider_message_id": "msg_011Cf1qpbXRhF7Vmn8B4YKyt",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8543392791,
+      "request_id": "req_011Cf1qpbL1mS2zH9fPnwNNe"
+    },
+    {
+      "attempt_id": "attempt-023",
+      "slot_key": "B:q-24f3e1ac6625ed8a",
+      "payload_sha256": "2f35688d984d51b26ecda3961187aaa07de5b58b0e4f4f0bdbe228e940cd3843",
+      "wire_sha256": "c352758af009d2e6eb47fcba64a3bdcadf1723a305ec0eda32a1918cd5f0541f",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1961,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1267,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8296,
+      "http_status": 200,
+      "response_sha256": "a23a11781a982f64027dcff079cfa0feae950150c28c9944104e9a387ea9a44c",
+      "provider_message_id": "msg_011Cf1qqFZQKDtWuu9ppbUm6",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 13250522833,
+      "request_id": "req_011Cf1qqFBaiH5TaVYFz4VBk"
+    },
+    {
+      "attempt_id": "attempt-024",
+      "slot_key": "A:q-a4722100223cc7c9",
+      "payload_sha256": "dd2fb1c0f6c70e0721a2e0f305b97bb49895728e4b460e8f8cd9a4bc78403d18",
+      "wire_sha256": "059791c32e495542677cd91e5ff833319508435cb175cd85390296a7378ff120",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 830,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 744,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4550,
+      "http_status": 200,
+      "response_sha256": "5fa447663f84795e58d5c3f18b0d7b8f01ce73a656b0a87d22b4bf98e71e62fc",
+      "provider_message_id": "msg_011Cf1qrF79YVJCUoXQ26wTG",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8166102625,
+      "request_id": "req_011Cf1qrEuVXfM3bnvjuTxwA"
+    },
+    {
+      "attempt_id": "attempt-025",
+      "slot_key": "B:q-a4722100223cc7c9",
+      "payload_sha256": "8c6cf9f62d2ee742c19e19f74a35fa0433042537e4f704578be990649775f1a2",
+      "wire_sha256": "82a844c67c7e23be9d2377525514b12e52cecc506515ffbd097e1f0008714c33",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1957,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1150,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7707,
+      "http_status": 200,
+      "response_sha256": "4206ee167f11b61d19adcca5f84af9ff3986ffde1bff00f5f35c9deefbc5cf3b",
+      "provider_message_id": "msg_011Cf1qrsRSXbJ3i14KNUxce",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 12147546583,
+      "request_id": "req_011Cf1qrrz9Z9wYqh2o7bA4R"
+    },
+    {
+      "attempt_id": "attempt-026",
+      "slot_key": "A:q-d5854a68f0d77776",
+      "payload_sha256": "bf520f60e3248b4e475e99492043a718d7649a4d1f35fbdb66cb01013530a5fb",
+      "wire_sha256": "c4790e57c26e80815101f4b7ca5562f50e360eafea4f43cdda1c33319aa23afa",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 869,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 645,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4094,
+      "http_status": 200,
+      "response_sha256": "1f093a3178eb4410126de11c317c78c8e76185de861665ee67b81a8b5dc5cd2c",
+      "provider_message_id": "msg_011Cf1qsnPbupRXFfV3ZrGvR",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8278185458,
+      "request_id": "req_011Cf1qsmxJyWzcZx75q4yKW"
+    },
+    {
+      "attempt_id": "attempt-027",
+      "slot_key": "B:q-d5854a68f0d77776",
+      "payload_sha256": "eb7848a6e12a17008d4e0ca9802860d4fcffb984e18ff92978b01bb59240d5ec",
+      "wire_sha256": "8762bc8d69c9587308ad434bf96c4ad70584de68daa69b58149ea9fdc5c48b3e",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1996,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1166,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7826,
+      "http_status": 200,
+      "response_sha256": "3233821eddf2fbab17ee3dd518f27cf5f8de58c93a582192da39726e315ae49f",
+      "provider_message_id": "msg_011Cf1qtQQJgEWJvMQBPm9bg",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 13922110209,
+      "request_id": "req_011Cf1qtQ7gfABtty5s69owa"
+    },
+    {
+      "attempt_id": "attempt-028",
+      "slot_key": "A:q-059a0a3da48b95dc",
+      "payload_sha256": "3154eb5da8d6ab47efa45b447efbe433c5c97aa23ffb4babf486609cd8c79889",
+      "wire_sha256": "7ae8afcb18ef980e0dbcb9dffa52ab91099034c25db9a3aa541dde59ad17b0fb",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 844,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 697,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4329,
+      "http_status": 200,
+      "response_sha256": "0bd72da67da77a5513d98536e61005a3ddd75bbe06c0b1aae80d6cf39fe289b9",
+      "provider_message_id": "msg_011Cf1quT93CnuyagLmL7qH1",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 9291465042,
+      "request_id": "req_011Cf1quSqRf8cepuJGGEAKo"
+    },
+    {
+      "attempt_id": "attempt-029",
+      "slot_key": "B:q-059a0a3da48b95dc",
+      "payload_sha256": "b47930d602da6dc610d791b3158d0290cf13af66f6e1cd4935eec2c62b607f81",
+      "wire_sha256": "120bb22c49e36f4a88754e426a29393fba7dddc04e6dfc26d9c8b77273deb39f",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1971,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1243,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8186,
+      "http_status": 200,
+      "response_sha256": "a086f39d689036a09c38a0950e373c7b46662a4679421a3f64efebb894261c20",
+      "provider_message_id": "msg_011Cf1qv9eM36ZfK2Zo4dot8",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 15577590084,
+      "request_id": "req_011Cf1qv9VRGGUBu15e8EDY2"
+    },
+    {
+      "attempt_id": "attempt-030",
+      "slot_key": "A:q-e5add0335d3c30cc",
+      "payload_sha256": "1bfd9f54e5fdca9cdbc7bd5455c11a742c4547e26f792555abedce1d66ba2546",
+      "wire_sha256": "9c59ee03377f2a8b5a679be8187d36101d24c4b8bf5936e86a70f1b21e44146e",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 852,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 684,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4272,
+      "http_status": 200,
+      "response_sha256": "d3a396474daa91e6cff7a8244f6d4b125b3a522eff005c463288497983ad75b2",
+      "provider_message_id": "msg_011Cf1qwJ1fYVF1ovKSDPtLY",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7475734958,
+      "request_id": "req_011Cf1qwHZNLB7Zbj26EyRiu"
+    },
+    {
+      "attempt_id": "attempt-031",
+      "slot_key": "B:q-e5add0335d3c30cc",
+      "payload_sha256": "e440bb3601ee0ce63309d3d3793856e638bffd126627c3fcec0c4165c4d2a6f2",
+      "wire_sha256": "bae64daaac15704083c22fb8380faed56728345850f4cd089c36350630988331",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1979,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1018,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7069,
+      "http_status": 200,
+      "response_sha256": "8184d17412f41fce8e6a3172ab38e7506463004efb616476ce128d81e84d33b9",
+      "provider_message_id": "msg_011Cf1qwrXmGJ1FNhCpKySx8",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 11598527875,
+      "request_id": "req_011Cf1qwrP5WEBebSmaREkpJ"
+    },
+    {
+      "attempt_id": "attempt-032",
+      "slot_key": "A:q-3a7480df1ae448f2",
+      "payload_sha256": "96ea98b9e8b2db37b6e3068c1eb58b597a16f8973fa36314aeda66fbfbed0bf7",
+      "wire_sha256": "a2b383532b0f1e9f2a3497d09a5cdd20eb26d8b13b078ef9ff83c5aacee0abf5",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 916,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 794,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4886,
+      "http_status": 200,
+      "response_sha256": "9ffd0f02d196c0b1592e5d75b8da1fe0011714fb2254314b5bc5598f65b50e49",
+      "provider_message_id": "msg_011Cf1qxkk2yYzxmrL6etNzp",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8089240959,
+      "request_id": "req_011Cf1qxkGzbtNHt2Ns1ESJe"
+    },
+    {
+      "attempt_id": "attempt-033",
+      "slot_key": "B:q-3a7480df1ae448f2",
+      "payload_sha256": "ac9d33a493d387d160a812ba349e5cd968bfafbab20b79872c8081c045ec1d51",
+      "wire_sha256": "3c56912e06c8bf022bee43bea1eadd23ddeed9901a5394582fb606743639b656",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 2043,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1232,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8203,
+      "http_status": 200,
+      "response_sha256": "0283433f94ed93b415d88e5bfe3377fb1b89d96da6f736d6daeabea9631001ae",
+      "provider_message_id": "msg_011Cf1qyLrNdHwKkUSF8Y9Y5",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 14112051709,
+      "request_id": "req_011Cf1qyLY1uHhHzD6F8fCxJ"
+    },
+    {
+      "attempt_id": "attempt-034",
+      "slot_key": "B:q-39524b4a80588199",
+      "payload_sha256": "f40e302efca81cb2753bb45323d64c985fb744035446c14a29c67896bb8ed3ec",
+      "wire_sha256": "9880767c108aae331779f4ac6236f072f3156d43ff4d5510bc49de5a1aa87820",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1989,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1498,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 9479,
+      "http_status": 200,
+      "response_sha256": "849bf0d72c429b41a858859e22ad4a2e934e0decb7686e7d3db588053dc3ab6f",
+      "provider_message_id": "msg_011Cf1qzRTiC5b9Z66kJLp8X",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 18150996084,
+      "request_id": "req_011Cf1qzRL2NFV3nLD3J3uG6"
+    },
+    {
+      "attempt_id": "attempt-035",
+      "slot_key": "A:q-39524b4a80588199",
+      "payload_sha256": "b2215a33865c1dfe8a7ddad5d48534a167ddbc7d527c8b124a23acfc143aa6ac",
+      "wire_sha256": "f734581faba38846022e93dadfeec773dd87d2c67653297aaf311b4c5b4d85ff",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 862,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 734,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4532,
+      "http_status": 200,
+      "response_sha256": "65cf554f52fcd38f1459060016c2aadb67c3c75e3827d5b9179f74a3e06e694f",
+      "provider_message_id": "msg_011Cf1r1n8SwhYCNdVuXyDKp",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7840558625,
+      "request_id": "req_011Cf1r1miecELDcTYfbXdtL"
+    },
+    {
+      "attempt_id": "attempt-036",
+      "slot_key": "A:q-e1ca97d5210731af",
+      "payload_sha256": "d78b87e04bfbb5afe4cd95eb0052eeadfb73a2203ce4c29d7c41385d022c5274",
+      "wire_sha256": "0046da3b1d4136ca177361014376edb25ba6c66d4a3819db9fd8e28b9a9d1ab5",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 852,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 575,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3727,
+      "http_status": 200,
+      "response_sha256": "47c67b924d9a83a4127f0d6f20b708034958d6e08ef9602b20f106524eec2b3d",
+      "provider_message_id": "msg_011Cf1r2M3NLe7nbjfKeMHMV",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7145425958,
+      "request_id": "req_011Cf1r2LsSTKDmbhjYB33U9"
+    },
+    {
+      "attempt_id": "attempt-037",
+      "slot_key": "B:q-e1ca97d5210731af",
+      "payload_sha256": "4195dcab7efb4d0c4baf462c7c973ee9f51f88c06ac1df22d09dfb0d27ac6f4b",
+      "wire_sha256": "6bbf302c5035e2ff52a7c175915eb7362c561366b7b1c5cabfddb4caba2179a7",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1979,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 969,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 6824,
+      "http_status": 200,
+      "response_sha256": "b62aee0f6a55227de1a41615ae8cb0d1e18c56f95993ec657069a54c158a66c5",
+      "provider_message_id": "msg_011Cf1r2v7hiVZDh16os2uwJ",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 12041957917,
+      "request_id": "req_011Cf1r2uvHtXRtUWs88NJDN"
+    },
+    {
+      "attempt_id": "attempt-038",
+      "slot_key": "B:q-bbc556c3e270d1c6",
+      "payload_sha256": "e3ee20cd39e8845448456e17b19287b03beba279eafa939499b7694bb61fecd2",
+      "wire_sha256": "c5815993ff396a780d3d63c76e4c4422ad2cf04f7ffee32e0f87d892b1285146",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 2044,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1359,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8839,
+      "http_status": 200,
+      "response_sha256": "9381e743bf3c2c3238c8d777b5f6bad89904b650d332e1c1f63d7c641619ab02",
+      "provider_message_id": "msg_011Cf1r3rXAytFFcd4tG3Fzi",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 16786015542,
+      "request_id": "req_011Cf1r3r6dTnEbkZmaZ1iB6"
+    },
+    {
+      "attempt_id": "attempt-039",
+      "slot_key": "A:q-bbc556c3e270d1c6",
+      "payload_sha256": "fd093e7f8496644332dfd90bf58b7fce71db57bbc78be40ac49b1daa9f3aadf0",
+      "wire_sha256": "54b11b16890fb3942e10aca076b4d91cc2b124ab671861d58349a5ba577b5eae",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 917,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 736,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4597,
+      "http_status": 200,
+      "response_sha256": "018e9389e98f0f67a298a10c7e58c52031da329b1dbc74021b6720458964ac56",
+      "provider_message_id": "msg_011Cf1r54w5obz2vsKQ3AYRf",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7598505834,
+      "request_id": "req_011Cf1r54gCLjJ22gdF65cq3"
+    },
+    {
+      "attempt_id": "attempt-040",
+      "slot_key": "A:q-c375bcc3535a420a",
+      "payload_sha256": "bf77897f90756094f15db7ac3502d2db22ed07db2549578267570cc6b00a8d5b",
+      "wire_sha256": "0bbba064109ab5e5ea1124604efd16eb5388069797975d01671b3ffc14720a9a",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 843,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 518,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3433,
+      "http_status": 200,
+      "response_sha256": "d2824948b5fffdb082d560b732aba8fbdb0861c41bd638569cc63e2293299dd1",
+      "provider_message_id": "msg_011Cf1r5f7tdGa8XA1DPVo3m",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6477608167,
+      "request_id": "req_011Cf1r5epXDACQdk4ZCs5tq"
+    },
+    {
+      "attempt_id": "attempt-041",
+      "slot_key": "B:q-c375bcc3535a420a",
+      "payload_sha256": "48245dffad168c1dc2c9b9b2c916c2aedc1a3e3cefe7fc44ae0eb346576b5203",
+      "wire_sha256": "10d4bb4df73209a14b5c6bbc22ded74fe1d72312f12551e153011a7e4a7f554d",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1970,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 973,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 6835,
+      "http_status": 200,
+      "response_sha256": "a7a2d2e6cebc082ca2e0afee763c5411336d1a685539fbba71a46ef3ed808f7e",
+      "provider_message_id": "msg_011Cf1r69oZ3zERqJh8ya34L",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 10375570333,
+      "request_id": "req_011Cf1r69VCKnBwoEWfwnwbX"
+    },
+    {
+      "attempt_id": "attempt-042",
+      "slot_key": "A:q-19472ddd3521fb31",
+      "payload_sha256": "21623d19a06423fe4da99bf8503b2a70d91db4d1c45afda4bc2f4d1fbd2d3207",
+      "wire_sha256": "884a637f4b21da70e5a00a3d9774fa37165ae01e2816053c55534cacba5229d9",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 837,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 594,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3807,
+      "http_status": 200,
+      "response_sha256": "4caf062ce96651c1caed80d245d9388911c946c978f78135ab458014a55d736e",
+      "provider_message_id": "msg_011Cf1r6wEYBGkpmM7mDgB9J",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7687068709,
+      "request_id": "req_011Cf1r6vuvuv69pQ59iwwrx"
+    },
+    {
+      "attempt_id": "attempt-043",
+      "slot_key": "B:q-19472ddd3521fb31",
+      "payload_sha256": "1f670db4ecff70e8f61b1b83d641e2147a27fe85152f5e541013624dc15504fc",
+      "wire_sha256": "802643d0da149f1030d0fb80d15ca46b8b87c1c818af2dc17d9dc7f5d5d89a7d",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1964,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1088,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7404,
+      "http_status": 200,
+      "response_sha256": "4d7f76a031c21943ab49c96eafce7b1c7d93590273ccf9cae3efb7c75253b06c",
+      "provider_message_id": "msg_011Cf1r7X7EPjK3bJjfZQgZf",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 14043187000,
+      "request_id": "req_011Cf1r7Wps3X7pHTZzuLWJ6"
+    },
+    {
+      "attempt_id": "attempt-044",
+      "slot_key": "A:q-55c13bdbd3b6a47d",
+      "payload_sha256": "19bff9bb77fd12f64ca511ebbfdc5f67c3c8fc758ae70573af35ea70f20747d7",
+      "wire_sha256": "399d2c7a3cb19b618ea0217f48cf29714d018778a6db96640324373ffa636135",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 845,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 649,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4090,
+      "http_status": 200,
+      "response_sha256": "7037584a464f23a40482f26d049d284e4a042dd68e7006da31e4dfffd56e41cb",
+      "provider_message_id": "msg_011Cf1r8aPi4GSjG9AVV2D46",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6975087292,
+      "request_id": "req_011Cf1r8ZojSYpATpQeRxXgW"
+    },
+    {
+      "attempt_id": "attempt-045",
+      "slot_key": "B:q-55c13bdbd3b6a47d",
+      "payload_sha256": "57a272e774d421d58a1fc12631e99336a415849b63ac02a06692f7bf311bc45e",
+      "wire_sha256": "8ecc495355932fd3c377a25798e6a16612547826ce5fa861ca670804ef0fe56f",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1972,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1250,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8222,
+      "http_status": 200,
+      "response_sha256": "8c8db0d193500cd0c362328f56fa9a472600a58c05dd66053acb49c40676d52d",
+      "provider_message_id": "msg_011Cf1r96dtRnukz51Jt54SF",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 15603076833,
+      "request_id": "req_011Cf1r96JHz8Q1pYEmWp5ye"
+    },
+    {
+      "attempt_id": "attempt-046",
+      "slot_key": "B:q-6aa6692ed5967cce",
+      "payload_sha256": "9df6e086d9824cd05335488723849f9d63307f60aee97245c072d8c20df9134a",
+      "wire_sha256": "f155be3ea3963724ca949ecdd1c3acf4786ec9e17aa1112d640906b44566d5df",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1972,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1254,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8242,
+      "http_status": 200,
+      "response_sha256": "a8f023e5715e5bb9a1ed7f8bd036f8fb023edaeb659028bcbb7a60e21385ed1b",
+      "provider_message_id": "msg_011Cf1rAF79FoW49eKUNrorq",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 12482672000,
+      "request_id": "req_011Cf1rAEo3gLJ7HjBx381BW"
+    },
+    {
+      "attempt_id": "attempt-047",
+      "slot_key": "A:q-6aa6692ed5967cce",
+      "payload_sha256": "99bca60d942c1e938d186771a686458e13e9c7680ab12633cd5a09bf9358597d",
+      "wire_sha256": "c310d669402ce38a678b3f8572286f1374f7677516c3b74dd0cfbed1ad71b9a4",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 845,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 677,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4230,
+      "http_status": 200,
+      "response_sha256": "daa683109b8008f09aec11ee2f106dccb29ceaa0cf7463019f924f4be6a177d2",
+      "provider_message_id": "msg_011Cf1rBCkHeo4Nw4EtJLc9y",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8583942958,
+      "request_id": "req_011Cf1rBCWQYoAj4m285GPzf"
+    },
+    {
+      "attempt_id": "attempt-048",
+      "slot_key": "B:q-6894c5e659fdfd2e",
+      "payload_sha256": "2a988ca05ebae37b9c99d2605d9acaa475c503750deed267063aa9040a9b8c19",
+      "wire_sha256": "d38718c8b109fa5db793492a76b84d92b2bb0f2cdf92986392cec8689eba31ab",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1982,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 850,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 6232,
+      "http_status": 200,
+      "response_sha256": "1f471f34d2e35d825a85729407f590aacdca335328034530749084b26dde35b7",
+      "provider_message_id": "msg_011Cf1rBpfnNptibBSNacska",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8919113875,
+      "request_id": "req_011Cf1rBpU7w696rJVwKt7vg"
+    },
+    {
+      "attempt_id": "attempt-049",
+      "slot_key": "A:q-6894c5e659fdfd2e",
+      "payload_sha256": "5b5eac357dc1dd2deb046829b17bb4109e9e136ce45945e47b93768b661adbc6",
+      "wire_sha256": "d64e38bbb164d2c4892c56026caf2e7af4701912179f698ae360b7145b99e589",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 855,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 501,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3360,
+      "http_status": 200,
+      "response_sha256": "02fe26df8e086db97ed64e9fb0a49de101405c79aed8255999f069336f93bddb",
+      "provider_message_id": "msg_011Cf1rCXBbFDSSy619Cu7rn",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 5002019708,
+      "request_id": "req_011Cf1rCWsz3tAybD2vV2ea3"
+    },
+    {
+      "attempt_id": "attempt-050",
+      "slot_key": "B:q-5c8ebf600bd85d3a",
+      "payload_sha256": "9be43c9fdcf7adff64b1d34f1856d65fb458076e17cbf9850b63809d6cc0fd15",
+      "wire_sha256": "6c472ba71d33e37256ec3dda5ddc1a48dc917fe891344caa3fbad28ebaef5a9f",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 2050,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1422,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 9160,
+      "http_status": 200,
+      "response_sha256": "c2f0eec8035ce618b6c071cd3fd388bbaaeb61bd47117e4d67a5f04b9c892abb",
+      "provider_message_id": "msg_011Cf1rCuARhTApapdeyPat2",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 14223538959,
+      "request_id": "req_011Cf1rCttK22RjGySfpYNSA"
+    },
+    {
+      "attempt_id": "attempt-051",
+      "slot_key": "A:q-5c8ebf600bd85d3a",
+      "payload_sha256": "5f8b1c6bbe1aa7dd3fe6ca3bd5818f84bf081b5adf42fa486a4c28d2f994340c",
+      "wire_sha256": "065d06a15049a9db790931f863a582abd8df5cd7c145ca264b1b7fba2f8b10f1",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 923,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 585,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3848,
+      "http_status": 200,
+      "response_sha256": "bf3e4289096b046eb028f9cb85d323767978a503f4e34194aa22a3a71ce707cf",
+      "provider_message_id": "msg_011Cf1rDwjF9YriS1dpXVM3u",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6832575584,
+      "request_id": "req_011Cf1rDwKBtZLtfD86L7Fgv"
+    },
+    {
+      "attempt_id": "attempt-052",
+      "slot_key": "B:q-e596b96be010e8a0",
+      "payload_sha256": "5282b70b4a19fa2f39ffff822cee9c34e2ade72e8fd15fc6668cfb04e9c68863",
+      "wire_sha256": "1959d09d2fbbc65bfd0392341214369330091614a11dcc251438894a10ba8f4c",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1976,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1644,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 10196,
+      "http_status": 200,
+      "response_sha256": "b5a08fae964d1699d438eef5ef20b65694911dc6487d46e8eb8af4dc89c5a29e",
+      "provider_message_id": "msg_011Cf1rEUcNW3gF1833LwsRQ",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 18699088250,
+      "request_id": "req_011Cf1rEUKzXgnmEqzpPjUVS"
+    },
+    {
+      "attempt_id": "attempt-053",
+      "slot_key": "A:q-e596b96be010e8a0",
+      "payload_sha256": "9e0e7c1f012095f40a34468780482b8e16101bea49158b04f7710eb712b16729",
+      "wire_sha256": "a7d82abfd1fd0baf1eaebfcbadadb41b221bd4661f19252b5dcddacf5819f354",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 849,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 721,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4454,
+      "http_status": 200,
+      "response_sha256": "3204e0347d9e435d82d01e5e58b49ac142963a0e13c635e79568c4a342c91adb",
+      "provider_message_id": "msg_011Cf1rFtKRDPBHSrminZDGU",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 9005761208,
+      "request_id": "req_011Cf1rFstrn1PDmgmMmhsPV"
+    },
+    {
+      "attempt_id": "attempt-054",
+      "slot_key": "B:q-433b89f442ca9ed3",
+      "payload_sha256": "9c16f2b4bc8e424db1f5b658a62b957e9541d98f21ba2d09241c2a37ae35151b",
+      "wire_sha256": "0ca52373f0114e079ff90652fec5a177399eb8b9d24a718dc3bf23d8b65faa95",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1953,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1073,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 7318,
+      "http_status": 200,
+      "response_sha256": "1ffad5e457505b3859eba65abee906566254402a2eba0d5e16c49f1ab4fdcefb",
+      "provider_message_id": "msg_011Cf1rGZPAXhFG7TQTb5UiS",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 12692465167,
+      "request_id": "req_011Cf1rGZ5Ykqe4VPHcaMhgA"
+    },
+    {
+      "attempt_id": "attempt-055",
+      "slot_key": "A:q-433b89f442ca9ed3",
+      "payload_sha256": "9b0eefdcac7d8e539d90ec1fca7b2e19d03ddeb0fdb62a1acbe8889f10f6f989",
+      "wire_sha256": "e2d05ff33ac350762c17828d7050dcd5b1d3945a0bfbb0ae7c2d98639d093fb9",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 826,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 601,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3831,
+      "http_status": 200,
+      "response_sha256": "1baed9124beefeae1a8432edd2471379081b8acd8c508696029e0ab9cb816f75",
+      "provider_message_id": "msg_011Cf1rHWNcr3YcoTkHUnoH7",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7138275875,
+      "request_id": "req_011Cf1rHW32BcaFWsXj1vx1V"
+    },
+    {
+      "attempt_id": "attempt-056",
+      "slot_key": "B:q-f84fb93fcf1862d4",
+      "payload_sha256": "63d24140e5f6fcac8e336443acf66dd3648fe78636fa11faca3211b53df43dc5",
+      "wire_sha256": "c65b1ec5385ff3a571cd7c51c50fbea9ec40509306bf1ae852700c54ac9b851e",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1977,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 875,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 6352,
+      "http_status": 200,
+      "response_sha256": "9c4c6e7980254e850619023fd1cd6ba2c24f3433f9222fc4e85b29cf99ddd544",
+      "provider_message_id": "msg_011Cf1rJ25nR7BvuL4oj7APT",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 10520840292,
+      "request_id": "req_011Cf1rJ1mgtiegjXqCfDo1i"
+    },
+    {
+      "attempt_id": "attempt-057",
+      "slot_key": "A:q-f84fb93fcf1862d4",
+      "payload_sha256": "b7c9ede290de0d7aa94e19b838d6d9ffe1b9d521a6ebba65e41849dd92269aa6",
+      "wire_sha256": "aaea1dca2cf33c9adeb675d1e23013ad5361743bd3482c1183e2c105c9a00e68",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 850,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 484,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3270,
+      "http_status": 200,
+      "response_sha256": "b4282470b748008d82074ed5f32fb889928a03d83a4f3acaaa02309a866738be",
+      "provider_message_id": "msg_011Cf1rJprPCae2GoaV2P1MZ",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 6020916209,
+      "request_id": "req_011Cf1rJpdVRR8559xspdVgo"
+    },
+    {
+      "attempt_id": "attempt-058",
+      "slot_key": "A:q-d128840f749edb7e",
+      "payload_sha256": "5a97ccf63908b5489410998255e63c7a7a9b63eea9dbd3603cbd2518ccebf66c",
+      "wire_sha256": "f4e472022cdf2f36444159ff8f417eea0a20450b8a424404a89d99331abc37f2",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 857,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 696,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4337,
+      "http_status": 200,
+      "response_sha256": "824b2960bf5057824506e70343da92588ff36de22dad5c8d0d5e551ff6f0c706",
+      "provider_message_id": "msg_011Cf1rKHUXtaYWKqVybiYUL",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7765305708,
+      "request_id": "req_011Cf1rKH7wgB6avUdg8K9Dm"
+    },
+    {
+      "attempt_id": "attempt-059",
+      "slot_key": "B:q-d128840f749edb7e",
+      "payload_sha256": "8a594c0c05003324aff77604058faa1973f32e433fef24145ee37e4239249776",
+      "wire_sha256": "6a6db3520de56c883e73b157c6eb5642662ce45e2e877cafd367a6100f267771",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1984,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1250,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8234,
+      "http_status": 200,
+      "response_sha256": "0057e1319574d8e07b50a2b55862668b7f8884e5625f8afc608d7d76414dd926",
+      "provider_message_id": "msg_011Cf1rKrPCTi62S3mnnmusz",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 15307547083,
+      "request_id": "req_011Cf1rKr2rNVozFhVfeKQER"
+    },
+    {
+      "attempt_id": "attempt-060",
+      "slot_key": "A:q-e3d5fdfcbd5203ed",
+      "payload_sha256": "4e742f5ee9bdb8c39cfa949f10b954a225af78f5de1a1fadbd28cb55630f1d1a",
+      "wire_sha256": "a6787be0870b4e7a34e79fb4820bfcc4a178fb333ccb04b11401494d938b9b1f",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 834,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 724,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4454,
+      "http_status": 200,
+      "response_sha256": "47085752dcbb3034ebc1c37256efc25fb1e1590635ce0ccad5b7ae4ced7f2ee6",
+      "provider_message_id": "msg_011Cf1rM2LG2d5Fyj54DL4Bh",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 8799023500,
+      "request_id": "req_011Cf1rM23PnoqTNoCrS4k5H"
+    },
+    {
+      "attempt_id": "attempt-061",
+      "slot_key": "B:q-e3d5fdfcbd5203ed",
+      "payload_sha256": "496381e9e58e209fe06cc53f9ef871d38ba52c3a3e4bca3b358fe9dc789d0ace",
+      "wire_sha256": "406ce70a1953e786280c8b4ffe8149826ed44b53fb2426f67bb97ce745b5d1d4",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1961,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1263,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8276,
+      "http_status": 200,
+      "response_sha256": "2e47e4aaf9058c9989b2eb19ccada76eeb2191889e2f1d348ec743d8f680846d",
+      "provider_message_id": "msg_011Cf1rMg1f3BEq87DadACVV",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 14021063500,
+      "request_id": "req_011Cf1rMfozooFxtRa5ezsmr"
+    },
+    {
+      "attempt_id": "attempt-062",
+      "slot_key": "B:q-b19caeb1f5ac40c9",
+      "payload_sha256": "c05c0b3927fb7e4a35b81d8c3a593a0906291c197360ea242c4fdc4586a07a6d",
+      "wire_sha256": "7ea90ce29d421fc967895bb7d2aebabfad36ee41c8b54fdcce209081e339199d",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 2022,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1336,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8702,
+      "http_status": 200,
+      "response_sha256": "adad92b309ea8e3798f4fbfc4c475c5c576e88e24a3460e7b893661344fef867",
+      "provider_message_id": "msg_011Cf1rNhdv8AftFMnYWRuhH",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 15232035750,
+      "request_id": "req_011Cf1rNhJpSPrBU38r1y5QN"
+    },
+    {
+      "attempt_id": "attempt-063",
+      "slot_key": "A:q-b19caeb1f5ac40c9",
+      "payload_sha256": "cb16cf27bdbfa099f4e0649b61a54c498f0ce2e6dbd2cc2d95985cc0e7f46fbd",
+      "wire_sha256": "8441d045af6c855be0c8d9972235915003089144d254169c2eff6be4162728d0",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 895,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 601,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 3900,
+      "http_status": 200,
+      "response_sha256": "7715edf01becdb9c4fbbbd737a631fd521adc0993a262fefb62d4e61e104b36d",
+      "provider_message_id": "msg_011Cf1rPsfwGkV1CSbipjfKP",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7163237125,
+      "request_id": "req_011Cf1rPsAvd1YQ53PaSwwTf"
+    },
+    {
+      "attempt_id": "attempt-064",
+      "slot_key": "B:q-3bba7049197e9e00",
+      "payload_sha256": "bb9cf092dcdfb164dd3d840e825eb12c6867f1c467d8a757e62e9d3c5674ea72",
+      "wire_sha256": "6884d471594b2d55caf177c88bcc119e9f3d69250008d31583d4dfaa85d01edc",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 1985,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1387,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 8920,
+      "http_status": 200,
+      "response_sha256": "fe9416c4ff995b96bc8c1a6e5719e1d29d08b5aa6f58584cbba731054e67d051",
+      "provider_message_id": "msg_011Cf1rQR5a3VzvyDfybRRwG",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 17293160959,
+      "request_id": "req_011Cf1rQQhjoZ6hkcWFo5yiS"
+    },
+    {
+      "attempt_id": "attempt-065",
+      "slot_key": "A:q-3bba7049197e9e00",
+      "payload_sha256": "f1e72cb9022faeac2358c1ae775fcf9b63ccfed0a97864c0de351ab0ddfd249f",
+      "wire_sha256": "894d3c50fb24660e22b80b9d133eb7804f6795725bb5b541810666295d48ee97",
+      "reserved_microusd": 26480,
+      "state": "HTTP_RESPONSE_RECORDED",
+      "usage": {
+        "input_tokens": 858,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 693,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "confirmed_token_cost_microusd": 4323,
+      "http_status": 200,
+      "response_sha256": "bc967d1c3db03724d31dfdb6a09c718f4f9815a94a6c0b0d7b9785ac0328ab84",
+      "provider_message_id": "msg_011Cf1rRhz5tW1oqnQ3TzwWK",
+      "resolved_model": "claude-haiku-4-5-20251001",
+      "provider_duration_ns": 7747510042,
+      "request_id": "req_011Cf1rRhW4YXopZZV9MmDtH"
+    }
+  ],
+  "terminal_keys": [
+    "A:q-2707244776dcbae5",
+    "B:q-2707244776dcbae5",
+    "B:q-b61dfb593470c4cc",
+    "A:q-b61dfb593470c4cc",
+    "A:q-82b3cd8a9e85360c",
+    "B:q-82b3cd8a9e85360c",
+    "B:q-537b9ea8d86c6722",
+    "A:q-537b9ea8d86c6722",
+    "B:q-b9c30be2f05cac0f",
+    "A:q-b9c30be2f05cac0f",
+    "B:q-7f0ca6e5ec639574",
+    "A:q-7f0ca6e5ec639574",
+    "B:q-ba27e5d9d3450650",
+    "A:q-ba27e5d9d3450650",
+    "A:q-55a74bc7a9c2a190",
+    "B:q-55a74bc7a9c2a190",
+    "A:q-6d0f876dfad53e80",
+    "B:q-6d0f876dfad53e80",
+    "B:q-8639aab55d4707e8",
+    "A:q-8639aab55d4707e8",
+    "A:q-24f3e1ac6625ed8a",
+    "B:q-24f3e1ac6625ed8a",
+    "A:q-a4722100223cc7c9",
+    "B:q-a4722100223cc7c9",
+    "A:q-d5854a68f0d77776",
+    "B:q-d5854a68f0d77776",
+    "A:q-059a0a3da48b95dc",
+    "B:q-059a0a3da48b95dc",
+    "A:q-e5add0335d3c30cc",
+    "B:q-e5add0335d3c30cc",
+    "A:q-3a7480df1ae448f2",
+    "B:q-3a7480df1ae448f2",
+    "B:q-39524b4a80588199",
+    "A:q-39524b4a80588199",
+    "A:q-e1ca97d5210731af",
+    "B:q-e1ca97d5210731af",
+    "B:q-bbc556c3e270d1c6",
+    "A:q-bbc556c3e270d1c6",
+    "A:q-c375bcc3535a420a",
+    "B:q-c375bcc3535a420a",
+    "A:q-19472ddd3521fb31",
+    "B:q-19472ddd3521fb31",
+    "A:q-55c13bdbd3b6a47d",
+    "B:q-55c13bdbd3b6a47d",
+    "B:q-6aa6692ed5967cce",
+    "A:q-6aa6692ed5967cce",
+    "B:q-6894c5e659fdfd2e",
+    "A:q-6894c5e659fdfd2e",
+    "B:q-5c8ebf600bd85d3a",
+    "A:q-5c8ebf600bd85d3a",
+    "B:q-e596b96be010e8a0",
+    "A:q-e596b96be010e8a0",
+    "B:q-433b89f442ca9ed3",
+    "A:q-433b89f442ca9ed3",
+    "B:q-f84fb93fcf1862d4",
+    "A:q-f84fb93fcf1862d4",
+    "A:q-d128840f749edb7e",
+    "B:q-d128840f749edb7e",
+    "A:q-e3d5fdfcbd5203ed",
+    "B:q-e3d5fdfcbd5203ed",
+    "B:q-b19caeb1f5ac40c9",
+    "A:q-b19caeb1f5ac40c9",
+    "B:q-3bba7049197e9e00",
+    "A:q-3bba7049197e9e00"
+  ],
+  "planned_keys": [
+    "A:q-2707244776dcbae5",
+    "B:q-2707244776dcbae5",
+    "B:q-b61dfb593470c4cc",
+    "A:q-b61dfb593470c4cc",
+    "A:q-82b3cd8a9e85360c",
+    "B:q-82b3cd8a9e85360c",
+    "B:q-537b9ea8d86c6722",
+    "A:q-537b9ea8d86c6722",
+    "B:q-b9c30be2f05cac0f",
+    "A:q-b9c30be2f05cac0f",
+    "B:q-7f0ca6e5ec639574",
+    "A:q-7f0ca6e5ec639574",
+    "B:q-ba27e5d9d3450650",
+    "A:q-ba27e5d9d3450650",
+    "A:q-55a74bc7a9c2a190",
+    "B:q-55a74bc7a9c2a190",
+    "A:q-6d0f876dfad53e80",
+    "B:q-6d0f876dfad53e80",
+    "B:q-8639aab55d4707e8",
+    "A:q-8639aab55d4707e8",
+    "A:q-24f3e1ac6625ed8a",
+    "B:q-24f3e1ac6625ed8a",
+    "A:q-a4722100223cc7c9",
+    "B:q-a4722100223cc7c9",
+    "A:q-d5854a68f0d77776",
+    "B:q-d5854a68f0d77776",
+    "A:q-059a0a3da48b95dc",
+    "B:q-059a0a3da48b95dc",
+    "A:q-e5add0335d3c30cc",
+    "B:q-e5add0335d3c30cc",
+    "A:q-3a7480df1ae448f2",
+    "B:q-3a7480df1ae448f2",
+    "B:q-39524b4a80588199",
+    "A:q-39524b4a80588199",
+    "A:q-e1ca97d5210731af",
+    "B:q-e1ca97d5210731af",
+    "B:q-bbc556c3e270d1c6",
+    "A:q-bbc556c3e270d1c6",
+    "A:q-c375bcc3535a420a",
+    "B:q-c375bcc3535a420a",
+    "A:q-19472ddd3521fb31",
+    "B:q-19472ddd3521fb31",
+    "A:q-55c13bdbd3b6a47d",
+    "B:q-55c13bdbd3b6a47d",
+    "B:q-6aa6692ed5967cce",
+    "A:q-6aa6692ed5967cce",
+    "B:q-6894c5e659fdfd2e",
+    "A:q-6894c5e659fdfd2e",
+    "B:q-5c8ebf600bd85d3a",
+    "A:q-5c8ebf600bd85d3a",
+    "B:q-e596b96be010e8a0",
+    "A:q-e596b96be010e8a0",
+    "B:q-433b89f442ca9ed3",
+    "A:q-433b89f442ca9ed3",
+    "B:q-f84fb93fcf1862d4",
+    "A:q-f84fb93fcf1862d4",
+    "A:q-d128840f749edb7e",
+    "B:q-d128840f749edb7e",
+    "A:q-e3d5fdfcbd5203ed",
+    "B:q-e3d5fdfcbd5203ed",
+    "B:q-b19caeb1f5ac40c9",
+    "A:q-b19caeb1f5ac40c9",
+    "B:q-3bba7049197e9e00",
+    "A:q-3bba7049197e9e00"
+  ],
+  "reserved_microusd": 1721200,
+  "executable_remaining_microusd": 0,
+  "terminal_record_hashes": {
+    "A:q-2707244776dcbae5": "3b7d9920f7f8ec569cb5ae81af40176bc6f052bb13ee2d3010012943677aaea2",
+    "B:q-2707244776dcbae5": "075fc029657f7d4a165f5d3003e54363817d157788f89b912cf6f3b316b94eb2",
+    "B:q-b61dfb593470c4cc": "21c4e2ea37a0237557e5a6f6cab2aa4cf0d0b34315c41ef15684cb1f7eae24ea",
+    "A:q-b61dfb593470c4cc": "4dd76b6d438549b8ab97fb4edc759b190c7c4d079b001342ad41d1f6c0524d19",
+    "A:q-82b3cd8a9e85360c": "450ae25831cced4c58b03c70b1dd5862978d234e63ca3af23a8a64f722bf3a72",
+    "B:q-82b3cd8a9e85360c": "2bef096becd2437205b35bdfae32815b3a6394a3739b6ffc6663bb5056e38cf3",
+    "B:q-537b9ea8d86c6722": "95800cb30faa06801d85516aa17173f9a2d96ca1d487661b5c0b636938550b52",
+    "A:q-537b9ea8d86c6722": "d015df5ec1673bba320f02fd828bd1cd0b3ffc1df12f15871baee37b8617ee5f",
+    "B:q-b9c30be2f05cac0f": "6a01470ee905dca55872a93ebe21e2d3f90b2ba5a96d2ef2efffaecdbe06bd5a",
+    "A:q-b9c30be2f05cac0f": "d13e67047a0976ad33c3a8943fd26b3271a3da52509299b1961b2f092d96f94c",
+    "B:q-7f0ca6e5ec639574": "40b719eccd9a698e8cfbac1d1e02f301a978ee34aaae84e2a8cffadec8b6cc0c",
+    "A:q-7f0ca6e5ec639574": "b5f46630efba9a81a8e312b0f3da225d60e0ec9a8aeed022b1d7fd4d557acd8e",
+    "B:q-ba27e5d9d3450650": "57b97f045a22fd65c92d233000c54f7e7f76fff2b9b20c3110fa9f15f003735a",
+    "A:q-ba27e5d9d3450650": "b71df7377cb0c7a5682e03a920d8b32157a57a9eebf6c302e50f8d7be00cde99",
+    "A:q-55a74bc7a9c2a190": "315fbe2a69680e774c9015583fac716c9507c44daa58e8434a06b315ed573065",
+    "B:q-55a74bc7a9c2a190": "47bc59ea0b4f8b12e44d9ec9eee2404104b97f21871b00fdf2ccc9070b0a930c",
+    "A:q-6d0f876dfad53e80": "ac0c0090aa925acc99e8c2723043c6cb32d43b418167c00bc14ae960d9e1a3e6",
+    "B:q-6d0f876dfad53e80": "7514d5797ecb26794ee8d91fe28a34411e15e12c907437c56f164a5894839784",
+    "B:q-8639aab55d4707e8": "cdf6ef9f4e34af4d103453737c495efd44d253872d728ada3fbe6493f055d2eb",
+    "A:q-8639aab55d4707e8": "f21c868a078322178ddd7471156e98c9bbc1a08d06c161ef42b7bb2a4bc812e8",
+    "A:q-24f3e1ac6625ed8a": "b57572a4ef9bfddbe1cbe2c4a4b79d0115ddb5d3444885b8f89aaf27c0ade243",
+    "B:q-24f3e1ac6625ed8a": "ba998cef9f40b1d1b5942b3033183f0b65973f815f967218f05cd91fa25d2645",
+    "A:q-a4722100223cc7c9": "16cc10e6a42a48449023af83b8107c53d6ef71568088b524d2f49c6686fe8b16",
+    "B:q-a4722100223cc7c9": "58f97697b7e8359e4f7bfc77d08bc1f2f2e32e43145437b2a8b9e82e3228e338",
+    "A:q-d5854a68f0d77776": "a208afeb8686a7fa58b4fb18c80c39bd3b096ea82594086cf6aa8e6cc95201ee",
+    "B:q-d5854a68f0d77776": "462deb10e7dd809ae728ca4d1b27fbab5e622aa78ac6c105ffb49e1ab75d6bfd",
+    "A:q-059a0a3da48b95dc": "187950716c184b20a49a71c3dcaa31cba6c7ccab80e5f0e705f4218b609590b5",
+    "B:q-059a0a3da48b95dc": "3d3507f060484863eb457cf1e095cb3601b7e504cf55390a60b61ac0cd9981ca",
+    "A:q-e5add0335d3c30cc": "beeb25407c8a2c63eb287687da1aa68e9b75f4dadd4f47fa22f9951ddf5c64e7",
+    "B:q-e5add0335d3c30cc": "636569aef85a705df3d4c32509cd89b1624d3d4fa868ed2a0be4da8083da2f29",
+    "A:q-3a7480df1ae448f2": "43f317650f87fc6a916e7216e6ab59dbb2b8cdd468acbede326fe2ceb8a27590",
+    "B:q-3a7480df1ae448f2": "cd32ab2975973d329c55bb5662a8594ebcfa4053af1aa7dcaf453429b1387fd9",
+    "B:q-39524b4a80588199": "80e19fa3707fdcee3240ff85229bc922b978e7949316586042c5270feba3f5fe",
+    "A:q-39524b4a80588199": "4fb83d1c6ee715d4b5df5c853b5bf2877b0b5570c61b5c525fc153ad1dbf1eef",
+    "A:q-e1ca97d5210731af": "cf2f1529115612677073bd66f196e638bc3a69da9518687fc6ff7af24297a12f",
+    "B:q-e1ca97d5210731af": "d466fea78373567b8e6490da73f90d8fbedf83dcbd5128011c78219625e918e3",
+    "B:q-bbc556c3e270d1c6": "8876d02727144228d09e7029df626494c93687d062cba17dfea040265b70ccf9",
+    "A:q-bbc556c3e270d1c6": "4c4a6bf6957f5040d1c5d433cd39d0e00866dd212912cd4c9a39eb30ebe4cc36",
+    "A:q-c375bcc3535a420a": "c72994f363988307c692d230ddc739fe8d9be3f817819f35dae450b11ff2b9dd",
+    "B:q-c375bcc3535a420a": "492c1913783793b106813ce9fcdf5e3cbff34c7fe1218d7e983882cd09dc8a55",
+    "A:q-19472ddd3521fb31": "ae63a3628845b5f63d3b88d30ea0b10177cf50ac6e8e4e233847d1fa1f124484",
+    "B:q-19472ddd3521fb31": "3831740ac96d18e58e9da28ad650e80503f86a11ce06aa1ed05a13395d6a03dc",
+    "A:q-55c13bdbd3b6a47d": "c2fdb934f39e4a2bc695c39512be24d70a8fe1af67ee9d8a3b5cb3fffbf66801",
+    "B:q-55c13bdbd3b6a47d": "ed24453ff6244909f042c7bd4f462c8b23f132e7a8610f056f9ecdce1356b6c4",
+    "B:q-6aa6692ed5967cce": "cd19e057c8fbeb4dd5a0006783f1147ebe4ccd5184306f76c466565a43ad8bb6",
+    "A:q-6aa6692ed5967cce": "d215f4ea193d6d224d3fbf6592a30f93472e6c25501f17cef5f1e0722d8927fb",
+    "B:q-6894c5e659fdfd2e": "589fc1d8d986cfea462f32361e838af7eab1425eadd4a2c71e21ca7a174d98ec",
+    "A:q-6894c5e659fdfd2e": "f5a23e8c22c061156c1fbfc6e0ae05f6bc315ce2e0cb8af247308eb345efcf95",
+    "B:q-5c8ebf600bd85d3a": "d30ba7761650155cba9b94d9e1e1632b7e840138a0b56619a4ad8ca1fe03be42",
+    "A:q-5c8ebf600bd85d3a": "af6bc81c19b6716a3a4e7f7144a6d4029ee60e82cf351aa0f60cb2bf73527393",
+    "B:q-e596b96be010e8a0": "0e224d8b7fd707df9b299ed79622af4e9ef089f0ea4cbfdde5746ff8f0aa35ac",
+    "A:q-e596b96be010e8a0": "67474e03ec1996eda3248ce1063fc1985568571169aa3be47cab739cada4447a",
+    "B:q-433b89f442ca9ed3": "2f8d14c9d5c29f31db192d1c3c45eebe417ccf5885812a5437278001df49b35e",
+    "A:q-433b89f442ca9ed3": "aac6b16e63e26465b1694a737b9beaff6f7919d56957da2a8bbadb7a25627991",
+    "B:q-f84fb93fcf1862d4": "306aac9ae247c580ec4b00648b49992ee6eaffaad92060035e0c37bb2da45626",
+    "A:q-f84fb93fcf1862d4": "b0a33119164f10de092a3c28d9eefddcdb0419170f94b9ce5a3c617720ff97dc",
+    "A:q-d128840f749edb7e": "06d6a824ffc59de9749d4ae2ee96068ed2bc34e8277574c65fe48941ed264be4",
+    "B:q-d128840f749edb7e": "194a6caa51257f3450e6002d12311f8bd2e686fb65c5eb153c3fd28db440f6b1",
+    "A:q-e3d5fdfcbd5203ed": "65d12aaaeb7eefcb392c9e28d865d290b24e0209f2ee58bedf073954f7cdf949",
+    "B:q-e3d5fdfcbd5203ed": "cb9f2c83c0507696b2a488e954da0eee8b8afc636dac928f9c2889faabd2e01a",
+    "B:q-b19caeb1f5ac40c9": "2d0ca1becc303ca2d2d3aaf68706f1730eb3a85512aaf3866ad2ce40c8e8f7fa",
+    "A:q-b19caeb1f5ac40c9": "b0789878f9d0e0bdc65b6a3c813f5cf654574e9ad00d38ee71dca5e964994cb7",
+    "B:q-3bba7049197e9e00": "7175971ebf53dfeabce8d3ac3a9867fbf0ee202064955e39347e6c830a2bc7e6",
+    "A:q-3bba7049197e9e00": "6e14acf3203fa8b5ecadb05050a0363e306748b1dd7aa958e1fc3e5de3c3cb2a"
+  },
+  "parent_ledger_sha256": "0e8062c82e73dd5c6c64a37b346eaa058ec94b9f6997347803bc69f449244097",
+  "carried_unknown_billing_attempt_ids": [
+    "attempt-005"
+  ],
+  "revocation_reason": "COMPLETE"
+}

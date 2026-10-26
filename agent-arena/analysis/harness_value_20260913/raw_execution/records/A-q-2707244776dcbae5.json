@@ -1,0 +1,54 @@
+{
+  "slot_key": "A:q-2707244776dcbae5",
+  "id": "q-2707244776dcbae5",
+  "arm": "A",
+  "input_sha256": "bb6659f3dbf393d6b12dc2b0ac57c98f77b1c12b9a5985cd6ebd8288d7f63a59",
+  "request_sha256": "fe6d287dc8e3da3fab40d3bb4064a9c3ded5bade93d0a5e453ee25a02adcff2f",
+  "raw_text": "```json\n{\n  \"final_answer\": \"solid\",\n  \"evidence_tier\": \"clinical_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": true,\n  \"assumptions\": [\n    \"The randomized controlled trial design provides valid causal inference for the subgroups analyzed\",\n    \"The subgroup analyses reflect true differential treatment effects rather than chance findings\",\n    \"28-day mortality is an appropriate clinical outcome measure\"\n  ],\n  \"steps\": [\n    \"Identify the claim's two components: (1) dexamethasone reduced mortality in patients with respiratory support, (2) no benefit demonstrated in those without respiratory support\",\n    \"Verify component 1 against evidence: invasively ventilated (RR 0.64, 95% CI 0.51-0.81) and oxygen without intubation (RR 0.82, 95% CI 0.72-0.94) both show mortality reduction with CI excluding 1.0\",\n    \"Verify component 2 against evidence: no respiratory support subgroup shows RR 1.19 (95% CI 0.92-1.55), with CI crossing 1.0, indicating no statistically significant benefit\",\n    \"Confirm both claims are directly supported by the reported subgroup data\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The no-respiratory-support subgroup may have been underpowered to detect a true benefit\",\n    \"Subgroup differences could reflect chance variation rather than true heterogeneity\"\n  ],\n  \"uncertainties\": [\n    \"Whether observed subgroup differences represent true biological heterogeneity or statistical noise\",\n    \"Generalizability to populations outside the trial setting\"\n  ],\n  \"key_claims\": [\n    \"Dexamethasone reduced 28-day mortality in invasively ventilated patients (RR 0.64)\",\n    \"Dexamethasone reduced 28-day mortality in patients on oxygen without intubation (RR 0.82)\",\n    \"No statistically significant mortality reduction in patients receiving no respiratory support (RR 1.19, CI includes 1.0)\"\n  ],\n  \"self_check\": [\n    \"Claim accurately reports the subgroup-specific findings from the trial\",\n    \"Appropriate scope: limited to hospitalized COVID-19 patients in RECOVERY\",\n    \"Appropriate caveats: distinguishes between respiratory support categories\",\n    \"No causal overreach: reports randomized trial results as causal findings\",\n    \"No mechanism invoked inappropriately\",\n    \"Clinical outcome (28-day mortality) directly measured, not surrogate\"\n  ],\n  \"confidence\": 0.96\n}\n```",
+  "raw_sha256": "e73c7315ca7a7299d71e34297808b090213401e55195517b823f0667222c3b4c",
+  "finish_reason": "stop",
+  "error_type": null,
+  "provider_duration_ns": 7311520292,
+  "attempt_ids": [
+    "attempt-001"
+  ],
+  "usage": {
+    "input_tokens": 952,
+    "output_tokens": 631,
+    "http_attempts": 1,
+    "transport_retries": 0
+  },
+  "shared_C": false,
+  "terminal": true,
+  "resolved_model": "claude-haiku-4-5-20251001",
+  "processing": {
+    "raw_label": "solid",
+    "label_readable": true,
+    "confidence": 0.96,
+    "confidence_state": "VALID",
+    "confidence_valid": true,
+    "schema_valid": true,
+    "common_operational_valid": true,
+    "final_label": "solid",
+    "production_parse": {
+      "ok": true,
+      "strategy": "fenced_json",
+      "had_fence": true,
+      "fence_closed": true,
+      "truncation_suspected": false,
+      "repaired": false,
+      "missing_fields": [],
+      "unexpected_fields": [
+        "evidence_tier",
+        "conclusion_tier",
+        "bridge_supported"
+      ],
+      "confidence_state": "VALID",
+      "finish_reason": "stop",
+      "error": null,
+      "raw_length": 2343
+    },
+    "B_parser_ns": 109125,
+    "C_incremental_interpretation_ns": 129875
+  }
+}

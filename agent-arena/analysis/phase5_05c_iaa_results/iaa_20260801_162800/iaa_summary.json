@@ -1,0 +1,112 @@
+{
+  "run_id": "iaa_20260801_162800",
+  "study_type": "strongly_anonymized_model_assisted_proxy_iaa",
+  "metric_version": "iaa_analysis/1.0",
+  "n_items": 20,
+  "annotators": {
+    "A": {
+      "model_family": "Anthropic",
+      "model_variant": "Opus 4.8"
+    },
+    "B": {
+      "model_family": "Anthropic",
+      "model_variant": "Opus 5"
+    },
+    "C": {
+      "model_family": "Gemini",
+      "model_variant": "Flash 3.5"
+    },
+    "D": {
+      "model_family": "GLM",
+      "model_variant": "GLM 5.2"
+    }
+  },
+  "primary_ACD": {
+    "fleiss_kappa": 0.8568019093078759,
+    "raw_all_three": 0.85,
+    "pairwise_kappa": {
+      "A_vs_C": 0.7902097902097902,
+      "A_vs_D": 1.0,
+      "C_vs_D": 0.7902097902097902,
+      "A_vs_gold": 1.0,
+      "C_vs_gold": 0.7902097902097902,
+      "D_vs_gold": 1.0
+    },
+    "serious": 0,
+    "soft": 3
+  },
+  "sensitivity_BCD": {
+    "fleiss_kappa": 0.8568019093078759,
+    "raw_all_three": 0.85,
+    "pairwise_kappa": {
+      "B_vs_C": 0.7902097902097902,
+      "B_vs_D": 1.0,
+      "C_vs_D": 0.7902097902097902,
+      "B_vs_gold": 1.0,
+      "C_vs_gold": 0.7902097902097902,
+      "D_vs_gold": 1.0
+    },
+    "serious": 0,
+    "soft": 3
+  },
+  "within_family_AB": {
+    "raw": 1.0,
+    "cohen_kappa": 1.0,
+    "n_disagreements": 0
+  },
+  "four_rater_ABCD": {
+    "fleiss_kappa": 0.891794409377818,
+    "pairwise_kappa": {
+      "A_vs_B": 1.0,
+      "A_vs_C": 0.7902097902097902,
+      "A_vs_D": 1.0,
+      "B_vs_C": 0.7902097902097902,
+      "B_vs_D": 1.0,
+      "C_vs_D": 0.7902097902097902
+    },
+    "annotator_vs_gold_kappa": {
+      "A": 1.0,
+      "B": 1.0,
+      "C": 0.7902097902097902,
+      "D": 1.0
+    },
+    "unanimous": 17,
+    "three_of_four": 3,
+    "two_vs_two": 0,
+    "serious_by_annotator": {
+      "A": 0,
+      "B": 0,
+      "C": 0,
+      "D": 0
+    }
+  },
+  "consensus_changes_primary_vs_sensitivity": [],
+  "disposition": {
+    "phase": "5.05c",
+    "label": "PROVISIONAL \u2014 CURATOR REVIEW REQUIRED",
+    "provisional_level": "STRONG",
+    "framework_signal_from_committed_propose_disposition": {
+      "level": "STRONG",
+      "signals": {
+        "fleiss_kappa": 0.8568019093078759,
+        "min_pairwise_kappa": 0.7902097902097902,
+        "raw_all_three": 0.85,
+        "serious_disagreement_count": 0
+      },
+      "rationale": "consider multi-rater + pairwise kappas + raw agreement + serious disagreement count + per-label/borderline concentration together; this is a proxy-IAA gate, not a benchmark-validity claim"
+    },
+    "signals_considered": {
+      "primary_ACD_fleiss_kappa": 0.8568019093078759,
+      "primary_ACD_pairwise_kappa_min": 0.7902097902097902,
+      "primary_ACD_raw_all_three": 0.85,
+      "primary_ACD_serious_count": 0,
+      "serious_on_clear_cases": 0,
+      "sensitivity_BCD_fleiss_kappa": 0.8568019093078759,
+      "sensitivity_BCD_serious_count": 0,
+      "four_rater_fleiss_kappa": 0.891794409377818,
+      "consensus_changes_primary_vs_sensitivity": 0
+    },
+    "no_single_statistic_rule": true,
+    "holdout_freeze": "NOT triggered \u2014 provisional; curator review required first"
+  }
+}

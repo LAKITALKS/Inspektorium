@@ -1,0 +1,4 @@
+plain strategy raw ok True repaired False trunc False error None valid_json_input True final_answer solid
+fenced strategy repaired ok True repaired True trunc True error None valid_json_input True final_answer 
+two_ticks_in_string none False False no JSON object found None
+one_tick none False True no JSON object found None

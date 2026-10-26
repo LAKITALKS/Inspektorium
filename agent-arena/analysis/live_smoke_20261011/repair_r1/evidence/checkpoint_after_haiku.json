@@ -1,0 +1,145 @@
+{
+  "schema": "aa-p10-live-repair-checkpoint/1.0",
+  "repair_cycle": "R1",
+  "checkpoint": "after the 6 Haiku @2 primary runs, before Sonnet",
+  "method": "offline analysis of the stored R1 answers, bundles and ledger; no model call",
+  "ledger": {
+    "attempts": 6,
+    "confirmed_microusd": 75565,
+    "remaining_microusd": 1436756,
+    "technical_retries": 0
+  },
+  "slots": [
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-01",
+      "status": "READY_FOR_RELEASE",
+      "transport": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "completion": "complete"
+      },
+      "parse_ok": true,
+      "inspect_valid": true,
+      "phase8_technical": "completed",
+      "taxonomy": "completed",
+      "phase9_route": "AUTO_RESOLVABLE",
+      "remaining_failures": [],
+      "remaining_failure_classes": []
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-02",
+      "status": "ANALYSIS_INCOMPLETE",
+      "transport": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "completion": "complete"
+      },
+      "parse_ok": true,
+      "inspect_valid": true,
+      "phase8_technical": "incomplete",
+      "taxonomy": "incomplete",
+      "phase9_route": "HUMAN_REVIEW_REQUIRED",
+      "remaining_failures": [
+        "t-internal-p1: output state hides or changes unknown",
+        "t-summary-c1: output state hides or changes unknown"
+      ],
+      "remaining_failure_classes": [
+        "C25 output-audit (asserted_state differs from host-derived state)"
+      ]
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-03",
+      "status": "ANALYSIS_INCOMPLETE",
+      "transport": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "completion": "complete"
+      },
+      "parse_ok": true,
+      "inspect_valid": true,
+      "phase8_technical": "incomplete",
+      "taxonomy": "incomplete",
+      "phase9_route": "HUMAN_REVIEW_REQUIRED",
+      "remaining_failures": [
+        "tx:internal:p1: output state hides or changes unknown",
+        "tx:summary:cf:p1: output state hides or changes unknown"
+      ],
+      "remaining_failure_classes": [
+        "C25 output-audit (asserted_state differs from host-derived state)"
+      ]
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-04",
+      "status": "ANALYSIS_INCOMPLETE",
+      "transport": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "completion": "complete"
+      },
+      "parse_ok": true,
+      "inspect_valid": true,
+      "phase8_technical": "incomplete",
+      "taxonomy": "incomplete",
+      "phase9_route": "HUMAN_REVIEW_REQUIRED",
+      "remaining_failures": [
+        "tr:internal:p1: output state hides or changes unknown",
+        "tr:internal:p2: output state hides or changes unknown",
+        "tr:summary:cf1: output state hides or changes unknown",
+        "tr:summary:cf2: output state hides or changes unknown"
+      ],
+      "remaining_failure_classes": [
+        "C25 output-audit (asserted_state differs from host-derived state)"
+      ]
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-05",
+      "status": "ANALYSIS_INCOMPLETE",
+      "transport": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "completion": "complete"
+      },
+      "parse_ok": true,
+      "inspect_valid": true,
+      "phase8_technical": "incomplete",
+      "taxonomy": "incomplete",
+      "phase9_route": "HUMAN_REVIEW_REQUIRED",
+      "remaining_failures": [
+        "t-internal-p1: output state hides or changes unknown",
+        "t-summary-c1: output state hides or changes unknown"
+      ],
+      "remaining_failure_classes": [
+        "C25 output-audit (asserted_state differs from host-derived state)"
+      ]
+    },
+    {
+      "profile": "claude-haiku-5-5@2",
+      "case": "LS-06",
+      "status": "ANALYSIS_INCOMPLETE",
+      "transport": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "completion": "complete"
+      },
+      "parse_ok": true,
+      "inspect_valid": true,
+      "phase8_technical": "incomplete",
+      "taxonomy": "incomplete",
+      "phase9_route": "HUMAN_REVIEW_REQUIRED",
+      "remaining_failures": [
+        "tx:internal:claim:p1: output state hides or changes unknown",
+        "tx:summary:client:claim:p1: output state hides or changes unknown"
+      ],
+      "remaining_failure_classes": [
+        "C25 output-audit (asserted_state differs from host-derived state)"
+      ]
+    }
+  ],
+  "technical_defects_found": [],
+  "decision": "No new technical defect: all six answers complete (end_turn), parse and yield valid bundles; every contract failure class of revision 1 is gone. LS-01 passes Phase 8, taxonomy and Phase 9 (AUTO_RESOLVABLE) to READY_FOR_RELEASE. The remaining failures of LS-02..LS-06 are only C25 output-audit findings, pre-registered as model output quality that cannot justify R2. The Sonnet half of R1 proceeds unchanged (same code, prompt and profiles)."
+}

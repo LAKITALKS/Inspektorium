@@ -1,0 +1,135 @@
+# Provider-reachable call sites outside agent_arena/providers (git HEAD 5560e95, committed tree via 'git grep HEAD'); static grep only, nothing executed
+# src/ and tests/ have no uncommitted changes: 0 entries in 'git status --porcelain -- src tests'
+
+$ git grep -n -E 'get_provider\(|AnthropicProvider\(|OpenAIProvider\(|OllamaProvider\(|anthropic\.Anthropic\(|LiveAuditProvider\(|\.generate\(|send_prompt\(' HEAD -- 'src/agent_arena/*.py' ':!src/agent_arena/providers/'
+src/agent_arena/bounded_harness_continuation.py:174:    provider=AnthropicProvider(MODEL,temperature=0.0,max_tokens=4096)
+src/agent_arena/bounded_harness_continuation.py:175:    t=time.monotonic_ns();resp=provider.generate(task(inp),system(s['arm'],root));elapsed=time.monotonic_ns()-t
+src/agent_arena/bounded_harness_mission.py:119:    resp=AnthropicProvider(MODEL,temperature=0.0,max_tokens=4096).generate(task(inp),system(arm,root))
+src/agent_arena/bounded_harness_mission.py:278:    provider=AnthropicProvider(MODEL,temperature=0.0,max_tokens=4096)
+src/agent_arena/bounded_harness_mission.py:279:    t=time.monotonic_ns();resp=provider.generate(task(inp),system(s['arm'],root));elapsed=time.monotonic_ns()-t
+src/agent_arena/judge.py:102:        provider = get_provider(provider_name, model=judge_model, temperature=0.0)
+src/agent_arena/judge.py:109:        raw = provider.send_prompt(
+src/agent_arena/phase10_live.py:718:    def send_prompt(self, task: Task, system_prompt: str) -> str:
+src/agent_arena/phase10_live.py:719:        response = self.generate(task, system_prompt)
+src/agent_arena/phase10_live.py:786:class LiveAuditProvider(_BoundProvider):
+src/agent_arena/phase7a_real_run.py:169:            client = anthropic.Anthropic(timeout=REQUEST_TIMEOUT_SECONDS,
+src/agent_arena/phase7a_real_run.py:210:            client = anthropic.Anthropic(
+src/agent_arena/phase7a_real_run.py:283:        resp = self._inner.generate(task, system_prompt)
+src/agent_arena/phase7a_real_run.py:296:    def send_prompt(self, task: Task, system_prompt: str) -> str:  # pragma: no cover - unused path
+src/agent_arena/phase7a_real_run.py:297:        return self._inner.send_prompt(task, system_prompt)
+src/agent_arena/phase7a_real_run.py:303:    return _CaptureProvider(AnthropicProvider(model=model_id_for(model_key)))
+src/agent_arena/phase9_runtime.py:49:    def send_prompt(self, task: Task, system_prompt: str) -> str:
+src/agent_arena/prompt_only_baseline.py:383:        "endpoint": "Anthropic Messages API (anthropic.Anthropic().messages.create)",
+src/agent_arena/run_library.py:76:    def send_prompt(self, task: Task, system_prompt: str) -> str:
+src/agent_arena/run_library.py:544:    return get_provider(provider, **kwargs)
+src/agent_arena/runner.py:295:        resp = provider.generate(task, system_prompt)
+src/agent_arena/runner.py:347:        provider = get_provider(name)
+src/agent_arena/runtime_contract.py:50:    "endpoint": "Anthropic Messages API (anthropic.Anthropic().messages.create)",
+
+$ git grep -n -E '__main__|^def main' HEAD -- <the nine listed modules>
+src/agent_arena/phase7a_real_run.py:1390:def main(argv: list[str] | None = None) -> int:
+src/agent_arena/phase7a_real_run.py:1450:if __name__ == "__main__":
+src/agent_arena/run_library.py:547:def main(argv: list[str] | None = None) -> int:
+src/agent_arena/run_library.py:619:if __name__ == "__main__":
+
+$ git grep -n -E 'run_judge|run_task\(' HEAD -- src tests
+src/agent_arena/judge.py:91:def run_judge(task: Task, parsed: AgentResponse, provider_name: str = "anthropic",
+src/agent_arena/runner.py:342:def run_task(task: Task, provider_names: list[str]) -> tuple[str, list[AgentResult]]:
+
+$ git grep -n -E 'from agent_arena(\.| import )(run_library|bounded_harness_mission|bounded_harness_continuation|phase7a_real_run|judge|runner)([^a-z_]|$)' HEAD -- src   (importers)
+src/agent_arena/bounded_harness_continuation.py:8:from agent_arena import bounded_harness_mission as m
+src/agent_arena/bounded_harness_continuation.py:9:from agent_arena.bounded_harness_mission import *
+src/agent_arena/bounded_harness_continuation.py:86: from agent_arena import phase7a_real_run as rr
+src/agent_arena/bounded_harness_mission.py:13:from agent_arena.runner import STUDY_FORENSICS_PROMPT_PROSPECTIVE as V2
+src/agent_arena/bounded_harness_mission.py:197: from agent_arena import phase7a_real_run as rr
+src/agent_arena/cli.py:955:    from agent_arena.phase7a_real_run import run_registered_condition
+src/agent_arena/cli.py:983:    from agent_arena.phase7a_real_run import run_registered_condition
+src/agent_arena/condition_contract.py:26:from agent_arena.runner import (
+src/agent_arena/condition_contract.py:369:            from agent_arena import bounded_harness_continuation
+src/agent_arena/condition_contract.py:373:            from agent_arena import bounded_harness_mission
+src/agent_arena/full_replication_contract.py:28:from agent_arena.runner import STUDY_FORENSICS_PROMPT_VERSION_PROSPECTIVE
+src/agent_arena/packet_integrity.py:41:from agent_arena.runner import (
+src/agent_arena/packet_integrity.py:390:    from agent_arena.run_library import TASK_DIR, discover_cases
+src/agent_arena/phase10_bundle.py:22:from agent_arena.runner import run_agent
+src/agent_arena/phase10_cli.py:78:    from agent_arena.bounded_harness_mission import MissionError
+src/agent_arena/phase10_live.py:16:from agent_arena.bounded_harness_mission import BudgetLedger, MissionError, atomic, read
+src/agent_arena/phase10_live.py:662:        from agent_arena.runner import resolve_study_forensics_prompt
+src/agent_arena/phase10_live.py:687:        from agent_arena.runner import resolve_study_forensics_prompt
+src/agent_arena/phase10_live.py:970:        from agent_arena.runner import resolve_study_forensics_prompt
+src/agent_arena/phase7a_execution.py:44:from agent_arena.run_library import FakeLibraryProvider, run_single
+src/agent_arena/phase7a_real_run.py:67:from agent_arena.run_library import run_single
+src/agent_arena/phase7a_real_run.py:1117:        from agent_arena import bounded_harness_continuation as continuation
+src/agent_arena/phase7a_real_run.py:1123:        from agent_arena import bounded_harness_mission as mission
+src/agent_arena/phase7a_real_run.py:1419:        from agent_arena.run_library import FakeLibraryProvider
+src/agent_arena/phase9_runtime.py:330:    from agent_arena.bounded_harness_mission import atomic
+src/agent_arena/phase9_runtime.py:365:    from agent_arena.bounded_harness_mission import BudgetLedger, atomic
+src/agent_arena/phase9_runtime.py:368:    from agent_arena.runner import (
+src/agent_arena/providers/anthropic_live.py:118:        from agent_arena.runner import resolve_study_forensics_prompt
+src/agent_arena/provision_dev_manifest.py:83:    from agent_arena.run_library import TASK_DIR, discover_cases, is_retired
+src/agent_arena/run_library.py:42:from agent_arena.runner import (
+src/agent_arena/runtime_contract.py:29:from agent_arena.runner import STUDY_FORENSICS_PROMPT
+
+$ git grep -n -E 'def get_provider|get_provider' HEAD -- src/agent_arena/cli.py src/agent_arena/runner.py src/agent_arena/phase10_cli.py src/agent_arena/phase10_pipeline.py
+src/agent_arena/cli.py:13:from agent_arena.providers import get_provider  # noqa: F401 -- kept patchable for tests guarding provider construction
+src/agent_arena/runner.py:10:from agent_arena.providers import BaseProvider, get_provider
+src/agent_arena/runner.py:347:        provider = get_provider(name)
+
+$ git grep -n -E 'phase5b-(haiku|sonnet)-full-replication|run_registered_condition|Disabled in v1|disabled in v1' HEAD -- src/agent_arena/cli.py
+src/agent_arena/cli.py:49:    Disabled in v1: it called providers without AA-P10-LIVE authorization or budget ledger.
+src/agent_arena/cli.py:52:        "'agent-arena run' is a historical research harness and is disabled in v1: it calls providers without "
+src/agent_arena/cli.py:942:    Disabled in v1: it applies no AA-P8/P9/P10 controls; use 'agent-arena audit release'.
+src/agent_arena/cli.py:945:        "'official-release' is the historical Phase-7B release path and is disabled in v1: it applies no AA-P8 "
+src/agent_arena/cli.py:951:@cli.command("phase5b-haiku-full-replication")
+src/agent_arena/cli.py:955:    from agent_arena.phase7a_real_run import run_registered_condition
+src/agent_arena/cli.py:958:        result = run_registered_condition(frc.PLAN_ID, frc.ARM_ID, frc.EXPECTED_MODEL_KEY)
+src/agent_arena/cli.py:974:@cli.command("phase5b-sonnet-full-replication")
+src/agent_arena/cli.py:983:    from agent_arena.phase7a_real_run import run_registered_condition
+src/agent_arena/cli.py:987:        result = run_registered_condition(profile.plan_id, profile.arm_id, profile.model_key)
+src/agent_arena/cli.py:1015:    "[disabled in v1]": ("run", "official-release"),
+src/agent_arena/cli.py:1021:        "phase5b-haiku-full-replication", "phase5b-sonnet-full-replication",
+
+$ gating anchors: git grep -n -E 'AUTHORIZED_FOR_REAL_EXECUTION|CONSUMED_AFTER|def production_authorization_errors|one-shot execution authorization already consumed|def run_registered_condition|def run_model_batch|preflight NO-GO|resolve_registered_plan|production_authorization_errors|ledger exists|expiry_utc' HEAD -- condition_contract.py phase7a_real_run.py bounded_harness_*.py
+src/agent_arena/bounded_harness_continuation.py:88: document=cc.resolve_registered_plan(PLAN_ID,root)
+src/agent_arena/bounded_harness_continuation.py:89: errors=cc.production_authorization_errors(document,root)
+src/agent_arena/bounded_harness_continuation.py:92: if datetime.datetime.now(datetime.timezone.utc)>=datetime.datetime.fromisoformat(document['specification']['runtime']['expiry_utc']):raise MissionEr
+src/agent_arena/bounded_harness_continuation.py:104: if cc.resolve_registered_plan(PLAN_ID,root)!=document:raise MissionError('authorization/spec changed after QA')
+src/agent_arena/bounded_harness_continuation.py:171:    if cc.resolve_registered_plan(PLAN_ID,root)!=document:raise MissionError('authorization changed during execution')
+src/agent_arena/bounded_harness_continuation.py:172:    if datetime.datetime.now(datetime.timezone.utc)>=datetime.datetime.fromisoformat(document['specification']['runtime']['expiry_utc']):raise Missi
+src/agent_arena/bounded_harness_mission.py:88: runtime={'model':MODEL,'temperature':0.0,'max_output_tokens':4096,'max_input_tokens':6000,'timeout_seconds':120,'sdk_retries':2,'outer_retries':0,'concur
+src/agent_arena/bounded_harness_mission.py:141:   if self.path.exists():raise MissionError('ledger exists; no fresh identity/restart')
+src/agent_arena/bounded_harness_mission.py:199: document=cc.resolve_registered_plan(PLAN_ID,root)
+src/agent_arena/bounded_harness_mission.py:200: errors=cc.production_authorization_errors(document,root)
+src/agent_arena/bounded_harness_mission.py:203: if datetime.datetime.now(datetime.timezone.utc)>=datetime.datetime.fromisoformat(document['specification']['runtime']['expiry_utc']):raise MissionError(
+src/agent_arena/bounded_harness_mission.py:215: if cc.resolve_registered_plan(PLAN_ID,root)!=document:raise MissionError('authorization/spec changed after QA')
+src/agent_arena/bounded_harness_mission.py:275:    if cc.resolve_registered_plan(PLAN_ID,root)!=document:raise MissionError('authorization changed during execution')
+src/agent_arena/bounded_harness_mission.py:276:    if datetime.datetime.now(datetime.timezone.utc)>=datetime.datetime.fromisoformat(document['specification']['runtime']['expiry_utc']):raise MissionErr
+src/agent_arena/condition_contract.py:43:AUTH_NOT_AUTHORIZED = "NOT_AUTHORIZED_FOR_REAL_EXECUTION"
+src/agent_arena/condition_contract.py:44:AUTH_REAL = "AUTHORIZED_FOR_REAL_EXECUTION"
+src/agent_arena/condition_contract.py:46:AUTH_CONSUMED = "CONSUMED_AFTER_SINGLE_GUARDED_INVOCATION"
+src/agent_arena/condition_contract.py:620:def resolve_registered_plan(plan_id: str, repo_root: str | Path | None = None) -> dict:
+src/agent_arena/condition_contract.py:662:def production_authorization_errors(
+src/agent_arena/phase7a_real_run.py:760:    _plan_resolver=cc.resolve_registered_plan,
+src/agent_arena/phase7a_real_run.py:787:            "one-shot execution authorization already consumed; second invocation prohibited"
+src/agent_arena/phase7a_real_run.py:805:        errors = cc.production_authorization_errors(document, root)
+src/agent_arena/phase7a_real_run.py:1108:def run_registered_condition(
+src/agent_arena/phase7a_real_run.py:1135:def run_model_batch(model_key: str, *, repo_root: str | Path | None = None, provider_factory=None,
+src/agent_arena/phase7a_real_run.py:1189:            f"preflight NO-GO (gate_passes={pf['gate_passes']} qa_status={pf['qa_status']}): "
+
+$ AA-P10-LIVE gate anchors: git grep -n -E 'AA-P10-LIVE|class LiveAuditProvider|class LiveSession|BudgetLedger\(' HEAD -- src/agent_arena/phase10_live.py
+src/agent_arena/phase10_live.py:1:"""AA-P10-LIVE/1.0: authorization, live budget ledger, live/replay providers, provenance checks.
+src/agent_arena/phase10_live.py:26:ADDENDUM = "AA-P10-LIVE/1.0"
+src/agent_arena/phase10_live.py:41:    "AA-P10-LIVE-SMOKE-20261011-002": {
+src/agent_arena/phase10_live.py:45:    "AA-P10-LIVE-SMOKE-20261011-003": {
+src/agent_arena/phase10_live.py:107:        errors.append("total budget outside the AA-P10-LIVE/1.0 ceiling")
+src/agent_arena/phase10_live.py:176:    consumed before may not exceed the AA-P10-LIVE ceilings. Replay never spends, so it does not
+src/agent_arena/phase10_live.py:392:class LiveBudgetLedger(BudgetLedger):
+src/agent_arena/phase10_live.py:500:class LiveSession:
+src/agent_arena/phase10_live.py:544:            self.ledger = LiveBudgetLedger(ledger_path, self.binding, slots, policy=self.policy, create=fresh)
+src/agent_arena/phase10_live.py:549:            self.ledger = LiveBudgetLedger(ledger_path, self.binding, slots, policy=self.policy)
+src/agent_arena/phase10_live.py:786:class LiveAuditProvider(_BoundProvider):
+
+$ no-call statements: git grep -n -E 'does not implement retries|nothing here|makes \*\*no\*\* model call|REQUIRES_SEPARATELY_REVIEWED' HEAD -- condition_retry.py runtime_contract.py prompt_only_baseline.py
+src/agent_arena/condition_retry.py:3:This module does not implement retries.  It binds and explains the two retry
+src/agent_arena/condition_retry.py:94:                    "REQUIRES_SEPARATELY_REVIEWED_BUDGET_AND_EXECUTION_AUTHORIZATION"
+src/agent_arena/prompt_only_baseline.py:22:Everything here is pure and deterministic and makes **no** model call:
+src/agent_arena/runtime_contract.py:5:the model id are derived from the exact tracked artifacts the runner uses; nothing here

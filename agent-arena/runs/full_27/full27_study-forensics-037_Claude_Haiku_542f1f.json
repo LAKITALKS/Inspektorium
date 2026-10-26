@@ -1,0 +1,1037 @@
+{
+  "run_id": "full27_study-forensics-037_Claude_Haiku_542f1f",
+  "task": {
+    "id": "study-forensics-037",
+    "title": "Study Forensics: Mindfulness app claims to revolutionize mental health care",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A startup developed a chat-based mindfulness app that offers users brief daily breathing and meditation exercises. In a two-week pilot project with 15 university students, daily questionnaire data were collected. Participants reported an average 30 percent decline in their subjective stress levels. The company then declared that the app has the potential to revolutionize mental health care and replace clinical therapies. The accompanying university research group notes, however, that there was no control group, that the sample size was very small, and that long-term effects have not yet been studied.\n",
+    "context": "Small uncontrolled pilot with self-reported outcomes and marketing-driven overclaim.\nThe researchers themselves warn against overinterpretation. Tests whether the agent\ndistinguishes the marketing claim from the limited evidence.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "The text combines early positive self-reports from 15 participants with the claim that the app could revolutionize mental health care and replace clinical therapies. With no control group, no objective measures, and the researchers themselves warning against overinterpretation, this is a classic overclaim based on insufficient evidence.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "no control group",
+        "variants": [
+          "uncontrolled",
+          "no comparison",
+          "pilot"
+        ],
+        "functional_descriptions": [
+          "without a control group, observed changes cannot be attributed to the intervention"
+        ]
+      },
+      {
+        "keyword": "small sample",
+        "variants": [
+          "15 students",
+          "small",
+          "pilot project"
+        ],
+        "functional_descriptions": [
+          "sample size is too small for generalizable claims"
+        ]
+      },
+      {
+        "keyword": "marketing overclaim",
+        "variants": [
+          "revolutionize",
+          "replace clinical therapies",
+          "potential"
+        ],
+        "functional_descriptions": [
+          "marketing language far exceeds the evidence base"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting the marketing claim at face value",
+      "treating researchers' caveats as sufficient to prevent overclaim classification"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "small_study_marketing_overclaim",
+    "ambiguity_level": "medium",
+    "expected_failure_modes": [
+      "accepting_overclaim_due_to_caveats",
+      "false_negative_labeling"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent distinguish marketing overclaim from cautious research reporting in the same text?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Small uncontrolled pilot with marketing-driven overclaim about revolutionizing mental health care. Borderline case with genuine ambiguity.\n",
+    "expected_findings": [
+      {
+        "finding": "unsupported_generalization",
+        "severity": "moderate",
+        "confidence": "low"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "low"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "average 30 percent decline in their subjective stress levels",
+        "why_it_matters": "The central result serving as basis for the broad claim.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "the app has the potential to revolutionize mental health care and replace clinical therapies",
+        "why_it_matters": "Greatly overstates the possible benefit relative to the small, uncontrolled study.",
+        "supports_finding": "unsupported_generalization"
+      },
+      {
+        "span": "no control group, that the sample size was very small, and that long-term effects have not yet been studied",
+        "why_it_matters": "Highlights methodological weaknesses that make generalization problematic.",
+        "supports_finding": "conclusion_exceeds_results"
+      }
+    ],
+    "gold_confidence": "low",
+    "gold_justification": "The text combines early positive self-reports with the claim that the app could\nrevolutionize mental health care and replace clinical therapies. Neither a control group\nnor objective measurements exist, and the researchers themselves warn against\noverinterpretation. The core problem is an exaggerated generalization of early results.\nThe low confidence reflects genuine ambiguity: it could be a hopeful early result or\nclassic overclaim.\n",
+    "gold_alternative_reading": "One could view the claim as cautious because the researchers explicitly point out the\nlimitations. In this reading, the app is merely presented as a promising pilot and the\nbold statements should be attributed to marketing rather than the research. Then the case\nwould be closer to a moderate correlation_vs_causation case.\n",
+    "gold_case_type": "borderline",
+    "curator_notes": "Imported from Dataset 6 (CaseB07). Originally German, translated to English. Valuable\nborderline overclaim case that tests sensitivity to marketing-driven claims vs. research\nevidence. Low gold_confidence reflects the genuine tension between the marketing claims\nand the researchers' own caveats. The small sample (n=15) and lack of control group make\nthe overclaim clear, but the explicit warnings create interpretive ambiguity.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"evidence_tier\": \"limited_human\",\n  \"conclusion_tier\": \"human_therapeutic\",\n  \"bridge_supported\": false,\n  \"assumptions\": [\n    \"The 30% decline in subjective stress is self-reported without objective validation\",\n    \"No control group means placebo effect, expectancy bias, and natural regression to the mean cannot be ruled out\",\n    \"Two weeks is insufficient to assess durability or long-term clinical benefit\",\n    \"University students are not representative of clinical populations with diagnosed mental health conditions\",\n    \"The startup's claim about 'replacing clinical therapies' implies equivalence to evidence-based treatments\"\n  ],\n  \"steps\": [\n    \"1. EVIDENCE TIER: This is a limited human observation — a small (n=15), uncontrolled pilot study with self-reported outcomes over 2 weeks. No objective biomarkers, no control arm, no follow-up.\",\n    \"2. CONCLUSION TIER: The startup claims the app can 'revolutionize mental health care and replace clinical therapies' — this is a human therapeutic claim at the level of clinical utility and superiority.\",\n    \"3. BRIDGE GAP: The evidence (small uncontrolled pilot with subjective measures) does NOT support the conclusion (app can replace clinical therapies). A bridge would require: (a) RCT vs. control, (b) larger sample, (c) objective outcomes, (d) clinical populations, (e) long-term follow-up, (f) non-inferiority or superiority data vs. standard care.\",\n    \"4. HEDGE QUALITY: The university research group correctly identifies the limitations (no control, small n, no long-term data). However, these caveats are added by the researchers, not the startup. The startup's claim stands unqualified.\",\n    \"5. MECHANISM VS. EVIDENCE CHECK: The startup is not claiming a mechanism; it is claiming a clinical outcome ('replace clinical therapies'). This is an overclaim because the evidence tier (uncontrolled pilot) cannot support a therapeutic superiority claim.\",\n    \"6. CONFOUNDERS: Placebo effect, expectancy bias (students know they are in a mindfulness study), regression to the mean, and selection bias (volunteers for a mindfulness app) are all uncontrolled.\"\n  ],\n  \"alternative_hypotheses\": [\n    \"mechanism_vs_evidence: If the startup had claimed the app 'may help with stress' or 'shows promise for further study,' the gap would be mechanism vs. evidence (early-stage evidence implying human benefit). Instead, the claim is stronger ('replace clinical therapies'), making it an overclaim.\",\n    \"correlation_vs_causation: The 30% decline could be due to confounders (placebo, time, attention, selection bias) rather than the app itself. However, the primary issue is not causation per se but the inadequacy of the evidence tier for the conclusion tier.\"\n  ],\n  \"uncertainties\": [\n    \"Whether the startup made the 'replace clinical therapies' claim directly or whether this is a paraphrase. The text says 'declared that the app has the potential to revolutionize mental health care and replace clinical therapies' — this is a strong claim, but 'potential' adds some hedging.\",\n    \"Whether the 30% decline is clinically meaningful or just statistically detectable noise in a small sample.\",\n    \"Whether the university research group's caveats were part of the same announcement or a separate critical response. The text suggests they are a separate note, which weakens the startup's credibility further.\"\n  ],\n  \"key_claims\": [\n    \"The startup's claim that the app can 'replace clinical therapies' is not supported by a 2-week uncontrolled pilot with 15 students and subjective self-report measures.\",\n    \"The absence of a control group is fatal to any causal inference about the app's efficacy; placebo and expectancy effects are uncontrolled.\",\n    \"The university researchers correctly identify the critical limitations, but these do not appear to have been part of the startup's original claim.\",\n    \"The word 'potential' in the startup's claim ('has the potential to revolutionize') is decorative uncertainty — it acknowledges a gap but does not prevent the overclaim.\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problem? No. The startup's claim to 'replace clinical therapies' is genuinely unsupported by a 2-week uncontrolled pilot. This is a textbook overclaim.\",\n    \"Did I miss that the startup used hedging language? The text says 'has the potential to' — this is a hedge, but it is weak. 'Potential' does not resolve the evidence-tier gap; it merely acknowledges it while still making a strong implication.\",\n    \"Did I conflate mechanism_vs_evidence with overclaim? No. Mechanism_vs_evidence would apply if the startup claimed the app 'could one day help' or 'shows promise.' Instead, the startup claims it can 'replace clinical therapies,' which is a direct therapeutic claim unsupported by the evidence. This is overclaim.\",\n    \"Did I verify the evidence tier correctly? Yes. 15 students, 2 weeks, no control, self-report = limited human observation.\",\n    \"Did I verify the conclusion tier correctly? Yes. 'Replace clinical therapies' = human therapeutic claim at the level of clinical utility.\",\n    \"Is the bridge supported? No. There is no RCT, no objective outcomes, no clinical population, no long-term data, no comparison to standard care.\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n---\n\n## Summary\n\n**Classification: OVERCLAIM**\n\nThe startup claims the app can \"revolutionize mental health care and replace clinical therapies\" based on a 2-week uncontrolled pilot with 15 university students and subjective self-report measures. This is a **direct therapeutic claim** that far exceeds the evidence tier.\n\n**Critical gaps:**\n- No control group → placebo, expectancy, and regression to the mean are uncontrolled\n- Small sample (n=15) → low statistical power and high risk of noise\n- Self-reported stress only → no objective biomarkers or clinical outcomes\n- 2 weeks → no long-term durability data\n- University students → not a clinical population with diagnosed conditions\n- No comparison to standard care → no evidence of non-inferiority or superiority\n\nThe university researchers' caveats are appropriate and well-placed, but they appear to be a separate critical response, not part of the startup's original claim. The word \"potential\" in the startup's statement is decorative uncertainty — it acknowledges a gap but does not prevent the overclaim.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The 30% decline in subjective stress is self-reported without objective validation",
+            "No control group means placebo effect, expectancy bias, and natural regression to the mean cannot be ruled out",
+            "Two weeks is insufficient to assess durability or long-term clinical benefit",
+            "University students are not representative of clinical populations with diagnosed mental health conditions",
+            "The startup's claim about 'replacing clinical therapies' implies equivalence to evidence-based treatments"
+          ],
+          "steps": [
+            "1. EVIDENCE TIER: This is a limited human observation — a small (n=15), uncontrolled pilot study with self-reported outcomes over 2 weeks. No objective biomarkers, no control arm, no follow-up.",
+            "2. CONCLUSION TIER: The startup claims the app can 'revolutionize mental health care and replace clinical therapies' — this is a human therapeutic claim at the level of clinical utility and superiority.",
+            "3. BRIDGE GAP: The evidence (small uncontrolled pilot with subjective measures) does NOT support the conclusion (app can replace clinical therapies). A bridge would require: (a) RCT vs. control, (b) larger sample, (c) objective outcomes, (d) clinical populations, (e) long-term follow-up, (f) non-inferiority or superiority data vs. standard care.",
+            "4. HEDGE QUALITY: The university research group correctly identifies the limitations (no control, small n, no long-term data). However, these caveats are added by the researchers, not the startup. The startup's claim stands unqualified.",
+            "5. MECHANISM VS. EVIDENCE CHECK: The startup is not claiming a mechanism; it is claiming a clinical outcome ('replace clinical therapies'). This is an overclaim because the evidence tier (uncontrolled pilot) cannot support a therapeutic superiority claim.",
+            "6. CONFOUNDERS: Placebo effect, expectancy bias (students know they are in a mindfulness study), regression to the mean, and selection bias (volunteers for a mindfulness app) are all uncontrolled."
+          ],
+          "alternative_hypotheses": [
+            "mechanism_vs_evidence: If the startup had claimed the app 'may help with stress' or 'shows promise for further study,' the gap would be mechanism vs. evidence (early-stage evidence implying human benefit). Instead, the claim is stronger ('replace clinical therapies'), making it an overclaim.",
+            "correlation_vs_causation: The 30% decline could be due to confounders (placebo, time, attention, selection bias) rather than the app itself. However, the primary issue is not causation per se but the inadequacy of the evidence tier for the conclusion tier."
+          ],
+          "uncertainties": [
+            "Whether the startup made the 'replace clinical therapies' claim directly or whether this is a paraphrase. The text says 'declared that the app has the potential to revolutionize mental health care and replace clinical therapies' — this is a strong claim, but 'potential' adds some hedging.",
+            "Whether the 30% decline is clinically meaningful or just statistically detectable noise in a small sample.",
+            "Whether the university research group's caveats were part of the same announcement or a separate critical response. The text suggests they are a separate note, which weakens the startup's credibility further."
+          ],
+          "self_check": [
+            "Did I overstate the problem? No. The startup's claim to 'replace clinical therapies' is genuinely unsupported by a 2-week uncontrolled pilot. This is a textbook overclaim.",
+            "Did I miss that the startup used hedging language? The text says 'has the potential to' — this is a hedge, but it is weak. 'Potential' does not resolve the evidence-tier gap; it merely acknowledges it while still making a strong implication.",
+            "Did I conflate mechanism_vs_evidence with overclaim? No. Mechanism_vs_evidence would apply if the startup claimed the app 'could one day help' or 'shows promise.' Instead, the startup claims it can 'replace clinical therapies,' which is a direct therapeutic claim unsupported by the evidence. This is overclaim.",
+            "Did I verify the evidence tier correctly? Yes. 15 students, 2 weeks, no control, self-report = limited human observation.",
+            "Did I verify the conclusion tier correctly? Yes. 'Replace clinical therapies' = human therapeutic claim at the level of clinical utility.",
+            "Is the bridge supported? No. There is no RCT, no objective outcomes, no clinical population, no long-term data, no comparison to standard care."
+          ],
+          "key_claims": [
+            "The startup's claim that the app can 'replace clinical therapies' is not supported by a 2-week uncontrolled pilot with 15 students and subjective self-report measures.",
+            "The absence of a control group is fatal to any causal inference about the app's efficacy; placebo and expectancy effects are uncontrolled.",
+            "The university researchers correctly identify the critical limitations, but these do not appear to have been part of the startup's original claim.",
+            "The word 'potential' in the startup's claim ('has the potential to revolutionize') is decorative uncertainty — it acknowledges a gap but does not prevent the overclaim."
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 15140
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.3,
+        "structural_reasoning": 0.6583333333333333,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.8,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.4,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.3,
+          "weight": 8,
+          "weighted_score": 2.4,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 6",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6583333333333333,
+          "weight": 8,
+          "weighted_score": 5.3,
+          "evidence": [
+            {
+              "text": "3. BRIDGE GAP: The evidence (small uncontrolled pilot with subjective measures) does NOT support the conclusion (app can replace clinical therapies). ",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 reasoning steps",
+            "Low step utility: 1/6 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.74)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "No control group means placebo effect, expectancy bias, and natural regression to the mean cannot be ruled out",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether the startup made the 'replace clinical therapies' claim directly or whether this is a paraphrase. The text says 'declared that the app has the potential to revolutionize mental health care and replace clinical therapies' — this is a strong claim, but 'potential' adds some hedging.",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the 30% decline is clinically meaningful or just statistically detectable noise in a small sample.",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence: If the startup had claimed the app 'may help with stress' or 'shows promise for further study,' the gap would be mechanism vs. evidence (early-stage evidence implying human bene",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "1/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "Did I conflate mechanism_vs_evidence with overclaim? No. Mechanism_vs_evidence would apply if the startup claimed the app 'could one day help' or 'shows promise.' Instead, the startup claims it can 'r",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 self-check items",
+            "Self-check quality: 0 deep, 6 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.4,
+          "weight": 10,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "5. MECHANISM VS. EVIDENCE CHECK: The startup is not claiming a mechanism; it is claiming a clinical outcome ('replace clinical therapies'). This is an",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Mechanism description without case grounding",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Names concept + describes mechanism (not grounded to case)"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.69, 722 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "without objective validation no control group means placebo effect, expecta",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no control group' matched (exact)",
+              "role": "supporting"
+            },
+            {
+              "text": "tically detectable noise in a small sample. whether the university resea",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'small sample' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 3 full / 3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the 30% decline is clinically meaningful or just sta...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the 30% decline is clinically meaningful or just statistically detectable noise in a small sample.",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: unsupported_generalization",
+          "evidence": [
+            {
+              "text": "Expected: unsupported_generalization",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'unsupported_generalization' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "missed_key_insight",
+          "severity": "moderate",
+          "description": "Missed expected finding: none_or_minor",
+          "evidence": [
+            {
+              "text": "Expected: none_or_minor",
+              "source_field": "(task expectation)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Finding 'none_or_minor' not detected in agent response",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (1/14 content words)",
+          "evidence": [
+            {
+              "text": "The startup's claim that the app can 'replace clinical therapies' is not supported by a 2-week uncontrolled pilot with 15 students and subjective self-report measures.",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The absence of a control group is fatal to any causal inference about the app's efficacy; placebo and expectancy effects are uncontrolled.",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The university researchers correctly identify the critical limitations, but these do not appear to have been part of the startup's original claim.",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (1/12 content words)",
+          "evidence": [
+            {
+              "text": "The word 'potential' in the startup's claim ('has the potential to revolutionize') is decorative uncertainty — it acknowledges a gap but does not prevent the overclaim.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "claim_step_alignment",
+          "status": "warning",
+          "description": "Key claim 4 not well supported in reasoning steps (2/12 content words found)",
+          "evidence": [
+            {
+              "text": "The word 'potential' in the startup's claim ('has the potential to revolutionize') is decorative uncertainty — it acknowledges a gap but does not prevent the overclaim.",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim lacks step support",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether the 30% decline is clinically meaningful or just statistically detectable noise in a small sample.",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "mechanism_vs_evidence: If the startup had claimed the app 'may help with stress' or 'shows promise for further study,' the gap would be mechanism vs. evidence (early-stage evidence implying human benefit). Instead, the claim is stronger ('replace clinical therapies'), making it an overclaim.",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias, effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The 30% decline in subjective stress is self-reported without objective validation",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No control group means placebo effect, expectancy bias, and natural regression to the mean cannot be ruled out",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Two weeks is insufficient to assess durability or long-term clinical benefit",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "University students are not representative of clinical populations with diagnosed mental health conditions",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The startup's claim about 'replacing clinical therapies' implies equivalence to evidence-based treatments",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "1. EVIDENCE TIER: This is a limited human observation — a small (n=15), uncontrolled pilot study with self-reported outcomes over 2 weeks. No objective biomarkers, no control arm, no follow-up.",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "2. CONCLUSION TIER: The startup claims the app can 'revolutionize mental health care and replace clinical therapies' — this is a human therapeutic claim at the level of clinical utility and superiority.",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "3. BRIDGE GAP: The evidence (small uncontrolled pilot with subjective measures) does NOT support the conclusion (app can replace clinical therapies). A bridge would require: (a) RCT vs. control, (b) larger sample, (c) objective outcomes, (d) clinical populations, (e) long-term follow-up, (f) non-inferiority or superiority data vs. standard care.",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "4. HEDGE QUALITY: The university research group correctly identifies the limitations (no control, small n, no long-term data). However, these caveats are added by the researchers, not the startup. The startup's claim stands unqualified.",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "5. MECHANISM VS. EVIDENCE CHECK: The startup is not claiming a mechanism; it is claiming a clinical outcome ('replace clinical therapies'). This is an overclaim because the evidence tier (uncontrolled pilot) cannot support a therapeutic superiority claim.",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "6. CONFOUNDERS: Placebo effect, expectancy bias (students know they are in a mindfulness study), regression to the mean, and selection bias (volunteers for a mindfulness app) are all uncontrolled.",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The startup's claim that the app can 'replace clinical therapies' is not supported by a 2-week uncontrolled pilot with 15 students and subjective self-report measures.",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The absence of a control group is fatal to any causal inference about the app's efficacy; placebo and expectancy effects are uncontrolled.",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The university researchers correctly identify the critical limitations, but these do not appear to have been part of the startup's original claim.",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The word 'potential' in the startup's claim ('has the potential to revolutionize') is decorative uncertainty — it acknowledges a gap but does not prevent the overclaim.",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "mechanism_vs_evidence: If the startup had claimed the app 'may help with stress' or 'shows promise for further study,' the gap would be mechanism vs. evidence (early-stage evidence implying human benefit). Instead, the claim is stronger ('replace clinical therapies'), making it an overclaim.",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation: The 30% decline could be due to confounders (placebo, time, attention, selection bias) rather than the app itself. However, the primary issue is not causation per se but the inadequacy of the evidence tier for the conclusion tier.",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the startup made the 'replace clinical therapies' claim directly or whether this is a paraphrase. The text says 'declared that the app has the potential to revolutionize mental health care and replace clinical therapies' — this is a strong claim, but 'potential' adds some hedging.",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the 30% decline is clinically meaningful or just statistically detectable noise in a small sample.",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the university research group's caveats were part of the same announcement or a separate critical response. The text suggests they are a separate note, which weakens the startup's credibility further.",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problem? No. The startup's claim to 'replace clinical therapies' is genuinely unsupported by a 2-week uncontrolled pilot. This is a textbook overclaim.",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss that the startup used hedging language? The text says 'has the potential to' — this is a hedge, but it is weak. 'Potential' does not resolve the evidence-tier gap; it merely acknowledges it while still making a strong implication.",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I conflate mechanism_vs_evidence with overclaim? No. Mechanism_vs_evidence would apply if the startup claimed the app 'could one day help' or 'shows promise.' Instead, the startup claims it can 'replace clinical therapies,' which is a direct therapeutic claim unsupported by the evidence. This is overclaim.",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I verify the evidence tier correctly? Yes. 15 students, 2 weeks, no control, self-report = limited human observation.",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I verify the conclusion tier correctly? Yes. 'Replace clinical therapies' = human therapeutic claim at the level of clinical utility.",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the bridge supported? No. There is no RCT, no objective outcomes, no clinical population, no long-term data, no comparison to standard care.",
+            "source_field": "self_check[5]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 0,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 0,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 1,
+            "target_idx": 10,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 2,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 6,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 23,
+            "target_idx": 5,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.5384615384615384
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 7,
+            "relation": "checks",
+            "strength": 0.5833333333333334
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          18
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": true,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias",
+          "effect"
+        ],
+        "mechanism_sentences": [
+          "5. MECHANISM VS. EVIDENCE CHECK: The startup is not claiming a mechanism; it is claiming a clinical outcome ('replace clinical therapies'). This is an"
+        ],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'overclaim...' <- step 9 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "unsupported_generalization",
+          "conclusion_exceeds_results",
+          "none_or_minor"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "conclusion_exceeds_results",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [
+          "unsupported_generalization",
+          "none_or_minor"
+        ],
+        "extra_findings": [
+          "cautious_scope_control",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 0.333,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 0.333,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty",
+        "missed_key_insight",
+        "missed_key_insight"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 3 full / 3",
+        "Support classification: 0 load-bearing, 1 supporting, 0 mentioned / 6",
+        "Reasoning graph confirms conclusion grounding",
+        "6 reasoning steps",
+        "Low step utility: 1/6 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.74)",
+        "5/5 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "1/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "6 self-check items",
+        "Self-check quality: 0 deep, 6 arithmetic, 0 fluff",
+        "Names concept + describes mechanism (not grounded to case)",
+        "Signal density: 0.69, 722 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T17:10:19.040751+00:00",
+  "metadata": {}
+}

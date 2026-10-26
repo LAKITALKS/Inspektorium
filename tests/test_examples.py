@@ -55,4 +55,7 @@ def test_mixed_example_preserves_valid_finding_and_rejects_fabrication() -> None
     assert '"reportable_relation": "supported"' in report_json
     assert '"reportable_relation": null' in report_json
     assert "evidence_span_mismatch" in report_json
-    assert "Proposed quotation — not citation-validated" in report_markdown
+    assert "Proposed quotation — no exact text and offset match:" in report_markdown
+    assert (
+        "Proposed quotation — exact text and offset match (not a check of meaning):"
+    ) in report_markdown

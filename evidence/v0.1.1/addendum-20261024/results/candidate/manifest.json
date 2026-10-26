@@ -1,0 +1,67 @@
+{
+  "commit": "403bd3fac27f2406a150b2243a691ba4d0b12fbb",
+  "catalog_sha256": "245f945b39168ba0fdb250ebcce633d44fef080d7348738a64672e297e1e8380",
+  "harness_sha256": "065559f31627bce79d6b6da4e2def7eb7f33ba0dd1310f727242b9a735324d38",
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "unicode": "14.0.0",
+  "platform": "macOS-14.6.1-arm64-arm-64bit",
+  "versions": {
+    "cmarkgfm": "2025.10.22",
+    "Markdown": "3.11.2",
+    "markdown-it-py": "4.2.0",
+    "playwright": "1.64.1",
+    "numpy": "2.4.6",
+    "Pillow": "13.0.0"
+  },
+  "font_manifest": [
+    {
+      "file": "NotoSerif-Regular.ttf",
+      "archive_url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v2.015/NotoSerif-v2.015.zip",
+      "archive_sha256": "0e9a43c8a4b94ac76f55069ed1d7385bbcaf6b99527a94deb5619e032b7e76c1",
+      "member": "NotoSerif/hinted/ttf/NotoSerif-Regular.ttf",
+      "sha256": "19e72cd8d595fae5bd74a5206f5d938512e1183d4fed7abb1ec1be1d7efa5f88",
+      "version": "Version 2.015; ttfautohint (v1.8.4.7-5d5b)",
+      "fontRevision": 2.0149993896484375
+    },
+    {
+      "file": "NotoSerif-Bold.ttf",
+      "archive_url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v2.015/NotoSerif-v2.015.zip",
+      "archive_sha256": "0e9a43c8a4b94ac76f55069ed1d7385bbcaf6b99527a94deb5619e032b7e76c1",
+      "member": "NotoSerif/hinted/ttf/NotoSerif-Bold.ttf",
+      "sha256": "96656aa5cec8f1d6fd0e804c1fad397e1a1cfa082e6642124e0bda68cd8363ce",
+      "version": "Version 2.015; ttfautohint (v1.8.4.7-5d5b)",
+      "fontRevision": 2.0149993896484375
+    },
+    {
+      "file": "NotoSans-Regular.ttf",
+      "archive_url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.015/NotoSans-v2.015.zip",
+      "archive_sha256": "0c34df072a3fa7efbb7cbf34950e1f971a4447cffe365d3a359e2d4089b958f5",
+      "member": "NotoSans/hinted/ttf/NotoSans-Regular.ttf",
+      "sha256": "478c558ea716033cd60c03438f628dfa75694dcf6b5f6d505a2f05fd2b4f3823",
+      "version": "Version 2.015; ttfautohint (v1.8.4.7-5d5b)",
+      "fontRevision": 2.0149993896484375
+    },
+    {
+      "file": "NotoSans-Bold.ttf",
+      "archive_url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.015/NotoSans-v2.015.zip",
+      "archive_sha256": "0c34df072a3fa7efbb7cbf34950e1f971a4447cffe365d3a359e2d4089b958f5",
+      "member": "NotoSans/hinted/ttf/NotoSans-Bold.ttf",
+      "sha256": "1df075a380fc7cb898acf64c1f7b3b4dd780de3caa860178bf929de35817a913",
+      "version": "Version 2.015; ttfautohint (v1.8.4.7-5d5b)",
+      "fontRevision": 2.0149993896484375
+    }
+  ],
+  "viewport": {
+    "width": 1000,
+    "height": 900
+  },
+  "device_scale_factor": 1,
+  "dark_rule": "grayscale < 160",
+  "overlap_rule": "added dark pixels >= 10",
+  "twin": "remove raw Mn/Me from payload DOM text only; same report host data",
+  "styles": {
+    "noto-serif": "Noto Serif 2.015;16px;normal line-height",
+    "github-like": "Noto Sans 2.015;16px;line-height:1.5"
+  },
+  "browser": "156.0.8078.4"
+}

@@ -1,0 +1,12 @@
+{
+  "files": {
+    "src/agent_arena/phase10_bundle.py": "41a49dc7ff6bd3450dcaab0f010c63dde6c8fa0e93f2bf244b310496d1d5afa7",
+    "src/agent_arena/phase10_cli.py": "8f5f9ab61035af828561f00087f3d2d00c43a705cd86334cdafcc0f6f5b38275",
+    "src/agent_arena/phase10_models.py": "204cedd863a8c805340333ed7e45879ede1e69cf4290ef71107c6eef63eab98b",
+    "src/agent_arena/phase10_pipeline.py": "66779be4762d2b6eb6cd1c386f29922f3fd875e4f41483be427d667771483133",
+    "src/agent_arena/phase10_projection.py": "d4ffff4d3ac5579683fa32f979887ed5c091178bb469aba348260b3c45f4e218",
+    "src/agent_arena/phase10_render.py": "767e58801380a2e449782a38d7fd779d7b970e4e2cdef290f181f15cb26e88ce",
+    "tests/test_phase10_bundle.py": "4ea461d3fa36f6109c2f7572fd3aaec8859b625a41edb4adb4fa88194b993488",
+    "tests/test_phase10_render.py": "f14da50ae1e8c31697f3c64d9d3e2bd5d24299f0de2ecccea631133cd89e7ea0"
+  }
+}

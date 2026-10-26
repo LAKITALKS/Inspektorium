@@ -1,0 +1,17 @@
+{
+  "plan_document_schema_version": "agent_arena.condition_plan_document/v1",
+  "definition": {
+    "plan_id": "AA-HARNESS-VALUE-20260913-001-CONTINUATION-001",
+    "continuation_manifest_sha256": "b92c423d6fe66e56ba54278ab5ebf4d45cc0b8b6e916fcc03a740ce4d7efbd3e"
+  },
+  "authorization": {
+    "status": "CONSUMED_AFTER_SINGLE_GUARDED_INVOCATION",
+    "specification_fingerprint": "3899318b506cf6512db5ef79f23decc63f8bd4cb9bbd1234fcb58af51eac6160",
+    "authorization_source": "one_shot_execution_consumed",
+    "authorized_budget_calls": 0
+  },
+  "progress": {
+    "status": "COMPLETE",
+    "completed_calls": 60
+  }
+}

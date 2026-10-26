@@ -1,0 +1,21 @@
+$ (cd __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/help_cwd && env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 COLUMNS=100 __LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/agent-arena official-release --help)
+--- output (stdout+stderr) ---
+Usage: agent-arena official-release [OPTIONS]
+
+  Historical Phase-7B official-release path.
+
+  Disabled in v1: it applies no AA-P8/P9/P10 controls; use 'agent-arena audit
+  release'.
+
+  Not the canonical Phase10 path. Diagnostic or legacy Phase7-only artifacts;
+  use 'agent-arena audit' for AA-P10 controls and local release.
+
+Options:
+  --input TEXT        Path to a canonical prospective release-object JSON
+                      [required]
+  --output-root TEXT  Root under which the controlled official release
+                      namespace is created  [required]
+  --repo-root TEXT    Authenticated Git root containing the tracked release-
+                      source manifest  [default: .]
+  --help              Show this message and exit.
+--- exit_code: 0

@@ -1,0 +1,6 @@
+stdout: ['Library: 48 active case(s), 2 retired (retired excluded by default; use --include-retired to include).', 'Running 48 case(s) x 1 run(s) — provider: FAKE (no network)']
+rc 0 runs 48 label_correct 48 retired present [] keys with 'prompt' []
+phase8 states ['not_executed']
+study-forensics-001 n_msgs 1 user==prompt True ctx in any request field False gold solid detected solid label_correct True error None
+study-forensics-044 n_msgs 1 user==prompt True ctx in any request field False gold mechanism_vs_evidence detected solid label_correct False error None
+wrong cwd rc 1 No matching cases found. artifacts written: False

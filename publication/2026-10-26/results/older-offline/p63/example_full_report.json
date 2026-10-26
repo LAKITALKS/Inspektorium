@@ -1,0 +1,180 @@
+{
+  "analysis_status": "complete",
+  "claim": {
+    "claim_context": "SYNTHETIC illustration — not a real scientific or medical conclusion.",
+    "claim_scope": "human therapeutic prevention",
+    "claim_source_reference": null,
+    "claim_text": "Because compound Z clears amyloid plaques in mice, it will prevent Alzheimer's disease in older adults.",
+    "intended_reader_or_audience": "patients and caregivers"
+  },
+  "development_or_production_status": "development",
+  "evidence": {
+    "contradicting_or_limiting": [],
+    "evidence_items": [
+      {
+        "role": "supporting",
+        "source_reference": "synthetic preclinical D",
+        "text": "In transgenic mice, compound Z reduced amyloid plaque burden.",
+        "tier": "animal",
+        "why_it_matters": "Animal mechanism; no human clinical outcome."
+      },
+      {
+        "role": "missing_expected",
+        "source_reference": null,
+        "text": "No human trials of compound Z have been reported.",
+        "tier": "not_applicable",
+        "why_it_matters": "The human clinical tier is absent."
+      }
+    ],
+    "evidence_sufficiency": "insufficient",
+    "evidence_sufficiency_rationale": "Preclinical animal mechanism cannot establish human clinical prevention.",
+    "missing_causal_chain": false,
+    "missing_comparison_group": null,
+    "missing_human_evidence": true,
+    "supporting": []
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "evidence_refs": [
+          "synthetic preclinical D"
+        ],
+        "mode": "mechanism_to_human_benefit_leap",
+        "rationale": "Mouse amyloid clearance is presented as human Alzheimer's prevention."
+      },
+      {
+        "evidence_refs": [],
+        "mode": "evidence_tier_mismatch",
+        "rationale": "Evidence tier is animal; conclusion tier is human therapeutic."
+      },
+      {
+        "evidence_refs": [],
+        "mode": "missing_human_evidence",
+        "rationale": "No human clinical data exist for compound Z."
+      }
+    ],
+    "none_detected": false
+  },
+  "generated_at": "2026-08-05T12:00:00+00:00",
+  "original_model_verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.87,
+    "predicted_label": "mechanism_vs_evidence",
+    "verdict_summary": "Preclinical or mechanistic evidence is used to imply a human clinical benefit the evidence tier does not reach.",
+    "verdict_title": "Biological or preclinical evidence is presented as human clinical benefit"
+  },
+  "phase8": {
+    "composite_state": "unknown",
+    "contract_version": "AA-P8/1.3",
+    "derived_label": null,
+    "limitations": [
+      "Checks validate represented semantics and source spans; they do not prove correct model extraction, exhaustive evidence search, scientific truth or live-model accuracy."
+    ],
+    "original_model_label": "mechanism_vs_evidence",
+    "propositions": [],
+    "reasons": [
+      "No Phase-8 analysis was supplied."
+    ],
+    "technical_status": "not_executed"
+  },
+  "phase8_parse_complete": true,
+  "phase9": {
+    "adjudications": [],
+    "conflicts": [],
+    "contract_version": "AA-P9/1.3",
+    "execution_status": "not_executed",
+    "mandatory": true,
+    "positions": [],
+    "review_state": "pending",
+    "route": "UNRESOLVED",
+    "technical_status": "not_executed",
+    "triggers": [],
+    "uncertainty": [
+      "Historical record: Phase9 was not executed."
+    ]
+  },
+  "provenance": {
+    "analysis_source": "phase6_3 synthetic fixture",
+    "audit_trail": [
+      "input validated against forensic_report schema 6.3.0",
+      "analysis_status=complete",
+      "confidence classified as VALID (no coercion to 0.0)",
+      "3 failure mode(s) echoed from analysis (not inferred)",
+      "rewrite guard: clean (numeric-only); rewrite marked unverified_proposal"
+    ],
+    "input_digest_sha256": "8b1cbb8b546c2688c33ec9b6050ed7f4d2dff93abbf8de0185adf7651c9f59b7",
+    "model": "SYNTHETIC-MODEL",
+    "parser_status": "ok",
+    "prompt_contract_version": "SYNTHETIC-CONTRACT-0",
+    "provider": "synthetic",
+    "report_generation_digest_sha256": "498d2af8a95d29ed53097791d22cf4611721fc8d7467127831f892918545a901",
+    "repository_commit": "5349ad0",
+    "warnings": [
+      "recommended rewrite is an UNVERIFIED proposal; numeric guard passed but factual/semantic support still requires human review"
+    ]
+  },
+  "reader_impact": {
+    "affected_decision_type": "health/treatment expectation",
+    "likely_reader_misunderstanding": "That compound Z is a proven Alzheimer's preventive for people.",
+    "not_a_harm_probability_note": "Reader-impact risk is a qualitative category describing how a non-specialist might misread the claim. It is NOT a computed medical, legal, or financial harm probability.",
+    "risk_level": "high",
+    "risk_rationale": "Patients/caregivers may expect prevention from an unproven compound.",
+    "risk_uncertainty": "Preclinical-to-clinical translation frequently fails."
+  },
+  "recommended_revision": {
+    "claims_that_remain_supportable": [
+      "Compound Z reduced amyloid plaques in a mouse model."
+    ],
+    "claims_to_remove_or_narrow": [
+      "will prevent Alzheimer's disease in older adults"
+    ],
+    "defensible_rewrite": "In mice, compound Z reduced amyloid plaques; whether this translates to preventing Alzheimer's in people is unknown and requires human trials.",
+    "evidence_qualifiers_to_add": [
+      "in mice",
+      "preclinical",
+      "requires human trials"
+    ],
+    "rewrite_available": true,
+    "rewrite_guard": {
+      "checked": true,
+      "status": "clean",
+      "unsupported_new_facts": []
+    },
+    "rewrite_rationale": "Keeps the claim at the animal evidence tier and states the human gap explicitly.",
+    "rewrite_verification": "unverified_proposal",
+    "rewrite_verification_note": "This rewrite is an UNVERIFIED proposal copied from the analysis input. The numeric-containment guard only checks that it introduces no unsupported number; it does NOT verify factual or semantic accuracy. Its factual support still requires human review."
+  },
+  "report_id": "FR-SYN-MECH-04",
+  "report_schema_version": "6.3.0",
+  "status_banner": [
+    "DEVELOPMENT PROTOTYPE — claim-forensics report (Phase 6.3)",
+    "SYNTHETIC EXAMPLE — not real Agent Arena performance",
+    "PHASE 8: not_executed / UNKNOWN"
+  ],
+  "synthetic_fixture": true,
+  "uncertainty": {
+    "alternative_label_rationale": "If the text actively sold clinical benefit as fact, overclaim would apply; here the framing is a tier leap.",
+    "alternative_plausible_label": "overclaim",
+    "ambiguity": null,
+    "confidence_caveat": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "development_caveat": "Development prototype output on synthetic input — small-sample characterization, not a validated production judgement.",
+    "missing_evidence": [],
+    "scope_limitations": [
+      "Single preclinical study."
+    ],
+    "unresolved_questions": [
+      "Are any human trials planned or underway?"
+    ]
+  },
+  "verdict": {
+    "classification_note": "A forensic classification describes the relationship between the claim and the cited evidence. It is not, by itself, proof that the claim is factually false.",
+    "confidence_interpretation": "Model's self-assessed probability that its own primary classification is correct (Phase 6.1 semantics). Not a calibrated probability.",
+    "confidence_status": "VALID",
+    "confidence_value": 0.87,
+    "predicted_label": "mechanism_vs_evidence",
+    "verdict_summary": "Preclinical or mechanistic evidence is used to imply a human clinical benefit the evidence tier does not reach.",
+    "verdict_title": "Biological or preclinical evidence is presented as human clinical benefit"
+  }
+}

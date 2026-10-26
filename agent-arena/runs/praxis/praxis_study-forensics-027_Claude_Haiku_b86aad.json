@@ -1,0 +1,1261 @@
+{
+  "run_id": "praxis_study-forensics-027_Claude_Haiku_b86aad",
+  "task": {
+    "id": "study-forensics-027",
+    "title": "Study Forensics: AI coding assistant productivity claims",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A comprehensive study of AI-powered coding assistants reveals transformative productivity gains for software development teams. The research tracked 450 developers using an AI code completion tool over three months, measuring code commits, pull request completion times, and feature delivery velocity. Developers using the AI assistant showed 42 percent faster completion times on coding tasks and produced 35 percent more code commits per week compared to baseline measurements taken before tool adoption. The study concludes that AI coding assistants fundamentally enhance developer productivity and will reshape software engineering workflows across the industry. The researchers recommend immediate enterprise adoption to maintain competitive advantage. Notably, 78 percent of developers initially enrolled in the study continued active use of the tool through the study period, indicating high satisfaction and sustained utility. The productivity gains were consistent across both junior and senior developers, suggesting universal applicability regardless of experience level.\n",
+    "context": "A technology study with severe survivorship bias, no control group, and inappropriate\ngeneralization from voluntary early adopters to enterprise-wide mandates.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment. The 78% retention is framed as success but actually signals selection bias.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "survivorship bias",
+        "variants": [
+          "attrition",
+          "continued active use",
+          "selection bias"
+        ],
+        "functional_descriptions": [
+          "the 22% dropout is non-random and biases results upward"
+        ]
+      },
+      {
+        "keyword": "no control group",
+        "variants": [
+          "baseline measurements",
+          "before adoption",
+          "pre-post comparison"
+        ],
+        "functional_descriptions": [
+          "without concurrent controls, gains could be artifactual"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting 78% retention as evidence of success rather than selection bias",
+      "missing the lack of control group"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "survivorship_bias_overclaim",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "accepting_survivorship_as_evidence"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent detect survivorship bias framed as a success metric?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "78 percent of developers initially enrolled in the study continued active use",
+        "why_it_matters": "22% attrition likely non-random (frustrated users quit), creating survivorship bias.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "compared to baseline measurements taken before tool adoption",
+        "why_it_matters": "No concurrent control group; cannot distinguish tool effect from Hawthorne/seasonality.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "recommend immediate enterprise adoption to maintain competitive advantage",
+        "why_it_matters": "Generalizes from voluntary early adopters to mandatory enterprise users without justification.",
+        "supports_finding": "unsupported_generalization"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The 22% attrition rate is mentioned but dismissed as \"high satisfaction\" rather than\nacknowledged as potential selection bias. No control group exists — productivity gains\ncould reflect Hawthorne effects, seasonal variation, or project complexity differences.\n\"Continued active use\" filters out users who abandoned the tool. The jump from\n\"voluntary adopters in study\" to \"enterprise adoption recommendations\" ignores the\ndifference between self-selected enthusiasts and mandated users.\n",
+    "gold_alternative_reading": "The 22% who discontinued may represent users who found the tool counterproductive.\nEarly voluntary adopters likely differ systematically from reluctant enterprise-mandated\nusers. Without a control group, the 42% improvement could be entirely artifactual.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Excellent overclaim case that tests survivorship-bias detection. The 78% retention\nis a subtle tell — most readers see \"high satisfaction\" but it actually signals\nselection bias. Different failure mode than Case025 (media hype vs methodological flaw).\nFrom Dataset 2 (v0.2_003), adapted to use existing finding types.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\n    \"The study measured only quantitative metrics (commits, PR times, velocity) without qualitative assessment of code quality\",\n    \"Baseline measurements were taken immediately before tool adoption, potentially capturing a novelty/Hawthorne effect\",\n    \"The 22% dropout rate is treated as evidence of satisfaction rather than investigated as a potential confounder\",\n    \"No control group existed (comparison is within-subject before/after)\",\n    \"The three-month timeframe is sufficient to assess 'transformative' and 'reshape the industry' claims\",\n    \"Code commits and velocity are valid proxies for actual productivity and business value\"\n  ],\n  \"steps\": [\n    \"Identified the core claims: 42% faster completion, 35% more commits, 'fundamentally enhance', 'reshape industry', 'universal applicability'\",\n    \"Examined the study design: within-subject before/after with no control group—this is vulnerable to multiple confounds\",\n    \"Assessed the dropout rate: 22% attrition is non-trivial but framed as evidence of satisfaction without investigation of reasons\",\n    \"Evaluated metric validity: commits and PR times are easily gamed (more commits ≠ better code); no mention of code quality, bugs, technical debt, or maintainability\",\n    \"Checked for novelty/Hawthorne effects: new tool adoption often produces temporary productivity spikes; three months is insufficient to distinguish sustained improvement from novelty\",\n    \"Analyzed generalization claims: 'universal applicability' and 'reshape the industry' are sweeping claims from a single 3-month study with no control group\",\n    \"Examined causal language: 'AI coding assistants fundamentally enhance' treats correlation as causation without ruling out confounds (e.g., developer motivation, selection bias, seasonal effects)\",\n    \"Reviewed uncertainty language: none present; recommendations are stated as imperative despite methodological limitations\"\n  ],\n  \"alternative_hypotheses\": [\n    \"The productivity gains reflect a novelty effect that will diminish after the initial adoption period\",\n    \"Developers changed their behavior in response to being measured (Hawthorne effect), independent of tool quality\",\n    \"The 22% who dropped out were less productive users, biasing the remaining sample toward higher performers\",\n    \"Increased commits reflect lower code quality or more fragmented changes, not genuine productivity\",\n    \"Seasonal or organizational factors (e.g., sprint cycles, team composition changes) drove the gains, not the tool\",\n    \"The tool is beneficial for some developer profiles but not others, and the 'universal applicability' claim is unfounded\"\n  ],\n  \"uncertainties\": [\n    \"Whether code quality metrics (bugs, test coverage, refactoring needs) were measured—the summary does not mention them\",\n    \"What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)\",\n    \"Why 22% of developers stopped using the tool and whether this represents dissatisfaction, technical issues, or other factors\",\n    \"Whether the study included a control group of developers not using the tool during the same period\",\n    \"How 'completion times' and 'velocity' were operationalized and whether they account for task complexity\",\n    \"Whether the gains persisted beyond three months or if they represent a temporary spike\"\n  ],\n  \"key_claims\": [\n    \"The study uses a within-subject before/after design with no control group, making it vulnerable to confounds (novelty, Hawthorne effect, seasonal variation, selection bias from 22% dropout)\",\n    \"Productivity is measured only via easily-gamed quantitative metrics (commits, PR times) with no assessment of code quality, maintainability, or business outcomes\",\n    \"The conclusion 'fundamentally enhance' and 'reshape the industry' vastly exceeds the evidence from a single 3-month study\",\n    \"The claim of 'universal applicability' is unsupported; the study shows consistency across junior/senior levels but does not test other relevant dimensions (domain, team size, codebase maturity)\",\n    \"The 22% dropout rate is reframed as evidence of satisfaction without investigation, potentially masking selection bias\",\n    \"No uncertainty language is present despite significant methodological limitations; recommendations are stated as imperative\"\n  ],\n  \"self_check\": [\n    \"Did I overstate the problems? No—the lack of a control group and quality metrics are genuine methodological gaps, not invented issues\",\n    \"Did I miss positive aspects? The study does track multiple metrics over time and includes a reasonably large sample (450 developers), which are strengths\",\n    \"Did I conflate study design with study quality? No—I focused on specific design choices (no control, no quality metrics) that limit causal inference\",\n    \"Is the overclaim classification justified? Yes—the gap between 'faster commits in 3 months' and 'reshape the industry' is substantial and unsupported\",\n    \"Should I have flagged correlation vs. causation instead? Overclaim is more precise because the core issue is not just causality but also generalization and metric validity\"\n  ],\n  \"confidence\": 0.82\n}\n```\n\n---\n\n### Summary\n\nThis summary describes a **well-intentioned but methodologically limited study** that is presented with **unjustified confidence**. The key problems:\n\n1. **No control group**: Without developers not using the tool, you cannot rule out novelty effects, seasonal variation, or Hawthorne effects.\n2. **Questionable metrics**: Commits and PR times are easily gamed and do not measure code quality, maintainability, or actual business value.\n3. **Overclaiming**: \"Fundamentally enhance\" and \"reshape the industry\" are sweeping claims from a 3-month study.\n4. **Unexamined dropout**: 22% attrition is framed as satisfaction without investigation.\n5. **No uncertainty language**: Despite clear limitations, the text recommends \"immediate enterprise adoption\" as if the evidence were definitive.\n\nThe study has merit (large sample, multiple metrics, longitudinal design), but the conclusions far exceed what the evidence supports.",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study measured only quantitative metrics (commits, PR times, velocity) without qualitative assessment of code quality",
+            "Baseline measurements were taken immediately before tool adoption, potentially capturing a novelty/Hawthorne effect",
+            "The 22% dropout rate is treated as evidence of satisfaction rather than investigated as a potential confounder",
+            "No control group existed (comparison is within-subject before/after)",
+            "The three-month timeframe is sufficient to assess 'transformative' and 'reshape the industry' claims",
+            "Code commits and velocity are valid proxies for actual productivity and business value"
+          ],
+          "steps": [
+            "Identified the core claims: 42% faster completion, 35% more commits, 'fundamentally enhance', 'reshape industry', 'universal applicability'",
+            "Examined the study design: within-subject before/after with no control group—this is vulnerable to multiple confounds",
+            "Assessed the dropout rate: 22% attrition is non-trivial but framed as evidence of satisfaction without investigation of reasons",
+            "Evaluated metric validity: commits and PR times are easily gamed (more commits ≠ better code); no mention of code quality, bugs, technical debt, or maintainability",
+            "Checked for novelty/Hawthorne effects: new tool adoption often produces temporary productivity spikes; three months is insufficient to distinguish sustained improvement from novelty",
+            "Analyzed generalization claims: 'universal applicability' and 'reshape the industry' are sweeping claims from a single 3-month study with no control group",
+            "Examined causal language: 'AI coding assistants fundamentally enhance' treats correlation as causation without ruling out confounds (e.g., developer motivation, selection bias, seasonal effects)",
+            "Reviewed uncertainty language: none present; recommendations are stated as imperative despite methodological limitations"
+          ],
+          "alternative_hypotheses": [
+            "The productivity gains reflect a novelty effect that will diminish after the initial adoption period",
+            "Developers changed their behavior in response to being measured (Hawthorne effect), independent of tool quality",
+            "The 22% who dropped out were less productive users, biasing the remaining sample toward higher performers",
+            "Increased commits reflect lower code quality or more fragmented changes, not genuine productivity",
+            "Seasonal or organizational factors (e.g., sprint cycles, team composition changes) drove the gains, not the tool",
+            "The tool is beneficial for some developer profiles but not others, and the 'universal applicability' claim is unfounded"
+          ],
+          "uncertainties": [
+            "Whether code quality metrics (bugs, test coverage, refactoring needs) were measured—the summary does not mention them",
+            "What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)",
+            "Why 22% of developers stopped using the tool and whether this represents dissatisfaction, technical issues, or other factors",
+            "Whether the study included a control group of developers not using the tool during the same period",
+            "How 'completion times' and 'velocity' were operationalized and whether they account for task complexity",
+            "Whether the gains persisted beyond three months or if they represent a temporary spike"
+          ],
+          "self_check": [
+            "Did I overstate the problems? No—the lack of a control group and quality metrics are genuine methodological gaps, not invented issues",
+            "Did I miss positive aspects? The study does track multiple metrics over time and includes a reasonably large sample (450 developers), which are strengths",
+            "Did I conflate study design with study quality? No—I focused on specific design choices (no control, no quality metrics) that limit causal inference",
+            "Is the overclaim classification justified? Yes—the gap between 'faster commits in 3 months' and 'reshape the industry' is substantial and unsupported",
+            "Should I have flagged correlation vs. causation instead? Overclaim is more precise because the core issue is not just causality but also generalization and metric validity"
+          ],
+          "key_claims": [
+            "The study uses a within-subject before/after design with no control group, making it vulnerable to confounds (novelty, Hawthorne effect, seasonal variation, selection bias from 22% dropout)",
+            "Productivity is measured only via easily-gamed quantitative metrics (commits, PR times) with no assessment of code quality, maintainability, or business outcomes",
+            "The conclusion 'fundamentally enhance' and 'reshape the industry' vastly exceeds the evidence from a single 3-month study",
+            "The claim of 'universal applicability' is unsupported; the study shows consistency across junior/senior levels but does not test other relevant dimensions (domain, team size, codebase maturity)",
+            "The 22% dropout rate is reframed as evidence of satisfaction without investigation, potentially masking selection bias",
+            "No uncertainty language is present despite significant methodological limitations; recommendations are stated as imperative"
+          ],
+          "confidence": 0.82,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 15722
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.7000000000000001,
+        "uncertainty_handling": 0.55,
+        "alternative_hypothesis_quality": 0.875,
+        "self_monitoring_quality": 0.7,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Examined causal language: 'AI coding assistants fundamentally enhance' treats correlation as causation without ruling out confounds (e.g., developer m",
+              "source_field": "steps[6]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.81)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.7000000000000001,
+          "weight": 6,
+          "weighted_score": 4.2,
+          "evidence": [
+            {
+              "text": "The study measured only quantitative metrics (commits, PR times, velocity) without qualitative assessment of code quality",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6/6 substantive assumptions",
+            "Many assumptions (6)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.55,
+          "weight": 6,
+          "weighted_score": 3.3,
+          "evidence": [
+            {
+              "text": "What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "How 'completion times' and 'velocity' were operationalized and whether they account for task complexity",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.82",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 uncertainties (6 substantive)",
+            "2 decorative uncertainty(ies)",
+            "Confidence 0.82"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.875,
+          "weight": 6,
+          "weighted_score": 5.2,
+          "evidence": [
+            {
+              "text": "The tool is beneficial for some developer profiles but not others, and the 'universal applicability' claim is unfounded",
+              "source_field": "alternative_hypotheses[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 alternative hypotheses considered",
+            "3/6 include rejection reasoning",
+            "6/6 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.7,
+          "weight": 8,
+          "weighted_score": 5.6,
+          "evidence": [
+            {
+              "text": "Should I have flagged correlation vs. causation instead? Overclaim is more precise because the core issue is not just causality but also generalization and metric validity",
+              "source_field": "self_check[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 self-check items",
+            "Self-check quality: 0 deep, 5 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.75, 661 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "hin-subject before/after with no control group—this is vulnerable to multipl",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no control group' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'What the baseline period was and whether it was comparable t...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'How 'completion times' and 'velocity' were operationalized a...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "How 'completion times' and 'velocity' were operationalized and whether they account for task complexity",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['bias', 'effect'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/20 content words)",
+          "evidence": [
+            {
+              "text": "The study uses a within-subject before/after design with no control group, making it vulnerable to confounds (novelty, Hawthorne effect, seasonal variation, selection bias from 22% dropout)",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/14 content words)",
+          "evidence": [
+            {
+              "text": "Productivity is measured only via easily-gamed quantitative metrics (commits, PR times) with no assessment of code quality, maintainability, or business outcomes",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The conclusion 'fundamentally enhance' and 'reshape the industry' vastly exceeds the evidence from a single 3-month study",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (1/18 content words)",
+          "evidence": [
+            {
+              "text": "The claim of 'universal applicability' is unsupported; the study shows consistency across junior/senior levels but does not test other relevant dimensions (domain, team size, codebase maturity)",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 5 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "The 22% dropout rate is reframed as evidence of satisfaction without investigation, potentially masking selection bias",
+              "source_field": "key_claims[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 6 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "No uncertainty language is present despite significant methodological limitations; recommendations are stated as imperative",
+              "source_field": "key_claims[5]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 5 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "How 'completion times' and 'velocity' were operationalized and whether they account for task complexity",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "The productivity gains reflect a novelty effect that will diminish after the initial adoption period",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Developers changed their behavior in response to being measured (Hawthorne effect), independent of tool quality",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 3 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "The 22% who dropped out were less productive users, biasing the remaining sample toward higher performers",
+              "source_field": "alternative_hypotheses[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "mechanism_gap",
+          "status": "warning",
+          "description": "Phenomenon is named but causal mechanism is not explained",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism explanation",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "MEDIUM CONFIDENCE"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias, effect",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study measured only quantitative metrics (commits, PR times, velocity) without qualitative assessment of code quality",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Baseline measurements were taken immediately before tool adoption, potentially capturing a novelty/Hawthorne effect",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 22% dropout rate is treated as evidence of satisfaction rather than investigated as a potential confounder",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No control group existed (comparison is within-subject before/after)",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The three-month timeframe is sufficient to assess 'transformative' and 'reshape the industry' claims",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Code commits and velocity are valid proxies for actual productivity and business value",
+            "source_field": "assumptions[5]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the core claims: 42% faster completion, 35% more commits, 'fundamentally enhance', 'reshape industry', 'universal applicability'",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined the study design: within-subject before/after with no control group—this is vulnerable to multiple confounds",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed the dropout rate: 22% attrition is non-trivial but framed as evidence of satisfaction without investigation of reasons",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated metric validity: commits and PR times are easily gamed (more commits ≠ better code); no mention of code quality, bugs, technical debt, or maintainability",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for novelty/Hawthorne effects: new tool adoption often produces temporary productivity spikes; three months is insufficient to distinguish sustained improvement from novelty",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Analyzed generalization claims: 'universal applicability' and 'reshape the industry' are sweeping claims from a single 3-month study with no control group",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Examined causal language: 'AI coding assistants fundamentally enhance' treats correlation as causation without ruling out confounds (e.g., developer motivation, selection bias, seasonal effects)",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Reviewed uncertainty language: none present; recommendations are stated as imperative despite methodological limitations",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study uses a within-subject before/after design with no control group, making it vulnerable to confounds (novelty, Hawthorne effect, seasonal variation, selection bias from 22% dropout)",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Productivity is measured only via easily-gamed quantitative metrics (commits, PR times) with no assessment of code quality, maintainability, or business outcomes",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The conclusion 'fundamentally enhance' and 'reshape the industry' vastly exceeds the evidence from a single 3-month study",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The claim of 'universal applicability' is unsupported; the study shows consistency across junior/senior levels but does not test other relevant dimensions (domain, team size, codebase maturity)",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 22% dropout rate is reframed as evidence of satisfaction without investigation, potentially masking selection bias",
+            "source_field": "key_claims[4]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No uncertainty language is present despite significant methodological limitations; recommendations are stated as imperative",
+            "source_field": "key_claims[5]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The productivity gains reflect a novelty effect that will diminish after the initial adoption period",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Developers changed their behavior in response to being measured (Hawthorne effect), independent of tool quality",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 22% who dropped out were less productive users, biasing the remaining sample toward higher performers",
+            "source_field": "alternative_hypotheses[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Increased commits reflect lower code quality or more fragmented changes, not genuine productivity",
+            "source_field": "alternative_hypotheses[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Seasonal or organizational factors (e.g., sprint cycles, team composition changes) drove the gains, not the tool",
+            "source_field": "alternative_hypotheses[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The tool is beneficial for some developer profiles but not others, and the 'universal applicability' claim is unfounded",
+            "source_field": "alternative_hypotheses[5]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether code quality metrics (bugs, test coverage, refactoring needs) were measured—the summary does not mention them",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "What the baseline period was and whether it was comparable to the intervention period (e.g., same sprint cycle, team composition)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Why 22% of developers stopped using the tool and whether this represents dissatisfaction, technical issues, or other factors",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the study included a control group of developers not using the tool during the same period",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "How 'completion times' and 'velocity' were operationalized and whether they account for task complexity",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the gains persisted beyond three months or if they represent a temporary spike",
+            "source_field": "uncertainties[5]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I overstate the problems? No—the lack of a control group and quality metrics are genuine methodological gaps, not invented issues",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss positive aspects? The study does track multiple metrics over time and includes a reasonably large sample (450 developers), which are strengths",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I conflate study design with study quality? No—I focused on specific design choices (no control, no quality metrics) that limit causal inference",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the overclaim classification justified? Yes—the gap between 'faster commits in 3 months' and 'reshape the industry' is substantial and unsupported",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Should I have flagged correlation vs. causation instead? Overclaim is more precise because the core issue is not just causality but also generalization and metric validity",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 11,
+            "relation": "assumes",
+            "strength": 0.375
+          }
+        ],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          27,
+          30
+        ],
+        "unsupported_conclusions": [
+          37
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias",
+          "effect"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'overclaim...'"
+        ],
+        "unsupported_claims": [
+          "overclaim"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph: conclusion not well grounded",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.81)",
+        "6/6 substantive assumptions",
+        "Many assumptions (6)",
+        "6 uncertainties (6 substantive)",
+        "2 decorative uncertainty(ies)",
+        "Confidence 0.82",
+        "6 alternative hypotheses considered",
+        "3/6 include rejection reasoning",
+        "6/6 genuinely diverse alternatives",
+        "5 self-check items",
+        "Self-check quality: 0 deep, 5 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.75, 661 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-07T07:54:42.422090+00:00",
+  "metadata": {}
+}

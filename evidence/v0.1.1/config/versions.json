@@ -1,0 +1,539 @@
+{
+  "_comment": "Per-version label maps. Each map derives the full expected sequence of rendered line units from a JSON report. A map is accepted for a (version, renderer) pair only if the label-map validation case (role label_map_validation) matches exactly; otherwise every row of that pair is NOT_EXECUTED. Text values are the visible text after HTML rendering, whitespace-normalized.",
+  "maps": {
+    "inspektorium-0.1.0": {
+      "description": "Public baseline main@4bd0ba9218df80a69089838f824ae0ac28881ac4 (package 0.1.0, report schema 0.1).",
+      "display": {
+        "mode": "identity",
+        "note": "The baseline makes no data-display claim; fidelity is measured against the raw text."
+      },
+      "allowed_tags": [
+        "blockquote",
+        "code",
+        "h1",
+        "h2",
+        "h3",
+        "li",
+        "p",
+        "strong",
+        "ul"
+      ],
+      "payload_allowed_tags": {
+        "claim_text": [],
+        "rationale": [],
+        "evidence_quote": [
+          "p"
+        ]
+      },
+      "control_labels": [
+        "Claim span check:",
+        "Reportable proposed relationship:",
+        "Deterministic guard:",
+        "Citation validation:",
+        "Proposed relationship (evaluator judgment):"
+      ],
+      "guard_label": "Deterministic guard:",
+      "sections": {
+        "title": "Inspection Report",
+        "summary": "Summary",
+        "findings": "Findings",
+        "warnings": "Validation Warnings",
+        "limitations": "Scope and Limitations"
+      },
+      "derived": {
+        "claim_check": {
+          "key": [
+            "claim_span_verified"
+          ],
+          "map": {
+            "true": "exact",
+            "false": "failed"
+          }
+        },
+        "reportable": {
+          "key": [
+            "reportable_relation"
+          ],
+          "map": {
+            "null": "None \u2014 deterministic guard failed"
+          },
+          "default": "{reportable_relation}"
+        },
+        "guard": {
+          "key": [
+            "deterministic_validation_status",
+            "evidence_span_verified"
+          ],
+          "map": {
+            "passed|null": "passed (claim span and structure only; no citation check performed)"
+          },
+          "default": "{deterministic_validation_status}"
+        },
+        "citation": {
+          "key": [
+            "evidence_span_verified"
+          ],
+          "map": {
+            "true": "exact source quotation confirmed",
+            "false": "citation failed exact validation",
+            "null": "not performed \u2014 no citation required or supplied for this proposal"
+          }
+        },
+        "quote_heading": {
+          "key": [
+            "evidence_span_verified"
+          ],
+          "map": {
+            "true": "Citation-validated source quotation:"
+          },
+          "default": "Proposed quotation \u2014 not citation-validated:"
+        }
+      },
+      "document": [
+        {
+          "unit": "h1",
+          "text": "Inspection Report"
+        },
+        {
+          "unit": "p",
+          "text": "Generated from explicit metadata: {generated_at_iso}",
+          "when": "generated_at"
+        },
+        {
+          "unit": "h2",
+          "text": "Summary"
+        },
+        {
+          "unit": "li",
+          "text": "Claims inspected: {summary.claims_inspected}"
+        },
+        {
+          "unit": "li",
+          "text": "Relationships allowed to remain reportable: {summary.reportable_findings}"
+        },
+        {
+          "unit": "li",
+          "text": "Exact citation spans confirmed: {summary.citation_spans_verified}"
+        },
+        {
+          "unit": "li",
+          "text": "Deterministic validation failures: {summary.validation_failures}"
+        },
+        {
+          "unit": "li",
+          "text": "Global score: not produced"
+        },
+        {
+          "unit": "p",
+          "text": "Evaluator relationships are semantic proposals. Deterministic validation only checks canonical claim text, source identifiers, quotation text, and offsets."
+        },
+        {
+          "unit": "h2",
+          "text": "Findings"
+        },
+        {
+          "each": "findings",
+          "template": "finding",
+          "empty": [
+            {
+              "unit": "p",
+              "text": "No findings were proposed."
+            }
+          ]
+        },
+        {
+          "unit": "h2",
+          "text": "Validation Warnings"
+        },
+        {
+          "each": "issues",
+          "template": "issue",
+          "empty": [
+            {
+              "unit": "p",
+              "text": "No deterministic validation warnings."
+            }
+          ]
+        },
+        {
+          "unit": "h2",
+          "text": "Scope and Limitations"
+        },
+        {
+          "unit": "p",
+          "text": "{scope.statement}"
+        },
+        {
+          "each": "limitations",
+          "template": "limitation"
+        }
+      ],
+      "templates": {
+        "finding": [
+          {
+            "unit": "h3",
+            "text": "Finding {index}: {claim_id}"
+          },
+          {
+            "unit": "li",
+            "label": "Atomic claim:",
+            "field": "claim_text"
+          },
+          {
+            "unit": "li",
+            "text": "Answer span: [{claim_start}:{claim_end})"
+          },
+          {
+            "unit": "li",
+            "text": "Claim span check: {claim_check}"
+          },
+          {
+            "unit": "li",
+            "text": "Proposed relationship (evaluator judgment): {proposed_relation}"
+          },
+          {
+            "unit": "li",
+            "text": "Reportable proposed relationship: {reportable}"
+          },
+          {
+            "unit": "li",
+            "text": "Deterministic guard: {guard}",
+            "status_line": true
+          },
+          {
+            "unit": "li",
+            "text": "Citation validation: {citation}"
+          },
+          {
+            "unit": "li",
+            "text": "Evidence sufficiency (evaluator judgment): {evidence_sufficiency}"
+          },
+          {
+            "unit": "li",
+            "text": "Evaluator certainty: {evaluator_certainty}"
+          },
+          {
+            "unit": "li",
+            "label": "Rationale (evaluator-generated):",
+            "field": "rationale"
+          },
+          {
+            "unit": "p",
+            "text": "{quote_heading}",
+            "when": "evidence_quote"
+          },
+          {
+            "unit": "blockquote",
+            "field": "evidence_quote",
+            "when": "evidence_quote"
+          },
+          {
+            "unit": "li",
+            "text": "Proposed source: {source_id}",
+            "when": "source_id"
+          },
+          {
+            "unit": "li",
+            "text": "Proposed offsets: [{evidence_start}:{evidence_end})",
+            "when": "source_id"
+          }
+        ],
+        "issue": [
+          {
+            "unit": "li",
+            "text": "{claim_id} / {code}: {message}",
+            "warning_line": true
+          }
+        ],
+        "limitation": [
+          {
+            "unit": "li",
+            "text": "{limitation}",
+            "limitation_line": true
+          }
+        ]
+      },
+      "status": "fixed (public baseline)"
+    },
+    "inspektorium-0.1.1-candidate": {
+      "description": "v0.1.1 candidate fae18242de35facb7c493ff18e86baff3afe2c24 (package 0.1.1, report schema 0.1). Labels, display note and display rule follow src/inspektorium/report/markdown_report.py and src/inspektorium/report/display.py at that commit. As for every map, a renderer's rows count only if the label-map validation case R-RC-00 renders intact with this map (label_map_valid in the run summary).",
+      "display": {
+        "mode": "tokenize",
+        "note": "Visible text expected from the candidate's documented display rule: code points of category Cc, Cf, Cs, Zl, Zp (including U+200C and U+200D) and code points unassigned (Cn) in the Unicode database of the Python that rendered the report (including noncharacters) become markers \u27e6U+XXXX\u27e7; U+27E6 and U+27E7 are always markers; LF inside a quotation is a line break; Markdown/HTML escapes (backslash escapes and character references) are invisible after rendering.",
+        "token": "\u27e6U+{cp}\u27e7",
+        "categories": [
+          "Cc",
+          "Cf",
+          "Cn",
+          "Cs",
+          "Zl",
+          "Zp"
+        ],
+        "keep": [],
+        "field_keep": {
+          "evidence_quote": [
+            "\n"
+          ]
+        },
+        "literal_escapes": {
+          "\u27e6": "\u27e6U+27E6\u27e7",
+          "\u27e7": "\u27e6U+27E7\u27e7"
+        },
+        "fidelity_on_attacks": true
+      },
+      "allowed_tags": [
+        "blockquote",
+        "br",
+        "code",
+        "h1",
+        "h2",
+        "h3",
+        "li",
+        "p",
+        "strong",
+        "ul"
+      ],
+      "payload_allowed_tags": {
+        "claim_text": [],
+        "rationale": [],
+        "evidence_quote": [
+          "br",
+          "p"
+        ]
+      },
+      "control_labels": [
+        "Claim span check:",
+        "Reportable proposed relationship:",
+        "Deterministic guard:",
+        "Citation text and offset check:",
+        "Proposed relationship (evaluator judgment):"
+      ],
+      "guard_label": "Deterministic guard:",
+      "sections": {
+        "title": "Inspection Report",
+        "summary": "Summary",
+        "findings": "Findings",
+        "warnings": "Validation Warnings",
+        "limitations": "Scope and Limitations"
+      },
+      "derived": {
+        "claim_check": {
+          "key": [
+            "claim_span_verified"
+          ],
+          "map": {
+            "true": "exact",
+            "false": "failed"
+          }
+        },
+        "reportable": {
+          "key": [
+            "reportable_relation"
+          ],
+          "map": {
+            "null": "None \u2014 deterministic guard failed"
+          },
+          "default": "{reportable_relation}"
+        },
+        "guard": {
+          "key": [
+            "deterministic_validation_status",
+            "evidence_span_verified"
+          ],
+          "map": {
+            "passed|null": "passed (claim span and structure only; no citation check performed)"
+          },
+          "default": "{deterministic_validation_status}"
+        },
+        "citation": {
+          "key": [
+            "evidence_span_verified"
+          ],
+          "map": {
+            "true": "exact match (not a check of meaning)",
+            "false": "no exact match",
+            "null": "not performed \u2014 no citation required or supplied for this proposal"
+          }
+        },
+        "quote_heading": {
+          "key": [
+            "evidence_span_verified"
+          ],
+          "map": {
+            "true": "Proposed quotation \u2014 exact text and offset match (not a check of meaning):"
+          },
+          "default": "Proposed quotation \u2014 no exact text and offset match:"
+        }
+      },
+      "document": [
+        {
+          "unit": "h1",
+          "text": "Inspection Report"
+        },
+        {
+          "unit": "p",
+          "text": "Generated from explicit metadata: {generated_at_iso}",
+          "when": "generated_at"
+        },
+        {
+          "unit": "h2",
+          "text": "Summary"
+        },
+        {
+          "unit": "li",
+          "text": "Claims inspected: {summary.claims_inspected}"
+        },
+        {
+          "unit": "li",
+          "text": "Relationships allowed to remain reportable: {summary.reportable_findings}"
+        },
+        {
+          "unit": "li",
+          "text": "Citations with an exact text and offset match: {summary.citation_spans_verified}"
+        },
+        {
+          "unit": "li",
+          "text": "Deterministic validation failures: {summary.validation_failures}"
+        },
+        {
+          "unit": "li",
+          "text": "Global score: not produced"
+        },
+        {
+          "unit": "p",
+          "text": "Evaluator relationships are semantic proposals. Deterministic validation only checks canonical claim text, source identifiers, quotation text, and offsets."
+        },
+        {
+          "unit": "p",
+          "text": "Display note: Text that comes from the evaluator, the answer, or the sources is shown as data. Markdown and HTML characters in it are escaped. Characters of the Unicode categories Cc, Cf, Cs, Zl and Zp, such as control characters, bidirectional controls, zero-width joiners and line separators, are shown as \u27e6U+XXXX\u27e7 markers, as are code points not assigned in the Unicode database of the running Python (category Cn); only a line feed inside a quotation is shown as a line break. The brackets \u27e6 and \u27e7 in this text are also shown as markers. Variation selectors and other invisible characters outside these categories are not marked. The JSON report keeps the exact characters."
+        },
+        {
+          "unit": "h2",
+          "text": "Findings"
+        },
+        {
+          "each": "findings",
+          "template": "finding",
+          "empty": [
+            {
+              "unit": "p",
+              "text": "No findings were proposed."
+            }
+          ]
+        },
+        {
+          "unit": "h2",
+          "text": "Validation Warnings"
+        },
+        {
+          "each": "issues",
+          "template": "issue",
+          "empty": [
+            {
+              "unit": "p",
+              "text": "No deterministic validation warnings."
+            }
+          ]
+        },
+        {
+          "unit": "h2",
+          "text": "Scope and Limitations"
+        },
+        {
+          "unit": "p",
+          "text": "{scope.statement}"
+        },
+        {
+          "each": "limitations",
+          "template": "limitation"
+        }
+      ],
+      "templates": {
+        "finding": [
+          {
+            "unit": "h3",
+            "text": "Finding {index}: {claim_id}"
+          },
+          {
+            "unit": "li",
+            "label": "Atomic claim:",
+            "field": "claim_text"
+          },
+          {
+            "unit": "li",
+            "text": "Answer span: [{claim_start}:{claim_end})"
+          },
+          {
+            "unit": "li",
+            "text": "Claim span check: {claim_check}"
+          },
+          {
+            "unit": "li",
+            "text": "Proposed relationship (evaluator judgment): {proposed_relation}"
+          },
+          {
+            "unit": "li",
+            "text": "Reportable proposed relationship: {reportable}"
+          },
+          {
+            "unit": "li",
+            "text": "Deterministic guard: {guard}",
+            "status_line": true
+          },
+          {
+            "unit": "li",
+            "text": "Citation text and offset check: {citation}"
+          },
+          {
+            "unit": "li",
+            "text": "Evidence sufficiency (evaluator judgment): {evidence_sufficiency}"
+          },
+          {
+            "unit": "li",
+            "text": "Evaluator certainty: {evaluator_certainty}"
+          },
+          {
+            "unit": "li",
+            "label": "Rationale (evaluator-generated):",
+            "field": "rationale"
+          },
+          {
+            "unit": "p",
+            "text": "{quote_heading}",
+            "when": "evidence_quote"
+          },
+          {
+            "unit": "blockquote",
+            "field": "evidence_quote",
+            "when": "evidence_quote"
+          },
+          {
+            "unit": "li",
+            "text": "Proposed source: {source_id}",
+            "when": "source_id"
+          },
+          {
+            "unit": "li",
+            "text": "Proposed offsets: [{evidence_start}:{evidence_end})",
+            "when": "source_id"
+          }
+        ],
+        "issue": [
+          {
+            "unit": "li",
+            "text": "{claim_id} / {code}: {message}",
+            "warning_line": true
+          }
+        ],
+        "limitation": [
+          {
+            "unit": "li",
+            "text": "{limitation}",
+            "limitation_line": true
+          }
+        ]
+      },
+      "status": "final for candidate fae18242de35facb7c493ff18e86baff3afe2c24"
+    }
+  }
+}

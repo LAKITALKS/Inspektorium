@@ -1,0 +1,25 @@
+{
+  "reproduction_version": "AA-P10-REPRO/1.1",
+  "wheel_installation": "normal_noneditable",
+  "development": {
+    "installation": "editable_same_clean_commit",
+    "environment": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/development-venv",
+    "origin": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout/src/agent_arena/__init__.py\n3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "module_bytes_match_source": true,
+    "code_fingerprint": "c2ee88ba6e64db194fc38355ad34cba862f2fcce268e4e4f7d3edbba83efb737"
+  },
+  "source_commit": "a695f91d4e6850714952e70947171ae28c557554",
+  "checkout": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/checkout",
+  "environment": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv",
+  "python_creator": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-14.6.1-arm64-arm-64bit",
+  "installed_origin": "__LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/clean-live-1/venv/lib/python3.11/site-packages/agent_arena/__init__.py\n3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "full_suite_executed": true,
+  "installed_code_fingerprint": "c2ee88ba6e64db194fc38355ad34cba862f2fcce268e4e4f7d3edbba83efb737",
+  "installed_bytes_match_source": true,
+  "final_checkout_status": "",
+  "project_live_provider_calls": 0,
+  "runtime_mode": "recorded_offline",
+  "success": true,
+  "note": "Scratch paths refer to a session scratch directory that is not retained; results and fingerprints are retained here."
+}

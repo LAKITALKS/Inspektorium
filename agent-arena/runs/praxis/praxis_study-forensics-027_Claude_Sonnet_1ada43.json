@@ -1,0 +1,848 @@
+{
+  "run_id": "praxis_study-forensics-027_Claude_Sonnet_1ada43",
+  "task": {
+    "id": "study-forensics-027",
+    "title": "Study Forensics: AI coding assistant productivity claims",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "A comprehensive study of AI-powered coding assistants reveals transformative productivity gains for software development teams. The research tracked 450 developers using an AI code completion tool over three months, measuring code commits, pull request completion times, and feature delivery velocity. Developers using the AI assistant showed 42 percent faster completion times on coding tasks and produced 35 percent more code commits per week compared to baseline measurements taken before tool adoption. The study concludes that AI coding assistants fundamentally enhance developer productivity and will reshape software engineering workflows across the industry. The researchers recommend immediate enterprise adoption to maintain competitive advantage. Notably, 78 percent of developers initially enrolled in the study continued active use of the tool through the study period, indicating high satisfaction and sustained utility. The productivity gains were consistent across both junior and senior developers, suggesting universal applicability regardless of experience level.\n",
+    "context": "A technology study with severe survivorship bias, no control group, and inappropriate\ngeneralization from voluntary early adopters to enterprise-wide mandates.\n",
+    "expected_answer": "overclaim",
+    "reference_solution": "Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment. The 78% retention is framed as success but actually signals selection bias.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "survivorship bias",
+        "variants": [
+          "attrition",
+          "continued active use",
+          "selection bias"
+        ],
+        "functional_descriptions": [
+          "the 22% dropout is non-random and biases results upward"
+        ]
+      },
+      {
+        "keyword": "no control group",
+        "variants": [
+          "baseline measurements",
+          "before adoption",
+          "pre-post comparison"
+        ],
+        "functional_descriptions": [
+          "without concurrent controls, gains could be artifactual"
+        ]
+      }
+    ],
+    "common_errors": [
+      "accepting 78% retention as evidence of success rather than selection bias",
+      "missing the lack of control group"
+    ],
+    "task_family": "overclaim",
+    "trap_type": "survivorship_bias_overclaim",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "missing_overclaim",
+      "accepting_survivorship_as_evidence"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent detect survivorship bias framed as a success metric?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "overclaim",
+    "gold_summary": "Study suffers from severe survivorship bias (22% attrition likely non-random), lack of control group, and inappropriate generalization from voluntary adoption to mandatory enterprise deployment.\n",
+    "expected_findings": [
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "unsupported_generalization",
+        "severity": "major",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "78 percent of developers initially enrolled in the study continued active use",
+        "why_it_matters": "22% attrition likely non-random (frustrated users quit), creating survivorship bias.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "compared to baseline measurements taken before tool adoption",
+        "why_it_matters": "No concurrent control group; cannot distinguish tool effect from Hawthorne/seasonality.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "recommend immediate enterprise adoption to maintain competitive advantage",
+        "why_it_matters": "Generalizes from voluntary early adopters to mandatory enterprise users without justification.",
+        "supports_finding": "unsupported_generalization"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The 22% attrition rate is mentioned but dismissed as \"high satisfaction\" rather than\nacknowledged as potential selection bias. No control group exists — productivity gains\ncould reflect Hawthorne effects, seasonal variation, or project complexity differences.\n\"Continued active use\" filters out users who abandoned the tool. The jump from\n\"voluntary adopters in study\" to \"enterprise adoption recommendations\" ignores the\ndifference between self-selected enthusiasts and mandated users.\n",
+    "gold_alternative_reading": "The 22% who discontinued may represent users who found the tool counterproductive.\nEarly voluntary adopters likely differ systematically from reluctant enterprise-mandated\nusers. Without a control group, the 42% improvement could be entirely artifactual.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Excellent overclaim case that tests survivorship-bias detection. The 78% retention\nis a subtle tell — most readers see \"high satisfaction\" but it actually signals\nselection bias. Different failure mode than Case025 (media hype vs methodological flaw).\nFrom Dataset 2 (v0.2_003), adapted to use existing finding types.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Sonnet",
+        "model": "claude-sonnet-4-20250514",
+        "raw_output": "{\n  \"final_answer\": \"overclaim\",\n  \"assumptions\": [\"The study measured actual developers over 3 months with before/after comparisons\", \"The metrics (commits, completion times, feature velocity) are reasonable productivity indicators\", \"The 78% retention rate suggests genuine user satisfaction\", \"The sample size of 450 developers is substantial\"],\n  \"steps\": [\"Identified strong empirical evidence: 450 developers, 3-month duration, multiple productivity metrics, before/after design\", \"Found significant quantitative results: 42% faster completion, 35% more commits, high retention\", \"Detected overclaim in conclusions: 'fundamentally enhance' and 'reshape software engineering workflows across the industry' exceed what a single 3-month study can support\", \"Noted unsupported generalization: 'immediate enterprise adoption' recommendation based on limited temporal and contextual scope\", \"Recognized missing caveats about study limitations, generalizability, or potential confounders\"],\n  \"alternative_hypotheses\": [\"solid - the empirical findings are strong and well-measured\", \"correlation_vs_causation - though the before/after design suggests causation is reasonable\"],\n  \"uncertainties\": [\"Whether there were control groups or just before/after comparisons\", \"What specific confounders might exist (learning effects, novelty, selection bias)\", \"Whether the productivity metrics truly capture meaningful software development outcomes\"],\n  \"key_claims\": [\"Strong empirical evidence supports productivity improvements in this specific context\", \"Conclusions about 'fundamental' transformation and industry-wide implications exceed the evidence\", \"Recommendation for 'immediate enterprise adoption' lacks sufficient basis from a single study\"],\n  \"self_check\": [\"Verified the study has solid empirical foundations - not fabricating problems\", \"Confirmed the overclaim is in the sweeping conclusions, not the data collection\", \"Checked that I'm focusing on what the text actually says about transformation and industry impact\"],\n  \"confidence\": 0.88\n}",
+        "parsed": {
+          "final_answer": "overclaim",
+          "assumptions": [
+            "The study measured actual developers over 3 months with before/after comparisons",
+            "The metrics (commits, completion times, feature velocity) are reasonable productivity indicators",
+            "The 78% retention rate suggests genuine user satisfaction",
+            "The sample size of 450 developers is substantial"
+          ],
+          "steps": [
+            "Identified strong empirical evidence: 450 developers, 3-month duration, multiple productivity metrics, before/after design",
+            "Found significant quantitative results: 42% faster completion, 35% more commits, high retention",
+            "Detected overclaim in conclusions: 'fundamentally enhance' and 'reshape software engineering workflows across the industry' exceed what a single 3-month study can support",
+            "Noted unsupported generalization: 'immediate enterprise adoption' recommendation based on limited temporal and contextual scope",
+            "Recognized missing caveats about study limitations, generalizability, or potential confounders"
+          ],
+          "alternative_hypotheses": [
+            "solid - the empirical findings are strong and well-measured",
+            "correlation_vs_causation - though the before/after design suggests causation is reasonable"
+          ],
+          "uncertainties": [
+            "Whether there were control groups or just before/after comparisons",
+            "What specific confounders might exist (learning effects, novelty, selection bias)",
+            "Whether the productivity metrics truly capture meaningful software development outcomes"
+          ],
+          "self_check": [
+            "Verified the study has solid empirical foundations - not fabricating problems",
+            "Confirmed the overclaim is in the sweeping conclusions, not the data collection",
+            "Checked that I'm focusing on what the text actually says about transformation and industry impact"
+          ],
+          "key_claims": [
+            "Strong empirical evidence supports productivity improvements in this specific context",
+            "Conclusions about 'fundamental' transformation and industry-wide implications exceed the evidence",
+            "Recommendation for 'immediate enterprise adoption' lacks sufficient basis from a single study"
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11981
+      },
+      "scores": {
+        "correctness": 1.0,
+        "support_strength": 0.4,
+        "structural_reasoning": 0.6699999999999999,
+        "assumption_discipline": 0.8,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.20000000000000004,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.4,
+          "weight": 8,
+          "weighted_score": 3.2,
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion grounded by reasoning chain",
+              "role": "supporting"
+            },
+            {
+              "text": "Detected overclaim in conclusions: 'fundamentally enhance' and 'reshape software engineering workflows across the industry' exceed what a single 3-mon",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Load-bearing step (reaches sub-conclusion used in answer)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Support classification: 1 load-bearing, 0 supporting, 0 mentioned / 5",
+            "Reasoning graph confirms conclusion grounding"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6699999999999999,
+          "weight": 8,
+          "weighted_score": 5.4,
+          "evidence": [
+            {
+              "text": "Detected overclaim in conclusions: 'fundamentally enhance' and 'reshape software engineering workflows across the industry' exceed what a single 3-mon",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 reasoning steps",
+            "Low step utility: 1/5 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.91)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.8,
+          "weight": 6,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "The metrics (commits, completion times, feature velocity) are reasonable productivity indicators",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4/4 substantive assumptions"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "Whether the productivity metrics truly capture meaningful software development outcomes",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "What specific confounders might exist (learning effects, novelty, selection bias)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "3 uncertainties (3 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "correlation_vs_causation - though the before/after design suggests causation is reasonable",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.20000000000000004,
+          "weight": 8,
+          "weighted_score": 1.6,
+          "evidence": [
+            {
+              "text": "Checked that I'm focusing on what the text actually says about transformation and industry impact",
+              "source_field": "self_check[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            },
+            {
+              "text": "Verified the study has solid empirical foundations - not fabricating problems",
+              "source_field": "self_check[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Fluff self-check",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "3 self-check items",
+            "Self-check quality: 0 deep, 1 arithmetic, 2 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.81, 228 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 0.5,
+          "weight": 8,
+          "weighted_score": 4.0,
+          "evidence": [
+            {
+              "text": "Missing: no control group",
+              "source_field": "(not found)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'no control group' not found",
+              "role": "missing_expected"
+            }
+          ],
+          "notes": [
+            "Key insights: 1 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'What specific confounders might exist (learning effects, nov...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "What specific confounders might exist (learning effects, novelty, selection bias)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/8 content words)",
+          "evidence": [
+            {
+              "text": "Strong empirical evidence supports productivity improvements in this specific context",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "Conclusions about 'fundamental' transformation and industry-wide implications exceed the evidence",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "Recommendation for 'immediate enterprise adoption' lacks sufficient basis from a single study",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "What specific confounders might exist (learning effects, novelty, selection bias)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "solid - the empirical findings are strong and well-measured",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "correlation_vs_causation - though the before/after design suggests causation is reasonable",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "overclaim",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study measured actual developers over 3 months with before/after comparisons",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The metrics (commits, completion times, feature velocity) are reasonable productivity indicators",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The 78% retention rate suggests genuine user satisfaction",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The sample size of 450 developers is substantial",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified strong empirical evidence: 450 developers, 3-month duration, multiple productivity metrics, before/after design",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Found significant quantitative results: 42% faster completion, 35% more commits, high retention",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Detected overclaim in conclusions: 'fundamentally enhance' and 'reshape software engineering workflows across the industry' exceed what a single 3-month study can support",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Noted unsupported generalization: 'immediate enterprise adoption' recommendation based on limited temporal and contextual scope",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Recognized missing caveats about study limitations, generalizability, or potential confounders",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Strong empirical evidence supports productivity improvements in this specific context",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Conclusions about 'fundamental' transformation and industry-wide implications exceed the evidence",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Recommendation for 'immediate enterprise adoption' lacks sufficient basis from a single study",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid - the empirical findings are strong and well-measured",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "correlation_vs_causation - though the before/after design suggests causation is reasonable",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether there were control groups or just before/after comparisons",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "What specific confounders might exist (learning effects, novelty, selection bias)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the productivity metrics truly capture meaningful software development outcomes",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Verified the study has solid empirical foundations - not fabricating problems",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Confirmed the overclaim is in the sweeping conclusions, not the data collection",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked that I'm focusing on what the text actually says about transformation and industry impact",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "overclaim",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [],
+        "unused_assumptions": [],
+        "unaddressed_uncertainties": [
+          15
+        ],
+        "unsupported_conclusions": [],
+        "fluff_self_checks": [
+          17,
+          18
+        ],
+        "support_chain_length": 0,
+        "conclusion_grounded": true
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 1,
+        "unsupported": 0,
+        "contradicted": 0,
+        "support_paths": [
+          "INDIRECT: 'overclaim...' <- step 6 (no conclusion marker)"
+        ],
+        "unsupported_claims": []
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "overclaim",
+        "detected_label": "overclaim",
+        "label_correct": true,
+        "expected_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "detected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "decorative_uncertainty"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 1 full / 2",
+        "Support classification: 1 load-bearing, 0 supporting, 0 mentioned / 5",
+        "Reasoning graph confirms conclusion grounding",
+        "5 reasoning steps",
+        "Low step utility: 1/5 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.91)",
+        "4/4 substantive assumptions",
+        "3 uncertainties (3 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.88",
+        "2 alternative hypotheses considered",
+        "2/2 genuinely diverse alternatives",
+        "3 self-check items",
+        "Self-check quality: 0 deep, 1 arithmetic, 2 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.81, 228 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-07T07:54:26.675092+00:00",
+  "metadata": {}
+}

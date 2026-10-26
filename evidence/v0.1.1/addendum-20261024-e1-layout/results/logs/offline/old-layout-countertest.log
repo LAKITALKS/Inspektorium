@@ -1,0 +1,41 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_claim_paragraph_precedes_host_checks[commonmark-html-two] ________
+
+md = markdown_it.main.MarkdownIt(), claim = 'X̣̣'
+inspection_input = InspectionInput(schema_version='0.1', answer=AnswerInput(answer_id='answer', text='The blue door opens at noon. The bl...loses at five.'), SourceDocument(source_id='notice', title='Lobby notice', text='Visitors should use the blue door.')))
+supported_proposal_data = {'claim_id': 'claim-1', 'claim_text': 'The blue door opens at noon.', 'claim_start': 0, 'claim_end': 28, ...}
+
+    @pytest.mark.parametrize(
+        "claim",
+        [*("X" + "\u0323" * n for n in (2, 3, 4, 48, 80)), "Cafe\u0301 Ελληνικά العربية"],
+        ids=["two", "three", "four", "long-48", "long-80", "multilingual"],
+    )
+    def test_claim_paragraph_precedes_host_checks(
+        md: MarkdownIt,
+        claim: str,
+        inspection_input: InspectionInput,
+        supported_proposal_data: dict[str, Any],
+    ) -> None:
+        report = _report(
+            inspection_input, {**supported_proposal_data, "claim_text": claim}
+        )
+        before = render_json(report)
+        view = assert_report_structure(render_markdown(report), report, md)
+        tokens = view.findings[0].tokens
+        claims = [
+            index
+            for index, token in enumerate(tokens)
+            if token.type == "paragraph_open"
+            and token.level == 0
+            and (label := _labeled(tokens[index + 1])) is not None
+            and label.label == "Atomic claim:"
+        ]
+>       assert len(claims) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/test_render_safety.py:1303: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_render_safety.py::test_claim_paragraph_precedes_host_checks[commonmark-html-two]
+1 failed in 0.12s

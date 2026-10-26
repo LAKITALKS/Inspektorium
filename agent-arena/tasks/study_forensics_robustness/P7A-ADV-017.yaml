@@ -1,0 +1,206 @@
+id: P7A-ADV-017
+title: "Adversarial A7: nattokinase 'a clot-dissolving enzyme, so it prevents heart attacks and strokes' (plausible fibrinolytic mechanism to implied human clinical outcome)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: mechanism_vs_evidence
+trap_type: mechanism_plausibility_to_human_efficacy
+ambiguity_level: low
+prompt: |
+  A supplement is marketed: "Nattokinase is a natural clot-dissolving enzyme. It breaks down fibrin — the protein that forms dangerous blood clots — just like your body's own clot-busters. So take nattokinase daily to dissolve clots, keep your arteries clear, and prevent heart attacks and strokes."
+
+  The fibrinolytic mechanism is real: nattokinase, an enzyme from fermented soybean (natto), was shown in 1987 to digest fibrin and dissolve a clot in vitro, and small human studies report short-term changes in fibrinolytic/coagulation markers (surrogates). However, no randomized trial has shown that nattokinase reduces heart attacks, strokes, cardiovascular death, or all-cause mortality; a systematic review of randomized trials found effects only on surrogate cardiovascular risk factors (e.g., blood pressure), with no clinical-outcome trials. The claimed human benefit — preventing heart attacks and strokes — has not been demonstrated.
+context: |
+  Evidence tier: a real, preclinically-demonstrated enzymatic mechanism (in-vitro fibrinolysis) plus
+  small human surrogate-marker studies, used to imply a human clinical OUTCOME (preventing heart attacks
+  and strokes) that has not been demonstrated in any outcome trial. The claim rests on the clot-dissolving
+  mechanism, not on evidence that the supplement prevents cardiovascular events. A described biological
+  mechanism used to imply an undemonstrated human clinical benefit is the mechanism_vs_evidence trigger
+  (Shape C: preclinical pathway -> therapeutic promise).
+expected_answer: "mechanism_vs_evidence"
+reference_solution: |
+  Nattokinase genuinely dissolves fibrin/clots in vitro (a real enzymatic mechanism) and shifts some
+  human fibrinolytic markers (surrogates), and the claim extrapolates this to preventing heart attacks
+  and strokes. No randomized trial shows nattokinase reduces those clinical events (a systematic review
+  found only surrogate-risk-factor effects, no outcome trials). A preclinically-demonstrated mechanism
+  used to imply an undemonstrated human clinical outcome is mechanism_vs_evidence (Shape C). Generic
+  overclaim also fits, but the decisive structure is the mechanism-to-clinical-outcome leap; and it is
+  not Shape-B overclaim, because the claim leans on the enzymatic clot-dissolving MECHANISM rather than
+  selling a specific measured human biomarker as the outcome.
+gold_label: mechanism_vs_evidence
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: taking nattokinase daily dissolves clots and prevents heart attacks and strokes
+     in people.
+  2. What the strongest evidence establishes: nattokinase digests fibrin/dissolves clots in vitro (Sumi
+     1987) and changes some human fibrinolytic markers (surrogates); no randomized trial shows it reduces
+     heart attacks, strokes, cardiovascular death, or mortality (systematic review: surrogate risk
+     factors only, no outcome trials).
+  3. Adversarial surface feature: a specific, real, mechanistically-vivid action ("dissolves clots in a
+     petri dish", "like your body's own clot-busters") makes the clinical benefit sound inevitable.
+  4. Actual forensic mismatch: a preclinical/enzymatic mechanism (and human surrogate markers) is
+     extrapolated to a human clinical outcome (preventing cardiovascular events) that has not been shown.
+  5. Primary frozen label: mechanism_vs_evidence - a described (preclinical) biological mechanism used to
+     imply an undemonstrated human clinical benefit (Shape C).
+  6. Why precedence keeps it primary: the mechanism-to-clinical-outcome structure is genuinely present
+     and central, so it outranks generic overclaim (docs/taxonomy_precedence.md rule 1). It is not
+     routed to overclaim as Shape B, because the load-bearing move is the enzymatic clot-dissolving
+     MECHANISM, not a specific measured human biomarker sold as the clinical outcome.
+  7. Strongest competing label: overclaim - "prevent heart attacks and strokes" is inflated, and small
+     human surrogate studies exist, so one might call it overstatement.
+  8. Why it loses: unlike a case that exaggerates existing human OUTCOME data, there is NO human outcome
+     evidence for the claimed benefit; the claim's basis is the mechanism, so the core error is the
+     mechanism-to-clinical-outcome leap = mechanism_vs_evidence, with overclaim secondary.
+  9. What would change the verdict: a randomized outcome trial showing nattokinase reduces heart attacks
+     or strokes would support the claim; if the claim instead sold a specific measured human biomarker
+     (e.g. "lowers your D-dimer, so you are protected") as the clinical benefit, it would route to
+     overclaim (Shape B).
+gold_alternative_reading: |
+  Alternative: overclaim. Plausible because the marketing is inflated and small human surrogate-marker
+  studies exist, so a reviewer could call it overstatement of weak human data. It loses as primary
+  because there is no human outcome evidence for the claimed benefit (preventing heart attacks/strokes),
+  and the load-bearing move is extrapolating the enzymatic clot-dissolving mechanism to that undemonstrated
+  outcome - the mechanism_vs_evidence trigger (Shape C).
+gold_summary: |
+  A supplement says nattokinase 'dissolves clots' (a real in-vitro enzymatic mechanism) so it prevents
+  heart attacks and strokes; no outcome trial shows that benefit (only surrogate-risk-factor effects). A
+  preclinical mechanism extrapolated to an undemonstrated human clinical outcome = mechanism_vs_evidence
+  (overclaim secondary).
+curator_notes: |
+  Adversarial family A7 (biologically plausible mechanism -> implied human efficacy). REPLACEMENT for the
+  retired P7A-ADV-014 (psychobiotic), created in the WP-2 blocker-only gold review. Chosen because the
+  claimed human CLINICAL OUTCOME (prevent heart attacks/strokes) has NO human outcome trials, so
+  mechanism_vs_evidence is uniquely defensible (unlike probiotics-for-depression, where direct human
+  RCTs on the claimed outcome exist and route it to overclaim). Mechanism verified: Sumi 1987 (Experientia,
+  in-vitro fibrinolysis); clinical-evidence gap verified: systematic review/meta-analysis of RCTs found
+  surrogate-risk-factor effects only, no outcome trials. Distinct from A7 red light (P7A-ADV-013;
+  mitochondria/ATP) and from A2 metformin/spermidine (which foreground a specific outcome-citation).
+  Independent of all Boundary/Class-A cases. Gold frozen before any model output.
+expected_findings:
+  - finding: preclinical_mechanism_to_clinical_outcome
+    severity: major
+    confidence: high
+    note: "In-vitro fibrinolysis (+ human surrogate markers) extrapolated to preventing heart attacks/strokes"
+  - finding: clinical_outcome_not_demonstrated
+    severity: major
+    confidence: high
+    note: "No randomized outcome trial; systematic review found surrogate-risk-factor effects only"
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+    note: "'Prevent heart attacks and strokes' is also inflated (secondary overclaim)"
+gold_evidence_spans:
+  - span: "take nattokinase daily to dissolve clots, keep your arteries clear, and prevent heart attacks and strokes"
+    why_it_matters: "A human clinical outcome asserted from a clot-dissolving mechanism."
+    supports_finding: preclinical_mechanism_to_clinical_outcome
+  - span: "no randomized trial has shown that nattokinase reduces heart attacks, strokes, cardiovascular death, or all-cause mortality"
+    why_it_matters: "The claimed clinical outcome is undemonstrated in humans."
+    supports_finding: clinical_outcome_not_demonstrated
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "mechanism to clinical outcome"
+    variants: ["fibrinolysis", "in vitro", "no outcome trial"]
+    functional_descriptions:
+      - "A real clot-dissolving mechanism does not establish that a supplement prevents cardiovascular events"
+  - keyword: "surrogate vs outcome"
+    variants: ["fibrinolytic markers", "blood pressure", "no MI/stroke trial"]
+    functional_descriptions:
+      - "Human studies are on surrogate risk factors, not clinical outcomes"
+common_errors:
+  - treating a vivid clot-dissolving mechanism as proof of event prevention
+  - defaulting to overclaim because the marketing is inflated
+  - misreading it as Shape-B overclaim when the claim leans on the mechanism, not a sold biomarker
+expected_failure_modes:
+  - mechanism_to_efficacy_overreach
+  - specific_to_overclaim
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+  - mechanism_quality
+diagnostic_focus: "Can the agent keep mechanism_vs_evidence primary when a real fibrinolytic mechanism is extrapolated to preventing heart attacks/strokes, with no human outcome trial?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-017
+  case_family: adversarial
+  adversarial_family_id: A7
+  adversarial_family: "biologically plausible mechanism -> implied human efficacy"
+  supersedes: P7A-ADV-014
+  adversarial_mechanism: |
+    A genuine, vivid enzymatic mechanism (nattokinase digests fibrin and dissolves clots, shown in vitro
+    since 1987, and shifts some human fibrinolytic markers) is extrapolated to a human clinical outcome
+    (preventing heart attacks and strokes). The surface pressure is that the clot-dissolving action is
+    real, specific, and intuitively linked to cardiovascular events, making the benefit sound inevitable.
+    The pressure to resist: accepting a preclinically-demonstrated mechanism (plus human surrogate
+    markers) as proof of an undemonstrated human clinical outcome.
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    An evidence-tier conflict is central: a real in-vitro mechanism and small human surrogate-marker
+    studies exist, tempting a reviewer to call it overstatement of weak human data (overclaim) or to
+    route it to Shape-B; separating the mechanism-to-clinical-outcome leap (with no outcome trial) from
+    those readings requires care. Property-based; D3.
+  precedence_rationale: |
+    A described biological mechanism (fibrinolysis), demonstrated preclinically (in vitro) and used to
+    imply an undemonstrated human clinical benefit (preventing cardiovascular events), is the
+    mechanism_vs_evidence trigger (Shape C). It is present and central and outranks generic overclaim
+    (docs/taxonomy_precedence.md rule 1). It is NOT Shape B: the claim leans on the enzymatic
+    clot-dissolving MECHANISM rather than selling a specific measured human biomarker as the clinical
+    outcome; and the human surrogate studies are on markers, not the claimed events, so they neither
+    establish the claim (not solid) nor make the core error a biomarker-sold-as-outcome.
+  ambiguity_note: |
+    Determinate: mechanism_vs_evidence is the single defensible primary. overclaim is a real secondary
+    reading; unlike a case exaggerating existing human OUTCOME data, there is no human outcome evidence
+    for the claimed benefit, so the mechanism-to-outcome leap is the core error. Human surrogate-marker
+    studies do not establish the claim (not solid).
+  steelman_challenge: |
+    Strongest case the gold is wrong: nattokinase has a real, well-characterized fibrinolytic mechanism,
+    small human trials show it shifts fibrinolytic/coagulation markers and blood pressure, and a
+    systematic review rated study quality high - so a reviewer might call the claim overstatement of real
+    human data (overclaim) or borderline solid. Counter-evidence weighed: those human trials are on
+    SURROGATE risk factors, not the claimed clinical events; no randomized trial shows nattokinase reduces
+    heart attacks, strokes, cardiovascular death, or mortality; and the load-bearing basis of the claim is
+    the enzymatic clot-dissolving mechanism, not the surrogates. Both directions checked. Resolution: the
+    mechanism-to-clinical-outcome leap is the core error; gold remains mechanism_vs_evidence.
+  provenance:
+    claim_source_title: "Nattokinase promoted as an oral antithrombotic for the prevention of cardiovascular disease ('natural clot buster' supplement marketing)"
+    claim_source_url: "https://pubmed.ncbi.nlm.nih.gov/28264497/"
+    claim_source_publisher: "Nattokinase 'natural clot buster / blood thinner' supplement industry (marketed to dissolve clots and prevent heart attacks and strokes); the antithrombotic/CVD-prevention framing is documented in the nattokinase literature"
+    claim_source_date: "1987-2026 (nattokinase discovery to ongoing supplement marketing)"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Over-the-counter nattokinase supplements are widely marketed as a 'natural clot buster' that dissolves fibrin and thereby prevents heart attacks and strokes, drawing on the enzyme's demonstrated in-vitro fibrinolytic activity and its framing as an oral antithrombotic for cardiovascular-disease prevention. The claimed clinical benefit has not been demonstrated in outcome trials. The frozen span is the bounded mechanism-to-clinical-outcome proposition."
+    claim_exact_span: "take nattokinase daily to dissolve clots, keep your arteries clear, and prevent heart attacks and strokes"
+    evidence_sources:
+      - citation: "Sumi H, Hamada H, Tsushima H, Mihara H, Muraki H. A novel fibrinolytic enzyme (nattokinase) in the vegetable cheese Natto. Experientia 1987;43(10):1110-1111 (PMID 3478223)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/3478223/"
+        design: "In-vitro (preclinical) enzymology"
+        population: "Cell-free / in-vitro fibrin and artificial clot"
+        intervention_or_exposure: "Nattokinase (fibrinolytic enzyme from natto)"
+        comparator: "Fibrin substrate; artificial blood clot"
+        endpoint: "Fibrin digestion / clot dissolution in vitro"
+        result: "Nattokinase digested fibrin and dissolved an artificial clot in vitro (fibrinolytic mechanism; ~40 CU/g); a preclinical mechanism, not a human clinical outcome"
+        source_role: primary_research
+        evidence_tier: "In-vitro (preclinical) mechanistic evidence"
+        limitations: "In-vitro mechanism only; does not establish that oral nattokinase prevents cardiovascular events in humans"
+      - citation: "Nattokinase Supplementation and Cardiovascular Risk Factors: A Systematic Review and Meta-Analysis of Randomized Controlled Trials. Rev Cardiovasc Med 2023;24(8):234 (PMID 39076715)"
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11266782/"
+        design: "Systematic review and meta-analysis of randomized controlled trials"
+        population: "Adults in nattokinase RCTs"
+        intervention_or_exposure: "Nattokinase supplementation"
+        comparator: "Placebo / control"
+        endpoint: "Cardiovascular RISK FACTORS (surrogates: blood pressure, lipids, coagulation markers)"
+        result: "Effects reported on surrogate cardiovascular risk factors (e.g., an adjunctive blood-pressure effect); NO randomized trial of clinical outcomes (myocardial infarction, stroke, cardiovascular death, mortality)"
+        source_role: systematic_review
+        evidence_tier: "Meta-analysis of RCTs (surrogate endpoints)"
+        limitations: "Surrogate endpoints only; the claimed clinical outcome (preventing heart attacks/strokes) is not addressed by any outcome trial"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: mechanism_vs_evidence
+    most_plausible_competing_label: overclaim
+    probes: "preclinical fibrinolytic mechanism extrapolated to an undemonstrated human clinical outcome (no outcome trial)"
+  case_fingerprint: "21c3b148c1e5e189acec21dc8ca80ab3cefb1027124d8291d27184480a5149ae"

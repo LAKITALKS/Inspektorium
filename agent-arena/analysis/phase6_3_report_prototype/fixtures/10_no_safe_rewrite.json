@@ -1,0 +1,44 @@
+{
+  "claim": {
+    "claim_context": "SYNTHETIC illustration — not a real scientific or medical conclusion.",
+    "claim_text": "Miracle water restores lost eyesight in 3 days."
+  },
+  "evidence": {
+    "evidence_items": [],
+    "evidence_sufficiency": "insufficient",
+    "missing_human_evidence": true
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "mode": "conclusion_exceeds_results",
+        "rationale": "A dramatic cure claim has no supporting evidence at all."
+      }
+    ]
+  },
+  "meta": {
+    "development_or_production_status": "development",
+    "generated_at": "2026-08-05T12:00:00+00:00",
+    "report_id": "FR-SYN-NOREWRITE-10",
+    "synthetic_fixture": true
+  },
+  "provenance": {
+    "analysis_source": "phase6_3 synthetic fixture",
+    "model": "SYNTHETIC-MODEL",
+    "prompt_contract_version": "SYNTHETIC-CONTRACT-0",
+    "provider": "synthetic",
+    "repository_commit": "5349ad0"
+  },
+  "reader_impact": {
+    "risk_level": "high",
+    "risk_rationale": "May delay real eye care."
+  },
+  "recommended_revision": {
+    "defensible_rewrite": "Miracle water restored eyesight in 40% of users within 3 days.",
+    "rewrite_rationale": "(intentionally introduces an unsupported statistic to exercise the guard)"
+  },
+  "verdict": {
+    "confidence": 0.93,
+    "predicted_label": "overclaim"
+  }
+}

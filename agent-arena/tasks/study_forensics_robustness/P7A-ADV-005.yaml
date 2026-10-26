@@ -1,0 +1,169 @@
+id: P7A-ADV-005
+title: "Adversarial A3: 'skipping breakfast makes you gain weight' (causal claim from observational association; RCTs refute)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: correlation_vs_causation
+trap_type: causal_verb_on_observational_data
+ambiguity_level: low
+prompt: |
+  A nutrition feature advises: "Breakfast is the most important meal of the day. Studies show people who skip breakfast weigh more, so skipping breakfast makes you gain weight — eat a good breakfast every morning and you will lose weight."
+
+  The "people who skip breakfast weigh more" finding comes from cross-sectional and prospective OBSERVATIONAL studies (breakfast skippers differ from eaters in many health and lifestyle behaviours). Randomized controlled trials tell a different story: a systematic review and meta-analysis of RCTs (Sievert et al., BMJ, 2019) found that assigning people to eat breakfast did not cause weight loss — adults assigned to eat breakfast consumed more total daily calories and, if anything, weighed slightly more than those assigned to skip it — providing no support for eating breakfast as a weight-loss strategy.
+context: |
+  Evidence tier: observational associations versus randomized trials. The claim converts an
+  observational association (breakfast skippers weigh more) into a causal, prescriptive statement
+  (skipping breakfast makes you gain weight; eating breakfast makes you lose weight). The randomized
+  evidence contradicts the causal direction. A causal claim drawn from confounded observational data,
+  with the counterfactual (RCT) evidence pointing the other way, is the correlation_vs_causation
+  trigger operating as the central failure.
+expected_answer: "correlation_vs_causation"
+reference_solution: |
+  The feature takes an observational association (breakfast skippers tend to weigh more) and states a
+  causal, prescriptive conclusion (skipping causes weight gain; eating breakfast causes weight loss).
+  Randomized trials (Sievert 2019 BMJ meta-analysis) show assigning breakfast does not cause weight
+  loss and may slightly increase weight and calorie intake. A causal claim from confounded
+  observational data, contradicted by the randomized evidence, is correlation_vs_causation. A generic
+  overclaim reading exists, but the specific causal-inference error is the core defect.
+gold_label: correlation_vs_causation
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: skipping breakfast makes you gain weight and eating breakfast makes you lose
+     weight (a causal, prescriptive claim).
+  2. What the strongest evidence establishes: observational studies show an association (skippers weigh
+     more); RCTs (Sievert 2019 BMJ) show assigning breakfast does not cause weight loss and slightly
+     increases calorie intake/weight - no causal support for the claim.
+  3. Adversarial surface feature: "studies show" plus an intuitively causal, familiar health maxim
+     ("most important meal") make the causal leap feel evidenced.
+  4. Actual forensic mismatch: the association is observational and confounded (skippers differ in
+     many behaviours); the causal, prescriptive claim is not supported and is contradicted by RCTs.
+  5. Primary frozen label: correlation_vs_causation - a causal claim drawn from a non-causal,
+     confounded observational design.
+  6. Why precedence keeps it primary: the definitional trigger (causal claim from observational data,
+     missing counterfactual) is directly present and captures the core error, outranking generic
+     overclaim (docs/taxonomy_precedence.md rule 1).
+  7. Strongest competing label: overclaim - "most important meal" and "you will lose weight" are
+     inflated.
+  8. Why it loses: the decisive structural error is the correlation-to-causation inference, which is
+     the specific trigger; overclaim is the secondary reading.
+  9. What would change the verdict: if RCTs had shown that eating breakfast causes weight loss, the
+     causal claim would be supported; if the text only reported the association without a causal or
+     prescriptive claim, it would be solid.
+gold_alternative_reading: |
+  Alternative: overclaim. Plausible because "most important meal of the day" and "you will lose weight"
+  are rhetorically inflated. It loses as primary because the decisive defect is a specific
+  causal-inference error - a causal, prescriptive conclusion drawn from confounded observational data
+  and contradicted by randomized trials - i.e. correlation_vs_causation.
+gold_summary: |
+  A feature turns "breakfast skippers weigh more" (observational) into "skipping makes you gain weight;
+  eat breakfast to lose weight". RCTs (Sievert 2019 BMJ) show assigning breakfast does not cause weight
+  loss. Causal claim from confounded observational data = correlation_vs_causation (overclaim secondary).
+curator_notes: |
+  Adversarial family A3 (causal verb grafted onto observational/correlational data). Real public claim:
+  the ubiquitous 'breakfast is the most important meal / skipping makes you fat' message. Counter-
+  evidence: Sievert 2019 BMJ meta-analysis of RCTs. Distinct from Boundary correlation cases (alcohol
+  J-curve 004, dog ownership 005) - different substance/behaviour and a direct observational-vs-RCT
+  contradiction. Gold frozen before any model output.
+expected_findings:
+  - finding: causal_claim_from_observational
+    severity: major
+    confidence: high
+    note: "Observational 'skippers weigh more' converted to 'skipping causes weight gain'"
+  - finding: rct_evidence_contradicts
+    severity: major
+    confidence: high
+    note: "RCT meta-analysis (BMJ 2019) shows assigning breakfast does not cause weight loss"
+gold_evidence_spans:
+  - span: "so skipping breakfast makes you gain weight"
+    why_it_matters: "A causal claim asserted from an observational association."
+    supports_finding: causal_claim_from_observational
+  - span: "adults assigned to eat breakfast consumed more total daily calories and ... weighed slightly more"
+    why_it_matters: "Randomized evidence contradicts the causal direction."
+    supports_finding: rct_evidence_contradicts
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "observational to causal"
+    variants: ["cross-sectional", "confounded", "skippers differ"]
+    functional_descriptions:
+      - "An association between breakfast skipping and weight is read as causation"
+  - keyword: "RCTs refute"
+    variants: ["Sievert 2019", "BMJ", "no weight loss"]
+    functional_descriptions:
+      - "Randomized trials show assigning breakfast does not cause weight loss"
+common_errors:
+  - accepting a familiar health maxim as causally established
+  - missing that breakfast skippers differ systematically (confounding)
+expected_failure_modes:
+  - correlation_read_as_causation
+  - causal_prescription_from_observational
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a causal, prescriptive breakfast-weight claim rests on confounded observational data that RCTs contradict?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-005
+  case_family: adversarial
+  adversarial_family_id: A3
+  adversarial_family: "causal verb grafted onto observational/correlational data"
+  adversarial_mechanism: |
+    The claim grafts a causal verb ("makes you gain weight") and a prescription ("eat breakfast and you
+    will lose weight") onto a purely observational association (breakfast skippers weigh more). The
+    surface pressure is the familiarity and intuitive plausibility of the 'most important meal' maxim
+    plus the phrase "studies show", which make the causal leap feel evidenced. The pressure to resist:
+    reading a confounded observational association as an established cause-and-effect (especially when
+    randomized evidence points the other way).
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    An evidence-tier conflict is central (observational association versus randomized trials pointing
+    the opposite way), and the claim is a culturally entrenched maxim, increasing the number of
+    plausible readings and the effort to see the causal-inference error. Property-based; D3.
+  precedence_rationale: |
+    The correlation_vs_causation trigger (a causal claim drawn from a non-causal, confounded
+    observational design, missing counterfactual) is directly present and captures the core error, so
+    it outranks generic overclaim per docs/taxonomy_precedence.md rule 1; overclaim is the secondary
+    reading.
+  ambiguity_note: |
+    Determinate: correlation_vs_causation is the single defensible primary; overclaim is a real
+    secondary reading. The randomized evidence makes the causal-inference error unambiguous.
+  steelman_challenge: |
+    Strongest case the gold is wrong: prospective observational studies do report that breakfast
+    skipping precedes weight gain, and mechanistic stories (appetite regulation) exist, so a reader
+    might treat the causal claim as reasonable overstatement (overclaim) rather than a design error.
+    Counter-evidence weighed: the randomized meta-analysis (Sievert 2019 BMJ) found assigning breakfast
+    does not cause weight loss and slightly increases intake/weight, and skippers differ systematically
+    (confounding). Both directions were checked; the causal claim fails on design. Resolution: gold
+    remains correlation_vs_causation.
+  provenance:
+    claim_source_title: "Effect of breakfast on weight and energy intake: systematic review and meta-analysis of randomised controlled trials (documents and refutes the 'skipping breakfast makes you gain weight' claim)"
+    claim_source_url: "https://www.bmj.com/content/364/bmj.l42"
+    claim_source_publisher: "Popular nutrition/diet media and public-health messaging asserting 'breakfast is the most important meal' and that skipping it causes weight gain; the claim and its refutation are documented in the BMJ 2019 meta-analysis"
+    claim_source_date: "long-standing; meta-analysis 2019"
+    claim_source_role: public_claim_source
+    claim_source_type: news_media_summary
+    claim_context: "The 'breakfast is the most important meal of the day' / 'skipping breakfast makes you fat' message is a long-standing, widely repeated diet claim grounded in observational associations. The BMJ 2019 randomized-trials meta-analysis both documents the popular belief and shows randomized evidence does not support eating breakfast for weight loss. The frozen span is the bounded causal/prescriptive version of the claim."
+    claim_exact_span: "people who skip breakfast weigh more, so skipping breakfast makes you gain weight - eat a good breakfast every morning and you will lose weight"
+    evidence_sources:
+      - citation: "Sievert K, Hussain SM, Page MJ, et al. Effect of breakfast on weight and energy intake: systematic review and meta-analysis of randomised controlled trials. BMJ 2019;364:l42"
+        url: "https://www.bmj.com/content/364/bmj.l42"
+        design: "Systematic review and meta-analysis of randomized controlled trials"
+        population: "Adults in 13 randomized trials (mostly high-income countries)"
+        intervention_or_exposure: "Assignment to eat breakfast vs skip breakfast"
+        comparator: "Breakfast vs no breakfast (randomized)"
+        endpoint: "Body weight and total daily energy intake"
+        result: "Assigning breakfast did not cause weight loss; breakfast groups consumed more total daily calories and, if anything, weighed slightly more - no support for breakfast as a weight-loss strategy"
+        source_role: systematic_review
+        evidence_tier: "Meta-analysis of randomized trials"
+        limitations: "Trials mostly short-term and in high-income settings; addresses weight/energy intake, not all health outcomes"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: correlation_vs_causation
+    most_plausible_competing_label: overclaim
+    probes: "causal/prescriptive claim from confounded observational association, contradicted by RCTs"
+  case_fingerprint: "41a48d00c17bc536980ca08264926eed1c67d490a07ff75bc37a5864c97f1450"

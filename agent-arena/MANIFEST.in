@@ -1,0 +1,15 @@
+include LICENSE AUTHORS.md CITATION.cff README.md PUBLICATION.md V1_SCOPE.md
+recursive-include src *.py
+graft tests
+graft examples
+graft scripts
+graft agents
+graft docs
+graft tasks
+graft analysis
+graft cases
+graft runs
+graft reports
+prune historical-sources
+prune research
+global-exclude __pycache__ *.py[cod] .DS_Store

@@ -1,0 +1,2836 @@
+{
+  "analysis_schema_version": "agent_arena.full_replication_analysis/v1",
+  "artifact_role": "diagnostic_full_replication_analysis",
+  "plan_id": "AA-P5B-SONNET-FULL-REPLICATION-001",
+  "specification_fingerprint": "feb0d4c7d39ee126ec8c8adf5a315314ce3ddd1d43b28d85d074209ef5d14b53",
+  "arm_id": "prospective_taxonomy_aligned_full_sonnet",
+  "model": "claude-sonnet-4-5-20250929",
+  "bound_raw_freeze_fingerprint": "0c61370bc3cadf36e58f5b9b6f63a856b45a575fbdc38bf1abd179b4dac56e70",
+  "report": {
+    "analysis_schema_version": "agent_arena.full_replication_analysis/v1",
+    "condition": "prospective_taxonomy_aligned_prompt",
+    "model_id": "claude-sonnet-4-5-20250929",
+    "expected_units": 84,
+    "repetitions": 5,
+    "expected_response_slots": 420,
+    "observed_response_slots": 420,
+    "terminal_response_slots": 420,
+    "classification_valid_response_slots": 420,
+    "calibration_valid_response_slots": 420,
+    "provider_error_response_slots": 0,
+    "missing_response_slots": 0,
+    "classification_invalid_terminal_slots": 0,
+    "calibration_invalid_terminal_slots": 0,
+    "unit_level_modal_accuracy": {
+      "numerator": 70,
+      "fixed_denominator": 84,
+      "incorrect_units": 14,
+      "unresolved_units": 0,
+      "value": 0.8333333333333334
+    },
+    "response_level_accuracy": {
+      "numerator": 350,
+      "classification_valid_denominator": 420,
+      "fixed_expected_slot_denominator": 420,
+      "value": 0.8333333333333334
+    },
+    "calibration": {
+      "brier": {
+        "denominator": 420,
+        "value": 0.14901999999999999
+      },
+      "ece_5bin": {
+        "denominator": 420,
+        "fixed_bin_edges": [
+          0.0,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          1.0
+        ],
+        "value": 0.10242857142857144,
+        "reliability_table": [
+          {
+            "index": 0,
+            "low": 0.0,
+            "high": 0.2,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null,
+            "abs_gap": null,
+            "underpowered": true
+          },
+          {
+            "index": 1,
+            "low": 0.2,
+            "high": 0.4,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null,
+            "abs_gap": null,
+            "underpowered": true
+          },
+          {
+            "index": 2,
+            "low": 0.4,
+            "high": 0.6,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null,
+            "abs_gap": null,
+            "underpowered": true
+          },
+          {
+            "index": 3,
+            "low": 0.6,
+            "high": 0.8,
+            "n": 8,
+            "mean_confidence": 0.74375,
+            "accuracy": 0.5,
+            "abs_gap": 0.24375000000000002,
+            "underpowered": false
+          },
+          {
+            "index": 4,
+            "low": 0.8,
+            "high": 1.0,
+            "n": 412,
+            "mean_confidence": 0.9394902912621359,
+            "accuracy": 0.8398058252427184,
+            "abs_gap": 0.0996844660194175,
+            "underpowered": false
+          }
+        ]
+      },
+      "confidence_distribution": {
+        "denominator": 420,
+        "mean": 0.9357619047619048,
+        "median": 0.95,
+        "minimum": 0.7,
+        "maximum": 0.98,
+        "p05_nearest_rank": 0.88,
+        "p95_nearest_rank": 0.98
+      }
+    },
+    "confusion_matrix": {
+      "correlation_vs_causation": {
+        "correlation_vs_causation": 10
+      },
+      "mechanism_vs_evidence": {
+        "mechanism_vs_evidence": 17
+      },
+      "overclaim": {
+        "correlation_vs_causation": 6,
+        "mechanism_vs_evidence": 8,
+        "overclaim": 30
+      },
+      "solid": {
+        "solid": 13
+      }
+    },
+    "per_label_accuracy": {
+      "correlation_vs_causation": {
+        "correct_modal_units": 10,
+        "fixed_denominator_units": 10,
+        "unresolved_units": 0,
+        "accuracy": 1.0
+      },
+      "mechanism_vs_evidence": {
+        "correct_modal_units": 17,
+        "fixed_denominator_units": 17,
+        "unresolved_units": 0,
+        "accuracy": 1.0
+      },
+      "overclaim": {
+        "correct_modal_units": 30,
+        "fixed_denominator_units": 44,
+        "unresolved_units": 0,
+        "accuracy": 0.6818181818181818
+      },
+      "solid": {
+        "correct_modal_units": 13,
+        "fixed_denominator_units": 13,
+        "unresolved_units": 0,
+        "accuracy": 1.0
+      }
+    },
+    "me_ov_confusions": {
+      "mechanism_vs_evidence_to_overclaim": 0,
+      "overclaim_to_mechanism_vs_evidence": 8
+    },
+    "stability": {
+      "unanimous_units": 84,
+      "modal_support_counts": {
+        "5": 84
+      },
+      "modal_tie_units": []
+    },
+    "populations": {
+      "targeted_19": {
+        "population": "targeted_19",
+        "expected_units": 19,
+        "expected_response_slots": 95,
+        "observed_response_slots": 95,
+        "terminal_response_slots": 95,
+        "classification_valid_response_slots": 95,
+        "calibration_valid_response_slots": 95,
+        "missing_invalid_or_provider_error_slots": 0,
+        "correct_modal_units": 16,
+        "incorrect_modal_units": 3,
+        "unresolved_modal_units": 0,
+        "unit_level_modal_accuracy": {
+          "numerator": 16,
+          "fixed_denominator": 19,
+          "value": 0.8421052631578947
+        },
+        "response_level_accuracy": {
+          "numerator": 80,
+          "classification_valid_denominator": 95,
+          "fixed_expected_slot_denominator": 95,
+          "value": 0.8421052631578947
+        },
+        "brier": {
+          "denominator": 95,
+          "value": 0.14531368421052632
+        }
+      },
+      "remaining_65": {
+        "population": "remaining_65",
+        "expected_units": 65,
+        "expected_response_slots": 325,
+        "observed_response_slots": 325,
+        "terminal_response_slots": 325,
+        "classification_valid_response_slots": 325,
+        "calibration_valid_response_slots": 325,
+        "missing_invalid_or_provider_error_slots": 0,
+        "correct_modal_units": 54,
+        "incorrect_modal_units": 11,
+        "unresolved_modal_units": 0,
+        "unit_level_modal_accuracy": {
+          "numerator": 54,
+          "fixed_denominator": 65,
+          "value": 0.8307692307692308
+        },
+        "response_level_accuracy": {
+          "numerator": 270,
+          "classification_valid_denominator": 325,
+          "fixed_expected_slot_denominator": 325,
+          "value": 0.8307692307692308
+        },
+        "brier": {
+          "denominator": 325,
+          "value": 0.1501033846153846
+        }
+      }
+    },
+    "unit_results": [
+      {
+        "unit_id": "P7A-BND-001",
+        "unit_type": "boundary_base",
+        "family_id": "B1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-002",
+        "unit_type": "boundary_base",
+        "family_id": "B1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-004",
+        "unit_type": "boundary_base",
+        "family_id": "B1",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-005",
+        "unit_type": "boundary_base",
+        "family_id": "B1",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-009",
+        "unit_type": "boundary_base",
+        "family_id": "B2",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-010",
+        "unit_type": "boundary_base",
+        "family_id": "B2",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-011",
+        "unit_type": "boundary_base",
+        "family_id": "B3",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-012",
+        "unit_type": "boundary_base",
+        "family_id": "B3",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-013",
+        "unit_type": "boundary_base",
+        "family_id": "B3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-014",
+        "unit_type": "boundary_base",
+        "family_id": "B3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-015",
+        "unit_type": "boundary_base",
+        "family_id": "B2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-016",
+        "unit_type": "boundary_base",
+        "family_id": "B2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-017",
+        "unit_type": "boundary_base",
+        "family_id": "B1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-BND-018",
+        "unit_type": "boundary_base",
+        "family_id": "B2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-001",
+        "unit_type": "adversarial_base",
+        "family_id": "A1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-002",
+        "unit_type": "adversarial_base",
+        "family_id": "A1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-003",
+        "unit_type": "adversarial_base",
+        "family_id": "A2",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-004",
+        "unit_type": "adversarial_base",
+        "family_id": "A2",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-005",
+        "unit_type": "adversarial_base",
+        "family_id": "A3",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-006",
+        "unit_type": "adversarial_base",
+        "family_id": "A3",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-007",
+        "unit_type": "adversarial_base",
+        "family_id": "A4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-008",
+        "unit_type": "adversarial_base",
+        "family_id": "A4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-009",
+        "unit_type": "adversarial_base",
+        "family_id": "A5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-010",
+        "unit_type": "adversarial_base",
+        "family_id": "A5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-011",
+        "unit_type": "adversarial_base",
+        "family_id": "A6",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-012",
+        "unit_type": "adversarial_base",
+        "family_id": "A6",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-013",
+        "unit_type": "adversarial_base",
+        "family_id": "A7",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-015",
+        "unit_type": "adversarial_base",
+        "family_id": "A8",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-016",
+        "unit_type": "adversarial_base",
+        "family_id": "A8",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-ADV-017",
+        "unit_type": "adversarial_base",
+        "family_id": "A7",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-NEU-001",
+        "unit_type": "neutral_base",
+        "family_id": "solid",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-NEU-002",
+        "unit_type": "neutral_base",
+        "family_id": "overclaim",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-NEU-003",
+        "unit_type": "neutral_base",
+        "family_id": "correlation_vs_causation",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-NEU-004",
+        "unit_type": "neutral_base",
+        "family_id": "mechanism_vs_evidence",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-01-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-01-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-01-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-01-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-01-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-02-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-02-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-02-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-02-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-02-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-03-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-03-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-03-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-03-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-03-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "correlation_vs_causation",
+        "vote_counts": {
+          "correlation_vs_causation": 5
+        },
+        "modal_label": "correlation_vs_causation",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation",
+          "correlation_vs_causation"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-04-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-04-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-04-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-04-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-04-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-05-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-05-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-05-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-05-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-05-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-06-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-06-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-06-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-06-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-06-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "mechanism_vs_evidence",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-07-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-07-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-07-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-07-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-07-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "solid",
+        "vote_counts": {
+          "solid": 5
+        },
+        "modal_label": "solid",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "solid",
+          "solid",
+          "solid",
+          "solid",
+          "solid"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-08-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-08-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-08-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-08-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-08-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "mechanism_vs_evidence": 5
+        },
+        "modal_label": "mechanism_vs_evidence",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": false,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence",
+          "mechanism_vs_evidence"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-09-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-09-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-09-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-09-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-09-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-10-P1",
+        "unit_type": "perturbation_variant",
+        "family_id": "P1",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-10-P2",
+        "unit_type": "perturbation_variant",
+        "family_id": "P2",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-10-P3",
+        "unit_type": "perturbation_variant",
+        "family_id": "P3",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-10-P4",
+        "unit_type": "perturbation_variant",
+        "family_id": "P4",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      },
+      {
+        "unit_id": "P7A-PRT-10-P5",
+        "unit_type": "perturbation_variant",
+        "family_id": "P5",
+        "gold_label": "overclaim",
+        "vote_counts": {
+          "overclaim": 5
+        },
+        "modal_label": "overclaim",
+        "modal_support": 5,
+        "modal_tie": false,
+        "tied_modal_labels": [],
+        "modal_correct": true,
+        "unanimous": true,
+        "expected_response_slots": 5,
+        "observed_response_slots": 5,
+        "terminal_response_slots": 5,
+        "classification_valid_response_slots": 5,
+        "calibration_valid_response_slots": 5,
+        "missing_response_slots": 0,
+        "provider_error_slots": 0,
+        "classification_invalid_terminal_slots": 0,
+        "calibration_invalid_terminal_slots": 0,
+        "labels_by_run_index": [
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim",
+          "overclaim"
+        ]
+      }
+    ],
+    "analysis_fingerprint": "6ad331e71b856b86ee82a2d486f953b279bd6a17b5ea18fbfbcc8fd7b2023b7c"
+  },
+  "analysis_artifact_fingerprint": "2bcf8383b70faac109cc5925686b4a11e4a0e4af37f795cfb4bf615b2724561f"
+}

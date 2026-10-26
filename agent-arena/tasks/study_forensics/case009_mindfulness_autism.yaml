@@ -1,0 +1,87 @@
+id: study-forensics-009
+title: "Study Forensics: Mindfulness app for autistic adults"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: investigator_overclaim
+ambiguity_level: high
+prompt: |
+  In an open-access randomised controlled trial, 89 adults diagnosed with autism practiced mindfulness using a smartphone app for six weeks. Compared with a wait-list control group, the intervention group reported significant reductions in anxiety and perceived stress; when the control group later used the app, they replicated the improvements. Gains persisted six weeks after practice stopped. Lead investigator John Gabrieli said he and his colleagues were already convinced the app could help autistic adults and suggested it might benefit people of all ages.
+context: |
+  Although the trial design is solid and results are promising, the lead investigator's assertion
+  that mindfulness apps will help autistic adults and potentially everyone else goes beyond the
+  available evidence.
+expected_answer: "overclaim"
+reference_solution: |
+  Although the trial design is solid and results are promising, the lead investigator's assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: borderline
+gold_justification: |
+  The trial design is solid, but the investigator's statement 'already convinced' and
+  extension to 'people of all ages' clearly exceeds what a 6-week study on 89 autistic
+  adults can support. The overclaim is in the interpretation, not the methodology.
+  Precedence (clarified Phase 5.05e): the label attaches to the investigator's claim,
+  not to the study. `overclaim` takes precedence because the failure is an explicit
+  extrapolation beyond the studied population ('all ages') — no specific trigger
+  (correlation_vs_causation / mechanism_vs_evidence) applies. The alternative `solid`
+  reading (score the sound methodology and treat 'all ages' as a marginal aside) is
+  plausible but secondary: it requires discounting an explicit generalization, so it is
+  the second reading, not the primary one. Gold label unchanged.
+gold_alternative_reading: |
+  If one reads 'already convinced' as casual optimism rather than a scientific claim,
+  the case weakens. But the explicit generalization to 'all ages' from a narrow sample
+  is a textbook unsupported generalization. The alternative reading is weak.
+gold_summary: |
+  Although the trial design is solid and results are promising, the lead investigator's assertion that mindfulness apps will help autistic adults and potentially everyone else goes beyond the available evidence, making this an overclaim case.
+curator_notes: |
+  Good discriminative case: tests whether agents can separate study quality from claim
+  quality. Both sprints show strong model agreement with the gold label (5/6 correct).
+  The one miss was Opus in Sprint 1 — too charitable with investigator rhetoric.
+  Phase 5.05e re-designation: gold_case_type changed clear -> borderline and
+  ambiguity_level medium -> high following the Phase 5.05d curator review (v0.8.5), which
+  found the prior clear/anchor tag over-optimistic for a case where a capable independent
+  rater defensibly read the sound methodology as `solid`. Gold label retained (overclaim).
+expected_findings:
+  - finding: unsupported_generalization
+    severity: major
+    confidence: high
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+  - finding: decorative_uncertainty
+    severity: minor
+    confidence: low
+gold_evidence_spans:
+  - span: "reported significant reductions in anxiety and perceived stress"
+    why_it_matters: "Summarises the actual findings."
+    supports_finding: conclusion_exceeds_results
+  - span: "already convinced the app could help autistic adults and ... people of all ages"
+    why_it_matters: "Shows explicit overgeneralization and strong conviction beyond data."
+    supports_finding: unsupported_generalization
+  - span: "gains persisted six weeks after practice stopped"
+    why_it_matters: "Suggests lasting effect, which could be overinterpreted without long-term follow-up."
+    supports_finding: decorative_uncertainty
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "unsupported generalization"
+    variants: ["overgeneralization", "beyond the data", "all ages"]
+    functional_descriptions:
+      - "the investigator extends findings to populations not studied"
+  - keyword: "investigator conviction"
+    variants: ["already convinced", "strong conviction"]
+    functional_descriptions:
+      - "the researcher expresses certainty beyond what the data supports"
+common_errors:
+  - treating the study as fully solid because the trial design is good
+  - missing the investigator's overclaim
+expected_failure_modes:
+  - missing_overclaim
+  - confusing_study_quality_with_claim_quality
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent separate solid study design from investigator overclaim?"

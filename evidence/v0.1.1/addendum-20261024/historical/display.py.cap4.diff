@@ -1,0 +1,36 @@
+--- src/inspektorium/report/display.py	2026-10-13 18:31:28.000000000 +0200
++++ src/inspektorium/report/display.py	2026-10-14 00:16:57.099890579 +0200
+@@ -84,6 +84,8 @@
+ MARKER_CLOSE = "\N{MATHEMATICAL RIGHT WHITE SQUARE BRACKET}"
+ 
+ MARKED_CATEGORIES = frozenset({"Cc", "Cf", "Cn", "Cs", "Zl", "Zp"})
++COMBINING_CATEGORIES = frozenset({"Mn", "Me"})
++MAX_COMBINING_RUN = 4  # PROTOTYPE (review sizing only): further marks become markers
+ ENTITY_ESCAPED = {"<": "&lt;", "&": "&amp;"}
+ PORTABLE_BACKSLASH_ESCAPES = frozenset("\\`*_{}[]()>#+-.!")
+ ALWAYS_ESCAPED = frozenset("<&\\`*_[]~|$@")
+@@ -128,10 +130,24 @@
+     return text[index] == "." and text[max(0, index - 3) : index].lower() == "www"
+ 
+ 
++def _combining_run_before(text: str, index: int) -> int:
++    count = 0
++    position = index - 1
++    while position >= 0 and unicodedata.category(text[position]) in COMBINING_CATEGORIES:
++        count += 1
++        position -= 1
++    return count
++
++
+ def _encode_character(text: str, index: int) -> str:
+     character = text[index]
+     if is_marked(character):
+         return display_marker(character)
++    if (
++        unicodedata.category(character) in COMBINING_CATEGORIES
++        and _combining_run_before(text, index) >= MAX_COMBINING_RUN
++    ):
++        return display_marker(character)
+     if character in ALWAYS_ESCAPED or (
+         character in LINK_PUNCTUATION and _escapes_link_punctuation(text, index)
+     ):

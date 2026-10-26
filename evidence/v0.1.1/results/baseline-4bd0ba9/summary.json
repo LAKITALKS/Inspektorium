@@ -1,0 +1,212 @@
+{
+  "binding": true,
+  "by_family": {
+    "input.clean_acceptance": {
+      "FAILS": 0,
+      "HOLDS": 3,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 3
+    },
+    "input.duplicate_keys": {
+      "FAILS": 6,
+      "HOLDS": 1,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 7
+    },
+    "input.lone_surrogate": {
+      "FAILS": 0,
+      "HOLDS": 2,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 2
+    },
+    "input.nonstandard_constant": {
+      "FAILS": 0,
+      "HOLDS": 3,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 3
+    },
+    "render.bidi_invisible": {
+      "FAILS": 5,
+      "HOLDS": 0,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 5
+    },
+    "render.collision": {
+      "FAILS": 1,
+      "HOLDS": 0,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 1
+    },
+    "render.html_hiding": {
+      "FAILS": 7,
+      "HOLDS": 1,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 8
+    },
+    "render.indirect_host_message": {
+      "FAILS": 0,
+      "HOLDS": 3,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 3
+    },
+    "render.line_injection": {
+      "FAILS": 19,
+      "HOLDS": 0,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 19
+    },
+    "render.link_entity": {
+      "FAILS": 2,
+      "HOLDS": 0,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 2
+    },
+    "render.markdown_breakout": {
+      "FAILS": 6,
+      "HOLDS": 0,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 6
+    },
+    "render.mixed_report_visibility": {
+      "FAILS": 1,
+      "HOLDS": 1,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 2
+    },
+    "render.readability_clean": {
+      "FAILS": 1,
+      "HOLDS": 8,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 9
+    }
+  },
+  "by_kind": {
+    "attack": {
+      "FAILS": 41,
+      "HOLDS": 1,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 42
+    },
+    "clean_counterpart": {
+      "FAILS": 1,
+      "HOLDS": 6,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 7
+    },
+    "input_acceptance": {
+      "FAILS": 0,
+      "HOLDS": 3,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 3
+    },
+    "input_rejection": {
+      "FAILS": 6,
+      "HOLDS": 6,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 12
+    },
+    "reachability": {
+      "FAILS": 0,
+      "HOLDS": 3,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 3
+    },
+    "readability": {
+      "FAILS": 0,
+      "HOLDS": 3,
+      "NOT_DEMONSTRATED": 0,
+      "NOT_EXECUTED": 0,
+      "cases": 3
+    }
+  },
+  "case_filter": null,
+  "cases": {
+    "FAILS": 48,
+    "HOLDS": 22,
+    "NOT_DEMONSTRATED": 0,
+    "NOT_EXECUTED": 0,
+    "total": 70
+  },
+  "fail_reasons": [
+    "rendered pages attempted network requests (blocked)",
+    "48 case(s) FAILS"
+  ],
+  "incomplete_reason_count": 0,
+  "incomplete_reasons": [],
+  "label_map_valid": {
+    "cmark-gfm-safe": true,
+    "cmark-gfm-unsafe": true,
+    "markdown-it-py-html": true,
+    "python-markdown": true
+  },
+  "network": {
+    "browser_network_requests_blocked": 4,
+    "browser_requests_blocked": 4,
+    "browser_requests_total": 252,
+    "cli_guard_armed_records": 140,
+    "cli_invocations": 140,
+    "cli_invocations_without_armed_guard": 0,
+    "cli_processes_with_armed_record_in_log": 140,
+    "cli_rows_in_run": 140,
+    "cli_rows_reporting_refusals": 0,
+    "guard_log_records": 142,
+    "guard_refused_by_cli_processes": 0,
+    "guard_refused_total": 0,
+    "harness_guard_armed": true
+  },
+  "overall": "FAIL",
+  "renderings": {
+    "NOT_EXECUTED": 0,
+    "REJECTED_BEFORE_RENDER": 32,
+    "RENDERED_CONTROLS_INTACT": 83,
+    "RENDERED_MANIPULATED": 165,
+    "by_renderer": {
+      "cmark-gfm-safe": {
+        "NOT_EXECUTED": 0,
+        "REJECTED_BEFORE_RENDER": 8,
+        "RENDERED_CONTROLS_INTACT": 20,
+        "RENDERED_MANIPULATED": 42
+      },
+      "cmark-gfm-unsafe": {
+        "NOT_EXECUTED": 0,
+        "REJECTED_BEFORE_RENDER": 8,
+        "RENDERED_CONTROLS_INTACT": 20,
+        "RENDERED_MANIPULATED": 42
+      },
+      "markdown-it-py-html": {
+        "NOT_EXECUTED": 0,
+        "REJECTED_BEFORE_RENDER": 8,
+        "RENDERED_CONTROLS_INTACT": 20,
+        "RENDERED_MANIPULATED": 42
+      },
+      "python-markdown": {
+        "NOT_EXECUTED": 0,
+        "REJECTED_BEFORE_RENDER": 8,
+        "RENDERED_CONTROLS_INTACT": 23,
+        "RENDERED_MANIPULATED": 39
+      }
+    },
+    "note": "renderings of one case are not independent observations",
+    "total": 280
+  },
+  "run_label": "baseline-4bd0ba9",
+  "scope": "results on the synthetic catalog inspektorium-v0.1.1-display-and-input v1.0 only"
+}

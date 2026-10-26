@@ -1,0 +1,1148 @@
+{
+  "run_id": "praxis_study-forensics-026_Claude_Haiku_ae6199",
+  "task": {
+    "id": "study-forensics-026",
+    "title": "Study Forensics: Low-cost air sensor validation",
+    "domain": "study_forensics",
+    "difficulty": "easy",
+    "task_type": "study_forensics",
+    "prompt": "Researchers validated low-cost particulate matter sensors against regulatory-grade reference instruments at three urban monitoring sites over six months. The study compared readings from 45 low-cost sensors costing approximately 250 dollars each against Federal Reference Method monitors for PM2.5 concentrations ranging from 5 to 85 micrograms per cubic meter. Linear regression showed strong correlation between low-cost and reference sensors with an R-squared of 0.87, slope of 0.94, and intercept of 1.2 micrograms per cubic meter. However, accuracy degraded significantly at humidity levels above 80 percent, with measurement error increasing from plus or minus 3 to plus or minus 8 micrograms per cubic meter. Sensors also underestimated concentrations during wildfire smoke events by an average of 15 percent. The authors recommend these sensors for identifying spatial patterns and temporal trends in typical urban conditions but caution against using them for regulatory compliance monitoring or health studies requiring precise exposure assessment during extreme pollution events. They provide site-specific calibration equations and note that sensors require recalibration every 12 months.\n",
+    "context": "A rigorous validation study that explicitly states where the technology works and where it fails.\nThe agent should recognise the appropriate epistemic boundaries.\n",
+    "expected_answer": "solid",
+    "reference_solution": "Rigorous validation study with explicit boundary conditions, degradation analysis under stress conditions, and appropriate usage recommendations that respect instrument limitations. The authors explicitly forbid inappropriate use cases despite potential demand.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "boundary conditions",
+        "variants": [
+          "caution against",
+          "degrade",
+          "failure mode"
+        ],
+        "functional_descriptions": [
+          "authors state where the technology does and does not work"
+        ]
+      },
+      {
+        "keyword": "validation",
+        "variants": [
+          "reference instruments",
+          "R-squared",
+          "calibration"
+        ],
+        "functional_descriptions": [
+          "proper metrological comparison against gold standard"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating acknowledged limitations as unacknowledged flaws",
+      "overflagging because the technology has known weaknesses"
+    ],
+    "task_family": "solid",
+    "trap_type": "overflagging_technical_validation",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "false_positive_flagging"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent recognise proper technical validation with appropriate epistemic boundaries?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "solid",
+    "gold_summary": "Rigorous validation study with explicit boundary conditions, degradation analysis under stress conditions, and appropriate usage recommendations that respect instrument limitations.\n",
+    "expected_findings": [
+      {
+        "finding": "evidence_matches_claim",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "cautious_scope_control",
+        "severity": "minor",
+        "confidence": "high"
+      },
+      {
+        "finding": "none_or_minor",
+        "severity": "minor",
+        "confidence": "high"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "accuracy degraded significantly at humidity levels above 80 percent",
+        "why_it_matters": "Identifies specific environmental conditions where instrument fails.",
+        "supports_finding": "evidence_matches_claim"
+      },
+      {
+        "span": "recommend these sensors for identifying spatial patterns and temporal trends in typical urban conditions but caution against using them for regulatory compliance monitoring",
+        "why_it_matters": "Explicit prohibition of inappropriate use despite potential market pressure.",
+        "supports_finding": "cautious_scope_control"
+      },
+      {
+        "span": "sensors require recalibration every 12 months",
+        "why_it_matters": "Practical limitation openly disclosed.",
+        "supports_finding": "cautious_scope_control"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The study demonstrates excellent metrological practice: correlation is not treated as\ninterchangeability, specific failure modes are characterized (humidity, high concentration),\nand recommendations are appropriately bounded. The R-squared of 0.87 is strong but not\noverstated as perfect agreement. Authors explicitly forbid inappropriate use cases\n(regulatory compliance) despite potential demand for such applications.\n",
+    "gold_alternative_reading": null,
+    "gold_case_type": "clear",
+    "curator_notes": "Non-health solid case from environmental science. Tests whether agents can recognise\nproper technical validation and appropriate \"do not use for X\" recommendations.\nDiversifies domain coverage beyond health/supplements.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\n    \"The study actually conducted the validation experiment as described (45 sensors, 6 months, 3 sites)\",\n    \"Linear regression was the appropriate statistical method for this comparison\",\n    \"The R² of 0.87 reflects genuine agreement rather than systematic bias\",\n    \"The humidity and wildfire smoke degradation findings are based on adequate sample sizes within those conditions\",\n    \"The authors' recommendations reflect their actual conclusions rather than paraphrasing\"\n  ],\n  \"steps\": [\n    \"Identified the core claim: low-cost sensors correlate well with reference instruments (R²=0.87) but have limitations\",\n    \"Checked for overclaim: The authors explicitly restrict recommendations to 'spatial patterns and temporal trends in typical urban conditions' and explicitly caution against regulatory/health study use—this is appropriately bounded\",\n    \"Evaluated correlation vs. causation: The study reports correlation (R²), not causal claims. No causal mechanism is asserted\",\n    \"Checked mechanism vs. evidence: The humidity and wildfire smoke findings are presented as empirical observations, not mechanistic extrapolations to other contexts\",\n    \"Assessed confounders: The study acknowledges humidity as a confounder and wildfire smoke as a specific failure mode. These are not hidden\",\n    \"Evaluated decorative uncertainty: The caveats are substantive and specific (humidity >80%, wildfire events, 12-month recalibration), not vague 'more research needed' language\",\n    \"Checked for appropriate scope: The authors do not claim these sensors are suitable for all purposes; they explicitly delineate appropriate vs. inappropriate uses\",\n    \"Verified the slope and intercept: A slope of 0.94 (close to 1.0) and small intercept (1.2 µg/m³) suggest minimal systematic bias across the range tested\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Overclaim: Could argue that recommending use for 'spatial patterns' is still risky given the ±8 µg/m³ error at high humidity—but the authors do acknowledge this limitation explicitly\",\n    \"Mechanism_vs_evidence: Could argue that humidity effects are described without mechanistic explanation—but the text presents this as an empirical finding, not a mechanism applied elsewhere\"\n  ],\n  \"uncertainties\": [\n    \"Whether the 45 sensors were randomly selected or representative of the product line\",\n    \"Whether the three urban sites are representative of other urban environments\",\n    \"The sample size during high-humidity and wildfire smoke conditions (were these rare events with few observations?)\",\n    \"Whether 'recalibration every 12 months' is based on empirical drift data or a conservative recommendation\",\n    \"The practical significance of the ±3 to ±8 µg/m³ error range for different health or environmental applications\"\n  ],\n  \"key_claims\": [\n    \"The study demonstrates strong correlation (R²=0.87) between low-cost and reference sensors under typical urban conditions—this is well-supported by the reported statistics\",\n    \"Performance degrades significantly at high humidity (>80%) and during wildfire smoke—presented as empirical findings with specific error ranges\",\n    \"The authors appropriately restrict recommendations to spatial/temporal pattern identification and explicitly exclude regulatory and health study applications—this is a strength, not a weakness\",\n    \"The study provides actionable guidance (site-specific calibration, 12-month recalibration) rather than making unsupported generalizations\"\n  ],\n  \"self_check\": [\n    \"Did I confuse correlation reporting with causal claims? No—the text reports R² and regression parameters without asserting causation\",\n    \"Did I flag limitations as problems when they are actually acknowledged? No—the authors explicitly discuss humidity and wildfire smoke limitations\",\n    \"Did I assume the study is flawed because it found limitations? No—finding and reporting limitations is a sign of rigor, not weakness\",\n    \"Did I miss any overclaims? The recommendations are carefully scoped to 'typical urban conditions' and exclude high-stakes applications\",\n    \"Is the study design appropriate? Yes—comparing 45 low-cost sensors against reference instruments over 6 months at multiple sites is a reasonable validation approach\",\n    \"Are there hidden confounders? No—humidity and wildfire smoke are explicitly identified as factors affecting performance\"\n  ],\n  \"confidence\": 0.92\n}\n```\n\n**Summary**: This is a **solid study**. The authors report strong correlation under typical conditions, explicitly identify failure modes (high humidity, wildfire smoke), provide specific error ranges, and appropriately restrict their recommendations to applications where these sensors are suitable. The caveats are substantive and specific, not decorative. The study demonstrates scientific integrity by acknowledging limitations rather than overselling the technology.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study actually conducted the validation experiment as described (45 sensors, 6 months, 3 sites)",
+            "Linear regression was the appropriate statistical method for this comparison",
+            "The R² of 0.87 reflects genuine agreement rather than systematic bias",
+            "The humidity and wildfire smoke degradation findings are based on adequate sample sizes within those conditions",
+            "The authors' recommendations reflect their actual conclusions rather than paraphrasing"
+          ],
+          "steps": [
+            "Identified the core claim: low-cost sensors correlate well with reference instruments (R²=0.87) but have limitations",
+            "Checked for overclaim: The authors explicitly restrict recommendations to 'spatial patterns and temporal trends in typical urban conditions' and explicitly caution against regulatory/health study use—this is appropriately bounded",
+            "Evaluated correlation vs. causation: The study reports correlation (R²), not causal claims. No causal mechanism is asserted",
+            "Checked mechanism vs. evidence: The humidity and wildfire smoke findings are presented as empirical observations, not mechanistic extrapolations to other contexts",
+            "Assessed confounders: The study acknowledges humidity as a confounder and wildfire smoke as a specific failure mode. These are not hidden",
+            "Evaluated decorative uncertainty: The caveats are substantive and specific (humidity >80%, wildfire events, 12-month recalibration), not vague 'more research needed' language",
+            "Checked for appropriate scope: The authors do not claim these sensors are suitable for all purposes; they explicitly delineate appropriate vs. inappropriate uses",
+            "Verified the slope and intercept: A slope of 0.94 (close to 1.0) and small intercept (1.2 µg/m³) suggest minimal systematic bias across the range tested"
+          ],
+          "alternative_hypotheses": [
+            "Overclaim: Could argue that recommending use for 'spatial patterns' is still risky given the ±8 µg/m³ error at high humidity—but the authors do acknowledge this limitation explicitly",
+            "Mechanism_vs_evidence: Could argue that humidity effects are described without mechanistic explanation—but the text presents this as an empirical finding, not a mechanism applied elsewhere"
+          ],
+          "uncertainties": [
+            "Whether the 45 sensors were randomly selected or representative of the product line",
+            "Whether the three urban sites are representative of other urban environments",
+            "The sample size during high-humidity and wildfire smoke conditions (were these rare events with few observations?)",
+            "Whether 'recalibration every 12 months' is based on empirical drift data or a conservative recommendation",
+            "The practical significance of the ±3 to ±8 µg/m³ error range for different health or environmental applications"
+          ],
+          "self_check": [
+            "Did I confuse correlation reporting with causal claims? No—the text reports R² and regression parameters without asserting causation",
+            "Did I flag limitations as problems when they are actually acknowledged? No—the authors explicitly discuss humidity and wildfire smoke limitations",
+            "Did I assume the study is flawed because it found limitations? No—finding and reporting limitations is a sign of rigor, not weakness",
+            "Did I miss any overclaims? The recommendations are carefully scoped to 'typical urban conditions' and exclude high-stakes applications",
+            "Is the study design appropriate? Yes—comparing 45 low-cost sensors against reference instruments over 6 months at multiple sites is a reasonable validation approach",
+            "Are there hidden confounders? No—humidity and wildfire smoke are explicitly identified as factors affecting performance"
+          ],
+          "key_claims": [
+            "The study demonstrates strong correlation (R²=0.87) between low-cost and reference sensors under typical urban conditions—this is well-supported by the reported statistics",
+            "Performance degrades significantly at high humidity (>80%) and during wildfire smoke—presented as empirical findings with specific error ranges",
+            "The authors appropriately restrict recommendations to spatial/temporal pattern identification and explicitly exclude regulatory and health study applications—this is a strength, not a weakness",
+            "The study provides actionable guidance (site-specific calibration, 12-month recalibration) rather than making unsupported generalizations"
+          ],
+          "confidence": 0.92,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 11962
+      },
+      "scores": {
+        "correctness": 0.85,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.64,
+        "uncertainty_handling": 0.6,
+        "alternative_hypothesis_quality": 1.0,
+        "self_monitoring_quality": 0.8,
+        "insight_depth": 0.85,
+        "mechanism_quality": 0.15,
+        "communication_efficiency": 0.85
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 1.0,
+          "weight": 30,
+          "weighted_score": 30.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Exact match"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Checked for overclaim: The authors explicitly restrict recommendations to 'spatial patterns and temporal trends in typical urban conditions' and expli",
+              "source_field": "steps[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "8 reasoning steps",
+            "Low step utility: 0/8 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.75)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.64,
+          "weight": 6,
+          "weighted_score": 3.8,
+          "evidence": [
+            {
+              "text": "The study actually conducted the validation experiment as described (45 sensors, 6 months, 3 sites)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The authors' recommendations reflect their actual conclusions rather than paraphrasing",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The humidity and wildfire smoke degradation findings are based on adequate sample sizes within those conditions",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "2 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.6,
+          "weight": 6,
+          "weighted_score": 3.6,
+          "evidence": [
+            {
+              "text": "The sample size during high-humidity and wildfire smoke conditions (were these rare events with few observations?)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the 45 sensors were randomly selected or representative of the product line",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.92",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "1 decorative uncertainty(ies)",
+            "Confidence 0.92"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 1.0,
+          "weight": 6,
+          "weighted_score": 6.0,
+          "evidence": [
+            {
+              "text": "Mechanism_vs_evidence: Could argue that humidity effects are described without mechanistic explanation—but the text presents this as an empirical finding, not a mechanism applied elsewhere",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 include rejection reasoning",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.8,
+          "weight": 8,
+          "weighted_score": 6.4,
+          "evidence": [
+            {
+              "text": "Is the study design appropriate? Yes—comparing 45 low-cost sensors against reference instruments over 6 months at multiple sites is a reasonable validation approach",
+              "source_field": "self_check[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "6 self-check items",
+            "Self-check quality: 0 deep, 6 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.15,
+          "weight": 10,
+          "weighted_score": 1.5,
+          "evidence": [],
+          "notes": [
+            "Names concept but does not describe mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 0.85,
+          "weight": 10,
+          "weighted_score": 8.5,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.72, 549 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "study actually conducted the validation experiment as described (45 s",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'validation' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The study actually conducted the validation experiment as de...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The study actually conducted the validation experiment as described (45 sensors, 6 months, 3 sites)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The authors' recommendations reflect their actual conclusion...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The authors' recommendations reflect their actual conclusions rather than paraphrasing",
+              "source_field": "assumptions[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the 45 sensors were randomly selected or representat...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the 45 sensors were randomly selected or representative of the product line",
+              "source_field": "uncertainties[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Names the phenomenon but does not explain the causal mechanism",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Names concept without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "mechanism_quality",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "named_not_explained",
+          "severity": "moderate",
+          "description": "Named concept(s) ['bias'] but mechanism not described",
+          "evidence": [],
+          "impact_on_score": "mechanism_quality, insight_depth",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unsupported_intermediate_step",
+          "severity": "moderate",
+          "description": "No reasoning step is load-bearing — final answer lacks traceable derivation",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer without load-bearing support",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength, structural_reasoning",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "overclaiming",
+          "severity": "major",
+          "description": "False positive: agent flagged 'unsupported generalization' in a solid case",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent hallucinated a major issue in a solid study",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/16 content words)",
+          "evidence": [
+            {
+              "text": "The study demonstrates strong correlation (R²=0.87) between low-cost and reference sensors under typical urban conditions—this is well-supported by the reported statistics",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/15 content words)",
+          "evidence": [
+            {
+              "text": "Performance degrades significantly at high humidity (>80%) and during wildfire smoke—presented as empirical findings with specific error ranges",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/15 content words)",
+          "evidence": [
+            {
+              "text": "The authors appropriately restrict recommendations to spatial/temporal pattern identification and explicitly exclude regulatory and health study applications—this is a strength, not a weakness",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/12 content words)",
+          "evidence": [
+            {
+              "text": "The study provides actionable guidance (site-specific calibration, 12-month recalibration) rather than making unsupported generalizations",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "weak_mechanism",
+          "description": "Correct answer but weak mechanism explanation — answer may not generalize",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Correct without mechanism",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "unsupported_leap",
+          "description": "Correct answer with weak support chain — final answer may be an unsupported leap",
+          "evidence": [],
+          "severity": "major"
+        },
+        {
+          "flag_type": "easy_task_caveat",
+          "description": "Answer robust only because task is easy — performance on harder tasks may differ",
+          "evidence": [],
+          "severity": "stylistic"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "ungrounded_mechanism",
+          "description": "Mechanism named/described but not connected to case-specific data",
+          "evidence": [
+            {
+              "text": "bias",
+              "source_field": "(mechanism analysis)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Named but not grounded to case",
+              "role": "supporting"
+            }
+          ],
+          "severity": "moderate"
+        },
+        {
+          "flag_type": "study_forensics_overflagging",
+          "description": "Agent raised extra findings in solid case: conclusion_exceeds_results, unsupported_generalization, decorative_uncertainty, correlation_as_causation",
+          "evidence": [],
+          "severity": "minor"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study actually conducted the validation experiment as described (45 sensors, 6 months, 3 sites)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Linear regression was the appropriate statistical method for this comparison",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The R² of 0.87 reflects genuine agreement rather than systematic bias",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The humidity and wildfire smoke degradation findings are based on adequate sample sizes within those conditions",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors' recommendations reflect their actual conclusions rather than paraphrasing",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "Identified the core claim: low-cost sensors correlate well with reference instruments (R²=0.87) but have limitations",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for overclaim: The authors explicitly restrict recommendations to 'spatial patterns and temporal trends in typical urban conditions' and explicitly caution against regulatory/health study use—this is appropriately bounded",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated correlation vs. causation: The study reports correlation (R²), not causal claims. No causal mechanism is asserted",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked mechanism vs. evidence: The humidity and wildfire smoke findings are presented as empirical observations, not mechanistic extrapolations to other contexts",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed confounders: The study acknowledges humidity as a confounder and wildfire smoke as a specific failure mode. These are not hidden",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated decorative uncertainty: The caveats are substantive and specific (humidity >80%, wildfire events, 12-month recalibration), not vague 'more research needed' language",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for appropriate scope: The authors do not claim these sensors are suitable for all purposes; they explicitly delineate appropriate vs. inappropriate uses",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified the slope and intercept: A slope of 0.94 (close to 1.0) and small intercept (1.2 µg/m³) suggest minimal systematic bias across the range tested",
+            "source_field": "steps[7]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study demonstrates strong correlation (R²=0.87) between low-cost and reference sensors under typical urban conditions—this is well-supported by the reported statistics",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Performance degrades significantly at high humidity (>80%) and during wildfire smoke—presented as empirical findings with specific error ranges",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors appropriately restrict recommendations to spatial/temporal pattern identification and explicitly exclude regulatory and health study applications—this is a strength, not a weakness",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study provides actionable guidance (site-specific calibration, 12-month recalibration) rather than making unsupported generalizations",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overclaim: Could argue that recommending use for 'spatial patterns' is still risky given the ±8 µg/m³ error at high humidity—but the authors do acknowledge this limitation explicitly",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism_vs_evidence: Could argue that humidity effects are described without mechanistic explanation—but the text presents this as an empirical finding, not a mechanism applied elsewhere",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the 45 sensors were randomly selected or representative of the product line",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the three urban sites are representative of other urban environments",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The sample size during high-humidity and wildfire smoke conditions (were these rare events with few observations?)",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether 'recalibration every 12 months' is based on empirical drift data or a conservative recommendation",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The practical significance of the ±3 to ±8 µg/m³ error range for different health or environmental applications",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I confuse correlation reporting with causal claims? No—the text reports R² and regression parameters without asserting causation",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I flag limitations as problems when they are actually acknowledged? No—the authors explicitly discuss humidity and wildfire smoke limitations",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I assume the study is flawed because it found limitations? No—finding and reporting limitations is a sign of rigor, not weakness",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss any overclaims? The recommendations are carefully scoped to 'typical urban conditions' and exclude high-stakes applications",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the study design appropriate? Yes—comparing 45 low-cost sensors against reference instruments over 6 months at multiple sites is a reasonable validation approach",
+            "source_field": "self_check[4]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Are there hidden confounders? No—humidity and wildfire smoke are explicitly identified as factors affecting performance",
+            "source_field": "self_check[5]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 12,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 8,
+            "relation": "assumes",
+            "strength": 0.36363636363636365
+          },
+          {
+            "source_idx": 3,
+            "target_idx": 9,
+            "relation": "assumes",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 8,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 25,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 27,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          },
+          {
+            "source_idx": 28,
+            "target_idx": 5,
+            "relation": "checks",
+            "strength": 0.25
+          },
+          {
+            "source_idx": 29,
+            "target_idx": 9,
+            "relation": "checks",
+            "strength": 0.3
+          }
+        ],
+        "unused_assumptions": [
+          0,
+          4
+        ],
+        "unaddressed_uncertainties": [
+          19
+        ],
+        "unsupported_conclusions": [
+          30
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": true,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [
+          "bias"
+        ],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "brittle",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "solid",
+        "detected_label": "solid",
+        "label_correct": true,
+        "expected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "detected_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "evidence_matches_claim",
+          "cautious_scope_control",
+          "none_or_minor"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [
+          "unsupported generalization"
+        ],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 1.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.15
+        }
+      },
+      "failure_modes": [
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "named_not_explained",
+        "named_not_explained",
+        "unsupported_intermediate_step",
+        "overclaiming"
+      ],
+      "notes": [
+        "Exact match",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 8",
+        "Reasoning graph: conclusion not well grounded",
+        "8 reasoning steps",
+        "Low step utility: 0/8 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.75)",
+        "5/5 substantive assumptions",
+        "2 unused assumption(s)",
+        "5 uncertainties (5 substantive)",
+        "1 decorative uncertainty(ies)",
+        "Confidence 0.92",
+        "2 alternative hypotheses considered",
+        "2/2 include rejection reasoning",
+        "2/2 genuinely diverse alternatives",
+        "6 self-check items",
+        "Self-check quality: 0 deep, 6 arithmetic, 0 fluff",
+        "Names concept but does not describe mechanism",
+        "Signal density: 0.72, 549 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-07T07:53:56.915709+00:00",
+  "metadata": {}
+}

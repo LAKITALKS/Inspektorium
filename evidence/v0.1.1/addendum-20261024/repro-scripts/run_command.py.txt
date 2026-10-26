@@ -1,0 +1,13 @@
+import datetime,json,os,subprocess,sys
+from pathlib import Path
+root=Path(__file__).resolve().parent
+label,kind,*cmd=sys.argv[1:]
+env={k:v for k,v in os.environ.items() if not any(s in k.upper() for s in ('API_KEY','ANTHROPIC','OPENAI','TOKEN','SECRET'))}
+env['PYTHONDONTWRITEBYTECODE']='1'
+start=datetime.datetime.now(datetime.UTC).isoformat()
+p=subprocess.run(cmd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+d=root/'logs'/kind; d.mkdir(parents=True,exist_ok=True)
+(d/(label+'.log')).write_text(p.stdout)
+r={'label':label,'kind':kind,'command':cmd,'cwd':os.getcwd(),'started':start,'finished':datetime.datetime.now(datetime.UTC).isoformat(),'exit_code':p.returncode,'log':str((d/(label+'.log')).relative_to(root))}
+with (root/'commands.jsonl').open('a') as f:f.write(json.dumps(r)+'\n')
+print(json.dumps(r));print(p.stdout[-5000:]);sys.exit(p.returncode)

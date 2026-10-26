@@ -1,0 +1,72 @@
+id: study-forensics-004
+title: "Study Forensics: Daily multivitamin and memory"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: overflagging_modest_effect
+ambiguity_level: low
+prompt: |
+  A double-blind randomised trial followed over 3,500 U.S. adults aged 60 and older for three years to test whether a daily multivitamin improves memory. Participants taking the multivitamin improved their immediate-recall scores from roughly 7.1 to 7.8 words after one year, while those on placebo improved from 7.2 to 7.6 words. The modest benefit persisted over three years without widening. People with cardiovascular disease showed slightly larger improvements. The authors describe the effect as modest and call for studies in more diverse populations to determine which nutrients might be responsible; the trial's participants were predominantly white and well educated.
+context: |
+  A large, well-designed trial reporting a small but real effect with appropriate caveats.
+  The agent should recognise this as solid despite the modest effect size.
+expected_answer: "solid"
+reference_solution: |
+  This large, well-designed trial reports a small improvement in immediate memory from multivitamin supplementation while explicitly describing the effect as modest, identifying demographic limitations and urging further research. There is no overclaim.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  Double-blind RCT with n>3500 and 3-year follow-up. Authors explicitly call the effect
+  'modest', acknowledge demographic limitations, and call for more diverse studies.
+  The reporting matches the evidence strength — no overclaim.
+gold_alternative_reading: |
+  The effect size is very small (0.2-word difference from placebo). One could argue this
+  approaches 'clinically negligible' territory, but the authors frame it honestly. An
+  overclaim reading would require the authors to inflate the finding, which they do not.
+gold_summary: |
+  This large, well-designed trial reports a small improvement in immediate memory from multivitamin supplementation while explicitly describing the effect as modest, identifying demographic limitations and urging further research. There is no overclaim.
+curator_notes: |
+  Tests whether agents can distinguish a modest-but-honest finding from overclaim.
+  The trap is small effect size — agents may overflag. Both sprints show stable
+  correct classification, with occasional FP on 'overclaim' keyword mentions.
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: high
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: high
+gold_evidence_spans:
+  - span: "improved their immediate-recall scores from roughly 7.1 to 7.8 words ... while those on placebo improved from 7.2 to 7.6 words"
+    why_it_matters: "Quantifies the modest but statistically significant effect."
+    supports_finding: evidence_matches_claim
+  - span: "effect as modest and call for studies in more diverse populations"
+    why_it_matters: "Authors frame the finding conservatively."
+    supports_finding: cautious_scope_control
+  - span: "participants were predominantly white and well educated"
+    why_it_matters: "Acknowledges demographic limitations."
+    supports_finding: cautious_scope_control
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "modest effect"
+    variants: ["small effect", "small improvement", "moderate benefit"]
+    functional_descriptions:
+      - "the effect is real but small and honestly reported"
+  - keyword: "demographic limitation"
+    variants: ["predominantly white", "not diverse", "limited population"]
+    functional_descriptions:
+      - "authors acknowledge the sample is not representative"
+common_errors:
+  - treating a modest effect as overclaim
+  - missing the demographic caveat as a strength
+expected_failure_modes:
+  - overclaiming
+  - false_positive_flagging
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent distinguish a modest-but-honest finding from overclaim?"

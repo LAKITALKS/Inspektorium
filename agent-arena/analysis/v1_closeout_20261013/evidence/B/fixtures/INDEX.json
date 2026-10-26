@@ -1,0 +1,84 @@
+{
+  "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+  "generated_from_commit": "5560e95",
+  "fixtures": [
+    {
+      "case": "B1_bounded_optional_conflict",
+      "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+      "builder": "tests/test_v1_closeout_report.py::conflict_fixture()",
+      "task_file": "B1_bounded_optional_conflict.task.json",
+      "task_sha256": "e5776aaff06f8757eeb5696723b382d86f3bc2cb843f30b4274ac6bd27da49e2",
+      "task_id": "phase10-offline-positive",
+      "recording_file": "B1_bounded_optional_conflict.recording.json",
+      "recording_sha256": "9d9bea1e7e6aed3ee0310a7ce0cb8c250bf5793fa94e8677e38cea777ff08700",
+      "record_id": "SYNTHETIC-TEST-FIXTURE-v1-closeout",
+      "expected_candidate_status": "READY_FOR_RELEASE",
+      "expected_release_status": "RELEASED"
+    },
+    {
+      "case": "B2a_material_premise",
+      "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+      "builder": "tests/test_v1_closeout_report.py::conflict_fixture('premise')",
+      "task_file": "B2a_material_premise.task.json",
+      "task_sha256": "e5776aaff06f8757eeb5696723b382d86f3bc2cb843f30b4274ac6bd27da49e2",
+      "task_id": "phase10-offline-positive",
+      "recording_file": "B2a_material_premise.recording.json",
+      "recording_sha256": "a2ea1b1ec5a2bb22ef470a3ae27fd55e8dedba5e2f14e7757b2e95a047170240",
+      "record_id": "SYNTHETIC-TEST-FIXTURE-v1-closeout",
+      "expected_candidate_status": "REVIEW_REQUIRED",
+      "expected_release_status": "RELEASE_BLOCKED"
+    },
+    {
+      "case": "B2b_material_taxonomy_label",
+      "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+      "builder": "tests/test_v1_closeout_report.py::conflict_fixture('label')",
+      "task_file": "B2b_material_taxonomy_label.task.json",
+      "task_sha256": "e5776aaff06f8757eeb5696723b382d86f3bc2cb843f30b4274ac6bd27da49e2",
+      "task_id": "phase10-offline-positive",
+      "recording_file": "B2b_material_taxonomy_label.recording.json",
+      "recording_sha256": "f2d3110fbbd5e331fe5bc5966a2e163655cf64c0b3adba45ae11053a823272aa",
+      "record_id": "SYNTHETIC-TEST-FIXTURE-v1-closeout",
+      "expected_candidate_status": "REVIEW_REQUIRED",
+      "expected_release_status": "RELEASE_BLOCKED"
+    },
+    {
+      "case": "B2c_material_decisive_summary",
+      "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+      "builder": "tests/test_v1_closeout_report.py::conflict_fixture('summary')",
+      "task_file": "B2c_material_decisive_summary.task.json",
+      "task_sha256": "e5776aaff06f8757eeb5696723b382d86f3bc2cb843f30b4274ac6bd27da49e2",
+      "task_id": "phase10-offline-positive",
+      "recording_file": "B2c_material_decisive_summary.recording.json",
+      "recording_sha256": "39227c5f94013023f1269cffd81c90fcb664b300eaf05ae65d61939a5e071edf",
+      "record_id": "SYNTHETIC-TEST-FIXTURE-v1-closeout",
+      "expected_candidate_status": "REVIEW_REQUIRED",
+      "expected_release_status": "RELEASE_BLOCKED"
+    },
+    {
+      "case": "VB1_M4b_whole_claim_summary_conflicted_optional",
+      "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+      "builder": "tests/test_v1_semantics.py::variant('M4b_whole_claim_summary_divergent_optional')",
+      "task_file": "VB1_M4b_whole_claim_summary_conflicted_optional.task.json",
+      "task_sha256": "4bb127d06479040b4ba70870b030e321e5e569a2ac1b1f04c0019c8fdf06da45",
+      "task_id": "v1-semantics-synthetic",
+      "recording_file": "VB1_M4b_whole_claim_summary_conflicted_optional.recording.json",
+      "recording_sha256": "62501edc9b75b2268a5c84054c7c4617cc769f8c3eb95018518ba290abf53283",
+      "record_id": "SYNTHETIC-TEST-FIXTURE-v1-semantics",
+      "expected_candidate_status": "REVIEW_REQUIRED",
+      "expected_release_status": "RELEASE_BLOCKED"
+    },
+    {
+      "case": "VB1_M4d_agreed_unsupported_optional_whole_claim_summary",
+      "label": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+      "builder": "tests/test_v1_semantics.py::variant('M4d_whole_claim_summary_agreed_unsupported_optional')",
+      "task_file": "VB1_M4d_agreed_unsupported_optional_whole_claim_summary.task.json",
+      "task_sha256": "4bb127d06479040b4ba70870b030e321e5e569a2ac1b1f04c0019c8fdf06da45",
+      "task_id": "v1-semantics-synthetic",
+      "recording_file": "VB1_M4d_agreed_unsupported_optional_whole_claim_summary.recording.json",
+      "recording_sha256": "735b38b93001c1a65305eab4d2383a252ff33f2140f13df817a1990907f0ed38",
+      "record_id": "SYNTHETIC-TEST-FIXTURE-v1-semantics",
+      "expected_candidate_status": "ANALYSIS_INCOMPLETE",
+      "expected_release_status": "RELEASE_BLOCKED"
+    }
+  ]
+}

@@ -1,0 +1,1148 @@
+{
+  "run_id": "full27_study-forensics-036_Claude_Haiku_738a00",
+  "task": {
+    "id": "study-forensics-036",
+    "title": "Study Forensics: Antioxidant blend improves memory in aged mice",
+    "domain": "study_forensics",
+    "difficulty": "medium",
+    "task_type": "study_forensics",
+    "prompt": "Researchers administered a blend of natural antioxidants to aged mice and found that the animals navigated mazes faster and remembered previously learned routes. Muscle endurance was also improved. The authors see potential for preventing age-related memory loss in humans but warn that correct dosing is complex and excessive vitamin intake can be harmful. Clinical studies in humans are still pending.\n",
+    "context": "Classic preclinical-to-human translation case. The mechanism is demonstrated in mice\nonly, yet human therapeutic potential is implied. The warning about dosing is present\nbut does not prevent the human application claim.\n",
+    "expected_answer": "mechanism_vs_evidence",
+    "reference_solution": "The text describes preclinical results in mice and links them to potential benefits for humans. Although the need for further research is acknowledged, the conclusion implies a transfer to humans without supporting evidence. The central weakness is the mechanism-to-evidence gap.\n",
+    "rubric": [],
+    "evaluation": {
+      "method": "auto",
+      "answer_match": "contains",
+      "tolerance": null
+    },
+    "output_schema": "structured",
+    "origin": null,
+    "key_insights": [
+      {
+        "keyword": "animal model",
+        "variants": [
+          "mice",
+          "aged mice",
+          "animal"
+        ],
+        "functional_descriptions": [
+          "findings are from an animal model, not humans"
+        ]
+      },
+      {
+        "keyword": "translation gap",
+        "variants": [
+          "clinical studies pending",
+          "humans",
+          "potential"
+        ],
+        "functional_descriptions": [
+          "human therapeutic claims go beyond preclinical evidence"
+        ]
+      }
+    ],
+    "common_errors": [
+      "treating animal results as sufficient evidence for human claims",
+      "classifying as generic overclaim instead of mechanism_vs_evidence"
+    ],
+    "task_family": "mechanism_vs_evidence",
+    "trap_type": "animal_to_human_overreach",
+    "ambiguity_level": "low",
+    "expected_failure_modes": [
+      "accepting_mechanism_as_evidence",
+      "missing_translation_gap"
+    ],
+    "discriminative_dimensions": [
+      "correctness",
+      "mechanism_quality",
+      "insight_depth"
+    ],
+    "diagnostic_focus": "Can the agent identify the animal-to-human translation gap despite partial hedging?",
+    "expected_mechanism_terms": [],
+    "fragile_points": [],
+    "likely_shortcuts": [],
+    "evaluator_notes": null,
+    "base_rate": null,
+    "resolution_rule": null,
+    "correct_decision": null,
+    "expected_probability_range": null,
+    "gold_label": "mechanism_vs_evidence",
+    "gold_summary": "Preclinical antioxidant study in mice with implied human therapeutic potential. Classic mechanism-vs-evidence gap with partial hedging.\n",
+    "expected_findings": [
+      {
+        "finding": "mechanism_not_demonstrated",
+        "severity": "major",
+        "confidence": "high"
+      },
+      {
+        "finding": "conclusion_exceeds_results",
+        "severity": "moderate",
+        "confidence": "medium"
+      }
+    ],
+    "gold_evidence_spans": [
+      {
+        "span": "animals navigated mazes faster and remembered previously learned routes",
+        "why_it_matters": "Describes success in the animal model.",
+        "supports_finding": "mechanism_not_demonstrated"
+      },
+      {
+        "span": "potential for preventing age-related memory loss in humans",
+        "why_it_matters": "Transfers animal data to humans without direct evidence.",
+        "supports_finding": "conclusion_exceeds_results"
+      },
+      {
+        "span": "Clinical studies in humans are still pending",
+        "why_it_matters": "Confirms the lack of human evidence.",
+        "supports_finding": "mechanism_not_demonstrated"
+      }
+    ],
+    "gold_confidence": "high",
+    "gold_justification": "The text describes preclinical results in mice and connects them to possible human\nbenefits. While cautioning about dosing and noting pending human trials, it still implies\ntherapeutic potential for age-related memory loss in humans. The mechanism is demonstrated\nonly in an animal model. The implicit assumption of human benefit without evidence is the\ncore issue.\n",
+    "gold_alternative_reading": "One could argue that the warnings about dosing and the acknowledgment of missing human\nstudies sufficiently qualify the conclusion, making the case more moderate than\nproblematic. However, the implicit therapeutic promise for humans remains unsupported.\n",
+    "gold_case_type": "clear",
+    "curator_notes": "Imported from Dataset 6 (CaseD05). Originally German, translated to English. Classic\nanimal-to-human mechanism case in nutrition domain. Complements case028 (NAD+/Alzheimer's)\nand case030 (APJ exercise mimetic) with a different substance but same structural pattern.\nBased on EurekAlert antioxidant supplement study.\n"
+  },
+  "results": [
+    {
+      "agent_result": {
+        "provider": "Claude Haiku",
+        "model": "claude-haiku-4-5-20251001",
+        "raw_output": "```json\n{\n  \"final_answer\": \"solid\",\n  \"assumptions\": [\n    \"The study was conducted with appropriate controls (e.g., placebo group, age-matched controls)\",\n    \"The maze navigation and memory tasks were validated measures of cognitive function in mice\",\n    \"The antioxidant blend composition and dosing are clearly specified\",\n    \"The authors' caution about dosing reflects genuine uncertainty rather than performative hedging\",\n    \"The claim about 'potential' is genuinely prospective, not disguised as established fact\"\n  ],\n  \"steps\": [\n    \"Identified the core claims: antioxidant blend improved maze performance, memory, and muscle endurance in aged mice\",\n    \"Checked for causal language: the text uses 'administered...and found,' which is appropriate for experimental design (not correlational)\",\n    \"Evaluated mechanism-to-human translation: the authors explicitly state this is 'potential' and that 'clinical studies in humans are still pending'—they do NOT claim the mechanism transfers to humans\",\n    \"Assessed overclaim: the authors acknowledge complexity of dosing and potential harms, showing epistemic restraint\",\n    \"Checked for decorative uncertainty: the caveats (dosing complexity, vitamin toxicity risk, pending human trials) are substantive, not merely rhetorical\",\n    \"Identified confounders: none obvious in the text; aged mice are a standard model for aging research\",\n    \"Verified scope: the text stays within animal model findings and does not generalize to human outcomes\"\n  ],\n  \"alternative_hypotheses\": [\n    \"Overclaim: if the authors had stated 'this will prevent age-related memory loss in humans' rather than 'potential for preventing'\",\n    \"Mechanism_vs_evidence: if the text had described a molecular mechanism in mice and applied it directly to human cognition without caveats\"\n  ],\n  \"uncertainties\": [\n    \"Whether the study included appropriate control groups (not stated in the summary)\",\n    \"Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)\",\n    \"The actual effect sizes and statistical significance (not provided in the summary)\",\n    \"Whether the antioxidant blend is novel or a known combination\",\n    \"The specific dosing regimen and whether it was optimized or exploratory\"\n  ],\n  \"key_claims\": [\n    \"The study is experimental (not observational), so causal claims about the antioxidant blend are justified\",\n    \"The authors appropriately limit claims to 'potential' and explicitly defer to pending human trials\",\n    \"Substantive caveats about dosing complexity and toxicity risk demonstrate epistemic humility, not decorative uncertainty\",\n    \"No unsupported generalization from mice to humans is made in the text\"\n  ],\n  \"self_check\": [\n    \"Did I flag a problem that doesn't exist? No—the text genuinely avoids overclaiming and includes appropriate caveats\",\n    \"Did I miss a correlation-vs-causation issue? No—the experimental design (administration of treatment) supports causal inference\",\n    \"Did I miss a mechanism-vs-evidence problem? No—the authors do not apply a mechanistic explanation from mice to humans\",\n    \"Is the study actually solid? Yes—the summary reflects responsible communication of animal model findings with appropriate limitations\"\n  ],\n  \"confidence\": 0.88\n}\n```\n\n**Summary**: This is a well-communicated study summary. The researchers conducted an experiment (not an observational study), found improvements in aged mice, and appropriately qualified their claims about human potential while acknowledging that clinical trials are pending. The caveats about dosing and toxicity are substantive rather than decorative. No major epistemic problems are evident in the text as presented.",
+        "parsed": {
+          "final_answer": "solid",
+          "assumptions": [
+            "The study was conducted with appropriate controls (e.g., placebo group, age-matched controls)",
+            "The maze navigation and memory tasks were validated measures of cognitive function in mice",
+            "The antioxidant blend composition and dosing are clearly specified",
+            "The authors' caution about dosing reflects genuine uncertainty rather than performative hedging",
+            "The claim about 'potential' is genuinely prospective, not disguised as established fact"
+          ],
+          "steps": [
+            "Identified the core claims: antioxidant blend improved maze performance, memory, and muscle endurance in aged mice",
+            "Checked for causal language: the text uses 'administered...and found,' which is appropriate for experimental design (not correlational)",
+            "Evaluated mechanism-to-human translation: the authors explicitly state this is 'potential' and that 'clinical studies in humans are still pending'—they do NOT claim the mechanism transfers to humans",
+            "Assessed overclaim: the authors acknowledge complexity of dosing and potential harms, showing epistemic restraint",
+            "Checked for decorative uncertainty: the caveats (dosing complexity, vitamin toxicity risk, pending human trials) are substantive, not merely rhetorical",
+            "Identified confounders: none obvious in the text; aged mice are a standard model for aging research",
+            "Verified scope: the text stays within animal model findings and does not generalize to human outcomes"
+          ],
+          "alternative_hypotheses": [
+            "Overclaim: if the authors had stated 'this will prevent age-related memory loss in humans' rather than 'potential for preventing'",
+            "Mechanism_vs_evidence: if the text had described a molecular mechanism in mice and applied it directly to human cognition without caveats"
+          ],
+          "uncertainties": [
+            "Whether the study included appropriate control groups (not stated in the summary)",
+            "Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)",
+            "The actual effect sizes and statistical significance (not provided in the summary)",
+            "Whether the antioxidant blend is novel or a known combination",
+            "The specific dosing regimen and whether it was optimized or exploratory"
+          ],
+          "self_check": [
+            "Did I flag a problem that doesn't exist? No—the text genuinely avoids overclaiming and includes appropriate caveats",
+            "Did I miss a correlation-vs-causation issue? No—the experimental design (administration of treatment) supports causal inference",
+            "Did I miss a mechanism-vs-evidence problem? No—the authors do not apply a mechanistic explanation from mice to humans",
+            "Is the study actually solid? Yes—the summary reflects responsible communication of animal model findings with appropriate limitations"
+          ],
+          "key_claims": [
+            "The study is experimental (not observational), so causal claims about the antioxidant blend are justified",
+            "The authors appropriately limit claims to 'potential' and explicitly defer to pending human trials",
+            "Substantive caveats about dosing complexity and toxicity risk demonstrate epistemic humility, not decorative uncertainty",
+            "No unsupported generalization from mice to humans is made in the text"
+          ],
+          "confidence": 0.88,
+          "probability_estimate": null,
+          "decision_category": "",
+          "base_rate_reference": "",
+          "key_drivers": [],
+          "counterarguments": [],
+          "edge_justification": "",
+          "shrinkage_rationale": ""
+        },
+        "parse_ok": true,
+        "error": null,
+        "latency_ms": 9429
+      },
+      "scores": {
+        "correctness": 0.0,
+        "support_strength": 0.0,
+        "structural_reasoning": 0.6000000000000001,
+        "assumption_discipline": 0.49,
+        "uncertainty_handling": 0.49999999999999994,
+        "alternative_hypothesis_quality": 0.75,
+        "self_monitoring_quality": 0.6000000000000001,
+        "insight_depth": 1.0,
+        "mechanism_quality": 0.0,
+        "communication_efficiency": 1.0
+      },
+      "scored_dimensions": [
+        {
+          "dimension": "correctness",
+          "raw_score": 0.0,
+          "weight": 30,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's answer for correctness check",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "No match (got: solid)"
+          ]
+        },
+        {
+          "dimension": "support_strength",
+          "raw_score": 0.0,
+          "weight": 8,
+          "weighted_score": 0.0,
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Conclusion not supported by steps",
+              "role": "weakening"
+            }
+          ],
+          "notes": [
+            "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+            "Reasoning graph: conclusion not well grounded"
+          ]
+        },
+        {
+          "dimension": "structural_reasoning",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Evaluated mechanism-to-human translation: the authors explicitly state this is 'potential' and that 'clinical studies in humans are still pending'—the",
+              "source_field": "steps[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most informative reasoning step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "7 reasoning steps",
+            "Low step utility: 0/7 steps contribute",
+            "Steps introduce new information consistently",
+            "High step density (0.75)"
+          ]
+        },
+        {
+          "dimension": "assumption_discipline",
+          "raw_score": 0.49,
+          "weight": 6,
+          "weighted_score": 2.9,
+          "evidence": [
+            {
+              "text": "The study was conducted with appropriate controls (e.g., placebo group, age-matched controls)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The maze navigation and memory tasks were validated measures of cognitive function in mice",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Declared but unused in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The authors' caution about dosing reflects genuine uncertainty rather than performative hedging",
+              "source_field": "assumptions[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive assumption",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5/5 substantive assumptions",
+            "2 unused assumption(s)"
+          ]
+        },
+        {
+          "dimension": "uncertainty_handling",
+          "raw_score": 0.49999999999999994,
+          "weight": 6,
+          "weighted_score": 3.0,
+          "evidence": [
+            {
+              "text": "Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive uncertainty",
+              "role": "supporting"
+            },
+            {
+              "text": "Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The actual effect sizes and statistical significance (not provided in the summary)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "The specific dosing regimen and whether it was optimized or exploratory",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but never addressed in reasoning",
+              "role": "weakening"
+            },
+            {
+              "text": "confidence: 0.88",
+              "source_field": "confidence",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Stated confidence level",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "5 uncertainties (5 substantive)",
+            "3 decorative uncertainty(ies)",
+            "Confidence 0.88"
+          ]
+        },
+        {
+          "dimension": "alternative_hypothesis_quality",
+          "raw_score": 0.75,
+          "weight": 6,
+          "weighted_score": 4.5,
+          "evidence": [
+            {
+              "text": "Mechanism_vs_evidence: if the text had described a molecular mechanism in mice and applied it directly to human cognition without caveats",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive alternative hypothesis",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "2 alternative hypotheses considered",
+            "2/2 genuinely diverse alternatives"
+          ]
+        },
+        {
+          "dimension": "self_monitoring_quality",
+          "raw_score": 0.6000000000000001,
+          "weight": 8,
+          "weighted_score": 4.8,
+          "evidence": [
+            {
+              "text": "Is the study actually solid? Yes—the summary reflects responsible communication of animal model findings with appropriate limitations",
+              "source_field": "self_check[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Most substantive self-verification step",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "4 self-check items",
+            "Self-check quality: 0 deep, 4 arithmetic, 0 fluff"
+          ]
+        },
+        {
+          "dimension": "mechanism_quality",
+          "raw_score": 0.0,
+          "weight": 10,
+          "weighted_score": 0.0,
+          "evidence": [],
+          "notes": [
+            "Neither names concept nor explains mechanism"
+          ]
+        },
+        {
+          "dimension": "communication_efficiency",
+          "raw_score": 1.0,
+          "weight": 10,
+          "weighted_score": 10.0,
+          "evidence": [],
+          "notes": [
+            "Signal density: 0.71, 408 words"
+          ]
+        },
+        {
+          "dimension": "insight_depth",
+          "raw_score": 1.0,
+          "weight": 8,
+          "weighted_score": 8.0,
+          "evidence": [
+            {
+              "text": "scope: the text stays within animal model findings and does not general",
+              "source_field": "(output text)",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Insight 'animal model' matched (exact)",
+              "role": "supporting"
+            }
+          ],
+          "notes": [
+            "Key insights: 2 full / 2"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "category": "wrong_answer",
+          "severity": "critical",
+          "description": "Answer does not match expected 'mechanism_vs_evidence'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Incorrect answer",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        },
+        {
+          "category": "unsupported_conclusion",
+          "severity": "moderate",
+          "description": "Final answer lacks load-bearing or supporting step grounding",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Weakly grounded conclusion",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "support_strength",
+          "confidence": "MEDIUM CONFIDENCE"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The study was conducted with appropriate controls (e.g., pla...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The study was conducted with appropriate controls (e.g., placebo group, age-matched controls)",
+              "source_field": "assumptions[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "unused_assumption",
+          "severity": "stylistic",
+          "description": "Assumption 'The maze navigation and memory tasks were validated measures...' is declared but not referenced in reasoning",
+          "evidence": [
+            {
+              "text": "The maze navigation and memory tasks were validated measures of cognitive function in mice",
+              "source_field": "assumptions[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unused assumption",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "assumption_discipline",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'Whether the maze and memory tasks are validated cognitive me...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The actual effect sizes and statistical significance (not pr...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The actual effect sizes and statistical significance (not provided in the summary)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "decorative_uncertainty",
+          "severity": "stylistic",
+          "description": "Uncertainty 'The specific dosing regimen and whether it was optimized or ...' is listed but not addressed",
+          "evidence": [
+            {
+              "text": "The specific dosing regimen and whether it was optimized or exploratory",
+              "source_field": "uncertainties[4]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Decorative uncertainty",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "uncertainty_handling",
+          "confidence": "HEURISTIC"
+        },
+        {
+          "category": "wrong_answer",
+          "severity": "major",
+          "description": "Study classification incorrect: expected 'mechanism_vs_evidence', detected 'solid'",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Agent's classification",
+              "role": "supporting"
+            }
+          ],
+          "impact_on_score": "correctness",
+          "confidence": "HIGH CONFIDENCE"
+        }
+      ],
+      "consistency_findings": [
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 1 has low overlap with final answer (0/9 content words)",
+          "evidence": [
+            {
+              "text": "The study is experimental (not observational), so causal claims about the antioxidant blend are justified",
+              "source_field": "key_claims[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 2 has low overlap with final answer (0/10 content words)",
+          "evidence": [
+            {
+              "text": "The authors appropriately limit claims to 'potential' and explicitly defer to pending human trials",
+              "source_field": "key_claims[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 3 has low overlap with final answer (0/11 content words)",
+          "evidence": [
+            {
+              "text": "Substantive caveats about dosing complexity and toxicity risk demonstrate epistemic humility, not decorative uncertainty",
+              "source_field": "key_claims[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "answer_claim_alignment",
+          "status": "warning",
+          "description": "Key claim 4 has low overlap with final answer (0/7 content words)",
+          "evidence": [
+            {
+              "text": "No unsupported generalization from mice to humans is made in the text",
+              "source_field": "key_claims[3]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": "assertion",
+              "relevance": "Claim not reflected in answer",
+              "role": "supporting"
+            },
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Answer text for comparison",
+              "role": "supporting"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 2 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)",
+              "source_field": "uncertainties[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "decorative_uncertainty",
+          "status": "warning",
+          "description": "Uncertainty 3 appears decorative — not addressed in reasoning or self-check",
+          "evidence": [
+            {
+              "text": "The actual effect sizes and statistical significance (not provided in the summary)",
+              "source_field": "uncertainties[2]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Listed but not addressed in reasoning",
+              "role": "missing_expected"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 1 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Overclaim: if the authors had stated 'this will prevent age-related memory loss in humans' rather than 'potential for preventing'",
+              "source_field": "alternative_hypotheses[0]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        },
+        {
+          "check_type": "weak_alternative",
+          "status": "minor",
+          "description": "Alternative hypothesis 2 is stated without rejection reasoning",
+          "evidence": [
+            {
+              "text": "Mechanism_vs_evidence: if the text had described a molecular mechanism in mice and applied it directly to human cognition without caveats",
+              "source_field": "alternative_hypotheses[1]",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "No explanation for why rejected",
+              "role": "weakening"
+            }
+          ],
+          "confidence": "HEURISTIC"
+        }
+      ],
+      "forensic_flags": [
+        {
+          "flag_type": "well_reasoned_wrong",
+          "description": "Wrong answer but structured reasoning — may have a subtle logic error",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Wrong despite good reasoning",
+              "role": "supporting"
+            }
+          ],
+          "severity": "major"
+        },
+        {
+          "flag_type": "unsupported_conclusion_claims",
+          "description": "1/1 conclusion claims lack step support",
+          "evidence": [
+            {
+              "text": "solid",
+              "source_field": "final_answer",
+              "char_start": null,
+              "char_end": null,
+              "claim_type": null,
+              "relevance": "Unsupported conclusion claim",
+              "role": "weakening"
+            }
+          ],
+          "severity": "moderate"
+        }
+      ],
+      "reasoning_graph": {
+        "claims": [
+          {
+            "text": "The study was conducted with appropriate controls (e.g., placebo group, age-matched controls)",
+            "source_field": "assumptions[0]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The maze navigation and memory tasks were validated measures of cognitive function in mice",
+            "source_field": "assumptions[1]",
+            "claim_role": "assumption",
+            "used": false,
+            "addressed": true
+          },
+          {
+            "text": "The antioxidant blend composition and dosing are clearly specified",
+            "source_field": "assumptions[2]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors' caution about dosing reflects genuine uncertainty rather than performative hedging",
+            "source_field": "assumptions[3]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The claim about 'potential' is genuinely prospective, not disguised as established fact",
+            "source_field": "assumptions[4]",
+            "claim_role": "assumption",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified the core claims: antioxidant blend improved maze performance, memory, and muscle endurance in aged mice",
+            "source_field": "steps[0]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for causal language: the text uses 'administered...and found,' which is appropriate for experimental design (not correlational)",
+            "source_field": "steps[1]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Evaluated mechanism-to-human translation: the authors explicitly state this is 'potential' and that 'clinical studies in humans are still pending'—they do NOT claim the mechanism transfers to humans",
+            "source_field": "steps[2]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Assessed overclaim: the authors acknowledge complexity of dosing and potential harms, showing epistemic restraint",
+            "source_field": "steps[3]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Checked for decorative uncertainty: the caveats (dosing complexity, vitamin toxicity risk, pending human trials) are substantive, not merely rhetorical",
+            "source_field": "steps[4]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Identified confounders: none obvious in the text; aged mice are a standard model for aging research",
+            "source_field": "steps[5]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Verified scope: the text stays within animal model findings and does not generalize to human outcomes",
+            "source_field": "steps[6]",
+            "claim_role": "assertion",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The study is experimental (not observational), so causal claims about the antioxidant blend are justified",
+            "source_field": "key_claims[0]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "The authors appropriately limit claims to 'potential' and explicitly defer to pending human trials",
+            "source_field": "key_claims[1]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Substantive caveats about dosing complexity and toxicity risk demonstrate epistemic humility, not decorative uncertainty",
+            "source_field": "key_claims[2]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "No unsupported generalization from mice to humans is made in the text",
+            "source_field": "key_claims[3]",
+            "claim_role": "claim",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Overclaim: if the authors had stated 'this will prevent age-related memory loss in humans' rather than 'potential for preventing'",
+            "source_field": "alternative_hypotheses[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Mechanism_vs_evidence: if the text had described a molecular mechanism in mice and applied it directly to human cognition without caveats",
+            "source_field": "alternative_hypotheses[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Whether the study included appropriate control groups (not stated in the summary)",
+            "source_field": "uncertainties[0]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the maze and memory tasks are validated cognitive measures in aged mice (assumed but not confirmed)",
+            "source_field": "uncertainties[1]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The actual effect sizes and statistical significance (not provided in the summary)",
+            "source_field": "uncertainties[2]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Whether the antioxidant blend is novel or a known combination",
+            "source_field": "uncertainties[3]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "The specific dosing regimen and whether it was optimized or exploratory",
+            "source_field": "uncertainties[4]",
+            "claim_role": "challenge",
+            "used": true,
+            "addressed": false
+          },
+          {
+            "text": "Did I flag a problem that doesn't exist? No—the text genuinely avoids overclaiming and includes appropriate caveats",
+            "source_field": "self_check[0]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a correlation-vs-causation issue? No—the experimental design (administration of treatment) supports causal inference",
+            "source_field": "self_check[1]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Did I miss a mechanism-vs-evidence problem? No—the authors do not apply a mechanistic explanation from mice to humans",
+            "source_field": "self_check[2]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "Is the study actually solid? Yes—the summary reflects responsible communication of animal model findings with appropriate limitations",
+            "source_field": "self_check[3]",
+            "claim_role": "check",
+            "used": true,
+            "addressed": true
+          },
+          {
+            "text": "solid",
+            "source_field": "final_answer",
+            "claim_role": "conclusion",
+            "used": true,
+            "addressed": true
+          }
+        ],
+        "relations": [
+          {
+            "source_idx": 2,
+            "target_idx": 5,
+            "relation": "assumes",
+            "strength": 0.3333333333333333
+          },
+          {
+            "source_idx": 4,
+            "target_idx": 7,
+            "relation": "assumes",
+            "strength": 0.2857142857142857
+          },
+          {
+            "source_idx": 24,
+            "target_idx": 6,
+            "relation": "checks",
+            "strength": 0.2727272727272727
+          }
+        ],
+        "unused_assumptions": [
+          0,
+          1
+        ],
+        "unaddressed_uncertainties": [
+          19,
+          20,
+          22
+        ],
+        "unsupported_conclusions": [
+          27
+        ],
+        "fluff_self_checks": [],
+        "support_chain_length": 0,
+        "conclusion_grounded": false
+      },
+      "judge_result": {
+        "enabled": false,
+        "dimension_scores": {},
+        "evidence_citations": [],
+        "failure_modes": [],
+        "claim_audit": [],
+        "comparative_note": "",
+        "judge_confidence": 0.0,
+        "raw_output": ""
+      },
+      "claim_check_results": [],
+      "mechanism_analysis": {
+        "concept_named": false,
+        "mechanism_described": false,
+        "mechanism_grounded_to_case": false,
+        "named_concepts": [],
+        "mechanism_sentences": [],
+        "grounding_sentences": [],
+        "missing_elements": [
+          "concept not named",
+          "mechanism not described",
+          "mechanism not grounded to case data"
+        ]
+      },
+      "grounding_audit": {
+        "total_conclusion_claims": 1,
+        "directly_supported": 0,
+        "indirectly_supported": 0,
+        "unsupported": 1,
+        "contradicted": 0,
+        "support_paths": [
+          "UNSUPPORTED: 'solid...'"
+        ],
+        "unsupported_claims": [
+          "solid"
+        ]
+      },
+      "step_check_results": [],
+      "reasoning_integrity": {
+        "classification": "well_supported",
+        "load_bearing_mask": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "failed_load_bearing": [],
+        "n_intermediate_errors": 0,
+        "n_load_bearing_errors": 0
+      },
+      "forecast_integrity": {},
+      "study_forensics": {
+        "is_study_forensics": true,
+        "gold_label": "mechanism_vs_evidence",
+        "detected_label": "solid",
+        "label_correct": false,
+        "expected_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "detected_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "conclusion_exceeds_results",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "mechanism_not_demonstrated",
+          "correlation_as_causation"
+        ],
+        "matched_findings": [
+          "mechanism_not_demonstrated",
+          "conclusion_exceeds_results"
+        ],
+        "missed_findings": [],
+        "extra_findings": [
+          "cautious_scope_control",
+          "none_or_minor",
+          "unsupported_generalization",
+          "decorative_uncertainty",
+          "correlation_as_causation"
+        ],
+        "false_positives": [],
+        "finding_recall": 1.0,
+        "hedge_overclaim": {
+          "is_suspicious": false,
+          "hedge_phrases": [],
+          "null_outcome_markers": [],
+          "limitation_markers": [],
+          "small_effect_detected": false,
+          "agent_flagged": true
+        },
+        "scores": {
+          "label_score": 0.0,
+          "finding_recall": 1.0,
+          "false_positive_penalty": 0.0
+        }
+      },
+      "failure_modes": [
+        "wrong_answer",
+        "unsupported_conclusion",
+        "unused_assumption",
+        "unused_assumption",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "decorative_uncertainty",
+        "wrong_answer"
+      ],
+      "notes": [
+        "No match (got: solid)",
+        "Key insights: 2 full / 2",
+        "Support classification: 0 load-bearing, 0 supporting, 0 mentioned / 7",
+        "Reasoning graph: conclusion not well grounded",
+        "7 reasoning steps",
+        "Low step utility: 0/7 steps contribute",
+        "Steps introduce new information consistently",
+        "High step density (0.75)",
+        "5/5 substantive assumptions",
+        "2 unused assumption(s)",
+        "5 uncertainties (5 substantive)",
+        "3 decorative uncertainty(ies)",
+        "Confidence 0.88",
+        "2 alternative hypotheses considered",
+        "2/2 genuinely diverse alternatives",
+        "4 self-check items",
+        "Self-check quality: 0 deep, 4 arithmetic, 0 fluff",
+        "Neither names concept nor explains mechanism",
+        "Signal density: 0.71, 408 words"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-08T08:24:28.399478+00:00",
+  "metadata": {}
+}

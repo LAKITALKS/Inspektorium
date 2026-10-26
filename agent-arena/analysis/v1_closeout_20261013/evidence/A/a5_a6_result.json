@@ -1,0 +1,428 @@
+{
+ "fixture_notice": "SYNTHETIC TEST FIXTURE — not an empirical model response",
+ "agent_arena_version": "1.0.0",
+ "agent_arena_path": "__LOCAL_HOME__/Documents/Projects/agent-arena/src/agent_arena",
+ "setup_predecessor": {
+  "authorization_id": "TEST-LIVE-AUTH",
+  "attempts": 1
+ },
+ "A5_first_run": {
+  "status": "REVIEW_REQUIRED",
+  "errors": [
+   "phase9_history_review: Review open: automatic reviews executed (counterreview completed; stability completed); the material conflict or UNKNOWN remains open"
+  ],
+  "requests_sent_to_double": 3,
+  "provider_network_attempts": 1,
+  "route": "HUMAN_REVIEW_REQUIRED",
+  "execution_status": "completed",
+  "attempts": [
+   [
+    "counterreview",
+    "completed"
+   ],
+   [
+    "stability",
+    "completed"
+   ]
+  ],
+  "valid": true,
+  "bundle": "succ1-out/49e334b2-e271-49d3-9047-241f47835800",
+  "revision_id": "49e334b2-e271-49d3-9047-241f47835800",
+  "run_id": "78fedda5-fc6e-4b6f-93bb-39b7fe53dd14",
+  "case_id": "p9case:dba573bb6b4a85ef1fb37536",
+  "authorization_ids": [
+   "EVIDENCE-A-SYNTH-SUCC-1"
+  ]
+ },
+ "A5_ledger_after_first_run": {
+  "terminal_keys": [
+   "evidence-a-synthetic-conflict|claude-haiku-5-5@3|primary",
+   "evidence-a-synthetic-conflict|claude-haiku-5-5@3|counterreview",
+   "evidence-a-synthetic-conflict|claude-haiku-5-5@3|stability"
+  ],
+  "review_cap_claims": [
+   "evidence-a-synthetic-conflict|claude-haiku-5-5@3|counterreview",
+   "evidence-a-synthetic-conflict|claude-haiku-5-5@3|stability"
+  ],
+  "attempts": 3
+ },
+ "A5_resume_same_run": {
+  "status": "PREFLIGHT_BLOCKED",
+  "errors": [
+   "Slot already answered; a completed live slot is never resent"
+  ],
+  "path": null,
+  "requests_sent_to_double": 0,
+  "provider_network_attempts": 0,
+  "authorization_dir_byte_identical": true,
+  "no_new_bundle": true
+ },
+ "A5_direct_review_reexecution_same_state": {
+  "counterreview": {
+   "requests_sent_to_double": 0,
+   "provider_network_attempts": 0,
+   "returned_attempts": [
+    [
+     "counterreview",
+     "completed"
+    ],
+    [
+     "stability",
+     "completed"
+    ]
+   ]
+  },
+  "stability": {
+   "requests_sent_to_double": 0,
+   "provider_network_attempts": 0,
+   "returned_attempts": [
+    [
+     "counterreview",
+     "completed"
+    ],
+    [
+     "stability",
+     "completed"
+    ]
+   ]
+  }
+ },
+ "A5_authorization_dir_byte_identical_after_reexecution": true,
+ "A5_inspect_api_3x": [
+  {
+   "valid": true,
+   "status": "REVIEW_REQUIRED"
+  },
+  {
+   "valid": true,
+   "status": "REVIEW_REQUIRED"
+  },
+  {
+   "valid": true,
+   "status": "REVIEW_REQUIRED"
+  }
+ ],
+ "A5_inspect_cli_3x": [
+  {
+   "argv": [
+    "agent-arena",
+    "audit",
+    "inspect",
+    "--bundle",
+    "<scratch>/a5a6/succ1-out/49e334b2-e271-49d3-9047-241f47835800"
+   ],
+   "exit": 0,
+   "stdout": {
+    "valid": true,
+    "status": "REVIEW_REQUIRED",
+    "errors": []
+   },
+   "stderr_tail": [],
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  },
+  {
+   "argv": [
+    "agent-arena",
+    "audit",
+    "inspect",
+    "--bundle",
+    "<scratch>/a5a6/succ1-out/49e334b2-e271-49d3-9047-241f47835800"
+   ],
+   "exit": 0,
+   "stdout": {
+    "valid": true,
+    "status": "REVIEW_REQUIRED",
+    "errors": []
+   },
+   "stderr_tail": [],
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  },
+  {
+   "argv": [
+    "agent-arena",
+    "audit",
+    "inspect",
+    "--bundle",
+    "<scratch>/a5a6/succ1-out/49e334b2-e271-49d3-9047-241f47835800"
+   ],
+   "exit": 0,
+   "stdout": {
+    "valid": true,
+    "status": "REVIEW_REQUIRED",
+    "errors": []
+   },
+   "stderr_tail": [],
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  }
+ ],
+ "A5_replay_api_3x_from_copy": [
+  {
+   "status": "REVIEW_REQUIRED",
+   "valid": true,
+   "provider_network_attempts": 0,
+   "attempts": [
+    [
+     "counterreview",
+     "completed"
+    ],
+    [
+     "stability",
+     "completed"
+    ]
+   ],
+   "raw_sha256_by_origin_equal_to_live": true
+  },
+  {
+   "status": "REVIEW_REQUIRED",
+   "valid": true,
+   "provider_network_attempts": 0,
+   "attempts": [
+    [
+     "counterreview",
+     "completed"
+    ],
+    [
+     "stability",
+     "completed"
+    ]
+   ],
+   "raw_sha256_by_origin_equal_to_live": true
+  },
+  {
+   "status": "REVIEW_REQUIRED",
+   "valid": true,
+   "provider_network_attempts": 0,
+   "attempts": [
+    [
+     "counterreview",
+     "completed"
+    ],
+    [
+     "stability",
+     "completed"
+    ]
+   ],
+   "raw_sha256_by_origin_equal_to_live": true
+  }
+ ],
+ "A5_replay_cli_3x_from_copy": [
+  {
+   "argv": [
+    "agent-arena",
+    "audit",
+    "run",
+    "--replay",
+    "--task",
+    "<scratch>/a5a6/task_a.json",
+    "--authorization-dir",
+    "<scratch>/a5a6/succ1-copy",
+    "--profile",
+    "claude-haiku-5-5@3",
+    "--output-root",
+    "<scratch>/a5a6/replay-cli-0"
+   ],
+   "exit": 2,
+   "stdout": {
+    "status": "REVIEW_REQUIRED",
+    "path": "<scratch>/a5a6/replay-cli-0/cb599fe8-f3b4-4c3c-9383-b48eccd32e19",
+    "errors": [
+     "phase9_history_review: Review open: automatic reviews executed (counterreview completed; stability completed); the material conflict or UNKNOWN remains open"
+    ]
+   },
+   "stderr_tail": [],
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  },
+  {
+   "argv": [
+    "agent-arena",
+    "audit",
+    "run",
+    "--replay",
+    "--task",
+    "<scratch>/a5a6/task_a.json",
+    "--authorization-dir",
+    "<scratch>/a5a6/succ1-copy",
+    "--profile",
+    "claude-haiku-5-5@3",
+    "--output-root",
+    "<scratch>/a5a6/replay-cli-1"
+   ],
+   "exit": 2,
+   "stdout": {
+    "status": "REVIEW_REQUIRED",
+    "path": "<scratch>/a5a6/replay-cli-1/6edde8f5-74af-4490-addf-198ade03d75d",
+    "errors": [
+     "phase9_history_review: Review open: automatic reviews executed (counterreview completed; stability completed); the material conflict or UNKNOWN remains open"
+    ]
+   },
+   "stderr_tail": [],
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  },
+  {
+   "argv": [
+    "agent-arena",
+    "audit",
+    "run",
+    "--replay",
+    "--task",
+    "<scratch>/a5a6/task_a.json",
+    "--authorization-dir",
+    "<scratch>/a5a6/succ1-copy",
+    "--profile",
+    "claude-haiku-5-5@3",
+    "--output-root",
+    "<scratch>/a5a6/replay-cli-2"
+   ],
+   "exit": 2,
+   "stdout": {
+    "status": "REVIEW_REQUIRED",
+    "path": "<scratch>/a5a6/replay-cli-2/6317010f-c483-4974-9dae-cab1557e3a93",
+    "errors": [
+     "phase9_history_review: Review open: automatic reviews executed (counterreview completed; stability completed); the material conflict or UNKNOWN remains open"
+    ]
+   },
+   "stderr_tail": [],
+   "netguard": {
+    "refused_real_network_attempts": 0,
+    "by_kind": {
+     "httpx.Client.send": 0,
+     "httpx.AsyncClient.send": 0,
+     "httpx.HTTPTransport.handle_request": 0,
+     "httpx.AsyncHTTPTransport.handle_async_request": 0,
+     "socket.connect": 0,
+     "socket.connect_ex": 0,
+     "socket.create_connection": 0
+    },
+    "mock_transport_sends": 0
+   }
+  }
+ ],
+ "A5_copy_byte_identical_after_replays": true,
+ "A5_source_authorization_byte_identical": true,
+ "A5_real_network_refused_so_far": 0,
+ "A6_new_authorization_same_input": {
+  "status": "REVIEW_REQUIRED",
+  "errors": [
+   "phase9_history_review: Review open: automatic reviews executed (counterreview completed; stability completed); the material conflict or UNKNOWN remains open"
+  ],
+  "requests_sent_to_double": 3,
+  "provider_network_attempts": 1,
+  "valid": true,
+  "attempts": [
+   [
+    "counterreview",
+    "completed"
+   ],
+   [
+    "stability",
+    "completed"
+   ]
+  ],
+  "first": {
+   "revision_id": "49e334b2-e271-49d3-9047-241f47835800",
+   "run_id": "78fedda5-fc6e-4b6f-93bb-39b7fe53dd14",
+   "case_id": "p9case:dba573bb6b4a85ef1fb37536",
+   "authorization_ids": [
+    "EVIDENCE-A-SYNTH-SUCC-1"
+   ]
+  },
+  "second": {
+   "revision_id": "b540afdf-a689-4f7b-b32f-2774ca5f258a",
+   "run_id": "705c5a65-d650-40b8-9f02-99ee88ad815e",
+   "case_id": "p9case:dba573bb6b4a85ef1fb37536",
+   "authorization_ids": [
+    "EVIDENCE-A-SYNTH-SUCC-2"
+   ]
+  },
+  "revision_id_differs": true,
+  "run_id_differs": true,
+  "same_case_key": true,
+  "same_task_in_both_records": true,
+  "bundle": "succ2-out/b540afdf-a689-4f7b-b32f-2774ca5f258a"
+ },
+ "A6_successor_claims_written_in_scratch_only": [
+  "pred/successor_claim.json",
+  "succ1/successor_claim.json"
+ ],
+ "live_sessions_opened_in_live_mode": [
+  "pred",
+  "pred",
+  "succ1",
+  "succ1",
+  "succ1",
+  "succ1",
+  "succ1",
+  "succ2"
+ ],
+ "real_network_attempts_refused": 0,
+ "real_network_by_kind": {
+  "httpx.Client.send": 0,
+  "httpx.AsyncClient.send": 0,
+  "httpx.HTTPTransport.handle_request": 0,
+  "httpx.AsyncHTTPTransport.handle_async_request": 0,
+  "socket.connect": 0,
+  "socket.connect_ex": 0,
+  "socket.create_connection": 0
+ },
+ "mock_transport_sends_in_process": 7
+}

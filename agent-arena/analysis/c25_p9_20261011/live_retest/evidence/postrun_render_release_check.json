@@ -1,0 +1,301 @@
+{
+  "bundles": [
+    {
+      "path": "bundles/claude-haiku-5-5@3/2b3197b1-8a36-454c-af11-68bbd343d03a",
+      "task": "aa-p10-live-retest-LR-01",
+      "bundle_valid": true,
+      "status": "READY_FOR_RELEASE",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "READY&#95;FOR&#95;RELEASE — local artifact status",
+      "release_intent": null,
+      "test_marked": null,
+      "failing_controls": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "open_material_model_host_conflict": false
+    },
+    {
+      "path": "bundles/claude-haiku-5-5@3/39abb806-d9db-4c35-a6d4-d3736e21ca0d",
+      "task": "aa-p10-live-retest-LR-02",
+      "bundle_valid": true,
+      "status": "READY_FOR_RELEASE",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "READY&#95;FOR&#95;RELEASE — local artifact status",
+      "release_intent": null,
+      "test_marked": null,
+      "failing_controls": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "open_material_model_host_conflict": false
+    },
+    {
+      "path": "bundles/claude-haiku-5-5@3/d856f044-59f8-4f74-8b04-b48cc9250d9e",
+      "task": "aa-p10-live-retest-LR-03",
+      "bundle_valid": true,
+      "status": "ANALYSIS_INCOMPLETE",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "ANALYSIS&#95;INCOMPLETE — local artifact status",
+      "release_intent": null,
+      "test_marked": null,
+      "failing_controls": [
+        "analysis_source",
+        "finding_artifact_binding",
+        "phase8_semantics_taxonomy",
+        "phase9_history_review"
+      ],
+      "p9_route": "HUMAN_REVIEW_REQUIRED",
+      "p9_mandatory": true,
+      "open_material_model_host_conflict": false
+    },
+    {
+      "path": "bundles/claude-sonnet-5-5@3/0055a768-d145-437e-8b8f-6dea67819abf",
+      "task": "aa-p10-live-retest-LR-01",
+      "bundle_valid": true,
+      "status": "READY_FOR_RELEASE",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "READY&#95;FOR&#95;RELEASE — local artifact status",
+      "release_intent": null,
+      "test_marked": null,
+      "failing_controls": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "open_material_model_host_conflict": false
+    },
+    {
+      "path": "bundles/claude-sonnet-5-5@3/44b587d3-0d46-41c0-9984-97dbbc14c6bf",
+      "task": "aa-p10-live-retest-LR-02",
+      "bundle_valid": true,
+      "status": "REVIEW_REQUIRED",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "REVIEW&#95;REQUIRED — local artifact status",
+      "release_intent": null,
+      "test_marked": null,
+      "failing_controls": [
+        "phase9_history_review"
+      ],
+      "p9_route": "UNRESOLVED",
+      "p9_mandatory": true,
+      "open_material_model_host_conflict": true
+    },
+    {
+      "path": "bundles/claude-sonnet-5-5@3/cab93a7a-9b80-4d9c-bae7-14e8676941f2",
+      "task": "aa-p10-live-retest-LR-03",
+      "bundle_valid": true,
+      "status": "REVIEW_REQUIRED",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "REVIEW&#95;REQUIRED — local artifact status",
+      "release_intent": null,
+      "test_marked": null,
+      "failing_controls": [
+        "phase9_history_review"
+      ],
+      "p9_route": "HUMAN_REVIEW_REQUIRED",
+      "p9_mandatory": true,
+      "open_material_model_host_conflict": true
+    }
+  ],
+  "released": [
+    {
+      "path": "released/claude-haiku-5-5@3/LR-01/c0d46d8c-5e3a-4f61-9a7a-6588a77f21fd",
+      "task": "aa-p10-live-retest-LR-01",
+      "bundle_valid": true,
+      "status": "RELEASED",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "RELEASED — local artifact status",
+      "release_intent": {
+        "reason": "AA-P10 live retest LR-01: technical release-path check on a synthetic sketch case (not a real study, no gold label)",
+        "reviewer": "TEST ONLY - not a scientific release",
+        "scope": "local_artifact_only"
+      },
+      "test_marked": true,
+      "failing_controls": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "open_material_model_host_conflict": false
+    },
+    {
+      "path": "released/claude-haiku-5-5@3/LR-02/732a4d49-2f45-48f8-b4f9-adb502de6ad2",
+      "task": "aa-p10-live-retest-LR-02",
+      "bundle_valid": true,
+      "status": "RELEASED",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "RELEASED — local artifact status",
+      "release_intent": {
+        "reason": "AA-P10 live retest LR-02: technical release-path check on a synthetic sketch case (not a real study, no gold label)",
+        "reviewer": "TEST ONLY - not a scientific release",
+        "scope": "local_artifact_only"
+      },
+      "test_marked": true,
+      "failing_controls": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "open_material_model_host_conflict": false
+    },
+    {
+      "path": "released/claude-sonnet-5-5@3/LR-01/8127951d-d846-4193-bbe4-fedcdb46a697",
+      "task": "aa-p10-live-retest-LR-01",
+      "bundle_valid": true,
+      "status": "RELEASED",
+      "report_hashes_match": true,
+      "markdown_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "html_state_rows": {
+        "model judgment (composite)": true,
+        "host evidence derivation (composite)": true,
+        "model/host conflicts": true,
+        "review route": true,
+        "local release": true,
+        "mandatory review": true
+      },
+      "markdown_status_line": "RELEASED — local artifact status",
+      "release_intent": {
+        "reason": "AA-P10 live retest LR-01: technical release-path check on a synthetic sketch case (not a real study, no gold label)",
+        "reviewer": "TEST ONLY - not a scientific release",
+        "scope": "local_artifact_only"
+      },
+      "test_marked": true,
+      "failing_controls": [],
+      "p9_route": "AUTO_RESOLVABLE",
+      "p9_mandatory": false,
+      "open_material_model_host_conflict": false
+    }
+  ],
+  "released_with_open_mandatory_review_or_material_conflict": [],
+  "all_valid": true,
+  "all_reports_show_states": true,
+  "all_releases_test_marked": true
+}

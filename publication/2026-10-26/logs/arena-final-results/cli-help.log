@@ -1,0 +1,14 @@
+Usage: agent-arena audit [OPTIONS] COMMAND [ARGS]...
+
+  Canonical AA-P10 local audit: recorded offline, authorized live or live
+  replay. No canonical PDF.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  inspect   Revalidate files/raw/history/current controls, zero calls.
+  release   Explicit local-artifact release of final checked MD/HTML.
+  review    Explicit host human selection/correction, immutable revision.
+  run       Run one case through the real runner/parser/P8/P9/controls.
+  validate  Validate input without a provider call.

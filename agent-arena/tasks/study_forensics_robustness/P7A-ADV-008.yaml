@@ -1,0 +1,164 @@
+id: P7A-ADV-008
+title: "Adversarial A4: 'Low T' - testosterone for all tired aging men (hypogonadism-subgroup benefit generalized to normal aging)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: subgroup_to_general_population
+ambiguity_level: low
+prompt: |
+  A direct-to-consumer "Low T" campaign asks: "Feeling tired, low energy, low sex drive as you get older? It could be Low T. Testosterone therapy can restore your energy, drive, and vitality — ask your doctor if it's right for you."
+
+  Testosterone replacement is an approved, effective treatment for men with classical hypogonadism — low testosterone caused by an identifiable disease of the testicles, pituitary, or hypothalamus. The US Food and Drug Administration concluded (2015) that the benefit of testosterone therapy for "age-related hypogonadism" (low testosterone attributed simply to aging) is NOT established, required labeling to restrict approved use to classical hypogonadism, and added a warning about a possible increased risk of heart attack and stroke. "Low T" marketing was associated with a large rise in testosterone prescribing to middle-aged and older men.
+context: |
+  Evidence tier: a regulator's assessment of the approved indication. A benefit real for a specific
+  subgroup (men with disease-caused, classical hypogonadism) is generalized to the broad population of
+  aging men with nonspecific symptoms ("Low T"). The FDA found the benefit for age-related low
+  testosterone is not established and flagged possible cardiovascular harm. The defect is
+  subgroup-to-general-population extrapolation = overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  Testosterone therapy genuinely benefits men with classical (disease-caused) hypogonadism, but the
+  "Low T" campaign generalizes it to any older man with tiredness or low libido, where the FDA found
+  the benefit is not established and there is possible cardiovascular harm. Extending a subgroup benefit
+  to the general aging population is overclaim (extrapolation to an unstudied population). It is not
+  correlation_vs_causation (no observational-to-causal design error is central) or mechanism_vs_evidence
+  (no animal/preclinical mechanism is the basis).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: aging men with tiredness/low libido have "Low T" and should take testosterone
+     to restore energy, drive, and vitality.
+  2. What the strongest evidence establishes: testosterone is effective for classical (disease-caused)
+     hypogonadism; the FDA (2015) found benefit for age-related low testosterone is NOT established and
+     added a possible heart-attack/stroke warning.
+  3. Adversarial surface feature: a real medical indication (hypogonadism) plus common, relatable
+     symptoms make the generalized claim feel legitimate.
+  4. Actual forensic mismatch: the benefit is specific to a disease-defined subgroup; extending it to
+     ordinary aging men with nonspecific symptoms is unsupported and carries possible harm.
+  5. Primary frozen label: overclaim - extrapolation of a subgroup-specific benefit to a broad,
+     unstudied population.
+  6. Why: the core error is generalization beyond the evidenced (disease) population; no specific
+     structural trigger fires.
+  7. Strongest competing label: solid - testosterone really does treat classical hypogonadism, so the
+     claim has a kernel of truth.
+  8. Why it loses: the campaign addresses all symptomatic aging men, where benefit is not established
+     and harm is possible; a subgroup benefit generalized beyond its population is overclaim.
+  9. What would change the verdict: restricting the message to men with diagnosed classical
+     hypogonadism (and noting cardiovascular risk) would make it solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: testosterone therapy is a genuine, effective
+  treatment for hypogonadism, so the claim is not baseless. It loses because it generalizes that
+  disease-specific benefit to any aging man with nonspecific symptoms, where the FDA found benefit is
+  not established and flagged possible harm - the framing exceeds the evidence = overclaim.
+gold_summary: |
+  A 'Low T' campaign tells tired, low-libido aging men to take testosterone for energy and vitality;
+  the benefit is established only for disease-caused (classical) hypogonadism, and the FDA (2015) found
+  no established benefit for age-related low testosterone plus possible cardiac harm. Subgroup-to-general
+  generalization = overclaim (solid tempting).
+curator_notes: |
+  Adversarial family A4 (subgroup -> general-population generalization). Real public claim: the 'Low T'
+  direct-to-consumer testosterone campaigns. Evidence: FDA 2015 restriction to classical hypogonadism +
+  cardiovascular warning (documented in the NEJM FDA perspective). Distinct from A4 gluten-free
+  (P7A-ADV-007) and from Boundary aspirin population case (013). Gold frozen before any model output.
+expected_findings:
+  - finding: subgroup_benefit_generalized
+    severity: major
+    confidence: high
+    note: "A benefit for classical (disease-caused) hypogonadism generalized to all symptomatic aging men"
+  - finding: benefit_not_established_and_possible_harm
+    severity: major
+    confidence: high
+    note: "FDA (2015): benefit for age-related low T not established; possible heart-attack/stroke risk"
+gold_evidence_spans:
+  - span: "Feeling tired, low energy, low sex drive as you get older? It could be Low T"
+    why_it_matters: "Reframes normal aging symptoms as a treatable deficiency for the whole aging population."
+    supports_finding: subgroup_benefit_generalized
+  - span: "the benefit of testosterone therapy for 'age-related hypogonadism' ... is NOT established"
+    why_it_matters: "No established benefit in the generalized population, plus possible harm."
+    supports_finding: benefit_not_established_and_possible_harm
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "subgroup to general"
+    variants: ["classical hypogonadism", "age-related", "all aging men"]
+    functional_descriptions:
+      - "A disease-specific indication is extended to ordinary aging"
+  - keyword: "benefit not established"
+    variants: ["FDA 2015", "cardiovascular risk", "labeling change"]
+    functional_descriptions:
+      - "The regulator found no established benefit for age-related low testosterone"
+common_errors:
+  - accepting a real indication (hypogonadism) as justifying broad use
+  - missing the disease-vs-aging distinction
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - subgroup_overgeneralization
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that generalizing a hypogonadism-specific benefit to all aging men is overclaim, not solid?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-008
+  case_family: adversarial
+  adversarial_family_id: A4
+  adversarial_family: "subgroup -> general-population generalization"
+  adversarial_mechanism: |
+    A benefit real for a disease-defined subgroup (men with classical, disease-caused hypogonadism) is
+    generalized to the broad population of aging men with nonspecific symptoms ("Low T"). The surface
+    pressure is that the underlying indication is genuine and the symptoms are common and relatable, so
+    the generalization feels medically legitimate. The pressure to resist: extrapolating a
+    disease-specific benefit to ordinary aging, where benefit is not established and harm is possible.
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) with one genuinely plausible alternate (solid, invited by the real
+    hypogonadism indication); the disease-vs-aging distinction decides it. A single dominant defect and
+    no competing specific trigger keep it at D2. Property-based.
+  precedence_rationale: |
+    No specific-label trigger fires: no observational dataset is read causally (rules out
+    correlation_vs_causation) and no animal/preclinical mechanism is the basis (rules out
+    mechanism_vs_evidence). The defect is generalization beyond the evidenced (disease) population =
+    overclaim, per docs/taxonomy_precedence.md (extrapolation to unstudied populations).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting only because testosterone
+    genuinely treats classical hypogonadism, not the aging population the campaign addresses.
+  steelman_challenge: |
+    Strongest case the gold is wrong: testosterone therapy is a real, effective, FDA-approved treatment
+    for hypogonadism, and some symptomatic older men do have low testosterone, so a reader could call
+    the claim solid or reasonable. Counter-evidence weighed: the FDA (2015) found benefit for
+    age-related low testosterone is not established, restricted approved use to classical hypogonadism,
+    and warned of possible cardiovascular harm; "Low T" marketing drove large prescribing increases.
+    Resolution: the subgroup-to-general extrapolation exceeds the evidence; gold remains overclaim.
+  provenance:
+    claim_source_title: "Testosterone and 'Age-Related Hypogonadism' - FDA Concerns (documents the 'Low T' claim and the FDA's restriction to classical hypogonadism)"
+    claim_source_url: "https://www.nejm.org/doi/full/10.1056/NEJMp1506632"
+    claim_source_publisher: "Testosterone manufacturers' direct-to-consumer 'Low T' campaigns (e.g., AndroGel 'Is It Low T?'); the marketing and the FDA's response are documented by the FDA and in the New England Journal of Medicine"
+    claim_source_date: "circa 2008-2015 (Low T marketing); FDA action 2015"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Direct-to-consumer 'Low T' campaigns urged aging men with nonspecific symptoms (fatigue, low libido) to consider testosterone therapy, and were associated with a large rise in prescribing. The FDA concluded in 2015 that benefit for age-related hypogonadism is not established, restricted approved use to classical (disease-caused) hypogonadism, and required a possible heart-attack/stroke warning. The frozen span is the bounded 'Low T' generalization to all symptomatic aging men."
+    claim_exact_span: "Feeling tired, low energy, low sex drive as you get older? It could be Low T. Testosterone therapy can restore your energy, drive, and vitality"
+    evidence_sources:
+      - citation: "Nguyen CP, Hirsch MS, Moeny D, et al. Testosterone and 'Age-Related Hypogonadism' - FDA Concerns. N Engl J Med 2015;373(8):689-691 (reports the 2015 FDA assessment and labeling action)"
+        url: "https://www.nejm.org/doi/full/10.1056/NEJMp1506632"
+        design: "Regulatory assessment (FDA) reported in a journal perspective"
+        population: "Men with age-related low testosterone vs classical (disease-caused) hypogonadism"
+        intervention_or_exposure: "Testosterone replacement therapy"
+        comparator: "Approved indication (classical hypogonadism) vs age-related low testosterone"
+        endpoint: "Established benefit; cardiovascular safety"
+        result: "Benefit for age-related hypogonadism not established; approved use restricted to classical hypogonadism; labeling warns of possible increased heart-attack/stroke risk"
+        source_role: regulatory_assessment
+        evidence_tier: "Regulatory assessment / labeling action"
+        limitations: "Reports the FDA's assessment; subsequent trials (e.g., TRAVERSE) further characterize cardiovascular safety in specific populations"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "subgroup (classical hypogonadism) benefit generalized to all symptomatic aging men"
+  case_fingerprint: "d43c8f716d891cdd6de75b106be723f9dbd75b632444675ae335fbe4271bd0d1"
