@@ -195,3 +195,9 @@ publication authorization, historical results, report metadata or archived
 module bytes. The 0.2.0 work changes the public dispatch layer and current
 documentation; it preserves the 1.0.1 audit runtime and its controls. New checks
 and publication decisions belong in the separate consolidation record.
+
+From Inspektorium 0.2.0 (2026-10-26), the maintainer's own code and
+documentation are licensed under the [Apache License 2.0](LICENSE); see
+[NOTICE](NOTICE). The license sentence of the 2026-10-26 publication paragraph
+above describes that publication: its releases remain under PolyForm
+Noncommercial 1.0.0. Third-party material is not relicensed.

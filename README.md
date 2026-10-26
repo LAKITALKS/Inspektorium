@@ -397,8 +397,10 @@ The adapter uses `client.messages.parse(..., output_format=ProposalBatch)`.
 One application SDK invocation and no authored semantic repair loop do not
 guarantee one HTTP attempt, bounded billing or authenticated execution.
 
-Source-available under [PolyForm Noncommercial 1.0.0](LICENSE), not an OSI
-open-source license. [CITATION.cff](CITATION.cff) identifies the current software
+From version 0.2.0, Inspektorium is licensed under the
+[Apache License 2.0](LICENSE); see [NOTICE](NOTICE). Earlier releases (v0.1.0,
+v0.1.1 and the audit runtime 1.0.1 prerelease) remain under PolyForm
+Noncommercial 1.0.0, the license they were published under. [CITATION.cff](CITATION.cff) identifies the current software
 source; historical release versions remain separately identifiable. No DOI is assigned.
 
 **Author and maintainer:** Lazaros Varvatis —

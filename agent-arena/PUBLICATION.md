@@ -6,7 +6,10 @@
 > folder names for provenance. It is not a separate product; the current
 > instrument is [Inspektorium](../README.md). The record below is kept as
 > published. In 0.2.0 the loose datasets and `run_*.py` launchers at the top of
-> this folder moved unchanged to [`research/`](research/README.md).
+> this folder moved unchanged to [`research/`](research/README.md). The rights
+> section below describes the 1.0.1 release, which remains under PolyForm
+> Noncommercial 1.0.0; from 0.2.0 the runtime is licensed under Apache-2.0
+> (see [NOTICE](NOTICE)).
 
 Version **1.0.1**, public research prerelease, derived from technical 1.0.0
 commit `9de4b76953aed778c42df994535cb29a4e0f9f5c` (tested product

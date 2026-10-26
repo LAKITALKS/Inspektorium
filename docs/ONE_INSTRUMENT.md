@@ -197,7 +197,8 @@ new live validation of the final runtime. The scientific Final v1 gate remains
 **NOT MET**. No general efficacy, safety, compliance, certification or alignment
 claim follows from the unified public entry.
 
-Lazaros Varvatis remains the author and maintainer. The unchanged
-[PolyForm Noncommercial 1.0.0 license](../LICENSE) is source-available, not an OSI
-open-source license. Existing third-party attribution and historical evidence
+Lazaros Varvatis remains the author and maintainer. From version 0.2.0 the
+instrument is licensed under the [Apache License 2.0](../LICENSE); see
+[NOTICE](../NOTICE). Earlier releases remain under PolyForm Noncommercial 1.0.0,
+as published. Existing third-party attribution and historical evidence
 limitations remain in force.

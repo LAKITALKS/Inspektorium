@@ -38,8 +38,11 @@ budget reopening follows from the unified entry or source-version change.
 - Stay within [SCOPE.md](SCOPE.md). Do not add scores, new relation labels,
   new evaluation semantics, fuzzy quote recovery or offset repositioning as a
   side effect of another change.
-- Keep [LICENSE](LICENSE) unchanged. Describe the project as source-available
-  under PolyForm Noncommercial 1.0.0, not as OSI open source.
+- Keep [LICENSE](LICENSE), the unchanged Apache License 2.0 text, and
+  [NOTICE](NOTICE) intact. From version 0.2.0 Inspektorium is licensed under
+  Apache-2.0; earlier releases remain under PolyForm Noncommercial 1.0.0, as
+  published. Do not relicense third-party material or rewrite the license
+  statements of historical records.
 - Respect existing work: do not discard, overwrite or reformat uncommitted
   changes, files outside the task, Git history or tags.
 - Local preparation is not publication. An agent does not push, open pull

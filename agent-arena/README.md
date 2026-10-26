@@ -357,7 +357,8 @@ publication commit `94eb4fc8b26c22da6a2cebdd01e5a7799750104d`, rather than to
 subsequently edited current documentation. The current public name does not
 revalidate old evidence or change old release/tag identities.
 
-Lazaros Varvatis remains the author and maintainer. This runtime remains
-source-available under the unchanged [PolyForm Noncommercial 1.0.0](../LICENSE),
-not OSI open source; existing source attribution and third-party licenses remain
-in force.
+Lazaros Varvatis remains the author and maintainer. From Inspektorium 0.2.0
+this runtime is licensed under the [Apache License 2.0](LICENSE); see
+[NOTICE](NOTICE). The 1.0.1 research prerelease remains under PolyForm
+Noncommercial 1.0.0, as published. Existing source attribution and third-party
+licenses remain in force.

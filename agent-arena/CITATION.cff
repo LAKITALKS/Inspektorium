@@ -8,7 +8,7 @@ repository-code: "https://github.com/LAKITALKS/Inspektorium"
 authors:
   - family-names: "Varvatis"
     given-names: "Lazaros"
-license: PolyForm-Noncommercial-1.0.0
+license: Apache-2.0
 abstract: >-
   Audit runtime of the Inspektorium instrument (internal/former name Agent
   Arena, retained in package, module and folder names for provenance).

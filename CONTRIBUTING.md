@@ -88,6 +88,11 @@ Inspektorium audit runtime in prose. Explain `agent-arena` as the retained
 distribution/compatibility identity, never as a second product, brand or
 release title.
 
+From version 0.2.0, Inspektorium is licensed under the
+[Apache License 2.0](LICENSE); see [NOTICE](NOTICE). Unless stated otherwise,
+contributions are submitted under the same license (section 5 of the license).
+Earlier releases remain under PolyForm Noncommercial 1.0.0, as published.
+
 Contributions must be original or use compatible, documented dependencies. Do
 not submit private datasets, proprietary prompts, credentials, copied project
 history, or implementation material from unrelated systems.

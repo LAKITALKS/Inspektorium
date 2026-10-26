@@ -14,7 +14,7 @@ abstract: >-
   package, module and folder names for provenance). It also retains a smaller
   evidence-binding reference checker.
   Technical controls and recorded provenance do not establish scientific truth.
-license: PolyForm-Noncommercial-1.0.0
+license: Apache-2.0
 keywords:
   - evidence binding
   - source grounding
