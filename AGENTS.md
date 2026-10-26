@@ -29,13 +29,32 @@ Record new checks separately under `publication/2026-10-26-unified-entry/`;
 report them as not executed until actually measured. No new live calls or
 budget reopening follows from the unified entry or source-version change.
 
+On 2026-10-26 the maintainer also decided to complete the instrument as
+**Inspektorium 0.2.0**, its single current release, and authorized the branch,
+pull request, merge, annotated tag `v0.2.0`, the GitHub release and corrections
+to the earlier release pages for this scope. Release 0.2.0 changes the license
+to Apache-2.0, moves the loose runtime-folder files unchanged to
+`agent-arena/research/` and raises the runtime distribution to 1.0.2 for the
+license and metadata change. Among the runtime Python files only the version
+string in `agent_arena/__init__.py` changes; this supersedes the 1.0.1
+byte-preservation rule above for that file only. Record the release checks in
+a new dated record under `publication/`. No live call, package-index upload,
+DOI or website change follows from this decision.
+
 ## Scope, license and publication
 
+- Name the product Inspektorium. In prose, call the audit runtime the
+  Inspektorium audit runtime. `agent-arena`, `agent_arena` and the
+  `agent-arena/` folder are technical identities retained for provenance;
+  never present them as a separate product, brand or release title.
 - Stay within [SCOPE.md](SCOPE.md). Do not add scores, new relation labels,
   new evaluation semantics, fuzzy quote recovery or offset repositioning as a
   side effect of another change.
-- Keep [LICENSE](LICENSE) unchanged. Describe the project as source-available
-  under PolyForm Noncommercial 1.0.0, not as OSI open source.
+- Keep [LICENSE](LICENSE), the unchanged Apache License 2.0 text, and
+  [NOTICE](NOTICE) intact. From version 0.2.0 Inspektorium is licensed under
+  Apache-2.0; earlier releases remain under PolyForm Noncommercial 1.0.0, as
+  published. Do not relicense third-party material or rewrite the license
+  statements of historical records.
 - Respect existing work: do not discard, overwrite or reformat uncommitted
   changes, files outside the task, Git history or tags.
 - Local preparation is not publication. An agent does not push, open pull

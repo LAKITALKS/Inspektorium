@@ -1,18 +1,20 @@
 # INSPEKTORIUM: implementation and research scope
 
-> **Current scope — 2026-10-26 maintainer clarification:** **Inspektorium** is
+> **Current scope — Inspektorium 0.2.0 (2026-10-26):** **Inspektorium** is
 > one instrument. `inspektorium audit` is its official public audit workflow;
-> Agent Arena is the old/internal name retained in implementation and provenance.
-> The root source distribution is **0.2.0**; audit delegates to the unchanged
-> **`agent-arena` 1.0.1** runtime. The smaller `inspektorium inspect` reference
+> the audit runtime is the Inspektorium audit runtime (internal/former name Agent
+> Arena, retained in package, module and folder names for provenance).
+> Release 0.2.0 ships the root distribution **0.2.0** and the runtime
+> distribution **`agent-arena` 1.0.2** (license and metadata change; runtime
+> semantics unchanged) under Apache-2.0. The smaller `inspektorium inspect` reference
 > checker retains its v0.1.1/schema 0.1 contract. See
 > [architecture and boundaries](docs/ONE_INSTRUMENT.md) and the
 > [dated consolidation record](publication/2026-10-26-unified-entry/README.md).
-> New source version does not mean a new published release. The scientific
-> Final v1 gate is not met. No new live calls.
+> The scientific Final v1 gate is not met. No new live calls.
 
-The 0.2.0 entry-point change adds no evaluation semantics and does not change
-the audit runtime's 74 Python files or its distribution version. The two
+The 0.2.0 entry-point change adds no evaluation semantics. The runtime
+distribution moves to 1.0.2 for the license and metadata change; of its 74
+Python files only `agent_arena/__init__.py` changes, for the version string. The two
 installable distributions serve one public instrument and are installed together
 with `python -m pip install . ./agent-arena`. `agent-arena audit` remains a
 compatibility entry to the same runtime. Reference-checker guarantees do not
@@ -147,15 +149,15 @@ This bounded result is not a universal font/viewer or readability guarantee.
   (P12–P13).
 - **HISTORICAL EXPERIMENTS, NOW WITH PUBLIC DERIVATIVES:** artifact-fault
   containment, zero observed A/B accuracy gain and semantic misses (I01–I03).
-  The [Arena evidence tree](agent-arena/analysis/) and
+  The [audit runtime evidence tree](agent-arena/analysis/) and
   [import map](publication/2026-10-26/import-index.json) expose reviewed sources
   and any redactions; historical results are not independently validated by
   this publication.
-- **PUBLIC ARENA RESEARCH IMPLEMENTATION:** execution authorization, budget,
+- **PUBLIC AUDIT RUNTIME RESEARCH IMPLEMENTATION:** execution authorization, budget,
   state/resume and environment controls (I04), plus P1–P7 tooling, are in the
   retained `agent-arena/` runtime distribution. Their original limits and closed budgets
   remain in force.
-- **PUBLIC ARENA PHASES 8–10:** semantic/inferential checking (R08), disagreement
+- **PUBLIC AUDIT RUNTIME PHASES 8–10:** semantic/inferential checking (R08), disagreement
   and review routing (R09), canonical artifact release and post-render QA (R10).
   These are technical research 1.0.1, derived from internal 1.0.0, not additions
   to the reference-checker pipeline. They are exposed through the public audit entry. Earlier live checks cover limited synthetic cases on
@@ -194,3 +196,11 @@ publication authorization, historical results, report metadata or archived
 module bytes. The 0.2.0 work changes the public dispatch layer and current
 documentation; it preserves the 1.0.1 audit runtime and its controls. New checks
 and publication decisions belong in the separate consolidation record.
+
+From Inspektorium 0.2.0 (2026-10-26), the maintainer's own code and
+documentation are licensed under the [Apache License 2.0](LICENSE); see
+[NOTICE](NOTICE). The license sentence of the 2026-10-26 publication paragraph
+above describes that publication: its releases remain under PolyForm
+Noncommercial 1.0.0. Third-party material is not relicensed. Runtime
+distribution 1.0.2 changes only license, metadata and the version string; the
+runtime's controls are unchanged.

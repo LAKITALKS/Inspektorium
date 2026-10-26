@@ -1,4 +1,4 @@
-include LICENSE AUTHORS.md CITATION.cff README.md PUBLICATION.md V1_SCOPE.md
+include LICENSE NOTICE AUTHORS.md CITATION.cff README.md PUBLICATION.md V1_SCOPE.md
 recursive-include src *.py
 graft tests
 graft examples

@@ -1,5 +1,14 @@
 # Research results and evidence limits
 
+> **Classification — Inspektorium 0.2.0 (2026-10-26):** Inspektorium is one
+> instrument with the official `inspektorium audit` workflow. The P1–P10
+> implementation that the dated note below calls a separate research package is
+> the Inspektorium audit runtime, retained under its internal/former name in
+> package, module and folder names for provenance; it is not a second product.
+> Dated passages that say Arena refer to that runtime. Statements that the
+> public package is 0.1.1 concern the smaller reference checker. See
+> [one instrument](docs/ONE_INSTRUMENT.md).
+
 > **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
 > Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
 > [Publication mapping and current checks](publication/2026-10-26/README.md)
@@ -253,8 +262,8 @@ is a different outcome from detecting a wrong scientific inference.
 Execution authorization, budget ledgers, state/resume authentication and
 environment binding were **REPORTED IMPLEMENTED/TESTED INTERNALLY** in that
 pilot (I04); its original report did not inspect a public implementation.
-The separate Arena implementation and its current bounded technical checks are
-now [publicly inspectable](publication/2026-10-26/VALIDATION.md). A source
+The Inspektorium audit runtime and the bounded technical checks of its first
+publication are now [publicly inspectable](publication/2026-10-26/VALIDATION.md). A source
 fingerprint in core v0.1 must not be represented as one of these execution controls.
 
 ### Study limitations
