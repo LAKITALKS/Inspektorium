@@ -5,7 +5,8 @@
 > runtime under its internal/former name, which remains in package, module and
 > folder names for provenance. It is not a separate product; the current
 > instrument is [Inspektorium](../README.md). The record below is kept as
-> published.
+> published. In 0.2.0 the loose datasets and `run_*.py` launchers at the top of
+> this folder moved unchanged to [`research/`](research/README.md).
 
 Version **1.0.1**, public research prerelease, derived from technical 1.0.0
 commit `9de4b76953aed778c42df994535cb29a4e0f9f5c` (tested product

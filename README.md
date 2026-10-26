@@ -64,8 +64,8 @@ shows the required inputs and the separate subsequent release.
 | `inspektorium audit release` | Recheck and explicitly release eligible local artifact bytes |
 
 Dependency installation may download public packages. The examples use saved
-synthetic inputs and run offline. Historical research launchers can call providers
-and are not offline demonstrations. This consolidation authorizes no live calls
+synthetic inputs and run offline. The [historical research launchers](agent-arena/research/legacy-launchers/README.md)
+can call providers and are not offline demonstrations. This consolidation authorizes no live calls
 or reopening of closed budgets. The audit live path still needs its existing
 fresh authorization and budget controls.
 

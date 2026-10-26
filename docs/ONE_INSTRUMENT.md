@@ -119,7 +119,8 @@ force-release switch. Full state meanings, controls and the live/replay contract
 are in the [runtime operational guide](../agent-arena/README.md). Live execution
 still requires the existing work-order authorization, ledger and registered
 profile. Existing budgets remain closed; this consolidation authorizes no live
-call. Historical research launchers outside the official audit entry have
+call. [Historical research launchers](../agent-arena/research/legacy-launchers/README.md)
+outside the official audit entry have
 different contracts and must not be used as offline examples.
 
 ## Runtime boundaries
