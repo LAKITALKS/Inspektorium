@@ -69,11 +69,18 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: agent-arena/pyproject.toml
+      - name: Create isolated Arena environment
+        run: |
+          python -m venv "$RUNNER_TEMP/arena-ci-env"
+          echo "$RUNNER_TEMP/arena-ci-env/bin" >> "$GITHUB_PATH"
+          echo "VIRTUAL_ENV=$RUNNER_TEMP/arena-ci-env" >> "$GITHUB_ENV"
       - name: Install public development dependencies
-        run: python -m pip install -e '.[dev,providers]' build setuptools wheel
+        run: |
+          python -c 'import sys; assert sys.prefix != sys.base_prefix'
+          python -m pip install -e '.[dev,providers]' build setuptools wheel
       - name: Arm and countercheck Python network guard
         run: |
-          python ../evidence/v0.1.1/tools/setup_env.py guard --venv "$pythonLocation"
+          python ../evidence/v0.1.1/tools/setup_env.py guard --venv "$VIRTUAL_ENV"
           python - <<'PY'
           import json, os, sys
           from pathlib import Path
@@ -83,6 +90,12 @@ jobs:
           print(json.dumps(result))
           assert result['passed']
           PY
+      - name: Check Arena environment binding
+        env:
+          EVIDENCE_NETGUARD_LOG: ${{ runner.temp }}/arena-offline.jsonl
+          PIP_NO_INDEX: "1"
+        run: |
+          python -m pytest -q tests/test_preflight_integrity.py::test_U01_material_parent_and_real_subprocess_probe_match tests/test_preflight_integrity.py::test_U10_wrong_interpreter_or_virtual_environment_changes_material_identity
       - name: Arena full acceptance
         env:
           EVIDENCE_NETGUARD_LOG: ${{ runner.temp }}/arena-offline.jsonl

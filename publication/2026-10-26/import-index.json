@@ -8,12 +8,13 @@
       "source_path": ".github/workflows/tests.yml",
       "public_path": ".github/workflows/tests.yml",
       "source_sha256": "f6422835a1841cc2da1419694e3e39127155da1aa7a0181a3e319f732ab6f4a8",
-      "public_sha256": "04d9882c550c4eda8f08a83132c430b869bf69cdcbc2419ab1cbf1960c171d7c",
+      "public_sha256": "e9acffa3e112f12df3b6f3cf8236736da0616ac27e3ad1b0c933caae74f48b88",
       "source_bytes": 621,
-      "public_bytes": 4173,
+      "public_bytes": 4913,
       "action": "integrate",
       "reasons": [
-        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff"
+        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff",
+        "2026-10-26 GitHub CI correction: run Arena in a separate bound venv and check existing positive/negative environment tests before the full suite"
       ],
       "origin_commit": "58ac8e0515b7ca2f369f4981cf8254683fe5abae",
       "unchanged_from_origin": false,
