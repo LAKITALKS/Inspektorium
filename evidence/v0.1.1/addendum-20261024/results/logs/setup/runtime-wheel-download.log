@@ -1,0 +1,26 @@
+Collecting annotated-types==0.8.0 (from -r <REPO>/evidence/v0.1.1/requirements-product.txt (line 3))
+  Obtaining dependency information for annotated-types==0.8.0 from https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl.metadata
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic==2.14.1 (from -r <REPO>/evidence/v0.1.1/requirements-product.txt (line 4))
+  Obtaining dependency information for pydantic==2.14.1 from https://files.pythonhosted.org/packages/35/ea/a56b9fe5066f3537b7882f77e9c5dfb26d8c2eefdaed9b5fc73d57b4dc22/pydantic-2.14.1-py3-none-any.whl.metadata
+  Using cached pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+Collecting pydantic_core==2.50.1 (from -r <REPO>/evidence/v0.1.1/requirements-product.txt (line 5))
+  Obtaining dependency information for pydantic_core==2.50.1 from https://files.pythonhosted.org/packages/59/20/938ef7e0541af0a314e2f9d63848dbd1656ba2ebfe5ca0469f7ebee00d5e/pydantic_core-2.50.1-cp311-cp311-macosx_11_0_arm64.whl.metadata
+  Using cached pydantic_core-2.50.1-cp311-cp311-macosx_11_0_arm64.whl.metadata (6.5 kB)
+Collecting typing-inspection==0.4.4 (from -r <REPO>/evidence/v0.1.1/requirements-product.txt (line 6))
+  Obtaining dependency information for typing-inspection==0.4.4 from https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl.metadata
+  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting typing_extensions==4.16.0 (from -r <REPO>/evidence/v0.1.1/requirements-product.txt (line 7))
+  Obtaining dependency information for typing_extensions==4.16.0 from https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Using cached pydantic-2.14.1-py3-none-any.whl (488 kB)
+Using cached pydantic_core-2.50.1-cp311-cp311-macosx_11_0_arm64.whl (2.0 MB)
+Using cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Saved ./wheelhouse/annotated_types-0.8.0-py3-none-any.whl
+Saved ./wheelhouse/pydantic-2.14.1-py3-none-any.whl
+Saved ./wheelhouse/pydantic_core-2.50.1-cp311-cp311-macosx_11_0_arm64.whl
+Saved ./wheelhouse/typing_inspection-0.4.4-py3-none-any.whl
+Saved ./wheelhouse/typing_extensions-4.16.0-py3-none-any.whl
+Successfully downloaded annotated-types pydantic pydantic_core typing-inspection typing_extensions

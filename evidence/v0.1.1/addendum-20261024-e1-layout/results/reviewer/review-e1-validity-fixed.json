@@ -1,0 +1,193 @@
+{
+  "harness_sha256": "14c1f3bb75321597f566188643bbd082a567b5370a6fb2bdcf3c711eba36ae5d",
+  "script_sha256": "6da8240ad24205a4590c72a9c2a774a23aeb3f59569266f095f022af844e19ed",
+  "case": "E1-last_below-80",
+  "style": "noto-serif",
+  "probes": [
+    {
+      "name": "clean_unchanged_actual",
+      "status": "MEASURED",
+      "overlap": false
+    },
+    {
+      "name": "missing_both_1_Atomic claim:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Atomic claim:"
+    },
+    {
+      "name": "missing_both_1_Answer span:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Answer span:"
+    },
+    {
+      "name": "missing_both_1_Claim span check:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Claim span check:"
+    },
+    {
+      "name": "missing_both_1_Proposed relationship (evaluator judgment):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Proposed relationship (evaluator judgment):"
+    },
+    {
+      "name": "missing_both_1_Reportable proposed relationship:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Reportable proposed relationship:"
+    },
+    {
+      "name": "missing_both_1_Deterministic guard:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Deterministic guard:"
+    },
+    {
+      "name": "missing_both_1_Citation text and offset check:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Citation text and offset check:"
+    },
+    {
+      "name": "missing_both_1_Evidence sufficiency (evaluator judgment):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Evidence sufficiency (evaluator judgment):"
+    },
+    {
+      "name": "missing_both_1_Evaluator certainty:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Evaluator certainty:"
+    },
+    {
+      "name": "missing_both_1_Rationale (evaluator-generated):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Rationale (evaluator-generated):"
+    },
+    {
+      "name": "missing_both_2_Atomic claim:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Atomic claim:"
+    },
+    {
+      "name": "missing_both_2_Answer span:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Answer span:"
+    },
+    {
+      "name": "missing_both_2_Claim span check:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Claim span check:"
+    },
+    {
+      "name": "missing_both_2_Proposed relationship (evaluator judgment):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Proposed relationship (evaluator judgment):"
+    },
+    {
+      "name": "missing_both_2_Reportable proposed relationship:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Reportable proposed relationship:"
+    },
+    {
+      "name": "missing_both_2_Deterministic guard:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Deterministic guard:"
+    },
+    {
+      "name": "missing_both_2_Citation text and offset check:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Citation text and offset check:"
+    },
+    {
+      "name": "missing_both_2_Evidence sufficiency (evaluator judgment):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Evidence sufficiency (evaluator judgment):"
+    },
+    {
+      "name": "missing_both_2_Evaluator certainty:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Evaluator certainty:"
+    },
+    {
+      "name": "missing_both_2_Rationale (evaluator-generated):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Rationale (evaluator-generated):"
+    },
+    {
+      "name": "missing_both_3_Atomic claim:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Atomic claim:"
+    },
+    {
+      "name": "missing_both_3_Answer span:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Answer span:"
+    },
+    {
+      "name": "missing_both_3_Claim span check:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Claim span check:"
+    },
+    {
+      "name": "missing_both_3_Proposed relationship (evaluator judgment):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Proposed relationship (evaluator judgment):"
+    },
+    {
+      "name": "missing_both_3_Reportable proposed relationship:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Reportable proposed relationship:"
+    },
+    {
+      "name": "missing_both_3_Deterministic guard:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Deterministic guard:"
+    },
+    {
+      "name": "missing_both_3_Citation text and offset check:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Citation text and offset check:"
+    },
+    {
+      "name": "missing_both_3_Evidence sufficiency (evaluator judgment):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Evidence sufficiency (evaluator judgment):"
+    },
+    {
+      "name": "missing_both_3_Evaluator certainty:",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Evaluator certainty:"
+    },
+    {
+      "name": "missing_both_3_Rationale (evaluator-generated):",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Rationale (evaluator-generated):"
+    },
+    {
+      "name": "answer_replaces_true_payload",
+      "status": "INVALID",
+      "reason": "host control classified as payload: Answer span:"
+    },
+    {
+      "name": "duplicate_claim_LI_P_container",
+      "status": "INVALID",
+      "reason": "missing or duplicate finding row: Atomic claim:"
+    },
+    {
+      "name": "changed_answer_text",
+      "status": "INVALID",
+      "reason": "host text changed or invisible"
+    },
+    {
+      "name": "missing_actual_png",
+      "status": "INVALID",
+      "reason": "missing screenshot"
+    },
+    {
+      "name": "missing_twin_png",
+      "status": "INVALID",
+      "reason": "missing screenshot"
+    },
+    {
+      "name": "corrupt_actual_png",
+      "status": "INVALID",
+      "reason": "cannot identify image file <_io.BytesIO object at 0x1106d3ab0>"
+    }
+  ]
+}

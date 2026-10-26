@@ -1,0 +1,33 @@
+import argparse,hashlib,importlib.util,json
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,required=True);p.add_argument('--old-work',type=Path,required=True);p.add_argument('--work',type=Path,required=True);a=p.parse_args()
+h=a.repo/'evidence/v0.1.1/addendum-20261024-e1-layout/tools/check_addendum.py'
+spec=importlib.util.spec_from_file_location('layout_measure',h);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+summary={'replay':{},'mapping':{},'raw_json':{}}
+for name in ['baseline','candidate']:
+ root=a.old_work/(name+'-results');rows=json.loads((root/'visual_measurements.json').read_text());counts={style:0 for style in ['noto-serif','github-like']}
+ for row in rows:
+  stem=row['id']+'-'+row['style'];png=(root/'screenshots'/(stem+'-actual.png')).read_bytes();twin=(root/'screenshots'/(stem+'-twin.png')).read_bytes()
+  assert hashlib.sha256(png).hexdigest()==row['png_sha256'] and hashlib.sha256(twin).hexdigest()==row['twin_png_sha256']
+  result=m.compare(row['original_dom'],row['twin_dom'],png,twin)
+  for key,value in result.items():assert value==row[key],(name,stem,key)
+  counts[row['style']]+=result['overlap']
+ summary['replay'][name]={'visual_records_recomputed':len(rows),'images_hash_verified':len(rows)*2,'overlaps':counts}
+old=json.loads((a.old_work/'candidate-results/visual_measurements.json').read_text());new=json.loads((a.work/'layout-final-results/visual_measurements.json').read_text());assert len(old)==len(new)==150
+hosts=0;spanrows=0
+for before,after in zip(old,new,strict=True):
+ assert (before['id'],before['style'])==(after['id'],after['style'])
+ for side in ['original_dom','twin_dom']:
+  br=before[side]['rows'];ar=after[side]['rows'];assert len(br)==len(ar)
+  for x,y in zip(br,ar,strict=True):
+   for key in ['i','text','section','number','payload','visible']:assert x[key]==y[key],(after['id'],side,key)
+   if x['tag']!=y['tag']:assert x['tag']=='LI' and y['tag']=='P' and x['text'].startswith('Atomic claim:')
+   if not y['payload']:hosts+=1
+   if y['text'].startswith('Answer span:'):
+    assert not y['payload'] and y['tag']=='LI';spanrows+=1
+  assert sum(x['payload'] for x in ar)==1
+summary['mapping']={'visual_records':150,'original_and_control_host_rows_checked':hosts,'answer_span_rows_checked':spanrows,'all_row_text_and_payload_membership_identical':True,'only_tag_change':'Atomic claim: LI to P; all host labels retained'}
+previous=json.loads((a.old_work/'candidate-results/outputs.json').read_text());current=json.loads((a.work/'layout-final-results/outputs.json').read_text());assert len(previous)==len(current)==87
+for x,y in zip(previous,current,strict=True):assert x['id']==y['id'] and x['json_sha256']==y['json_sha256'] and x['json']==y['json']
+summary['raw_json']={'cases':87,'byte_hashes_and_objects_identical':True}
+(a.work/'comparison-results.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

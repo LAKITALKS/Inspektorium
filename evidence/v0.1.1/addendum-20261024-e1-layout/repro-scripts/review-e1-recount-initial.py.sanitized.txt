@@ -1,0 +1,122 @@
+"""Focused reviewer recount of saved E1 outputs and pixels; no new capture."""
+from pathlib import Path
+import argparse, collections, hashlib, importlib.util, io, json, sys, unicodedata
+from html.parser import HTMLParser
+import numpy as np
+from PIL import Image
+W=Path('<WORK>')
+O=Path('<OLD_WORK>')
+R=Path('<REPO>')
+p=argparse.ArgumentParser(); p.add_argument('--new-results'); args=p.parse_args()
+H=R/'evidence/v0.1.1/addendum-20261024-e1-layout/tools/check_addendum.py'
+spec=importlib.util.spec_from_file_location('e1h',H); h=importlib.util.module_from_spec(spec);spec.loader.exec_module(h)
+def sha(b): return hashlib.sha256(b).hexdigest()
+def read(p): return json.loads(p.read_text())
+def runmax(s):
+    best=n=0
+    for c in s:
+        n=n+1 if unicodedata.category(c) in {'Mn','Me'} else 0
+        best=max(n,best)
+    return best
+class Tree(HTMLParser):
+    def __init__(self,html):
+        super().__init__(convert_charrefs=True);self.root={'tag':'root','children':[],'text':''};self.stack=[self.root];self.nodes=[];self.feed(html)
+    def handle_starttag(self,t,a):
+        n={'tag':t,'children':[],'text':'','parent':self.stack[-1]};self.stack[-1]['children'].append(n);self.nodes.append(n)
+        if t not in {'br','hr','img','input','meta','link','wbr'}: self.stack.append(n)
+    def handle_endtag(self,t):
+        if len(self.stack)>1:
+            assert self.stack[-1]['tag']==t, (self.stack[-1]['tag'],t)
+            self.stack.pop()
+    def handle_data(self,s):
+        for n in self.stack:n['text']+=s
+catalog=read(R/'evidence/v0.1.1/addendum-20261024/catalog.json'); cases={c['id']:c for c in catalog['cases']}
+datasets=[('baseline',O/'baseline-results',O/'baseline-cases'),('prior',O/'candidate-results',O/'candidate-cases')]
+if args.new_results: datasets.append(('layout',W/args.new_results,W/args.new_results.replace('-results','-cases')))
+results={}; outputs={}; visualdata={}; inventories={}; all_file_hashes={}
+for name,path,casepath in datasets:
+    assert (path/'summary.json').is_file(), f'incomplete {path}'
+    vs=read(path/'visual_measurements.json'); ts=read(path/'text_measurements.json'); outs=read(path/'outputs.json')
+    outputs[name]={o['id']:o for o in outs}; visualdata[name]={(v['id'],v['style']):v for v in vs}
+    assert set(outputs[name])==set(cases) and len(outs)==87
+    assert len(vs)==150 and len(ts)==348
+    files={}; pixels=0; answerrows=0; hostrows=0; counts=collections.Counter(); hit_details=[]
+    for o in outs:
+        d=casepath/o['id']
+        for fn,key in [('input.json','input_sha256'),('proposals.json','proposals_sha256'),('report.json','json_sha256'),('report.md','markdown_sha256')]:
+            b=(d/fn).read_bytes();assert sha(b)==o[key],(name,o['id'],fn);files[str(d/fn)]=sha(b)
+        assert read(d/'report.json')==o['json']
+        assert (d/'report.md').read_text()==o['markdown']
+    for v in vs:
+        assert v['status']=='MEASURED'
+        key=(v['id'],v['style']); ds=v['original_dom']['rows']; twins=v['twin_dom']['rows']; measured=v['rows']
+        assert len(ds)==len(twins)==61
+        assert sum(r['payload'] for r in ds)==1
+        assert [r['i'] for r in ds if not r['payload']]==[r['i'] for r in measured]
+        assert [r['text'] for r in ds if not r['payload']]==[r['text'] for r in measured]
+        ar=[r for r in measured if r['text'].startswith('Answer span:')]
+        assert len(ar)==3 and {r['number'] for r in ar}=={1,2,3}
+        assert all(r['tag']=='LI' and not r['payload'] for r in ar)
+        answerrows+=len(ar); hostrows+=len(measured)
+        arrays=[]
+        for suffix,keyhash in [('actual','png_sha256'),('twin','twin_png_sha256')]:
+            f=path/'screenshots'/f"{v['id']}-{v['style']}-{suffix}.png"; b=f.read_bytes()
+            assert sha(b)==v[keyhash];files[str(f)]=sha(b)
+            arrays.append(np.asarray(Image.open(io.BytesIO(b)).convert('L')))
+        def crop(ar,r):
+            x0,y0=round(r['x'])-2,round(r['y'])-2;x1,y1=round(r['x']+r['w'])+2,round(r['y']+r['h'])+2
+            assert 0<=x0<x1<=ar.shape[1] and 0<=y0<y1<=ar.shape[0]
+            return ar[y0:y1,x0:x1]
+        actualhits=0
+        for row in measured:
+            other=next(r for r in twins if r['i']==row['i'])
+            assert row['text']==other['text'] and row['visible'] and other['visible']
+            ca,cb=crop(arrays[0],row),crop(arrays[1],other);assert ca.shape==cb.shape
+            val=int(np.count_nonzero((ca<160)&(cb>=160)))
+            assert val==row['added_ink_px'] and (val>=10)==row['overlap']
+            pixels+=1;actualhits+=val>=10
+        assert bool(actualhits)==v['overlap']
+        counts[(v['style'],'measured')]+=1;counts[(v['style'],'overlaps')]+=v['overlap']
+        if v['overlap']:hit_details.append({'id':v['id'],'style':v['style'],'hits':[{'text':r['text'],'added_ink_px':r['added_ink_px']} for r in measured if r['overlap']]})
+    assert len({(t['id'],t['renderer']) for t in ts})==348
+    maxrun=max(max(runmax(t['visible_text']),runmax(outputs[name][t['id']]['markdown'])) for t in ts)
+    links=sum(bool(t['links']) for t in ts)
+    for t in ts:
+        assert t['rendered_max_run']==runmax(t['visible_text'])
+        assert t['raw_markdown_max_run']==runmax(outputs[name][t['id']]['markdown'])
+        assert t['K7_no_links']==(len(t['links'])==0)
+        assert t['E1_text_pass']==(max(t['raw_markdown_max_run'],t['rendered_max_run'])<=4)
+    results[name]={'summary':read(path/'summary.json'),'pixel_crops_recounted':pixels,'png_hashes_verified':len(vs)*2,'actual_case_file_hashes_verified':len(outs)*4,'answer_span_rows_measured':answerrows,'host_rows_measured':hostrows,'max_raw_or_rendered_mark_run':maxrun,'renderings_with_links':links,'overlaps':{s:counts[(s,'overlaps')] for s in ('noto-serif','github-like')},'hit_details':hit_details}
+    all_file_hashes.update(files)
+    print(name, json.dumps({k:v for k,v in results[name].items() if k not in {'summary','hit_details'}}),flush=True)
+assert all(outputs['baseline'][id]['json_sha256']==outputs['prior'][id]['json_sha256'] for id in cases)
+if args.new_results:
+    assert all(outputs['layout'][id]['json_sha256']==outputs['prior'][id]['json_sha256'] for id in cases)
+    assert all(outputs['layout'][id][key]==outputs['prior'][id][key] for id in cases for key in ('input_sha256','proposals_sha256','json'))
+    for key,new in visualdata['layout'].items():
+        old=visualdata['prior'][key]
+        for typ in ('original_dom','twin_dom'):
+            for a,b in zip(old[typ]['rows'],new[typ]['rows'],strict=True):
+                assert all(a[k]==b[k] for k in ('i','text','section','number','payload','visible'))
+                assert a['tag']==b['tag'] or (a['tag']=='LI' and b['tag']=='P' and a['text'].startswith('Atomic claim:'))
+    checks=0
+    for id,o in outputs['layout'].items():
+        for renderer,html in h.renderings(o['markdown']).items():
+            t=Tree(html);claims=[n for n in t.nodes if n['tag']=='p' and n['text'].startswith('Atomic claim:')]
+            assert len(claims)==3
+            assert not any(n['tag']=='a' for n in t.nodes)
+            assert runmax(t.root['text'])<=4
+            for n in claims:
+                assert n['parent']['tag']=='root'
+                siblings=n['parent']['children']; index=siblings.index(n); controls=siblings[index+1]
+                assert controls['tag']=='ul' and len(controls['children'])==9
+                assert controls['children'][0]['tag']=='li' and controls['children'][0]['text'].startswith('Answer span:')
+                assert all(c['tag']=='li' and all(z['tag']!='p' for z in c['children']) for c in controls['children'])
+            checks+=1
+    results['structural_checks']={'four_renderer_html_trees':checks,'identical_old_new_dom_rows':150*61*2,'json_hashes_identical':87,'changed_tags':'Only the three Atomic claim LI nodes become standalone P nodes; every other row/tag/text/payload remains identical.'}
+# Check no reviewed source artifact changed during recount.
+for f,expected in all_file_hashes.items():assert sha(Path(f).read_bytes())==expected
+results['review']={'python':sys.version,'script_sha256':sha(Path(__file__).read_bytes()),'harness_sha256':sha(H.read_bytes()),'catalog_sha256':sha((R/'evidence/v0.1.1/addendum-20261024/catalog.json').read_bytes()),'source_artifacts_rehashed_unchanged':len(all_file_hashes),'limits':'Recounts existing captures; does not make new browser captures or rerun full product tests.'}
+label='final' if args.new_results else 'historical'
+(W/f'review-e1-recount-{label}.json').write_text(json.dumps(results,indent=2)+'\n')
+print('DONE',label)

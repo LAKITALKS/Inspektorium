@@ -1,12 +1,46 @@
-"""Restrained human-readable report rendering."""
+"""Restrained human-readable report rendering.
+
+Host-generated structure (headings, labels and status lines) is written
+directly. Every text value taken from the report object is embedded through
+the context encoders in ``inspektorium.report.display``, so embedded text is
+shown as data: it cannot add Markdown or HTML structure, and it cannot remove
+later content from the rendered document or hide it with HTML or CSS.
+
+Consecutive nonspacing or enclosing marks (Unicode categories Mn and Me) are
+limited to four raw characters; later characters in each run become visible
+markers. This bounds the displayed text property, not the rendering behaviour
+of every font or viewer. The at sign is also marked to prevent e-mail autolinks.
+"""
 
 from __future__ import annotations
 
 from inspektorium.core.models import InspectionReport, ValidatedFinding
+from inspektorium.report.display import (
+    MARKER_CLOSE,
+    MARKER_OPEN,
+    encode_identifier,
+    encode_inline,
+    encode_line,
+    encode_quote,
+)
 
-
-def _quoted(text: str) -> str:
-    return "\n".join(f"> {line}" if line else ">" for line in text.split("\n"))
+_MARKER = f"{MARKER_OPEN}U+XXXX{MARKER_CLOSE}"
+_BRACKETS = f"{MARKER_OPEN} and {MARKER_CLOSE}"
+DISPLAY_NOTE = (
+    "**Display note:** Text that comes from the evaluator, the answer, or the",
+    "sources is shown as data. Markdown and HTML characters in it are escaped.",
+    "Characters of the Unicode categories Cc, Cf, Cs, Zl and Zp, such as control",
+    "characters, bidirectional controls, zero-width joiners and line separators,",
+    f"are shown as {_MARKER} markers, as are code points not assigned in the",
+    "Unicode database of the running Python (category Cn); only a line feed",
+    f"inside a quotation is shown as a line break. The brackets {_BRACKETS} in",
+    "this text and the at sign (U+0040) are also shown as markers, preventing",
+    "e-mail autolinks. In consecutive runs of nonspacing or enclosing marks",
+    "(Mn or Me), only the first four stay raw; the fifth and later characters",
+    "are marked. This includes variation selectors and does not guarantee visual",
+    "integrity in every font or viewer. Other invisible characters outside these",
+    "categories are not marked. The JSON report keeps the exact characters.",
+)
 
 
 def _finding_markdown(index: int, finding: ValidatedFinding) -> list[str]:
@@ -15,10 +49,10 @@ def _finding_markdown(index: int, finding: ValidatedFinding) -> list[str]:
         if finding.reportable_relation is not None
         else "None — deterministic guard failed"
     )
-    evidence_status = (
-        "exact source quotation confirmed"
+    citation_check = (
+        "exact match (not a check of meaning)"
         if finding.evidence_span_verified is True
-        else "citation failed exact validation"
+        else "no exact match"
         if finding.evidence_span_verified is False
         else "not performed — no citation required or supplied for this proposal"
     )
@@ -29,32 +63,35 @@ def _finding_markdown(index: int, finding: ValidatedFinding) -> list[str]:
         guard += " (claim span and structure only; no citation check performed)"
     sufficiency = finding.evidence_sufficiency.value
     lines = [
-        f"### Finding {index}: `{finding.claim_id}`",
+        f"### Finding {index}: {encode_identifier(finding.claim_id)}",
         "",
-        f"- **Atomic claim:** {finding.claim_text}",
+        # A separate paragraph keeps claim ink away from the host-control list.
+        f"**Atomic claim:** {encode_inline(finding.claim_text)}",
+        "",
         f"- **Answer span:** `[{finding.claim_start}:{finding.claim_end})`",
         f"- **Claim span check:** {claim_check}",
         f"- **Proposed relationship (evaluator judgment):** `{proposed}`",
         f"- **Reportable proposed relationship:** {reportable}",
         f"- **Deterministic guard:** {guard}",
-        f"- **Citation validation:** {evidence_status}",
+        f"- **Citation text and offset check:** {citation_check}",
         f"- **Evidence sufficiency (evaluator judgment):** `{sufficiency}`",
         f"- **Evaluator certainty:** `{finding.evaluator_certainty.value}`",
-        f"- **Rationale (evaluator-generated):** {finding.rationale}",
+        f"- **Rationale (evaluator-generated):** {encode_inline(finding.rationale)}",
     ]
     if finding.evidence_quote is not None:
         heading = (
-            "**Citation-validated source quotation:**"
+            "**Proposed quotation — exact text and offset match "
+            "(not a check of meaning):**"
             if finding.evidence_span_verified is True
-            else "**Proposed quotation — not citation-validated:**"
+            else "**Proposed quotation — no exact text and offset match:**"
         )
-        lines.extend(["", heading, "", _quoted(finding.evidence_quote)])
+        lines.extend(["", heading, "", encode_quote(finding.evidence_quote)])
     if finding.source_id is not None:
         offsets = f"[{finding.evidence_start}:{finding.evidence_end})"
         lines.extend(
             [
                 "",
-                f"- **Proposed source:** `{finding.source_id}`",
+                f"- **Proposed source:** {encode_identifier(finding.source_id)}",
                 f"- **Proposed offsets:** `{offsets}`",
             ]
         )
@@ -82,13 +119,15 @@ def render_markdown(report: InspectionReport) -> str:
             "",
             f"- Claims inspected: {report.summary.claims_inspected}",
             f"- Relationships allowed to remain reportable: {reportable}",
-            f"- Exact citation spans confirmed: {citations}",
+            f"- Citations with an exact text and offset match: {citations}",
             f"- Deterministic validation failures: {failures_count}",
             "- Global score: not produced",
             "",
             "Evaluator relationships are semantic proposals. Deterministic validation",
             "only checks canonical claim text, source identifiers, quotation text, and",
             "offsets.",
+            "",
+            *DISPLAY_NOTE,
             "",
             "## Findings",
             "",
@@ -109,9 +148,9 @@ def render_markdown(report: InspectionReport) -> str:
     ]
     if failures:
         for finding, issue in failures:
-            lines.append(
-                f"- **`{finding.claim_id}` / `{issue.code.value}`:** {issue.message}"
-            )
+            claim_id = encode_identifier(finding.claim_id)
+            message = encode_inline(issue.message)
+            lines.append(f"- **{claim_id} / `{issue.code.value}`:** {message}")
     else:
         lines.append("No deterministic validation warnings.")
 
@@ -120,12 +159,14 @@ def render_markdown(report: InspectionReport) -> str:
             "",
             "## Scope and Limitations",
             "",
-            report.scope.statement,
+            encode_line(report.scope.statement),
             "",
         ]
     )
-    lines.extend(f"- {limitation}" for limitation in report.scope.limitations)
+    lines.extend(
+        f"- {encode_line(limitation)}" for limitation in report.scope.limitations
+    )
     return "\n".join(lines) + "\n"
 
 
-__all__ = ["render_markdown"]
+__all__ = ["DISPLAY_NOTE", "render_markdown"]

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -160,3 +161,54 @@ def test_provider_requires_explicit_model(capsys: pytest.CaptureFixture[str]) ->
 
     assert status == 2
     assert "--model is required" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize(
+    ("arguments", "message"),
+    [
+        (
+            ["--input", str(EXAMPLE / "input.json"), "--source", "a=b"],
+            "--source cannot be combined with --input",
+        ),
+        (["--answer", "answer.txt"], "at least one --source SOURCE_ID=PATH"),
+        (["--answer", "answer.txt", "--source", "nopath"], "must use SOURCE_ID=PATH"),
+        (["--answer", "answer.txt", "--source", "=path"], "non-empty SOURCE_ID=PATH"),
+    ],
+)
+def test_invalid_source_arguments_exit_2(
+    arguments: list[str],
+    message: str,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    status = main(
+        ["inspect", *arguments, "--proposals", str(EXAMPLE / "proposals.json")]
+    )
+
+    captured = capsys.readouterr()
+    assert status == 2
+    assert captured.out == ""
+    assert message in captured.err
+
+
+def test_explicit_generated_at_is_included(tmp_path: Path) -> None:
+    output = tmp_path / "report.json"
+
+    status = main(
+        [
+            "inspect",
+            "--input",
+            str(EXAMPLE / "input.json"),
+            "--proposals",
+            str(EXAMPLE / "proposals.json"),
+            "--format",
+            "json",
+            "--generated-at",
+            "2026-10-13T12:00:00Z",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert status == 0
+    report = json.loads(output.read_text(encoding="utf-8"))
+    assert report["generated_at"] == "2026-10-13T12:00:00Z"

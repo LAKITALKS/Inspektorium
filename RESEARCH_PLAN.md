@@ -1,9 +1,18 @@
 # Research plan
 
+> **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
+> Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
+> [Publication mapping and current checks](publication/2026-10-26/README.md)
+> supersede earlier access/publication statements below. Historical numbers,
+> original dates and limits remain unchanged; publication is not independent
+> replication. The scientific Final v1 gate is not met. No new live calls.
+
 **PLAN ONLY — no new runtime, fixtures or experiments ship with this document.**
-Public software remains 0.1.0/schema 0.1. Phase 8, Phase 9, Phase 10 and the
+Public software is 0.1.1/schema 0.1. Phase 8, Phase 9, Phase 10 and the
 final v1 gate are described in [ROADMAP.md](ROADMAP.md); their claims are
-R08–R10 and H01 in [CLAIMS.md](CLAIMS.md).
+R08–R10 and H01 in [CLAIMS.md](CLAIMS.md). The owner reports Phases 8–10 as
+implemented in a separate, non-public internal technical v1.0.0. That
+implementation answers none of the questions below; they remain open.
 
 System-controls research asks whether a named rule prevents a forbidden action
 at a defined boundary. Model evaluation asks whether answers are correct under
@@ -30,8 +39,12 @@ finite-fault software observations separate from model efficacy comparisons.
 ## Future fault suite
 
 All rows below are proposed evaluation work, not tests included in this commit.
-Execution, checkpoint and budget controls are only reported internally today;
-scientific inference, review and operational release workflows are planned.
+Execution, checkpoint and budget controls are only reported internally today.
+Scientific inference, review and operational release workflows are reported as
+implemented internally (R08–R10) but have no public implementation or efficacy
+evidence. The small display and input catalog in
+[evidence/v0.1.1](evidence/v0.1.1/) is software-regression evidence for v0.1.1,
+not this fault suite.
 
 | Category | Threat/injected fault | Expected response | Pass criterion | Clean counterpart | Metric |
 | --- | --- | --- | --- | --- | --- |
@@ -76,14 +89,16 @@ population reliability claim follows from a few fixtures.
 | CURRENT PUBLIC v0.1 | [Example 05](examples/05_mixed_and_fabricated_quote/input.json), using its saved proposals | Failed quotation retained with null reportable_relation; unrelated clean finding survives; CLI still exits 0 |
 | CURRENT PUBLIC v0.1 LIMITATION | [Example 02](examples/02_contradicted/proposals.json); reviewer probe swaps contradicted to supported while keeping exact evidence | Valid text binding can accompany a false semantic relationship; no new fixture is added |
 | CURRENT PUBLIC v0.1 | Current [fingerprint behavior](src/inspektorium/core/fingerprints.py) with source-change/order observations | Source order invariance; text changes affect digest; an unchanged quote does not authenticate historical state |
+| CURRENT PUBLIC v0.1.1 | Synthetic catalog in [evidence/v0.1.1](evidence/v0.1.1/), run on public `main` `4bd0ba9` and on v0.1.1 | Whether untrusted text can forge report lines or hide warnings in the rendered page structure, and whether ambiguous `--input` JSON is rejected, with clean counterparts; no semantic or efficacy claim |
 | FUTURE PUBLIC DEMO / REPORTED INTERNAL CONTROL | Checkpoint/environment mismatch and unauthorized/over-budget execution | Actual prevention at a named action boundary, if an inspectable control implementation is later admitted |
 | FUTURE — PHASE 8 | Unsupported numerical confidence and semantic entity/population transfer | Whether specific inferential errors with valid text bindings can be detected |
 | FUTURE — PHASE 9 | Material disagreement and budget-limited human review | Preserved judgments, routing errors and reviewer effort |
 | FUTURE — PHASE 10 | Incomplete audit trail or corrupted rendered artifact | Explicit UNKNOWN and actual official-release containment, beyond existing JSON/Markdown rendering |
 
 Reuse the five existing example directories. No sixth example, live-model demo
-or new research runner is added by this plan. Future public release of completed
-internal research needs a separately inspectable code/data package, preserved
-originals and hashes, and a version mapping. A provenance note may explain a
+or new research runner is added by this plan; the v0.1.1 evidence tooling is a
+reproducibility harness for display and input regressions. Future public
+release of completed internal research needs a separately inspectable code/data
+package, preserved originals and hashes, and a version mapping. A provenance note may explain a
 historical name without creating another public product. New data collection,
 paid execution and publication each require separate authorization.

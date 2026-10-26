@@ -1,0 +1,160 @@
+"""Read-only reviewer probes; synthetic artifacts are confined to this workdir."""
+from __future__ import annotations
+
+import copy
+import argparse
+import hashlib
+import importlib.util
+import io
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+from types import SimpleNamespace
+
+from PIL import Image
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--repo', type=Path, required=True)
+parser.add_argument('--work', type=Path, required=True)
+parser.add_argument('--prefix', default='review-validity')
+options = parser.parse_args()
+REPO = options.repo.resolve()
+WORK = options.work.resolve()
+PREFIX = options.prefix
+HARNESS = REPO / 'evidence/v0.1.1/addendum-20261024/tools/check_addendum.py'
+SETUP = REPO / 'evidence/v0.1.1/tools/setup_env.py'
+BASE = '5ee4f40a53f817973517af5f9a7ff4fc3cef413b'
+
+spec = importlib.util.spec_from_file_location('review_harness', HARNESS)
+harness = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(harness)
+
+def png(ink=0):
+    image = Image.new('L', (200, 120), 255)
+    for x in range(ink):
+        image.putpixel((10 + x, 20), 0)
+    out = io.BytesIO()
+    image.save(out, format='PNG')
+    return out.getvalue()
+
+texts = [
+    'Deterministic guard: failed',
+    'Reportable proposed relationship: None — deterministic guard failed',
+    'claim-2: evidence_span_mismatch',
+    'Payload X\u030d\u030d\u030d\u030d',
+]
+original = {
+    'headings': ['Summary', 'Findings', 'Validation Warnings', 'Scope and Limitations'],
+    'rows': [dict(i=i, tag='LI', payload=i == 3, text=t, visible=True,
+                  section='Validation Warnings' if i == 2 else 'Findings',
+                  x=10, y=20 + 20*i, w=100, h=10)
+             for i, t in enumerate(texts)]
+}
+twin = copy.deepcopy(original)
+twin['rows'][3]['text'] = 'Payload X'
+results = []
+for ink, expected in ((0, False), (9, False), (10, True)):
+    got = harness.compare(original, twin, png(ink), png())
+    assert got['overlap'] is expected
+    assert got['critical_rows'] == 3
+    assert got['rows'][0]['added_ink_px'] == ink
+    results.append(dict(name=f'ink-{ink}', status=got['status'], overlap=got['overlap']))
+
+def invalid(name, mutate):
+    a, b, p, q = copy.deepcopy(original), copy.deepcopy(twin), png(), png()
+    a, b, p, q = mutate(a, b, p, q)
+    try:
+        harness.compare(a, b, p, q)
+    except (ValueError, OSError) as exc:
+        results.append(dict(name=name, status='INVALID', reason=str(exc)))
+    else:
+        raise AssertionError(f'{name} was accepted')
+
+invalid('missing-actual-image', lambda a,b,p,q:(a,b,b'',q))
+invalid('missing-twin-image', lambda a,b,p,q:(a,b,p,b''))
+invalid('corrupt-image', lambda a,b,p,q:(a,b,b'broken',q))
+
+for index, label in ((0, 'failed-guard'), (1, 'failed-reportability'), (2, 'warning')):
+    def remove_critical(a,b,p,q,index=index):
+        del a['rows'][index]
+        del b['rows'][index]
+        return a,b,p,q
+    invalid(f'missing-{label}-both-twins', remove_critical)
+
+def mutate_row(key, value):
+    def apply(a,b,p,q):
+        b['rows'][0][key] = value
+        return a,b,p,q
+    return apply
+
+for key, value in (('w', 101), ('h', 11), ('visible', False), ('text', 'changed')):
+    invalid('changed-' + key, mutate_row(key, value))
+
+def missing_one(a,b,p,q):
+    b['rows'].pop(0)
+    return a,b,p,q
+invalid('missing-host-row-one-twin', missing_one)
+
+def missing_heading(a,b,p,q):
+    a['headings'].remove('Validation Warnings')
+    b['headings'].remove('Validation Warnings')
+    return a,b,p,q
+invalid('missing-critical-heading-both', missing_heading)
+
+def missing_payload(a,b,p,q):
+    a['rows'][3]['payload'] = False
+    b['rows'][3]['payload'] = False
+    return a,b,p,q
+invalid('missing-payload', missing_payload)
+
+def outside(a,b,p,q):
+    a['rows'][0]['x'] = -3
+    return a,b,p,q
+invalid('crop-outside-image', outside)
+
+class StopBeforeSubprocess(Exception):
+    pass
+
+def stop(*args, **kwargs):
+    raise StopBeforeSubprocess
+
+old_source = subprocess.check_output(['git','show',f'{BASE}:evidence/v0.1.1/tools/setup_env.py'], cwd=REPO).decode()
+setup_results = []
+for version, source in (('baseline', old_source), ('candidate', SETUP.read_text())):
+    namespace = {'__file__': str(SETUP), '__name__': 'review_setup'}
+    exec(compile(source, str(SETUP), 'exec'), namespace)
+    namespace['run_logged'] = stop
+    for command in ('product_venv', 'tools_venv', 'build_venv'):
+        target = WORK / f'{PREFIX}-sentinel-{version}-{command}'
+        target.mkdir(exist_ok=False)
+        sentinel = target / 'sentinel.bin'
+        sentinel.write_bytes(b'only this disposable reviewer sentinel\x00\xff')
+        expected_hash = hashlib.sha256(sentinel.read_bytes()).hexdigest()
+        args = SimpleNamespace(venv=str(target), setup_log=str(WORK/'review-never-created-setup.jsonl'), wheel=str(WORK/'review-never-used.whl'))
+        try:
+            namespace['cmd_' + command](args)
+        except (StopBeforeSubprocess, SystemExit) as exc:
+            outcome = type(exc).__name__
+        else:
+            raise AssertionError('expected early stop')
+        preserved = sentinel.exists() and hashlib.sha256(sentinel.read_bytes()).hexdigest() == expected_hash
+        assert preserved is (version == 'candidate')
+        assert outcome == ('SystemExit' if version == 'candidate' else 'StopBeforeSubprocess')
+        setup_results.append(dict(version=version, command=command, outcome=outcome, sentinel_preserved=preserved))
+
+result = {
+    'python': sys.version,
+    'baseline': BASE,
+    'candidate': subprocess.check_output(['git','rev-parse','HEAD'], cwd=REPO).decode().strip(),
+    'harness_sha256': hashlib.sha256(HARNESS.read_bytes()).hexdigest(),
+    'setup_sha256': hashlib.sha256(SETUP.read_bytes()).hexdigest(),
+    'probe_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    'image_canaries': results,
+    'setup_sentinel_counterexamples': setup_results,
+    'network_guard_log': Path(os.environ['EVIDENCE_NETGUARD_LOG']).name,
+    'limitations': 'No browser or product renderer run here; image canaries validate compare() with synthetic DOM/PNG fixtures. Setup attempts are stopped before subprocess creation; only disposable baseline sentinels were removed.'
+}
+(WORK/f'{PREFIX}-results.json').write_text(json.dumps(result, indent=2)+'\n')
+print(json.dumps(result, indent=2))

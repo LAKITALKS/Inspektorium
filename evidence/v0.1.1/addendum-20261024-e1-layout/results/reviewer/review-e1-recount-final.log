@@ -1,0 +1,4 @@
+baseline {"pixel_crops_recounted": 9000, "png_hashes_verified": 300, "actual_case_file_hashes_verified": 348, "answer_span_rows_measured": 450, "host_rows_measured": 9000, "max_raw_or_rendered_mark_run": 80, "renderings_with_links": 18, "overlaps": {"noto-serif": 45, "github-like": 42}}
+prior {"pixel_crops_recounted": 9000, "png_hashes_verified": 300, "actual_case_file_hashes_verified": 348, "answer_span_rows_measured": 450, "host_rows_measured": 9000, "max_raw_or_rendered_mark_run": 4, "renderings_with_links": 0, "overlaps": {"noto-serif": 6, "github-like": 5}}
+layout {"pixel_crops_recounted": 9000, "png_hashes_verified": 300, "actual_case_file_hashes_verified": 348, "answer_span_rows_measured": 450, "host_rows_measured": 9000, "max_raw_or_rendered_mark_run": 4, "renderings_with_links": 0, "overlaps": {"noto-serif": 0, "github-like": 0}}
+DONE final

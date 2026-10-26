@@ -1,0 +1,79 @@
+Eudora — Prüfung des v0.1.1-Abschlusses 75ffd03
+Stand: 24. Oktober 2026. Grundlage: das von Lazaros bereitgestellte Review-ZIP; eigene lokale, fokussierte Prüfungen des Exports. Keine Veröffentlichung, keine Produktänderung, kein Modell-/Provideraufruf.
+Entscheidung
+BLOCKED bleibt richtig. E2 und E3 sind im beauftragten Umfang bestätigt; bei E1 ist die Textregel erfüllt, das festgelegte Bildkriterium jedoch weiterhin verletzt. Der nächste Schritt ist eine begrenzte Korrektur der Darstellung im Bereich des Behauptungstextes und seiner nachfolgenden Kontrollzeilen. Agent Arena v1 wird dadurch nicht wieder geöffnet.
+
+Die verbleibende Abweichung ist konkret nachweisbar. Sie ist aber nicht gleichbedeutend mit einer nachgewiesenen Unlesbarkeit oder einer gefälschten Statusanzeige. Die Bilder und die Messung müssen hier getrennt eingeordnet werden.
+Geprüfter Stand und Integrität
+- ZIP: inspektorium-v0.1.1-e1-e3-20261024-75ffd03.zip, 18.521.502 Bytes.
+- SHA-256: cf248f737d66e448a13f2f134b4497536a35ee63cdd0ef96cfec484b6718cc56.
+- Produktcommit laut Export: 403bd3fac27f2406a150b2243a691ba4d0b12fbb.
+- Abschlusscommit laut Export: 75ffd03e82a377f07027cfc0b884b454146c0a1e.
+- Branch laut Export: codex/v0.1.1-e1-e3-closeout-20261024.
+Eigene Prüfung: ZIP-CRC fehlerfrei, keine unsicheren Pfade oder symbolischen Links. Alle 267 im äußeren Manifest aufgeführten Dateien stimmen in Größe und SHA-256; das Manifest selbst ist die 268. Datei. Auch alle 132 Einträge des inneren Nachtragsmanifests stimmen. Es fehlen keine aufgeführten Dateien und es gibt keine zusätzlichen Dateien in diesen Manifestbereichen.
+
+Die beiden Quellarchive und Wheels stimmen mit ihren Build-Nachweisen überein. Je 19 Paketdateien im alten und neuen Wheel stimmen bytegenau mit dem jeweiligen Quellarchiv überein. Die 59 geprüften Produktdateien im finalen Snapshot sind identisch mit dem mitgelieferten Archiv des getesteten Produktstands. Die ursprünglichen Commit-IDs stehen auch in den PAX-Metadaten der Archive.
+
+Das belegt die Konsistenz des gelieferten Pakets. Ohne Git-Historie bzw. unabhängigen Zugriff auf den lokalen Checkout ist es keine separate Authentifizierung der Git-Objekte oder des heutigen Mac-Worktrees.
+Eigene Prüfungen und Ergebnis
+Prüfung	Eigene Ausführung / Ergebnis
+CLI-Nachtragsfälle	Alle 87 Fälle über den CLI-Einstieg im eigenen Python-Prozess erneut ausgeführt, jeweils JSON und Markdown: 174/174 Ausgaben bytegleich zu den gespeicherten SHA-256-Werten.
+Rohdatenvergleich alt/neu	Die 87 gespeicherten JSON-Objekte und ihre Byte-Hashes stimmen zwischen Baseline und Kandidat überein; die eigenen aktuellen JSON-Ausgaben stimmen ebenfalls.
+Textregel	28 eigene Grenz-/Langlaufproben über die vier Encoder, einschließlich 2, 4, 5 und 4.096 Marken: maximal vier rohe Mn/Me-Zeichen. Alle bestanden.
+E-Mail-Markierung	Alle vier Encoder entfernen das rohe @ zugunsten des sichtbaren Markers. Gespeicherte Renderer-Daten bestätigen 18 alte und 0 neue Linkverstöße. Kein eigener frischer Browser-/Markdown-Rendererlauf.
+Setup-Schutz	3 Einstiegspfade × 4 Zielarten: Verzeichnis, Datei, Verzeichnislink, verwaister Link. 12/12 werden vor jedem Setup-Unterprozess abgewiesen; eigene Sentinel-Dateien und Link-/Dateiidentitäten bleiben erhalten.
+Gespeicherte Bildmessungen	Alle 300 Messdatensätze, je 150 alt/neu, nachgezählt: Baseline 45/75 bzw. 42/75; Kandidat 6/75 bzw. 5/75.
+Mitgelieferte Bilddateien	12 Original/Kontroll-Paare, also 24 aktuelle PNGs: Hashes geprüft und 720 Host-Textausschnitte selbst aus den Pixeln nachgerechnet. Kein Unterschied zu den gespeicherten Zählungen.
+Netzwerk-Gegenprobe	Eigene Python-Socket-Sperren vor Produktimport aktiviert; bewusste Gegenprobe einmal abgewiesen; danach 0 erfasste Verbindungsversuche. Keine Behauptung einer systemweiten Netzisolation.
+Unverändertheit	Nach den eigenen Ausführungen stimmen weiterhin alle 267 äußeren Manifestdateien. Eigene Ergebnisse liegen außerhalb des Exports.
+
+
+Eigene Umgebung: Python 3.12.14, Unicode 15.0.0, Pydantic 2.14.1. Produktimport aus dem geprüften Quellsnapshot, dessen Identität zum mitgelieferten Wheel zuvor abgeglichen wurde. Keine eigene frische Wheel-Installation, kein erneuter vollständiger Testlauf und keine neue Browseraufnahme. Dafür wurden die vorhandenen Protokolle gelesen. Browser- und Markdown-Testabhängigkeiten wurden in dieser Prüfung nicht installiert.
+
+Die mitgelieferten Protokolle enthalten tatsächlich 1.343 bestandene Tests, Ruff-Erfolg, Mypy-Erfolg für 19 Quelldateien sowie die frische Installation und 10 Beispielvergleiche. Eine kleine sprachliche Präzisierung bei der nächsten ohnehin anstehenden Dokuänderung: Die ausgewiesenen 98,04 % sind die Gesamt-Coverage des Laufs mit aktivierter Branchmessung; der Logwert ist nicht als separate reine Zweigabdeckungsquote zu bezeichnen. Das ist kein neuer technischer Blocker.
+Was beim Restfall tatsächlich passiert
+Alle verbliebenen Kandidatentreffer liegen bei E1-answer_claim_below auf der nachfolgenden Zeile Answer span.
+Intensität n	Noto Serif: zusätzliche dunkle Pixel	Lokale GitHub-artige Darstellung
+2	54	30
+3	111	102
+4	155	165
+5	17	15
+6	23	18
+8	17	unter der Schwelle
+
+
+Die Zählregel bleibt: Grauwert unter 160 und mindestens 10 gegenüber der Kontrollaufnahme neu dunkle Pixel in der Host-Textbox, einschließlich des festgelegten Zweipixelrands.
+
+Den mitgelieferten Fall n=2 habe ich selbst im Bild und in den Pixeln geprüft. Für Noto sind es 54 Pixel mit Rand und 27 ohne Rand. Damit entsteht der Treffer nicht allein durch den Zusatzrand. Die Zusatzzeichen liegen oberhalb der sichtbaren Schrift der folgenden Answer span-Zeile. In den betrachteten Ausschnitten sind sowohl diese Zeile als auch die nachfolgenden Statusangaben lesbar. Die Aufnahme belegt zusätzliche Tinte im Messbereich, jedoch keine gemessene Lesbarkeitsminderung. Der zugrunde liegende Pixeltest erfasst außerdem nur neu dunkle Pixel; er ist keine vollständige Messung von Schriftüberdeckung oder menschlicher Lesbarkeit.
+
+Der alte schwere Befund ist in den mitgelieferten Gegenpaaren deutlich verbessert: Beim langen Claim-Fall n=48 und beim Begründungsfall n=80 erreichen die alten Zeichen unter anderem Fehler- und Warnzeilen; die neuen Bilder haben dort keine Treffer. Die gespeicherten Gesamtdaten melden ebenfalls 0 Treffer auf den drei ausdrücklich geprüften kritischen Zeilentypen beim Kandidaten.
+
+Die frühere Angabe „Prototyp 0/75“ und die heutigen Resttreffer sind kein direkter Vorher-/Nachher-Vergleich. Plattform, Browser und Kontrollmethode unterscheiden sich. Heute bleibt derselbe Bericht mit seinen identischen Offset-Angaben als Kontrolle erhalten; nur die rohen Kombinationszeichen in den Nutzlast-Textknoten werden für die zweite Aufnahme entfernt. Dadurch werden auch Zeilen erfasst, die im früheren Vergleich mit dem n=0-Bericht wegen anderer Offset-Texte übersprungen wurden. Die alten Ergebnisse bleiben historisch erhalten.
+Beurteilung von E2 und E3
+E2 ist nachvollziehbar behoben: Der gemeinsame Encoder zeigt @ als ⟦U+0040⟧. Das verhindert in den aufgezeichneten Konfigurationen die zuvor beobachteten E-Mail-Autolinks. Alle neun Adressfälle bleiben im Katalog; es wurde keine Ausnahme geschaffen und kein fehlschlagender Fall herausgerechnet. Die Rohwerte bleiben unverändert.
+
+E3 ist im vereinbarten Umfang behoben: Alle drei Setup-Einstiege prüfen das Ziel vor der Einrichtung und löschen bestehende Ziele nicht mehr. Meine eigenen zwölf Gegenproben bestätigen das. Die Prüfung ist keine Untersuchung adversarieller Dateisystem-Rennen oder beliebiger zukünftiger Setup-Pfade; das war nicht der Auftrag.
+
+Innerhalb dieser fokussierten Prüfung ist kein weiterer technischer Blocker hinzugekommen. Die vier Publikationsentscheidungen sind weiterhin gesondert offen. Eine Freigabe wurde hier nicht erteilt.
+Empfohlener enger Folgeauftrag
+Die Resttreffer beginnen bereits bei zwei Kombinationszeichen. Deshalb ist eine weitere willkürliche Absenkung der erlaubten Anzahl kein guter erster Ansatz: Sie würde normale mehrsprachige Texte treffen und wäre noch kein allgemeiner Nachweis gegen Überlagerung.
+
+Zuerst die Darstellung des Behauptungstextes von den nachfolgenden Host-Kontrollen trennen. Beispielsweise kann ein geeigneter eigener Markdown-Absatz bzw. Block für den Behauptungstext den nötigen Abstand herstellen. Der konkrete Entwurf muss an den tatsächlichen Renderern geprüft werden. Dies ist eine begründete Reparaturhypothese, kein hier bereits getesteter Fix. Die Vier-Zeichen-Regel und der Schutz der Rohdaten bleiben bestehen.
+
+Die folgenden Anweisungen sind als begrenzter Auftrag an den lokalen Agenten vorbereitet. Sie wurden von Eudora nicht ausgeführt:
+Arbeite auf dem vorhandenen lokalen v0.1.1-Abschluss weiter und bestätige zuerst den tatsächlichen Branch/HEAD sowie vorhandene Änderungen. Ausgangsanker ist 75ffd03, Produktanker 403bd3f. Bewahre E2, E3, die Vier-Zeichen-Regel, Rohdaten, Offsets, Fingerprints, Lizenz und historische Evidenz.
+
+Behebe ausschließlich den verbliebenen E1-Anzeigebefund. Prüfe zuerst eine strukturelle Trennung bzw. ausreichenden Abstand zwischen modellgeschriebenem Behauptungstext und folgenden Host-Kontrollzeilen im erzeugten Markdown. Verwende für die erste Entscheidung die vorhandenen Restfälle n=2, n=3, n=4 und die langen Angriffe. Stelle den Schutz über die Ausgabe des Produkts her, nicht über zusätzliches Test-CSS, das gewöhnliche Berichte nicht besitzen. Kein pauschales Entfernen legitimer Akzente, keine Normalisierung der Rohdaten und keine neue Bewertungssemantik.
+
+Erfordert die neue Markdown-Struktur eine Anpassung der DOM-Zuordnung im Messskript, dokumentiere diese eng begrenzt. Jede betroffene Host-Zeile, insbesondere Answer span, bleibt im Messbereich. Derselbe Text darf nicht durch eine großzügigere Nutzlastzuordnung von der Prüfung verschwinden. Doppelte Container-/Absatzmessungen sind methodisch eindeutig zu behandeln. Die bisherige Version muss weiterhin ihre bekannten Gegenfälle liefern. Schwelle, Rand, Fälle und Nenner bleiben unverändert; fehlende Bilder, veränderte Hosttexte oder ungültige Messungen bleiben INVALID.
+
+Nach dem gewählten Fix: denselben 87-Fall-Nachtrag ausführen, die 75 Kombinationszeichenfälle in beiden festgelegten Darstellungen messen und die vier Text-/Markdown-Konfigurationen prüfen. Erfolg bedeutet unter diesen benannten Bedingungen 0/75 visuelle Treffer je Darstellung, 0 INVALID, keine E-Mail-Links und bytegleiche JSON-Berichte. Normale mehrsprachige Texte bleiben als saubere Gegenstücke erhalten. Die bereits vorliegenden Baseline-Daten nicht unnötig neu erzeugen; historische Resultate nicht überschreiben.
+
+Lasse den geänderten Anzeigeweg und die Messzuordnung einmal gesondert prüfen. Verwende die bereits vom Nutzer freigegebene Agentenkonfiguration und protokolliere die tatsächlich verfügbaren Einstellungen. Kein vollständiges neues Projektaudit, keine rekursive Delegation. Danach die bestehenden verbindlichen Produktprüfungen und die saubere Installation am endgültigen Produktstand einmal ausführen; weitere Wiederholungen nur zur Klärung eines konkreten Fehlers oder nach einer relevanten Änderung.
+
+Aktualisiere nur die betroffenen Anzeigeerwartungen, Regeln und den datierten Evidenznachtrag. Präzisiere dort gegebenenfalls die Coverage-Bezeichnung. Liefere Produktcommit, dokumentierten Abschluss, fokussierten Diff, tatsächliche Ergebnisse und einen klaren Status. Wenn E1 offen bleibt, bleibt BLOCKED. Ist E1 erfüllt, lautet der Status READY_FOR_PUBLICATION_REVIEW; die vier Publikationsentscheidungen sind dadurch nicht genehmigt. Kein Push, PR, Merge, Tag, Release, Paketupload, Websiteeingriff oder Live-Modellaufruf. Nach erfülltem Auftrag stoppen.
+
+Nachweisgrenzen
+Nur 24 der 600 aktuellen Original-/Kontrollbilder sind im kompakten Paket enthalten. Diese 24 habe ich pixelweise nachgerechnet. Für die übrigen Bilder habe ich die gespeicherten Messdatensätze ausgewertet; ihre tatsächlichen Pixel konnte ich ohne die Dateien nicht erneut prüfen. Die separate lokale Prüfung im Paket berichtet über alle 600 Bilder, ist aber nicht mit meiner eigenen Ausführung gleichzusetzen.
+
+Die lokale GitHub-artige Darstellung ist kein Test des GitHub-Dienstes. Die Ergebnisse gelten für die dokumentierten Schrift-, Browser-, Layout- und Eingabebedingungen. Weder das bestehende Kriterium noch ein erfolgreicher Folgefix belegt eine universelle Schriftsicherheit oder die wissenschaftliche Richtigkeit der bewerteten Aussagen.

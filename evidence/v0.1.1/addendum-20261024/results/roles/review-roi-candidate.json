@@ -1,0 +1,47 @@
+{
+  "id": "E1-answer_claim_below-02",
+  "style": "noto-serif",
+  "rows": [
+    {
+      "row": {
+        "i": 27,
+        "tag": "LI",
+        "text": "Answer span: [42:118)",
+        "section": "Findings",
+        "number": 2,
+        "payload": false,
+        "visible": true,
+        "x": 48,
+        "y": 1057.75,
+        "w": 190.1875,
+        "h": 22,
+        "twin_box": {
+          "x": 48,
+          "y": 1057.75,
+          "w": 190.1875,
+          "h": 22
+        },
+        "added_ink_px": 54,
+        "overlap": true
+      },
+      "added_ink_bounds": {
+        "x": [
+          166,
+          234
+        ],
+        "y": [
+          1056,
+          1060
+        ]
+      },
+      "y_counts_abs": {
+        "1056": 15,
+        "1057": 12,
+        "1058": 15,
+        "1059": 11,
+        "1060": 1
+      },
+      "unpadded_rounded_box_count": 27
+    }
+  ]
+}

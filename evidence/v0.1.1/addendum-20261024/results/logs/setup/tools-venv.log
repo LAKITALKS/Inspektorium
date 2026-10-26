@@ -1,0 +1,25 @@
+{
+  "venv": "<WORK>/tools-env",
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "freeze": [
+    "Markdown==3.11",
+    "cffi==2.1.1",
+    "cmarkgfm==2025.10.22",
+    "greenlet==3.5.6",
+    "markdown-it-py==4.2.0",
+    "mdurl==0.1.2",
+    "pip==23.2.1",
+    "playwright==1.63.0",
+    "pycparser==3.11",
+    "pyee==13.0.1",
+    "setuptools==65.5.0",
+    "typing_extensions==4.16.0"
+  ],
+  "guard": {
+    "venv": "<WORK>/tools-env",
+    "guard_module": "<WORK>/tools-env/lib/python3.11/site-packages/evidence_netguard.py",
+    "guard_sha256": "1e36c64181d0890a4d49955cff84015c6203c2edd280a1bba6b83accf8f4a84b",
+    "source_sha256": "1e36c64181d0890a4d49955cff84015c6203c2edd280a1bba6b83accf8f4a84b"
+  },
+  "created": "2026-10-24T15:11:42+00:00"
+}

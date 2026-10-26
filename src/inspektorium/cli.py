@@ -18,7 +18,12 @@ from inspektorium.core.models import (
     SourceDocument,
 )
 from inspektorium.providers.base import ProviderError
-from inspektorium.providers.parsing import ProposalParseError, parse_proposal_json
+from inspektorium.providers.parsing import (
+    InputParseError,
+    ProposalParseError,
+    parse_inspection_input_json,
+    parse_proposal_json,
+)
 from inspektorium.report import render_json, render_markdown
 
 
@@ -82,7 +87,7 @@ def _load_inspection_input(args: argparse.Namespace) -> InspectionInput:
     if args.input is not None:
         if args.source:
             raise ValueError("--source cannot be combined with --input")
-        return InspectionInput.model_validate_json(_read_text(args.input))
+        return parse_inspection_input_json(_read_text(args.input))
 
     if not args.source:
         raise ValueError("at least one --source SOURCE_ID=PATH is required")
@@ -123,19 +128,39 @@ def _parse_generated_at(value: str | None) -> datetime | None:
     return timestamp
 
 
+def _write_report(rendered: str, output: Path | None) -> None:
+    """Write only a fully rendered, UTF-8-encodable report.
+
+    Encodability is checked before the output file is opened, so a late
+    encoding failure cannot truncate or overwrite an existing report.
+    """
+
+    try:
+        rendered.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise ValueError(
+            "the rendered report cannot be encoded as UTF-8; nothing was written"
+        ) from exc
+    if output is None:
+        sys.stdout.write(rendered)
+    else:
+        output.write_text(rendered, encoding="utf-8")
+
+
 def _run_inspect(args: argparse.Namespace) -> int:
+    # The input file and --generated-at are validated before proposals are
+    # loaded or the optional provider is constructed. Nothing is rendered or
+    # written until every earlier step has succeeded.
     inspection_input = _load_inspection_input(args)
+    generated_at = _parse_generated_at(args.generated_at)
     proposals = _load_proposals(args, inspection_input)
     report = inspect_proposals(
         inspection_input,
         proposals,
-        generated_at=_parse_generated_at(args.generated_at),
+        generated_at=generated_at,
     )
     rendered = render_json(report) if args.format == "json" else render_markdown(report)
-    if args.output is None:
-        sys.stdout.write(rendered)
-    else:
-        args.output.write_text(rendered, encoding="utf-8")
+    _write_report(rendered, args.output)
     return 0
 
 
@@ -149,6 +174,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             return _run_inspect(args)
     except (
         FileNotFoundError,
+        InputParseError,
         OSError,
         ProposalParseError,
         ProviderError,

@@ -1,0 +1,24 @@
+import argparse,hashlib,json,subprocess,sys
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,required=True);p.add_argument('--venv',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.repo=a.repo.resolve();a.venv=a.venv.resolve();a.out.mkdir(exist_ok=False)
+rows=[]
+def call(cmd):
+ r=subprocess.run(cmd,capture_output=True,text=True);rows.append({'command':[v.replace(str(a.repo),'<REPO>').replace(str(a.venv),'<VENV>').replace(str(a.out.resolve()),'<OUT>') for v in cmd],'exit_code':r.returncode,'stdout':r.stdout,'stderr':r.stderr});assert r.returncode==0,r.stderr;return r
+info=json.loads(call([str(a.venv/'bin/python'),'-I','-c',"import json,sys,inspektorium,importlib.metadata as m;print(json.dumps({'version':inspektorium.__version__,'file':inspektorium.__file__,'python':sys.version,'pydantic':m.version('pydantic')}))"]).stdout)
+assert info['version']=='0.1.1' and str(a.venv) in info['file'] and 'site-packages' in info['file']
+site=Path(info['file']).parent
+hashes={}
+for f in (a.repo/'src/inspektorium').rglob('*.py'):
+ rel=f.relative_to(a.repo/'src/inspektorium');assert f.read_bytes()==(site/rel).read_bytes();hashes[str(rel)]=hashlib.sha256(f.read_bytes()).hexdigest()
+call([str(a.venv/'bin/python'),'-m','pip','check'])
+examples=[]
+for ex in sorted((a.repo/'examples').iterdir()):
+ for fmt,ext in [('json','json'),('markdown','md')]:
+  dest=a.out/(ex.name+'.'+ext)
+  call([str(a.venv/'bin/inspektorium'),'inspect','--input',str(ex/'input.json'),'--proposals',str(ex/'proposals.json'),'--format',fmt,'--output',str(dest)])
+  expected=(ex/('expected_report.'+ext)).read_bytes();actual=dest.read_bytes();assert expected==actual
+  examples.append({'example':ex.name,'format':fmt,'sha256':hashlib.sha256(actual).hexdigest(),'matches_expected':True})
+info['file']=info['file'].replace(str(a.venv),'<VENV>')
+result={'import':info,'source_file_hashes':hashes,'examples':examples,'commands':rows}
+text=json.dumps(result,indent=2).replace(str(a.venv),'<VENV>').replace(str(a.repo),'<REPO>')
+(a.out/'result.json').write_text(text+'\n');print(text)

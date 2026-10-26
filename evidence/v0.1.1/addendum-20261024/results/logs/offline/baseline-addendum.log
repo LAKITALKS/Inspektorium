@@ -1,0 +1,24 @@
+{
+  "cases": 87,
+  "text_renderings": 348,
+  "E1_text_failures": 200,
+  "K7_link_violations": 18,
+  "raw_preserved": 87,
+  "visuals": {
+    "noto-serif": {
+      "measured": 75,
+      "invalid": 0,
+      "overlaps": 45,
+      "critical_overlaps": 17
+    },
+    "github-like": {
+      "measured": 75,
+      "invalid": 0,
+      "overlaps": 42,
+      "critical_overlaps": 14
+    }
+  },
+  "guard_armed_processes": 176,
+  "guard_refusals": 0,
+  "browser_blocked_requests": 0
+}

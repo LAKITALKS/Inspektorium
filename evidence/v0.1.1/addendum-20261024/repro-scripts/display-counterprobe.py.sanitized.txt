@@ -1,0 +1,103 @@
+"""Focused before/after counter-probe; no browser or provider calls."""
+
+from __future__ import annotations
+
+import hashlib
+import importlib.metadata
+import json
+import subprocess
+import sys
+import types
+import unicodedata
+from html.parser import HTMLParser
+from itertools import groupby
+from pathlib import Path
+
+import cmarkgfm
+from cmarkgfm.cmark import Options
+
+from inspektorium.report import display
+
+
+class HtmlView(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.links = []
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self.links.append(dict(attrs).get("href"))
+
+    def handle_data(self, data):
+        self.parts.append(data)
+
+
+def maximum_run(text):
+    return max(
+        (
+            sum(1 for _ in group)
+            for marked, group in groupby(
+                text, lambda ch: unicodedata.category(ch) in {"Mn", "Me"}
+            )
+            if marked
+        ),
+        default=0,
+    )
+
+
+repo = Path(sys.argv[1])
+revision = "5ee4f40a53f817973517af5f9a7ff4fc3cef413b"
+source = subprocess.check_output(
+    ["git", "show", f"{revision}:src/inspektorium/report/display.py"], cwd=repo
+)
+before = types.ModuleType("before_display")
+exec(compile(source, "before_display.py", "exec"), before.__dict__)
+metadata = {
+    "python": sys.version,
+    "unicode": unicodedata.unidata_version,
+    "cmarkgfm": importlib.metadata.version("cmarkgfm"),
+    "before_revision": revision,
+    "before_display_sha256": hashlib.sha256(source).hexdigest(),
+    "after_display_sha256": hashlib.sha256(Path(display.__file__).read_bytes()).hexdigest(),
+}
+rows = []
+contexts = ("encode_inline", "encode_line", "encode_quote", "encode_identifier")
+for context in contexts:
+    for name, payload, must_detect in (
+        ("four-marks-clean", "X" + "\u030d" * 4, False),
+        ("five-marks", "X" + "\u030d" * 5, True),
+        ("long-mixed-run", "X" + "\u030d\u20dd" * 4096, True),
+        ("multilingual-clean", "Cafe\u0301 α\u0313\u0301 שָׁלוֹם مُحَمَّد हिन्दी", False),
+    ):
+        old = getattr(before, context)(payload)
+        new = getattr(display, context)(payload)
+        old_run, new_run = maximum_run(old), maximum_run(new)
+        assert new_run <= 4
+        if must_detect:
+            assert old_run > 4
+        else:
+            assert old == new
+        rows.append({"kind": "E1", "context": context, "case": name,
+                     "before_maximum_raw_run": old_run,
+                     "after_maximum_raw_run": new_run,
+                     "counterexample_required": must_detect})
+    for prefix in ("", "mailto:", "xmpp:"):
+        payload = f"Contact {prefix}reader@example.org"
+        for mode, options in (("safe", 0), ("unsafe", Options.CMARK_OPT_UNSAFE)):
+            views = []
+            for module in (before, display):
+                encoded = getattr(module, context)(payload)
+                view = HtmlView()
+                view.feed(cmarkgfm.github_flavored_markdown_to_html(encoded, options=options))
+                views.append(view)
+            old, new = views
+            assert len(old.links) >= 1
+            assert new.links == []
+            assert "".join(new.parts).strip() == payload.replace("@", "\u27e6U+0040\u27e7")
+            rows.append({"kind": "E2", "context": context, "prefix": prefix,
+                         "renderer": mode, "raw_payload": payload,
+                         "before_links": old.links, "after_links": new.links,
+                         "before_text": "".join(old.parts).strip(),
+                         "after_text": "".join(new.parts).strip()})
+print(json.dumps({"metadata": metadata, "rows": rows}, ensure_ascii=True, indent=2))

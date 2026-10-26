@@ -1,0 +1,32 @@
+[
+  {
+    "subcommand": "product-venv",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "refusing existing --venv target; choose an unused path\n",
+    "before": "5670665550bd0dec92f4fbfaa27cd5c9b13e2c7f24ad941fd13764e9744f5c52",
+    "after": "5670665550bd0dec92f4fbfaa27cd5c9b13e2c7f24ad941fd13764e9744f5c52",
+    "preserved": true,
+    "setup_log_created": false
+  },
+  {
+    "subcommand": "tools-venv",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "refusing existing --venv target; choose an unused path\n",
+    "before": "5670665550bd0dec92f4fbfaa27cd5c9b13e2c7f24ad941fd13764e9744f5c52",
+    "after": "5670665550bd0dec92f4fbfaa27cd5c9b13e2c7f24ad941fd13764e9744f5c52",
+    "preserved": true,
+    "setup_log_created": false
+  },
+  {
+    "subcommand": "build-venv",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "refusing existing --venv target; choose an unused path\n",
+    "before": "5670665550bd0dec92f4fbfaa27cd5c9b13e2c7f24ad941fd13764e9744f5c52",
+    "after": "5670665550bd0dec92f4fbfaa27cd5c9b13e2c7f24ad941fd13764e9744f5c52",
+    "preserved": true,
+    "setup_log_created": false
+  }
+]

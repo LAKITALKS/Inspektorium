@@ -1,10 +1,28 @@
 # INSPEKTORIUM: implementation and research scope
 
-The public v0.1 implementation remains frozen: package 0.1.0, schema 0.1.
-The broader research direction does not change its runtime contract.
+> **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
+> Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
+> [Publication mapping and current checks](publication/2026-10-26/README.md)
+> supersede earlier access/publication statements below. Historical numbers,
+> original dates and limits remain unchanged; publication is not independent
+> replication. The scientific Final v1 gate is not met. No new live calls.
+
+The public v0.1 boundary remains fixed: package 0.1.1, report schema 0.1.
+Version 0.1.1 is a maintenance version of 0.1.0. It fixes Markdown report
+display and `--input` parsing and adds no capability outside the list below.
+The broader research direction does not change this runtime contract.
 Capabilities outside **Public v0.1 implementation** are not shipped merely
-because they appear in a research plan. The [claim ledger](CLAIMS.md) assigns
-each claim a version, evidence source and verification/access status.
+because they appear in a research plan or exist internally. The
+[claim ledger](CLAIMS.md) assigns each claim a version, evidence source and
+verification/access status.
+
+## Purpose
+
+Deterministic checking of selected integrity errors in AI analysis artifacts:
+exact claim spans, exact citation text and offset binding, and gated
+reportability of each finding, plus a report display that treats answer,
+source and evaluator text as data. INSPEKTORIUM does not decide whether a
+claim, a source or a proposed relation is correct.
 
 ## Public v0.1 implementation
 
@@ -18,8 +36,17 @@ each claim a version, evidence source and verification/access status.
 - Qualitative evidence sufficiency and evaluator certainty.
 - Unicode NFC/LF canonicalization and Python character offsets.
 - Deterministic SHA-256 fingerprints.
-- Deterministic JSON and Markdown reports.
-- Strict precomputed-proposal parsing for offline use.
+- Deterministic JSON and Markdown reports; since 0.1.1 the Markdown report
+  escapes untrusted text for its context and shows characters of the Unicode
+  categories Cc, Cf, Cs, Zl and Zp, code points unassigned (Cn) in the running
+  Python's Unicode database and the exact marker brackets as `⟦U+XXXX⟧`
+  markers, while JSON keeps the exact characters. The at sign is also marked.
+  At most four consecutive Mn/Me characters stay raw; later characters in
+  each run are marked, including variation selectors. Private-use characters
+  and other invisible characters outside these categories are not marked.
+- Strict JSON parsing for precomputed proposals and, since 0.1.1, for
+  `--input` files through the same decoder; since 0.1.1 a verified citation
+  also requires a complete evidence reference in the report models.
 - Exactly one optional real provider: Anthropic.
 - A local single-answer CLI.
 - Exactly five synthetic offline examples.
@@ -42,6 +69,11 @@ each claim a version, evidence source and verification/access status.
 - Execution authorization, budget ledgers, checkpoint/resume authentication,
   environment binding, scientific inference checks, independent adjudication
   and a production release gate.
+- Report authentication, full evaluator provenance and a `verify` command.
+
+The [evidence package](evidence/v0.1.1/) under `evidence/` contains test
+tooling and a synthetic catalog for this version. It is reproducibility
+material, not a benchmark suite or runtime feature.
 
 ## Mandatory semantic boundary
 
@@ -50,9 +82,13 @@ only canonical answer and citation spans plus structural requirements. When the
 mandatory guards pass, the unchanged proposal may appear as
 `reportable_relation`. Reportability is not semantic verification.
 
+An exact excerpt can still misrepresent its source, for example by omitting a
+negation. Exact text binding does not confirm the meaning of a relation (P14).
+
 `not_established` may be proposed without a quotation. That omission does not
-prove source insufficiency; the relation remains an evaluator judgment. Any
-optional explanatory citation must validate exactly.
+prove source insufficiency; the relation remains an evaluator judgment and is
+not a scientifically examined refutation (P04, P15). Any optional explanatory
+citation must validate exactly.
 
 Failed mandatory checks set the individual `reportable_relation` to null;
 they preserve the original proposal and allow the whole report to be emitted.
@@ -61,15 +97,36 @@ An exact true quotation with a false proposed semantic relationship can still
 pass, as demonstrated by the reviewer probe on example 02. Empty findings are
 allowed; zero validation failures is not a coverage guarantee (P03, P09–P11).
 
+Offsets are strict. A quotation whose text exists in the source but not at the
+proposed offsets fails; nothing is searched for or repositioned. These
+rejections are intended behavior, and no general false-alarm rate follows from
+the tests or examples (P17).
+
 Fingerprints bind current canonical content, not authenticated historical
 state. Neither a digest nor an unchanged citation span establishes source
-authority. Reliability claims are limited to fixed saved inputs/settings;
-robustness observations are limited to the named regression disturbances.
+authority. A report that validates against the schema has not been re-checked
+against its sources and is not proof of its origin (P16). Reliability claims
+are limited to fixed saved inputs/settings; robustness observations are
+limited to the named regression and catalog disturbances. The Markdown display
+protection is evidenced for the published synthetic catalog and the named
+Markdown implementations only; the 2026-10-24 correction and remaining limits, including untested
+fonts/viewers and look-alike marker brackets, are listed in the
+[changelog](CHANGELOG.md#known-display-limits) (P12).
+
+The earlier `403bd3f` check found ink inside the `Answer span` text box in
+6/75 Noto Serif and 5/75 local GitHub-like cases. The follow-up `5ace279`
+places the claim in its own paragraph before the host-control list. The same
+75-case pixel checks now record **0/75 hits and 0 INVALID per style**;
+`Answer span` remains measured. See the
+[layout follow-up](evidence/v0.1.1/addendum-20261024-e1-layout/README.md).
+This bounded result is not a universal font/viewer or readability guarantee.
 
 ## Broader research direction and its evidence status
 
 - **IMPLEMENTED + TESTED IN PUBLIC v0.1:** exact spans, fingerprints,
-  deterministic reports and strict offline parsing (P01–P07).
+  deterministic reports and strict offline parsing (P01–P07); in 0.1.1 also
+  Markdown display of untrusted text as data and strict `--input` parsing
+  (P12–P13).
 - **OWNER-REPORTED INTERNAL EXPERIMENT:** artifact-fault containment with clean
   counterparts, zero observed A/B accuracy gain and semantic misses (I01–I03).
   The internal code/raw package is not public here and was not independently
@@ -77,13 +134,15 @@ robustness observations are limited to the named regression disturbances.
 - **REPORTED IMPLEMENTED/TESTED INTERNALLY:** execution authorization, budget,
   state/resume and environment controls (I04). No public implementation
   inspected; no demonstrated end-to-end official release gate in that pilot.
-- **PLANNED — PHASE 8:** semantic/inferential checking and scientific claim
-  forensics (R08).
-- **PLANNED — PHASE 9:** disagreement, independent verdict challenge and bounded
-  review routing (R09).
-- **PLANNED — PHASE 10:** canonical operational release workflow, explicit
-  UNKNOWN states and post-render QA (R10). Current JSON/Markdown renderers are
-  already implemented.
+- **OWNER-REPORTED INTERNAL IMPLEMENTATION — PHASES 8–10:** semantic and
+  inferential checking and scientific claim forensics (R08); disagreement,
+  independent verdict challenge and bounded review routing (R09); canonical
+  operational release workflow, explicit UNKNOWN states and post-render QA
+  (R10). The owner reports these as implemented in the internal technical
+  v1.0.0 closeout of a separate, non-public codebase, checked offline and
+  live-tested in a limited way on earlier internal states. The closeout code
+  was not live-tested again, no scientific efficacy is demonstrated, and none
+  of it is part of this package.
 - **NOT CLAIMED:** general AI safety, regulatory compliance, certification or
   alignment. No NIST, DSIT or regulatory endorsement/conformance is implied.
 
@@ -98,8 +157,12 @@ an untested hypothesis (H01), not a renamed implementation feature.
 
 The public boundary remains fixed through v0.1. [ROADMAP.md](ROADMAP.md) and
 [RESEARCH_PLAN.md](RESEARCH_PLAN.md) describe later, separately reviewed work.
-The documentation migration adds no runtime, provider, runner, fixture or
-dependency. It leaves versions and the historical v0.1.0 release unchanged.
+Version 0.1.1 changes Markdown rendering and its labels, `--input` parsing and
+CLI error messages, one report-model invariant (a verified citation requires a
+complete evidence reference), tests, documentation and development
+dependencies, and adds the evidence package. It keeps relation semantics,
+guard rules, offsets, fingerprints, JSON report output and schema 0.1. The
+historical v0.1.0 release and tag are unchanged.
 
 Completed internal research can become public evidence only through a separate
 inspectable package with explicit version mapping, preserved originals and
@@ -107,5 +170,5 @@ hashes. Owner reports in [RESEARCH_RESULTS.md](RESEARCH_RESULTS.md) do not grant
 access to internal artifacts. Do not import private/client cases, provider or
 account logs, prompts, credentials, or material with unclear redistribution
 rights. Keep [PolyForm Noncommercial 1.0.0](LICENSE) unchanged and use
-source-available terminology. Publication of this documentation requires
-coordinator approval separately from its local preparation.
+source-available terminology. Publication of v0.1.1 requires the maintainer's
+decision, separately from its local preparation.

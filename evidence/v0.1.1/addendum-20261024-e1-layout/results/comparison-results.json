@@ -1,0 +1,31 @@
+{
+  "replay": {
+    "baseline": {
+      "visual_records_recomputed": 150,
+      "images_hash_verified": 300,
+      "overlaps": {
+        "noto-serif": 45,
+        "github-like": 42
+      }
+    },
+    "candidate": {
+      "visual_records_recomputed": 150,
+      "images_hash_verified": 300,
+      "overlaps": {
+        "noto-serif": 6,
+        "github-like": 5
+      }
+    }
+  },
+  "mapping": {
+    "visual_records": 150,
+    "original_and_control_host_rows_checked": 18000,
+    "answer_span_rows_checked": 900,
+    "all_row_text_and_payload_membership_identical": true,
+    "only_tag_change": "Atomic claim: LI to P; all host labels retained"
+  },
+  "raw_json": {
+    "cases": 87,
+    "byte_hashes_and_objects_identical": true
+  }
+}

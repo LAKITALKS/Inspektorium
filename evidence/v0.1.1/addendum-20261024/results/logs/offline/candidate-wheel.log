@@ -1,0 +1,8 @@
+{
+  "created": "2026-10-24T15:11:42+00:00",
+  "source_kind": "git-archive",
+  "commit": "403bd3fac27f2406a150b2243a691ba4d0b12fbb",
+  "archive_sha256": "26bb7004c63df0f654dc817f86632220d87691684889ac858428526034f3f118",
+  "wheel": "inspektorium-0.1.1-py3-none-any.whl",
+  "wheel_sha256": "07d52c5820da3718abdd02a960eb51bfbd2e8dd02caebb4f2ef8e638058b4649"
+}

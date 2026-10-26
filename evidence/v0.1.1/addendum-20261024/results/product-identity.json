@@ -1,0 +1,307 @@
+{
+  "tested_commit": "403bd3fac27f2406a150b2243a691ba4d0b12fbb",
+  "working_tree_product_files": [
+    {
+      "path": "evidence/v0.1.1/tools/setup_env.py",
+      "sha256": "4a3b19c60c49eb9a92c05e99b257420b3cb33e34004326fab5d823115487adc8",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/01_supported/expected_report.json",
+      "sha256": "b43236b009925e49ba73af0464568aeb709f979be46a02bed12f7ecf1f930647",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/01_supported/expected_report.md",
+      "sha256": "c91654d2d51b3a33bd8dd62b434880f8f0e09048cbb7380ee161767cf33c92ed",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/01_supported/input.json",
+      "sha256": "311d1700823e603bf1668def2582f2f196897e627f802198cebdc4c2f9679155",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/01_supported/proposals.json",
+      "sha256": "a714b4b254a006ca2da65fb662faabd88361251a436efc75b02488c353c2597d",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/02_contradicted/expected_report.json",
+      "sha256": "6369623c5f45a0694237280df7c29ecc38df75b90c2d22a664b4d6c994feb4f0",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/02_contradicted/expected_report.md",
+      "sha256": "1fb061f7ca4027b3b42ae9cf4f6dae65175dd5a5143d539c5b930ddbc6e39b01",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/02_contradicted/input.json",
+      "sha256": "cb60534894ec0019f5b20d62e6220580fe6764b86d457c8a1c287490ff26cf41",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/02_contradicted/proposals.json",
+      "sha256": "a44c2c3d306246c90355dacd96e30bcc3bd7341e2f2ca04df8af59865f096ac6",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/03_not_established/expected_report.json",
+      "sha256": "a96c2e598c43897e6ec3af6e52b11f3bb2778e1f78d397575a1adcb8dcb96eea",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/03_not_established/expected_report.md",
+      "sha256": "e88922a6b63d7c4144d089e3c53f901e3a7031762cd1485264f0cccbbe015034",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/03_not_established/input.json",
+      "sha256": "9cfb17d87940084d9fb2df55ccf20e8eb319b12486105666b9c3d69411075125",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/03_not_established/proposals.json",
+      "sha256": "8b001d750f348cdbf5bd5b91d5a3c38b511dbbf0c725c503d4dd0f15cd6b6c8e",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/04_attribution_mismatch/expected_report.json",
+      "sha256": "411d228dbd3a8b8298b9ec27ef96d8fd69489f7de5b58c17a567d959c826ebc8",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/04_attribution_mismatch/expected_report.md",
+      "sha256": "671455901c82986a0bc3b5b277cc30c284a35bab80fcb8370502f72133d301e3",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/04_attribution_mismatch/input.json",
+      "sha256": "7b26e385e60bb7431abf7b19bfa5e1c5f0dd9d81d8e716056479eb206c7fe739",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/04_attribution_mismatch/proposals.json",
+      "sha256": "908e3a95a165b4676a78a85ebe245c771235bece92a7b6d2690554d933712af2",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/05_mixed_and_fabricated_quote/expected_report.json",
+      "sha256": "a492187a971dea447ee599840036b21f40a6f44a6d15c663b84c64cf0383d49a",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/05_mixed_and_fabricated_quote/expected_report.md",
+      "sha256": "1fff6934958c7b03cfe8a6182c8ec08c5bf620907b4603886040fdb3a265d588",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/05_mixed_and_fabricated_quote/input.json",
+      "sha256": "96453f6513074484cdf23eb21597f82166c9a36bef9a4260f784156d6351a202",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "examples/05_mixed_and_fabricated_quote/proposals.json",
+      "sha256": "9bae78322dcde12a5cc45e5a702efbeb07229724e8236558a4dace789f23ab3a",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "e5c5da51879a88ff62f35afe2a4d2e87efe7f6e2067dec0814d09e2002e75395",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/__init__.py",
+      "sha256": "93d65998af13fa8c3ffdfe52bc47cd2a3de6c5dd24b32208e4fffdb53a6a9651",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/__main__.py",
+      "sha256": "64dcd91944bb7518c82c57a6e3cf43dbbcab38a628204c92216b7aefc04b03a7",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/cli.py",
+      "sha256": "45c6fc847610af6f3c32e9ecd0d7772402917fa5943ac98b725d9e54ec71220a",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/__init__.py",
+      "sha256": "d0ad72344e79aff20c090d2c07218bff7457a7aeb9e985a50483e8fcddef0257",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/fingerprints.py",
+      "sha256": "fcc9ac356e18462ccf13d16327d841687dd85f57a1a3082ec4467bdb51dd7765",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/inspection.py",
+      "sha256": "79968ae5865dc5001fd0937e9557f7d07b241fcc451c0aac5cd40d5f5c2e3597",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/models.py",
+      "sha256": "a189e3df13e3d65c3d6b771975a02c017853046d612162848c705c6e4e481805",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/normalization.py",
+      "sha256": "9fe8ed2617bacde5ddeff5bdf75d3016d7926c14edb7f6171b3df456cde43c09",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/relations.py",
+      "sha256": "201bcbd6cbe3fa43659acb035a22a244e315cbd908d0d10b214ae16193b2687f",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/strict_json.py",
+      "sha256": "cb36e9d7058292e0df4058550e43dcf05a04ae44715fb5bf7f692c31a3c05e44",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/core/validation.py",
+      "sha256": "9a4dc8e4f537eb39c4c9ffc89b1fd414a5ffb94659abebebad16687e82ac1060",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/providers/__init__.py",
+      "sha256": "ed8542141dd640c03c5362ed0dd8f77a93556c8fdec992a339c924aac29a1bab",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/providers/anthropic.py",
+      "sha256": "df5540e76d15694d5c513f94da860af9f442a63de472be1dff6cec5e8b8791cf",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/providers/base.py",
+      "sha256": "153cd55fdb1d776df27fdf7400e9af3bb332a292bc1c2672184a8ea55daf95ae",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/providers/parsing.py",
+      "sha256": "904537e2df2bcb137dba5ac1085b74724891a3f4be8321e5f0b950197c50f134",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/report/__init__.py",
+      "sha256": "58e4bd70e0abe8b5fbed1a6c1971b1ca11af4425fce6628276a8826e098596e7",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/report/display.py",
+      "sha256": "e1f69766a5711eb5b870179796b0100abd1066e304f0e9fba4e1c4cddb3deb74",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/report/json_report.py",
+      "sha256": "45d6cc09e9cb54fad66980293788f3b4f928da0d650ce4e8d40d6e907157dd20",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "src/inspektorium/report/markdown_report.py",
+      "sha256": "c0e8974c372b4acd8d3a2de5f232ac2fd8daf4833ea7f0c04728d31049ae6f36",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "3144bdc10d844a3e60afab5d0f0834f78ba4111cd91d62c64725da715a68359f",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_cli.py",
+      "sha256": "5b21f4ede77165b1f8ae2c258cd29dd90fa19a04e1e70e68684ab6cdcd02094b",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_cli_input_rejection.py",
+      "sha256": "22885eb8fc465b5c7bd7105561975c17956576b8488a84f04f4fe30429dfb7b2",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_display.py",
+      "sha256": "f0de22d71f5646a962e7ec5d0a0a662f1beb17ee6cf8df9f176a498f2f673f5a",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_display_limits.py",
+      "sha256": "424a61da6d848594ab69c78744ae29b3881c63487d063291b0a03af37d9ad15b",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_examples.py",
+      "sha256": "ccbfd9a7daf1863a06a2757ac6821449b1dafcef42ccd3f013d34b9c79f5b5e6",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_fingerprints.py",
+      "sha256": "e3fa3c929a3a93d871ff98f7b65b918a9113d9db191c34e1322995254a40c9de",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_input_parsing.py",
+      "sha256": "5bf3d152f2e72fdf0ca3c26216958a1d04c564899744919743e3b14fe49a1173",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_model_invariants.py",
+      "sha256": "ca95202a6b0c72389e8e1a23246b58f1fdfc72a5ef35bc04703eba61014f68d4",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_models.py",
+      "sha256": "c3a700214bed1f56ed63878c62f8c1d809222ae239b9afa883eaa76ae21039b0",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_normalization.py",
+      "sha256": "63d9604099545cae0eb6b2c135d5e9a7f8f99d566756d9346e684cefa8fc05f4",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_parser.py",
+      "sha256": "c47fde17330b1d2ef1e6c9fa88abe97f36b8551d20e23e6a8b3b24bfd335c969",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_provider.py",
+      "sha256": "6208bdb798e95e2229e48b12b4cc7edcc6549122e91f1e83a9992d8f2950d06c",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_public_contract.py",
+      "sha256": "b9cf25d37f4be92d0eb917f47f1b5158a24795f2dcffa714712644b551764630",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_render_safety.py",
+      "sha256": "24ffb27be8919a2b8e4c5ff2c54bd67efdb601efadc2c687e948bfcec9234042",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_reports.py",
+      "sha256": "8d4ac686e0c806358fc4e8baa1c9bf2807414395c4f59dd36dd13e7663d6bed4",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_setup_env.py",
+      "sha256": "5996f9f65784f67c8132c6bb2161f845b2e5a8d0c52cf44dceecc37b25c5970d",
+      "equals_tested_commit": true
+    },
+    {
+      "path": "tests/test_validation.py",
+      "sha256": "d27c40451d6a94752e6b2b73775cdd597d5c91689f81ae630427b7498767d43f",
+      "equals_tested_commit": true
+    }
+  ],
+  "unchanged_product_files_outside_display": 17,
+  "historical_catalog_and_result_files_unchanged": true,
+  "license_and_example_jsons_unchanged": true,
+  "tag_v0.1.0_object": "648e24aecfceed2f19e02f983ad6f0f14e8d0a74",
+  "command": "git diff 403bd3fac27f2406a150b2243a691ba4d0b12fbb -- src tests examples pyproject.toml evidence/v0.1.1/tools/setup_env.py",
+  "diff_exit": 0,
+  "diff_stdout": ""
+}

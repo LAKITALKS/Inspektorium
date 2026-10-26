@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "unicode": "14.0.0",
+    "cmarkgfm": "2025.10.22",
+    "before_revision": "5ee4f40a53f817973517af5f9a7ff4fc3cef413b",
+    "before_display_sha256": "cbddc15645749d00aea983118c85adfbba7b3f12a5191910befda4b36893197b",
+    "after_display_sha256": "e1f69766a5711eb5b870179796b0100abd1066e304f0e9fba4e1c4cddb3deb74"
+  },
+  "rows": [
+    {
+      "kind": "E1",
+      "context": "encode_inline",
+      "case": "four-marks-clean",
+      "before_maximum_raw_run": 4,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E1",
+      "context": "encode_inline",
+      "case": "five-marks",
+      "before_maximum_raw_run": 5,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_inline",
+      "case": "long-mixed-run",
+      "before_maximum_raw_run": 8192,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_inline",
+      "case": "multilingual-clean",
+      "before_maximum_raw_run": 2,
+      "after_maximum_raw_run": 2,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E2",
+      "context": "encode_inline",
+      "prefix": "",
+      "renderer": "safe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_inline",
+      "prefix": "",
+      "renderer": "unsafe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_inline",
+      "prefix": "mailto:",
+      "renderer": "safe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_inline",
+      "prefix": "mailto:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_inline",
+      "prefix": "xmpp:",
+      "renderer": "safe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_inline",
+      "prefix": "xmpp:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E1",
+      "context": "encode_line",
+      "case": "four-marks-clean",
+      "before_maximum_raw_run": 4,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E1",
+      "context": "encode_line",
+      "case": "five-marks",
+      "before_maximum_raw_run": 5,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_line",
+      "case": "long-mixed-run",
+      "before_maximum_raw_run": 8192,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_line",
+      "case": "multilingual-clean",
+      "before_maximum_raw_run": 2,
+      "after_maximum_raw_run": 2,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E2",
+      "context": "encode_line",
+      "prefix": "",
+      "renderer": "safe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_line",
+      "prefix": "",
+      "renderer": "unsafe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_line",
+      "prefix": "mailto:",
+      "renderer": "safe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_line",
+      "prefix": "mailto:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_line",
+      "prefix": "xmpp:",
+      "renderer": "safe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_line",
+      "prefix": "xmpp:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E1",
+      "context": "encode_quote",
+      "case": "four-marks-clean",
+      "before_maximum_raw_run": 4,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E1",
+      "context": "encode_quote",
+      "case": "five-marks",
+      "before_maximum_raw_run": 5,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_quote",
+      "case": "long-mixed-run",
+      "before_maximum_raw_run": 8192,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_quote",
+      "case": "multilingual-clean",
+      "before_maximum_raw_run": 2,
+      "after_maximum_raw_run": 2,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E2",
+      "context": "encode_quote",
+      "prefix": "",
+      "renderer": "safe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_quote",
+      "prefix": "",
+      "renderer": "unsafe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_quote",
+      "prefix": "mailto:",
+      "renderer": "safe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_quote",
+      "prefix": "mailto:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_quote",
+      "prefix": "xmpp:",
+      "renderer": "safe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_quote",
+      "prefix": "xmpp:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E1",
+      "context": "encode_identifier",
+      "case": "four-marks-clean",
+      "before_maximum_raw_run": 4,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E1",
+      "context": "encode_identifier",
+      "case": "five-marks",
+      "before_maximum_raw_run": 5,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_identifier",
+      "case": "long-mixed-run",
+      "before_maximum_raw_run": 8192,
+      "after_maximum_raw_run": 4,
+      "counterexample_required": true
+    },
+    {
+      "kind": "E1",
+      "context": "encode_identifier",
+      "case": "multilingual-clean",
+      "before_maximum_raw_run": 2,
+      "after_maximum_raw_run": 2,
+      "counterexample_required": false
+    },
+    {
+      "kind": "E2",
+      "context": "encode_identifier",
+      "prefix": "",
+      "renderer": "safe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_identifier",
+      "prefix": "",
+      "renderer": "unsafe",
+      "raw_payload": "Contact reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact reader@example.org",
+      "after_text": "Contact reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_identifier",
+      "prefix": "mailto:",
+      "renderer": "safe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_identifier",
+      "prefix": "mailto:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact mailto:reader@example.org",
+      "before_links": [
+        "mailto:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact mailto:reader@example.org",
+      "after_text": "Contact mailto:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_identifier",
+      "prefix": "xmpp:",
+      "renderer": "safe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    },
+    {
+      "kind": "E2",
+      "context": "encode_identifier",
+      "prefix": "xmpp:",
+      "renderer": "unsafe",
+      "raw_payload": "Contact xmpp:reader@example.org",
+      "before_links": [
+        "xmpp:reader@example.org"
+      ],
+      "after_links": [],
+      "before_text": "Contact xmpp:reader@example.org",
+      "after_text": "Contact xmpp:reader\u27e6U+0040\u27e7example.org"
+    }
+  ]
+}

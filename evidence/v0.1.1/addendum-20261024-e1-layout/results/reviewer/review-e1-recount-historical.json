@@ -1,0 +1,1580 @@
+{
+  "baseline": {
+    "summary": {
+      "cases": 87,
+      "text_renderings": 348,
+      "E1_text_failures": 200,
+      "K7_link_violations": 18,
+      "raw_preserved": 87,
+      "visuals": {
+        "noto-serif": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 45,
+          "critical_overlaps": 17
+        },
+        "github-like": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 42,
+          "critical_overlaps": 14
+        }
+      },
+      "guard_armed_processes": 176,
+      "guard_refusals": 0,
+      "browser_blocked_requests": 0
+    },
+    "pixel_crops_recounted": 9000,
+    "png_hashes_verified": 300,
+    "actual_case_file_hashes_verified": 348,
+    "answer_span_rows_measured": 450,
+    "host_rows_measured": 9000,
+    "max_raw_or_rendered_mark_run": 80,
+    "renderings_with_links": 18,
+    "overlaps": {
+      "noto-serif": 45,
+      "github-like": 42
+    },
+    "hit_details": [
+      {
+        "id": "E1-fail_self_above-06",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 28
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-08",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 282
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-08",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 58
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-10",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 521
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-10",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 340
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-12",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 85
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 837
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-12",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 583
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-16",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 388
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 915
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-16",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 243
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 969
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-24",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 537
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 501
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 915
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-24",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 551
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 969
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-32",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 693
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1467
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 501
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 915
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-32",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 88
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1530
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 551
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 969
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-48",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 444
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 896
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1467
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 501
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 915
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-48",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 923
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1539
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 551
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 969
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-80",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Northbridge Library is open on Saturdays from 10 a.m. to 2 p.m.",
+            "added_ink_px": 560
+          },
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 153
+          },
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 472
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 896
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1467
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 501
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 915
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_above-80",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 126
+          },
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 437
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 923
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1539
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 551
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 969
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-06",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 54
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-06",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 20
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-08",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 214
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-08",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 217
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-10",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 360
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-10",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 391
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-12",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 499
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-12",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 521
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-16",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 678
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-16",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 836
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-24",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 678
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 272
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-24",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 836
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 253
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-32",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 678
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 345
+          },
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 64
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-32",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 836
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 397
+          },
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 26
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-48",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 926
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 397
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-48",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 1044
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 406
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-80",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 993
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 472
+          },
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 48
+          }
+        ]
+      },
+      {
+        "id": "E1-fail_self_below-80",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 1093
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 538
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-24",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 303
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-32",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 2297
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-32",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 1853
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-48",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 2106
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-48",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 1198
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-80",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 2980
+          }
+        ]
+      },
+      {
+        "id": "E1-last_below-80",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "claim-2 / evidence_span_mismatch: The proposed quote does not equal the canonical source span at the proposed offsets.",
+            "added_ink_px": 2132
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-02",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:118)",
+            "added_ink_px": 54
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-02",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:118)",
+            "added_ink_px": 30
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-03",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:141)",
+            "added_ink_px": 111
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-03",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:141)",
+            "added_ink_px": 102
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-04",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:164)",
+            "added_ink_px": 155
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-04",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:164)",
+            "added_ink_px": 165
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-05",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:187)",
+            "added_ink_px": 192
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-05",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:187)",
+            "added_ink_px": 205
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-06",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:210)",
+            "added_ink_px": 237
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-06",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:210)",
+            "added_ink_px": 256
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-08",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:256)",
+            "added_ink_px": 346
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 37
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-08",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:256)",
+            "added_ink_px": 369
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-10",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:302)",
+            "added_ink_px": 386
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 169
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-10",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:302)",
+            "added_ink_px": 464
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 86
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-12",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:348)",
+            "added_ink_px": 394
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 254
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-12",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:348)",
+            "added_ink_px": 468
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 238
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-16",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:440)",
+            "added_ink_px": 393
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 533
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 347
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-16",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:440)",
+            "added_ink_px": 466
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 504
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 20
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-24",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:624)",
+            "added_ink_px": 396
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 540
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1308
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 611
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-24",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:624)",
+            "added_ink_px": 475
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 635
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1231
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 39
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-32",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:808)",
+            "added_ink_px": 389
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 540
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1308
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1384
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 293
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-32",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:808)",
+            "added_ink_px": 456
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 635
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1389
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1335
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 52
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-48",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:1176)",
+            "added_ink_px": 428
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 540
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1308
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1384
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 505
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 1127
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 1011
+          },
+          {
+            "text": "Evaluator certainty: high",
+            "added_ink_px": 16
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-48",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:1176)",
+            "added_ink_px": 504
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 635
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1389
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1481
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 654
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 1336
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 154
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-80",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:1912)",
+            "added_ink_px": 434
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 540
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1308
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1384
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 505
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 1127
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 1297
+          },
+          {
+            "text": "Evaluator certainty: high",
+            "added_ink_px": 642
+          },
+          {
+            "text": "Rationale (evaluator-generated): The proposed quotation appears to state the same weekday closing time.",
+            "added_ink_px": 1286
+          },
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 1204
+          },
+          {
+            "text": "On weekdays, the library closes at 8 p.m.",
+            "added_ink_px": 177
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-80",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:1912)",
+            "added_ink_px": 503
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 635
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 1389
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1481
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 654
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 1440
+          },
+          {
+            "text": "Evidence sufficiency (evaluator judgment): sufficient",
+            "added_ink_px": 1470
+          },
+          {
+            "text": "Evaluator certainty: high",
+            "added_ink_px": 470
+          },
+          {
+            "text": "Rationale (evaluator-generated): The proposed quotation appears to state the same weekday closing time.",
+            "added_ink_px": 1283
+          },
+          {
+            "text": "Proposed quotation \u2014 no exact text and offset match:",
+            "added_ink_px": 780
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-05",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 10
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-06",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 96
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-06",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 26
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-08",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 581
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-08",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 508
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-10",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 977
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-10",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1006
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-12",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1382
+          },
+          {
+            "text": "Proposed offsets: [0:639)",
+            "added_ink_px": 22
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-12",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1399
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-16",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1818
+          },
+          {
+            "text": "Proposed offsets: [0:831)",
+            "added_ink_px": 700
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-16",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 2118
+          },
+          {
+            "text": "Proposed offsets: [0:831)",
+            "added_ink_px": 392
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-24",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1818
+          },
+          {
+            "text": "Proposed offsets: [0:1215)",
+            "added_ink_px": 1411
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-24",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 2118
+          },
+          {
+            "text": "Proposed offsets: [0:1215)",
+            "added_ink_px": 1514
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-32",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1818
+          },
+          {
+            "text": "Proposed offsets: [0:1599)",
+            "added_ink_px": 1413
+          },
+          {
+            "text": "Finding 2: claim-2",
+            "added_ink_px": 637
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-32",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 2118
+          },
+          {
+            "text": "Proposed offsets: [0:1599)",
+            "added_ink_px": 1505
+          },
+          {
+            "text": "Finding 2: claim-2",
+            "added_ink_px": 438
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-48",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1818
+          },
+          {
+            "text": "Proposed offsets: [0:2367)",
+            "added_ink_px": 1415
+          },
+          {
+            "text": "Finding 2: claim-2",
+            "added_ink_px": 779
+          },
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 2324
+          },
+          {
+            "text": "Answer span: [42:74)",
+            "added_ink_px": 417
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-48",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 2118
+          },
+          {
+            "text": "Proposed offsets: [0:2367)",
+            "added_ink_px": 1501
+          },
+          {
+            "text": "Finding 2: claim-2",
+            "added_ink_px": 946
+          },
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 1587
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-80",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 1818
+          },
+          {
+            "text": "Proposed offsets: [0:3903)",
+            "added_ink_px": 1406
+          },
+          {
+            "text": "Finding 2: claim-2",
+            "added_ink_px": 779
+          },
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 2331
+          },
+          {
+            "text": "Answer span: [42:74)",
+            "added_ink_px": 1200
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 1088
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 2473
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 2693
+          },
+          {
+            "text": "Deterministic guard: failed",
+            "added_ink_px": 1151
+          },
+          {
+            "text": "Citation text and offset check: no exact match",
+            "added_ink_px": 126
+          }
+        ]
+      },
+      {
+        "id": "E1-source_quote_below-80",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Proposed source: northbridge-guide",
+            "added_ink_px": 2118
+          },
+          {
+            "text": "Proposed offsets: [0:3903)",
+            "added_ink_px": 1502
+          },
+          {
+            "text": "Finding 2: claim-2",
+            "added_ink_px": 946
+          },
+          {
+            "text": "Atomic claim: It closes at 8 p.m. on weekdays.",
+            "added_ink_px": 2619
+          },
+          {
+            "text": "Answer span: [42:74)",
+            "added_ink_px": 1284
+          },
+          {
+            "text": "Claim span check: exact",
+            "added_ink_px": 1328
+          },
+          {
+            "text": "Proposed relationship (evaluator judgment): supported",
+            "added_ink_px": 2727
+          },
+          {
+            "text": "Reportable proposed relationship: None \u2014 deterministic guard failed",
+            "added_ink_px": 1966
+          }
+        ]
+      }
+    ]
+  },
+  "prior": {
+    "summary": {
+      "cases": 87,
+      "text_renderings": 348,
+      "E1_text_failures": 0,
+      "K7_link_violations": 0,
+      "raw_preserved": 87,
+      "visuals": {
+        "noto-serif": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 6,
+          "critical_overlaps": 0
+        },
+        "github-like": {
+          "measured": 75,
+          "invalid": 0,
+          "overlaps": 5,
+          "critical_overlaps": 0
+        }
+      },
+      "guard_armed_processes": 176,
+      "guard_refusals": 0,
+      "browser_blocked_requests": 0
+    },
+    "pixel_crops_recounted": 9000,
+    "png_hashes_verified": 300,
+    "actual_case_file_hashes_verified": 348,
+    "answer_span_rows_measured": 450,
+    "host_rows_measured": 9000,
+    "max_raw_or_rendered_mark_run": 4,
+    "renderings_with_links": 0,
+    "overlaps": {
+      "noto-serif": 6,
+      "github-like": 5
+    },
+    "hit_details": [
+      {
+        "id": "E1-answer_claim_below-02",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:118)",
+            "added_ink_px": 54
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-02",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:118)",
+            "added_ink_px": 30
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-03",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:141)",
+            "added_ink_px": 111
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-03",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:141)",
+            "added_ink_px": 102
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-04",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:164)",
+            "added_ink_px": 155
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-04",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:164)",
+            "added_ink_px": 165
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-05",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:187)",
+            "added_ink_px": 17
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-05",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:187)",
+            "added_ink_px": 15
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-06",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:210)",
+            "added_ink_px": 23
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-06",
+        "style": "github-like",
+        "hits": [
+          {
+            "text": "Answer span: [42:210)",
+            "added_ink_px": 18
+          }
+        ]
+      },
+      {
+        "id": "E1-answer_claim_below-08",
+        "style": "noto-serif",
+        "hits": [
+          {
+            "text": "Answer span: [42:256)",
+            "added_ink_px": 17
+          }
+        ]
+      }
+    ]
+  },
+  "review": {
+    "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "script_sha256": "003909304987464dbb3308e16f9f89c3b4efaa6a7be08b1c2c1049394b0898de",
+    "harness_sha256": "14c1f3bb75321597f566188643bbd082a567b5370a6fb2bdcf3c711eba36ae5d",
+    "catalog_sha256": "245f945b39168ba0fdb250ebcce633d44fef080d7348738a64672e297e1e8380",
+    "source_artifacts_rehashed_unchanged": 1296,
+    "limits": "Recounts existing captures; does not make new browser captures or rerun full product tests."
+  }
+}

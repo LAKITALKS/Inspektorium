@@ -1,0 +1,47 @@
+{
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "results": [
+    {
+      "name": "pytest",
+      "command": [
+        "<WORK>/dev/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_setup_env.py",
+        "-q",
+        "--tb=short"
+      ],
+      "returncode": 0,
+      "stdout": "...............                                                          [100%]\n15 passed in 0.08s\n",
+      "stderr": ""
+    },
+    {
+      "name": "ruff",
+      "command": [
+        "<WORK>/dev/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "evidence/v0.1.1/tools/setup_env.py",
+        "tests/test_setup_env.py"
+      ],
+      "returncode": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "evidence/v0.1.1/tools/setup_env.py",
+        "tests/test_setup_env.py"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

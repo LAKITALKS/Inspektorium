@@ -1,0 +1,1503 @@
+{
+  "after": "candidate-fae1824",
+  "before": "baseline-4bd0ba9",
+  "cases": [
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-01",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-02",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-03",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-04",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-05",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-06",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-07",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-08",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-09",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-10",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-11",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-12",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-13",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-14",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-15",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-16",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-17",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-18",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LI-19",
+      "family": "render.line_injection",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-01",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-HH-02",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-03",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-04",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-05",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-06",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-07",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-HH-08",
+      "family": "render.html_hiding",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MB-01",
+      "family": "render.markdown_breakout",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MB-02",
+      "family": "render.markdown_breakout",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MB-03",
+      "family": "render.markdown_breakout",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MB-04",
+      "family": "render.markdown_breakout",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MB-05",
+      "family": "render.markdown_breakout",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MB-06",
+      "family": "render.markdown_breakout",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LE-01",
+      "family": "render.link_entity",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-LE-02",
+      "family": "render.link_entity",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-BI-01",
+      "family": "render.bidi_invisible",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-BI-02",
+      "family": "render.bidi_invisible",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-BI-03",
+      "family": "render.bidi_invisible",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-BI-04",
+      "family": "render.bidi_invisible",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-BI-05",
+      "family": "render.bidi_invisible",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-CO-01",
+      "family": "render.collision",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-MX-01",
+      "family": "render.mixed_report_visibility",
+      "kind": "attack"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-MX-02",
+      "family": "render.mixed_report_visibility",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-00",
+      "family": "render.readability_clean",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-01",
+      "family": "render.readability_clean",
+      "kind": "readability"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-02",
+      "family": "render.readability_clean",
+      "kind": "readability"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-03",
+      "family": "render.readability_clean",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-04",
+      "family": "render.readability_clean",
+      "kind": "readability"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-05",
+      "family": "render.readability_clean",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_MANIPULATED",
+        "cmark-gfm-unsafe": "RENDERED_MANIPULATED",
+        "markdown-it-py-html": "RENDERED_MANIPULATED",
+        "python-markdown": "RENDERED_MANIPULATED"
+      },
+      "before_verdict": "FAILS",
+      "case": "R-RC-06",
+      "family": "render.readability_clean",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-07",
+      "family": "render.readability_clean",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "R-RC-08",
+      "family": "render.readability_clean",
+      "kind": "clean_counterpart"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "X-RE-01",
+      "family": "render.indirect_host_message",
+      "kind": "reachability"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "X-RE-02",
+      "family": "render.indirect_host_message",
+      "kind": "reachability"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "X-RE-03",
+      "family": "render.indirect_host_message",
+      "kind": "reachability"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "I-DK-01",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "I-DK-02",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "I-DK-03",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "I-DK-04",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "I-DK-05",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "FAILS",
+      "case": "I-DK-06",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-DK-07",
+      "family": "input.duplicate_keys",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-NC-01",
+      "family": "input.nonstandard_constant",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-NC-02",
+      "family": "input.nonstandard_constant",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-NC-03",
+      "family": "input.nonstandard_constant",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-LS-01",
+      "family": "input.lone_surrogate",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "REJECTED_CLEAN",
+      "after_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "REJECTED_CLEAN",
+      "before_outcomes": {
+        "cmark-gfm-safe": "REJECTED_BEFORE_RENDER",
+        "cmark-gfm-unsafe": "REJECTED_BEFORE_RENDER",
+        "markdown-it-py-html": "REJECTED_BEFORE_RENDER",
+        "python-markdown": "REJECTED_BEFORE_RENDER"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-LS-02",
+      "family": "input.lone_surrogate",
+      "kind": "input_rejection"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-OK-01",
+      "family": "input.clean_acceptance",
+      "kind": "input_acceptance"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-OK-02",
+      "family": "input.clean_acceptance",
+      "kind": "input_acceptance"
+    },
+    {
+      "after_cli": "ACCEPTED",
+      "after_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "after_verdict": "HOLDS",
+      "before_cli": "ACCEPTED",
+      "before_outcomes": {
+        "cmark-gfm-safe": "RENDERED_CONTROLS_INTACT",
+        "cmark-gfm-unsafe": "RENDERED_CONTROLS_INTACT",
+        "markdown-it-py-html": "RENDERED_CONTROLS_INTACT",
+        "python-markdown": "RENDERED_CONTROLS_INTACT"
+      },
+      "before_verdict": "HOLDS",
+      "case": "I-OK-03",
+      "family": "input.clean_acceptance",
+      "kind": "input_acceptance"
+    }
+  ],
+  "json_reports": {
+    "accepted_by_both": 56,
+    "byte_identical": 56,
+    "different": [],
+    "missing_rows": [],
+    "not_accepted_by_both": [
+      "X-RE-02",
+      "X-RE-03",
+      "I-DK-01",
+      "I-DK-02",
+      "I-DK-03",
+      "I-DK-04",
+      "I-DK-05",
+      "I-DK-06",
+      "I-DK-07",
+      "I-NC-01",
+      "I-NC-02",
+      "I-NC-03",
+      "I-LS-01",
+      "I-LS-02"
+    ]
+  },
+  "markdown_reports_changed": 62,
+  "verdict_transitions": {
+    "FAILS -> HOLDS": 48,
+    "HOLDS -> HOLDS": 22
+  }
+}

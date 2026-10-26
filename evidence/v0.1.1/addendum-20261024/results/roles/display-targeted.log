@@ -1,0 +1,98 @@
+{"command": ["<WORK>/dev/bin/python", "-m", "pytest", "-q", "tests/test_display.py", "tests/test_display_limits.py", "tests/test_render_safety.py", "tests/test_reports.py::test_markdown_states_the_display_convention_once"], "started": 1792854633.915979}
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 29%]
+........................................................................ [ 39%]
+........................................................................ [ 49%]
+........................................................................ [ 59%]
+........................................................................ [ 69%]
+........................................................................ [ 79%]
+........................................................................ [ 89%]
+...................F...............................F.................... [ 99%]
+.....                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_ascii_punctuation_is_displayed_literally_in_every_context[commonmark-html-@] _
+
+md = markdown_it.main.MarkdownIt(), mark = '@'
+inspection_input = InspectionInput(schema_version='0.1', answer=AnswerInput(answer_id='answer', text='The blue door opens at noon. The bl...loses at five.'), SourceDocument(source_id='notice', title='Lobby notice', text='Visitors should use the blue door.')))
+supported_proposal_data = {'claim_id': 'claim-1', 'claim_text': 'The blue door opens at noon.', 'claim_start': 0, 'claim_end': 28, ...}
+
+    @pytest.mark.parametrize("mark", list(string.punctuation))
+    def test_ascii_punctuation_is_displayed_literally_in_every_context(
+        md: MarkdownIt,
+        mark: str,
+        inspection_input: InspectionInput,
+        supported_proposal_data: dict[str, Any],
+    ) -> None:
+        samples = _punctuation_samples(mark)
+        inline = " ".join(samples)
+        quotation = "\n".join(samples)
+        built = _report(
+            inspection_input,
+            {
+                **supported_proposal_data,
+                "claim_text": inline,
+                "rationale": inline,
+                "evidence_quote": quotation,
+                "evidence_end": len(quotation),
+            },
+        )
+        payload = json.loads(render_json(built))
+        payload["scope"]["statement"] = inline
+        payload["scope"]["limitations"] = samples
+        report = InspectionReport.model_validate_json(json.dumps(payload))
+        markdown = render_markdown(report)
+    
+        view = assert_report_structure(markdown, report, md)
+>       assert view.findings[0].quote_lines() == samples
+E       AssertionError: assert ['⟦U+0040⟧', ...U+0040⟧', ...] == ['@', '@@@', ...', '@x@', ...]
+E         
+E         At index 0 diff: '⟦U+0040⟧' != '@'
+E         Use -v to get more diff
+
+tests/test_render_safety.py:1140: AssertionError
+__ test_ascii_punctuation_is_displayed_literally_in_every_context[gfm-like-@] __
+
+md = markdown_it.main.MarkdownIt(), mark = '@'
+inspection_input = InspectionInput(schema_version='0.1', answer=AnswerInput(answer_id='answer', text='The blue door opens at noon. The bl...loses at five.'), SourceDocument(source_id='notice', title='Lobby notice', text='Visitors should use the blue door.')))
+supported_proposal_data = {'claim_id': 'claim-1', 'claim_text': 'The blue door opens at noon.', 'claim_start': 0, 'claim_end': 28, ...}
+
+    @pytest.mark.parametrize("mark", list(string.punctuation))
+    def test_ascii_punctuation_is_displayed_literally_in_every_context(
+        md: MarkdownIt,
+        mark: str,
+        inspection_input: InspectionInput,
+        supported_proposal_data: dict[str, Any],
+    ) -> None:
+        samples = _punctuation_samples(mark)
+        inline = " ".join(samples)
+        quotation = "\n".join(samples)
+        built = _report(
+            inspection_input,
+            {
+                **supported_proposal_data,
+                "claim_text": inline,
+                "rationale": inline,
+                "evidence_quote": quotation,
+                "evidence_end": len(quotation),
+            },
+        )
+        payload = json.loads(render_json(built))
+        payload["scope"]["statement"] = inline
+        payload["scope"]["limitations"] = samples
+        report = InspectionReport.model_validate_json(json.dumps(payload))
+        markdown = render_markdown(report)
+    
+        view = assert_report_structure(markdown, report, md)
+>       assert view.findings[0].quote_lines() == samples
+E       AssertionError: assert ['⟦U+0040⟧', ...U+0040⟧', ...] == ['@', '@@@', ...', '@x@', ...]
+E         
+E         At index 0 diff: '⟦U+0040⟧' != '@'
+E         Use -v to get more diff
+
+tests/test_render_safety.py:1140: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_render_safety.py::test_ascii_punctuation_is_displayed_literally_in_every_context[commonmark-html-@]
+FAILED tests/test_render_safety.py::test_ascii_punctuation_is_displayed_literally_in_every_context[gfm-like-@]
+2 failed, 723 passed in 2.45s
+{"exit_code": 1, "elapsed_seconds": 2.8331611156463623}

@@ -1,0 +1,6 @@
+{"argv": ["Python", "refresh_examples.py", "--repo"], "event": "armed", "guard": "evidence-netguard/1", "pid": 90756, "time": 1792866541.186}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 90758, "time": 1792866541.221}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 90759, "time": 1792866541.382}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 90760, "time": 1792866541.475}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 90761, "time": 1792866541.581}
+{"argv": ["Python", "inspektorium", "inspect"], "event": "armed", "guard": "evidence-netguard/1", "pid": 90764, "time": 1792866541.686}

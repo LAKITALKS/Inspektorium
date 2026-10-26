@@ -1,0 +1,1 @@
+{"argv": ["Python", "-m", "pytest"], "event": "armed", "guard": "evidence-netguard/1", "pid": 70550, "time": 1792854633.943}

@@ -1,0 +1,35 @@
+{
+  "python": "3.11.7 (v3.11.7:fa7a6f2303, Dec  4 2023, 15:22:56) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "harness_sha256": "9471de30d8a758b239e0b2ba613a23605dd442ee186aeba82abcd955e5cddd48",
+  "case": "E1-last_below-80",
+  "style": "noto-serif",
+  "probes": [
+    {
+      "name": "clean_actual",
+      "status": "MEASURED",
+      "overlap": false,
+      "host_rows": 60
+    },
+    {
+      "name": "missing_first_answer_both_twins",
+      "status": "MEASURED",
+      "overlap": false,
+      "host_rows": 59
+    },
+    {
+      "name": "missing_first_answer_one_twin",
+      "status": "INVALID",
+      "reason": "missing or ambiguous payload/host rows"
+    },
+    {
+      "name": "changed_first_answer_twin",
+      "status": "INVALID",
+      "reason": "host text changed or invisible"
+    },
+    {
+      "name": "duplicate_payload_container",
+      "status": "INVALID",
+      "reason": "missing or ambiguous payload/host rows"
+    }
+  ]
+}
