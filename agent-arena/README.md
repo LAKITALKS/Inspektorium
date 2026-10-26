@@ -1,7 +1,8 @@
 # Inspektorium audit runtime
 
-> **Current public entry — 2026-10-26:** Inspektorium is one instrument;
-> Agent Arena is its old/internal implementation name. Use **`inspektorium audit`**
+> **Current public entry — 2026-10-26:** Inspektorium is one instrument; this
+> folder holds the Inspektorium audit runtime (internal/former name Agent Arena,
+> retained in package, module and folder names for provenance). Use **`inspektorium audit`**
 > after the joint installation below. This directory retains the **`agent-arena`
 > 1.0.1** distribution and its unchanged 74 Python runtime files; the root source
 > distribution is **0.2.0**. `agent-arena audit` remains a compatibility entry to
@@ -348,8 +349,9 @@ compared with its original bytes. This checkpoint remains an offline technical R
 
 ## Historical names, provenance and rights
 
-Existing reports, archives and version fields may retain Agent Arena and
-`agent-arena audit`; preserve these bytes as provenance. The original
+Existing reports, archives, runtime report headings and version fields may
+retain the internal name and `agent-arena audit`; preserve these bytes as
+provenance. The original
 [publication index](../publication/2026-10-26/import-index.json) is bound to
 publication commit `94eb4fc8b26c22da6a2cebdd01e5a7799750104d`, rather than to
 subsequently edited current documentation. The current public name does not

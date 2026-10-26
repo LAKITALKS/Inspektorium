@@ -1,5 +1,14 @@
 # Research roadmap
 
+> **Classification — Inspektorium 0.2.0 (2026-10-26):** Inspektorium is one
+> instrument with the official `inspektorium audit` workflow. The P1–P10
+> implementation that the dated note below calls a separate research package is
+> the Inspektorium audit runtime, retained under its internal/former name in
+> package, module and folder names for provenance; it is not a second product.
+> Dated passages that say Arena refer to that runtime. Statements that the
+> public package is 0.1.1 concern the smaller reference checker. See
+> [one instrument](docs/ONE_INSTRUMENT.md).
+
 > **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
 > Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
 > [Publication mapping and current checks](publication/2026-10-26/README.md)
@@ -13,9 +22,9 @@ and its five examples are defined in [SCOPE.md](SCOPE.md); the existing
 release tag is preserved. The phase names organize later research and do not
 announce a new public release or authorize public implementation.
 
-Arena's execution, budget, state and environment controls and P1–P10 source
-are now public under [agent-arena/](agent-arena/README.md), as technical research
-prerelease 1.0.1. The [publication record](publication/2026-10-26/README.md)
+The audit runtime's execution, budget, state and environment controls and
+P1–P10 source are public under [agent-arena/](agent-arena/README.md), first as
+technical research prerelease 1.0.1. The [publication record](publication/2026-10-26/README.md)
 links current offline checks and historical source/evidence mapping. Historical
 null results and semantic misses remain in [RESEARCH_RESULTS.md](RESEARCH_RESULTS.md).
 The final code has no new live validation. Scientific efficacy remains unproven.
@@ -29,7 +38,7 @@ Phase 8–10 capability. Full evaluator provenance in reports and a separate
 
 ## Phase 8 — Deep Forensics
 
-**Implemented in public Arena research 1.0.1 (R08); efficacy unproven.**
+**Implemented in the Inspektorium audit runtime since research prerelease 1.0.1 (R08); efficacy unproven.**
 
 Investigate semantic/inferential defects that can survive exact citation
 binding:
@@ -50,7 +59,7 @@ claiming decision benefit.
 
 ## Phase 9 — Disagreement & Review
 
-**Implemented in public Arena research 1.0.1 (R09); efficacy unproven.**
+**Implemented in the Inspektorium audit runtime since research prerelease 1.0.1 (R09); efficacy unproven.**
 
 Identify material disagreements; enable independent verdict challenge and
 bounded review routing. Preserve original judgments, explanations and the
@@ -63,7 +72,7 @@ it is requested separately; disclose reviewer/model dependencies.
 
 ## Phase 10 — Reporting & Operational Finish
 
-**Implemented in public Arena research 1.0.1 (R10); technical artifact release
+**Implemented in the Inspektorium audit runtime since research prerelease 1.0.1 (R10); technical artifact release
 is distinct from scientific approval.**
 
 Develop a canonical release path with explicit metadata, visible UNKNOWN

@@ -1,5 +1,12 @@
 # Agent Arena public technical research release — 2026-10-26
 
+> **Classification — Inspektorium 0.2.0 (2026-10-26):** This dated record
+> describes the historical 1.0.1 component release of the Inspektorium audit
+> runtime under its internal/former name, which remains in package, module and
+> folder names for provenance. It is not a separate product; the current
+> instrument is [Inspektorium](../README.md). The record below is kept as
+> published.
+
 Version **1.0.1**, public research prerelease, derived from technical 1.0.0
 commit `9de4b76953aed778c42df994535cb29a4e0f9f5c` (tested product
 `5560e950af20cee8c35fb2c8e2bfb38807043fab`). This is not byte-identical 1.0.0:

@@ -1,7 +1,8 @@
 # One instrument: Inspektorium
 
-**Inspektorium** is the public instrument. **Agent Arena** is the old/internal
-name of its audit implementation. The official public workflow is
+**Inspektorium** is the public instrument. Its audit implementation is the
+**Inspektorium audit runtime** (internal/former name Agent Arena, retained in
+package, module and folder names for provenance). The official public workflow is
 `inspektorium audit`; its five operations are `validate`, `run`, `inspect`,
 `review` and `release`. The retained `agent-arena audit` command is a
 compatibility entry to the same implementation.
@@ -127,7 +128,7 @@ different contracts and must not be used as offline examples.
 | --- | --- | --- |
 | Public instrument | Inspektorium | One public name, joint installation and official audit workflow |
 | Public dispatch | Root `inspektorium` 0.2.0; [`inspektorium.audit`](../src/inspektorium/audit.py) and [CLI](../src/inspektorium/cli.py) | Lazily invokes `agent_arena.phase10_cli.audit`; no independent audit evaluator, report rewrite or additional guard pipeline |
-| Audit implementation | `agent-arena` 1.0.1 / `agent_arena`; [audit CLI](../agent-arena/src/agent_arena/phase10_cli.py) | Existing P1–P10 implementation, own task parsing, execution controls, semantics/taxonomy, review, bundle binding and release controls |
+| Audit runtime | Inspektorium audit runtime: distribution `agent-arena` 1.0.1, package `agent_arena`; [audit CLI](../agent-arena/src/agent_arena/phase10_cli.py) | Existing P1–P10 implementation, own task parsing, execution controls, semantics/taxonomy, review, bundle binding and release controls |
 | Smaller reference checker | `inspektorium inspect`; [`inspektorium.core`](../src/inspektorium/core/) | Retained v0.1.1 behavior and schema 0.1: one answer, exact claim/citation binding, a per-finding reportability gate and its own JSON/Markdown output |
 | Compatibility entry | `agent-arena audit` | Existing spelling for the same audit runtime; retained for scripts and provenance |
 
@@ -164,7 +165,7 @@ rules. The root dispatch layer does not become part of a stronger authenticated
 provenance claim merely by forwarding to that runtime.
 
 Existing reports, archives, command strings, module names and version fields may
-say Agent Arena, `agent-arena audit`, 1.0.1 or an earlier producing version. Those
+carry the internal name, `agent-arena audit`, 1.0.1 or an earlier producing version. Those
 are historical facts and byte evidence; do not relabel them in place. Earlier
 bundles remain subject to their original code/package binding requirements.
 This consolidation neither authenticates old provider responses nor upgrades

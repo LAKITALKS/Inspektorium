@@ -2,7 +2,8 @@
 
 > **Current scope — 2026-10-26 maintainer clarification:** **Inspektorium** is
 > one instrument. `inspektorium audit` is its official public audit workflow;
-> Agent Arena is the old/internal name retained in implementation and provenance.
+> the audit runtime is the Inspektorium audit runtime (internal/former name Agent
+> Arena, retained in package, module and folder names for provenance).
 > The root source distribution is **0.2.0**; audit delegates to the unchanged
 > **`agent-arena` 1.0.1** runtime. The smaller `inspektorium inspect` reference
 > checker retains its v0.1.1/schema 0.1 contract. See
@@ -147,15 +148,15 @@ This bounded result is not a universal font/viewer or readability guarantee.
   (P12–P13).
 - **HISTORICAL EXPERIMENTS, NOW WITH PUBLIC DERIVATIVES:** artifact-fault
   containment, zero observed A/B accuracy gain and semantic misses (I01–I03).
-  The [Arena evidence tree](agent-arena/analysis/) and
+  The [audit runtime evidence tree](agent-arena/analysis/) and
   [import map](publication/2026-10-26/import-index.json) expose reviewed sources
   and any redactions; historical results are not independently validated by
   this publication.
-- **PUBLIC ARENA RESEARCH IMPLEMENTATION:** execution authorization, budget,
+- **PUBLIC AUDIT RUNTIME RESEARCH IMPLEMENTATION:** execution authorization, budget,
   state/resume and environment controls (I04), plus P1–P7 tooling, are in the
   retained `agent-arena/` runtime distribution. Their original limits and closed budgets
   remain in force.
-- **PUBLIC ARENA PHASES 8–10:** semantic/inferential checking (R08), disagreement
+- **PUBLIC AUDIT RUNTIME PHASES 8–10:** semantic/inferential checking (R08), disagreement
   and review routing (R09), canonical artifact release and post-render QA (R10).
   These are technical research 1.0.1, derived from internal 1.0.0, not additions
   to the reference-checker pipeline. They are exposed through the public audit entry. Earlier live checks cover limited synthetic cases on

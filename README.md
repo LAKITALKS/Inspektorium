@@ -8,9 +8,10 @@ Website: [inspektorium.org](https://inspektorium.org).
 **Inspektorium** is one instrument for evidence integrity and review in AI
 assurance research. Its official public workflow is **`inspektorium audit`**:
 validate an input, run an audit, inspect its bundle, record a human review when
-needed, and explicitly release an eligible local artifact. **Agent Arena** is
-the old/internal implementation name, retained in package names, imports,
-historical evidence and the compatibility command `agent-arena audit`.
+needed, and explicitly release an eligible local artifact. Audit is carried out
+by the **Inspektorium audit runtime** (internal/former name Agent Arena,
+retained in package, module and folder names for provenance); the
+`agent-arena audit` command remains a compatibility entry to the same runtime.
 
 The current source version is **0.2.0**. It adds the public audit entry to the
 root `inspektorium` distribution and delegates to the existing audit runtime in
@@ -321,7 +322,7 @@ outside the catalog.
 | IMPLEMENTED + TESTED IN PUBLIC v0.1 | Exact spans, input fingerprints, deterministic JSON/Markdown, strict offline proposal parsing | Public code and regression evidence; P01–P07 |
 | IMPLEMENTED + TESTED IN PUBLIC v0.1.1 | Markdown display of untrusted text as data; strict `--input` parsing | Public code, tests and the offline [evidence package](evidence/v0.1.1/); synthetic catalog only; P12–P13 |
 | OWNER-REPORTED INTERNAL EXPERIMENT | Artifact-fault pilot: full controls blocked more injected artifact faults than baseline processing and accepted all clean counterparts | Small constructed set; not reproduced by this package; no accuracy gain and semantic misses retained; I01–I03 |
-| PUBLIC RESEARCH SOURCE | Execution authorization, budget/state/environment controls | [Arena source](agent-arena/src/agent_arena/); historical evidence retains its conditions; I04 |
+| PUBLIC RESEARCH SOURCE | Execution authorization, budget/state/environment controls | [Audit runtime source](agent-arena/src/agent_arena/); historical evidence retains its conditions; I04 |
 | PUBLIC RESEARCH IMPLEMENTATION — PHASES 8–10 | Semantic/inferential checks, disagreement and review, operational reporting | [Audit runtime](agent-arena/); distinct from the reference checker; no demonstrated scientific efficacy; R08–R10 |
 | NOT CLAIMED | General AI safety, regulatory compliance, certification, alignment | No framework endorsement or conformance claim |
 

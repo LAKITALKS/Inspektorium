@@ -31,6 +31,10 @@ budget reopening follows from the unified entry or source-version change.
 
 ## Scope, license and publication
 
+- Name the product Inspektorium. In prose, call the audit runtime the
+  Inspektorium audit runtime. `agent-arena`, `agent_arena` and the
+  `agent-arena/` folder are technical identities retained for provenance;
+  never present them as a separate product, brand or release title.
 - Stay within [SCOPE.md](SCOPE.md). Do not add scores, new relation labels,
   new evaluation semantics, fuzzy quote recovery or offset repositioning as a
   side effect of another change.

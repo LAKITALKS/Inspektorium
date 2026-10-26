@@ -1,5 +1,14 @@
 # Methodology
 
+> **Classification — Inspektorium 0.2.0 (2026-10-26):** Inspektorium is one
+> instrument with the official `inspektorium audit` workflow. The P1–P10
+> implementation that the dated note below calls a separate research package is
+> the Inspektorium audit runtime, retained under its internal/former name in
+> package, module and folder names for provenance; it is not a second product.
+> Dated passages that say Arena refer to that runtime. Statements that the
+> public package is 0.1.1 concern the smaller reference checker. See
+> [one instrument](docs/ONE_INSTRUMENT.md).
+
 > **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
 > Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
 > [Publication mapping and current checks](publication/2026-10-26/README.md)
@@ -22,8 +31,9 @@ property, including contrary evidence and limitations. Technical AI governance
 means a named rule enforced at a named system boundary with a traceable
 decision. The current boundary is one finding's reporting field. Execution,
 state, authorization, scientific inference, review and operational reporting
-controls are published in the separate Arena research package 1.0.1. Their
-scientific efficacy remains unproven; they do not extend the core 0.1.1 runtime.
+controls are published in the Inspektorium audit runtime, first as research
+prerelease 1.0.1. Their scientific efficacy remains unproven; they do not
+extend the smaller 0.1.1 reference checker.
 See [claim ledger](CLAIMS.md), [results](RESEARCH_RESULTS.md) and
 [scope](SCOPE.md) for separate version and access status.
 
@@ -424,8 +434,8 @@ This bounded result is not a universal font/viewer or readability guarantee.
   intact.
 
 This is the current public reporting layer. Phase 10 describes a canonical
-operational release workflow and post-render QA (implemented in the separate
-public Arena research package); it does not defer the already implemented
+operational release workflow and post-render QA (implemented in the public
+Inspektorium audit runtime); it does not defer the already implemented
 JSON and Markdown renderers into future work.
 
 ## Why there is no global score

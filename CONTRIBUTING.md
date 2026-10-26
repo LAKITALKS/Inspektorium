@@ -1,8 +1,9 @@
 # Contributing
 
 Inspektorium is one instrument. Its official public workflow is
-`inspektorium audit`; Agent Arena is the old/internal name preserved in the
-`agent-arena` distribution, `agent_arena` imports and historical provenance.
+`inspektorium audit`, which runs the Inspektorium audit runtime (internal/former
+name Agent Arena, retained in package, module and folder names for provenance:
+the `agent-arena` distribution, `agent_arena` imports and the `agent-arena/` folder).
 The root source version is 0.2.0 and the retained audit runtime version is 1.0.1.
 The public entry delegates to the existing runtime without changing its semantics
 or 74 Python runtime files. See [ONE_INSTRUMENT.md](docs/ONE_INSTRUMENT.md).
@@ -82,8 +83,10 @@ An eventual internal evidence release requires a separately reviewed package,
 version mapping and preserved originals/hashes. Negative results and old
 evidence must not be rewritten to make the presentation cleaner. Preserve old
 names, command strings and version fields in historical evidence.
-Use Inspektorium as the public instrument name and explain `agent-arena` as
-the retained distribution/compatibility identity, not a second product.
+Use Inspektorium as the public instrument name and call the runtime the
+Inspektorium audit runtime in prose. Explain `agent-arena` as the retained
+distribution/compatibility identity, never as a second product, brand or
+release title.
 
 Contributions must be original or use compatible, documented dependencies. Do
 not submit private datasets, proprietary prompts, credentials, copied project

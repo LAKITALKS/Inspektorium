@@ -8,8 +8,11 @@ authors:
   - family-names: "Varvatis"
     given-names: "Lazaros"
 abstract: >-
-  Inspektorium, formerly Agent Arena, provides a public entry to the existing
-  audit workflow and retains a separate evidence-binding reference checker.
+  Inspektorium is one instrument for evidence integrity and review in AI
+  assurance research. Its official workflow, inspektorium audit, runs the
+  Inspektorium audit runtime (internal/former name Agent Arena, retained in
+  package, module and folder names for provenance). It also retains a smaller
+  evidence-binding reference checker.
   Technical controls and recorded provenance do not establish scientific truth.
 license: PolyForm-Noncommercial-1.0.0
 keywords:
