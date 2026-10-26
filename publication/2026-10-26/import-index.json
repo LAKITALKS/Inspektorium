@@ -99,12 +99,13 @@
       "source_path": "CLAIMS.md",
       "public_path": "CLAIMS.md",
       "source_sha256": "923fa85b45e3873c2dbef2e105c5d2231e0c1de17968b7da41e0304456ccea7a",
-      "public_sha256": "2b1dd40fdf2e0e191319bad6954b740f8aee431316a5c4daf4470d345eb20d33",
+      "public_sha256": "909f2badd3d4bf6748ae7c301e4bc834475ba4d3cb9a22c56274cadad863ab88",
       "source_bytes": 22366,
-      "public_bytes": 23930,
+      "public_bytes": 24282,
       "action": "integrate",
       "reasons": [
-        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff"
+        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff",
+        "2026-10-26 final publication review: correct obsolete access statements; preserve historical numbers and research limitations"
       ],
       "origin_commit": "58ac8e0515b7ca2f369f4981cf8254683fe5abae",
       "unchanged_from_origin": false,
@@ -211,12 +212,13 @@
       "source_path": "RESEARCH_PLAN.md",
       "public_path": "RESEARCH_PLAN.md",
       "source_sha256": "739afe75235ac880a99a99f39ba4118d078ebb2047d82b0fb86567991a338b13",
-      "public_sha256": "b43d65de56961c3938c31fe511c1eb466c8e3032ba36ed6c5d6239bcf6d69a7c",
+      "public_sha256": "814a53fd9bbaab08d6f84854f966a19b47d0aa3925ee2e22a84051457c8c6378",
       "source_bytes": 10829,
-      "public_bytes": 11310,
+      "public_bytes": 11584,
       "action": "integrate",
       "reasons": [
-        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff"
+        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff",
+        "2026-10-26 final publication review: correct obsolete access statements; preserve historical numbers and research limitations"
       ],
       "origin_commit": "58ac8e0515b7ca2f369f4981cf8254683fe5abae",
       "unchanged_from_origin": false,
@@ -230,12 +232,13 @@
       "source_path": "RESEARCH_RESULTS.md",
       "public_path": "RESEARCH_RESULTS.md",
       "source_sha256": "f3cc615bf0c4e5751d23463889be20d88049acd123c4c3ba1aec2d5ff2eb01e8",
-      "public_sha256": "33c5a0587fd72228f07c289ca991d355704ba5fb3c8b2fb9671bee686d6db724",
+      "public_sha256": "b731030601f460ddcf194aa832aa656317448c8b13c29c28ae84c74f908bd584",
       "source_bytes": 19747,
-      "public_bytes": 20237,
+      "public_bytes": 21109,
       "action": "integrate",
       "reasons": [
-        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff"
+        "2026-10-26 integration: component path/version/packaging/current documentation; see PUBLICATION.md and Git diff",
+        "2026-10-26 final publication review: correct obsolete access statements; preserve historical numbers and research limitations"
       ],
       "origin_commit": "58ac8e0515b7ca2f369f4981cf8254683fe5abae",
       "unchanged_from_origin": false,

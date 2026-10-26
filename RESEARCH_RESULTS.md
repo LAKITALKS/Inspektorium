@@ -198,9 +198,12 @@ listed in the [changelog](CHANGELOG.md#known-display-limits).
 
 **Access/status: OWNER-REPORTED INTERNAL EXPERIMENT; not reproduced by public
 v0.1.** Claims I01–I04, I06 and I07 refer to the owner's reported internal final
-commit `6d0d5cc4b0f14b7fe256e74e81c160ff363eb8f7`. Internal code and the raw
-evidence package are not part of this public snapshot. No independent
-replication or accessible evidence link is claimed.
+commit `6d0d5cc4b0f14b7fe256e74e81c160ff363eb8f7`. At the original report date,
+the internal code and raw evidence were not publicly accessible. The
+[2026-10-26 import mapping](publication/2026-10-26/import-index.json) now
+identifies public source snapshots and reviewed evidence derivatives. The
+unredacted original package and active authorization are not published; no
+independent replication or authenticated original-directory replay is claimed.
 
 *Historical record.* The values in this section are retained unchanged. They
 are not current public performance claims, and the v0.1.1 evidence package does
@@ -248,9 +251,11 @@ is a different outcome from detecting a wrong scientific inference.
   public v0.1 test counts nor checks performed in this task (I07).
 
 Execution authorization, budget ledgers, state/resume authentication and
-environment binding are **REPORTED IMPLEMENTED/TESTED INTERNALLY** (I04). No
-public implementation of those controls was inspected. A source fingerprint
-in public v0.1 must not be represented as one of these execution controls.
+environment binding were **REPORTED IMPLEMENTED/TESTED INTERNALLY** in that
+pilot (I04); its original report did not inspect a public implementation.
+The separate Arena implementation and its current bounded technical checks are
+now [publicly inspectable](publication/2026-10-26/VALIDATION.md). A source
+fingerprint in core v0.1 must not be represented as one of these execution controls.
 
 ### Study limitations
 
@@ -264,7 +269,9 @@ the inapplicable official-release endpoint restrict the inference.
 ## Owner-reported historical contract study
 
 **Access/status: owner-reported experiment, separate from the pilot and public
-v0.1; code/raw package not public here.** Claim I05 concerns a historical
+v0.1; original raw package not published in full.** The
+[publication mapping](publication/2026-10-26/import-index.json) identifies the
+available reviewed source/evidence derivatives. Claim I05 concerns a historical
 scientific-contract change whose exact commit was not supplied.
 
 *Historical record.* The values in this section are retained unchanged. They
@@ -285,20 +292,23 @@ The observations show different responses to a scientific-contract change.
 They do not establish that the entire governance control system caused the
 gains, or independently establish a causal model-by-contract interaction.
 Do not combine this study, the later pilot or their taxonomies into one pooled
-efficacy figure. Future inspectable data/code release needs separate review,
-original artifacts and hashes, and explicit version mapping.
+efficacy figure. The 2026-10-26 [publication mapping](publication/2026-10-26/README.md)
+now identifies reviewed source snapshots, publishable evidence derivatives,
+original/public hashes and the remaining reproduction limits.
 
 ## Owner-reported internal technical v1.0.0
 
-**Access/status: owner-reported; not part of this package; not inspected or
-reproduced here.** The owner reports that Phases 8–10 (R08–R10) are implemented
-in the internal technical v1.0.0 closeout of a separate, non-public codebase.
-According to the owner, they were checked offline and live-tested in a limited
-way on earlier internal states; the closeout code itself was not live-tested
-again. No scientific efficacy is demonstrated, and the
-[final v1 gate](ROADMAP.md#final-v1-gate) is not met. Internal test or check
-counts from that closeout are not reported here because no public evidence
-package supports them, and they are not measurements of public v0.1.1.
+**Access/status updated 2026-10-26:** the historical internal technical v1.0.0
+is now the source of the separate public [Arena 1.0.1 research package](agent-arena/README.md).
+It contains implemented Phases 1–10, including R08–R10, with a disclosed nested-path
+integration correction. [Current publication checks](publication/2026-10-26/VALIDATION.md)
+record the actually executed offline technical acceptance; the
+[import mapping](publication/2026-10-26/import-index.json) identifies published
+source and evidence derivatives and their limits. These are Arena checks, not
+measurements of the Inspektorium core 0.1.1 or independent study replication.
+Historical limited live checks concerned earlier internal states; neither the
+internal closeout nor this final public code was live-tested again. No scientific
+efficacy is demonstrated, and the [final v1 gate](ROADMAP.md#final-v1-gate) is not met.
 
 ## Maintenance evidence addendum — 2026-10-24
 

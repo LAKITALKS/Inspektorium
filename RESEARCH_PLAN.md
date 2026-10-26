@@ -89,15 +89,17 @@ population reliability claim follows from a few fixtures.
 | CURRENT PUBLIC v0.1 LIMITATION | [Example 02](examples/02_contradicted/proposals.json); reviewer probe swaps contradicted to supported while keeping exact evidence | Valid text binding can accompany a false semantic relationship; no new fixture is added |
 | CURRENT PUBLIC v0.1 | Current [fingerprint behavior](src/inspektorium/core/fingerprints.py) with source-change/order observations | Source order invariance; text changes affect digest; an unchanged quote does not authenticate historical state |
 | CURRENT PUBLIC v0.1.1 | Synthetic catalog in [evidence/v0.1.1](evidence/v0.1.1/), run on public `main` `4bd0ba9` and on v0.1.1 | Whether untrusted text can forge report lines or hide warnings in the rendered page structure, and whether ambiguous `--input` JSON is rejected, with clean counterparts; no semantic or efficacy claim |
-| FUTURE PUBLIC DEMO / REPORTED INTERNAL CONTROL | Checkpoint/environment mismatch and unauthorized/over-budget execution | Actual prevention at a named action boundary, if an inspectable control implementation is later admitted |
-| FUTURE — PHASE 8 | Unsupported numerical confidence and semantic entity/population transfer | Whether specific inferential errors with valid text bindings can be detected |
-| FUTURE — PHASE 9 | Material disagreement and budget-limited human review | Preserved judgments, routing errors and reviewer effort |
-| FUTURE — PHASE 10 | Incomplete audit trail or corrupted rendered artifact | Explicit UNKNOWN and actual official-release containment, beyond existing JSON/Markdown rendering |
+| PUBLIC ARENA TECHNICAL CHECKS / RESEARCH QUESTION OPEN | Checkpoint/environment mismatch and unauthorized/over-budget execution | Inspectable implementation and bounded offline checks are now [published](publication/2026-10-26/VALIDATION.md); general prevention performance remains a research question |
+| FUTURE EFFICACY STUDY — PHASE 8 | Unsupported numerical confidence and semantic entity/population transfer | Whether specific inferential errors with valid text bindings can be detected |
+| FUTURE EFFICACY STUDY — PHASE 9 | Material disagreement and budget-limited human review | Preserved judgments, routing errors and reviewer effort |
+| FUTURE EFFICACY STUDY — PHASE 10 | Incomplete audit trail or corrupted rendered artifact | General performance of UNKNOWN and official-release containment beyond the published bounded technical checks |
 
 Reuse the five existing example directories. No sixth example, live-model demo
 or new research runner is added by this plan; the v0.1.1 evidence tooling is a
-reproducibility harness for display and input regressions. Future public
-release of completed internal research needs a separately inspectable code/data
-package, preserved originals and hashes, and a version mapping. A provenance note may explain a
-historical name without creating another public product. New data collection,
-paid execution and publication each require separate authorization.
+reproducibility harness for display and input regressions. The separately
+inspectable [Arena package](agent-arena/README.md) and its
+[2026-10-26 provenance record](publication/2026-10-26/README.md) now provide
+the authorized source/evidence publication, preserved originals and hash/version
+mapping, with disclosed exclusions. No efficacy study is added by that publication.
+New data collection, paid execution and publications outside the
+[current authorization](publication/2026-10-26/AUTHORIZATION.md) require separate authorization.
