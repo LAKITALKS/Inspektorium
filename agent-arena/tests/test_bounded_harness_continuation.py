@@ -7,30 +7,110 @@ from agent_arena import condition_contract as cc,phase7a_real_run as rr
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/m.REL
 
-def test_parent_and_scientific_binding_unchanged():
- add=m.read(BASE/'continuation/manifest.json')
- # Current development must fail the consumed execution snapshot's source gate.
- # Verify immutable scientific/parent bytes separately, without rebinding that
- # historical manifest to today's implementation or authorizing another run.
- with pytest.raises(m.MissionError,match='continuation execution file changed'):
-  c.verify_continuation(ROOT,add)
- assert m.sha((BASE/'raw_execution/raw_freeze.json').read_bytes())==add['parent_raw_freeze_sha256']
- assert m.sha((BASE/'execution_plan.json').read_bytes())==add['parent_authorization_sha256']
- for name,digest in add['scientific_execution_files'].items():
-  assert m.sha((ROOT/name).read_bytes())==digest
- parent=m.read(BASE/'raw_execution/ledger.json')
- assert parent['state']=='REVOKED' and parent['executable_remaining_microusd']==0
- assert len(parent['terminal_keys'])==4 and len(add['remaining_keys'])==60
- assert not set(parent['terminal_keys'])&set(add['remaining_keys'])
- assert m.sha((BASE/'fresh_holdout_oracle/oracle.json').read_bytes())==add['fresh_oracle_sha256']
+def _synthetic_continuation(root):
+    """Bind new synthetic bytes in tmp_path; never rebind historical evidence."""
+    label = 'SYNTHETIC TEST FIXTURE - not historical evidence or live authorization'
+    base = root / m.REL
+    parent = base / 'raw_execution'
+    inputs = [{'id': f'synthetic-{index:02d}'} for index in range(32)]
+    slots = m.schedule(inputs)
+    keys = [slot['slot_key'] for slot in slots]
+    m.atomic(base / 'fresh_holdout_input/inputs.json', inputs)
+    m.atomic(base / 'fresh_holdout_oracle/oracle.json', {'fixture_role': label})
+    m.atomic(base / 'preregistration/schedule.json', slots)
+    m.atomic(base / 'execution_plan.json', {
+        'fixture_role': label,
+        'authorization': {'status': cc.AUTH_CONSUMED, 'authorized_budget_calls': 0},
+    })
+    terminal_hashes = {}
+    for key in keys[:4]:
+        path = parent / 'records' / f'{key.replace(":", "-")}.json'
+        m.atomic(path, {'fixture_role': label, 'slot_key': key})
+        terminal_hashes[key] = m.sha(path.read_bytes())
+    response = parent / 'attempts/attempt-001-response.bin'
+    response.parent.mkdir(parents=True)
+    response.write_bytes(b'SYNTHETIC TEST RESPONSE\n')
+    m.atomic(parent / 'ledger.json', {
+        'fixture_role': label,
+        'state': 'REVOKED',
+        'executable_remaining_microusd': 0,
+        'planned_keys': keys,
+        'terminal_keys': keys[:4],
+        'terminal_record_hashes': terminal_hashes,
+        'attempts': [{'slot_key': key, 'usage': None} for key in keys[:5]],
+        'reserved_microusd': 5 * m.MAX_ATTEMPT_MICROUSD,
+    })
+    files = {path.relative_to(parent).as_posix(): m.sha(path.read_bytes())
+             for path in sorted(parent.rglob('*')) if path.is_file()}
+    m.atomic(parent / 'raw_freeze.json', {
+        'fixture_role': label, 'state': 'INCOMPLETE',
+        'files': files, 'files_fingerprint': m.fp(files),
+    })
+    execution = root / 'synthetic/executor.py'
+    protected = root / 'synthetic/prior-evidence.txt'
+    execution.parent.mkdir()
+    execution.write_text('# ' + label + '\n')
+    protected.write_text(label + '\n')
+    m.atomic(base / 'preregistration/freeze_manifest.json', {
+        'fixture_role': label,
+        'protected_historical_files': {
+            protected.relative_to(root).as_posix(): m.sha(protected.read_bytes()),
+        },
+    })
+    scientific_paths = [base / 'fresh_holdout_input/inputs.json',
+                        base / 'preregistration/schedule.json']
+    return {
+        'fixture_role': label,
+        'parent_raw_freeze_sha256': m.sha((parent / 'raw_freeze.json').read_bytes()),
+        'parent_authorization_sha256': m.sha((base / 'execution_plan.json').read_bytes()),
+        'execution_files': {execution.relative_to(root).as_posix(): m.sha(execution.read_bytes())},
+        'scientific_execution_files': {
+            path.relative_to(root).as_posix(): m.sha(path.read_bytes())
+            for path in scientific_paths
+        },
+        'fresh_oracle_sha256': m.sha((base / 'fresh_holdout_oracle/oracle.json').read_bytes()),
+        'completed_keys': keys[:4],
+        'remaining_keys': keys[4:],
+    }
+
+
+def test_parent_and_scientific_binding_unchanged(tmp_path):
+    # Public redactions are derived evidence, not the original authorized bytes.
+    # The preserved historical binding must reject them without being rewritten.
+    manifest = BASE / 'continuation/manifest.json'
+    historical_bytes = manifest.read_bytes()
+    historical_add = m.read(manifest)
+    assert (m.sha((BASE / 'raw_execution/raw_freeze.json').read_bytes())
+            != historical_add['parent_raw_freeze_sha256'])
+    with pytest.raises(m.MissionError, match='^parent freeze changed$'):
+        c.verify_continuation(ROOT, historical_add)
+    assert manifest.read_bytes() == historical_bytes
+
+    add = _synthetic_continuation(tmp_path)
+    base = tmp_path / m.REL
+    parent = c.verify_continuation(tmp_path, add)
+    assert m.sha((base / 'raw_execution/raw_freeze.json').read_bytes()) == add['parent_raw_freeze_sha256']
+    assert m.sha((base / 'execution_plan.json').read_bytes()) == add['parent_authorization_sha256']
+    for name, digest in add['scientific_execution_files'].items():
+        assert m.sha((tmp_path / name).read_bytes()) == digest
+    assert parent['state'] == 'REVOKED' and parent['executable_remaining_microusd'] == 0
+    assert len(parent['terminal_keys']) == 4 and len(add['remaining_keys']) == 60
+    assert not set(parent['terminal_keys']) & set(add['remaining_keys'])
+    assert m.sha((base / 'fresh_holdout_oracle/oracle.json').read_bytes()) == add['fresh_oracle_sha256']
+
+    # A valid, fully bound fixture reaches the later execution-file guard.
+    execution = tmp_path / 'synthetic/executor.py'
+    execution.write_bytes(execution.read_bytes() + b'# changed\n')
+    with pytest.raises(m.MissionError, match='^continuation execution file changed: synthetic/executor[.]py$'):
+        c.verify_continuation(tmp_path, add)
 
 def test_parent_raw_tampering_rejected(tmp_path):
- b=tmp_path/m.REL;b.mkdir(parents=True)
- shutil.copytree(BASE/'raw_execution',b/'raw_execution')
- shutil.copy(BASE/'execution_plan.json',b/'execution_plan.json')
- add=m.read(BASE/'continuation/manifest.json')
- p=b/'raw_execution/attempts/attempt-001-response.bin';p.write_bytes(p.read_bytes()+b' ')
- with pytest.raises(m.MissionError,match='parent raw file changed'):c.verify_continuation(tmp_path,add)
+    add = _synthetic_continuation(tmp_path)
+    assert c.verify_continuation(tmp_path, add)['state'] == 'REVOKED'
+    p = tmp_path / m.REL / 'raw_execution/attempts/attempt-001-response.bin'
+    p.write_bytes(p.read_bytes() + b' ')
+    with pytest.raises(m.MissionError, match='^parent raw file changed: attempts/attempt-001-response[.]bin$'):
+        c.verify_continuation(tmp_path, add)
 
 def test_old_reservations_terminal_keys_and_unknown_limit_survive(tmp_path):
  old=m.read(BASE/'raw_execution/ledger.json');slots=m.read(BASE/'preregistration/schedule.json')

@@ -52,7 +52,7 @@ APIs and launchers can call providers and are not authorized by this release.
 [redaction manifest](../publication/2026-10-26/import-derivation.json) map every
 selected input to its public file and hash. Private Git history is not imported.
 Historical commit identifiers are provenance labels, not public Git links.
-Six `historical-sources/` snapshots preserve the producing modules and package
+Fourteen `historical-sources/` snapshots preserve the producing modules and package
 metadata for important evidence. Those snapshots are historical, not the
 installed package; original private Git objects are not supplied. Two superseded
 pre-RC archive source variants were not recoverable, as the inventory records.
@@ -65,6 +65,17 @@ for redacted bytes. Native authorization-directory replay of these derivatives
 is unavailable; the separately documented capture extraction path supports
 transparent offline reanalysis. Original native replay was checked only against
 private original-equivalent copies and is not counted as a public replay proof.
+
+The first publication full-suite run exposed six test-fixture failures after
+redaction (2,554 passed / 6 failed). Test-only integration restores a synthetic
+private-path counterexample, uses explicit synthetic closed histories for native
+replay behavior and preserves original hash lineage through a packaged subset
+of the import index. Public INERT inputs are separately rejected without writes.
+Continuation tamper tests use self-bound synthetic temporary inputs while the
+published historical derivative is explicitly rejected by its original freeze
+binding. Runtime permissions, historical pins and scientific semantics are not
+relaxed; original tests are retained and none are skipped. See the dated logs
+for the corrected full-suite measurement.
 
 Older source-bound production preflights deliberately require a standalone
 Git root. They are retained as closed historical controls, not enabled for a

@@ -1,0 +1,490 @@
+{
+  "banner": [
+    "DEVELOPMENT CALIBRATION — NOT HOLDOUT",
+    "input integrity — validated before any performance analysis"
+  ],
+  "tracked_binding": {
+    "manifest_id": "AA-DEVPOOL-6100",
+    "commitment": "679233c6e8ccadf49045bd183c11e8f47d8dac3c6759eb99cc49b88026ae4332"
+  },
+  "dev_id_set_identical_across_models": true,
+  "common_dev_id_set": [
+    "DEV-0001",
+    "DEV-0002",
+    "DEV-0003",
+    "DEV-0004",
+    "DEV-0005",
+    "DEV-0006",
+    "DEV-0007",
+    "DEV-0008",
+    "DEV-0009",
+    "DEV-0010",
+    "DEV-0011",
+    "DEV-0012",
+    "DEV-0013",
+    "DEV-0014",
+    "DEV-0015",
+    "DEV-0016",
+    "DEV-0017",
+    "DEV-0018",
+    "DEV-0019",
+    "DEV-0020",
+    "DEV-0021",
+    "DEV-0022",
+    "DEV-0023",
+    "DEV-0024",
+    "DEV-0025",
+    "DEV-0026",
+    "DEV-0027"
+  ],
+  "overall_pass": true,
+  "per_envelope": [
+    {
+      "model_short": "haiku",
+      "run_id": "AA-6.2-RUN-6a3b93a24af7431e",
+      "model": "claude-haiku-4-5-20251001",
+      "contract_id": "AA-RTC-6.2-HAIKU-001",
+      "prompt_contract_version": "AA-RTC-6.2-HAIKU-001@sys_sha256=f7704fa50a7689ae56f8fc6d7a383205a5aca34d0c400be36335d6ad8abfcfd5",
+      "contract_id_echoed_in_pcv": true,
+      "system_prompt_sha256_present": true,
+      "generated_at": "2026-08-05T07:35:06.214022+00:00",
+      "confidence_counts": {
+        "valid": 27,
+        "missing": 0,
+        "invalid": 0
+      },
+      "gold_counts": {
+        "solid": 8,
+        "overclaim": 15,
+        "correlation_vs_causation": 2,
+        "mechanism_vs_evidence": 2
+      },
+      "dev_id_set": [
+        "DEV-0001",
+        "DEV-0002",
+        "DEV-0003",
+        "DEV-0004",
+        "DEV-0005",
+        "DEV-0006",
+        "DEV-0007",
+        "DEV-0008",
+        "DEV-0009",
+        "DEV-0010",
+        "DEV-0011",
+        "DEV-0012",
+        "DEV-0013",
+        "DEV-0014",
+        "DEV-0015",
+        "DEV-0016",
+        "DEV-0017",
+        "DEV-0018",
+        "DEV-0019",
+        "DEV-0020",
+        "DEV-0021",
+        "DEV-0022",
+        "DEV-0023",
+        "DEV-0024",
+        "DEV-0025",
+        "DEV-0026",
+        "DEV-0027"
+      ],
+      "checks": [
+        {
+          "check": "envelope_no_unexpected_fields",
+          "pass": true,
+          "detail": "unexpected=[]"
+        },
+        {
+          "check": "records_no_unexpected_fields",
+          "pass": true,
+          "detail": "unexpected=[]"
+        },
+        {
+          "check": "envelope_version_6.2.0",
+          "pass": true,
+          "detail": "6.2.0"
+        },
+        {
+          "check": "protocol_version_6.1",
+          "pass": true,
+          "detail": "6.1"
+        },
+        {
+          "check": "manifest_id_matches_tracked",
+          "pass": true,
+          "detail": "AA-DEVPOOL-6100 vs AA-DEVPOOL-6100"
+        },
+        {
+          "check": "public_commitment_matches_tracked",
+          "pass": true,
+          "detail": "679233c6e8ccadf49045bd183c11e8f47d8dac3c6759eb99cc49b88026ae4332"
+        },
+        {
+          "check": "provider_anthropic",
+          "pass": true,
+          "detail": "anthropic"
+        },
+        {
+          "check": "expected_record_count_27",
+          "pass": true,
+          "detail": "27"
+        },
+        {
+          "check": "run_id_matches_expected",
+          "pass": true,
+          "detail": "AA-6.2-RUN-6a3b93a24af7431e vs AA-6.2-RUN-6a3b93a24af7431e"
+        },
+        {
+          "check": "model_matches_expected",
+          "pass": true,
+          "detail": "claude-haiku-4-5-20251001 vs claude-haiku-4-5-20251001"
+        },
+        {
+          "check": "contract_binding_satisfied",
+          "pass": true,
+          "detail": "contract_id_present=True sha_present=True"
+        },
+        {
+          "check": "record_count_27",
+          "pass": true,
+          "detail": "27"
+        },
+        {
+          "check": "dev_ids_unique",
+          "pass": true,
+          "detail": "n_unique=27"
+        },
+        {
+          "check": "gold_aggregate_8_15_2_2",
+          "pass": true,
+          "detail": "{\"correlation_vs_causation\": 2, \"mechanism_vs_evidence\": 2, \"overclaim\": 15, \"solid\": 8}"
+        },
+        {
+          "check": "confidence_all_valid",
+          "pass": true,
+          "detail": "valid=27 missing=0 invalid=0"
+        },
+        {
+          "check": "no_zero_coercion_artifact",
+          "pass": true,
+          "detail": "zero_conf_dev_ids=[]"
+        },
+        {
+          "check": "explicit_correct_consistent",
+          "pass": true,
+          "detail": "inconsistent=[]"
+        },
+        {
+          "check": "no_identity_leakage",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "engine_validate_result_envelope_clean",
+          "pass": true,
+          "detail": ""
+        }
+      ],
+      "all_pass": true,
+      "leakage": []
+    },
+    {
+      "model_short": "sonnet",
+      "run_id": "AA-P62-SONNET-23f5dcc25de6",
+      "model": "claude-sonnet-4-5-20250929",
+      "contract_id": "AA-RTC-6.2-SONNET-001",
+      "prompt_contract_version": "AA-RTC-6.2-SONNET-001;system_prompt_sha256=f7704fa50a7689ae56f8fc6d7a383205a5aca34d0c400be36335d6ad8abfcfd5",
+      "contract_id_echoed_in_pcv": true,
+      "system_prompt_sha256_present": true,
+      "generated_at": "2026-08-05T08:05:06.461408+00:00",
+      "confidence_counts": {
+        "valid": 27,
+        "missing": 0,
+        "invalid": 0
+      },
+      "gold_counts": {
+        "solid": 8,
+        "overclaim": 15,
+        "correlation_vs_causation": 2,
+        "mechanism_vs_evidence": 2
+      },
+      "dev_id_set": [
+        "DEV-0001",
+        "DEV-0002",
+        "DEV-0003",
+        "DEV-0004",
+        "DEV-0005",
+        "DEV-0006",
+        "DEV-0007",
+        "DEV-0008",
+        "DEV-0009",
+        "DEV-0010",
+        "DEV-0011",
+        "DEV-0012",
+        "DEV-0013",
+        "DEV-0014",
+        "DEV-0015",
+        "DEV-0016",
+        "DEV-0017",
+        "DEV-0018",
+        "DEV-0019",
+        "DEV-0020",
+        "DEV-0021",
+        "DEV-0022",
+        "DEV-0023",
+        "DEV-0024",
+        "DEV-0025",
+        "DEV-0026",
+        "DEV-0027"
+      ],
+      "checks": [
+        {
+          "check": "envelope_no_unexpected_fields",
+          "pass": true,
+          "detail": "unexpected=[]"
+        },
+        {
+          "check": "records_no_unexpected_fields",
+          "pass": true,
+          "detail": "unexpected=[]"
+        },
+        {
+          "check": "envelope_version_6.2.0",
+          "pass": true,
+          "detail": "6.2.0"
+        },
+        {
+          "check": "protocol_version_6.1",
+          "pass": true,
+          "detail": "6.1"
+        },
+        {
+          "check": "manifest_id_matches_tracked",
+          "pass": true,
+          "detail": "AA-DEVPOOL-6100 vs AA-DEVPOOL-6100"
+        },
+        {
+          "check": "public_commitment_matches_tracked",
+          "pass": true,
+          "detail": "679233c6e8ccadf49045bd183c11e8f47d8dac3c6759eb99cc49b88026ae4332"
+        },
+        {
+          "check": "provider_anthropic",
+          "pass": true,
+          "detail": "anthropic"
+        },
+        {
+          "check": "expected_record_count_27",
+          "pass": true,
+          "detail": "27"
+        },
+        {
+          "check": "run_id_matches_expected",
+          "pass": true,
+          "detail": "AA-P62-SONNET-23f5dcc25de6 vs AA-P62-SONNET-23f5dcc25de6"
+        },
+        {
+          "check": "model_matches_expected",
+          "pass": true,
+          "detail": "claude-sonnet-4-5-20250929 vs claude-sonnet-4-5-20250929"
+        },
+        {
+          "check": "contract_binding_satisfied",
+          "pass": true,
+          "detail": "contract_id_present=True sha_present=True"
+        },
+        {
+          "check": "record_count_27",
+          "pass": true,
+          "detail": "27"
+        },
+        {
+          "check": "dev_ids_unique",
+          "pass": true,
+          "detail": "n_unique=27"
+        },
+        {
+          "check": "gold_aggregate_8_15_2_2",
+          "pass": true,
+          "detail": "{\"correlation_vs_causation\": 2, \"mechanism_vs_evidence\": 2, \"overclaim\": 15, \"solid\": 8}"
+        },
+        {
+          "check": "confidence_all_valid",
+          "pass": true,
+          "detail": "valid=27 missing=0 invalid=0"
+        },
+        {
+          "check": "no_zero_coercion_artifact",
+          "pass": true,
+          "detail": "zero_conf_dev_ids=[]"
+        },
+        {
+          "check": "explicit_correct_consistent",
+          "pass": true,
+          "detail": "inconsistent=[]"
+        },
+        {
+          "check": "no_identity_leakage",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "engine_validate_result_envelope_clean",
+          "pass": true,
+          "detail": ""
+        }
+      ],
+      "all_pass": true,
+      "leakage": []
+    },
+    {
+      "model_short": "opus",
+      "run_id": "opus-878636c64fc8",
+      "model": "claude-opus-4-5-20251101",
+      "contract_id": "AA-RTC-6.2-OPUS-001",
+      "prompt_contract_version": "f7704fa50a7689ae56f8fc6d7a383205a5aca34d0c400be36335d6ad8abfcfd5",
+      "contract_id_echoed_in_pcv": false,
+      "system_prompt_sha256_present": true,
+      "generated_at": "2026-08-05T08:25:11.107598+00:00",
+      "confidence_counts": {
+        "valid": 27,
+        "missing": 0,
+        "invalid": 0
+      },
+      "gold_counts": {
+        "solid": 8,
+        "overclaim": 15,
+        "correlation_vs_causation": 2,
+        "mechanism_vs_evidence": 2
+      },
+      "dev_id_set": [
+        "DEV-0001",
+        "DEV-0002",
+        "DEV-0003",
+        "DEV-0004",
+        "DEV-0005",
+        "DEV-0006",
+        "DEV-0007",
+        "DEV-0008",
+        "DEV-0009",
+        "DEV-0010",
+        "DEV-0011",
+        "DEV-0012",
+        "DEV-0013",
+        "DEV-0014",
+        "DEV-0015",
+        "DEV-0016",
+        "DEV-0017",
+        "DEV-0018",
+        "DEV-0019",
+        "DEV-0020",
+        "DEV-0021",
+        "DEV-0022",
+        "DEV-0023",
+        "DEV-0024",
+        "DEV-0025",
+        "DEV-0026",
+        "DEV-0027"
+      ],
+      "checks": [
+        {
+          "check": "envelope_no_unexpected_fields",
+          "pass": true,
+          "detail": "unexpected=[]"
+        },
+        {
+          "check": "records_no_unexpected_fields",
+          "pass": true,
+          "detail": "unexpected=[]"
+        },
+        {
+          "check": "envelope_version_6.2.0",
+          "pass": true,
+          "detail": "6.2.0"
+        },
+        {
+          "check": "protocol_version_6.1",
+          "pass": true,
+          "detail": "6.1"
+        },
+        {
+          "check": "manifest_id_matches_tracked",
+          "pass": true,
+          "detail": "AA-DEVPOOL-6100 vs AA-DEVPOOL-6100"
+        },
+        {
+          "check": "public_commitment_matches_tracked",
+          "pass": true,
+          "detail": "679233c6e8ccadf49045bd183c11e8f47d8dac3c6759eb99cc49b88026ae4332"
+        },
+        {
+          "check": "provider_anthropic",
+          "pass": true,
+          "detail": "anthropic"
+        },
+        {
+          "check": "expected_record_count_27",
+          "pass": true,
+          "detail": "27"
+        },
+        {
+          "check": "run_id_matches_expected",
+          "pass": true,
+          "detail": "opus-878636c64fc8 vs opus-878636c64fc8"
+        },
+        {
+          "check": "model_matches_expected",
+          "pass": true,
+          "detail": "claude-opus-4-5-20251101 vs claude-opus-4-5-20251101"
+        },
+        {
+          "check": "contract_binding_satisfied",
+          "pass": true,
+          "detail": "contract_id_present=False sha_present=True"
+        },
+        {
+          "check": "record_count_27",
+          "pass": true,
+          "detail": "27"
+        },
+        {
+          "check": "dev_ids_unique",
+          "pass": true,
+          "detail": "n_unique=27"
+        },
+        {
+          "check": "gold_aggregate_8_15_2_2",
+          "pass": true,
+          "detail": "{\"correlation_vs_causation\": 2, \"mechanism_vs_evidence\": 2, \"overclaim\": 15, \"solid\": 8}"
+        },
+        {
+          "check": "confidence_all_valid",
+          "pass": true,
+          "detail": "valid=27 missing=0 invalid=0"
+        },
+        {
+          "check": "no_zero_coercion_artifact",
+          "pass": true,
+          "detail": "zero_conf_dev_ids=[]"
+        },
+        {
+          "check": "explicit_correct_consistent",
+          "pass": true,
+          "detail": "inconsistent=[]"
+        },
+        {
+          "check": "no_identity_leakage",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "engine_validate_result_envelope_clean",
+          "pass": true,
+          "detail": ""
+        }
+      ],
+      "all_pass": true,
+      "leakage": []
+    }
+  ]
+}

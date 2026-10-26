@@ -1,0 +1,45 @@
+clone
+checkout
+initial-status
+venv
+install
+wheel-site
+wheel-canary
+installed-origin
+installed-code
+installed-packages
+cli-help
+validate
+run-positive
+release-positive
+inspect-positive
+run-negative
+release-negative
+inspect-negative
+run-unknown
+inspect-blocked
+release-blocked
+human-review
+release-human-review
+inspect-human-review
+acceptance
+ruff
+compileall
+diff-check
+wheel-phase10-tests
+development-venv
+development-install
+development-site
+development-canary
+development-origin
+development-code
+development-packages
+full-suite
+Traceback (most recent call last):
+  File "<PUBLIC_CHECKOUT>/agent-arena/scripts/phase10_clean_reproduce.py", line 208, in <module>
+    main()
+  File "<PUBLIC_CHECKOUT>/agent-arena/scripts/phase10_clean_reproduce.py", line 172, in main
+    run([development_python, "-m", "pytest", "-q"], "full-suite")
+  File "<PUBLIC_CHECKOUT>/agent-arena/scripts/phase10_clean_reproduce.py", line 63, in run
+    raise RuntimeError(f"{name}: exit {result.returncode}, expected {expected}; see durable log")
+RuntimeError: full-suite: exit 1, expected 0; see durable log

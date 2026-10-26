@@ -1298,19 +1298,44 @@ def test_a_chain_continues_only_through_the_recorded_successor(tmp_path):
                                            ceiling=100_000))
 
 
-def test_pinned_closed_history_binds_every_new_live_budget(tmp_path):
+def test_pinned_closed_history_binds_every_new_live_budget(tmp_path, monkeypatch):
     import hashlib
-    # The pins are the closed ledgers and authorization files of -002 and -003 as stored in the repository.
+    # Runtime pins bind the original source bytes, not the intentionally INERT public derivatives.
+    # This packaged four-row fixture is extracted from publication/2026-10-26/import-index.json.
+    bindings = json.loads((ROOT / "tests/fixtures/phase10/public_archive_bindings.json").read_text())
+    index = {row["source_path"]: row for row in bindings["entries"]}
     base = ROOT / "analysis/live_smoke_20261011"
     for directory, auth_id in (("live_run", "AA-P10-LIVE-SMOKE-20261011-002"),
                                ("repair_r1", "AA-P10-LIVE-SMOKE-20261011-003")):
+        prefix = f"analysis/live_smoke_20261011/{directory}"
+        ledger_entry, auth_entry = index[f"{prefix}/ledger.json"], index[f"{prefix}/authorization.json"]
         raw = (base / directory / "ledger.json").read_bytes()
         auth_raw = (base / directory / "authorization.json").read_bytes()
-        ledger = json.loads(raw)
-        assert PINNED_HISTORY[auth_id] == {"ledger_sha256": hashlib.sha256(raw).hexdigest(),
-                                           "authorization_sha256": hashlib.sha256(auth_raw).hexdigest()}
-        assert ledger["binding"]["authorization_fingerprint"] == hashlib.sha256(auth_raw).hexdigest()
+        ledger, auth = json.loads(raw), json.loads(auth_raw)
+        assert PINNED_HISTORY[auth_id] == {"ledger_sha256": ledger_entry["source_sha256"],
+                                           "authorization_sha256": auth_entry["source_sha256"]}
+        assert hashlib.sha256(raw).hexdigest() == ledger_entry["public_sha256"]
+        assert hashlib.sha256(auth_raw).hexdigest() == auth_entry["public_sha256"]
+        assert ledger_entry["unchanged_from_origin"] is True
+        assert auth_entry["unchanged_from_origin"] is False
+        assert "inert_historical_authorization" in auth_entry["reasons"]
+        assert auth_entry["public_sha256"] != auth_entry["source_sha256"]
+        assert auth["status"] == "INERT_PUBLIC_ARCHIVE"
+        assert ledger["binding"]["authorization_fingerprint"] == auth_entry["source_sha256"]
         assert ledger["state"] == "REVOKED" and ledger["executable_remaining_microusd"] == 0
+        # The actual public archives remain non-executable and non-replayable. No old private
+        # path or ACTIVE authorization is reconstructed to make a historical fixture pass.
+        copy = tmp_path / f"public-{directory}"
+        copy.mkdir()
+        (copy / "authorization.json").write_bytes(auth_raw)
+        (copy / "ledger.json").write_bytes(raw)
+        with monkeypatch.context() as context:
+            context.setattr(live, "KNOWN_CLOSED_AUTHORIZATIONS", dict(PINNED_HISTORY))
+            for mode in ("live", "replay"):
+                with pytest.raises(ValueError, match="partial or has unknown fields"):
+                    live.LiveSession(copy, mode=mode)
+        assert {p.name: p.read_bytes() for p in copy.iterdir()} == {
+            "authorization.json": auth_raw, "ledger.json": raw}
     assert set(PINNED_HISTORY) == {"AA-P10-LIVE-SMOKE-20261011-002", "AA-P10-LIVE-SMOKE-20261011-003"}
     task, _ = _conflict_task()
     pinned = _closed_predecessor(tmp_path, "pinned", auth_id="TEST-PINNED")
@@ -1441,32 +1466,52 @@ def test_review_after_a_cost_overrun_is_denied_with_its_true_reason_and_the_bund
 
 # ---------------------------------------------------------------- Package B (P10-F1/G1, P9-F1/A1, P9-F2, K1)
 
+def _synthetic_closed_primary_history(tmp_path):
+    """Generate and seal test-only captures; deliberately never execute a review slot."""
+    tasks = {name: _task(name) for name in ("positive", "unknown")}
+    directory = _authorize(tmp_path / "synthetic-history", list(tasks.values()), profiles=(HAIKU2,),
+                           ceiling=300_000, auth_id="TEST-CLOSED-REPLAY-AUTH")
+    transport = Transport(*(message(_recording(name), request_id=f"req_synthetic_{name}") for name in tasks))
+    with _session(directory, transport) as session:
+        for task in tasks.values():
+            provider = live.LiveAuditProvider(session, HAIKU2, task.id, "primary", R1)
+            response = provider.generate(task, resolve_study_forensics_prompt(R1))
+            assert response.error is None
+        assert len(transport.requests) == len(tasks)
+        assert all(attempt["slot_key"].endswith("|primary") for attempt in session.ledger.data["attempts"])
+    closed = live.close_for_successor(directory, successor_id="TEST-UNEXECUTED-SUCCESSOR", reason="offline fixture")
+    assert closed["ledger_state"] == "REVOKED" and closed["executable_remaining_microusd"] == 0
+    pinned = {"authorization_id": "TEST-CLOSED-REPLAY-AUTH", "directory": str(directory),
+              "ledger_sha256": closed["ledger_sha256"]}
+    _pin(pinned)
+    return directory, tasks, pinned
+
+
 def test_replay_from_a_copy_keeps_a_never_executed_mandatory_review_open(tmp_path, monkeypatch):
-    """P10-F1/P9-F1 and K1: the sealed R1 (-003) history replays from any unchanged copy (AA-P9/1.2)."""
+    """P10-F1/P9-F1 and K1: a sealed synthetic history replays from an unchanged copy."""
     import shutil
-    monkeypatch.setattr(live, "KNOWN_CLOSED_AUTHORIZATIONS", dict(PINNED_HISTORY))  # the real pins apply
-    source = ROOT / "analysis/live_smoke_20261011/repair_r1"
+    source, tasks, pinned = _synthetic_closed_primary_history(tmp_path)
+    monkeypatch.setattr(httpx.Client, "send", lambda *a, **k: (_ for _ in ()).throw(AssertionError("network")))
     copy = tmp_path / "r1-copy"
     copy.mkdir()
     for name in ("authorization.json", "ledger.json"):
         (copy / name).write_bytes((source / name).read_bytes())
     shutil.copytree(source / "captures", copy / "captures")
     rows = {}
-    for case in ("LS-01", "LS-02"):
-        task = load_task(ROOT / f"analysis/live_smoke_20261011/live_run/tasks/{case}.json")
+    for case, task in tasks.items():
         with live.LiveSession(copy, mode="replay") as session:
             provider = live.ReplayProvider(session, HAIKU2, task.id, "primary", R1)
             result = run_audit(task, provider, output_root=tmp_path / "out", review_state=tmp_path / "rs" / case)
         assert result.path and inspect_bundle(Path(result.path)).valid, result.errors
         carrier = _record(result.path)["run_record"]["results"][0]["agent_result"]["execution_evidence"]
         # BF3: the replayed ledger bytes are recorded, so a replay is traceable to the sealed ledger.
-        assert carrier["replay_ledger_sha256"] == PINNED_HISTORY["AA-P10-LIVE-SMOKE-20261011-003"]["ledger_sha256"]
+        assert carrier["replay_ledger_sha256"] == pinned["ledger_sha256"]
         phase9 = _record(result.path)["run_record"]["metadata"]["phase9"]
         attempts = phase9.get("attempts", [])
         rows[case] = (result.status, [(a["kind"], a["status"]) for a in attempts], [a["reason"] for a in attempts])
-    assert rows["LS-01"][:2] == ("READY_FOR_RELEASE", [])
-    assert rows["LS-02"][:2] == ("REVIEW_REQUIRED", [("counterreview", "denied")])
-    assert rows["LS-02"][2][0].startswith("No live review was executed for this slot under AA-P10-LIVE-SMOKE-20261011-003")
+    assert rows["positive"][:2] == ("READY_FOR_RELEASE", [])
+    assert rows["unknown"][:2] == ("REVIEW_REQUIRED", [("counterreview", "denied")])
+    assert rows["unknown"][2][0].startswith("No live review was executed for this slot under TEST-CLOSED-REPLAY-AUTH")
     for name in ("authorization.json", "ledger.json"):
         assert (copy / name).read_bytes() == (source / name).read_bytes()  # replay never writes
     # BF3: replay is location-free, so a pinned history replays only from its unchanged bytes.
@@ -1571,9 +1616,8 @@ def test_cli_replay_keeps_its_review_state_out_of_the_authorization_directory(tm
     import shutil
     from click.testing import CliRunner
     from agent_arena.phase10_cli import audit
-    monkeypatch.setattr(live, "KNOWN_CLOSED_AUTHORIZATIONS", dict(PINNED_HISTORY))
+    source, tasks, _ = _synthetic_closed_primary_history(tmp_path)
     monkeypatch.setattr(httpx.Client, "send", lambda *a, **k: (_ for _ in ()).throw(AssertionError("network")))
-    source = ROOT / "analysis/live_smoke_20261011/repair_r1"
     copy = tmp_path / "r1-copy"
     copy.mkdir()
     for name in ("authorization.json", "ledger.json"):
@@ -1584,9 +1628,11 @@ def test_cli_replay_keeps_its_review_state_out_of_the_authorization_directory(tm
         return {str(p.relative_to(path)): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in sorted(path.rglob("*")) if p.is_file()}
     before = tree(copy)
+    task_path = tmp_path / "unknown-task.json"
+    task_path.write_text(tasks["unknown"].model_dump_json())
     out = tmp_path / "out"
     result = CliRunner().invoke(audit, ["run", "--replay", "--task",
-                                        str(ROOT / "analysis/live_smoke_20261011/live_run/tasks/LS-02.json"),
+                                        str(task_path),
                                         "--authorization-dir", str(copy), "--profile", HAIKU2,
                                         "--output-root", str(out)])
     assert result.exit_code == 2 and json.loads(result.output)["status"] == "REVIEW_REQUIRED", result.output

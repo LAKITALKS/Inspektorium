@@ -159,7 +159,8 @@ def test_modelled_vs_literature_fingerprints_differ():
 
 def test_loader_rejects_private_path_leakage(tmp_path):
     data = json.loads(FIXTURE.read_text())
-    data["provenance"][0]["canonical_url"] = "__LOCAL_HOME__/private/notes.md"
+    # Synthetic private-path counterexample; no real account or home directory.
+    data["provenance"][0]["canonical_url"] = "/" + "Users/fixture-user/private/notes.md"
     bad = tmp_path / "leaky.json"
     bad.write_text(json.dumps(data))
     with pytest.raises(ValueError, match="private identity/path"):

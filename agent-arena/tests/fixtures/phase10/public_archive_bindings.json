@@ -1,0 +1,81 @@
+{
+  "schema": "agent-arena-public-archive-bindings/1.0",
+  "source_document": "publication/2026-10-26/import-index.json",
+  "scope": "Selected import-index source and public identities; not recreated historical authorizations",
+  "entries": [
+    {
+      "source_root": "arena",
+      "source_path": "analysis/live_smoke_20261011/live_run/authorization.json",
+      "public_path": "agent-arena/analysis/live_smoke_20261011/live_run/authorization.json",
+      "source_sha256": "a331a4cb55cbbc83c155d7ad7abc978503cb6aab3e25880e0af4db39cd115824",
+      "public_sha256": "49f8ba584f0e7ebef021a9d5c0d7f112d2434ed99f324e28d49e8169724e3b44",
+      "source_bytes": 4227,
+      "public_bytes": 4526,
+      "action": "derive",
+      "reasons": [
+        "private_local_paths",
+        "inert_historical_authorization"
+      ],
+      "origin_commit": "9de4b76953aed778c42df994535cb29a4e0f9f5c",
+      "unchanged_from_origin": false,
+      "phase": "historical research",
+      "function": "historical-research-and-evidence",
+      "tests": [],
+      "docs": []
+    },
+    {
+      "source_root": "arena",
+      "source_path": "analysis/live_smoke_20261011/live_run/ledger.json",
+      "public_path": "agent-arena/analysis/live_smoke_20261011/live_run/ledger.json",
+      "source_sha256": "e6ef0f5aff3b6bdd3c841fc0a5982449a83eecac004f73e42f9a19a66b0c64b5",
+      "public_sha256": "e6ef0f5aff3b6bdd3c841fc0a5982449a83eecac004f73e42f9a19a66b0c64b5",
+      "source_bytes": 16692,
+      "public_bytes": 16692,
+      "action": "copy",
+      "reasons": [],
+      "origin_commit": "9de4b76953aed778c42df994535cb29a4e0f9f5c",
+      "unchanged_from_origin": true,
+      "phase": "historical research",
+      "function": "historical-research-and-evidence",
+      "tests": [],
+      "docs": []
+    },
+    {
+      "source_root": "arena",
+      "source_path": "analysis/live_smoke_20261011/repair_r1/authorization.json",
+      "public_path": "agent-arena/analysis/live_smoke_20261011/repair_r1/authorization.json",
+      "source_sha256": "b93edacd76b3726024494e7f493fb67896481c413ca38459c0bb739bba6357ae",
+      "public_sha256": "a8b5c90107c0e4e983eabdd903fdc7eafb5bad5bcb2314c35c66f3c9fd0293d3",
+      "source_bytes": 4582,
+      "public_bytes": 4881,
+      "action": "derive",
+      "reasons": [
+        "private_local_paths",
+        "inert_historical_authorization"
+      ],
+      "origin_commit": "9de4b76953aed778c42df994535cb29a4e0f9f5c",
+      "unchanged_from_origin": false,
+      "phase": "historical research",
+      "function": "historical-research-and-evidence",
+      "tests": [],
+      "docs": []
+    },
+    {
+      "source_root": "arena",
+      "source_path": "analysis/live_smoke_20261011/repair_r1/ledger.json",
+      "public_path": "agent-arena/analysis/live_smoke_20261011/repair_r1/ledger.json",
+      "source_sha256": "124ffab09ad94b9c751b50fe2888e48a2e585d41f16a6e21d2062d99e69497da",
+      "public_sha256": "124ffab09ad94b9c751b50fe2888e48a2e585d41f16a6e21d2062d99e69497da",
+      "source_bytes": 16722,
+      "public_bytes": 16722,
+      "action": "copy",
+      "reasons": [],
+      "origin_commit": "9de4b76953aed778c42df994535cb29a4e0f9f5c",
+      "unchanged_from_origin": true,
+      "phase": "historical research",
+      "function": "historical-research-and-evidence",
+      "tests": [],
+      "docs": []
+    }
+  ]
+}
