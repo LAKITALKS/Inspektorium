@@ -1,9 +1,17 @@
 # Contributing
 
-INSPEKTORIUM's public v0.1 kernel is intentionally small: evaluators propose
-semantic relationships, while deterministic code validates exact claim and
-citation spans. Changes should keep that distinction obvious in code, schemas,
-reports and prose.
+Inspektorium is one instrument. Its official public workflow is
+`inspektorium audit`; Agent Arena is the old/internal name preserved in the
+`agent-arena` distribution, `agent_arena` imports and historical provenance.
+The root source version is 0.2.0 and the retained audit runtime version is 1.0.1.
+The public entry delegates to the existing runtime without changing its semantics
+or 74 Python runtime files. See [ONE_INSTRUMENT.md](docs/ONE_INSTRUMENT.md).
+
+The smaller `inspektorium inspect` reference checker keeps its v0.1.1/schema 0.1
+contract: evaluators propose semantic relationships, while deterministic code
+validates exact claim and citation spans. The audit workflow does not invoke
+that pipeline automatically. Keep the two enforcement boundaries clear in code,
+schemas, reports, tests and prose.
 
 [AGENTS.md](AGENTS.md) lists binding working rules for automated agents and
 agent-assisted changes. Its rules on evidence, check status and untrusted text
@@ -13,13 +21,15 @@ neither replaces tests or review.
 ## Run the checks
 
 ```bash
-python -m pip install -e '.[dev]'
+python -m pip install -e '.[dev]' -e './agent-arena[dev,providers]'
 ruff check .
 mypy src
 pytest --cov=inspektorium --cov-report=term-missing --cov-fail-under=80
 ```
 
-These are the checks CI runs on Python 3.11 and 3.12. Deterministic-kernel
+These are the root-package checks, including public-entry regressions. The
+retained audit runtime has its own full suite and frozen acceptance command
+below. CI runs the suites on Python 3.11 and 3.12. Deterministic-kernel
 changes must include tests for successful and failed paths; protective
 controls need a deliberate violation that must be caught and a clean
 counterpart that must still pass. Tests and examples must remain reproducible
@@ -29,7 +39,8 @@ without a provider API key.
 
 Keep pull requests focused, explain the observable behavior, and include tests.
 Confirm first that the proposal fits [SCOPE.md](SCOPE.md). Features outside the
-frozen v0.1 boundary require separate design review under
+frozen reference-checker v0.1 boundary or existing audit semantics require
+separate design review under
 [ROADMAP.md](ROADMAP.md) and [RESEARCH_PLAN.md](RESEARCH_PLAN.md). A planned
 phase or documentation change does not authorize its implementation, paid
 execution or publication. Keep existing versions, schemas and release tags
@@ -59,29 +70,65 @@ Describe the exact rule, protected field/action and enforcement boundary.
 Do not turn a reportable evaluator proposal into a semantically verified
 relation, or CLI success into release authorization. Any reliability statement
 must name its fixed operating conditions; robustness must name the tested
-disturbances. Scientific forensics and review are separate Arena research capabilities
-(R08, R09), not capabilities of the core package. Display escaping of untrusted text is not semantic checking
-(P12). No global or
-weighted assurance score, compliance claim or generic safety claim is justified
-by these software checks.
+disturbances. Scientific forensics and review are audit-runtime research capabilities
+(R08, R09), not capabilities of the smaller reference checker. The public
+`inspektorium audit` entry exposes those existing capabilities; it does not
+transfer reference-checker safeguards into the audit pipeline. Display escaping
+of untrusted text is not semantic checking (P12). No global or weighted assurance
+score, compliance claim or generic safety claim is justified by these software
+checks.
 
 An eventual internal evidence release requires a separately reviewed package,
 version mapping and preserved originals/hashes. Negative results and old
-evidence must not be rewritten to make the presentation cleaner. If an old
-name is unavoidable, explain it in a provenance note rather than creating a
-competing public brand.
+evidence must not be rewritten to make the presentation cleaner. Preserve old
+names, command strings and version fields in historical evidence.
+Use Inspektorium as the public instrument name and explain `agent-arena` as
+the retained distribution/compatibility identity, not a second product.
 
 Contributions must be original or use compatible, documented dependencies. Do
 not submit private datasets, proprietary prompts, credentials, copied project
 history, or implementation material from unrelated systems.
 
-## Arena component and publication checks
+## Joint installation, runtime checks and publication records
 
-Arena is installed separately with `python -m pip install -e './agent-arena[dev,providers]'`.
-Run its full suite from `agent-arena/` with `python -m pytest tests` and the
-frozen gate `python scripts/phase10_acceptance.py --output /new/path/gates`.
-Its release lint boundary is recorded in `agent-arena/PUBLICATION.md`; known
-legacy lint findings are disclosed, not described as a clean full lint run.
-Core Ruff excludes the separate Arena tree. Root test discovery remains `tests/`;
-CI runs both complete suites in separate jobs on Python 3.11 and 3.12.
-The dated GitHub authorization is in `publication/2026-10-26/AUTHORIZATION.md`.
+The canonical operational installation is one command from the repository root,
+inside a fresh Python 3.11+ virtual environment:
+
+```sh
+python -m pip install . ./agent-arena
+inspektorium audit --help
+```
+
+The editable command above is for development. The retained audit runtime's full
+suite must run from `agent-arena/` in that development environment:
+
+```sh
+cd agent-arena
+python -m pytest tests
+python scripts/phase10_acceptance.py --output /new/path/gates
+```
+
+The output directory must be new. Tests and acceptance use synthetic or saved
+offline inputs; installing provider SDK extras supports adapter tests and does
+not authorize provider calls. The runtime's historical release lint boundary is
+recorded in `agent-arena/PUBLICATION.md`; known legacy lint findings remain
+disclosed. Root Ruff excludes that tree, and root test discovery remains
+`tests/`. Do not claim a full-runtime lint or strict type-check pass based on the
+root checks.
+
+Public-entry verification is implemented in
+[tests/test_audit_entry.py](tests/test_audit_entry.py) and
+[scripts/verify_instrument.py](scripts/verify_instrument.py). Record actual
+commands, source/version identities and results in the
+[dated consolidation record](publication/2026-10-26-unified-entry/README.md).
+Until a check executes, its status is not executed or pending; historical suite
+counts are not new results. Preserve the audit distribution version, runtime
+bytes and old artifact metadata during this entry-point change. Package versions
+and source commits identify different layers; neither proves a software release
+has been published.
+
+The original publication authorization and import mapping remain unchanged in
+`publication/2026-10-26/`. The mapping describes publication commit
+`94eb4fc8b26c22da6a2cebdd01e5a7799750104d`; current documentation can legitimately
+have new hashes. The later name/entry clarification is recorded in
+[AGENTS.md](AGENTS.md), without rewriting the earlier decision.

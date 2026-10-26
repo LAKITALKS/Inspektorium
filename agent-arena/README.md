@@ -1,9 +1,17 @@
-# Agent Arena / INSPEKTORIUM
+# Inspektorium audit runtime
 
-> **Publication update — 2026-10-26:** technical research prerelease **1.0.1**
-> is published with P1–P10 source. See [public scope and provenance](PUBLICATION.md).
-> Historical closeout wording below refers to the original internal 1.0.0.
-> The scientific Final v1 gate remains NOT MET. No new live run is authorized.
+> **Current public entry — 2026-10-26:** Inspektorium is one instrument;
+> Agent Arena is its old/internal implementation name. Use **`inspektorium audit`**
+> after the joint installation below. This directory retains the **`agent-arena`
+> 1.0.1** distribution and its unchanged 74 Python runtime files; the root source
+> distribution is **0.2.0**. `agent-arena audit` remains a compatibility entry to
+> the same runtime. See [one instrument](../docs/ONE_INSTRUMENT.md) and the
+> [current consolidation record](../publication/2026-10-26-unified-entry/README.md).
+> New source version is not a claim of a new published release.
+>
+> The [original 1.0.1 publication record](PUBLICATION.md) remains historical.
+> Closeout wording below refers to internal 1.0.0 where stated. The scientific
+> Final v1 gate remains NOT MET. No new live run is authorized.
 
 Local evidence and review tooling. The supported **AA-P10/1.0** workflow turns an
 input claim and a recorded response into a checked audit candidate, preserves
@@ -17,64 +25,72 @@ This checkout is the **public technical research 1.0.1** integration of the
 internal 1.0.0 source (package `agent-arena` 1.0.1, assessment
 AA-P8/1.3, review AA-P9/1.3, host rules AA-P8-HOST/1.1). Its supported scope, the meaning of
 "ended", "unresolved", "technically incomplete" and "released", and its known limits are summarised in
-[V1_SCOPE.md](V1_SCOPE.md) (German). The only supported entry point is `agent-arena audit`.
+[V1_SCOPE.md](V1_SCOPE.md) (German). The official public entry is `inspektorium audit`; `agent-arena audit` is
+retained for compatibility, with the same controls and outcomes.
 
 ## Install from a clean local checkout
 
-Python **3.11 or newer** is declared. Use a fresh virtual environment and install
-the package rather than adding `src` to `PYTHONPATH`:
+Python **3.11 or newer** is declared. Run these commands from the repository
+root (the directory containing both this folder and the root `pyproject.toml`):
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install .
-.venv/bin/agent-arena audit --help
+. .venv/bin/activate
+python -m pip install . ./agent-arena
+inspektorium audit --help
 ```
 
-For canonical installed-package tests, add the development and provider SDK extras.
-The SDKs support existing adapter tests; installation does not authorize model
-calls. No credentials are needed for the offline example or tests. The provider
-extra explicitly declares `httpx`; Anthropic is constrained to `<1` because the
-existing counted transport uses `httpx.Client`, while SDK 1.x requires `httpx2`.
-This is a tested adapter compatibility boundary, not live-provider validation.
+This is the canonical installation for Inspektorium: two retained distribution
+identities in one fresh environment. Install the packages rather than adding
+`src` to `PYTHONPATH`. The root public entry lazily delegates to this runtime;
+it does not automatically apply the smaller `inspektorium inspect` reference
+checker's parser, exact-span or display guards.
 
-```sh
-.venv/bin/python -m pip install '.[dev,providers]'
-.venv/bin/python -m pytest -q tests/test_phase10_bundle.py tests/test_phase10_render.py
-```
-
-The full legacy development suite also exercises source-bound execution guards
-and repository runtime assets. Use a **separate editable development environment**
-in the same clean checkout; the regular wheel installation above remains the
-canonical operational check. No manual `PYTHONPATH` or copied assets are needed:
+For development, install both distributions with their required test extras
+in a fresh development environment. Run the runtime suite from this directory:
 
 ```sh
 python3 -m venv .venv-dev
-.venv-dev/bin/python -m pip install -e '.[dev,providers]'
-.venv-dev/bin/python -m pytest -q
+. .venv-dev/bin/activate
+python -m pip install -e '.[dev]' -e './agent-arena[dev,providers]'
+cd agent-arena
+python -m pytest tests
 ```
 
+The provider SDKs support existing adapter tests; installation does not authorize
+model calls. No credentials are needed for the offline example or tests. The
+provider extra explicitly declares `httpx`; Anthropic is constrained to `<1`
+because the existing counted transport uses `httpx.Client`, while SDK 1.x
+requires `httpx2`. This is a tested adapter compatibility boundary from the
+1.0.1 integration, not new live-provider validation. The full legacy suite
+exercises source-bound guards and repository assets, so retain the complete
+checkout and the editable development layout. The normal installation above
+remains the canonical operational installation.
+
 Installation uses the configured normal Python package index and setuptools
-build backend. Example inputs and acceptance tooling are versioned repository
-files; use a complete checkout for the commands below. Runtime needs Click,
-PyYAML and Pydantic, declared in `pyproject.toml`. No browser, PDF engine or online
-provider is needed for canonical Markdown/HTML generation and byte verification.
+build backend. Example inputs and acceptance tooling are repository files.
+Runtime dependencies include Click, PyYAML and Pydantic, declared in
+`pyproject.toml`. No browser, PDF engine or online provider is needed for
+canonical Markdown/HTML generation and byte verification.
 
 ## Run, inspect and explicitly release an offline example
 
-Run these commands from the checkout root. Output directories are operator
-choices. Each successful operation prints JSON with `status`, `path` and
-`errors`; use the returned absolute `path` as `CANDIDATE` or `RELEASED` below.
+Run these commands from the repository root with the joint environment active.
+Output directories are operator choices. `run`, `review` and `release` return
+JSON with `status`, `path` and `errors`; use the returned absolute `path` as
+`CANDIDATE` or `RELEASED` below. `validate` reports input eligibility, and
+`inspect` reports bundle validity and the recorded status.
 
 ```sh
-.venv/bin/agent-arena audit validate --task examples/phase10/positive-task.json
-.venv/bin/agent-arena audit run --offline \
-  --task examples/phase10/positive-task.json \
-  --recording examples/phase10/positive-recording.json --output-root reports/local-audit
-.venv/bin/agent-arena audit inspect --bundle "$CANDIDATE"
-.venv/bin/agent-arena audit release --bundle "$CANDIDATE" \
+inspektorium audit validate --task agent-arena/examples/phase10/positive-task.json
+inspektorium audit run --offline \
+  --task agent-arena/examples/phase10/positive-task.json \
+  --recording agent-arena/examples/phase10/positive-recording.json --output-root reports/local-audit
+inspektorium audit inspect --bundle "$CANDIDATE"
+inspektorium audit release --bundle "$CANDIDATE" \
   --output-root reports/local-audit --reviewer 'Local offline operator' \
   --reason 'Explicit release of this synthetic test artifact'
-.venv/bin/agent-arena audit inspect --bundle "$RELEASED"
+inspektorium audit inspect --bundle "$RELEASED"
 ```
 
 The run produces `READY_FOR_RELEASE`, not a release. The release command checks
@@ -107,14 +123,14 @@ to that ID. The following synthetic correction uses the supplied source and
 appends a human decision through the existing Phase-9 path:
 
 ```sh
-.venv/bin/agent-arena audit run --offline \
-  --task examples/phase10/unknown-task.json \
-  --recording examples/phase10/unknown-recording.json --output-root reports/local-audit
-.venv/bin/agent-arena audit review --bundle "$UNKNOWN_CANDIDATE" \
+inspektorium audit run --offline \
+  --task agent-arena/examples/phase10/unknown-task.json \
+  --recording agent-arena/examples/phase10/unknown-recording.json --output-root reports/local-audit
+inspektorium audit review --bundle "$UNKNOWN_CANDIDATE" \
   --state-dir reports/local-audit-state --output-root reports/local-audit \
   --select "$POSITION" --reviewer 'Local offline operator' \
   --reason 'Resolve the recorded design uncertainty using the supplied source' \
-  --correction examples/phase10/positive-recording.json
+  --correction agent-arena/examples/phase10/positive-recording.json
 ```
 
 This example shows the existing human-decision mechanism. The v1 operating mode assumes **no**
@@ -133,9 +149,9 @@ The operator's recorded identity is provenance, not identity authentication.
 authorization directory (authorization, ledger, raw captures) and a registered profile:
 
 ```sh
-.venv/bin/agent-arena audit run --live --task TASK.json --authorization-dir AUTH_DIR \
+inspektorium audit run --live --task TASK.json --authorization-dir AUTH_DIR \
   --profile claude-haiku-5-5@3 --output-root reports/live-audit
-.venv/bin/agent-arena audit run --replay --task TASK.json --authorization-dir AUTH_DIR \
+inspektorium audit run --replay --task TASK.json --authorization-dir AUTH_DIR \
   --profile claude-haiku-5-5@3 --output-root reports/live-replay
 ```
 
@@ -194,6 +210,13 @@ operation reports its cause and remedy. No force-release switch exists.
 
 ## Architecture, controls and provenance
 
+The root `inspektorium audit` dispatch layer calls this existing audit command
+without rewriting reports, adding guards or changing evaluator semantics. The
+smaller `inspektorium inspect` reference checker remains a distinct pipeline.
+The audit implementation's package/version, code binding and historical command
+metadata remain unchanged. The [architecture guide](../docs/ONE_INSTRUMENT.md#runtime-boundaries)
+sets out these boundaries.
+
 `audit` calls the existing runner and `BaseProvider` interface, structured-output
 parser, evaluator, Phase-8 semantics/taxonomy and Phase-9 history reconstruction.
 Offline mode accepts only the exact built-in recording provider and never
@@ -220,15 +243,17 @@ so old green fields alone cannot authorize a changed artifact.
 The acyclic fingerprint convention is: reports bind the record/provenance core;
 decision binds checked reports; manifest binds record, decision and reports;
 the manifest's self-fingerprint excludes only its own `fingerprint` field.
-Revisions link their parent's manifest fingerprint. All installed Python module
-bytes define code identity. A Git source commit is claimed only when independently
+Revisions link their parent's manifest fingerprint. All installed audit-runtime Python module
+bytes define its existing code identity; the new root dispatch layer is not
+added to that unchanged binding scheme. A Git source commit is claimed only when independently
 matched to those bytes; installed wheels can honestly report no Git association.
 Hashes provide integrity, not signatures, immutable remote storage or PKI.
 
 `agent-arena run` (historical research harness: provider calls without AA-P10-LIVE
 authorization and without task context) and `agent-arena official-release` (historical
 Phase-7B release path without AA-P8/P9/P10 controls) are **disabled in v1** and exit 2
-with a pointer to `agent-arena audit`; the release-boundary Python API stays available for
+with the retained runtime pointer to `agent-arena audit` (the compatibility
+spelling of `inspektorium audit`); the release-boundary Python API stays available for
 historical verification. The `report`/`client-report`/`forensic-report` outputs are
 diagnostic, and every non-`audit` command is marked as not v1 in `agent-arena --help`.
 Directly invoked research modules such as `python -m agent_arena.run_library` are not
@@ -256,19 +281,22 @@ required activity; the internal technical v1.0.0 does not satisfy the efficacy g
 The independent acceptance corpus is
 `tests/fixtures/phase10/acceptance_v1.json`, with fixed expectations and input
 fingerprints. It is distinct from development tests and any future efficacy
-holdout. From an installed clean checkout, run:
+holdout. From an installed clean checkout, run from `agent-arena/` with the environment
+active:
 
 ```sh
-.venv/bin/python scripts/phase10_acceptance.py --output /absolute/new/acceptance-directory
+python scripts/phase10_acceptance.py --output /absolute/new/acceptance-directory
 ```
 
 Use a fresh output directory; the harness refuses to overwrite prior evidence.
 It records results, exact expectation/harness hashes and artifact paths. Every
 provider response is recorded offline and every test authorization is synthetic.
 
-To reproduce the committed HEAD, including a fresh local clone, fresh environment,
-normal wheel installation, all five CLI operations, independent acceptance, 49
-Phase10 tests, and the full suite in a second fresh editable environment:
+The retained component reproduction helper checks committed audit-runtime
+source in a fresh local clone and environment, including its normal wheel
+installation, all five CLI operations through the compatibility entry,
+independent acceptance, the historical 49-test Phase10 subset, and the full
+suite in a second fresh editable environment. From `agent-arena/`:
 
 ```sh
 python3 scripts/phase10_clean_reproduce.py \
@@ -276,6 +304,9 @@ python3 scripts/phase10_clean_reproduce.py \
   --output /absolute/new/durable-evidence-directory --full-suite
 ```
 
+This helper checks the retained runtime; it does not verify the new root public
+entry or joint installation. Use the [consolidation verifier](../scripts/verify_instrument.py)
+and [dated record](../publication/2026-10-26-unified-entry/README.md) for those.
 Both directories must be new. The helper reads committed files only, clears the
 developer Python path and provider API keys for child processes, verifies the
 wheel package's installed location and all module bytes against the committed
@@ -313,3 +344,18 @@ and the [Phase10 closeout](docs/phase10_closeout.md). Compressed evidence archiv
 retain the original bundles and logs; extract into a new evidence directory when
 needed. The archive indexes contain checksums, and each retained member was
 compared with its original bytes. This checkpoint remains an offline technical RC.
+
+
+## Historical names, provenance and rights
+
+Existing reports, archives and version fields may retain Agent Arena and
+`agent-arena audit`; preserve these bytes as provenance. The original
+[publication index](../publication/2026-10-26/import-index.json) is bound to
+publication commit `94eb4fc8b26c22da6a2cebdd01e5a7799750104d`, rather than to
+subsequently edited current documentation. The current public name does not
+revalidate old evidence or change old release/tag identities.
+
+Lazaros Varvatis remains the author and maintainer. This runtime remains
+source-available under the unchanged [PolyForm Noncommercial 1.0.0](../LICENSE),
+not OSI open source; existing source attribution and third-party licenses remain
+in force.

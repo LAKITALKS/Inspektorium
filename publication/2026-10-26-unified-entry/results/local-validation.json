@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "python": "3.12.14",
+  "root_suite": {
+    "passed": 1363,
+    "failed": 0,
+    "skipped": 0,
+    "source": "completed local pytest session output",
+    "command": "python -m pytest --cov=inspektorium --cov-report=term-missing --cov-fail-under=80",
+    "coverage_totals": {
+      "covered_lines": 703,
+      "num_statements": 715,
+      "percent_covered": 97.90055248618785,
+      "percent_covered_display": "98",
+      "missing_lines": 12,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.32167832167832,
+      "percent_statements_covered_display": "98",
+      "num_branches": 190,
+      "num_partial_branches": 7,
+      "covered_branches": 183,
+      "missing_branches": 7,
+      "percent_branches_covered": 96.3157894736842,
+      "percent_branches_covered_display": "96"
+    }
+  },
+  "mypy": {
+    "status": "passed",
+    "source_files": 20
+  },
+  "root_suite_socket_events": {
+    "armed": 1,
+    "refused": 0
+  },
+  "arena_full_suite": "not executed locally; runtime unchanged, required CI retained"
+}

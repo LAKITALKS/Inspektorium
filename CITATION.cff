@@ -2,16 +2,15 @@ cff-version: 1.2.0
 message: "If you use Inspektorium, please cite the software using this metadata."
 title: "Inspektorium"
 type: software
-version: 0.1.1
-date-released: 2026-10-26
+version: 0.2.0
 repository-code: "https://github.com/LAKITALKS/Inspektorium"
 authors:
   - family-names: "Varvatis"
     given-names: "Lazaros"
 abstract: >-
-  A small evidence-binding reference tool that requires evaluator-generated
-  findings to point to source text through deterministically validated exact
-  spans.
+  Inspektorium, formerly Agent Arena, provides a public entry to the existing
+  audit workflow and retains a separate evidence-binding reference checker.
+  Technical controls and recorded provenance do not establish scientific truth.
 license: PolyForm-Noncommercial-1.0.0
 keywords:
   - evidence binding

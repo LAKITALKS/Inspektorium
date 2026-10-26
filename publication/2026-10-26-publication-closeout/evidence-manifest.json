@@ -1,0 +1,453 @@
+{
+  "schema": "inspektorium-public-evidence-files/1.0",
+  "files": {
+    "SUMMARY.md": {
+      "sha256": "99fc5f29898cdb97b3c8705b1673d0b5585ac2dca114f89f79f55d44a5faa556",
+      "bytes": 4040
+    },
+    "completed-attempt/logs/downloads/agent-arena-v1.0.1-source.tar.gz.json": {
+      "sha256": "2030b3a4cc8bde2c7b2e512afb40bff1cbd96b22b2ba018788d382bfa407671c",
+      "bytes": 244
+    },
+    "completed-attempt/logs/downloads/agent-arena-v1.0.1-source.zip.json": {
+      "sha256": "be1b7fdff89e46be4d69783b82a6ce7c690b15d698df2e77c0a33caa601ef81c",
+      "bytes": 241
+    },
+    "completed-attempt/logs/downloads/arena/SHA256SUMS.txt.json": {
+      "sha256": "c66e258e16fb7b4cbe4aeb6b74060d3fd23a2b6e951f94ae580ce8a6e99e1717",
+      "bytes": 264
+    },
+    "completed-attempt/logs/downloads/arena/agent_arena-1.0.1-py3-none-any.whl.json": {
+      "sha256": "c188a1996c3ac35c3e1a212eb1a3b140895fa7c5ca9b78abe27609053702f969",
+      "bytes": 287
+    },
+    "completed-attempt/logs/downloads/arena/agent_arena-1.0.1.tar.gz.json": {
+      "sha256": "0907c45bfb1f126fa1115da2ded36f331c9a3804ad67ad26d1334b1218c64775",
+      "bytes": 279
+    },
+    "completed-attempt/logs/downloads/arena-release.json.json": {
+      "sha256": "481a7349e886abeb4ec6b84d3f99ea6d61b4b11f87a29a82f8d05007bcff0e01",
+      "bytes": 234
+    },
+    "completed-attempt/logs/downloads/core/SHA256SUMS.txt.json": {
+      "sha256": "4cdfa9024f60718be04a782d3d5135218c6024f1c612567ed39a02b4fd59ed8d",
+      "bytes": 252
+    },
+    "completed-attempt/logs/downloads/core/inspektorium-0.1.1-publication-e1-evidence.zip.json": {
+      "sha256": "9dd72f7dda3a0b412e01c178864b431d429fac939644be025af668dca8c896ee",
+      "bytes": 290
+    },
+    "completed-attempt/logs/downloads/core/inspektorium-0.1.1-py3-none-any.whl.json": {
+      "sha256": "7704fc7358e0918a289a81a00468a2019cd0cde79c99f190d18fb41528b7bc05",
+      "bytes": 275
+    },
+    "completed-attempt/logs/downloads/core/inspektorium-0.1.1.tar.gz.json": {
+      "sha256": "d8260225bf734a0b4ff2c56f2fba252ff2db2b61c9a152f023bf93ba34e1ba6e",
+      "bytes": 268
+    },
+    "completed-attempt/logs/downloads/core-release.json.json": {
+      "sha256": "8912041c61ed6eca8d42e05d2aeed1069f7145f9ee4bd7669016b4d696235fc4",
+      "bytes": 222
+    },
+    "completed-attempt/logs/downloads/v0.1.1-source.tar.gz.json": {
+      "sha256": "f9a5ea2ec17292a3020cc654d6ddaf118def27832cae0c3c072802cdd07478c2",
+      "bytes": 232
+    },
+    "completed-attempt/logs/downloads/v0.1.1-source.zip.json": {
+      "sha256": "dd64d210b3e46ba534af63d90fe120c8d35ff55cac0a64f425d18a5988186c2e",
+      "bytes": 229
+    },
+    "completed-attempt/logs/offline/arena-sdist-canary.log": {
+      "sha256": "1c2ee7cc4bd44ea77ba720db934cc7169109de5f3892a517e783259d0b83f91a",
+      "bytes": 295
+    },
+    "completed-attempt/logs/offline/arena-sdist-help.log": {
+      "sha256": "3cde157d44522d5da9a71c1827a18349d5a25252edb90360e0c1a21268984dbd",
+      "bytes": 2823
+    },
+    "completed-attempt/logs/offline/arena-sdist-identity.log": {
+      "sha256": "f8459c4ff4bb132a4286daa1241d7dad74681f02a1e64365a301d2c19fdc258a",
+      "bytes": 6732
+    },
+    "completed-attempt/logs/offline/arena-sdist-negative-inspect.log": {
+      "sha256": "092c2d42bde1b985e90fd0d0706b588bc8502d3c9ea900ed8c6b3627a0f98904",
+      "bytes": 69
+    },
+    "completed-attempt/logs/offline/arena-sdist-negative-validate.log": {
+      "sha256": "a2316f0346f080033cc1b00f9f383ad2a350b4bfd167fa58698998c6bd02f979",
+      "bytes": 65
+    },
+    "completed-attempt/logs/offline/arena-sdist-negative.log": {
+      "sha256": "ed4edc57b8eacf0d4b6b91cbcce1e22c94b538dcb0903eb6204387bed73262b5",
+      "bytes": 149
+    },
+    "completed-attempt/logs/offline/arena-sdist-pip-check.log": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    "completed-attempt/logs/offline/arena-sdist-positive-inspect.log": {
+      "sha256": "092c2d42bde1b985e90fd0d0706b588bc8502d3c9ea900ed8c6b3627a0f98904",
+      "bytes": 69
+    },
+    "completed-attempt/logs/offline/arena-sdist-positive-validate.log": {
+      "sha256": "a2316f0346f080033cc1b00f9f383ad2a350b4bfd167fa58698998c6bd02f979",
+      "bytes": 65
+    },
+    "completed-attempt/logs/offline/arena-sdist-positive.log": {
+      "sha256": "0e4942945450c1ec8ca68ac68268cf3c897005542d44c8d6a0c5e18816dab191",
+      "bytes": 149
+    },
+    "completed-attempt/logs/offline/arena-sdist-unknown-inspect.log": {
+      "sha256": "eb6fad56787f5c37d510c034efa3c0e3c475a594d283dadd3fdfe90c9b4f8fd2",
+      "bytes": 67
+    },
+    "completed-attempt/logs/offline/arena-sdist-unknown-release.log": {
+      "sha256": "4c2b0cb407ceb16bc8dbee12e8ad59c06cc3301cf88e4c361fd064bb482448a6",
+      "bytes": 156
+    },
+    "completed-attempt/logs/offline/arena-sdist-unknown-validate.log": {
+      "sha256": "a2316f0346f080033cc1b00f9f383ad2a350b4bfd167fa58698998c6bd02f979",
+      "bytes": 65
+    },
+    "completed-attempt/logs/offline/arena-sdist-unknown.log": {
+      "sha256": "1304f00bb32c4c9549d7ecb78babd03774ff73f21ef4175ce2a603c2f3c7796c",
+      "bytes": 283
+    },
+    "completed-attempt/logs/offline/arena-wheel-LR01-inspect.log": {
+      "sha256": "092c2d42bde1b985e90fd0d0706b588bc8502d3c9ea900ed8c6b3627a0f98904",
+      "bytes": 69
+    },
+    "completed-attempt/logs/offline/arena-wheel-LR01.log": {
+      "sha256": "9fdfe79d80066d5011e8b7621ec59fc62052bc159b153916dcb7df2b735f0855",
+      "bytes": 149
+    },
+    "completed-attempt/logs/offline/arena-wheel-canary.log": {
+      "sha256": "1c2ee7cc4bd44ea77ba720db934cc7169109de5f3892a517e783259d0b83f91a",
+      "bytes": 295
+    },
+    "completed-attempt/logs/offline/arena-wheel-extract-LR01.log": {
+      "sha256": "26fa3a535940019edebc369473868809e69aa2e167f47b1dae39c37f142451bf",
+      "bytes": 1019
+    },
+    "completed-attempt/logs/offline/arena-wheel-help.log": {
+      "sha256": "3cde157d44522d5da9a71c1827a18349d5a25252edb90360e0c1a21268984dbd",
+      "bytes": 2823
+    },
+    "completed-attempt/logs/offline/arena-wheel-identity.log": {
+      "sha256": "f8459c4ff4bb132a4286daa1241d7dad74681f02a1e64365a301d2c19fdc258a",
+      "bytes": 6732
+    },
+    "completed-attempt/logs/offline/arena-wheel-negative-inspect.log": {
+      "sha256": "092c2d42bde1b985e90fd0d0706b588bc8502d3c9ea900ed8c6b3627a0f98904",
+      "bytes": 69
+    },
+    "completed-attempt/logs/offline/arena-wheel-negative-validate.log": {
+      "sha256": "a2316f0346f080033cc1b00f9f383ad2a350b4bfd167fa58698998c6bd02f979",
+      "bytes": 65
+    },
+    "completed-attempt/logs/offline/arena-wheel-negative.log": {
+      "sha256": "0c0dcdab71049652ffd203a2601da766093bf1d841bdbbb213e2d0f6d49e8b53",
+      "bytes": 149
+    },
+    "completed-attempt/logs/offline/arena-wheel-pip-check.log": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    "completed-attempt/logs/offline/arena-wheel-positive-inspect.log": {
+      "sha256": "092c2d42bde1b985e90fd0d0706b588bc8502d3c9ea900ed8c6b3627a0f98904",
+      "bytes": 69
+    },
+    "completed-attempt/logs/offline/arena-wheel-positive-validate.log": {
+      "sha256": "a2316f0346f080033cc1b00f9f383ad2a350b4bfd167fa58698998c6bd02f979",
+      "bytes": 65
+    },
+    "completed-attempt/logs/offline/arena-wheel-positive.log": {
+      "sha256": "639a5ad74212d4e8435c8ed33a9b3f9c4cf427f3a102934f3112fb96b1b053c0",
+      "bytes": 149
+    },
+    "completed-attempt/logs/offline/arena-wheel-unknown-inspect.log": {
+      "sha256": "eb6fad56787f5c37d510c034efa3c0e3c475a594d283dadd3fdfe90c9b4f8fd2",
+      "bytes": 67
+    },
+    "completed-attempt/logs/offline/arena-wheel-unknown-release.log": {
+      "sha256": "4c2b0cb407ceb16bc8dbee12e8ad59c06cc3301cf88e4c361fd064bb482448a6",
+      "bytes": 156
+    },
+    "completed-attempt/logs/offline/arena-wheel-unknown-validate.log": {
+      "sha256": "a2316f0346f080033cc1b00f9f383ad2a350b4bfd167fa58698998c6bd02f979",
+      "bytes": 65
+    },
+    "completed-attempt/logs/offline/arena-wheel-unknown.log": {
+      "sha256": "c9c456de026603999d76999c87ae0a6cdfc032abbeed095b9cf5f466a89e774b",
+      "bytes": 283
+    },
+    "completed-attempt/logs/offline/core-sdist-01_supported-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-01_supported-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-02_contradicted-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-02_contradicted-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-03_not_established-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-03_not_established-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-04_attribution_mismatch-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-04_attribution_mismatch-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-05_mixed_and_fabricated_quote-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-05_mixed_and_fabricated_quote-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-sdist-canary.log": {
+      "sha256": "1c2ee7cc4bd44ea77ba720db934cc7169109de5f3892a517e783259d0b83f91a",
+      "bytes": 295
+    },
+    "completed-attempt/logs/offline/core-sdist-help.log": {
+      "sha256": "01cbd8f68f625a95d70977cf590c8b1719460909a2c182bb9c1a4ef4bd02fdb5",
+      "bytes": 259
+    },
+    "completed-attempt/logs/offline/core-sdist-identity.log": {
+      "sha256": "532d394b6a81c54b6135de310a6395571eb684d9c0720fbe3ff980b6998ed8f3",
+      "bytes": 1806
+    },
+    "completed-attempt/logs/offline/core-sdist-pip-check.log": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    "completed-attempt/logs/offline/core-wheel-01_supported-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-01_supported-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-02_contradicted-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-02_contradicted-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-03_not_established-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-03_not_established-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-04_attribution_mismatch-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-04_attribution_mismatch-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-05_mixed_and_fabricated_quote-json.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-05_mixed_and_fabricated_quote-markdown.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/offline/core-wheel-canary.log": {
+      "sha256": "1c2ee7cc4bd44ea77ba720db934cc7169109de5f3892a517e783259d0b83f91a",
+      "bytes": 295
+    },
+    "completed-attempt/logs/offline/core-wheel-help.log": {
+      "sha256": "01cbd8f68f625a95d70977cf590c8b1719460909a2c182bb9c1a4ef4bd02fdb5",
+      "bytes": 259
+    },
+    "completed-attempt/logs/offline/core-wheel-identity.log": {
+      "sha256": "532d394b6a81c54b6135de310a6395571eb684d9c0720fbe3ff980b6998ed8f3",
+      "bytes": 1806
+    },
+    "completed-attempt/logs/offline/core-wheel-pip-check.log": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    "completed-attempt/logs/setup/arena-sdist-install.log": {
+      "sha256": "be9c1b5b61d463ff6916047b84f681cc4c94a2c7e94baf91dc7acb8142e0c045",
+      "bytes": 2986
+    },
+    "completed-attempt/logs/setup/arena-sdist-site-location.log": {
+      "sha256": "72a430324cb91728cc33c5fc212877d2efed05e8f5ac24f8aeea7e244634c552",
+      "bytes": 59
+    },
+    "completed-attempt/logs/setup/arena-sdist-venv.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/arena-wheel-install.log": {
+      "sha256": "fa4c9de791faf35550e65d3f347d3c33d28d6eddc1ac42c42b41f183df7c04ec",
+      "bytes": 2239
+    },
+    "completed-attempt/logs/setup/arena-wheel-site-location.log": {
+      "sha256": "bb9ac5e9fa2a2856630fe1b812409f8b961a9a90f122318d7e59e5f727c17645",
+      "bytes": 59
+    },
+    "completed-attempt/logs/setup/arena-wheel-venv.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/core-sdist-install.log": {
+      "sha256": "11cc16a6e1b548c0ece3b75fb1609c184a992cbc42146bd5bdb0cee9df7932b3",
+      "bytes": 2363
+    },
+    "completed-attempt/logs/setup/core-sdist-site-location.log": {
+      "sha256": "a57e317bc2b4d866425ec298f27a5f89061f4c58d40a30feb4aefaacfa6fe2e8",
+      "bytes": 58
+    },
+    "completed-attempt/logs/setup/core-sdist-venv.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/core-wheel-install.log": {
+      "sha256": "cf3cd0c777153ca04f8517bd26716b0e4be89628f946318d52a1e23b9f0b3734",
+      "bytes": 1611
+    },
+    "completed-attempt/logs/setup/core-wheel-site-location.log": {
+      "sha256": "d17ba0481c99c8dd222bb5e89eb836ca34b1a583718aac990294c2ec281eedba",
+      "bytes": 58
+    },
+    "completed-attempt/logs/setup/core-wheel-venv.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/git-0.log": {
+      "sha256": "f1d5cb3bbed076836d67f967f8d7276b3f60fca74064cbf085c0fa08708c17db",
+      "bytes": 43
+    },
+    "completed-attempt/logs/setup/git-1.log": {
+      "sha256": "21271cb4e717e77c8aed5674fa4a6cfaa8521b2777973cc7529161bd0e3fe76e",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-10.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/git-11.log": {
+      "sha256": "320594c77c89466e619ecdb3c565e8cc31f20c0bd3aed261fb4295618a4e2c94",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-12.log": {
+      "sha256": "21271cb4e717e77c8aed5674fa4a6cfaa8521b2777973cc7529161bd0e3fe76e",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-13.log": {
+      "sha256": "ccda8f9a2cb0295182b9a99e4c8270badcc89525850e1e737a294fb426363ac9",
+      "bytes": 4
+    },
+    "completed-attempt/logs/setup/git-2.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/git-3.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/git-4.log": {
+      "sha256": "b68e53aa3bb223c461ba6d04f6d122db35e5a69c494768c78cd6a9163f74a2c1",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-5.log": {
+      "sha256": "88d0fa017ce0f80cd265bb3495e69ef83a3a5843498b279a945b30e28bac5a86",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-6.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/git-7.log": {
+      "sha256": "2dd00bcc934b812c056a7220ec26d0cc7d8b6723e3a6d6c1f289284f376975d8",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-8.log": {
+      "sha256": "21271cb4e717e77c8aed5674fa4a6cfaa8521b2777973cc7529161bd0e3fe76e",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-85.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completed-attempt/logs/setup/git-86.log": {
+      "sha256": "21271cb4e717e77c8aed5674fa4a6cfaa8521b2777973cc7529161bd0e3fe76e",
+      "bytes": 41
+    },
+    "completed-attempt/logs/setup/git-87.log": {
+      "sha256": "6096ffc2955264644c39153b9ebedd227f7119732626b61944126df99ad9f15e",
+      "bytes": 243
+    },
+    "completed-attempt/logs/setup/git-9.log": {
+      "sha256": "ccda8f9a2cb0295182b9a99e4c8270badcc89525850e1e737a294fb426363ac9",
+      "bytes": 4
+    },
+    "completed-attempt/results.json": {
+      "sha256": "0b29fbff8337bbbf9f905413460707450d8b53f33502880111e58d189b2e7605",
+      "bytes": 83129
+    },
+    "direct-network-attempt/logs/setup/git-0.log": {
+      "sha256": "9a875013b3e1f6ec1d2ff61d81dbcd8881751e587ac8288ca3991be8b876c446",
+      "bytes": 152
+    },
+    "direct-network-attempt/results.json": {
+      "sha256": "753e801e5d1cbeb7e6aa53e4807b51a7fb794e9b316f7f31217f7e6ed6fbd852",
+      "bytes": 3196
+    },
+    "expectations-provenance.json": {
+      "sha256": "fa079ec69be1c655a3eba5915bb27fe13fc407d2aaad809948fa961263a31d7e",
+      "bytes": 1370
+    },
+    "public-verification-expectations.json": {
+      "sha256": "db6383ca08cef5a47f63ea5ddba70de6e3bae0cebc5bcd115b5a2c57b3a0347b",
+      "bytes": 1575
+    },
+    "run_runtime_transport.py": {
+      "sha256": "6fc682d0350978236b8f85155fc8b27dc7bd463bcf9007eaeaf751a6aa8e9697",
+      "bytes": 2150
+    },
+    "summary.json": {
+      "sha256": "b8cd213fd3d08c525baf5de9046db66a8aca50a9c59517179f537989b203841a",
+      "bytes": 12022
+    },
+    "verification-console.log": {
+      "sha256": "d7c4a789cd22802df06d83dab3834a76309a5857d3090fd2f60dc1f3096bd7c7",
+      "bytes": 70
+    },
+    "verification-proxy-console.log": {
+      "sha256": "31103d7996607cb40e78d48b7136a16727fc805260025062bfa138f7b4567081",
+      "bytes": 1420
+    },
+    "verify_public_release.py": {
+      "sha256": "5070075d6157e37c03c3d6c14e182a3f0e92bbc5595f34e25fd9636c4347e4a0",
+      "bytes": 40878
+    }
+  }
+}

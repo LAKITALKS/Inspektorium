@@ -1,0 +1,7 @@
+{
+  "status": "RELEASE_BLOCKED",
+  "path": null,
+  "errors": [
+    "Candidate is REVIEW_REQUIRED; a current READY_FOR_RELEASE candidate is required."
+  ]
+}

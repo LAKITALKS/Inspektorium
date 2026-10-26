@@ -1,4 +1,4 @@
-"""Small single-answer command-line interface."""
+"""Inspektorium entry point: full audit workflow and reference inspection."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from inspektorium.audit import run_audit
 from inspektorium.core.inspection import inspect_proposals
 from inspektorium.core.models import (
     AnswerInput,
@@ -30,12 +31,17 @@ from inspektorium.report import render_json, render_markdown
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="inspektorium",
-        description="Evidence-bound inspection for one answer and supplied sources.",
+        description="Inspektorium: audit instrument and evidence reference tool.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers.add_parser(
+        "audit",
+        add_help=False,
+        help="run the full audit workflow (use audit --help for its commands)",
+    )
     inspect_parser = subparsers.add_parser(
         "inspect",
-        help="validate evaluator proposals and render one report",
+        help="reference checker: validate proposals for one answer and render a report",
     )
     input_group = inspect_parser.add_mutually_exclusive_group(required=True)
     input_group.add_argument("--input", type=Path, help="InspectionInput JSON file")
@@ -167,8 +173,11 @@ def _run_inspect(args: argparse.Namespace) -> int:
 def main(argv: Sequence[str] | None = None) -> int:
     """CLI entry point returning a conventional process status."""
 
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    if arguments[:1] == ["audit"]:
+        return run_audit(arguments[1:])
     parser = build_parser()
-    args = parser.parse_args(argv)
+    args = parser.parse_args(arguments)
     try:
         if args.command == "inspect":
             return _run_inspect(args)

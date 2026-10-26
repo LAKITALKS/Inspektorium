@@ -4,12 +4,36 @@ Package versions follow `pyproject.toml`. The report schema is versioned
 separately and remains **0.1**. Release status and approvals are tracked in
 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
 
-## [0.1.1] — Unreleased (candidate)
+## [0.2.0] — Unified public entry (source update)
+
+- Inspektorium is the public instrument name; Agent Arena is its former name
+  and the retained internal audit-package identity.
+- `inspektorium audit` directly invokes the existing audit command group.
+  Its validation, execution, review, inspection, release and exit statuses
+  retain the engine's controls. No evaluation logic or reports are copied.
+- Install the full instrument from a checkout in one command:
+  `python -m pip install . ./agent-arena`. The `agent-arena` 1.0.1 runtime
+  remains unchanged; its old command remains a compatibility entry.
+- `inspektorium inspect` and the Python reference API remain available as
+  the smaller evidence-binding reference checker. Its report schema is 0.1.
+  These reference controls are not automatically part of the audit engine.
+- Missing audit-backend installation is reported explicitly with exit 2;
+  there is no fallback to the smaller reference checker.
+- New installed-package verification covers both entry names, review and
+  release status handling, UNKNOWN blocking and report tampering. Actual
+  outcomes are recorded in the dated consolidation record, not inferred here.
+- Existing tags and the 2026-10-26 publication evidence remain historical
+  records of their original source state. This source update is not a claim
+  that a new GitHub Release has already been created.
+
+## [0.1.1] — Published 2026-10-26
+
+Published as [v0.1.1](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.1.1).
+The candidate description below is retained as its preparation history.
 
 Maintenance candidate prepared against public `main` at
 `4bd0ba9218df80a69089838f824ae0ac28881ac4`. It fixes report display and input
-parsing and adds a public, offline-reproducible evidence package. It is not
-published; no release date is set until publication.
+parsing and adds a public, offline-reproducible evidence package.
 
 ### Fixed
 

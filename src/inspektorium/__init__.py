@@ -1,4 +1,4 @@
-"""Inspektorium: evidence-bound inspection for model outputs."""
+"""Inspektorium public entry and evidence-binding reference API."""
 
 from inspektorium.core.inspection import inspect_proposals
 from inspektorium.core.models import (
@@ -32,4 +32,4 @@ __all__ = [
     "inspect_proposals",
 ]
 
-__version__ = "0.1.1"
+__version__ = "0.2.0"
