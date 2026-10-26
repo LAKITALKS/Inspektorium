@@ -47,8 +47,8 @@ prior layout closeout. The [summary](results/e1-summary.json) and
 Full image evidence is in the core release attachment below. No new font or
 viewer universe is implied.
 
-Arena's final full-suite result and 21-case P10 acceptance are recorded in
-[validation details](VALIDATION.md). Earlier public-derivative fixture failures
+Arena's final local full suite passed **2,560 tests**, with **21/21 P10 acceptance**
+and 49 installed-wheel tests; see [validation details](VALIDATION.md). Earlier public-derivative fixture failures
 remain in the logs, with their bounded test-only corrections documented.
 Core and Arena have separate CI jobs on Python 3.11 and 3.12. They use fakes and
 saved data, no provider secrets, and checked Python network guards. Monitoring

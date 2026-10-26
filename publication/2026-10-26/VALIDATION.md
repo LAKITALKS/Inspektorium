@@ -45,8 +45,7 @@ Six public-fixture issues were corrected without changing product authorization:
   rejection and immutable history are retained. Public historical derivatives
   are not reconstructed as valid old authorizations.
 
-Final corrected clean reproduction: **pending at this checkpoint**. This line
-is replaced only from the actual completed final run before publication.
+Final corrected clean reproduction on `b87858c5674dd034a69f4d40b623a74077baa239`: **2,560 passed, 0 failed, 0 skipped**, two deprecation warnings, 1,507.72 s. The fresh installed package passed **21/21 P10 cases** and **49 installed-wheel tests**. Installed and editable environments matched all 74 frozen runtime modules; the final clone stayed clean. Counterchecked evaluation monitoring recorded **31 armed records / 0 refused operations**, with canaries in separate logs. See [final reproduction](logs/arena-corrected-results/reproduction.json), [full-suite log](logs/arena-corrected-results/full-suite.log) and [P10 cases](logs/arena-corrected-results/acceptance/results.json).
 
 The count prior to fixture repairs is the historical 2,539 tests plus six
 monorepo-binding tests, thirteen capture-derivation tests and two guard-counter
@@ -83,7 +82,7 @@ separate successful syntax check, not a substitute for static typing.
 ## Review, security and public follow-through
 
 The separate Astra reviewer distinguishes its own executions from records read.
-Its final report is added after the candidate freezes. All roles were supplied
+Its [final report](FINAL_REVIEW.md) binds the frozen candidate and completed results. The [provenance review](PROVENANCE_REVIEW.md) separately covers history, assets and content. New publication tools also pass the unchanged root Ruff rules; [syntax-tree comparison](results/public-tools-format-validation.json) verifies their formatting preserves logic except import order. All roles were supplied
 `model="gpt-6-astra", reasoning_effort="xhigh", fork_turns="none"`; no recursive
 delegation. This is tool configuration evidence, not proof of empirical
 independence or human review. Automated assistance is disclosed without adding
