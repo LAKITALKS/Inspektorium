@@ -1,0 +1,7 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "path": "<WORK>/work/outside-source/arena-sdist-bundles/240edc6b-3dc8-4c8a-a15e-7dd1a45ac563",
+  "errors": [
+    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
+  ]
+}

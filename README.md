@@ -3,89 +3,129 @@
 Evidence integrity controls for AI assurance research.
 Website: [inspektorium.org](https://inspektorium.org).
 
-## Two installable components
+## One instrument: Inspektorium
 
-This repository contains the **Inspektorium core 0.1.1** at the root and
-**[Agent Arena](agent-arena/README.md)**, the complete P1–P10 technical research
-implementation, as a separate package under `agent-arena/`. Their Python
-imports, CLI commands, tests and scientific evidence remain distinct.
-See the [publication record](publication/2026-10-26/README.md) for source
-mapping, checks, omissions and release links. Both are source-available under
-[PolyForm Noncommercial 1.0.0](LICENSE), not OSI open source.
+**Inspektorium** is one instrument for evidence integrity and review in AI
+assurance research. Its official public workflow is **`inspektorium audit`**:
+validate an input, run an audit, inspect its bundle, record a human review when
+needed, and explicitly release an eligible local artifact. **Agent Arena** is
+the old/internal implementation name, retained in package names, imports,
+historical evidence and the compatibility command `agent-arena audit`.
 
-Install into separate fresh Python 3.11+ environments from this checkout:
+The current source version is **0.2.0**. It adds the public audit entry to the
+root `inspektorium` distribution and delegates to the existing audit runtime in
+`agent-arena` **1.0.1**. These are two Python distribution identities within one
+instrument. The audit runtime's 74 Python files and its version remain unchanged;
+this entry-point consolidation adds no evaluation semantics. A source version
+is not a claim that a new release has been published. See
+[one instrument: architecture and provenance](docs/ONE_INSTRUMENT.md) and the
+[dated consolidation record](publication/2026-10-26-unified-entry/README.md).
+
+### Install and run the official offline workflow
+
+From a complete checkout, use Python 3.11 or newer and a fresh virtual environment:
 
 ```sh
-python3 -m venv /new/path/core-env
-/new/path/core-env/bin/python -m pip install .
-/new/path/core-env/bin/inspektorium inspect \
-  --input examples/01_supported/input.json \
-  --proposals examples/01_supported/proposals.json --format markdown
-
-python3 -m venv /new/path/arena-env
-/new/path/arena-env/bin/python -m pip install ./agent-arena
-/new/path/arena-env/bin/agent-arena audit validate \
-  --task agent-arena/examples/phase10/positive-task.json
-/new/path/arena-env/bin/agent-arena audit run \
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install . ./agent-arena
+inspektorium audit validate --task agent-arena/examples/phase10/positive-task.json
+inspektorium audit run --offline \
   --task agent-arena/examples/phase10/positive-task.json \
-  --offline --recording agent-arena/examples/phase10/positive-recording.json \
-  --output-root /new/path/positive-bundle
+  --recording agent-arena/examples/phase10/positive-recording.json \
+  --output-root reports/local-audit
 ```
 
-Dependency installation may download public packages. The displayed evaluations
-use saved synthetic inputs and run offline. The supported Arena operational
-entry is `agent-arena audit`; historical research launchers can call providers
-and must not be used as an offline demonstration. This publication authorizes
-no live calls or reopening of closed budgets. Arena's own live path requires
-fresh authorization and budget controls. The core optional provider adapter has
-a different, narrower contract described below.
+Set `CANDIDATE` to the `path` returned by `run`, then inspect and explicitly
+release that candidate:
+
+```sh
+CANDIDATE='path returned by run'
+inspektorium audit inspect --bundle "$CANDIDATE"
+inspektorium audit release --bundle "$CANDIDATE" \
+  --output-root reports/local-audit --reviewer 'Local offline operator' \
+  --reason 'Explicit release of this synthetic test artifact'
+```
+
+Set `RELEASED` to the new `path` returned by `release` and inspect it with
+`inspektorium audit inspect --bundle "$RELEASED"`. A run creates a candidate;
+release creates a new immutable revision and preserves the candidate bytes.
+For a blocked case, the fifth operation is `inspektorium audit review` with a
+recorded human decision; the [complete review example](docs/ONE_INSTRUMENT.md#review-an-unresolved-case)
+shows the required inputs and the separate subsequent release.
+
+| Operation | Meaning |
+| --- | --- |
+| `inspektorium audit validate` | Check whether the task is eligible; does not authorize release |
+| `inspektorium audit run` | Produce a candidate from a recording, authorized live run or replay |
+| `inspektorium audit inspect` | Recompute bundle integrity and controls; read both `valid` and `status` |
+| `inspektorium audit review` | Record a human decision and create a new revision; does not silently resolve missing review |
+| `inspektorium audit release` | Recheck and explicitly release eligible local artifact bytes |
+
+Dependency installation may download public packages. The examples use saved
+synthetic inputs and run offline. Historical research launchers can call providers
+and are not offline demonstrations. This consolidation authorizes no live calls
+or reopening of closed budgets. The audit live path still needs its existing
+fresh authorization and budget controls.
 
 `HUMAN_REVIEW_REQUIRED` / `REVIEW_REQUIRED` remains unresolved without a recorded
 human review. Artifact release is a technical workflow decision, not a truth
 certificate. Closed Corpus checks only the supplied source package; exact
 quotations can still mislead, and model/host agreement is not independent
-confirmation. The scientific Final v1 gate remains **not met**. The Arena
-release is a public **research prerelease**, with no new live validation of
-the final code and no demonstrated general efficacy.
+confirmation. The scientific Final v1 gate remains **not met**. The runtime
+retains its public **research prerelease** status, with no new live validation
+of the final code and no demonstrated general efficacy.
 
-## Purpose and current version
+### Version and evidence identities
 
-INSPEKTORIUM is a research prototype with a deliberately narrow purpose:
-deterministic checking of selected integrity errors in AI analysis artifacts.
-For one answer and explicitly supplied text sources it checks
+| Identity | What it identifies | Status |
+| --- | --- | --- |
+| Inspektorium 0.2.0 source | Current root distribution and unified public `audit` entry | Consolidation source; execution/release status is recorded separately in the [dated record](publication/2026-10-26-unified-entry/README.md) |
+| `agent-arena` 1.0.1 | Retained distribution and audit runtime implementation | Historical [research prerelease](https://github.com/LAKITALKS/Inspektorium/releases/tag/agent-arena-v1.0.1); runtime bytes preserved |
+| Inspektorium v0.1.1 / schema 0.1 | Earlier root release and the smaller reference checker's contract | Historical [release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.1.1); contract retained by `inspektorium inspect` |
+| Inspektorium v0.1.0 | First public reference-checker release | Historical annotated tag `v0.1.0`; unchanged |
+| Scientific Final v1 gate | Efficacy and validation review in the [roadmap](ROADMAP.md#final-v1-gate) | Not met |
+
+The [original publication record](publication/2026-10-26/README.md) and its import
+hashes describe publication commit `94eb4fc8b26c22da6a2cebdd01e5a7799750104d`.
+They are historical provenance, not a promise that subsequently edited current
+documentation still has the original import hashes. Existing evidence, command
+names and version metadata are preserved. Changes are listed in
+[CHANGELOG.md](CHANGELOG.md).
+
+## Smaller reference checker: `inspektorium inspect`
+
+The remainder of this README documents the retained single-answer reference
+checker unless a section explicitly says otherwise. It is a separate command
+within Inspektorium, with the v0.1.1/schema 0.1 contract. **The audit workflow does
+not automatically invoke this checker or inherit its parser, span or display
+guards.** Audit uses its own existing implementation and controls; the
+[architecture guide](docs/ONE_INSTRUMENT.md#runtime-boundaries) maps that boundary.
+
+For one answer and explicitly supplied text sources, the reference checker checks
 
 - that each evaluator-proposed claim matches the answer exactly at its span;
 - that each proposed citation matches its source exactly in text and offsets;
 - that a finding's relation stays reportable only if these checks pass;
 
-and it renders the result as a JSON report and a Markdown report in which
-answer, source and evaluator text is displayed as data. It performs no
-automated source search and does not judge whether a claim is true.
-
-The evaluator proposes semantic relationships. Deterministic code checks text
-bindings before an individual proposal can remain reportable.
-
-| Name | What it is | Status |
-| --- | --- | --- |
-| public v0.1.0 | First public release, annotated tag `v0.1.0` | Published |
-| public v0.1.1 | This version: Markdown display of untrusted text as data and strict `--input` parsing; package 0.1.1, report schema 0.1 | This package; release status in [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) |
-| Agent Arena technical research release | Separate package containing P1–P10; derived from the verified internal 1.0.0 snapshot | Public research prerelease; [version and integration record](agent-arena/PUBLICATION.md); no demonstrated scientific efficacy |
-| Final v1 gate | Planned efficacy and validation review in the [roadmap](ROADMAP.md#final-v1-gate) | Not met |
-
-Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+and it renders JSON and Markdown reports in which answer, source and evaluator
+text is displayed as data. It performs no automated source search and does not
+judge whether a claim is true. Evaluators propose semantic relationships;
+deterministic code checks text bindings before a proposal remains reportable.
 
 Here, **AI assurance research** means producing inspectable evidence for a
 bounded property, including contrary evidence and limitations. **Technical AI
 governance** means a named rule enforced at a named system boundary, with a
-traceable decision. The current rule gates a finding's reporting field; broader
-governance is a research direction. [Scope](SCOPE.md) defines this distinction.
+traceable decision. The reference checker gates a finding's reporting field;
+audit has its own execution, review and release controls. [Scope](SCOPE.md)
+defines these distinct enforcement boundaries.
 
-## Run the existing offline demo
+## Run the reference-checker offline demo
 
 From a local checkout, using Python 3.11 or later:
 
 ```bash
-python -m pip install -e .
+# After the joint installation above:
 inspektorium inspect \
   --input examples/05_mixed_and_fabricated_quote/input.json \
   --proposals examples/05_mixed_and_fabricated_quote/proposals.json \
@@ -112,7 +152,7 @@ An unrelated valid finding survives. The report is still emitted and the CLI
 exits **0**. Exit 0 is not assurance approval or authorization to release an
 artifact. Expected JSON and Markdown are committed beside each example.
 
-## What the control does and does not establish
+## What the reference-checker control establishes
 
 The four evaluator-proposed relations are `supported`, `contradicted`,
 `not_established` and `attribution_mismatch`. Reports preserve
@@ -159,7 +199,7 @@ date line. [Methodology](METHODOLOGY.md) gives the concrete contracts.
   record full evaluator provenance. Evaluator provenance and a separate
   `verify` command are later work (P16).
 
-## Report display and input parsing (v0.1.1)
+## Reference-checker report display and input parsing (v0.1.1 contract)
 
 The Markdown report shows answer, source and evaluator text as data. Each such
 value is encoded once for the place where it appears (after a label, at the
@@ -253,8 +293,8 @@ describes the
 the [input checks](METHODOLOGY.md#validation-outcomes-and-failure-codes) in
 detail.
 
-The [v0.1.1 evidence package](evidence/v0.1.1/) compares public `main`
-`4bd0ba9` with this version (commit
+The [v0.1.1 evidence package](evidence/v0.1.1/) compares the historical public `main`
+`4bd0ba9` with the v0.1.1 candidate (commit
 `fae18242de35facb7c493ff18e86baff3afe2c24`) on a published synthetic catalog
 of 70 cases. Each Markdown report is rendered by four configurations:
 cmark-gfm 0.29.0.gfm.13 (Python package `cmarkgfm` 2025.10.22) with the GitHub
@@ -265,7 +305,7 @@ plus tables and strikethrough); and Python-Markdown 3.11 (`tables` and
 (Playwright 1.63.0, headless, page JavaScript disabled). In this published
 synthetic catalog, the tested inputs produced no forged control lines after
 the fix and hid no warnings; the clean counterparts stayed correctly
-displayable. Measured on this version: 70 of 70 cases hold; of 280 renderings
+displayable. Measured on that candidate: 70 of 70 cases hold; of 280 renderings
 (70 cases × 4 configurations), 224 keep all controls intact and the other 56
 belong to the 14 inputs that are, as expected, rejected before rendering. On
 `4bd0ba9`, 22 of 70 cases hold and 165 of 280 renderings are manipulated. This
@@ -273,19 +313,20 @@ is evidence for that catalog and those renderers, not a universal guarantee or
 a statement about scientific correctness; the known display limits above lie
 outside the catalog.
 
-## Capability and evidence status
+## Instrument capability and evidence status
 
 | Status | Capability or result | Boundary |
 | --- | --- | --- |
+| UNIFIED PUBLIC ENTRY IN 0.2.0 SOURCE | `inspektorium audit` delegates to the unchanged audit runtime | P19; current verification status in the [dated record](publication/2026-10-26-unified-entry/README.md) |
 | IMPLEMENTED + TESTED IN PUBLIC v0.1 | Exact spans, input fingerprints, deterministic JSON/Markdown, strict offline proposal parsing | Public code and regression evidence; P01–P07 |
 | IMPLEMENTED + TESTED IN PUBLIC v0.1.1 | Markdown display of untrusted text as data; strict `--input` parsing | Public code, tests and the offline [evidence package](evidence/v0.1.1/); synthetic catalog only; P12–P13 |
 | OWNER-REPORTED INTERNAL EXPERIMENT | Artifact-fault pilot: full controls blocked more injected artifact faults than baseline processing and accepted all clean counterparts | Small constructed set; not reproduced by this package; no accuracy gain and semantic misses retained; I01–I03 |
 | PUBLIC RESEARCH SOURCE | Execution authorization, budget/state/environment controls | [Arena source](agent-arena/src/agent_arena/); historical evidence retains its conditions; I04 |
-| PUBLIC RESEARCH IMPLEMENTATION — PHASES 8–10 | Semantic/inferential checks, disagreement and review, operational reporting | [Arena](agent-arena/); separate from core; no demonstrated scientific efficacy; R08–R10 |
+| PUBLIC RESEARCH IMPLEMENTATION — PHASES 8–10 | Semantic/inferential checks, disagreement and review, operational reporting | [Audit runtime](agent-arena/); distinct from the reference checker; no demonstrated scientific efficacy; R08–R10 |
 | NOT CLAIMED | General AI safety, regulatory compliance, certification, alignment | No framework endorsement or conformance claim |
 
 The [claim ledger](CLAIMS.md) supplies each claim's evidence, version and access
-status. Publication makes the separate Arena code inspectable; it does not
+status. Publication makes the retained audit runtime inspectable; it does not
 retroactively validate historical experimental claims.
 
 ## Evidence and limitations
@@ -316,7 +357,7 @@ completeness, scientific validity or correctness outside the supplied material.
 [Phase 9](ROADMAP.md#phase-9--disagreement--review) disagreement and review,
 and [Phase 10](ROADMAP.md#phase-10--reporting--operational-finish) operational
 reporting and release controls. These implementations are now published in
-the separate Arena package with offline checks and bounded historical live
+the retained `agent-arena` runtime distribution with offline checks and bounded historical live
 evidence on earlier states. The final code was not live-tested again. The final v1 gate requires fresh
 efficacy and fault comparisons, real-case validation, prior criteria and
 negative results; it is not met.
@@ -328,17 +369,20 @@ capabilities or permission to run studies.
 ## Development, provider, license and citation
 
 ```bash
-python -m pip install -e '.[dev]'
+python -m pip install -e '.[dev]' -e './agent-arena[dev,providers]'
 ruff check .
 mypy src
 pytest --cov=inspektorium --cov-report=term-missing --cov-fail-under=80
 ```
 
-The tests use saved proposals and mocked provider transport. See
+These commands check the reference package and public entry. The tests use saved
+proposals and mocked provider transport; the complete runtime suite and frozen
+acceptance command are in [Contributing](CONTRIBUTING.md). See
 [Contributing](CONTRIBUTING.md) for scope and claim-ledger requirements and
 [AGENTS.md](AGENTS.md) for the working rules that bind agent-assisted changes.
 
-For the optional Anthropic adapter (P08):
+For the reference checker's optional Anthropic adapter (P08), which is distinct
+from the authorized audit live path:
 
 ```bash
 python -m pip install -e '.[anthropic]'
@@ -353,8 +397,8 @@ One application SDK invocation and no authored semantic repair loop do not
 guarantee one HTTP attempt, bounded billing or authenticated execution.
 
 Source-available under [PolyForm Noncommercial 1.0.0](LICENSE), not an OSI
-open-source license. [CITATION.cff](CITATION.cff) names software version 0.1.1
-with the publication date; no DOI is assigned.
+open-source license. [CITATION.cff](CITATION.cff) identifies the current software
+source; historical release versions remain separately identifiable. No DOI is assigned.
 
 **Author and maintainer:** Lazaros Varvatis —
 [LAKITALKS](https://github.com/LAKITALKS).

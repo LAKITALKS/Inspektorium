@@ -1,16 +1,21 @@
 # Claim ledger
 
-> **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
-> Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
-> [Publication mapping and current checks](publication/2026-10-26/README.md)
-> supersede earlier access/publication statements below. Historical numbers,
-> original dates and limits remain unchanged; publication is not independent
-> replication. The scientific Final v1 gate is not met. No new live calls.
+> **Current scope — 2026-10-26 maintainer clarification:** Inspektorium is one
+> instrument with the public `inspektorium audit` entry. The root source
+> distribution is 0.2.0; the retained `agent-arena` audit runtime remains 1.0.1.
+> Agent Arena is the old/internal name, not a second public product. The smaller
+> reference checker retains its v0.1.1/schema 0.1 contract and is not automatically
+> applied to audit. P19 records the entry-point change; the
+> [dated consolidation record](publication/2026-10-26-unified-entry/README.md)
+> records current checks. Historical evidence remains unchanged, publication is
+> not independent replication, the scientific Final v1 gate is not met, and no
+> new live call is authorized.
 
 This ledger separates the public v0.1 implementation, supplied owner reports,
-planned work and hypotheses. IDs identify claims, not scores. Documentation
-review date: 2026-09-15; v0.1.1 candidate update: 2026-10-13. Package 0.1.1;
-report schema remains 0.1. Historical rows keep their original wording and
+planned work and hypotheses. IDs identify claims, not scores. Historical documentation
+review date: 2026-09-15; v0.1.1 candidate update: 2026-10-13. Those rows describe
+package 0.1.1 and report schema 0.1. Current entry-point source is 0.2.0; the
+reference-checker report schema remains 0.1. Historical rows keep their original wording and
 values, except that the version cells of P06 and P07 gain cross-references to
 P12 and P13; v0.1.1 adds rows P12–P17 and updates R08–R10.
 
@@ -20,7 +25,7 @@ Public regression tests establish software behavior, not scientific efficacy.
 The separate verification/access column says what can actually be inspected.
 An internally reported implementation is not an independently verified one.
 
-## Public v0.1
+## Reference-checker v0.1 claims
 
 Rows P01–P11 were written for reviewed commit
 `16f572168025c393e953e34ccad184ca577e2bd0`; public `main` `4bd0ba9` has the same
@@ -52,11 +57,23 @@ separate the supplied review, historical CI, current local checks and the
 | P17 | Offsets are strict: a quotation whose text exists in the source but not at the proposed offsets is rejected; nothing is searched for or repositioned. | implemented | [validation](src/inspektorium/core/validation.py) | [wrong-offset regression](tests/test_validation.py) | Correct text with a wrong offset fails by design; the tests and examples do not yield a general false-alarm rate. | public 0.1.0 and 0.1.1 | Public code and regression tests. |
 | P18 | The three evidence-setup environment commands reject existing `--venv` targets before setup, including directories, files and dangling symlinks. | implemented | [setup tool](evidence/v0.1.1/tools/setup_env.py) | [targeted tests](tests/test_setup_env.py), [dated addendum](evidence/v0.1.1/addendum-20261024/README.md) | Applies to product-venv, tools-venv and build-venv only; no general protection claim for other output arguments or concurrent filesystem changes. | evidence tooling for public 0.1.1 | Local negative sentinel checks and actual clean setup paths; separate reviewer report in addendum. |
 
+## Unified public entry (0.2.0 source)
+
+P19 concerns naming, dispatch and installation, not additional scientific
+capability or automatic reuse of reference-checker guards. P01–P18 keep their
+original version boundaries and evidence. The original publication index is
+bound to commit `94eb4fc8b26c22da6a2cebdd01e5a7799750104d`; subsequent current
+documentation edits need not match those historical import hashes.
+
+| ID | Claim | Status | Implementation evidence | Experimental/verification evidence | Known limitation | Version | Verification/access status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| P19 | `inspektorium audit` is the single official public audit entry and lazily delegates to the existing `agent_arena.phase10_cli.audit` workflow, retaining validate/run/inspect/review/release semantics and the `agent-arena audit` compatibility entry. Both distributions install together with `python -m pip install . ./agent-arena`. | implemented + locally offline tested | [public dispatch](src/inspektorium/audit.py), [CLI](src/inspektorium/cli.py), [retained audit CLI](agent-arena/src/agent_arena/phase10_cli.py) | [entry regressions](tests/test_audit_entry.py), [installed-workflow verifier](scripts/verify_instrument.py), [dated record](publication/2026-10-26-unified-entry/README.md) | No new evaluation semantics; no automatic application of the smaller reference checker's parser, span or display guards. Runtime code identity and historical evidence keep their existing names/version metadata. Technical release is not scientific truth. | root source 0.2.0; retained audit distribution/runtime 1.0.1; reference-checker schema 0.1 | Local Python 3.12.14 validation passed: 1,363 root tests and 40 installed-workflow checks, with exact runtime hashes and guarded execution in the dated record. Required GitHub CI is tracked separately. Existing releases remain historical and a new source version does not establish a new published release. |
+
 ## Owner-reported internal evidence
 
 The source for these entries is the owner-supplied study summary reproduced in
 [Research results](RESEARCH_RESULTS.md#owner-reported-internal-pilot).
-Since 2026-10-26, the separate [Arena source and publishable evidence](agent-arena/README.md)
+Since 2026-10-26, the [retained audit source and publishable evidence](agent-arena/README.md)
 are accessible through the [reviewed import mapping](publication/2026-10-26/import-index.json).
 Public derivatives have disclosed redactions and binding limits; access does not
 independently replicate the historical studies or authenticate original live runs.
@@ -81,7 +98,7 @@ them retroactively.
 
 R08–R10 were roadmap rows in the 2026-09-15 ledger. The owner now reports that
 these phases were implemented in the internal technical 1.0.0 closeout.
-The 2026-10-26 publication now exposes the separate Arena 1.0.1 source,
+The 2026-10-26 publication exposes the retained `agent-arena` 1.0.1 source,
 [offline checks](publication/2026-10-26/README.md) and historical evidence.
 Historical live checks remain bounded to older code, not the final release.
 

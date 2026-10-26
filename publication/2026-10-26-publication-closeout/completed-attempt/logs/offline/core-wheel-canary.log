@@ -1,0 +1,1 @@
+{"armed": true, "dns_api.anthropic.com": "refused_by_guard", "create_connection_1.1.1.1:443": "refused_by_guard", "connect_1.1.1.1:443": "refused_by_guard", "connect_[2606:4700:4700::1111]:443": "refused_by_guard", "udp_1.1.1.1:53": "refused_by_guard", "loopback_positive_control": "connected"}

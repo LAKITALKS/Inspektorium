@@ -1,0 +1,10 @@
+usage: inspektorium [-h] {inspect} ...
+
+Evidence-bound inspection for one answer and supplied sources.
+
+positional arguments:
+  {inspect}
+    inspect   validate evaluator proposals and render one report
+
+options:
+  -h, --help  show this help message and exit

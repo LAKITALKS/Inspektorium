@@ -1,0 +1,21 @@
+{
+  "schema": "agent-arena-offline-capture-derivation/1.0",
+  "method": "UTF-8 encoding of concatenated recorded response text blocks, unchanged",
+  "scope": "New recorded_offline analysis; not native live replay or original bundle verification",
+  "unverified": [
+    "historical authorization",
+    "ledger binding",
+    "historical review history",
+    "provider authenticity",
+    "unredacted original capture identity"
+  ],
+  "capture_filename": "attempt-002.json",
+  "supplied_capture_sha256": "dcee81e242b14dd21b50826cef0dc7c35c25a50ad761c460c095b0889e0fc2b9",
+  "capture_authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
+  "attempt_id": "attempt-002",
+  "profile_id": "claude-haiku-5-5@3",
+  "task_id": "aa-p10-live-retest-LR-01",
+  "canonical_task_sha256": "d2e63c98dfbd37dfd2e7f273f975d391c534cc457cc01da0e20f5ab90b08b480",
+  "recording_sha256": "8158f814e89d771fb60d64cc17a984e681b0493c1d086426715ae8f479eaeeac",
+  "task_file_sha256": "5a330df6496bc7e04d46bb65f4f842295b305a55b0931f6ebce9efed377786ef"
+}

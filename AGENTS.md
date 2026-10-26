@@ -11,6 +11,24 @@ and its push/PR/merge/tags/releases. See
 [the dated decision](publication/2026-10-26/AUTHORIZATION.md). Earlier internal-only
 restrictions are superseded within that scope. Other protections remain.
 
+A later maintainer clarification on 2026-10-26 establishes **one instrument named
+Inspektorium**; Agent Arena is its old/internal implementation name. The current
+consolidation scope is a root 0.2.0 public `inspektorium audit` entry, one joint
+installation and current documentation. The audit entry delegates lazily to
+`agent_arena.phase10_cli.audit`; preserve the `agent-arena` 1.0.1 distribution
+and all 74 audit runtime Python files byte-for-byte. Retain `agent-arena audit`
+for compatibility. Keep `inspektorium inspect` explicitly scoped as the smaller
+reference checker; its v0.1.1 guards are not automatically applied to audit.
+See [ONE_INSTRUMENT.md](docs/ONE_INSTRUMENT.md).
+
+This clarification is additional current scope, not a rewrite of the dated
+publication authorization. Do not rewrite `publication/2026-10-26/` or historical
+evidence to make names, versions or hashes look current. Its import index is
+bound to publication commit `94eb4fc8b26c22da6a2cebdd01e5a7799750104d`.
+Record new checks separately under `publication/2026-10-26-unified-entry/`;
+report them as not executed until actually measured. No new live calls or
+budget reopening follows from the unified entry or source-version change.
+
 ## Scope, license and publication
 
 - Stay within [SCOPE.md](SCOPE.md). Do not add scores, new relation labels,
@@ -63,8 +81,10 @@ restrictions are superseded within that scope. Other protections remain.
 
 ## Claims
 
-- A reportable relation is an evaluator proposal that passed exact text
-  checks, not a verified semantic relation. CLI exit 0 means a report was
-  produced, not approval.
+- In the reference checker, a reportable relation is an evaluator proposal
+  that passed exact text checks, not a verified semantic relation. Its CLI exit
+  0 means a report was produced, not approval. Audit has its own status and exit
+  semantics: an intact blocked bundle can pass inspection; technical artifact
+  release is not scientific truth or release authorization for the software.
 - Update [CLAIMS.md](CLAIMS.md) for every new or revised capability claim, and
   keep owner-reported internal results labelled as such.

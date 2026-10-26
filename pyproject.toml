@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "inspektorium"
-version = "0.1.1"
-description = "A small evidence-binding reference tool for source-grounded evaluation"
+version = "0.2.0"
+description = "Inspektorium audit entry and evidence-binding reference checker"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
@@ -27,6 +27,7 @@ anthropic = [
 dev = [
   "anthropic>=0.77,<1",
   "build>=1.2,<2",
+  "click>=8.1",
   "httpx>=0.27,<1",
   "markdown-it-py>=3,<5",
   "linkify-it-py>=2,<3",
@@ -40,7 +41,7 @@ dev = [
 packages = ["src/inspektorium"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/src", "/tests", "/examples", "/evidence", "/*.md", "/CITATION.cff", "/LICENSE", "/pyproject.toml"]
+include = ["/src", "/tests", "/examples", "/evidence", "/docs", "/scripts", "/*.md", "/CITATION.cff", "/LICENSE", "/pyproject.toml"]
 exclude = ["/agent-arena", "/publication"]
 
 [tool.pytest.ini_options]
@@ -56,7 +57,7 @@ show_missing = true
 skip_covered = true
 
 [tool.ruff]
-extend-exclude = ["agent-arena", "publication/historical-source"]
+extend-exclude = ["agent-arena", "publication/historical-source", "publication/2026-10-26-publication-closeout"]
 line-length = 88
 target-version = "py311"
 
