@@ -1,30 +1,62 @@
 # Changelog
 
 Package versions follow `pyproject.toml`. The report schema is versioned
-separately and remains **0.1**. Release status and approvals are tracked in
-[RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
+separately and remains **0.1**. Release records are kept under `publication/`;
+[RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) is the historical v0.1.0 checklist.
 
-## [0.2.0] — Unified public entry (source update)
+## [0.2.0] — 2026-10-26
 
-- Inspektorium is the public instrument name; Agent Arena is its former name
-  and the retained internal audit-package identity.
-- `inspektorium audit` directly invokes the existing audit command group.
-  Its validation, execution, review, inspection, release and exit statuses
-  retain the engine's controls. No evaluation logic or reports are copied.
-- Install the full instrument from a checkout in one command:
-  `python -m pip install . ./agent-arena`. The `agent-arena` 1.0.1 runtime
-  remains unchanged; its old command remains a compatibility entry.
-- `inspektorium inspect` and the Python reference API remain available as
-  the smaller evidence-binding reference checker. Its report schema is 0.1.
-  These reference controls are not automatically part of the audit engine.
-- Missing audit-backend installation is reported explicitly with exit 2;
-  there is no fallback to the smaller reference checker.
-- New installed-package verification covers both entry names, review and
-  release status handling, UNKNOWN blocking and report tampering. Actual
-  outcomes are recorded in the dated consolidation record, not inferred here.
-- Existing tags and the 2026-10-26 publication evidence remain historical
-  records of their original source state. This source update is not a claim
-  that a new GitHub Release has already been created.
+Inspektorium 0.2.0 is the single current release of the instrument. It ships
+the root `inspektorium` distribution 0.2.0 together with the audit runtime
+distribution `agent-arena` 1.0.2.
+
+### One instrument
+
+- Inspektorium is the only product name. The audit layer is the Inspektorium
+  audit runtime (internal/former name Agent Arena, retained in package, module
+  and folder names for provenance); it is not a separate product or release.
+- `inspektorium audit` is the official entry. It directly invokes the existing
+  audit command group; validation, execution, review, inspection, release and
+  exit statuses retain the runtime's controls. No evaluation logic or reports
+  are copied. `agent-arena audit` remains a compatibility entry.
+- Install the full instrument in one step, from a checkout
+  (`python -m pip install . ./agent-arena`) or from the two release wheels.
+- `inspektorium inspect` and the Python reference API remain available as the
+  smaller evidence-binding reference checker with report schema 0.1. These
+  reference controls are not automatically part of the audit runtime.
+- A missing audit runtime is reported explicitly with exit 2; there is no
+  fallback to the smaller reference checker.
+- Installed-package verification (`scripts/verify_instrument.py`) covers both
+  entry names, review and release status handling, UNKNOWN blocking and report
+  tampering. Measured results belong to dated records, not to this file.
+
+### License
+
+- From 0.2.0, Inspektorium is licensed under the Apache License 2.0 (`LICENSE`,
+  `NOTICE`). Earlier releases (v0.1.0, v0.1.1, agent-arena-v1.0.1) remain under
+  PolyForm Noncommercial 1.0.0, as published. Third-party material keeps its
+  own rights.
+- Package metadata use the SPDX expression `Apache-2.0`. The minimum build
+  backends are hatchling 1.27 and setuptools 77.
+
+### Runtime folder
+
+- The loose datasets and the thirteen historical `run_*.py` launchers at the
+  top of `agent-arena/` moved unchanged to `agent-arena/research/datasets/` and
+  `agent-arena/research/legacy-launchers/`. `agent-arena/research/README.md`
+  maps old to new paths. Neither folder is part of a wheel.
+
+### Audit runtime 1.0.2
+
+- License and metadata change only: license, NOTICE, package description and
+  version. The version string in `agent_arena/__init__.py` is the only change
+  among the 74 runtime Python files, which are otherwise byte-identical to
+  1.0.1; evaluation logic and semantics are unchanged. The runtime's version
+  test now expects 1.0.2.
+- No new live validation. The scientific Final v1 gate remains not met.
+
+Existing tags, releases and the 2026-10-26 publication evidence remain
+historical records of their original source state.
 
 ## [0.1.1] — Published 2026-10-26
 

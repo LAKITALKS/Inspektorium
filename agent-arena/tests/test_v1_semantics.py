@@ -220,11 +220,11 @@ def test_contract_versions_of_the_v1_closeout():
     assert REGISTRY["phase8_semantics_taxonomy"] == LIVE_REGISTRY["phase8_semantics_taxonomy"] == "1.3"
 
 
-def test_package_version_is_1_0_1():
+def test_package_version_is_1_0_2():
     import agent_arena
     from agent_arena.schemas import FORENSIC_RECORD_SCHEMA_VERSION
-    assert agent_arena.__version__ == "1.0.1"
-    assert tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]["version"] == "1.0.1"
+    assert agent_arena.__version__ == "1.0.2"
+    assert tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]["version"] == "1.0.2"
     assert FORENSIC_RECORD_SCHEMA_VERSION == "0.1.0"  # schema versions are not the package version
 
 

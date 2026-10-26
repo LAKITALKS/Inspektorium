@@ -29,6 +29,18 @@ Record new checks separately under `publication/2026-10-26-unified-entry/`;
 report them as not executed until actually measured. No new live calls or
 budget reopening follows from the unified entry or source-version change.
 
+On 2026-10-26 the maintainer also decided to complete the instrument as
+**Inspektorium 0.2.0**, its single current release, and authorized the branch,
+pull request, merge, annotated tag `v0.2.0`, the GitHub release and corrections
+to the earlier release pages for this scope. Release 0.2.0 changes the license
+to Apache-2.0, moves the loose runtime-folder files unchanged to
+`agent-arena/research/` and raises the runtime distribution to 1.0.2 for the
+license and metadata change. Among the runtime Python files only the version
+string in `agent_arena/__init__.py` changes; this supersedes the 1.0.1
+byte-preservation rule above for that file only. Record the release checks in
+a new dated record under `publication/`. No live call, package-index upload,
+DOI or website change follows from this decision.
+
 ## Scope, license and publication
 
 - Name the product Inspektorium. In prose, call the audit runtime the

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-arena"
-version = "1.0.1"
+version = "1.0.2"
 readme = "README.md"
 license = "Apache-2.0"
 authors = [{name = "Lazaros Varvatis", email = "varvatislazaros@gmail.com"}]

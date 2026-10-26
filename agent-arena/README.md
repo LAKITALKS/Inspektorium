@@ -1,14 +1,15 @@
 # Inspektorium audit runtime
 
-> **Current public entry — 2026-10-26:** Inspektorium is one instrument; this
+> **Current public entry — Inspektorium 0.2.0 (2026-10-26):** Inspektorium is one instrument; this
 > folder holds the Inspektorium audit runtime (internal/former name Agent Arena,
 > retained in package, module and folder names for provenance). Use **`inspektorium audit`**
-> after the joint installation below. This directory retains the **`agent-arena`
-> 1.0.1** distribution and its unchanged 74 Python runtime files; the root source
-> distribution is **0.2.0**. `agent-arena audit` remains a compatibility entry to
-> the same runtime. See [one instrument](../docs/ONE_INSTRUMENT.md) and the
-> [current consolidation record](../publication/2026-10-26-unified-entry/README.md).
-> New source version is not a claim of a new published release.
+> after the joint installation below. This directory holds the **`agent-arena`
+> 1.0.2** distribution, released with the root distribution **0.2.0**. Runtime
+> 1.0.2 changes only license and metadata; among its 74 Python files only the
+> version string in `agent_arena/__init__.py` differs from 1.0.1. `agent-arena audit`
+> remains a compatibility entry to the same runtime. See
+> [one instrument](../docs/ONE_INSTRUMENT.md) and the
+> [consolidation record](../publication/2026-10-26-unified-entry/README.md).
 >
 > The [original 1.0.1 publication record](PUBLICATION.md) remains historical.
 > Closeout wording below refers to internal 1.0.0 where stated. The scientific
@@ -22,8 +23,8 @@ work-order authorization, **live** runs with Claude Haiku 5.5 / Sonnet 5.5 ([AA-
 It does not establish model accuracy, reviewer quality, scientific truth, an
 exhaustive literature search, customer approval, or a public software release.
 
-This checkout is the **public technical research 1.0.1** integration of the
-internal 1.0.0 source (package `agent-arena` 1.0.1, assessment
+This checkout is the **public technical research** integration of the
+internal 1.0.0 source (package `agent-arena` 1.0.2 with the runtime code of 1.0.1, assessment
 AA-P8/1.3, review AA-P9/1.3, host rules AA-P8-HOST/1.1). Its supported scope, the meaning of
 "ended", "unresolved", "technically incomplete" and "released", and its known limits are summarised in
 [V1_SCOPE.md](V1_SCOPE.md) (German). The official public entry is `inspektorium audit`; `agent-arena audit` is

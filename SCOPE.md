@@ -1,19 +1,20 @@
 # INSPEKTORIUM: implementation and research scope
 
-> **Current scope — 2026-10-26 maintainer clarification:** **Inspektorium** is
+> **Current scope — Inspektorium 0.2.0 (2026-10-26):** **Inspektorium** is
 > one instrument. `inspektorium audit` is its official public audit workflow;
 > the audit runtime is the Inspektorium audit runtime (internal/former name Agent
 > Arena, retained in package, module and folder names for provenance).
-> The root source distribution is **0.2.0**; audit delegates to the unchanged
-> **`agent-arena` 1.0.1** runtime. The smaller `inspektorium inspect` reference
+> Release 0.2.0 ships the root distribution **0.2.0** and the runtime
+> distribution **`agent-arena` 1.0.2** (license and metadata change; runtime
+> semantics unchanged) under Apache-2.0. The smaller `inspektorium inspect` reference
 > checker retains its v0.1.1/schema 0.1 contract. See
 > [architecture and boundaries](docs/ONE_INSTRUMENT.md) and the
 > [dated consolidation record](publication/2026-10-26-unified-entry/README.md).
-> New source version does not mean a new published release. The scientific
-> Final v1 gate is not met. No new live calls.
+> The scientific Final v1 gate is not met. No new live calls.
 
-The 0.2.0 entry-point change adds no evaluation semantics and does not change
-the audit runtime's 74 Python files or its distribution version. The two
+The 0.2.0 entry-point change adds no evaluation semantics. The runtime
+distribution moves to 1.0.2 for the license and metadata change; of its 74
+Python files only `agent_arena/__init__.py` changes, for the version string. The two
 installable distributions serve one public instrument and are installed together
 with `python -m pip install . ./agent-arena`. `agent-arena audit` remains a
 compatibility entry to the same runtime. Reference-checker guarantees do not
@@ -200,4 +201,6 @@ From Inspektorium 0.2.0 (2026-10-26), the maintainer's own code and
 documentation are licensed under the [Apache License 2.0](LICENSE); see
 [NOTICE](NOTICE). The license sentence of the 2026-10-26 publication paragraph
 above describes that publication: its releases remain under PolyForm
-Noncommercial 1.0.0. Third-party material is not relicensed.
+Noncommercial 1.0.0. Third-party material is not relicensed. Runtime
+distribution 1.0.2 changes only license, metadata and the version string; the
+runtime's controls are unchanged.

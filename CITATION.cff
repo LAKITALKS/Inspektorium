@@ -3,6 +3,7 @@ message: "If you use Inspektorium, please cite the software using this metadata.
 title: "Inspektorium"
 type: software
 version: 0.2.0
+date-released: 2026-10-26
 repository-code: "https://github.com/LAKITALKS/Inspektorium"
 authors:
   - family-names: "Varvatis"

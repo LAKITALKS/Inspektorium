@@ -13,13 +13,14 @@ by the **Inspektorium audit runtime** (internal/former name Agent Arena,
 retained in package, module and folder names for provenance); the
 `agent-arena audit` command remains a compatibility entry to the same runtime.
 
-The current source version is **0.2.0**. It adds the public audit entry to the
-root `inspektorium` distribution and delegates to the existing audit runtime in
-`agent-arena` **1.0.1**. These are two Python distribution identities within one
-instrument. The audit runtime's 74 Python files and its version remain unchanged;
-this entry-point consolidation adds no evaluation semantics. A source version
-is not a claim that a new release has been published. See
-[one instrument: architecture and provenance](docs/ONE_INSTRUMENT.md) and the
+The current release is **Inspektorium 0.2.0**. It consists of two Python
+distributions within one instrument: the root `inspektorium` distribution
+**0.2.0** with the public audit entry, and the audit runtime distribution
+`agent-arena` **1.0.2**. Runtime 1.0.2 changes only license and metadata: of
+its 74 Python files only `agent_arena/__init__.py` changes, for the version
+string, and evaluation semantics are unchanged. See
+[one instrument: architecture and provenance](docs/ONE_INSTRUMENT.md), the
+[v0.2.0 release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.2.0) and the
 [dated consolidation record](publication/2026-10-26-unified-entry/README.md).
 
 ### Install and run the official offline workflow
@@ -36,6 +37,11 @@ inspektorium audit run --offline \
   --recording agent-arena/examples/phase10/positive-recording.json \
   --output-root reports/local-audit
 ```
+
+Instead of installing from the checkout, you can install the two wheels of the
+[v0.2.0 release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.2.0) into a fresh environment:
+`python -m pip install inspektorium-0.2.0-py3-none-any.whl agent_arena-1.0.2-py3-none-any.whl`.
+The example files used below remain checkout files.
 
 Set `CANDIDATE` to the `path` returned by `run`, then inspect and explicitly
 release that candidate:
@@ -81,8 +87,9 @@ of the final code and no demonstrated general efficacy.
 
 | Identity | What it identifies | Status |
 | --- | --- | --- |
-| Inspektorium 0.2.0 source | Current root distribution and unified public `audit` entry | Consolidation source; execution/release status is recorded separately in the [dated record](publication/2026-10-26-unified-entry/README.md) |
-| `agent-arena` 1.0.1 | Retained distribution and audit runtime implementation | Historical [research prerelease](https://github.com/LAKITALKS/Inspektorium/releases/tag/agent-arena-v1.0.1); runtime bytes preserved |
+| Inspektorium 0.2.0 | Current release: root distribution and unified public `audit` entry | [Release v0.2.0](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.2.0); Apache-2.0 |
+| `agent-arena` 1.0.2 | Audit runtime distribution of Inspektorium 0.2.0 | Released with v0.2.0; license/metadata change from 1.0.1, runtime semantics unchanged |
+| `agent-arena` 1.0.1 | Earlier audit runtime component | Historical [research prerelease](https://github.com/LAKITALKS/Inspektorium/releases/tag/agent-arena-v1.0.1); PolyForm Noncommercial 1.0.0 |
 | Inspektorium v0.1.1 / schema 0.1 | Earlier root release and the smaller reference checker's contract | Historical [release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.1.1); contract retained by `inspektorium inspect` |
 | Inspektorium v0.1.0 | First public reference-checker release | Historical annotated tag `v0.1.0`; unchanged |
 | Scientific Final v1 gate | Efficacy and validation review in the [roadmap](ROADMAP.md#final-v1-gate) | Not met |
@@ -318,7 +325,7 @@ outside the catalog.
 
 | Status | Capability or result | Boundary |
 | --- | --- | --- |
-| UNIFIED PUBLIC ENTRY IN 0.2.0 SOURCE | `inspektorium audit` delegates to the unchanged audit runtime | P19; current verification status in the [dated record](publication/2026-10-26-unified-entry/README.md) |
+| UNIFIED PUBLIC ENTRY IN 0.2.0 | `inspektorium audit` delegates to the audit runtime, whose semantics are unchanged | P19; consolidation checks in the [dated record](publication/2026-10-26-unified-entry/README.md), release checks with the [v0.2.0 release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.2.0) |
 | IMPLEMENTED + TESTED IN PUBLIC v0.1 | Exact spans, input fingerprints, deterministic JSON/Markdown, strict offline proposal parsing | Public code and regression evidence; P01–P07 |
 | IMPLEMENTED + TESTED IN PUBLIC v0.1.1 | Markdown display of untrusted text as data; strict `--input` parsing | Public code, tests and the offline [evidence package](evidence/v0.1.1/); synthetic catalog only; P12–P13 |
 | OWNER-REPORTED INTERNAL EXPERIMENT | Artifact-fault pilot: full controls blocked more injected artifact faults than baseline processing and accepted all clean counterparts | Small constructed set; not reproduced by this package; no accuracy gain and semantic misses retained; I01–I03 |

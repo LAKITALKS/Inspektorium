@@ -7,12 +7,14 @@ package, module and folder names for provenance). The official public workflow i
 `review` and `release`. The retained `agent-arena audit` command is a
 compatibility entry to the same implementation.
 
-This consolidation uses root source version **0.2.0**, with the audit runtime
-and distribution still **`agent-arena` 1.0.1**. It adds a public dispatch layer;
-it does not add evaluation semantics, merge the two validation pipelines or
-change the audit runtime's 74 Python files. A new source version does not by
-itself establish a published release. Current execution and publication status
-belongs in the [dated record](../publication/2026-10-26-unified-entry/README.md).
+Inspektorium 0.2.0 consists of the root distribution **0.2.0** and the audit
+runtime distribution **`agent-arena` 1.0.2**. The root adds a public dispatch
+layer; it does not add evaluation semantics or merge the two validation
+pipelines. Runtime 1.0.2 is a license and metadata change: of the runtime's 74
+Python files only `agent_arena/__init__.py` changes, for its version string.
+Release checks are recorded with the [v0.2.0 release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.2.0); the
+consolidation checks of the 0.2.0 source are in the
+[dated record](../publication/2026-10-26-unified-entry/README.md).
 
 ## Install once from a complete checkout
 
@@ -129,7 +131,7 @@ different contracts and must not be used as offline examples.
 | --- | --- | --- |
 | Public instrument | Inspektorium | One public name, joint installation and official audit workflow |
 | Public dispatch | Root `inspektorium` 0.2.0; [`inspektorium.audit`](../src/inspektorium/audit.py) and [CLI](../src/inspektorium/cli.py) | Lazily invokes `agent_arena.phase10_cli.audit`; no independent audit evaluator, report rewrite or additional guard pipeline |
-| Audit runtime | Inspektorium audit runtime: distribution `agent-arena` 1.0.1, package `agent_arena`; [audit CLI](../agent-arena/src/agent_arena/phase10_cli.py) | Existing P1–P10 implementation, own task parsing, execution controls, semantics/taxonomy, review, bundle binding and release controls |
+| Audit runtime | Inspektorium audit runtime: distribution `agent-arena` 1.0.2, package `agent_arena`; [audit CLI](../agent-arena/src/agent_arena/phase10_cli.py) | Existing P1–P10 implementation, own task parsing, execution controls, semantics/taxonomy, review, bundle binding and release controls |
 | Smaller reference checker | `inspektorium inspect`; [`inspektorium.core`](../src/inspektorium/core/) | Retained v0.1.1 behavior and schema 0.1: one answer, exact claim/citation binding, a per-finding reportability gate and its own JSON/Markdown output |
 | Compatibility entry | `agent-arena audit` | Existing spelling for the same audit runtime; retained for scripts and provenance |
 
@@ -159,9 +161,10 @@ and [scope](../SCOPE.md). Do not apply those exit semantics to `audit run` or
 
 ## Version and historical evidence
 
-Root 0.2.0 identifies the new public entry source. The retained audit distribution
-stays 1.0.1 so that this presentation change does not change its installed runtime
-identity. Audit manifests and code bindings still follow the existing runtime's
+Root 0.2.0 identifies the public entry. The audit runtime distribution is 1.0.2:
+it carries the Apache-2.0 license and updated metadata, and its new version
+string changes the bytes of `agent_arena/__init__.py`, so its installed code
+identity differs from 1.0.1. Audit manifests and code bindings still follow the existing runtime's
 rules. The root dispatch layer does not become part of a stronger authenticated
 provenance claim merely by forwarding to that runtime.
 
@@ -178,8 +181,10 @@ index and redaction mapping describe publication commit
 commit; they are not promises that current edited documentation has unchanged
 hashes. The historical [v0.1.1 release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.1.1)
 and [audit runtime 1.0.1 research prerelease](https://github.com/LAKITALKS/Inspektorium/releases/tag/agent-arena-v1.0.1)
-remain separately identifiable. New verification belongs in the
-[consolidation record](../publication/2026-10-26-unified-entry/README.md).
+remain separately identifiable under the license they were published with.
+Checks of the 0.2.0 source are in the
+[consolidation record](../publication/2026-10-26-unified-entry/README.md);
+release checks are recorded with the [v0.2.0 release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.2.0).
 
 The public-entry claim is [P19](../CLAIMS.md#unified-public-entry-020-source).
 Its [regressions](../tests/test_audit_entry.py) and
