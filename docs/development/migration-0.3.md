@@ -206,15 +206,32 @@ No expectation on a status, exit code, rejection, lock or binding was changed.
 ## Name check exceptions
 
 `git grep -n -i -E "agent[ _-]arena"` finds the former name in this page, in [history](../research/history.md), in historical `CHANGELOG.md` entries and in one `NOTICE` sentence.
-It also finds it in files whose bytes are bound and therefore unchanged:
+It also finds it in files that are bound to earlier bytes or that compare with release 0.2.0:
 
-| File | Why the bytes stay |
+| File | Why the name stays |
 | --- | --- |
 | `tests/fixtures/audit/historical/live_smoke_20261011/*/authorization.json` | Closed historical authorizations; their SHA-256 values are pinned in `inspektorium.audit.workflow.live` |
 | `tests/fixtures/audit/historical/public_archive_bindings.json` | Verbatim extract of the research record's import index; its paths name the record's folders |
 | `src/inspektorium/audit/schemas.py` (one docstring) | Embedded in the frozen live prompt `study_forensics_prompt/v3-phase8` |
 | `evidence/v0.1.1/addendum-20261024-e1-layout/` (two lines) | The v0.1.1 evidence package stays unchanged |
+| `evidence/v0.3.0-behavior/` (maps, environment record, logic diff and the comparison tools) | The package compares 0.3.0 with the 0.2.0 release, whose paths, wheel and identifiers carry the former name |
 
 ## Behavior comparison with 0.2.0
 
-<!-- BEHAVIOR-DIFF: filled in stage 8 -->
+The published 0.2.0 wheels and the 0.3.0 candidate were recorded with the same 79-step script, twice each, offline and under the Python network guard.
+The method, tools and results are in the evidence package [`v0.3.0-behavior`](../../evidence/v0.3.0-behavior/README.md).
+
+| Check | Result |
+| --- | --- |
+| `inspect` output of the five examples, JSON and Markdown, standard output and `--output` | byte-identical (20 and 10 steps) |
+| `audit` statuses and exit codes of validate, run, inspect, review and release for four cases | identical (35 steps) |
+| Findings, review obligations, release ability and bundle contents, after masking | identical (all 79 projected steps) |
+| Counter-checks: tampered report and record, live run without authorization, missing and conflicting mode, duplicate JSON keys, unknown command | identical outcomes |
+
+Two kinds of differences remain before masking, and both are allowed:
+
+- **Module-hash manifest.** Reports show the number of bound runtime modules: 74 in 0.2.0, 51 in 0.3.0. The module hashes themselves differ because files moved and were renamed.
+- **Position order.** Reports list review positions sorted by a position ID that hashes the random run ID. Their order varies between runs of either release; the 0.2.0 baseline recordings happened to share one order.
+
+Names and versions in outputs differ as listed under [names in outputs](#names-in-outputs-and-identifiers).
+The audit-runtime logic is unchanged apart from those names: 27 of 42 modules have identical code without imports and docstrings, and the others differ only in the changes this page lists.

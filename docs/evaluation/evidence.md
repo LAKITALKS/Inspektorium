@@ -80,6 +80,16 @@ Each result records its actual observations next to the expectation.
 **It does not establish** semantic accuracy, reviewer quality or efficacy on real cases.
 See [limitations](limitations.md#audit-workflow-inspektorium-audit).
 
+## Behavior comparison of 0.2.0 and 0.3.0
+
+The package [`evidence/v0.3.0-behavior/`](../../evidence/v0.3.0-behavior/README.md) records the published 0.2.0 wheels and the 0.3.0 candidate with the same 79-step script.
+
+**It establishes** that `inspect` output is byte-identical and that `audit` statuses, exit codes, findings, review obligations and release ability are identical.
+The counter-checks also keep their outcomes.
+Remaining differences are names, versions, the module-hash manifest and the run-dependent order of review positions.
+
+**It does not establish** anything about cases outside the recorded examples, or about live runs.
+
 ## Software tests
 
 The suite in [`tests/`](../../tests/) checks software behaviour: models, validation, display encoding, parsing, bundle binding, review and release.

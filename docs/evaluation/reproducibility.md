@@ -107,6 +107,11 @@ python -m pytest
 Categories, lint and type checks are described in [testing](../development/testing.md).
 Test results are software checks; [evidence](evidence.md) says what they do and do not establish.
 
+## Behavior comparison with 0.2.0
+
+The evidence package [`v0.3.0-behavior`](../../evidence/v0.3.0-behavior/README.md#reproduce) lists the commands that record both releases and compare their decisions.
+Its tools need only the two release wheels, an export of commit `d086973` and a 0.3.0 checkout.
+
 ## Historical evidence
 
 Historical audit bundles bind the code that produced them.

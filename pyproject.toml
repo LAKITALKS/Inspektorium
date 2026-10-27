@@ -81,6 +81,11 @@ select = ["B", "E", "F", "I", "UP"]
 # The audit runtime, its tests and its scripts keep the runtime's historical rule set
 # (E4, E7, E9, F); docs/development/testing.md records this baseline.
 "src/inspektorium/audit/**" = ["B", "E501", "I", "UP"]
+# The recording tools of the 0.3.0 behavior comparison stay as they ran.
+"evidence/v0.3.0-behavior/tools/compare.py" = ["B", "E501", "I", "UP"]
+"evidence/v0.3.0-behavior/tools/golden.py" = ["B", "E501", "I", "UP"]
+"evidence/v0.3.0-behavior/tools/project.py" = ["B", "E501", "I", "UP"]
+"evidence/v0.3.0-behavior/tools/project2.py" = ["B", "E501", "I", "UP"]
 "scripts/extract_recorded_capture.py" = ["B", "E501", "I", "UP"]
 "scripts/run_acceptance.py" = ["B", "E501", "I", "UP"]
 "tests/forensics_case_factory.py" = ["B", "E501", "I", "UP"]

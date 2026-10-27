@@ -56,8 +56,8 @@ The [evidence page](../evaluation/evidence.md#relation-to-030) explains why that
 | [`providers/`](../../src/inspektorium/audit/providers/) | `BaseProvider`, the live Anthropic adapter with its registered profiles, and SDK adapters |
 | [`schemas.py`](../../src/inspektorium/audit/schemas.py) | `Task`, `RunRecord`, `AgentResult` and related models |
 
-`execution/run_library.py`, `execution/agent_loader.py` and `reports/` are not on the path of any `audit` command.
-They stay because retained tests use them.
+`execution/run_library.py`, `execution/agent_loader.py`, `integrity/release_boundary.py` and `reports/` are not on the path of any `audit` command.
+They stay because retained tests use them, including the frozen forensics and review acceptance.
 The audit commands pass provider objects directly. They never resolve a provider by name.
 
 ## Data flow: `inspektorium inspect`
