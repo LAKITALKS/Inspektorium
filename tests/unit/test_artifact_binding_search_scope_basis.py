@@ -33,8 +33,13 @@ from inspektorium.audit.integrity.artifact_binding import (
 )
 from inspektorium.audit.schemas import Task
 
-FIXTURE = (Path(__file__).resolve().parents[1] / "fixtures" / "audit" / "pipeline_qa"
-           / "qa_search_scope_negative_language.json")
+FIXTURE = (
+    Path(__file__).resolve().parents[1]
+    / "fixtures"
+    / "audit"
+    / "pipeline_qa"
+    / "qa_search_scope_negative_language.json"
+)
 
 
 def rec():
@@ -62,6 +67,7 @@ def ev(r, eid):
 
 # --- Test A — documented_search -> documented_search (kept) ---------------------
 
+
 def test_A_documented_search_kept_passes():
     r = rec()
     cna(r).client_scope = "documented_search"
@@ -71,6 +77,7 @@ def test_A_documented_search_kept_passes():
 
 
 # --- Test B — documented_search -> reviewed_set WITH a reviewed set -------------
+
 
 def test_B_documented_search_to_reviewed_set_with_set_passes():
     r = rec()  # SS1 documented_search carries reviewed_source_ids = [src-1, src-2]
@@ -84,9 +91,10 @@ def test_B_documented_search_to_reviewed_set_with_set_passes():
 # --- Test C — documented_search -> reviewed_set WITHOUT a reviewed set ----------
 # Key curator regression: containment holds, but the reviewed set does not resolve.
 
+
 def test_C_documented_search_to_reviewed_set_without_set_blocked():
     r = rec()
-    ss(r).reviewed_source_ids = []          # search still substantiated by resources/queries
+    ss(r).reviewed_source_ids = []  # search still substantiated by resources/queries
     cna(r).client_scope = "reviewed_set"
     result = final_binding_check(r)
     assert result.releasable is False
@@ -98,9 +106,12 @@ def test_C_documented_search_to_reviewed_set_without_set_blocked():
 
 # --- Test D — documented_search -> source_local WITH a concrete basis -----------
 
+
 def test_D_documented_search_to_source_local_with_basis_passes():
     r = rec()
-    na(r).source_local_evidence_ids = ["E1"]   # concrete source-local evidence, resolves to src-1
+    na(r).source_local_evidence_ids = [
+        "E1"
+    ]  # concrete source-local evidence, resolves to src-1
     cna(r).client_scope = "source_local"
     result = final_binding_check(r)
     assert result.releasable is True
@@ -109,8 +120,9 @@ def test_D_documented_search_to_source_local_with_basis_passes():
 
 # --- Test E — documented_search -> source_local WITHOUT a concrete basis --------
 
+
 def test_E_documented_search_to_source_local_without_basis_blocked():
-    r = rec()                                   # source_local_evidence_ids = [] in the base
+    r = rec()  # source_local_evidence_ids = [] in the base
     cna(r).client_scope = "source_local"
     result = final_binding_check(r)
     assert result.releasable is False
@@ -119,14 +131,16 @@ def test_E_documented_search_to_source_local_without_basis_blocked():
 
 # --- Test F — reviewed_set -> reviewed_set --------------------------------------
 
+
 def test_F_reviewed_set_to_reviewed_set_passes():
     r = rec()
-    ss(r).scope_type = "reviewed_set"           # reviewed_source_ids still present
+    ss(r).scope_type = "reviewed_set"  # reviewed_source_ids still present
     cna(r).client_scope = "reviewed_set"
     assert final_binding_check(r).releasable is True
 
 
 # --- Test G — reviewed_set -> source_local WITH a concrete basis ----------------
+
 
 def test_G_reviewed_set_to_source_local_with_basis_passes():
     r = rec()
@@ -138,9 +152,10 @@ def test_G_reviewed_set_to_source_local_with_basis_passes():
 
 # --- Test H — reviewed_set -> source_local WITHOUT a concrete basis -------------
 
+
 def test_H_reviewed_set_to_source_local_without_basis_blocked():
     r = rec()
-    ss(r).scope_type = "reviewed_set"           # source_local_evidence_ids stays []
+    ss(r).scope_type = "reviewed_set"  # source_local_evidence_ids stays []
     cna(r).client_scope = "source_local"
     result = final_binding_check(r)
     assert result.releasable is False
@@ -148,6 +163,7 @@ def test_H_reviewed_set_to_source_local_without_basis_blocked():
 
 
 # --- Test I — source_local -> source_local (concrete basis resolves) ------------
+
 
 def test_I_source_local_with_basis_passes():
     r = rec()
@@ -159,11 +175,12 @@ def test_I_source_local_with_basis_passes():
 
 # --- Test J — source_local with a missing source/evidence binding --------------
 
+
 def test_J_source_local_missing_source_binding_blocked():
     r = rec()
     na(r).search_scope_id = None
     na(r).source_local_evidence_ids = ["E1"]
-    ev(r, "E1").source_id = ""                   # evidence exists but binds to no source
+    ev(r, "E1").source_id = ""  # evidence exists but binds to no source
     cna(r).client_scope = "source_local"
     result = final_binding_check(r)
     assert result.releasable is False
@@ -171,6 +188,7 @@ def test_J_source_local_missing_source_binding_blocked():
 
 
 # --- Test K — any bounded scope -> global_nonexistence --------------------------
+
 
 def test_K_bounded_to_global_blocked():
     r = rec()
@@ -182,11 +200,12 @@ def test_K_bounded_to_global_blocked():
 
 # --- Test L — unresolved search scope ------------------------------------------
 
+
 def test_L_unresolved_search_scope_blocked():
     r = rec()
     na(r).search_scope_id = None
-    na(r).source_local_evidence_ids = []         # no basis of any kind
-    cna(r).client_scope = "documented_search"    # search-dependent claim
+    na(r).source_local_evidence_ids = []  # no basis of any kind
+    cna(r).client_scope = "documented_search"  # search-dependent claim
     result = final_binding_check(r)
     assert result.releasable is False
     assert QA_UNRESOLVED_SEARCH_SCOPE in result.codes()
@@ -196,9 +215,10 @@ def test_L_unresolved_search_scope_blocked():
 # The general invariant: a substantiated basis DOES resolve (so it is not an
 # unresolved-scope failure), yet the narrower reviewed-set provenance is fabricated.
 
+
 def test_M_narrower_label_does_not_create_provenance():
     r = rec()
-    ss(r).reviewed_source_ids = []               # documented_search still substantiated
+    ss(r).reviewed_source_ids = []  # documented_search still substantiated
     # sanity: the (broad) basis itself is not unresolved — only the narrower one is absent
     cna(r).client_scope = "documented_search"
     assert final_binding_check(r).releasable is True
@@ -212,10 +232,11 @@ def test_M_narrower_label_does_not_create_provenance():
 
 # --- Test N — scope compatibility is independent of confidence ------------------
 
+
 def test_N_missing_basis_not_saved_by_confidence():
     r = rec()
     ss(r).reviewed_source_ids = []
-    r.findings[0].confidence_status = "VALID"     # maximal evaluator confidence
+    r.findings[0].confidence_status = "VALID"  # maximal evaluator confidence
     cna(r).client_scope = "reviewed_set"
     result = final_binding_check(r)
     assert result.releasable is False
@@ -224,10 +245,13 @@ def test_N_missing_basis_not_saved_by_confidence():
 
 # --- Test O — scope compatibility is independent of evidence strength -----------
 
+
 def test_O_missing_basis_not_saved_by_evidence_strength():
     r = rec()
     ss(r).reviewed_source_ids = []
-    r.findings[0].allowed_summary_strength = "not_supported"   # strong underlying strength
+    r.findings[
+        0
+    ].allowed_summary_strength = "not_supported"  # strong underlying strength
     r.client_findings[0].client_strength = "not_supported"
     cna(r).client_scope = "reviewed_set"
     result = final_binding_check(r)
@@ -236,6 +260,7 @@ def test_O_missing_basis_not_saved_by_evidence_strength():
 
 
 # --- Test P — the base search-scope path is intact (no over-blocking) -----------
+
 
 def test_P_base_search_scope_record_is_clean():
     r = rec()
@@ -246,11 +271,13 @@ def test_P_base_search_scope_record_is_clean():
 
 # --- Test Q — value-origin primitive unaffected by this patch -------------------
 
+
 def test_Q_value_origin_primitive_clean_on_base():
     assert check_value_origin(rec()) == []
 
 
 # --- Test R — evidence-symmetry primitive unaffected by this patch --------------
+
 
 def test_R_evidence_symmetry_primitive_clean_on_base():
     assert check_evidence_symmetry(rec()) == []
@@ -258,12 +285,14 @@ def test_R_evidence_symmetry_primitive_clean_on_base():
 
 # --- Test S — the slice-3 fixture stays a pipeline-QA (class C) artifact --------
 
+
 def test_S_fixture_is_isolated_pipeline_qa():
     r = rec()
     assert r.synthetic_fixture is True
     assert r.fixture_class == "pipeline_qa"
     # A ForensicRecord is structurally not a loadable Task (cannot enter the case library).
     import json
+
     data = json.loads(FIXTURE.read_text())
     with pytest.raises(Exception):
         Task(**data)

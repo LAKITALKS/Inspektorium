@@ -67,7 +67,7 @@ def default_int_digit_limit() -> Iterator[None]:
     [
         CLEAN,
         '{"a": [1, 2.5, -0, true, false, null, "x"], "b": {"c": {}}}',
-        '  [ ]  \n\t\r',
+        "  [ ]  \n\t\r",
         '"\\ud83d\\ude00 pair, \\u00e9, \\/ and \\u0000"',
         "1e400",
     ],
@@ -140,7 +140,7 @@ def test_unpaired_surrogates_are_rejected_in_values_and_keys(raw: str) -> None:
         ("{'a': 1}", "Expecting property name enclosed in double quotes"),
         # Python 3.13 reports trailing commas with a more specific reason.
         ('{"a": 1,}', ("Expecting property name", "Illegal trailing comma")),
-        ('[1, 2,]', ("Expecting value", "Illegal trailing comma")),
+        ("[1, 2,]", ("Expecting value", "Illegal trailing comma")),
         ('{"a": 1 /* c */}', "Expecting ',' delimiter"),
         ('"tab\tinside"', "Invalid control character"),
         ('"\\x41"', "Invalid \\escape"),

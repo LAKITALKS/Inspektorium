@@ -29,8 +29,11 @@ from inspektorium.audit.schemas import (
 # ---------------------------------------------------------------------------
 
 SIMPSON_TASK = Task(
-    id="simpson-int", title="Simpson Integration", domain="statistics",
-    difficulty=Difficulty.HARD, task_type=TaskType.RUBRIC_BASED,
+    id="simpson-int",
+    title="Simpson Integration",
+    domain="statistics",
+    difficulty=Difficulty.HARD,
+    task_type=TaskType.RUBRIC_BASED,
     prompt=(
         "Engineering: admitted 30/100 men (30%) and 20/50 women (40%)\n"
         "Arts: admitted 300/400 men (75%) and 350/400 women (87.5%)\n"
@@ -39,8 +42,11 @@ SIMPSON_TASK = Task(
 )
 
 BASE_RATE_TASK = Task(
-    id="base-rate-int", title="Base Rate Integration", domain="probability",
-    difficulty=Difficulty.MEDIUM, task_type=TaskType.CLOSED_WITH_REASONING,
+    id="base-rate-int",
+    title="Base Rate Integration",
+    domain="probability",
+    difficulty=Difficulty.MEDIUM,
+    task_type=TaskType.CLOSED_WITH_REASONING,
     prompt=(
         "A rare disease affects 1 in 1000 people. A test has 99% sensitivity "
         "and 1% false positive rate. A person tests positive. "
@@ -54,14 +60,18 @@ BASE_RATE_TASK = Task(
 
 def _make_result(parsed: AgentResponse) -> AgentResult:
     return AgentResult(
-        provider="test", model="test-model",
-        raw_output="{}", parsed=parsed, parse_ok=True,
+        provider="test",
+        model="test-model",
+        raw_output="{}",
+        parsed=parsed,
+        parse_ok=True,
     )
 
 
 # ===========================================================================
 # 1. RIGHT ANSWER, WRONG REASONING
 # ===========================================================================
+
 
 class TestRightAnswerWrongReasoning:
     """Engine must detect correct final answer with broken load-bearing steps."""
@@ -88,7 +98,10 @@ class TestRightAnswerWrongReasoning:
         # The step "0.00099 + 0.00999 = 0.01098" is correct, but the division
         # 0.00099 / 0.01098 = 0.09 is approximately correct (0.0901...).
         # This test shows the engine processes step checks without false positives.
-        assert result.reasoning_integrity["classification"] in ("well_supported", "brittle")
+        assert result.reasoning_integrity["classification"] in (
+            "well_supported",
+            "brittle",
+        )
 
     def test_correct_answer_with_wrong_load_bearing_arithmetic(self):
         """Final answer correct, but a load-bearing step has provably wrong arithmetic."""
@@ -108,10 +121,16 @@ class TestRightAnswerWrongReasoning:
         result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
 
         # Must detect the intermediate error
-        int_errors = [f for f in result.failures
-                      if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value]
+        int_errors = [
+            f
+            for f in result.failures
+            if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value
+        ]
         assert len(int_errors) >= 1
-        assert "30 + 300 = 340" in int_errors[0].description or "WRONG" in int_errors[0].description
+        assert (
+            "30 + 300 = 340" in int_errors[0].description
+            or "WRONG" in int_errors[0].description
+        )
 
     def test_accidental_correctness_flag_present(self):
         """When answer is correct but a load-bearing step has a verified error,
@@ -161,12 +180,16 @@ class TestRightAnswerWrongReasoning:
         bad_result = evaluate_result(SIMPSON_TASK, _make_result(bad_parsed))
 
         # The bad result should have lower structural_reasoning due to integrity penalty
-        assert bad_result.scores.structural_reasoning <= good_result.scores.structural_reasoning
+        assert (
+            bad_result.scores.structural_reasoning
+            <= good_result.scores.structural_reasoning
+        )
 
 
 # ===========================================================================
 # 2. WRONG ANSWER, GOOD INTERMEDIATE CHAIN
 # ===========================================================================
+
 
 class TestWrongAnswerGoodChain:
     """Shows separation of locally good reasoning from wrong final conclusion."""
@@ -199,6 +222,7 @@ class TestWrongAnswerGoodChain:
 # 3. DECORATIVE WRONG STEP (must NOT over-punish)
 # ===========================================================================
 
+
 class TestDecorativeWrongStep:
     """A wrong step that is NOT load-bearing should not trigger major penalties."""
 
@@ -219,8 +243,11 @@ class TestDecorativeWrongStep:
         )
         result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
 
-        int_errors = [f for f in result.failures
-                      if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value]
+        int_errors = [
+            f
+            for f in result.failures
+            if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value
+        ]
         assert len(int_errors) >= 1
 
         # The error should be MINOR (not MAJOR) because it's decorative
@@ -243,13 +270,17 @@ class TestDecorativeWrongStep:
         result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
 
         # Should be brittle (decorative error), NOT accidental
-        assert result.reasoning_integrity["classification"] in ("brittle", "well_supported")
+        assert result.reasoning_integrity["classification"] in (
+            "brittle",
+            "well_supported",
+        )
         assert result.reasoning_integrity["n_load_bearing_errors"] == 0
 
 
 # ===========================================================================
 # 4. LOAD-BEARING CONTRADICTED STEP
 # ===========================================================================
+
 
 class TestLoadBearingContradicted:
     """A load-bearing step with verified error must be a hard finding."""
@@ -268,8 +299,11 @@ class TestLoadBearingContradicted:
         )
         result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
 
-        int_errors = [f for f in result.failures
-                      if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value]
+        int_errors = [
+            f
+            for f in result.failures
+            if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value
+        ]
         lb_errors = [e for e in int_errors if "LOAD-BEARING" in e.description]
         assert len(lb_errors) >= 1
         assert lb_errors[0].severity == "major"
@@ -278,6 +312,7 @@ class TestLoadBearingContradicted:
 # ===========================================================================
 # 5. INTERMEDIATE MATH VERIFICATION
 # ===========================================================================
+
 
 class TestIntermediateMathInEvaluator:
     """Step checker integration with evaluator."""
@@ -296,8 +331,11 @@ class TestIntermediateMathInEvaluator:
         )
         result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
 
-        int_errors = [f for f in result.failures
-                      if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value]
+        int_errors = [
+            f
+            for f in result.failures
+            if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value
+        ]
         assert len(int_errors) == 0
 
     def test_step_checks_attached_to_result(self):
@@ -327,6 +365,7 @@ class TestIntermediateMathInEvaluator:
 # 6. LOAD-BEARING CLASSIFICATION
 # ===========================================================================
 
+
 class TestLoadBearingClassification:
     """Unit tests for _classify_load_bearing_steps."""
 
@@ -336,7 +375,9 @@ class TestLoadBearingClassification:
             "Engineering has 30% for men",
             "Therefore men have 66% overall rate",  # late, overlaps with answer
         ]
-        mask = _classify_load_bearing_steps(steps, "Men have a 66% overall admission rate")
+        mask = _classify_load_bearing_steps(
+            steps, "Men have a 66% overall admission rate"
+        )
         assert mask[2] is True  # last step is load-bearing
 
     def test_early_decorative_step_not_lb(self):
@@ -371,6 +412,7 @@ class TestLoadBearingClassification:
 # ===========================================================================
 # 7. REPORT INTEGRATION
 # ===========================================================================
+
 
 class TestReportIntegration:
     """Reasoning integrity section appears in reports."""
@@ -416,6 +458,7 @@ class TestReportIntegration:
 # 8. NO REGRESSION
 # ===========================================================================
 
+
 class TestNoRegression:
     """Existing behavior must not regress."""
 
@@ -442,8 +485,11 @@ class TestNoRegression:
         result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
 
         # Should have zero intermediate errors
-        int_errors = [f for f in result.failures
-                      if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value]
+        int_errors = [
+            f
+            for f in result.failures
+            if f.category == FailureCategory.INTERMEDIATE_NUMERIC_ERROR.value
+        ]
         assert len(int_errors) == 0
 
         # Should be well_supported

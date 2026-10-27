@@ -53,7 +53,16 @@ def test_complete_primary_preserves_exact_recording(inputs):
 
 @pytest.mark.parametrize(
     "damage",
-    ["schema", "review", "task_id", "task_hash", "http", "body", "incomplete", "interpretation"],
+    [
+        "schema",
+        "review",
+        "task_id",
+        "task_hash",
+        "http",
+        "body",
+        "incomplete",
+        "interpretation",
+    ],
 )
 def test_invalid_capture_is_rejected_without_output(inputs, damage):
     path, task, output, capture, _ = inputs

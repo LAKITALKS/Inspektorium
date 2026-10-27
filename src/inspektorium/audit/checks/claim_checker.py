@@ -145,13 +145,15 @@ def extract_numeric_facts(text: str, source_field: str) -> list[NumericFact]:
                 key = (_normalize_entity(ent), val, context)
                 if key not in seen:
                     seen.add(key)
-                    facts.append(NumericFact(
-                        entity=_normalize_entity(ent),
-                        metric="rate",
-                        value=val,
-                        source_field=source_field,
-                        context=context,
-                    ))
+                    facts.append(
+                        NumericFact(
+                            entity=_normalize_entity(ent),
+                            metric="rate",
+                            value=val,
+                            source_field=source_field,
+                            context=context,
+                        )
+                    )
 
         for num_str, den_str in fracs:
             if float(den_str) == 0:
@@ -166,13 +168,15 @@ def extract_numeric_facts(text: str, source_field: str) -> list[NumericFact]:
                 key = (_normalize_entity(ent), val, context)
                 if key not in seen:
                     seen.add(key)
-                    facts.append(NumericFact(
-                        entity=_normalize_entity(ent),
-                        metric="rate",
-                        value=val,
-                        source_field=source_field,
-                        context=context,
-                    ))
+                    facts.append(
+                        NumericFact(
+                            entity=_normalize_entity(ent),
+                            metric="rate",
+                            value=val,
+                            source_field=source_field,
+                            context=context,
+                        )
+                    )
 
     return facts
 
@@ -194,8 +198,17 @@ def _normalize_entity(entity: str) -> str:
 
 
 _ENTITY_KEYWORDS = [
-    "men", "women", "male", "female", "man", "woman",
-    "engineering", "arts", "overall", "aggregate", "total",
+    "men",
+    "women",
+    "male",
+    "female",
+    "man",
+    "woman",
+    "engineering",
+    "arts",
+    "overall",
+    "aggregate",
+    "total",
 ]
 
 
@@ -280,7 +293,11 @@ def _find_all_entity(text: str, kw: str) -> list[int]:
         if kw_idx < 0:
             break
         # Avoid matching "men" inside "women"
-        if kw in ("men", "man") and kw_idx > 0 and text[kw_idx - 1:kw_idx].lower() in ("o",):
+        if (
+            kw in ("men", "man")
+            and kw_idx > 0
+            and text[kw_idx - 1 : kw_idx].lower() in ("o",)
+        ):
             start = kw_idx + len(kw)
             continue
         positions.append(kw_idx)
@@ -336,28 +353,32 @@ def extract_comparative_claims(text: str, source_field: str) -> list[Comparative
             m = re.search(pat, sent_l)
             if m:
                 groups = m.groupdict()
-                claims.append(ComparativeClaim(
-                    subject=_normalize_entity(groups.get("subj", "")),
-                    object=_normalize_entity(groups.get("obj", "")),
-                    relation="higher_than",
-                    metric=groups.get("metric", "rate"),
-                    source_field=source_field,
-                    source_text=sent.strip(),
-                ))
+                claims.append(
+                    ComparativeClaim(
+                        subject=_normalize_entity(groups.get("subj", "")),
+                        object=_normalize_entity(groups.get("obj", "")),
+                        relation="higher_than",
+                        metric=groups.get("metric", "rate"),
+                        source_field=source_field,
+                        source_text=sent.strip(),
+                    )
+                )
 
         # Lower-than patterns
         for pat in _LOWER_PATTERNS:
             m = re.search(pat, sent_l)
             if m:
                 groups = m.groupdict()
-                claims.append(ComparativeClaim(
-                    subject=_normalize_entity(groups.get("subj", "")),
-                    object=_normalize_entity(groups.get("obj", "")),
-                    relation="lower_than",
-                    metric=groups.get("metric", "rate"),
-                    source_field=source_field,
-                    source_text=sent.strip(),
-                ))
+                claims.append(
+                    ComparativeClaim(
+                        subject=_normalize_entity(groups.get("subj", "")),
+                        object=_normalize_entity(groups.get("obj", "")),
+                        relation="lower_than",
+                        metric=groups.get("metric", "rate"),
+                        source_field=source_field,
+                        source_text=sent.strip(),
+                    )
+                )
 
         # Discrimination patterns
         for pat in _DISCRIMINATION_PATTERNS:
@@ -365,16 +386,22 @@ def extract_comparative_claims(text: str, source_field: str) -> list[Comparative
             if m:
                 groups = m.groupdict()
                 obj = _normalize_entity(groups.get("obj", ""))
-                subj = _normalize_entity(groups.get("subj", "")) if "subj" in groups else ""
+                subj = (
+                    _normalize_entity(groups.get("subj", ""))
+                    if "subj" in groups
+                    else ""
+                )
                 if obj:
-                    claims.append(ComparativeClaim(
-                        subject=subj or "(system)",
-                        object=obj,
-                        relation="discriminates_against",
-                        metric="treatment",
-                        source_field=source_field,
-                        source_text=sent.strip(),
-                    ))
+                    claims.append(
+                        ComparativeClaim(
+                            subject=subj or "(system)",
+                            object=obj,
+                            relation="discriminates_against",
+                            metric="treatment",
+                            source_field=source_field,
+                            source_text=sent.strip(),
+                        )
+                    )
 
             # Keyword-based heuristic extraction for simpler patterns
         _extract_keyword_claims(sent_l, sent.strip(), source_field, claims)
@@ -385,23 +412,37 @@ def extract_comparative_claims(text: str, source_field: str) -> list[Comparative
     return claims
 
 
-def _extract_contextual_direction_claims(sent_l: str, sent_orig: str,
-                                         source_field: str,
-                                         claims: list[ComparativeClaim]) -> None:
+def _extract_contextual_direction_claims(
+    sent_l: str, sent_orig: str, source_field: str, claims: list[ComparativeClaim]
+) -> None:
     """Extract directional claims from context like 'X have higher rates in Y'."""
     # Pattern: "[entity] have/has higher/lower rates"
     # Without an explicit "than", we infer the other entity from known pairs
     _direction_patterns = [
-        (r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?higher\s+(?:rate|rates|percentage)", "higher_than"),
+        (
+            r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?higher\s+(?:rate|rates|percentage)",
+            "higher_than",
+        ),
         (r"(\w+)\s+(?:are|is|were)\s+(?:more\s+)?favou?red", "higher_than"),
-        (r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?lower\s+(?:rate|rates|percentage)", "lower_than"),
+        (
+            r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?lower\s+(?:rate|rates|percentage)",
+            "lower_than",
+        ),
         (r"(\w+)\s+(?:are|is|were)\s+(?:less\s+)?favou?red", "lower_than"),
-        (r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?(?:better|superior)\s+(?:rate|outcome)", "higher_than"),
-        (r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?(?:worse|inferior)\s+(?:rate|outcome)", "lower_than"),
+        (
+            r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?(?:better|superior)\s+(?:rate|outcome)",
+            "higher_than",
+        ),
+        (
+            r"(\w+)\s+(?:have|has|had)\s+(?:a\s+)?(?:worse|inferior)\s+(?:rate|outcome)",
+            "lower_than",
+        ),
     ]
     _entity_pairs = {
-        "men": "women", "women": "men",
-        "male": "female", "female": "male",
+        "men": "women",
+        "women": "men",
+        "male": "female",
+        "female": "male",
     }
 
     for pat, relation in _direction_patterns:
@@ -416,16 +457,21 @@ def _extract_contextual_direction_claims(sent_l: str, sent_orig: str,
                     for c in claims
                 )
                 if not already:
-                    claims.append(ComparativeClaim(
-                        subject=subj, object=obj,
-                        relation=relation, metric="rate",
-                        source_field=source_field,
-                        source_text=sent_orig,
-                    ))
+                    claims.append(
+                        ComparativeClaim(
+                            subject=subj,
+                            object=obj,
+                            relation=relation,
+                            metric="rate",
+                            source_field=source_field,
+                            source_text=sent_orig,
+                        )
+                    )
 
 
-def _extract_keyword_claims(sent_l: str, sent_orig: str, source_field: str,
-                            claims: list[ComparativeClaim]) -> None:
+def _extract_keyword_claims(
+    sent_l: str, sent_orig: str, source_field: str, claims: list[ComparativeClaim]
+) -> None:
     """Extract claims from keyword patterns that don't fit regex well."""
     # "X% of men vs Y% of women" style
     m = re.search(
@@ -434,35 +480,54 @@ def _extract_keyword_claims(sent_l: str, sent_orig: str, source_field: str,
         sent_l,
     )
     if m:
-        val1, ent1, val2, ent2 = float(m.group(1)), m.group(2), float(m.group(3)), m.group(4)
+        val1, ent1, val2, ent2 = (
+            float(m.group(1)),
+            m.group(2),
+            float(m.group(3)),
+            m.group(4),
+        )
         ent1_n = _normalize_entity(ent1)
         ent2_n = _normalize_entity(ent2)
         if ent1_n and ent2_n and ent1_n != ent2_n:
-            rel = "higher_than" if val1 > val2 else "lower_than" if val1 < val2 else "equal_to"
-            claims.append(ComparativeClaim(
-                subject=ent1_n, object=ent2_n,
-                relation=rel, metric="rate",
-                source_field=source_field,
-                source_text=sent_orig,
-            ))
+            rel = (
+                "higher_than"
+                if val1 > val2
+                else "lower_than"
+                if val1 < val2
+                else "equal_to"
+            )
+            claims.append(
+                ComparativeClaim(
+                    subject=ent1_n,
+                    object=ent2_n,
+                    relation=rel,
+                    metric="rate",
+                    source_field=source_field,
+                    source_text=sent_orig,
+                )
+            )
 
     # "only X% ... admitted" pattern indicating criticism
     if "only" in sent_l and "%" in sent_l:
         for kw in _ENTITY_KEYWORDS[:6]:  # men/women/male/female/man/woman
             if kw in sent_l:
-                claims.append(ComparativeClaim(
-                    subject="(system)", object=_normalize_entity(kw),
-                    relation="disadvantages",
-                    metric="rate",
-                    source_field=source_field,
-                    source_text=sent_orig,
-                ))
+                claims.append(
+                    ComparativeClaim(
+                        subject="(system)",
+                        object=_normalize_entity(kw),
+                        relation="disadvantages",
+                        metric="rate",
+                        source_field=source_field,
+                        source_text=sent_orig,
+                    )
+                )
                 break
 
 
 # ---------------------------------------------------------------------------
 # Claim verification
 # ---------------------------------------------------------------------------
+
 
 def _invert_relation(rel: str) -> str:
     """Get the inverse of a relation."""
@@ -533,8 +598,9 @@ def _compare_claim_pairs(
     best_c_facts: list[NumericFact] = []
 
     for sf, of in pairs:
-        status, expl = _check_direction(claim.relation, sf.value, of.value,
-                                         claim.subject, claim.object)
+        status, expl = _check_direction(
+            claim.relation, sf.value, of.value, claim.subject, claim.object
+        )
         if status == ClaimTruthStatus.SUPPORTED:
             supported_count += 1
             if not best_expl or "CONTRADICTION" not in best_expl:
@@ -569,28 +635,53 @@ def _compare_claim_pairs(
         )
 
 
-def _check_direction(relation: str, subj_val: float, obj_val: float,
-                     subj_name: str, obj_name: str) -> tuple[ClaimTruthStatus, str]:
+def _check_direction(
+    relation: str, subj_val: float, obj_val: float, subj_name: str, obj_name: str
+) -> tuple[ClaimTruthStatus, str]:
     """Check a single directional comparison."""
     if relation == "higher_than":
         if subj_val > obj_val:
-            return ClaimTruthStatus.SUPPORTED, f"{subj_name} ({subj_val}%) > {obj_name} ({obj_val}%)"
+            return (
+                ClaimTruthStatus.SUPPORTED,
+                f"{subj_name} ({subj_val}%) > {obj_name} ({obj_val}%)",
+            )
         elif subj_val < obj_val:
-            return ClaimTruthStatus.CONTRADICTED, f"CONTRADICTION: {subj_name} ({subj_val}%) < {obj_name} ({obj_val}%) — claim says higher"
+            return (
+                ClaimTruthStatus.CONTRADICTED,
+                f"CONTRADICTION: {subj_name} ({subj_val}%) < {obj_name} ({obj_val}%) — claim says higher",
+            )
         else:
-            return ClaimTruthStatus.CONTRADICTED, f"Values equal ({subj_val}%) — claim says higher"
+            return (
+                ClaimTruthStatus.CONTRADICTED,
+                f"Values equal ({subj_val}%) — claim says higher",
+            )
     elif relation == "lower_than":
         if subj_val < obj_val:
-            return ClaimTruthStatus.SUPPORTED, f"{subj_name} ({subj_val}%) < {obj_name} ({obj_val}%)"
+            return (
+                ClaimTruthStatus.SUPPORTED,
+                f"{subj_name} ({subj_val}%) < {obj_name} ({obj_val}%)",
+            )
         elif subj_val > obj_val:
-            return ClaimTruthStatus.CONTRADICTED, f"CONTRADICTION: {subj_name} ({subj_val}%) > {obj_name} ({obj_val}%) — claim says lower"
+            return (
+                ClaimTruthStatus.CONTRADICTED,
+                f"CONTRADICTION: {subj_name} ({subj_val}%) > {obj_name} ({obj_val}%) — claim says lower",
+            )
         else:
-            return ClaimTruthStatus.CONTRADICTED, f"Values equal ({subj_val}%) — claim says lower"
+            return (
+                ClaimTruthStatus.CONTRADICTED,
+                f"Values equal ({subj_val}%) — claim says lower",
+            )
     elif relation == "equal_to":
         if abs(subj_val - obj_val) < 0.5:
-            return ClaimTruthStatus.SUPPORTED, f"Values approximately equal: {subj_val}% ≈ {obj_val}%"
+            return (
+                ClaimTruthStatus.SUPPORTED,
+                f"Values approximately equal: {subj_val}% ≈ {obj_val}%",
+            )
         else:
-            return ClaimTruthStatus.CONTRADICTED, f"Values differ: {subj_val}% vs {obj_val}%"
+            return (
+                ClaimTruthStatus.CONTRADICTED,
+                f"Values differ: {subj_val}% vs {obj_val}%",
+            )
     return ClaimTruthStatus.UNRESOLVED, f"Cannot verify relation '{relation}'"
 
 
@@ -604,11 +695,13 @@ def check_claims_against_facts(
         return results
     if not facts:
         for claim in claims:
-            results.append(ClaimCheckResult(
-                claim=claim,
-                truth_status=ClaimTruthStatus.UNRESOLVED,
-                explanation="No numeric facts available for verification",
-            ))
+            results.append(
+                ClaimCheckResult(
+                    claim=claim,
+                    truth_status=ClaimTruthStatus.UNRESOLVED,
+                    explanation="No numeric facts available for verification",
+                )
+            )
         return results
 
     # Build fact lookup: entity -> list of NumericFact
@@ -621,11 +714,13 @@ def check_claims_against_facts(
         obj_facts = fact_map.get(claim.object, [])
 
         if not subj_facts and not obj_facts:
-            results.append(ClaimCheckResult(
-                claim=claim,
-                truth_status=ClaimTruthStatus.UNRESOLVED,
-                explanation=f"No numeric facts found for '{claim.subject}' or '{claim.object}'",
-            ))
+            results.append(
+                ClaimCheckResult(
+                    claim=claim,
+                    truth_status=ClaimTruthStatus.UNRESOLVED,
+                    explanation=f"No numeric facts found for '{claim.subject}' or '{claim.object}'",
+                )
+            )
             continue
 
         # Find matching facts (same or compatible metric type)
@@ -633,27 +728,45 @@ def check_claims_against_facts(
             if fact_metric == claim_metric:
                 return True
             # "rate" facts are compatible with any rate-like claim metric
-            rate_words = ("rate", "rates", "treatment", "admission", "percentage", "proportion")
-            return fact_metric in rate_words or any(w in claim_metric for w in rate_words)
+            rate_words = (
+                "rate",
+                "rates",
+                "treatment",
+                "admission",
+                "percentage",
+                "proportion",
+            )
+            return fact_metric in rate_words or any(
+                w in claim_metric for w in rate_words
+            )
 
-        subj_vals = [f for f in subj_facts if _metric_compatible(f.metric, claim.metric)]
+        subj_vals = [
+            f for f in subj_facts if _metric_compatible(f.metric, claim.metric)
+        ]
         obj_vals = [f for f in obj_facts if _metric_compatible(f.metric, claim.metric)]
 
         if not subj_vals or not obj_vals:
             # Special case for discrimination claims: check if object entity has facts
-            if claim.relation in ("discriminates_against", "disadvantages") and obj_vals:
-                results.append(ClaimCheckResult(
-                    claim=claim,
-                    truth_status=ClaimTruthStatus.UNRESOLVED,
-                    explanation=f"Found facts for '{claim.object}' but cannot verify discrimination claim without comparison",
-                    supporting_facts=obj_vals,
-                ))
+            if (
+                claim.relation in ("discriminates_against", "disadvantages")
+                and obj_vals
+            ):
+                results.append(
+                    ClaimCheckResult(
+                        claim=claim,
+                        truth_status=ClaimTruthStatus.UNRESOLVED,
+                        explanation=f"Found facts for '{claim.object}' but cannot verify discrimination claim without comparison",
+                        supporting_facts=obj_vals,
+                    )
+                )
             else:
-                results.append(ClaimCheckResult(
-                    claim=claim,
-                    truth_status=ClaimTruthStatus.UNRESOLVED,
-                    explanation=f"Insufficient facts to verify: subj={len(subj_vals)}, obj={len(obj_vals)}",
-                ))
+                results.append(
+                    ClaimCheckResult(
+                        claim=claim,
+                        truth_status=ClaimTruthStatus.UNRESOLVED,
+                        explanation=f"Insufficient facts to verify: subj={len(subj_vals)}, obj={len(obj_vals)}",
+                    )
+                )
             continue
 
         # Compare: check ALL pairs and pick the strongest signal.
@@ -669,6 +782,7 @@ def check_claims_against_facts(
 # Main entry point
 # ---------------------------------------------------------------------------
 
+
 def run_claim_checks(task: Task, parsed: AgentResponse) -> list[ClaimCheckResult]:
     """Extract facts and claims from task and response, then cross-check.
 
@@ -682,12 +796,16 @@ def run_claim_checks(task: Task, parsed: AgentResponse) -> list[ClaimCheckResult
     # Ground truth facts from task
     task_facts = extract_numeric_facts(task.prompt, "task_prompt")
     if task.reference_solution:
-        task_facts.extend(extract_numeric_facts(task.reference_solution, "reference_solution"))
+        task_facts.extend(
+            extract_numeric_facts(task.reference_solution, "reference_solution")
+        )
 
     # v0.4.2: Also extract probability facts from task prompt and reference
     task_facts.extend(extract_probability_facts(task.prompt, "task_prompt"))
     if task.reference_solution:
-        task_facts.extend(extract_probability_facts(task.reference_solution, "reference_solution"))
+        task_facts.extend(
+            extract_probability_facts(task.reference_solution, "reference_solution")
+        )
 
     # Agent-computed facts from steps
     agent_facts: list[NumericFact] = []
@@ -707,7 +825,9 @@ def run_claim_checks(task: Task, parsed: AgentResponse) -> list[ClaimCheckResult
         claims.extend(extract_comparative_claims(kc, f"key_claims[{i}]"))
 
     # v0.4.2: probability direction claims (Monty Hall, etc.)
-    claims.extend(extract_probability_direction_claims(parsed.final_answer, "final_answer"))
+    claims.extend(
+        extract_probability_direction_claims(parsed.final_answer, "final_answer")
+    )
     for i, step in enumerate(parsed.steps):
         claims.extend(extract_probability_direction_claims(step, f"steps[{i}]"))
 
@@ -731,15 +851,22 @@ def run_claim_checks(task: Task, parsed: AgentResponse) -> list[ClaimCheckResult
 # for obvious decimal/fraction/probability-direction claims.
 
 _PROB_ENTITY_KEYWORDS = [
-    "disease", "positive", "car", "switch", "stay", "door",
-    "door 1", "door 2", "door 3",
+    "disease",
+    "positive",
+    "car",
+    "switch",
+    "stay",
+    "door",
+    "door 1",
+    "door 2",
+    "door 3",
 ]
 
 # Matches "probability is 9%", "probability ... is approximately 9%",
 # "≈ 9%", etc.  Allows intervening words between keyword and value.
 _PROB_DECIMAL_RE = re.compile(
     r"(?:probability|chance|likelihood)"
-    r"(?:\s+\w+){0,8}\s+"          # up to 8 intervening words
+    r"(?:\s+\w+){0,8}\s+"  # up to 8 intervening words
     r"(?:is|=|:)\s*"
     r"(?:approximately?\s*|about\s*|roughly\s*|≈\s*)?"
     r"(\d+(?:\.\d+)?)\s*(%)?",
@@ -786,11 +913,15 @@ def extract_probability_facts(text: str, source_field: str) -> list[NumericFact]
         key = (entity, round(val, 2))
         if key not in seen:
             seen.add(key)
-            facts.append(NumericFact(
-                entity=entity, metric="probability",
-                value=round(val, 2), source_field=source_field,
-                context="probability",
-            ))
+            facts.append(
+                NumericFact(
+                    entity=entity,
+                    metric="probability",
+                    value=round(val, 2),
+                    source_field=source_field,
+                    context="probability",
+                )
+            )
 
     sentences = re.split(r"(?<!\d)\.(?!\d)|\n", text)
     for sent in sentences:
@@ -810,7 +941,7 @@ def extract_probability_facts(text: str, source_field: str) -> list[NumericFact]
         if p_matches:
             for p_match in p_matches:
                 p_expr = p_match.group(1)  # content inside P(...)
-                chain = p_match.group(2)   # the value chain after =
+                chain = p_match.group(2)  # the value chain after =
                 # Derive entity from P()-expression if possible
                 p_entity = _guess_probability_entity(p_expr.lower()) or entity
                 # Find last percentage in chain
@@ -874,9 +1005,19 @@ def _guess_probability_entity(text: str) -> str:
     """Guess what probability entity a sentence is about."""
     text_l = text.lower()
     # Monty Hall entities — match "door 2", "car=2", "switch", etc.
-    if "door 2" in text_l or "car=2" in text_l or "car = 2" in text_l or "switch" in text_l:
+    if (
+        "door 2" in text_l
+        or "car=2" in text_l
+        or "car = 2" in text_l
+        or "switch" in text_l
+    ):
         return "door_2_switch"
-    if "door 1" in text_l or "car=1" in text_l or "car = 1" in text_l or "stay" in text_l:
+    if (
+        "door 1" in text_l
+        or "car=1" in text_l
+        or "car = 1" in text_l
+        or "stay" in text_l
+    ):
         return "door_1_stay"
     if "door 3" in text_l or "car=3" in text_l or "car = 3" in text_l:
         return "door_3"
@@ -911,7 +1052,8 @@ _PROB_EQUAL_PATTERNS = [
 
 
 def extract_probability_direction_claims(
-    text: str, source_field: str,
+    text: str,
+    source_field: str,
 ) -> list[ComparativeClaim]:
     """Extract directional probability claims (switch vs stay, etc.).
 
@@ -922,20 +1064,30 @@ def extract_probability_direction_claims(
 
     for pat in _PROB_HIGHER_PATTERNS:
         if re.search(pat, text_l):
-            claims.append(ComparativeClaim(
-                subject="door_2_switch", object="door_1_stay",
-                relation="higher_than", metric="probability",
-                source_field=source_field, source_text=text[:200],
-            ))
+            claims.append(
+                ComparativeClaim(
+                    subject="door_2_switch",
+                    object="door_1_stay",
+                    relation="higher_than",
+                    metric="probability",
+                    source_field=source_field,
+                    source_text=text[:200],
+                )
+            )
             break
 
     for pat in _PROB_EQUAL_PATTERNS:
         if re.search(pat, text_l):
-            claims.append(ComparativeClaim(
-                subject="door_2_switch", object="door_1_stay",
-                relation="equal_to", metric="probability",
-                source_field=source_field, source_text=text[:200],
-            ))
+            claims.append(
+                ComparativeClaim(
+                    subject="door_2_switch",
+                    object="door_1_stay",
+                    relation="equal_to",
+                    metric="probability",
+                    source_field=source_field,
+                    source_text=text[:200],
+                )
+            )
             break
 
     return claims

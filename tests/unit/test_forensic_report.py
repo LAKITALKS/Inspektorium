@@ -43,8 +43,11 @@ def all_fixture_names() -> list[str]:
 
 def base_input(**over) -> dict:
     inp = {
-        "meta": {"synthetic_fixture": True, "generated_at": "2026-08-05T12:00:00+00:00",
-                 "report_id": "FR-TEST"},
+        "meta": {
+            "synthetic_fixture": True,
+            "generated_at": "2026-08-05T12:00:00+00:00",
+            "report_id": "FR-TEST",
+        },
         "claim": {"claim_text": "Drug Q reduced a marker by 30% in one small trial."},
         "verdict": {"predicted_label": "overclaim", "confidence": 0.7},
     }
@@ -56,6 +59,7 @@ def base_input(**over) -> dict:
 # ---------------------------------------------------------------------------
 # All fixtures build and validate
 # ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("name", all_fixture_names())
 def test_every_fixture_builds_and_validates(name):
@@ -70,12 +74,16 @@ def test_every_fixture_builds_and_validates(name):
 # All four frozen labels + label/title consistency
 # ---------------------------------------------------------------------------
 
-@pytest.mark.parametrize("name,label", [
-    ("01_solid", "solid"),
-    ("02_overclaim", "overclaim"),
-    ("03_correlation_vs_causation", "correlation_vs_causation"),
-    ("04_mechanism_vs_evidence", "mechanism_vs_evidence"),
-])
+
+@pytest.mark.parametrize(
+    "name,label",
+    [
+        ("01_solid", "solid"),
+        ("02_overclaim", "overclaim"),
+        ("03_correlation_vs_causation", "correlation_vs_causation"),
+        ("04_mechanism_vs_evidence", "mechanism_vs_evidence"),
+    ],
+)
 def test_four_labels_present_and_titled(name, label):
     report = build_forensic_report(load(name))
     assert report["verdict"]["predicted_label"] == label
@@ -100,10 +108,13 @@ def test_mechanism_vs_evidence_is_biologically_scoped():
 # Unknown label rejected
 # ---------------------------------------------------------------------------
 
+
 def test_unknown_label_rejected():
     with pytest.raises(ForensicReportError):
         build_forensic_report(base_input(verdict={"predicted_label": "made_up_label"}))
-    ok, errs = validate_forensic_report_input(base_input(verdict={"predicted_label": "made_up_label"}))
+    ok, errs = validate_forensic_report_input(
+        base_input(verdict={"predicted_label": "made_up_label"})
+    )
     assert not ok
     assert any("frozen label" in e for e in errs)
 
@@ -112,6 +123,7 @@ def test_unknown_label_rejected():
 # Confidence semantics — VALID / MISSING / INVALID, no 0.0 coercion
 # ---------------------------------------------------------------------------
 
+
 def test_missing_confidence_not_coerced_to_zero():
     report = build_forensic_report(base_input(verdict={"predicted_label": "overclaim"}))
     assert report["verdict"]["confidence_status"] == "MISSING"
@@ -119,13 +131,17 @@ def test_missing_confidence_not_coerced_to_zero():
 
 
 def test_explicit_null_confidence_is_missing():
-    report = build_forensic_report(base_input(verdict={"predicted_label": "overclaim", "confidence": None}))
+    report = build_forensic_report(
+        base_input(verdict={"predicted_label": "overclaim", "confidence": None})
+    )
     assert report["verdict"]["confidence_status"] == "MISSING"
     assert report["verdict"]["confidence_value"] is None
 
 
 def test_bool_confidence_rejected_as_invalid():
-    report = build_forensic_report(base_input(verdict={"predicted_label": "overclaim", "confidence": True}))
+    report = build_forensic_report(
+        base_input(verdict={"predicted_label": "overclaim", "confidence": True})
+    )
     assert report["verdict"]["confidence_status"] == "INVALID"
     assert report["verdict"]["confidence_value"] is None
     # and a report whose confidence_value is a bool must fail output validation
@@ -137,13 +153,17 @@ def test_bool_confidence_rejected_as_invalid():
 
 def test_out_of_range_confidence_is_invalid():
     for bad in (1.5, -0.1):
-        report = build_forensic_report(base_input(verdict={"predicted_label": "overclaim", "confidence": bad}))
+        report = build_forensic_report(
+            base_input(verdict={"predicted_label": "overclaim", "confidence": bad})
+        )
         assert report["verdict"]["confidence_status"] == "INVALID"
         assert report["verdict"]["confidence_value"] is None
 
 
 def test_zero_confidence_is_valid_not_missing():
-    report = build_forensic_report(base_input(verdict={"predicted_label": "overclaim", "confidence": 0.0}))
+    report = build_forensic_report(
+        base_input(verdict={"predicted_label": "overclaim", "confidence": 0.0})
+    )
     assert report["verdict"]["confidence_status"] == "VALID"
     assert report["verdict"]["confidence_value"] == 0.0
 
@@ -157,6 +177,7 @@ def test_invalid_confidence_preserved_from_fixture():
 # ---------------------------------------------------------------------------
 # Parser failure produces a failure report, not a verdict
 # ---------------------------------------------------------------------------
+
 
 def test_parser_failure_status_and_no_verdict():
     report = build_forensic_report(load("08_parser_failure"))
@@ -180,7 +201,10 @@ def test_parser_failure_cannot_masquerade_as_complete():
 
 
 def test_insufficient_input_when_no_label():
-    raw = {"meta": {"synthetic_fixture": True}, "claim": {"claim_text": "A synthetic claim."}}
+    raw = {
+        "meta": {"synthetic_fixture": True},
+        "claim": {"claim_text": "A synthetic claim."},
+    }
     report = build_forensic_report(raw)
     assert report["analysis_status"] == "insufficient_input"
     assert report["verdict"]["predicted_label"] is None
@@ -189,6 +213,7 @@ def test_insufficient_input_when_no_label():
 # ---------------------------------------------------------------------------
 # Missing data stays explicit; nothing invented
 # ---------------------------------------------------------------------------
+
 
 def test_empty_evidence_list_preserved_and_visible():
     report = build_forensic_report(load("12_empty_evidence"))
@@ -214,6 +239,7 @@ def test_missing_reader_impact_is_unknown():
 # Rewrite guard — no unsupported new facts
 # ---------------------------------------------------------------------------
 
+
 def test_rewrite_with_new_number_is_blocked():
     report = build_forensic_report(load("10_no_safe_rewrite"))
     rev = report["recommended_revision"]
@@ -225,8 +251,11 @@ def test_rewrite_with_new_number_is_blocked():
 
 
 def test_rewrite_without_new_facts_is_clean_but_unverified():
-    raw = base_input(recommended_revision={
-        "defensible_rewrite": "In one small trial, drug Q reduced a marker by 30%."})
+    raw = base_input(
+        recommended_revision={
+            "defensible_rewrite": "In one small trial, drug Q reduced a marker by 30%."
+        }
+    )
     report = build_forensic_report(raw)
     rev = report["recommended_revision"]
     assert rev["rewrite_guard"]["status"] == "clean"
@@ -237,6 +266,7 @@ def test_rewrite_without_new_facts_is_clean_but_unverified():
 
 
 # --- Curator rewrite-safety gate: six required conditions -----------------------
+
 
 def test_no_rewrite_supplied():
     report = build_forensic_report(base_input())  # no recommended_revision block
@@ -255,18 +285,28 @@ def test_no_safe_rewrite_available_is_stated():
 
 
 def test_supplied_rewrite_marked_unverified_not_verified():
-    raw = base_input(recommended_revision={
-        "defensible_rewrite": "In one small trial, drug Q reduced a marker by 30%.",
-        "rewrite_rationale": "Bounds the claim to the trial."})
+    raw = base_input(
+        recommended_revision={
+            "defensible_rewrite": "In one small trial, drug Q reduced a marker by 30%.",
+            "rewrite_rationale": "Bounds the claim to the trial.",
+        }
+    )
     report = build_forensic_report(raw)
-    assert report["recommended_revision"]["rewrite_verification"] == "unverified_proposal"
+    assert (
+        report["recommended_revision"]["rewrite_verification"] == "unverified_proposal"
+    )
     full = render_forensic_report_markdown(report)
     execmd = render_executive_summary(report)
     # the unverified-proposal limitation is preserved in BOTH views
     assert "Unverified proposal" in full
     assert "unverified proposal" in execmd.lower()
     # never labelled as evidence/factually verified
-    for bad in ("evidence-verified", "factually verified", "verified as accurate", "confirmed accurate"):
+    for bad in (
+        "evidence-verified",
+        "factually verified",
+        "verified as accurate",
+        "confirmed accurate",
+    ):
         assert bad not in full.lower()
         assert bad not in execmd.lower()
 
@@ -274,8 +314,11 @@ def test_supplied_rewrite_marked_unverified_not_verified():
 def test_builder_and_renderers_never_invent_rewrite_text():
     # a distinctive rewrite string must appear verbatim and nothing is synthesized when absent
     marker = "ZZ-DISTINCT-REWRITE-STRING"
-    raw = base_input(recommended_revision={
-        "defensible_rewrite": f"In one small trial, drug Q reduced a marker by 30%. {marker}"})
+    raw = base_input(
+        recommended_revision={
+            "defensible_rewrite": f"In one small trial, drug Q reduced a marker by 30%. {marker}"
+        }
+    )
     report = build_forensic_report(raw)
     assert marker in report["recommended_revision"]["defensible_rewrite"]
     # when no rewrite is supplied, defensible_rewrite is null (never fabricated)
@@ -286,8 +329,11 @@ def test_builder_and_renderers_never_invent_rewrite_text():
 
 
 def test_report_validator_rejects_present_rewrite_not_marked_unverified():
-    raw = base_input(recommended_revision={
-        "defensible_rewrite": "In one small trial, drug Q reduced a marker by 30%."})
+    raw = base_input(
+        recommended_revision={
+            "defensible_rewrite": "In one small trial, drug Q reduced a marker by 30%."
+        }
+    )
     report = build_forensic_report(raw)
     # tamper: a present rewrite mislabeled as no_rewrite_supplied must fail validation
     report["recommended_revision"]["rewrite_verification"] = "no_rewrite_supplied"
@@ -297,14 +343,20 @@ def test_report_validator_rejects_present_rewrite_not_marked_unverified():
 
 
 def test_failure_mode_requires_rationale():
-    raw = base_input(failure_modes={"detected": [{"mode": "conclusion_exceeds_results", "rationale": ""}]})
+    raw = base_input(
+        failure_modes={
+            "detected": [{"mode": "conclusion_exceeds_results", "rationale": ""}]
+        }
+    )
     ok, errs = validate_forensic_report_input(raw)
     assert not ok
     assert any("rationale" in e for e in errs)
 
 
 def test_unknown_failure_mode_rejected():
-    raw = base_input(failure_modes={"detected": [{"mode": "not_a_mode", "rationale": "x"}]})
+    raw = base_input(
+        failure_modes={"detected": [{"mode": "not_a_mode", "rationale": "x"}]}
+    )
     ok, errs = validate_forensic_report_input(raw)
     assert not ok
     assert any("failure mode" in e for e in errs)
@@ -314,9 +366,13 @@ def test_unknown_failure_mode_rejected():
 # Classification is not proof of falsity
 # ---------------------------------------------------------------------------
 
+
 def test_classification_not_presented_as_falsity():
     report = build_forensic_report(load("02_overclaim"))
-    assert "not, by itself, proof that the claim is factually false" in report["verdict"]["classification_note"]
+    assert (
+        "not, by itself, proof that the claim is factually false"
+        in report["verdict"]["classification_note"]
+    )
     md = render_forensic_report_markdown(report)
     assert "factually false" in md
 
@@ -324,6 +380,7 @@ def test_classification_not_presented_as_falsity():
 # ---------------------------------------------------------------------------
 # Risk vocabulary
 # ---------------------------------------------------------------------------
+
 
 def test_invalid_risk_level_rejected():
     raw = base_input(reader_impact={"risk_level": "catastrophic"})
@@ -342,8 +399,17 @@ def test_valid_risk_levels_accepted(level):
 # Executive summary and full report share the same verdict
 # ---------------------------------------------------------------------------
 
-@pytest.mark.parametrize("name", ["01_solid", "02_overclaim", "04_mechanism_vs_evidence",
-                                  "06_invalid_confidence", "09_high_reader_impact"])
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        "01_solid",
+        "02_overclaim",
+        "04_mechanism_vs_evidence",
+        "06_invalid_confidence",
+        "09_high_reader_impact",
+    ],
+)
 def test_exec_and_full_share_verdict(name):
     report = build_forensic_report(load(name))
     full = render_forensic_report_markdown(report)
@@ -356,7 +422,9 @@ def test_exec_and_full_share_verdict(name):
 
 
 def test_exec_summary_preserves_material_uncertainty_and_warnings():
-    report = build_forensic_report(load("06_invalid_confidence"))  # INVALID confidence → material
+    report = build_forensic_report(
+        load("06_invalid_confidence")
+    )  # INVALID confidence → material
     execmd = render_executive_summary(report)
     assert "INVALID" in execmd
     # warnings must be visible in exec summary
@@ -378,6 +446,7 @@ def test_markdown_includes_all_material_warnings():
 # Determinism
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("name", all_fixture_names())
 def test_deterministic_json_and_markdown(name):
     raw = load(name)
@@ -396,10 +465,14 @@ def test_one_char_input_change_changes_digest():
     raw2 = json.loads(json.dumps(raw))
     raw2["claim"]["claim_text"] = raw2["claim"]["claim_text"] + "."
     r2 = build_forensic_report(raw2)
-    assert (r1["provenance"]["report_generation_digest_sha256"]
-            != r2["provenance"]["report_generation_digest_sha256"])
-    assert (r1["provenance"]["input_digest_sha256"]
-            != r2["provenance"]["input_digest_sha256"])
+    assert (
+        r1["provenance"]["report_generation_digest_sha256"]
+        != r2["provenance"]["report_generation_digest_sha256"]
+    )
+    assert (
+        r1["provenance"]["input_digest_sha256"]
+        != r2["provenance"]["input_digest_sha256"]
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -434,6 +507,7 @@ def test_private_identifiers_and_paths_rejected(leak):
 # Unexpected fields rejected where frozen
 # ---------------------------------------------------------------------------
 
+
 def test_unexpected_top_level_field_rejected():
     raw = base_input()
     raw["surprise"] = 1
@@ -443,7 +517,9 @@ def test_unexpected_top_level_field_rejected():
 
 
 def test_unexpected_evidence_item_field_rejected():
-    raw = base_input(evidence={"evidence_items": [{"text": "x", "tier": "animal", "bogus": 1}]})
+    raw = base_input(
+        evidence={"evidence_items": [{"text": "x", "tier": "animal", "bogus": 1}]}
+    )
     ok, errs = validate_forensic_report_input(raw)
     assert not ok
     assert any("unexpected" in e for e in errs)
@@ -452,6 +528,7 @@ def test_unexpected_evidence_item_field_rejected():
 # ---------------------------------------------------------------------------
 # Visibility of status/version/synthetic flag
 # ---------------------------------------------------------------------------
+
 
 def test_schema_version_and_synthetic_flag_visible():
     report = build_forensic_report(base_input())
@@ -472,10 +549,18 @@ def test_synthetic_defaults_true_when_absent():
 # No hidden threshold / model-selection logic
 # ---------------------------------------------------------------------------
 
+
 def test_no_threshold_or_model_selection_logic():
     src = Path(fr.__file__).read_text()
-    for forbidden in ("select_operating_threshold", "argmax", "def select_", "optimize_threshold"):
+    for forbidden in (
+        "select_operating_threshold",
+        "argmax",
+        "def select_",
+        "optimize_threshold",
+    ):
         assert forbidden not in src, f"forbidden construct present: {forbidden}"
     # no public function chooses a winner / threshold
     public = [n for n in dir(fr) if not n.startswith("_")]
-    assert not any(n.startswith(("select", "choose", "optimize", "rank_best")) for n in public)
+    assert not any(
+        n.startswith(("select", "choose", "optimize", "rank_best")) for n in public
+    )

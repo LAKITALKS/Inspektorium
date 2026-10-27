@@ -9,7 +9,10 @@ from inspektorium.audit.execution.evaluator import evaluate_run
 from inspektorium.audit.review.pipeline import refresh_run_phase9
 from inspektorium.audit.review.routing import case_key
 from inspektorium.audit.review.runtime import (
-    OfflineReviewProvider, execute_review, replay_review, submit_human_review,
+    OfflineReviewProvider,
+    execute_review,
+    replay_review,
+    submit_human_review,
 )
 from inspektorium.audit.execution.runner import run_agent
 from tests.unit.test_review_runtime import fixture
@@ -20,28 +23,42 @@ def reviewed_case(tmp_path):
     task, positive = fixture("supported")
     _, negative = fixture("contradicted")
     _, unknown = fixture("unknown")
-    original = evaluate_run(task, "originals", [
-        run_agent(OfflineReviewProvider(positive), task),
-        run_agent(OfflineReviewProvider(negative), task),
-    ])
+    original = evaluate_run(
+        task,
+        "originals",
+        [
+            run_agent(OfflineReviewProvider(positive), task),
+            run_agent(OfflineReviewProvider(negative), task),
+        ],
+    )
     provider = OfflineReviewProvider(unknown)
-    reviewed = execute_review(original, provider, base_dir=tmp_path / "source",
-                              authorized=True, budget_calls=1)
+    reviewed = execute_review(
+        original,
+        provider,
+        base_dir=tmp_path / "source",
+        authorized=True,
+        budget_calls=1,
+    )
     assert len(reviewed.metadata["phase9"]["positions"]) == 3
     assert len(provider.requests) == 1
     return original, reviewed, provider
 
 
 def files(base):
-    return {str(p.relative_to(base)): p.read_bytes() for p in base.rglob("*")
-            if p.is_file() and p.suffix != ".lock"}
+    return {
+        str(p.relative_to(base)): p.read_bytes()
+        for p in base.rglob("*")
+        if p.is_file() and p.suffix != ".lock"
+    }
 
 
 def submit(record, base):
     return submit_human_review(
-        record, base_dir=base,
+        record,
+        base_dir=base,
         selected_position_id=record.metadata["phase9"]["positions"][0]["position_id"],
-        reviewer_provenance="Explicit offline host reviewer", reason="All positions reviewed",
+        reviewer_provenance="Explicit offline host reviewer",
+        reason="All positions reviewed",
     )
 
 
@@ -54,7 +71,9 @@ def assert_rejected_unchanged(record, base):
 
 
 @pytest.mark.parametrize("sidecar", [False, True])
-def test_older_metadata_cannot_discard_newer_result_history(reviewed_case, tmp_path, sidecar):
+def test_older_metadata_cannot_discard_newer_result_history(
+    reviewed_case, tmp_path, sidecar
+):
     original, reviewed, provider = reviewed_case
     base = tmp_path / "destination"
     if sidecar:
@@ -66,11 +85,15 @@ def test_older_metadata_cannot_discard_newer_result_history(reviewed_case, tmp_p
 
 
 @pytest.mark.parametrize("sidecar", [False, True])
-def test_consistent_executed_import_human_and_replay_keep_all_layers(reviewed_case, tmp_path, sidecar):
+def test_consistent_executed_import_human_and_replay_keep_all_layers(
+    reviewed_case, tmp_path, sidecar
+):
     _, reviewed, provider = reviewed_case
     base = tmp_path / "destination"
     if sidecar:
-        execute_review(reviewed, provider, base_dir=base, authorized=True, budget_calls=1)
+        execute_review(
+            reviewed, provider, base_dir=base, authorized=True, budget_calls=1
+        )
     before = reviewed.model_dump(mode="json")
     result = submit(reviewed, base)
     data = result.metadata["phase9"]
@@ -88,23 +111,41 @@ def test_consistent_executed_import_human_and_replay_keep_all_layers(reviewed_ca
     assert reviewed.model_dump(mode="json") == before
 
 
-def test_valid_older_result_subset_is_covered_by_complete_metadata(reviewed_case, tmp_path):
+def test_valid_older_result_subset_is_covered_by_complete_metadata(
+    reviewed_case, tmp_path
+):
     original, reviewed, provider = reviewed_case
     incoming = reviewed.model_copy(deep=True)
     incoming.results[0].agent_result.phase9 = deepcopy(original.metadata["phase9"])
     result = submit(incoming, tmp_path / "covered")
-    assert result.metadata["phase9"]["positions"] == reviewed.metadata["phase9"]["positions"]
+    assert (
+        result.metadata["phase9"]["positions"]
+        == reviewed.metadata["phase9"]["positions"]
+    )
     assert len(result.metadata["phase9"]["adjudications"]) == 2
     assert len(provider.requests) == 1
 
 
 @pytest.mark.parametrize("sidecar", [False, True])
-@pytest.mark.parametrize("change", [
-    "position_identity", "position_content", "position_provenance", "source_binding",
-    "attempt_provenance", "attempt_packet", "extra_receipt", "decision_content", "conflict_content",
-    "case_identity", "contract_version",
-])
-def test_conflicting_carrier_content_is_rejected_before_any_write(reviewed_case, tmp_path, sidecar, change):
+@pytest.mark.parametrize(
+    "change",
+    [
+        "position_identity",
+        "position_content",
+        "position_provenance",
+        "source_binding",
+        "attempt_provenance",
+        "attempt_packet",
+        "extra_receipt",
+        "decision_content",
+        "conflict_content",
+        "case_identity",
+        "contract_version",
+    ],
+)
+def test_conflicting_carrier_content_is_rejected_before_any_write(
+    reviewed_case, tmp_path, sidecar, change
+):
     _, reviewed, _ = reviewed_case
     base = tmp_path / "destination"
     if sidecar:
@@ -120,19 +161,27 @@ def test_conflicting_carrier_content_is_rejected_before_any_write(reviewed_case,
     elif change == "position_provenance":
         carrier["positions"][0]["provider"] = "different-reviewer"
     elif change == "source_binding":
-        carrier["positions"][0]["forensic_record"]["evidence"][0]["source_id"] = "elsewhere"
+        carrier["positions"][0]["forensic_record"]["evidence"][0]["source_id"] = (
+            "elsewhere"
+        )
     elif change == "attempt_provenance":
         carrier["attempts"][0]["code_version"] = "different-execution-version"
     elif change == "attempt_packet":
         carrier["attempts"][0]["packet_sha256"] = "different-challenge"
     elif change == "extra_receipt":
-        carrier["attempts"].append({"kind": "stability", "status": "denied", "reason": "No grant"})
+        carrier["attempts"].append(
+            {"kind": "stability", "status": "denied", "reason": "No grant"}
+        )
     elif change == "decision_content":
-        carrier["adjudications"][0]["reason"] = "Different justification under the same decision ID"
+        carrier["adjudications"][0]["reason"] = (
+            "Different justification under the same decision ID"
+        )
     elif change == "conflict_content":
         carrier["conflicts"][0]["material"] = False
     else:
-        carrier["case_id" if change == "case_identity" else "contract_version"] = "different-binding"
+        carrier["case_id" if change == "case_identity" else "contract_version"] = (
+            "different-binding"
+        )
     assert_rejected_unchanged(incoming, base)
 
 
@@ -143,7 +192,9 @@ def test_same_raw_bytes_do_not_hide_changed_original_provider(reviewed_case, tmp
     assert_rejected_unchanged(incoming, tmp_path / "destination")
 
 
-def test_refresh_and_replay_preserve_divergent_carriers_without_success(reviewed_case, tmp_path):
+def test_refresh_and_replay_preserve_divergent_carriers_without_success(
+    reviewed_case, tmp_path
+):
     original, reviewed, provider = reviewed_case
     incoming = reviewed.model_copy(update={"metadata": deepcopy(original.metadata)})
     before = incoming.model_dump(mode="json")
@@ -151,7 +202,9 @@ def test_refresh_and_replay_preserve_divergent_carriers_without_success(reviewed
     assert refreshed.metadata["phase9"]["history_validation"] == "invalid"
     assert refreshed.metadata["phase9"]["route"] == "UNRESOLVED"
     assert refreshed.metadata["phase9"]["execution_status"] != "completed"
-    assert [r.agent_result.phase9 for r in refreshed.results] == [r.agent_result.phase9 for r in incoming.results]
+    assert [r.agent_result.phase9 for r in refreshed.results] == [
+        r.agent_result.phase9 for r in incoming.results
+    ]
     base = tmp_path / "persisted-import"
     path = base / "phase9" / f"{case_key(incoming.task)}.json"
     path.parent.mkdir(parents=True)
@@ -159,13 +212,17 @@ def test_refresh_and_replay_preserve_divergent_carriers_without_success(reviewed
     disk = files(base)
     replay = replay_review(incoming.task, base_dir=base)
     assert replay.metadata["phase9"]["route"] == "UNRESOLVED"
-    assert [r.agent_result.phase9 for r in replay.results] == [r.agent_result.phase9 for r in incoming.results]
+    assert [r.agent_result.phase9 for r in replay.results] == [
+        r.agent_result.phase9 for r in incoming.results
+    ]
     assert files(base) == disk
     assert incoming.model_dump(mode="json") == before
     assert len(provider.requests) == 1
 
 
-def test_stored_result_carrier_is_checked_even_with_consistent_incoming(reviewed_case, tmp_path):
+def test_stored_result_carrier_is_checked_even_with_consistent_incoming(
+    reviewed_case, tmp_path
+):
     original, reviewed, _ = reviewed_case
     base = tmp_path / "destination"
     divergent = reviewed.model_copy(update={"metadata": deepcopy(original.metadata)})
@@ -175,15 +232,24 @@ def test_stored_result_carrier_is_checked_even_with_consistent_incoming(reviewed
     assert_rejected_unchanged(original, base)
 
 
-def test_partial_result_carrier_population_without_metadata_keeps_executed_history(reviewed_case, tmp_path):
+def test_partial_result_carrier_population_without_metadata_keeps_executed_history(
+    reviewed_case, tmp_path
+):
     _, reviewed, provider = reviewed_case
     incoming = reviewed.model_copy(deep=True)
     incoming.metadata = {}
     incoming.results[0].agent_result.phase9 = {}
     selected = reviewed.metadata["phase9"]["positions"][0]["position_id"]
-    result = submit_human_review(incoming, base_dir=tmp_path / "partial-carriers",
-                                 selected_position_id=selected, reviewer_provenance="Offline host",
-                                 reason="Full history supplied in the other result carrier")
-    assert result.metadata["phase9"]["positions"] == reviewed.metadata["phase9"]["positions"]
+    result = submit_human_review(
+        incoming,
+        base_dir=tmp_path / "partial-carriers",
+        selected_position_id=selected,
+        reviewer_provenance="Offline host",
+        reason="Full history supplied in the other result carrier",
+    )
+    assert (
+        result.metadata["phase9"]["positions"]
+        == reviewed.metadata["phase9"]["positions"]
+    )
     assert len(result.metadata["phase9"]["adjudications"]) == 2
     assert len(provider.requests) == 1

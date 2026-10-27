@@ -14,8 +14,13 @@ ScientificState = Literal["supported", "unsupported", "contradicted", "unknown"]
 TechnicalStatus = Literal["completed", "not_executed", "incomplete"]
 Directness = Literal["direct", "partial", "indirect", "remote", "unknown"]
 Observation = Literal[
-    "support", "no_evidence_found", "search_incomplete", "no_effect_observed",
-    "contradiction", "inconclusive", "unknown",
+    "support",
+    "no_evidence_found",
+    "search_incomplete",
+    "no_effect_observed",
+    "contradiction",
+    "inconclusive",
+    "unknown",
 ]
 
 
@@ -61,8 +66,14 @@ class EvidenceBinding(StrictModel):
 class EvidenceDescription(StrictModel):
     evidence_id: str = Field(min_length=1)
     evidence_type: Literal[
-        "descriptive", "observational", "mechanistic", "in_vitro", "animal",
-        "controlled_intervention", "review", "unknown",
+        "descriptive",
+        "observational",
+        "mechanistic",
+        "in_vitro",
+        "animal",
+        "controlled_intervention",
+        "review",
+        "unknown",
     ] = "unknown"
     source_role: str = Field(min_length=1)
     attributes: SemanticAttributes
@@ -92,7 +103,10 @@ class ProductTransfer(StrictModel):
     transfer_id: str = Field(min_length=1)
     binding_id: str = Field(min_length=1)
     state: Literal[
-        "direct_match", "supported_transfer", "unsupported_transfer", "unknown_transfer",
+        "direct_match",
+        "supported_transfer",
+        "unsupported_transfer",
+        "unknown_transfer",
     ]
     dimensions: list[str] = Field(default_factory=list)
     evidence_ids: list[str] = Field(default_factory=list)

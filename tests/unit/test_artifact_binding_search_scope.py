@@ -20,8 +20,13 @@ from inspektorium.audit.integrity.artifact_binding import (
     load_forensic_record,
 )
 
-FIXTURE = (Path(__file__).resolve().parents[1] / "fixtures" / "audit" / "pipeline_qa"
-           / "qa_search_scope_negative_language.json")
+FIXTURE = (
+    Path(__file__).resolve().parents[1]
+    / "fixtures"
+    / "audit"
+    / "pipeline_qa"
+    / "qa_search_scope_negative_language.json"
+)
 
 
 def base_record():
@@ -51,6 +56,7 @@ def _make_source_local(rec):
 
 # --- Test A — source-local safe -------------------------------------------------
 
+
 def test_A_source_local_safe_passes():
     rec = base_record()
     _make_source_local(rec)
@@ -61,6 +67,7 @@ def test_A_source_local_safe_passes():
 
 
 # --- Test B — source-local -> world claim ---------------------------------------
+
 
 def test_B_source_local_to_world_blocked():
     rec = base_record()
@@ -73,6 +80,7 @@ def test_B_source_local_to_world_blocked():
 
 # --- Test C — reviewed-set safe -------------------------------------------------
 
+
 def test_C_reviewed_set_safe_passes():
     rec = base_record()
     ss(rec).scope_type = "reviewed_set"
@@ -82,6 +90,7 @@ def test_C_reviewed_set_safe_passes():
 
 
 # --- Test D — reviewed-set -> structured-search claim ---------------------------
+
 
 def test_D_reviewed_set_to_structured_blocked():
     rec = base_record()
@@ -94,6 +103,7 @@ def test_D_reviewed_set_to_structured_blocked():
 
 # --- Test E — documented structured search safe (base) --------------------------
 
+
 def test_E_documented_search_safe_passes():
     rec = base_record()
     assert cna(rec).client_scope == "documented_search"
@@ -103,6 +113,7 @@ def test_E_documented_search_safe_passes():
 
 
 # --- Test F — documented search -> global non-existence (core regression) --------
+
 
 def test_F_documented_search_to_global_blocked():
     rec = base_record()
@@ -114,11 +125,12 @@ def test_F_documented_search_to_global_blocked():
 
 # --- Test G — missing search scope ----------------------------------------------
 
+
 def test_G_missing_search_scope_blocked():
     rec = base_record()
     na(rec).search_scope_id = None
-    na(rec).source_local_evidence_ids = []     # no basis of any kind
-    cna(rec).client_scope = "reviewed_set"      # search-dependent claim
+    na(rec).source_local_evidence_ids = []  # no basis of any kind
+    cna(rec).client_scope = "reviewed_set"  # search-dependent claim
     result = final_binding_check(rec)
     assert result.releasable is False
     assert QA_UNRESOLVED_SEARCH_SCOPE in result.codes()
@@ -126,23 +138,26 @@ def test_G_missing_search_scope_blocked():
 
 # --- Test H — source-local needs no fabricated search ---------------------------
 
+
 def test_H_source_local_needs_no_search_metadata():
     rec = base_record()
     _make_source_local(rec)
     cna(rec).client_scope = "source_local"
-    assert na(rec).search_scope_id is None      # no SearchScope invented
+    assert na(rec).search_scope_id is None  # no SearchScope invented
     assert final_binding_check(rec).releasable is True
 
 
 # --- Test I — client may narrow scope -------------------------------------------
 
+
 def test_I_client_may_narrow_scope():
-    rec = base_record()                          # documented_search basis
-    cna(rec).client_scope = "reviewed_set"       # narrower
+    rec = base_record()  # documented_search basis
+    cna(rec).client_scope = "reviewed_set"  # narrower
     assert final_binding_check(rec).releasable is True
 
 
 # --- Test J — client may not broaden scope --------------------------------------
+
 
 def test_J_client_may_not_broaden_scope():
     rec = base_record()
@@ -155,10 +170,11 @@ def test_J_client_may_not_broaden_scope():
 
 # --- Test K — scope independent of confidence -----------------------------------
 
+
 def test_K_scope_independent_of_confidence():
     rec = base_record()
     ss(rec).scope_type = "reviewed_set"
-    rec.findings[0].confidence_status = "VALID"          # high evaluator confidence
+    rec.findings[0].confidence_status = "VALID"  # high evaluator confidence
     cna(rec).client_scope = "global_nonexistence"
     result = final_binding_check(rec)
     assert result.releasable is False
@@ -167,16 +183,22 @@ def test_K_scope_independent_of_confidence():
 
 # --- Test L — scope independent of evidence strength ----------------------------
 
+
 def test_L_scope_independent_of_evidence_strength():
     rec = base_record()
     ss(rec).scope_type = "reviewed_set"
-    rec.findings[0].allowed_summary_strength = "not_supported"   # strong underlying strength
+    rec.findings[
+        0
+    ].allowed_summary_strength = "not_supported"  # strong underlying strength
     rec.client_findings[0].client_strength = "not_supported"
-    cna(rec).client_scope = "reviewed_set"       # scope stays within basis
-    assert QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION not in final_binding_check(rec).codes()
+    cna(rec).client_scope = "reviewed_set"  # scope stays within basis
+    assert (
+        QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION not in final_binding_check(rec).codes()
+    )
 
 
 # --- Section 18 — a documented search needs a machine-readable record ------------
+
 
 def test_documented_search_without_record_is_unresolved():
     rec = base_record()
@@ -184,7 +206,7 @@ def test_documented_search_without_record_is_unresolved():
     s.reviewed_source_ids = []
     s.resources = []
     s.query_terms = []
-    s.date_cutoff = None                          # documented_search with no search record
+    s.date_cutoff = None  # documented_search with no search record
     result = final_binding_check(rec)
     assert result.releasable is False
     assert QA_UNRESOLVED_SEARCH_SCOPE in result.codes()
@@ -192,7 +214,10 @@ def test_documented_search_without_record_is_unresolved():
 
 # --- Slice invariant: scope codes are not claim labels --------------------------
 
+
 def test_scope_codes_are_not_claim_labels():
     assert QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION not in CLAIM_LABELS
     assert QA_UNRESOLVED_SEARCH_SCOPE not in CLAIM_LABELS
-    assert {QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION, QA_UNRESOLVED_SEARCH_SCOPE} <= set(SYSTEM_QA_CODES)
+    assert {QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION, QA_UNRESOLVED_SEARCH_SCOPE} <= set(
+        SYSTEM_QA_CODES
+    )

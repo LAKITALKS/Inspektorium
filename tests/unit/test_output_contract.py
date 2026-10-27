@@ -37,6 +37,7 @@ def _full_payload() -> dict:
 # Happy paths — behavior preserved for valid output
 # ---------------------------------------------------------------------------
 
+
 class TestValidOutput:
     def test_clean_json_object(self):
         resp, diag = parse_structured_output(json.dumps(_full_payload()))
@@ -94,6 +95,7 @@ class TestValidOutput:
 # The original crash case: opening fence with no closing fence
 # ---------------------------------------------------------------------------
 
+
 class TestUnclosedFence:
     def test_unclosed_json_fence_does_not_raise_and_parses(self):
         # Reproduces the live failure: ```json opened, never closed.
@@ -116,6 +118,7 @@ class TestUnclosedFence:
 # ---------------------------------------------------------------------------
 # Malformed / empty / non-JSON
 # ---------------------------------------------------------------------------
+
 
 class TestMalformed:
     def test_pure_garbage(self):
@@ -150,6 +153,7 @@ class TestMalformed:
 # ---------------------------------------------------------------------------
 # Truncated JSON — best-effort repair
 # ---------------------------------------------------------------------------
+
 
 class TestTruncation:
     def test_truncated_list_repaired(self):
@@ -187,6 +191,7 @@ class TestTruncation:
 # finish_reason handling
 # ---------------------------------------------------------------------------
 
+
 class TestFinishReason:
     def test_length_hint_marks_truncation_suspected(self):
         resp, diag = parse_structured_output(
@@ -208,6 +213,7 @@ class TestFinishReason:
 # Missing fields / schema validation / defensive coercion
 # ---------------------------------------------------------------------------
 
+
 class TestMissingFields:
     def test_missing_fields_default_and_recorded(self):
         raw = json.dumps({"final_answer": "solid"})
@@ -222,25 +228,30 @@ class TestMissingFields:
         assert "confidence" in diag.missing_fields
         assert "final_answer" not in diag.missing_fields
 
-    @pytest.mark.parametrize(("raw_confidence", "state", "value"), [
-        (None, MISSING, None),
-        ("", MISSING, None),
-        ("high", INVALID, None),
-        ("0.85", INVALID, None),
-        (True, INVALID, None),
-        (False, INVALID, None),
-        ([], INVALID, None),
-        ({}, INVALID, None),
-        (float("nan"), INVALID, None),
-        (float("inf"), INVALID, None),
-        (float("-inf"), INVALID, None),
-        (-0.1, INVALID, None),
-        (1.1, INVALID, None),
-        (0.0, VALID, 0.0),
-        (0.85, VALID, 0.85),
-        (1, VALID, 1.0),
-    ])
-    def test_confidence_raw_type_is_preserved_as_validity(self, raw_confidence, state, value):
+    @pytest.mark.parametrize(
+        ("raw_confidence", "state", "value"),
+        [
+            (None, MISSING, None),
+            ("", MISSING, None),
+            ("high", INVALID, None),
+            ("0.85", INVALID, None),
+            (True, INVALID, None),
+            (False, INVALID, None),
+            ([], INVALID, None),
+            ({}, INVALID, None),
+            (float("nan"), INVALID, None),
+            (float("inf"), INVALID, None),
+            (float("-inf"), INVALID, None),
+            (-0.1, INVALID, None),
+            (1.1, INVALID, None),
+            (0.0, VALID, 0.0),
+            (0.85, VALID, 0.85),
+            (1, VALID, 1.0),
+        ],
+    )
+    def test_confidence_raw_type_is_preserved_as_validity(
+        self, raw_confidence, state, value
+    ):
         raw = json.dumps({"final_answer": "solid", "confidence": raw_confidence})
         resp, diag = parse_structured_output(raw)
         assert diag.ok is True
@@ -271,6 +282,7 @@ class TestMissingFields:
 # Parse metadata shape
 # ---------------------------------------------------------------------------
 
+
 class TestDiagnostics:
     def test_diagnostics_as_dict_serializable(self):
         _, diag = parse_structured_output(json.dumps(_full_payload()))
@@ -291,6 +303,7 @@ class TestDiagnostics:
 # ---------------------------------------------------------------------------
 # Backward compatibility of the legacy wrapper
 # ---------------------------------------------------------------------------
+
 
 class TestLegacyWrapper:
     def test_valid_returns_two_tuple(self):

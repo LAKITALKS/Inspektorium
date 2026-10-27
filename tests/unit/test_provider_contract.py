@@ -34,19 +34,23 @@ def _task() -> Task:
 
 
 def _payload() -> str:
-    return json.dumps({
-        "final_answer": "overclaim",
-        "steps": ["s1"],
-        "confidence": 0.8,
-    })
+    return json.dumps(
+        {
+            "final_answer": "overclaim",
+            "steps": ["s1"],
+            "confidence": 0.8,
+        }
+    )
 
 
 # ---------------------------------------------------------------------------
 # Fakes
 # ---------------------------------------------------------------------------
 
+
 class FakeTextProvider(BaseProvider):
     """Legacy-style provider: implements only send_prompt (returns text)."""
+
     name = "fake_text"
 
     def __init__(self, text: str):
@@ -60,6 +64,7 @@ class FakeTextProvider(BaseProvider):
 
 class FakeModelResponseProvider(BaseProvider):
     """Modern provider: overrides generate to return a rich ModelResponse."""
+
     name = "fake_mr"
 
     def __init__(self, response: ModelResponse):
@@ -79,6 +84,7 @@ class FakeModelResponseProvider(BaseProvider):
 
 class FakeRaisingProvider(BaseProvider):
     """Legacy provider whose send_prompt raises (tests default generate)."""
+
     name = "fake_raise"
 
     def __init__(self, exc: Exception):
@@ -94,6 +100,7 @@ class FakeRaisingProvider(BaseProvider):
 # ModelResponse basics
 # ---------------------------------------------------------------------------
 
+
 class TestModelResponse:
     def test_defaults_and_ok(self):
         r = ModelResponse(text="hi")
@@ -105,9 +112,14 @@ class TestModelResponse:
         assert r.ok is False
 
     def test_as_dict_json_serializable(self):
-        r = ModelResponse(text="x", provider="p", model="m",
-                          finish_reason="stop", usage={"total_tokens": 5},
-                          latency_ms=12)
+        r = ModelResponse(
+            text="x",
+            provider="p",
+            model="m",
+            finish_reason="stop",
+            usage={"total_tokens": 5},
+            latency_ms=12,
+        )
         json.dumps(r.as_dict())
 
     def test_default_max_tokens_value(self):
@@ -118,13 +130,14 @@ class TestModelResponse:
 # Backward compatibility: text-only providers still work
 # ---------------------------------------------------------------------------
 
+
 class TestBackwardCompatText:
     def test_default_generate_wraps_send_prompt(self):
         p = FakeTextProvider(_payload())
         resp = p.generate(_task(), "sys")
         assert isinstance(resp, ModelResponse)
         assert resp.ok is True
-        assert resp.finish_reason is None      # not fabricated
+        assert resp.finish_reason is None  # not fabricated
         assert resp.latency_ms is not None and resp.latency_ms >= 0
         assert resp.provider == "fake_text"
 
@@ -141,11 +154,15 @@ class TestBackwardCompatText:
 # ModelResponse providers via runner
 # ---------------------------------------------------------------------------
 
+
 class TestRunAgentWithModelResponse:
     def test_metadata_preserved(self):
         mr = ModelResponse(
-            text=_payload(), provider="fake_mr", model="fake-model-2",
-            finish_reason="stop", usage={"input_tokens": 10, "output_tokens": 20},
+            text=_payload(),
+            provider="fake_mr",
+            model="fake-model-2",
+            finish_reason="stop",
+            usage={"input_tokens": 10, "output_tokens": 20},
             latency_ms=42,
         )
         result = run_agent(FakeModelResponseProvider(mr), _task())
@@ -181,16 +198,21 @@ class TestRunAgentWithModelResponse:
 # Error normalization
 # ---------------------------------------------------------------------------
 
+
 class TestErrorNormalization:
     def test_model_response_error_surfaced(self):
-        mr = ModelResponse(text="", finish_reason="error",
-                           error="429 too many requests",
-                           error_type="rate_limit_error", latency_ms=3)
+        mr = ModelResponse(
+            text="",
+            finish_reason="error",
+            error="429 too many requests",
+            error_type="rate_limit_error",
+            latency_ms=3,
+        )
         result = run_agent(FakeModelResponseProvider(mr), _task())
         assert result.error is not None
         assert result.error_type == "rate_limit_error"
         assert result.parse_ok is False
-        assert result.raw_output == ""        # not masked as success
+        assert result.raw_output == ""  # not masked as success
 
     def test_default_generate_catches_raising_send_prompt(self):
         p = FakeRaisingProvider(RuntimeError("connection reset"))
@@ -207,8 +229,11 @@ class TestErrorNormalization:
 
     def test_classify_error_types(self):
         class AuthenticationError(Exception): ...
+
         class NotFoundError(Exception): ...
+
         class RateLimitError(Exception): ...
+
         assert classify_error_type(AuthenticationError("bad key")) == "auth_error"
         assert classify_error_type(NotFoundError("404")) == "not_found_error"
         assert classify_error_type(RateLimitError("slow down")) == "rate_limit_error"
@@ -223,6 +248,7 @@ class TestErrorNormalization:
 # ---------------------------------------------------------------------------
 # Registry still intact
 # ---------------------------------------------------------------------------
+
 
 class TestRegistry:
     def test_all_providers_resolve(self):

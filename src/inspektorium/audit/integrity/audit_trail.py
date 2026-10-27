@@ -106,6 +106,7 @@ def generate_decision_id() -> str:
 # Write
 # ---------------------------------------------------------------------------
 
+
 def log_decision(
     entry: DecisionEntry,
     base_dir: str | Path | None = None,
@@ -149,6 +150,7 @@ def log_decisions(
 # Read
 # ---------------------------------------------------------------------------
 
+
 def read_decisions(base_dir: str | Path | None = None) -> list[DecisionEntry]:
     """Read all decision entries from the JSONL file."""
     path = _decisions_path(base_dir)
@@ -168,6 +170,7 @@ def read_decisions(base_dir: str | Path | None = None) -> list[DecisionEntry]:
 # ---------------------------------------------------------------------------
 # Query helpers
 # ---------------------------------------------------------------------------
+
 
 def query_by_type(
     decision_type: str,
@@ -221,6 +224,7 @@ def query_recent(
 # ---------------------------------------------------------------------------
 # Summary / analytics
 # ---------------------------------------------------------------------------
+
 
 def build_summary(
     decisions: list[DecisionEntry] | None = None,
@@ -331,7 +335,8 @@ def label_change_history(
         decisions = read_decisions(base_dir)
 
     return [
-        d for d in decisions
+        d
+        for d in decisions
         if d.before_state and d.after_state and d.before_state != d.after_state
     ]
 
@@ -350,6 +355,7 @@ def deferred_decisions(
 # ---------------------------------------------------------------------------
 # Report rendering — Markdown
 # ---------------------------------------------------------------------------
+
 
 def render_audit_summary(summary: AuditSummary) -> str:
     """Render AuditSummary as nüchtern, operative Markdown."""
@@ -403,7 +409,9 @@ def render_audit_summary(summary: AuditSummary) -> str:
         _h2("Source Modules")
         lines.append("| Module | Count |")
         lines.append("|--------|-------|")
-        for module, count in sorted(summary.by_source_module.items(), key=lambda x: -x[1]):
+        for module, count in sorted(
+            summary.by_source_module.items(), key=lambda x: -x[1]
+        ):
             lines.append(f"| {module} | {count} |")
         lines.append("")
 
@@ -460,10 +468,15 @@ def render_module_effectiveness(effectiveness: dict[str, dict]) -> str:
 # Gen 6.1: Upstream dependency / error propagation analysis
 # ---------------------------------------------------------------------------
 
+
 def _has_upstream(d: DecisionEntry) -> bool:
     """Check whether a decision has any upstream dependency info."""
-    return bool(d.upstream_module or d.upstream_reference
-                or d.upstream_dependency_summary or d.upstream_chain)
+    return bool(
+        d.upstream_module
+        or d.upstream_reference
+        or d.upstream_dependency_summary
+        or d.upstream_chain
+    )
 
 
 def build_dependency_summary(
@@ -493,9 +506,7 @@ def build_dependency_summary(
     n_upstream = len(with_upstream)
 
     # By upstream module
-    by_upstream = Counter(
-        d.upstream_module for d in with_upstream if d.upstream_module
-    )
+    by_upstream = Counter(d.upstream_module for d in with_upstream if d.upstream_module)
 
     # By dependency confidence
     by_conf = Counter(
@@ -510,20 +521,20 @@ def build_dependency_summary(
     # Overrides
     overrides = [d for d in with_upstream if d.review_override]
     override_count = len(overrides)
-    override_rate = (
-        round(override_count / n_upstream, 3) if n_upstream > 0 else 0.0
-    )
+    override_rate = round(override_count / n_upstream, 3) if n_upstream > 0 else 0.0
 
     # Weak-basis accepted: decisions accepted despite low/heuristic confidence
     weak_accepted = [
-        d for d in with_upstream
+        d
+        for d in with_upstream
         if d.dependency_confidence in ("low", "heuristic")
         and d.decision in ("accepted", "partially_accepted")
     ]
 
     # Risky acceptances: accepted with high propagation risk
     risky = [
-        d for d in with_upstream
+        d
+        for d in with_upstream
         if d.propagation_risk_level == "high"
         and d.decision in ("accepted", "partially_accepted")
     ]
@@ -534,7 +545,8 @@ def build_dependency_summary(
 
     # Rejected upstream patterns: which modules' signals get rejected most?
     rejected_upstream = Counter(
-        d.upstream_module for d in with_upstream
+        d.upstream_module
+        for d in with_upstream
         if d.decision == "rejected" and d.upstream_module
     )
 
@@ -590,22 +602,23 @@ def _detect_propagation_chains(
 
         # Has at least one accepted decision?
         has_accepted = any(
-            d.decision in ("accepted", "partially_accepted")
-            for d in target_decisions
+            d.decision in ("accepted", "partially_accepted") for d in target_decisions
         )
         if not has_accepted:
             continue
 
         # Check for risk amplification
         risk_levels = [
-            d.propagation_risk_level for d in target_decisions
+            d.propagation_risk_level
+            for d in target_decisions
             if d.propagation_risk_level
         ]
         has_risk = any(r in ("medium", "high") for r in risk_levels)
 
         # Check for weak links
         weak_links = [
-            d for d in target_decisions
+            d
+            for d in target_decisions
             if d.dependency_confidence in ("low", "heuristic")
         ]
 
@@ -647,7 +660,8 @@ def trace_decision(
 
     # Find related decisions (same target)
     related = [
-        d for d in decisions
+        d
+        for d in decisions
         if d.target == target_dec.target and d.decision_id != decision_id
     ]
 
@@ -655,19 +669,23 @@ def trace_decision(
     chain_steps = []
     if target_dec.upstream_chain:
         for step in target_dec.upstream_chain:
-            chain_steps.append({
-                "module": step.module,
-                "reference": step.reference,
-                "description": step.description,
-                "confidence": step.confidence,
-            })
+            chain_steps.append(
+                {
+                    "module": step.module,
+                    "reference": step.reference,
+                    "description": step.description,
+                    "confidence": step.confidence,
+                }
+            )
     elif target_dec.upstream_module:
-        chain_steps.append({
-            "module": target_dec.upstream_module,
-            "reference": target_dec.upstream_reference,
-            "description": target_dec.upstream_dependency_summary,
-            "confidence": target_dec.dependency_confidence,
-        })
+        chain_steps.append(
+            {
+                "module": target_dec.upstream_module,
+                "reference": target_dec.upstream_reference,
+                "description": target_dec.upstream_dependency_summary,
+                "confidence": target_dec.dependency_confidence,
+            }
+        )
 
     # Risk assessment
     risk_factors: list[str] = []
@@ -702,10 +720,7 @@ def query_weak_basis_decisions(
     """Return decisions with low or heuristic dependency confidence."""
     if decisions is None:
         decisions = read_decisions(base_dir)
-    return [
-        d for d in decisions
-        if d.dependency_confidence in ("low", "heuristic")
-    ]
+    return [d for d in decisions if d.dependency_confidence in ("low", "heuristic")]
 
 
 def query_overrides(
@@ -726,7 +741,8 @@ def query_risky_accepted(
     if decisions is None:
         decisions = read_decisions(base_dir)
     return [
-        d for d in decisions
+        d
+        for d in decisions
         if d.propagation_risk_level == "high"
         and d.decision in ("accepted", "partially_accepted")
     ]
@@ -735,6 +751,7 @@ def query_risky_accepted(
 # ---------------------------------------------------------------------------
 # Gen 6.1: Dependency report rendering
 # ---------------------------------------------------------------------------
+
 
 def render_dependency_summary(summary: DependencySummary) -> str:
     """Render DependencySummary as nüchtern, operative Markdown."""
@@ -760,8 +777,10 @@ def render_dependency_summary(summary: DependencySummary) -> str:
 
     _p(f"**Total decisions:** {summary.total_decisions}")
     _p(f"**With upstream dependency:** {summary.decisions_with_upstream}")
-    _p(f"**Override rate:** {summary.override_rate:.0%} "
-       f"({summary.override_count} overrides)")
+    _p(
+        f"**Override rate:** {summary.override_rate:.0%} "
+        f"({summary.override_count} overrides)"
+    )
     _p(f"**Weak-basis accepted:** {summary.weak_basis_accepted}")
 
     # By upstream module
@@ -769,8 +788,9 @@ def render_dependency_summary(summary: DependencySummary) -> str:
         _h3("By Upstream Module")
         lines.append("| Module | Count |")
         lines.append("|--------|-------|")
-        for module, count in sorted(summary.by_upstream_module.items(),
-                                     key=lambda x: -x[1]):
+        for module, count in sorted(
+            summary.by_upstream_module.items(), key=lambda x: -x[1]
+        ):
             lines.append(f"| {module} | {count} |")
         lines.append("")
 
@@ -798,8 +818,9 @@ def render_dependency_summary(summary: DependencySummary) -> str:
         _p("Modules whose signals are frequently rejected:")
         lines.append("| Module | Rejected |")
         lines.append("|--------|----------|")
-        for module, count in sorted(summary.rejected_upstream_patterns.items(),
-                                     key=lambda x: -x[1]):
+        for module, count in sorted(
+            summary.rejected_upstream_patterns.items(), key=lambda x: -x[1]
+        ):
             lines.append(f"| {module} | {count} |")
         lines.append("")
 
@@ -808,11 +829,16 @@ def render_dependency_summary(summary: DependencySummary) -> str:
         _h3("Potential Propagation Chains")
         for chain in summary.propagation_chains:
             risk_tag = " **[RISK]**" if chain.get("has_risk_signal") else ""
-            weak_tag = (f" ({chain['n_weak_links']} weak link(s))"
-                        if chain.get("n_weak_links") else "")
-            _p(f"- **{chain['target']}**: {chain['n_decisions']} decisions, "
-               f"modules: {', '.join(chain['modules_involved'])}"
-               f"{risk_tag}{weak_tag}")
+            weak_tag = (
+                f" ({chain['n_weak_links']} weak link(s))"
+                if chain.get("n_weak_links")
+                else ""
+            )
+            _p(
+                f"- **{chain['target']}**: {chain['n_decisions']} decisions, "
+                f"modules: {', '.join(chain['modules_involved'])}"
+                f"{risk_tag}{weak_tag}"
+            )
     else:
         _p("_No propagation chains detected._")
 
@@ -821,13 +847,17 @@ def render_dependency_summary(summary: DependencySummary) -> str:
         _h3("Risky Acceptances")
         _p("Decisions accepted despite high propagation risk:")
         for d in summary.risky_acceptances:
-            _p(f"- [{d.decision_id}] {d.target} ({d.decision_type}) — "
-               f"risk: {d.propagation_risk_level}, "
-               f"confidence: {d.dependency_confidence}")
+            _p(
+                f"- [{d.decision_id}] {d.target} ({d.decision_type}) — "
+                f"risk: {d.propagation_risk_level}, "
+                f"confidence: {d.dependency_confidence}"
+            )
 
     lines.append("---")
-    _p("*Gen 6.1 — upstream dependency analysis. All risk classifications "
-       "are heuristic. No automatic corrections.*")
+    _p(
+        "*Gen 6.1 — upstream dependency analysis. All risk classifications "
+        "are heuristic. No automatic corrections.*"
+    )
 
     return "\n".join(lines)
 
@@ -877,8 +907,10 @@ def render_trace(trace: dict) -> str:
         lines.append("### Upstream Chain")
         lines.append("")
         for i, step in enumerate(trace["upstream_chain"], 1):
-            _p(f"{i}. **{step['module']}** — {step.get('description', '—')} "
-               f"(confidence: {step.get('confidence', '—')})")
+            _p(
+                f"{i}. **{step['module']}** — {step.get('description', '—')} "
+                f"(confidence: {step.get('confidence', '—')})"
+            )
 
     # Risk factors
     if trace["risk_factors"]:
@@ -893,7 +925,9 @@ def render_trace(trace: dict) -> str:
         lines.append(f"### Related Decisions ({trace['n_related']})")
         lines.append("")
         for rd in trace["related_decisions"]:
-            _p(f"- [{rd.decision_id}] {rd.decision_type} — {rd.decision} "
-               f"(source: {rd.source_module})")
+            _p(
+                f"- [{rd.decision_id}] {rd.decision_type} — {rd.decision} "
+                f"(source: {rd.source_module})"
+            )
 
     return "\n".join(lines)

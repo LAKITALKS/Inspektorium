@@ -48,9 +48,7 @@ def test_anthropic_provider_uses_sdk_pydantic_parse_helper(
     raw = json.dumps({"schema_version": "0.1", "findings": [supported_proposal_data]})
     parsed = ProposalBatch.model_validate_json(raw)
     messages = FakeMessages(
-        SimpleNamespace(
-            content=[SimpleNamespace(type="text", parsed_output=parsed)]
-        )
+        SimpleNamespace(content=[SimpleNamespace(type="text", parsed_output=parsed)])
     )
     provider = AnthropicProvider(model="test-model", client=_client(messages))
 
@@ -109,14 +107,10 @@ def _sdk_message(text: str) -> dict[str, Any]:
 def _schema_keywords(value: Any) -> set[str]:
     if isinstance(value, dict):
         return set(value) | {
-            keyword
-            for child in value.values()
-            for keyword in _schema_keywords(child)
+            keyword for child in value.values() for keyword in _schema_keywords(child)
         }
     if isinstance(value, list):
-        return {
-            keyword for child in value for keyword in _schema_keywords(child)
-        }
+        return {keyword for child in value for keyword in _schema_keywords(child)}
     return set()
 
 

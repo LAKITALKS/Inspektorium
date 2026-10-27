@@ -40,6 +40,7 @@ def _score_bar(frac: float, width: int = 10) -> str:
 # 1. Executive Summary
 # ---------------------------------------------------------------------------
 
+
 def _executive_summary(record: RunRecord) -> str:
     results = record.results
     winner = _find_winner(results)
@@ -67,14 +68,22 @@ def _executive_summary(record: RunRecord) -> str:
         if len(totals) >= 2 and totals[0].scores.total == totals[1].scores.total:
             lines.append(f"**Result:** Tie at **{totals[0].scores.total:.1f}/100**")
         else:
-            margin = totals[0].scores.total - totals[1].scores.total if len(totals) > 1 else 0
-            lines.append(f"**Winner:** {_agent_name(winner)} — **{winner.scores.total:.1f}/100** (margin: {margin:.1f})")
+            margin = (
+                totals[0].scores.total - totals[1].scores.total
+                if len(totals) > 1
+                else 0
+            )
+            lines.append(
+                f"**Winner:** {_agent_name(winner)} — **{winner.scores.total:.1f}/100** (margin: {margin:.1f})"
+            )
 
     # Failure + consistency summary
     all_failures: set[str] = set()
     for r in results:
         all_failures.update(r.failure_modes)
-    lines.append(f"**Failure modes:** {', '.join(sorted(all_failures)) if all_failures else 'none'}")
+    lines.append(
+        f"**Failure modes:** {', '.join(sorted(all_failures)) if all_failures else 'none'}"
+    )
 
     total_flags = sum(len(r.forensic_flags) for r in results)
     lines.append(f"**Forensic flags:** {total_flags}")
@@ -83,12 +92,16 @@ def _executive_summary(record: RunRecord) -> str:
     lines.append(f"**Consistency findings:** {total_findings}")
 
     # Answer convergence
-    answers = [r.agent_result.parsed.final_answer[:80] if r.agent_result.parsed else "(none)"
-               for r in results]
+    answers = [
+        r.agent_result.parsed.final_answer[:80] if r.agent_result.parsed else "(none)"
+        for r in results
+    ]
     if len(set(answers)) == 1:
         lines.append("**Answer convergence:** all agents agree")
     else:
-        lines.append(f"**Answer convergence:** agents diverge ({len(set(answers))} distinct)")
+        lines.append(
+            f"**Answer convergence:** agents diverge ({len(set(answers))} distinct)"
+        )
 
     return "\n".join(lines)
 
@@ -97,9 +110,14 @@ def _executive_summary(record: RunRecord) -> str:
 # 2. Score Matrix
 # ---------------------------------------------------------------------------
 
+
 def _score_matrix(results: list[EvaluatedResult]) -> str:
     dims = list(DIAGNOSTIC_WEIGHTS.keys())
-    header = "| Agent | " + " | ".join(d.replace("_", " ").title()[:16] for d in dims) + " | **Total** |"
+    header = (
+        "| Agent | "
+        + " | ".join(d.replace("_", " ").title()[:16] for d in dims)
+        + " | **Total** |"
+    )
     sep = "|" + "|".join(["-------"] * (len(dims) + 2)) + "|"
     lines = ["", "## Score Matrix", "", header, sep]
     for r in results:
@@ -117,6 +135,7 @@ def _score_matrix(results: list[EvaluatedResult]) -> str:
 # 3. Forensic Flags
 # ---------------------------------------------------------------------------
 
+
 def _forensic_flags(results: list[EvaluatedResult]) -> str:
     any_flags = any(r.forensic_flags for r in results)
     if not any_flags:
@@ -133,7 +152,7 @@ def _forensic_flags(results: list[EvaluatedResult]) -> str:
             lines.append(f"- **[{sev}]** `{ff.flag_type}`: {ff.description}")
             for ev in ff.evidence[:2]:
                 text = ev.text.replace("\n", " ")[:100]
-                lines.append(f"  - `{ev.source_field}`: \"{text}\"")
+                lines.append(f'  - `{ev.source_field}`: "{text}"')
         lines.append("")
 
     return "\n".join(lines)
@@ -142,6 +161,7 @@ def _forensic_flags(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # 4. Evidence Map
 # ---------------------------------------------------------------------------
+
 
 def _evidence_map(results: list[EvaluatedResult]) -> str:
     lines = ["", "## Evidence Map", ""]
@@ -160,25 +180,41 @@ def _evidence_map(results: list[EvaluatedResult]) -> str:
 
             # Separate by role
             supporting = [e for e in sd.evidence if e.role == EvidenceRole.SUPPORTING]
-            weakening = [e for e in sd.evidence if e.role in (EvidenceRole.WEAKENING, EvidenceRole.CONTRADICTORY)]
-            missing = [e for e in sd.evidence if e.role == EvidenceRole.MISSING_EXPECTED]
-            neutral = [e for e in sd.evidence if e.role not in (EvidenceRole.SUPPORTING, EvidenceRole.WEAKENING, EvidenceRole.CONTRADICTORY, EvidenceRole.MISSING_EXPECTED)]
+            weakening = [
+                e
+                for e in sd.evidence
+                if e.role in (EvidenceRole.WEAKENING, EvidenceRole.CONTRADICTORY)
+            ]
+            missing = [
+                e for e in sd.evidence if e.role == EvidenceRole.MISSING_EXPECTED
+            ]
+            neutral = [
+                e
+                for e in sd.evidence
+                if e.role
+                not in (
+                    EvidenceRole.SUPPORTING,
+                    EvidenceRole.WEAKENING,
+                    EvidenceRole.CONTRADICTORY,
+                    EvidenceRole.MISSING_EXPECTED,
+                )
+            ]
 
             for ev in (supporting + neutral)[:2]:
                 text = ev.text.replace("\n", " ")[:120]
-                lines.append(f"  - (+) `{ev.source_field}`: \"{text}\"")
+                lines.append(f'  - (+) `{ev.source_field}`: "{text}"')
                 if ev.relevance:
                     lines.append(f"    _{ev.relevance}_")
 
             for ev in weakening[:2]:
                 text = ev.text.replace("\n", " ")[:120]
-                lines.append(f"  - (-) `{ev.source_field}`: \"{text}\"")
+                lines.append(f'  - (-) `{ev.source_field}`: "{text}"')
                 if ev.relevance:
                     lines.append(f"    _{ev.relevance}_")
 
             for ev in missing[:1]:
                 text = ev.text.replace("\n", " ")[:120]
-                lines.append(f"  - (?) `{ev.source_field}`: \"{text}\"")
+                lines.append(f'  - (?) `{ev.source_field}`: "{text}"')
                 if ev.relevance:
                     lines.append(f"    _{ev.relevance}_")
 
@@ -193,6 +229,7 @@ def _evidence_map(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # 5. Failure Analysis
 # ---------------------------------------------------------------------------
+
 
 def _failure_analysis(results: list[EvaluatedResult]) -> str:
     any_failures = any(r.failures for r in results)
@@ -222,7 +259,7 @@ def _failure_analysis(results: list[EvaluatedResult]) -> str:
                 lines.append(f"- **{cat_label}**{conf_tag}: {f.description}")
                 for ev in f.evidence[:1]:
                     text = ev.text.replace("\n", " ")[:100]
-                    lines.append(f"  - `{ev.source_field}`: \"{text}\"")
+                    lines.append(f'  - `{ev.source_field}`: "{text}"')
                 if f.impact_on_score:
                     lines.append(f"  - _Impacts: {f.impact_on_score}_")
             lines.append("")
@@ -233,6 +270,7 @@ def _failure_analysis(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # 6. Consistency & Grounding Audit
 # ---------------------------------------------------------------------------
+
 
 def _consistency_audit(results: list[EvaluatedResult]) -> str:
     any_findings = any(r.consistency_findings for r in results)
@@ -247,13 +285,18 @@ def _consistency_audit(results: list[EvaluatedResult]) -> str:
         lines.append("")
 
         for f in r.consistency_findings:
-            icon = {"pass": "PASS", "warning": "WARN", "fail": "FAIL", "minor": "NOTE"}.get(f.status, f.status.upper())
+            icon = {
+                "pass": "PASS",
+                "warning": "WARN",
+                "fail": "FAIL",
+                "minor": "NOTE",
+            }.get(f.status, f.status.upper())
             # v0.4.2: show confidence label
             conf_tag = f" `[{f.confidence}]`" if f.confidence else ""
             lines.append(f"- **[{icon}]**{conf_tag} `{f.check_type}`: {f.description}")
             for ev in f.evidence[:1]:
                 text = ev.text.replace("\n", " ")[:100]
-                lines.append(f"  - `{ev.source_field}`: \"{text}\"")
+                lines.append(f'  - `{ev.source_field}`: "{text}"')
         lines.append("")
 
     return "\n".join(lines)
@@ -262,6 +305,7 @@ def _consistency_audit(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # 7. Comparative Forensics (NEW v0.4)
 # ---------------------------------------------------------------------------
+
 
 def _comparative_forensics(record: RunRecord) -> str:
     results = record.results
@@ -279,13 +323,17 @@ def _comparative_forensics(record: RunRecord) -> str:
         best_dim = max(DIAGNOSTIC_WEIGHTS, key=lambda d: getattr(r.scores, d))
         best_val = r.scores.weighted(best_dim)
         best_label = best_dim.replace("_", " ").title()
-        lines.append(f"**Strongest trait:** {best_label} ({best_val:.1f}/{DIAGNOSTIC_WEIGHTS[best_dim]})")
+        lines.append(
+            f"**Strongest trait:** {best_label} ({best_val:.1f}/{DIAGNOSTIC_WEIGHTS[best_dim]})"
+        )
 
         # Weakest trait
         worst_dim = min(DIAGNOSTIC_WEIGHTS, key=lambda d: getattr(r.scores, d))
         worst_val = r.scores.weighted(worst_dim)
         worst_label = worst_dim.replace("_", " ").title()
-        lines.append(f"**Most important weakness:** {worst_label} ({worst_val:.1f}/{DIAGNOSTIC_WEIGHTS[worst_dim]})")
+        lines.append(
+            f"**Most important weakness:** {worst_label} ({worst_val:.1f}/{DIAGNOSTIC_WEIGHTS[worst_dim]})"
+        )
 
         # Classification
         s = r.scores
@@ -308,7 +356,8 @@ def _comparative_forensics(record: RunRecord) -> str:
                 r.agent_result.parsed.confidence,
                 r.agent_result.parsed.confidence_state,
             )
-            if r.agent_result.parsed else None
+            if r.agent_result.parsed
+            else None
         )
         if s.uncertainty_handling < 0.3 or (
             parsed_confidence is not None and parsed_confidence >= 0.95
@@ -322,7 +371,8 @@ def _comparative_forensics(record: RunRecord) -> str:
         if r.agent_result.parsed:
             my_text = _all_text_simple(r.agent_result.parsed)
             others_text = " ".join(
-                _all_text_simple(o.agent_result.parsed) for o in results
+                _all_text_simple(o.agent_result.parsed)
+                for o in results
                 if o is not r and o.agent_result.parsed
             )
             unique_insights = _find_unique_content(my_text, others_text)
@@ -351,10 +401,26 @@ def _find_unique_content(my_text: str, others_text: str) -> str:
     unique = my_words - other_words
 
     # Filter for interesting words
-    interesting = {"paradox", "fallacy", "bias", "theorem", "principle", "phenomenon",
-                   "confounding", "aggregation", "disaggregat", "compositional",
-                   "bayesian", "posterior", "conditional", "asymmetric",
-                   "discrimination", "self-selection", "independent", "systematic"}
+    interesting = {
+        "paradox",
+        "fallacy",
+        "bias",
+        "theorem",
+        "principle",
+        "phenomenon",
+        "confounding",
+        "aggregation",
+        "disaggregat",
+        "compositional",
+        "bayesian",
+        "posterior",
+        "conditional",
+        "asymmetric",
+        "discrimination",
+        "self-selection",
+        "independent",
+        "systematic",
+    }
     notable = [w for w in unique if any(root in w for root in interesting)]
     if notable:
         return ", ".join(sorted(notable)[:5])
@@ -365,6 +431,7 @@ def _find_unique_content(my_text: str, others_text: str) -> str:
 # 8. Concept Coverage Matrix (NEW v0.4)
 # ---------------------------------------------------------------------------
 
+
 def _concept_coverage(record: RunRecord) -> str:
     results = record.results
     insights = record.task.get_key_insights()
@@ -373,7 +440,11 @@ def _concept_coverage(record: RunRecord) -> str:
 
     lines = ["", "## Concept Coverage Matrix", ""]
 
-    from inspektorium.audit.execution.evaluator import _all_text, _insight_matches, _content_words
+    from inspektorium.audit.execution.evaluator import (
+        _all_text,
+        _insight_matches,
+        _content_words,
+    )
 
     # Build header
     header = "| Concept | " + " | ".join(_agent_name(r) for r in results) + " |"
@@ -390,14 +461,25 @@ def _concept_coverage(record: RunRecord) -> str:
             text = _all_text(r.agent_result.parsed)
             named = _insight_matches(ins, text)
             # Check mechanism
-            mechanism_words = ("because", "causes", "leads to", "due to", "explained by", "driven by")
+            mechanism_words = (
+                "because",
+                "causes",
+                "leads to",
+                "due to",
+                "explained by",
+                "driven by",
+            )
             has_mechanism = any(mw in text for mw in mechanism_words)
             # Check uncertainty
-            has_uncertainty = any(ins.keyword.lower() in u.lower()
-                                 for u in r.agent_result.parsed.uncertainties)
+            has_uncertainty = any(
+                ins.keyword.lower() in u.lower()
+                for u in r.agent_result.parsed.uncertainties
+            )
             # Check alternative
-            has_alt = any(ins.keyword.lower() in h.lower()
-                          for h in r.agent_result.parsed.alternative_hypotheses)
+            has_alt = any(
+                ins.keyword.lower() in h.lower()
+                for h in r.agent_result.parsed.alternative_hypotheses
+            )
 
             markers = []
             if named:
@@ -413,7 +495,9 @@ def _concept_coverage(record: RunRecord) -> str:
         lines.append(row)
 
     lines.append("")
-    lines.append("_Legend: N=named, M=mechanism explained, U=uncertainty acknowledged, A=alternative considered_")
+    lines.append(
+        "_Legend: N=named, M=mechanism explained, U=uncertainty acknowledged, A=alternative considered_"
+    )
     lines.append("")
 
     return "\n".join(lines)
@@ -422,6 +506,7 @@ def _concept_coverage(record: RunRecord) -> str:
 # ---------------------------------------------------------------------------
 # 9. Agent Profiles
 # ---------------------------------------------------------------------------
+
 
 def _agent_profiles(results: list[EvaluatedResult]) -> str:
     lines = ["", "## Agent Profiles", ""]
@@ -442,7 +527,9 @@ def _agent_profiles(results: list[EvaluatedResult]) -> str:
             lines.append("")
             confidence = confidence_value_if_valid(p.confidence, p.confidence_state)
             confidence_text = (
-                str(confidence) if confidence is not None else (p.confidence_state or "UNKNOWN")
+                str(confidence)
+                if confidence is not None
+                else (p.confidence_state or "UNKNOWN")
             )
             lines.append(f"**Confidence:** {confidence_text}")
             lines.append("")
@@ -500,6 +587,7 @@ def _agent_profiles(results: list[EvaluatedResult]) -> str:
 # 10. Judge Report (optional)
 # ---------------------------------------------------------------------------
 
+
 def _judge_report(results: list[EvaluatedResult]) -> str:
     any_judge = any(r.judge_result.enabled for r in results)
     if not any_judge:
@@ -540,6 +628,7 @@ def _judge_report(results: list[EvaluatedResult]) -> str:
 # 11. Final Verdict
 # ---------------------------------------------------------------------------
 
+
 def _verdict(record: RunRecord) -> str:
     results = record.results
     winner = _find_winner(results)
@@ -552,19 +641,28 @@ def _verdict(record: RunRecord) -> str:
     phase8_results = [r for r in results if r.agent_result.phase8]
     if phase8_results:
         from inspektorium.audit.forensics.pipeline import render_phase8
-        lines.append("Historical diagnostic scores below do not establish claim support.")
+
+        lines.append(
+            "Historical diagnostic scores below do not establish claim support."
+        )
         lines.extend(render_phase8(r.agent_result.phase8) for r in phase8_results)
     totals = sorted(results, key=lambda r: r.scores.total, reverse=True)
 
     if len(totals) == 1:
-        lines.append(f"**Solo run: {_agent_name(totals[0])}** scored **{totals[0].scores.total:.1f}/100**.")
+        lines.append(
+            f"**Solo run: {_agent_name(totals[0])}** scored **{totals[0].scores.total:.1f}/100**."
+        )
     elif totals[0].scores.total == totals[1].scores.total:
-        lines.append(f"**Tie** between {_agent_name(totals[0])} and {_agent_name(totals[1])} "
-                      f"at {totals[0].scores.total:.1f}/100.")
+        lines.append(
+            f"**Tie** between {_agent_name(totals[0])} and {_agent_name(totals[1])} "
+            f"at {totals[0].scores.total:.1f}/100."
+        )
     else:
         margin = totals[0].scores.total - totals[1].scores.total
-        lines.append(f"**Winner: {_agent_name(winner)}** with **{winner.scores.total:.1f}/100** "
-                      f"(+{margin:.1f} over {_agent_name(totals[1])}).")
+        lines.append(
+            f"**Winner: {_agent_name(winner)}** with **{winner.scores.total:.1f}/100** "
+            f"(+{margin:.1f} over {_agent_name(totals[1])})."
+        )
 
     lines.append("")
     lines.append("**Best per dimension:**")
@@ -584,7 +682,9 @@ def _verdict(record: RunRecord) -> str:
         ms = r.agent_result.latency_ms
         total = r.scores.total
         pps = total / (ms / 1000) if ms > 0 else 0
-        lines.append(f"| {_agent_name(r)} | {ms / 1000:.1f}s | {total:.1f}/100 | {pps:.1f} |")
+        lines.append(
+            f"| {_agent_name(r)} | {ms / 1000:.1f}s | {total:.1f}/100 | {pps:.1f} |"
+        )
 
     lines.append("")
     all_failures: set[str] = set()
@@ -597,9 +697,14 @@ def _verdict(record: RunRecord) -> str:
         for r in phase8_results
     )
     phase9 = record.metadata.get("phase9")
-    if phase9 is not None and (phase9.get("route") != "AUTO_RESOLVABLE"
-                              or phase9.get("history_validation") == "invalid" or phase9.get("mandatory")):
-        lines.append("Phase-9 case review or history validation remains unresolved; original scores do not resolve it.")
+    if phase9 is not None and (
+        phase9.get("route") != "AUTO_RESOLVABLE"
+        or phase9.get("history_validation") == "invalid"
+        or phase9.get("mandatory")
+    ):
+        lines.append(
+            "Phase-9 case review or history validation remains unresolved; original scores do not resolve it."
+        )
     elif phase8_pending:
         lines.append("Phase-8 limitations remain; original scores do not resolve them.")
     elif not all_failures:
@@ -614,6 +719,7 @@ def _verdict(record: RunRecord) -> str:
 # Main entry point
 # ---------------------------------------------------------------------------
 
+
 def generate_report(
     record: RunRecord,
     postmortems: list[PostmortemReport] | None = None,
@@ -625,11 +731,15 @@ def generate_report(
     Optional v0.6 parameters add postmortem, pattern, and profile sections.
     """
     from inspektorium.audit.forensics.pipeline import refresh_run_phase8
+
     record = refresh_run_phase8(record)
     from inspektorium.audit.review.pipeline import refresh_run_phase9, render_phase9
+
     record = refresh_run_phase9(record)
     sections = [
-        render_phase9(record.metadata.get("phase9")) if record.metadata.get("phase9") else "",
+        render_phase9(record.metadata.get("phase9"))
+        if record.metadata.get("phase9")
+        else "",
         _executive_summary(record),
         _score_matrix(record.results),
         _study_forensics_section(record.results),
@@ -663,9 +773,13 @@ def generate_report(
 # v0.6: Study Forensics Audit
 # ---------------------------------------------------------------------------
 
+
 def _study_forensics_section(results: list[EvaluatedResult]) -> str:
     """Show study forensics audit results."""
-    any_data = any(r.study_forensics and r.study_forensics.get("is_study_forensics") for r in results)
+    any_data = any(
+        r.study_forensics and r.study_forensics.get("is_study_forensics")
+        for r in results
+    )
     if not any_data:
         return ""
 
@@ -683,8 +797,11 @@ def _study_forensics_section(results: list[EvaluatedResult]) -> str:
         detected = sf.get("detected_label", "unknown")
         label_ok = sf.get("label_correct", False)
         icon = "+" if label_ok else "x"
-        lines.append(f"**Original classification:** `{detected}` [{icon}] (gold: `{gold}`)")
+        lines.append(
+            f"**Original classification:** `{detected}` [{icon}] (gold: `{gold}`)"
+        )
         from inspektorium.audit.forensics.pipeline import render_phase8
+
         lines.append(render_phase8(r.agent_result.phase8))
 
         scores = sf.get("scores", {})
@@ -735,7 +852,10 @@ _FORECAST_SCORE_LABELS = {
 
 def _forecast_integrity_section(results: list[EvaluatedResult]) -> str:
     """Show forecast integrity audit for forecasting_decision tasks."""
-    any_data = any(r.forecast_integrity and r.forecast_integrity.get("is_forecast") for r in results)
+    any_data = any(
+        r.forecast_integrity and r.forecast_integrity.get("is_forecast")
+        for r in results
+    )
     if not any_data:
         return ""
 
@@ -833,11 +953,13 @@ def _reasoning_integrity_section(results: list[EvaluatedResult]) -> str:
         # Step check details
         step_checks = r.step_check_results
         if step_checks:
-            verified = [c for c in step_checks if hasattr(c, 'is_correct')]
+            verified = [c for c in step_checks if hasattr(c, "is_correct")]
             correct = [c for c in verified if c.is_correct]
             wrong = [c for c in verified if not c.is_correct]
             if correct:
-                lines.append(f"**Verified correct:** {len(correct)} intermediate calculation(s)")
+                lines.append(
+                    f"**Verified correct:** {len(correct)} intermediate calculation(s)"
+                )
             if wrong:
                 for c in wrong:
                     lines.append(
@@ -854,6 +976,7 @@ def _reasoning_integrity_section(results: list[EvaluatedResult]) -> str:
 # v0.4.1: Claim Check Section
 # ---------------------------------------------------------------------------
 
+
 def _claim_check_section(results: list[EvaluatedResult]) -> str:
     """Show claim check contradictions per agent."""
     any_results = any(r.claim_check_results for r in results)
@@ -867,28 +990,40 @@ def _claim_check_section(results: list[EvaluatedResult]) -> str:
         if not checks:
             continue
 
-        contradictions = [c for c in checks if c.truth_status == ClaimTruthStatus.CONTRADICTED]
+        contradictions = [
+            c for c in checks if c.truth_status == ClaimTruthStatus.CONTRADICTED
+        ]
         supported = [c for c in checks if c.truth_status == ClaimTruthStatus.SUPPORTED]
-        unresolved = [c for c in checks if c.truth_status == ClaimTruthStatus.UNRESOLVED]
+        unresolved = [
+            c for c in checks if c.truth_status == ClaimTruthStatus.UNRESOLVED
+        ]
 
         lines.append(f"### {name}")
-        lines.append(f"Claims checked: {len(checks)} | "
-                     f"Supported: {len(supported)} | "
-                     f"Contradicted: {len(contradictions)} | "
-                     f"Unresolved: {len(unresolved)}")
+        lines.append(
+            f"Claims checked: {len(checks)} | "
+            f"Supported: {len(supported)} | "
+            f"Contradicted: {len(contradictions)} | "
+            f"Unresolved: {len(unresolved)}"
+        )
         lines.append("")
 
         if contradictions:
             lines.append("**Contradictions found:** `[HIGH CONFIDENCE]`")
             for c in contradictions:
-                lines.append(f"- :x: `{c.claim.subject}` {c.claim.relation} `{c.claim.object}` — {c.explanation}")
-                lines.append(f"  Source: `{c.claim.source_field}` — \"{c.claim.source_text[:120]}\"")
+                lines.append(
+                    f"- :x: `{c.claim.subject}` {c.claim.relation} `{c.claim.object}` — {c.explanation}"
+                )
+                lines.append(
+                    f'  Source: `{c.claim.source_field}` — "{c.claim.source_text[:120]}"'
+                )
             lines.append("")
 
         if supported:
             lines.append("**Verified claims:** `[HIGH CONFIDENCE]`")
             for c in supported[:5]:
-                lines.append(f"- :white_check_mark: `{c.claim.subject}` {c.claim.relation} `{c.claim.object}` — {c.explanation}")
+                lines.append(
+                    f"- :white_check_mark: `{c.claim.subject}` {c.claim.relation} `{c.claim.object}` — {c.explanation}"
+                )
             lines.append("")
 
     return "\n".join(lines)
@@ -897,6 +1032,7 @@ def _claim_check_section(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # v0.4.1: Mechanism Analysis Section
 # ---------------------------------------------------------------------------
+
 
 def _mechanism_analysis_section(results: list[EvaluatedResult]) -> str:
     """Show mechanism analysis breakdown per agent."""
@@ -918,9 +1054,15 @@ def _mechanism_analysis_section(results: list[EvaluatedResult]) -> str:
 
         lines.append(f"| Aspect | Status |")
         lines.append(f"|--------|--------|")
-        lines.append(f"| Concept named | {named_icon} {', '.join(ma.named_concepts) if ma.named_concepts else 'none'} |")
-        lines.append(f"| Mechanism described | {desc_icon} ({len(ma.mechanism_sentences)} sentence(s)) |")
-        lines.append(f"| Grounded to case | {ground_icon} ({len(ma.grounding_sentences)} sentence(s)) |")
+        lines.append(
+            f"| Concept named | {named_icon} {', '.join(ma.named_concepts) if ma.named_concepts else 'none'} |"
+        )
+        lines.append(
+            f"| Mechanism described | {desc_icon} ({len(ma.mechanism_sentences)} sentence(s)) |"
+        )
+        lines.append(
+            f"| Grounded to case | {ground_icon} ({len(ma.grounding_sentences)} sentence(s)) |"
+        )
         lines.append("")
 
         if ma.missing_elements:
@@ -933,6 +1075,7 @@ def _mechanism_analysis_section(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # v0.4.1: Grounding Audit Section
 # ---------------------------------------------------------------------------
+
 
 def _grounding_audit_section(results: list[EvaluatedResult]) -> str:
     """Show grounding audit per agent."""
@@ -957,7 +1100,7 @@ def _grounding_audit_section(results: list[EvaluatedResult]) -> str:
         if ga.unsupported_claims:
             lines.append("**Unsupported claims:**")
             for uc in ga.unsupported_claims[:5]:
-                lines.append(f"- \"{uc}\"")
+                lines.append(f'- "{uc}"')
             lines.append("")
 
     return "\n".join(lines)
@@ -966,6 +1109,7 @@ def _grounding_audit_section(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # v0.6: Postmortem Summary
 # ---------------------------------------------------------------------------
+
 
 def _postmortem_section(postmortems: list[PostmortemReport] | None) -> str:
     """Render postmortem findings for the report."""
@@ -1017,6 +1161,7 @@ def _postmortem_section(postmortems: list[PostmortemReport] | None) -> str:
 # v0.6: Repeated Failure Patterns
 # ---------------------------------------------------------------------------
 
+
 def _pattern_section(patterns: list[PatternCluster] | None) -> str:
     """Render recurring failure/flag patterns."""
     if not patterns:
@@ -1042,6 +1187,7 @@ def _pattern_section(patterns: list[PatternCluster] | None) -> str:
 # v0.6: Agent Profile Snapshot
 # ---------------------------------------------------------------------------
 
+
 def _agent_profile_section(profile: AgentProfile | None) -> str:
     """Render an aggregated agent profile snapshot."""
     if not profile or profile.n_runs == 0:
@@ -1049,18 +1195,22 @@ def _agent_profile_section(profile: AgentProfile | None) -> str:
 
     p = profile
     lines = [
-        "", "## Agent Profile Snapshot", "",
+        "",
+        "## Agent Profile Snapshot",
+        "",
         f"**Agent:** {p.agent_id}",
     ]
     if p.model:
         lines.append(f"**Model:** {p.model}")
-    lines.extend([
-        f"**Runs Analyzed:** {p.n_runs}",
-        f"**Average Score:** {p.avg_total_score:.1f}/100",
-        f"**Strongest Dimension:** {p.strongest_dimension.replace('_', ' ').title()}",
-        f"**Weakest Dimension:** {p.weakest_dimension.replace('_', ' ').title()}",
-        "",
-    ])
+    lines.extend(
+        [
+            f"**Runs Analyzed:** {p.n_runs}",
+            f"**Average Score:** {p.avg_total_score:.1f}/100",
+            f"**Strongest Dimension:** {p.strongest_dimension.replace('_', ' ').title()}",
+            f"**Weakest Dimension:** {p.weakest_dimension.replace('_', ' ').title()}",
+            "",
+        ]
+    )
 
     # Integrity rates
     rates = []
@@ -1080,7 +1230,9 @@ def _agent_profile_section(profile: AgentProfile | None) -> str:
     if p.overconfidence_rate > 0 or p.base_rate_awareness or p.no_trade_quality:
         lines.append("**Forecast Profile:**")
         if p.avg_probability_estimate is not None:
-            lines.append(f"- Average probability estimate: {p.avg_probability_estimate:.1%}")
+            lines.append(
+                f"- Average probability estimate: {p.avg_probability_estimate:.1%}"
+            )
         if p.overconfidence_rate > 0:
             lines.append(f"- Overconfidence rate: {p.overconfidence_rate:.0%}")
         if p.base_rate_awareness:
@@ -1093,7 +1245,9 @@ def _agent_profile_section(profile: AgentProfile | None) -> str:
     if p.recurring_failures:
         lines.append("**Top Recurring Failures:**")
         for rf in p.recurring_failures[:5]:
-            lines.append(f"- {rf.category}: {rf.occurrences}/{rf.total_runs} ({rf.frequency:.0%})")
+            lines.append(
+                f"- {rf.category}: {rf.occurrences}/{rf.total_runs} ({rf.frequency:.0%})"
+            )
         lines.append("")
 
     return "\n".join(lines)

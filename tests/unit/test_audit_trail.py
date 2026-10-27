@@ -56,6 +56,7 @@ from inspektorium.audit.integrity.audit_trail import (
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def _decision(**kwargs) -> DecisionEntry:
     """Create a DecisionEntry with defaults."""
     defaults = dict(
@@ -80,6 +81,7 @@ def _decision(**kwargs) -> DecisionEntry:
 # ---------------------------------------------------------------------------
 # 1. Persistence — Write and Read
 # ---------------------------------------------------------------------------
+
 
 class TestPersistence:
     def test_write_and_read_single(self, tmp_path):
@@ -137,16 +139,20 @@ class TestPersistence:
 # 2. All Decision Types
 # ---------------------------------------------------------------------------
 
+
 class TestDecisionTypes:
-    @pytest.mark.parametrize("dtype", [
-        "gold_review_decision",
-        "category_refinement_decision",
-        "routing_decision",
-        "case_candidate_review",
-        "calibration_proposal_decision",
-        "disagreement_resolution",
-        "workflow_note",
-    ])
+    @pytest.mark.parametrize(
+        "dtype",
+        [
+            "gold_review_decision",
+            "category_refinement_decision",
+            "routing_decision",
+            "case_candidate_review",
+            "calibration_proposal_decision",
+            "disagreement_resolution",
+            "workflow_note",
+        ],
+    )
     def test_each_type_persists(self, tmp_path, dtype):
         entry = _decision(decision_type=dtype, decision_id=f"dec_{dtype}")
         log_decision(entry, base_dir=tmp_path)
@@ -159,10 +165,17 @@ class TestDecisionTypes:
 # 3. All Decision Outcomes
 # ---------------------------------------------------------------------------
 
+
 class TestDecisionOutcomes:
-    @pytest.mark.parametrize("outcome", [
-        "accepted", "rejected", "deferred", "partially_accepted",
-    ])
+    @pytest.mark.parametrize(
+        "outcome",
+        [
+            "accepted",
+            "rejected",
+            "deferred",
+            "partially_accepted",
+        ],
+    )
     def test_each_outcome_persists(self, tmp_path, outcome):
         entry = _decision(decision=outcome, decision_id=f"dec_{outcome}")
         log_decision(entry, base_dir=tmp_path)
@@ -174,24 +187,50 @@ class TestDecisionOutcomes:
 # 4. Query Helpers
 # ---------------------------------------------------------------------------
 
+
 class TestQueries:
     def _populate(self, tmp_path) -> None:
         entries = [
-            _decision(decision_id="d1", decision_type="gold_review_decision",
-                      target="case001", source_module="calibrate",
-                      decision="accepted", reviewer="alice"),
-            _decision(decision_id="d2", decision_type="category_refinement_decision",
-                      target="overclaim", source_module="calibrate",
-                      decision="rejected", reviewer="bob"),
-            _decision(decision_id="d3", decision_type="case_candidate_review",
-                      target="candidate_001", source_module="caseforge",
-                      decision="accepted", reviewer="alice"),
-            _decision(decision_id="d4", decision_type="routing_decision",
-                      target="solid", source_module="router",
-                      decision="deferred", reviewer="bob"),
-            _decision(decision_id="d5", decision_type="disagreement_resolution",
-                      target="case031", source_module="disagreement_lab",
-                      decision="accepted", reviewer="alice"),
+            _decision(
+                decision_id="d1",
+                decision_type="gold_review_decision",
+                target="case001",
+                source_module="calibrate",
+                decision="accepted",
+                reviewer="alice",
+            ),
+            _decision(
+                decision_id="d2",
+                decision_type="category_refinement_decision",
+                target="overclaim",
+                source_module="calibrate",
+                decision="rejected",
+                reviewer="bob",
+            ),
+            _decision(
+                decision_id="d3",
+                decision_type="case_candidate_review",
+                target="candidate_001",
+                source_module="caseforge",
+                decision="accepted",
+                reviewer="alice",
+            ),
+            _decision(
+                decision_id="d4",
+                decision_type="routing_decision",
+                target="solid",
+                source_module="router",
+                decision="deferred",
+                reviewer="bob",
+            ),
+            _decision(
+                decision_id="d5",
+                decision_type="disagreement_resolution",
+                target="case031",
+                source_module="disagreement_lab",
+                decision="accepted",
+                reviewer="alice",
+            ),
         ]
         log_decisions(entries, base_dir=tmp_path)
 
@@ -240,20 +279,45 @@ class TestQueries:
 # 5. Summary Generation
 # ---------------------------------------------------------------------------
 
+
 class TestSummary:
     def _make_decisions(self) -> list[DecisionEntry]:
         return [
-            _decision(decision_id="d1", decision_type="gold_review_decision",
-                      decision="accepted", source_module="calibrate", target="case001"),
-            _decision(decision_id="d2", decision_type="gold_review_decision",
-                      decision="rejected", source_module="calibrate", target="case002"),
-            _decision(decision_id="d3", decision_type="case_candidate_review",
-                      decision="accepted", source_module="caseforge", target="cand001"),
-            _decision(decision_id="d4", decision_type="routing_decision",
-                      decision="deferred", source_module="router", target="solid"),
-            _decision(decision_id="d5", decision_type="calibration_proposal_decision",
-                      decision="partially_accepted", source_module="calibrate",
-                      target="overclaim"),
+            _decision(
+                decision_id="d1",
+                decision_type="gold_review_decision",
+                decision="accepted",
+                source_module="calibrate",
+                target="case001",
+            ),
+            _decision(
+                decision_id="d2",
+                decision_type="gold_review_decision",
+                decision="rejected",
+                source_module="calibrate",
+                target="case002",
+            ),
+            _decision(
+                decision_id="d3",
+                decision_type="case_candidate_review",
+                decision="accepted",
+                source_module="caseforge",
+                target="cand001",
+            ),
+            _decision(
+                decision_id="d4",
+                decision_type="routing_decision",
+                decision="deferred",
+                source_module="router",
+                target="solid",
+            ),
+            _decision(
+                decision_id="d5",
+                decision_type="calibration_proposal_decision",
+                decision="partially_accepted",
+                source_module="calibrate",
+                target="overclaim",
+            ),
         ]
 
     def test_summary_totals(self):
@@ -307,6 +371,7 @@ class TestSummary:
 # 6. Module Effectiveness
 # ---------------------------------------------------------------------------
 
+
 class TestModuleEffectiveness:
     def test_effectiveness_per_module(self):
         decisions = [
@@ -331,8 +396,11 @@ class TestModuleEffectiveness:
 
     def test_partially_accepted_counts_as_accepted(self):
         decisions = [
-            _decision(decision_id="d1", source_module="calibrate",
-                      decision="partially_accepted"),
+            _decision(
+                decision_id="d1",
+                source_module="calibrate",
+                decision="partially_accepted",
+            ),
         ]
         eff = module_effectiveness(decisions)
         assert eff["calibrate"]["accepted"] == 1
@@ -343,17 +411,21 @@ class TestModuleEffectiveness:
 # 7. Label Change History
 # ---------------------------------------------------------------------------
 
+
 class TestLabelChangeHistory:
     def test_changes_detected(self):
         decisions = [
-            _decision(decision_id="d1",
-                      before_state="gold_label=overclaim",
-                      after_state="gold_label=correlation_vs_causation"),
-            _decision(decision_id="d2",
-                      before_state="", after_state=""),  # no change
-            _decision(decision_id="d3",
-                      before_state="routing_mode=single",
-                      after_state="routing_mode=multi"),
+            _decision(
+                decision_id="d1",
+                before_state="gold_label=overclaim",
+                after_state="gold_label=correlation_vs_causation",
+            ),
+            _decision(decision_id="d2", before_state="", after_state=""),  # no change
+            _decision(
+                decision_id="d3",
+                before_state="routing_mode=single",
+                after_state="routing_mode=multi",
+            ),
         ]
         changes = label_change_history(decisions)
         assert len(changes) == 2
@@ -362,8 +434,7 @@ class TestLabelChangeHistory:
 
     def test_same_state_not_a_change(self):
         decisions = [
-            _decision(before_state="gold_label=solid",
-                      after_state="gold_label=solid"),
+            _decision(before_state="gold_label=solid", after_state="gold_label=solid"),
         ]
         changes = label_change_history(decisions)
         assert len(changes) == 0
@@ -377,6 +448,7 @@ class TestLabelChangeHistory:
 # ---------------------------------------------------------------------------
 # 8. Deferred Decisions
 # ---------------------------------------------------------------------------
+
 
 class TestDeferredDecisions:
     def test_deferred_found(self):
@@ -403,6 +475,7 @@ class TestDeferredDecisions:
 # 9. Related Cases / Models
 # ---------------------------------------------------------------------------
 
+
 class TestRelatedFields:
     def test_related_cases_preserved(self, tmp_path):
         entry = _decision(related_cases=["case001", "case002", "case003"])
@@ -421,6 +494,7 @@ class TestRelatedFields:
 # 10. Decision ID Generation
 # ---------------------------------------------------------------------------
 
+
 class TestDecisionId:
     def test_unique_ids(self):
         id1 = generate_decision_id()
@@ -437,6 +511,7 @@ class TestDecisionId:
 # 11. Report Rendering
 # ---------------------------------------------------------------------------
 
+
 class TestRenderReport:
     def test_empty_summary(self):
         summary = AuditSummary(
@@ -448,12 +523,9 @@ class TestRenderReport:
 
     def test_full_summary_has_sections(self):
         decisions = [
-            _decision(decision_id="d1", decision="accepted",
-                      source_module="calibrate"),
-            _decision(decision_id="d2", decision="rejected",
-                      source_module="caseforge"),
-            _decision(decision_id="d3", decision="deferred",
-                      source_module="router"),
+            _decision(decision_id="d1", decision="accepted", source_module="calibrate"),
+            _decision(decision_id="d2", decision="rejected", source_module="caseforge"),
+            _decision(decision_id="d3", decision="deferred", source_module="router"),
         ]
         summary = build_summary(decisions)
         md = render_audit_summary(summary)
@@ -471,10 +543,8 @@ class TestRenderReport:
 
     def test_module_effectiveness_render(self):
         decisions = [
-            _decision(decision_id="d1", source_module="calibrate",
-                      decision="accepted"),
-            _decision(decision_id="d2", source_module="calibrate",
-                      decision="rejected"),
+            _decision(decision_id="d1", source_module="calibrate", decision="accepted"),
+            _decision(decision_id="d2", source_module="calibrate", decision="rejected"),
         ]
         eff = module_effectiveness(decisions)
         md = render_module_effectiveness(eff)
@@ -489,6 +559,7 @@ class TestRenderReport:
 # ---------------------------------------------------------------------------
 # 12. State Tracking
 # ---------------------------------------------------------------------------
+
 
 class TestStateTracking:
     def test_before_after_preserved(self, tmp_path):
@@ -553,6 +624,7 @@ def _upstream_decision(**kwargs) -> DecisionEntry:
 # 13. Upstream Fields Persistence
 # ---------------------------------------------------------------------------
 
+
 class TestUpstreamPersistence:
     def test_upstream_fields_roundtrip(self, tmp_path):
         entry = _upstream_decision()
@@ -609,28 +681,38 @@ class TestUpstreamPersistence:
 # 14. Dependency Summary
 # ---------------------------------------------------------------------------
 
+
 class TestDependencySummary:
     def _make_decisions(self) -> list[DecisionEntry]:
         return [
             _upstream_decision(
-                decision_id="d1", upstream_module="disagreement_lab",
-                dependency_confidence="high", propagation_risk_level="low",
+                decision_id="d1",
+                upstream_module="disagreement_lab",
+                dependency_confidence="high",
+                propagation_risk_level="low",
                 decision="accepted",
             ),
             _upstream_decision(
-                decision_id="d2", upstream_module="calibrate",
-                dependency_confidence="low", propagation_risk_level="high",
-                decision="accepted", review_override=True,
+                decision_id="d2",
+                upstream_module="calibrate",
+                dependency_confidence="low",
+                propagation_risk_level="high",
+                decision="accepted",
+                review_override=True,
             ),
             _upstream_decision(
-                decision_id="d3", upstream_module="calibrate",
-                dependency_confidence="heuristic", propagation_risk_level="medium",
+                decision_id="d3",
+                upstream_module="calibrate",
+                dependency_confidence="heuristic",
+                propagation_risk_level="medium",
                 decision="rejected",
             ),
             _decision(decision_id="d4"),  # no upstream
             _upstream_decision(
-                decision_id="d5", upstream_module="router",
-                dependency_confidence="medium", propagation_risk_level="low",
+                decision_id="d5",
+                upstream_module="router",
+                dependency_confidence="medium",
+                propagation_risk_level="low",
                 decision="deferred",
             ),
         ]
@@ -696,19 +778,26 @@ class TestDependencySummary:
 # 15. Propagation Chain Detection
 # ---------------------------------------------------------------------------
 
+
 class TestPropagationChains:
     def test_chain_detected(self):
         """Two decisions on same target from different modules → chain."""
         decisions = [
             _upstream_decision(
-                decision_id="d1", target="case031",
-                source_module="calibrate", upstream_module="insights",
-                decision="accepted", propagation_risk_level="medium",
+                decision_id="d1",
+                target="case031",
+                source_module="calibrate",
+                upstream_module="insights",
+                decision="accepted",
+                propagation_risk_level="medium",
             ),
             _upstream_decision(
-                decision_id="d2", target="case031",
-                source_module="disagreement_lab", upstream_module="calibrate",
-                decision="accepted", propagation_risk_level="low",
+                decision_id="d2",
+                target="case031",
+                source_module="disagreement_lab",
+                upstream_module="calibrate",
+                decision="accepted",
+                propagation_risk_level="low",
             ),
         ]
         summary = build_dependency_summary(decisions)
@@ -721,10 +810,18 @@ class TestPropagationChains:
     def test_no_chain_single_module(self):
         """Same target, same module → no chain."""
         decisions = [
-            _decision(decision_id="d1", target="case001",
-                      source_module="calibrate", decision="accepted"),
-            _decision(decision_id="d2", target="case001",
-                      source_module="calibrate", decision="rejected"),
+            _decision(
+                decision_id="d1",
+                target="case001",
+                source_module="calibrate",
+                decision="accepted",
+            ),
+            _decision(
+                decision_id="d2",
+                target="case001",
+                source_module="calibrate",
+                decision="rejected",
+            ),
         ]
         summary = build_dependency_summary(decisions)
         assert len(summary.propagation_chains) == 0
@@ -733,13 +830,17 @@ class TestPropagationChains:
         """Same target, different modules, but all rejected → no chain."""
         decisions = [
             _upstream_decision(
-                decision_id="d1", target="case099",
-                source_module="calibrate", upstream_module="insights",
+                decision_id="d1",
+                target="case099",
+                source_module="calibrate",
+                upstream_module="insights",
                 decision="rejected",
             ),
             _upstream_decision(
-                decision_id="d2", target="case099",
-                source_module="router", upstream_module="calibrate",
+                decision_id="d2",
+                target="case099",
+                source_module="router",
+                upstream_module="calibrate",
                 decision="rejected",
             ),
         ]
@@ -749,14 +850,20 @@ class TestPropagationChains:
     def test_chain_with_weak_links(self):
         decisions = [
             _upstream_decision(
-                decision_id="d1", target="case055",
-                source_module="calibrate", upstream_module="insights",
-                decision="accepted", dependency_confidence="low",
+                decision_id="d1",
+                target="case055",
+                source_module="calibrate",
+                upstream_module="insights",
+                decision="accepted",
+                dependency_confidence="low",
             ),
             _upstream_decision(
-                decision_id="d2", target="case055",
-                source_module="router", upstream_module="calibrate",
-                decision="accepted", dependency_confidence="high",
+                decision_id="d2",
+                target="case055",
+                source_module="router",
+                upstream_module="calibrate",
+                decision="accepted",
+                dependency_confidence="high",
             ),
         ]
         summary = build_dependency_summary(decisions)
@@ -766,14 +873,20 @@ class TestPropagationChains:
     def test_chain_risk_signal(self):
         decisions = [
             _upstream_decision(
-                decision_id="d1", target="case077",
-                source_module="calibrate", upstream_module="insights",
-                decision="accepted", propagation_risk_level="high",
+                decision_id="d1",
+                target="case077",
+                source_module="calibrate",
+                upstream_module="insights",
+                decision="accepted",
+                propagation_risk_level="high",
             ),
             _upstream_decision(
-                decision_id="d2", target="case077",
-                source_module="router", upstream_module="calibrate",
-                decision="accepted", propagation_risk_level="low",
+                decision_id="d2",
+                target="case077",
+                source_module="router",
+                upstream_module="calibrate",
+                decision="accepted",
+                propagation_risk_level="low",
             ),
         ]
         summary = build_dependency_summary(decisions)
@@ -785,19 +898,22 @@ class TestPropagationChains:
 # 16. Decision Trace
 # ---------------------------------------------------------------------------
 
+
 class TestDecisionTrace:
     def _make_decisions(self) -> list[DecisionEntry]:
         return [
             _upstream_decision(
-                decision_id="traced_01", target="case031",
+                decision_id="traced_01",
+                target="case031",
                 upstream_module="disagreement_lab",
                 dependency_confidence="low",
                 propagation_risk_level="high",
                 review_override=True,
                 dependency_risk_note="Based on heuristic only",
             ),
-            _decision(decision_id="related_01", target="case031",
-                      source_module="calibrate"),
+            _decision(
+                decision_id="related_01", target="case031", source_module="calibrate"
+            ),
             _decision(decision_id="unrelated_01", target="case099"),
         ]
 
@@ -855,22 +971,29 @@ class TestDecisionTrace:
 # 17. Query Helpers — Upstream
 # ---------------------------------------------------------------------------
 
+
 class TestUpstreamQueries:
     def _make_decisions(self) -> list[DecisionEntry]:
         return [
             _upstream_decision(
-                decision_id="w1", dependency_confidence="low",
-                decision="accepted", review_override=False,
+                decision_id="w1",
+                dependency_confidence="low",
+                decision="accepted",
+                review_override=False,
                 propagation_risk_level="low",
             ),
             _upstream_decision(
-                decision_id="w2", dependency_confidence="heuristic",
-                decision="rejected", review_override=True,
+                decision_id="w2",
+                dependency_confidence="heuristic",
+                decision="rejected",
+                review_override=True,
                 propagation_risk_level="medium",
             ),
             _upstream_decision(
-                decision_id="w3", dependency_confidence="high",
-                decision="accepted", review_override=True,
+                decision_id="w3",
+                dependency_confidence="high",
+                decision="accepted",
+                review_override=True,
                 propagation_risk_level="high",
             ),
             _decision(decision_id="w4"),  # no upstream fields
@@ -897,7 +1020,8 @@ class TestUpstreamQueries:
         """Rejected high-risk decisions are NOT risky acceptances."""
         decisions = [
             _upstream_decision(
-                decision_id="r1", propagation_risk_level="high",
+                decision_id="r1",
+                propagation_risk_level="high",
                 decision="rejected",
             ),
         ]
@@ -920,18 +1044,24 @@ class TestUpstreamQueries:
 # 18. Dependency Summary Rendering
 # ---------------------------------------------------------------------------
 
+
 class TestDependencyRendering:
     def test_render_dependency_summary(self):
         decisions = [
             _upstream_decision(
-                decision_id="d1", upstream_module="calibrate",
-                dependency_confidence="high", propagation_risk_level="low",
+                decision_id="d1",
+                upstream_module="calibrate",
+                dependency_confidence="high",
+                propagation_risk_level="low",
                 decision="accepted",
             ),
             _upstream_decision(
-                decision_id="d2", upstream_module="router",
-                dependency_confidence="low", propagation_risk_level="high",
-                decision="accepted", review_override=True,
+                decision_id="d2",
+                upstream_module="router",
+                dependency_confidence="low",
+                propagation_risk_level="high",
+                decision="accepted",
+                review_override=True,
             ),
         ]
         summary = build_dependency_summary(decisions)
@@ -949,7 +1079,8 @@ class TestDependencyRendering:
     def test_render_trace(self):
         decisions = [
             _upstream_decision(
-                decision_id="tr_01", target="case031",
+                decision_id="tr_01",
+                target="case031",
                 dependency_confidence="low",
                 propagation_risk_level="high",
                 review_override=True,
@@ -972,10 +1103,12 @@ class TestDependencyRendering:
     def test_render_dependency_has_confidence_table(self):
         decisions = [
             _upstream_decision(
-                decision_id="d1", dependency_confidence="high",
+                decision_id="d1",
+                dependency_confidence="high",
             ),
             _upstream_decision(
-                decision_id="d2", dependency_confidence="low",
+                decision_id="d2",
+                dependency_confidence="low",
             ),
         ]
         summary = build_dependency_summary(decisions)
@@ -987,10 +1120,12 @@ class TestDependencyRendering:
     def test_render_dependency_has_risk_table(self):
         decisions = [
             _upstream_decision(
-                decision_id="d1", propagation_risk_level="low",
+                decision_id="d1",
+                propagation_risk_level="low",
             ),
             _upstream_decision(
-                decision_id="d2", propagation_risk_level="high",
+                decision_id="d2",
+                propagation_risk_level="high",
             ),
         ]
         summary = build_dependency_summary(decisions)

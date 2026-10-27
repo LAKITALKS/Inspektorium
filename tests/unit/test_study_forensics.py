@@ -32,8 +32,11 @@ from inspektorium.audit.checks.study_forensics_checker import (
 from inspektorium.audit.execution.evaluator import evaluate_result
 from inspektorium.audit.reports.reporter import generate_report
 from inspektorium.audit.execution.runner import (
-    _select_system_prompt, STUDY_FORENSICS_PROMPT, STUDY_FORENSICS_PROMPT_PHASE8,
-    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL, SYSTEM_PROMPT,
+    _select_system_prompt,
+    STUDY_FORENSICS_PROMPT,
+    STUDY_FORENSICS_PROMPT_PHASE8,
+    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
+    SYSTEM_PROMPT,
 )
 
 TASK_DIR = Path("tests/fixtures/audit/case_library")
@@ -53,6 +56,7 @@ PILOT_IDS = (
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
+
 
 @pytest.fixture
 def task_files():
@@ -113,6 +117,7 @@ def _make_agent_result(parsed: AgentResponse) -> AgentResult:
 # 1. Task loading tests
 # ---------------------------------------------------------------------------
 
+
 class TestTaskLoading:
     """Verify all study forensics task files load correctly."""
 
@@ -131,11 +136,18 @@ class TestTaskLoading:
     def test_gold_labels_present(self, all_tasks):
         for task in all_tasks:
             assert task.gold_label is not None
-            assert task.gold_label in ("solid", "overclaim", "mechanism_vs_evidence", "correlation_vs_causation")
+            assert task.gold_label in (
+                "solid",
+                "overclaim",
+                "mechanism_vs_evidence",
+                "correlation_vs_causation",
+            )
 
     def test_expected_findings_present(self, all_tasks):
         for task in all_tasks:
-            assert len(task.expected_findings) > 0, f"{task.id} has no expected findings"
+            assert len(task.expected_findings) > 0, (
+                f"{task.id} has no expected findings"
+            )
 
     def test_expected_findings_valid(self, all_tasks):
         for task in all_tasks:
@@ -146,7 +158,9 @@ class TestTaskLoading:
 
     def test_gold_evidence_spans_present(self, all_tasks):
         for task in all_tasks:
-            assert len(task.gold_evidence_spans) > 0, f"{task.id} has no gold evidence spans"
+            assert len(task.gold_evidence_spans) > 0, (
+                f"{task.id} has no gold evidence spans"
+            )
 
     def test_gold_evidence_spans_valid(self, all_tasks):
         for task in all_tasks:
@@ -157,7 +171,9 @@ class TestTaskLoading:
     def test_prompts_clean(self, all_tasks):
         """Verify no contentReference artifacts in prompts."""
         for task in all_tasks:
-            assert "contentReference" not in task.prompt, f"{task.id}: found contentReference in prompt"
+            assert "contentReference" not in task.prompt, (
+                f"{task.id}: found contentReference in prompt"
+            )
 
     def test_expected_answer_matches_gold_label(self, all_tasks):
         for task in all_tasks:
@@ -165,7 +181,9 @@ class TestTaskLoading:
 
     def test_task_families_match_gold_labels(self, all_tasks):
         for task in all_tasks:
-            assert task.task_family == task.gold_label, f"{task.id}: task_family != gold_label"
+            assert task.task_family == task.gold_label, (
+                f"{task.id}: task_family != gold_label"
+            )
 
     def test_yaml_roundtrip(self, task_files):
         """Verify YAML files parse correctly as raw dicts too."""
@@ -181,6 +199,7 @@ class TestTaskLoading:
 # 2. Schema tests
 # ---------------------------------------------------------------------------
 
+
 class TestSchemas:
     def test_task_type_study_forensics(self):
         assert TaskType.STUDY_FORENSICS.value == "study_forensics"
@@ -190,11 +209,22 @@ class TestSchemas:
         assert ef.finding == "test"
 
     def test_gold_evidence_span_model(self):
-        ges = GoldEvidenceSpan(span="text", why_it_matters="reason", supports_finding="test")
+        ges = GoldEvidenceSpan(
+            span="text", why_it_matters="reason", supports_finding="test"
+        )
         assert ges.span == "text"
 
     def test_task_with_study_forensics_fields(self):
-        task = _make_task("solid", [{"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"}])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                }
+            ],
+        )
         assert task.gold_label == "solid"
         assert len(task.expected_findings) == 1
 
@@ -203,6 +233,7 @@ class TestSchemas:
 # 3. Checker unit tests
 # ---------------------------------------------------------------------------
 
+
 class TestStudyForensicsChecker:
     def test_is_study_forensics_task(self):
         task = _make_task("solid")
@@ -210,7 +241,9 @@ class TestStudyForensicsChecker:
 
     def test_is_not_study_forensics_task(self):
         task = Task(
-            id="test", title="Test", domain="math",
+            id="test",
+            title="Test",
+            domain="math",
             difficulty=Difficulty.MEDIUM,
             task_type=TaskType.CLOSED_WITH_REASONING,
             prompt="test",
@@ -222,7 +255,9 @@ class TestStudyForensicsChecker:
         assert _detect_label(p) == "solid"
 
     def test_detect_label_overclaim(self):
-        p = _make_response(final_answer="This is an overclaim. The conclusion is overstated.")
+        p = _make_response(
+            final_answer="This is an overclaim. The conclusion is overstated."
+        )
         assert _detect_label(p) == "overclaim"
 
     def test_detect_label_mechanism_vs_evidence(self):
@@ -233,7 +268,9 @@ class TestStudyForensicsChecker:
         assert _detect_label(p) == "mechanism_vs_evidence"
 
     def test_detect_label_correlation(self):
-        p = _make_response(final_answer="Correlation is treated as causation. Cross-sectional data cannot prove cause.")
+        p = _make_response(
+            final_answer="Correlation is treated as causation. Cross-sectional data cannot prove cause."
+        )
         assert _detect_label(p) == "correlation_vs_causation"
 
     def test_detect_findings_evidence_matches(self):
@@ -242,22 +279,30 @@ class TestStudyForensicsChecker:
         assert "evidence_matches_claim" in findings
 
     def test_detect_findings_overclaim(self):
-        p = _make_response(steps=["The conclusion exceeds the results. This is overstated."])
+        p = _make_response(
+            steps=["The conclusion exceeds the results. This is overstated."]
+        )
         findings = _detect_findings(p)
         assert "conclusion_exceeds_results" in findings
 
     def test_detect_findings_correlation(self):
-        p = _make_response(steps=["This is correlation treated as causation. Confounders present."])
+        p = _make_response(
+            steps=["This is correlation treated as causation. Confounders present."]
+        )
         findings = _detect_findings(p)
         assert "correlation_as_causation" in findings
 
     def test_detect_findings_mechanism(self):
-        p = _make_response(steps=["The mechanism is not demonstrated in humans. Only mice studied."])
+        p = _make_response(
+            steps=["The mechanism is not demonstrated in humans. Only mice studied."]
+        )
         findings = _detect_findings(p)
         assert "mechanism_not_demonstrated" in findings
 
     def test_detect_findings_decorative(self):
-        p = _make_response(steps=["The uncertainty language is decorative. Token caveat only."])
+        p = _make_response(
+            steps=["The uncertainty language is decorative. Token caveat only."]
+        )
         findings = _detect_findings(p)
         assert "decorative_uncertainty" in findings
 
@@ -278,10 +323,17 @@ class TestStudyForensicsChecker:
         assert len(fp) == 0
 
     def test_full_check_solid_correct(self):
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-            {"finding": "none_or_minor", "severity": "minor", "confidence": "high"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+                {"finding": "none_or_minor", "severity": "minor", "confidence": "high"},
+            ],
+        )
         p = _make_response(
             final_answer="This is a solid, well-designed study. No major issues.",
             steps=["The evidence supports the claim."],
@@ -292,9 +344,16 @@ class TestStudyForensicsChecker:
         assert result["finding_recall"] > 0
 
     def test_full_check_solid_incorrect(self):
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is a clear overclaim case.",
         )
@@ -304,9 +363,16 @@ class TestStudyForensicsChecker:
         assert len(result["false_positives"]) > 0
 
     def test_full_check_overclaim(self):
-        task = _make_task("overclaim", [
-            {"finding": "conclusion_exceeds_results", "severity": "moderate", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "overclaim",
+            [
+                {
+                    "finding": "conclusion_exceeds_results",
+                    "severity": "moderate",
+                    "confidence": "medium",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is overclaim. The conclusion is overstated and goes beyond the data.",
             steps=["The conclusion exceeds what the results show."],
@@ -317,7 +383,9 @@ class TestStudyForensicsChecker:
 
     def test_non_study_forensics_returns_early(self):
         task = Task(
-            id="test", title="Test", domain="math",
+            id="test",
+            title="Test",
+            domain="math",
             difficulty=Difficulty.MEDIUM,
             task_type=TaskType.CLOSED_WITH_REASONING,
             prompt="test",
@@ -331,11 +399,19 @@ class TestStudyForensicsChecker:
 # 4. Evaluator integration tests
 # ---------------------------------------------------------------------------
 
+
 class TestEvaluatorIntegration:
     def test_evaluate_study_forensics_task(self):
-        task = _make_task("overclaim", [
-            {"finding": "conclusion_exceeds_results", "severity": "moderate", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "overclaim",
+            [
+                {
+                    "finding": "conclusion_exceeds_results",
+                    "severity": "moderate",
+                    "confidence": "medium",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is overclaim. The conclusion exceeds the results.",
             steps=["The study overstates its findings."],
@@ -349,9 +425,16 @@ class TestEvaluatorIntegration:
         assert evaluated.study_forensics.get("label_correct")
 
     def test_evaluate_solid_no_false_alarm(self):
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is a solid, well-designed study with no major problems.",
             steps=["The evidence supports the claim. Appropriate caveats present."],
@@ -376,6 +459,7 @@ class TestEvaluatorIntegration:
 # 5. Reporter integration tests
 # ---------------------------------------------------------------------------
 
+
 class TestReporterIntegration:
     def test_report_generation_no_crash(self, all_tasks):
         """Ensure report generation doesn't crash for any study forensics task."""
@@ -386,21 +470,30 @@ class TestReporterIntegration:
             )
             result = _make_agent_result(p)
             from inspektorium.audit.execution.evaluator import evaluate_run
+
             record = evaluate_run(task, "test-run", [result])
             report = generate_report(record)
             assert len(report) > 0
             assert "Forensic Dossier" in report
 
     def test_report_contains_study_forensics_section(self):
-        task = _make_task("overclaim", [
-            {"finding": "conclusion_exceeds_results", "severity": "moderate", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "overclaim",
+            [
+                {
+                    "finding": "conclusion_exceeds_results",
+                    "severity": "moderate",
+                    "confidence": "medium",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is overclaim. The conclusion exceeds the results.",
             steps=["Overstated conclusion."],
         )
         result = _make_agent_result(p)
         from inspektorium.audit.execution.evaluator import evaluate_run
+
         record = evaluate_run(task, "test-run", [result])
         report = generate_report(record)
         assert "Study Forensics Audit" in report
@@ -410,16 +503,22 @@ class TestReporterIntegration:
 # 6. Runner tests
 # ---------------------------------------------------------------------------
 
+
 class TestRunner:
     def test_select_system_prompt_study_forensics(self):
         task = _make_task("solid")
         prompt = _select_system_prompt(task)
         assert prompt == STUDY_FORENSICS_PROMPT_PHASE8
-        assert _select_system_prompt(task, STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL) == STUDY_FORENSICS_PROMPT
+        assert (
+            _select_system_prompt(task, STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL)
+            == STUDY_FORENSICS_PROMPT
+        )
 
     def test_select_system_prompt_normal(self):
         task = Task(
-            id="test", title="Test", domain="math",
+            id="test",
+            title="Test",
+            domain="math",
             difficulty=Difficulty.MEDIUM,
             task_type=TaskType.CLOSED_WITH_REASONING,
             prompt="test",
@@ -431,6 +530,7 @@ class TestRunner:
 # ---------------------------------------------------------------------------
 # 7. Pilot run smoke test
 # ---------------------------------------------------------------------------
+
 
 class TestPilotRun:
     def test_pilot_synthetic_responses_cover_pilot_tasks(self):
@@ -449,7 +549,9 @@ class TestPilotRun:
         reports_dir = tmp_path / "reports"
         runs_dir.mkdir()
         reports_dir.mkdir()
-        task_paths = {load_task(path).id: path for path in sorted(TASK_DIR.glob("*.yaml"))}
+        task_paths = {
+            load_task(path).id: path for path in sorted(TASK_DIR.glob("*.yaml"))
+        }
         for task_id in PILOT_IDS:
             task = load_task(task_paths[task_id])
             parsed = AgentResponse(**fixture[task_id])
@@ -481,6 +583,7 @@ class TestPilotRun:
 # 8. Edge cases
 # ---------------------------------------------------------------------------
 
+
 class TestEdgeCases:
     def test_empty_response(self):
         task = _make_task("solid")
@@ -504,6 +607,7 @@ class TestEdgeCases:
 # ---------------------------------------------------------------------------
 # 9. v0.6.1 Hardening A — Negation-Blindness Tests
 # ---------------------------------------------------------------------------
+
 
 class TestNegationBlindness:
     """Ensure negated keywords do NOT trigger false positives."""
@@ -532,7 +636,9 @@ class TestNegationBlindness:
 
     def test_no_mechanism_gap(self):
         p = _make_response(
-            steps=["I do not see mechanism not demonstrated here — the human trials are solid."],
+            steps=[
+                "I do not see mechanism not demonstrated here — the human trials are solid."
+            ],
         )
         fp = _detect_false_positives(p)
         assert "mechanism not demonstrated" not in fp
@@ -579,15 +685,20 @@ class TestNegationBlindness:
         assert not _keyword_match_non_negated(
             "There is no evidence of overclaiming", "overclaim"
         )
-        assert _keyword_match_non_negated(
-            "This is a clear overclaim", "overclaim"
-        )
+        assert _keyword_match_non_negated("This is a clear overclaim", "overclaim")
 
     def test_full_solid_check_no_fp_with_negation(self):
         """Full pipeline: solid case with negated keywords should have zero FP."""
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is a solid study. There is no evidence of overclaiming. Not an unsupported generalization.",
             steps=["The evidence supports the claim. No major flaw detected."],
@@ -601,6 +712,7 @@ class TestNegationBlindness:
 # ---------------------------------------------------------------------------
 # 10. v0.6.1 Hardening B — Flexible Finding Detection Tests
 # ---------------------------------------------------------------------------
+
 
 class TestFlexibleFindingDetection:
     """Ensure regex pattern families catch paraphrased findings."""
@@ -636,17 +748,25 @@ class TestFlexibleFindingDetection:
         assert "mechanism_not_demonstrated" in findings
 
     def test_overstatement_regex(self):
-        p = _make_response(steps=["The authors overstate their conclusions significantly."])
+        p = _make_response(
+            steps=["The authors overstate their conclusions significantly."]
+        )
         findings = _detect_findings(p)
         assert "conclusion_exceeds_results" in findings
 
     def test_claims_justified_regex(self):
-        p = _make_response(steps=["The results support the claim made in the abstract."])
+        p = _make_response(
+            steps=["The results support the claim made in the abstract."]
+        )
         findings = _detect_findings(p)
         assert "evidence_matches_claim" in findings
 
     def test_decorative_caveat_regex(self):
-        p = _make_response(steps=["Further research is needed, but the results are already being used in policy."])
+        p = _make_response(
+            steps=[
+                "Further research is needed, but the results are already being used in policy."
+            ]
+        )
         findings = _detect_findings(p)
         assert "decorative_uncertainty" in findings
 
@@ -656,7 +776,9 @@ class TestFlexibleFindingDetection:
         assert "correlation_as_causation" in findings
 
     def test_no_human_clinical_evidence(self):
-        p = _make_response(steps=["There is a lack of human clinical evidence for this claim."])
+        p = _make_response(
+            steps=["There is a lack of human clinical evidence for this claim."]
+        )
         findings = _detect_findings(p)
         assert "mechanism_not_demonstrated" in findings
 
@@ -666,7 +788,9 @@ class TestFlexibleFindingDetection:
         assert "unsupported_generalization" in findings
 
     def test_confounding_variables_not_controlled(self):
-        p = _make_response(steps=["Confounding variables are not controlled for in this survey."])
+        p = _make_response(
+            steps=["Confounding variables are not controlled for in this survey."]
+        )
         findings = _detect_findings(p)
         assert "correlation_as_causation" in findings
 
@@ -676,7 +800,9 @@ class TestFlexibleFindingDetection:
         assert "none_or_minor" in findings
 
     def test_authors_acknowledge_limitations(self):
-        p = _make_response(steps=["The authors appropriately acknowledge limitations of scope."])
+        p = _make_response(
+            steps=["The authors appropriately acknowledge limitations of scope."]
+        )
         findings = _detect_findings(p)
         assert "cautious_scope_control" in findings
 
@@ -684,6 +810,7 @@ class TestFlexibleFindingDetection:
 # ---------------------------------------------------------------------------
 # 11. v0.6.1 Hardening C — Hedge-Language / Decorative Uncertainty Tests
 # ---------------------------------------------------------------------------
+
 
 class TestHedgeLanguageDetection:
     """Ensure hedge + null/weak outcome detection works correctly."""
@@ -773,9 +900,16 @@ class TestHedgeLanguageDetection:
 
     def test_hedge_flag_in_full_pipeline(self):
         """Full check: suspicious hedge pattern should produce forensic flag."""
-        task = _make_task("overclaim", [
-            {"finding": "conclusion_exceeds_results", "severity": "moderate", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "overclaim",
+            [
+                {
+                    "finding": "conclusion_exceeds_results",
+                    "severity": "moderate",
+                    "confidence": "medium",
+                },
+            ],
+        )
         task.prompt = (
             "The primary outcome was null but the secondary shows a promising signal. "
             "Study was conducted remotely with self-report measures."
@@ -791,9 +925,16 @@ class TestHedgeLanguageDetection:
 
     def test_hedge_flag_raised_when_agent_misses(self):
         """When agent doesn't flag suspicious hedge, a forensic flag should be raised."""
-        task = _make_task("overclaim", [
-            {"finding": "conclusion_exceeds_results", "severity": "moderate", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "overclaim",
+            [
+                {
+                    "finding": "conclusion_exceeds_results",
+                    "severity": "moderate",
+                    "confidence": "medium",
+                },
+            ],
+        )
         task.prompt = (
             "The primary outcome was null. The authors call the secondary result "
             "a promising signal. Small sample, conducted remotely."
@@ -814,12 +955,15 @@ class TestHedgeLanguageDetection:
 # 12. v0.6.2 Gold Standard Calibration Fields
 # ---------------------------------------------------------------------------
 
+
 class TestGoldStandardFields:
     """Verify new gold standard calibration fields load and validate."""
 
     def test_gold_confidence_loaded(self, all_tasks):
         for task in all_tasks:
-            assert task.gold_confidence is not None, f"{task.id}: missing gold_confidence"
+            assert task.gold_confidence is not None, (
+                f"{task.id}: missing gold_confidence"
+            )
             assert task.gold_confidence in ("high", "medium", "low")
 
     def test_gold_case_type_loaded(self, all_tasks):
@@ -829,14 +973,20 @@ class TestGoldStandardFields:
 
     def test_gold_justification_loaded(self, all_tasks):
         for task in all_tasks:
-            assert task.gold_justification is not None, f"{task.id}: missing gold_justification"
-            assert len(task.gold_justification.strip()) > 20, f"{task.id}: gold_justification too short"
+            assert task.gold_justification is not None, (
+                f"{task.id}: missing gold_justification"
+            )
+            assert len(task.gold_justification.strip()) > 20, (
+                f"{task.id}: gold_justification too short"
+            )
 
     def test_gold_alternative_reading_loaded(self, all_tasks):
         """Alternative reading is required for borderline cases, optional for clear."""
         for task in all_tasks:
             if task.gold_case_type == "borderline":
-                assert task.gold_alternative_reading is not None, f"{task.id}: borderline case missing gold_alternative_reading"
+                assert task.gold_alternative_reading is not None, (
+                    f"{task.id}: borderline case missing gold_alternative_reading"
+                )
                 assert len(task.gold_alternative_reading.strip()) > 10
 
     def test_curator_notes_loaded(self, all_tasks):
@@ -851,7 +1001,9 @@ class TestGoldStandardFields:
     def test_clear_cases_have_high_confidence(self, all_tasks):
         clear_cases = [t for t in all_tasks if t.gold_case_type == "clear"]
         for task in clear_cases:
-            assert task.gold_confidence == "high", f"{task.id}: clear case should have high confidence"
+            assert task.gold_confidence == "high", (
+                f"{task.id}: clear case should have high confidence"
+            )
 
     def test_backward_compat_fields_optional(self):
         """New fields are optional — tasks without them still load."""
@@ -875,12 +1027,15 @@ class TestGoldStandardFields:
         for task in all_tasks:
             justification = task.gold_justification.lower()
             # Should contain reasoning, not just the label word
-            assert len(justification.split()) > 10, f"{task.id}: justification is too terse"
+            assert len(justification.split()) > 10, (
+                f"{task.id}: justification is too terse"
+            )
 
 
 # ---------------------------------------------------------------------------
 # 13. v0.6.2 Anti-Claim FP Fix Tests
 # ---------------------------------------------------------------------------
+
 
 class TestAntiClaimFPFix:
     """Ensure 'avoids overclaiming' etc. do not trigger false positives."""
@@ -932,9 +1087,16 @@ class TestAntiClaimFPFix:
 
     def test_full_solid_pipeline_with_anti_claim_language(self):
         """Full pipeline: solid case with anti-claim phrasing should have zero FP."""
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is a solid study. The text avoids overclaiming throughout.",
             steps=["The evidence supports the claim."],
@@ -948,6 +1110,7 @@ class TestAntiClaimFPFix:
 # ---------------------------------------------------------------------------
 # 14. v0.6.3 Calibration Fix A — Analytical Reference Constructions
 # ---------------------------------------------------------------------------
+
 
 class TestAnalyticalReferenceFP:
     """Ensure analytical reference constructions don't trigger false positives."""
@@ -1029,12 +1192,21 @@ class TestAnalyticalReferenceFP:
 
     def test_full_solid_pipeline_analytical_references(self):
         """Full pipeline: solid case with analytical language should have zero FP."""
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is a solid study. I checked for overclaiming and found none.",
-            steps=["Evidence supports the claim. Searched for major flaw — none found."],
+            steps=[
+                "Evidence supports the claim. Searched for major flaw — none found."
+            ],
             key_claims=["solid study", "no overclaim detected"],
         )
         result = run_study_forensics_checks(task, p)
@@ -1046,6 +1218,7 @@ class TestAnalyticalReferenceFP:
 # 15. v0.6.3 Calibration Fix B — Label Detection Priority
 # ---------------------------------------------------------------------------
 
+
 class TestLabelDetectionPriority:
     """Ensure final_answer is prioritized over analysis-body vocabulary."""
 
@@ -1053,7 +1226,9 @@ class TestLabelDetectionPriority:
         """Agent says 'solid' in final_answer but discusses correlation in analysis."""
         p = _make_response(
             final_answer="This is a solid, well-designed study with no major issues.",
-            key_claims=["The study discusses correlation but establishes causation via RCT"],
+            key_claims=[
+                "The study discusses correlation but establishes causation via RCT"
+            ],
         )
         assert _detect_label(p) == "solid"
 
@@ -1061,7 +1236,10 @@ class TestLabelDetectionPriority:
         """Agent says 'solid' but discusses mechanism in claims."""
         p = _make_response(
             final_answer="This is a solid study with sound methodology.",
-            key_claims=["mechanism is well-demonstrated", "preclinical evidence strong"],
+            key_claims=[
+                "mechanism is well-demonstrated",
+                "preclinical evidence strong",
+            ],
         )
         assert _detect_label(p) == "solid"
 
@@ -1105,7 +1283,11 @@ class TestLabelDetectionPriority:
         """When final_answer is empty, key_claims should be used."""
         p = _make_response(
             final_answer="",
-            key_claims=["This is clearly overclaim", "conclusion exceeds results", "overstated"],
+            key_claims=[
+                "This is clearly overclaim",
+                "conclusion exceeds results",
+                "overstated",
+            ],
         )
         assert _detect_label(p) == "overclaim"
 
@@ -1113,6 +1295,7 @@ class TestLabelDetectionPriority:
 # ---------------------------------------------------------------------------
 # 16. v0.6.3 Calibration Fix C — Criticism-Direction Heuristic
 # ---------------------------------------------------------------------------
+
 
 class TestCriticismDirectionHeuristic:
     """Ensure claim-weakening language doesn't trigger false positives."""
@@ -1175,10 +1358,21 @@ class TestCriticismDirectionHeuristic:
 
     def test_full_solid_pipeline_with_weakening_cues(self):
         """Full pipeline: solid case with weakening language should have zero FP."""
-        task = _make_task("solid", [
-            {"finding": "evidence_matches_claim", "severity": "minor", "confidence": "high"},
-            {"finding": "cautious_scope_control", "severity": "minor", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "solid",
+            [
+                {
+                    "finding": "evidence_matches_claim",
+                    "severity": "minor",
+                    "confidence": "high",
+                },
+                {
+                    "finding": "cautious_scope_control",
+                    "severity": "minor",
+                    "confidence": "medium",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="This is a solid study. Limited sample acknowledged but no overclaim. Further research is needed as authors note.",
             steps=["Evidence supports claim. Cautious interpretation throughout."],
@@ -1192,6 +1386,7 @@ class TestCriticismDirectionHeuristic:
 # ---------------------------------------------------------------------------
 # 17. v0.6.6 Label Detector Bug — solid FA vs analytical key_claims
 # ---------------------------------------------------------------------------
+
 
 class TestLabelDetectorSolidPriority:
     """v0.6.6: Bare 'solid' in final_answer must not be overridden by
@@ -1257,10 +1452,21 @@ class TestLabelDetectorSolidPriority:
 
     def test_full_pipeline_sonnet_public001_scenario(self):
         """Full pipeline: Sonnet's actual Public001 output should detect 'solid'."""
-        task = _make_task("correlation_vs_causation", [
-            {"finding": "correlation_as_causation", "severity": "major", "confidence": "high"},
-            {"finding": "unsupported_generalization", "severity": "moderate", "confidence": "medium"},
-        ])
+        task = _make_task(
+            "correlation_vs_causation",
+            [
+                {
+                    "finding": "correlation_as_causation",
+                    "severity": "major",
+                    "confidence": "high",
+                },
+                {
+                    "finding": "unsupported_generalization",
+                    "severity": "moderate",
+                    "confidence": "medium",
+                },
+            ],
+        )
         p = _make_response(
             final_answer="solid",
             key_claims=[

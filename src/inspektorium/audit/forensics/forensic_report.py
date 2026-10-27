@@ -34,7 +34,12 @@ import hashlib
 import json
 import re
 
-from inspektorium.audit.checks.confidence_validity import INVALID, MISSING, VALID, classify_confidence
+from inspektorium.audit.checks.confidence_validity import (
+    INVALID,
+    MISSING,
+    VALID,
+    classify_confidence,
+)
 
 # ---------------------------------------------------------------------------
 # Frozen constants (reused vocabularies + prototype additions)
@@ -42,7 +47,12 @@ from inspektorium.audit.checks.confidence_validity import INVALID, MISSING, VALI
 
 REPORT_SCHEMA_VERSION = "6.3.0"
 
-FORENSIC_LABELS = ("solid", "overclaim", "correlation_vs_causation", "mechanism_vs_evidence")
+FORENSIC_LABELS = (
+    "solid",
+    "overclaim",
+    "correlation_vs_causation",
+    "mechanism_vs_evidence",
+)
 
 # Plain-language verdict titles (refined from reporting.CATEGORY_LABELS; underlying
 # label meaning unchanged). mechanism_vs_evidence stays biologically scoped.
@@ -50,19 +60,16 @@ VERDICT_TITLES = {
     "solid": "Supported within the available evidence",
     "overclaim": "Claim goes beyond the available evidence",
     "correlation_vs_causation": "Association is presented as causation",
-    "mechanism_vs_evidence":
-        "Biological or preclinical evidence is presented as human clinical benefit",
+    "mechanism_vs_evidence": "Biological or preclinical evidence is presented as human clinical benefit",
 }
 
 # Neutral, evidence-relationship summaries (never assert factual falsity).
 VERDICT_DEFAULT_SUMMARY = {
     "solid": "The claim stays within what the cited evidence can support.",
     "overclaim": "The claim asserts more than the cited evidence establishes.",
-    "correlation_vs_causation":
-        "A causal conclusion is drawn from evidence that shows association, not causation.",
-    "mechanism_vs_evidence":
-        "Preclinical or mechanistic evidence is used to imply a human clinical benefit "
-        "the evidence tier does not reach.",
+    "correlation_vs_causation": "A causal conclusion is drawn from evidence that shows association, not causation.",
+    "mechanism_vs_evidence": "Preclinical or mechanistic evidence is used to imply a human clinical benefit "
+    "the evidence tier does not reach.",
 }
 
 # Evidence tiers (weakest → strongest), from the runner analysis contract.
@@ -100,12 +107,18 @@ DEV_OR_PROD = ("development", "production")
 CONFIDENCE_STATUSES = (VALID, MISSING, INVALID)
 
 CONFIDENCE_INTERPRETATION = {
-    VALID: ("Model's self-assessed probability that its own primary classification is "
-            "correct (Phase 6.1 semantics). Not a calibrated probability."),
-    MISSING: ("No confidence value was provided. Recorded as MISSING and NOT treated as "
-              "0.0; excluded from any confidence-dependent reading."),
-    INVALID: ("The provided confidence was non-numeric, boolean, or outside [0.0, 1.0]. "
-              "Recorded as INVALID and NOT coerced; excluded from any confidence reading."),
+    VALID: (
+        "Model's self-assessed probability that its own primary classification is "
+        "correct (Phase 6.1 semantics). Not a calibrated probability."
+    ),
+    MISSING: (
+        "No confidence value was provided. Recorded as MISSING and NOT treated as "
+        "0.0; excluded from any confidence-dependent reading."
+    ),
+    INVALID: (
+        "The provided confidence was non-numeric, boolean, or outside [0.0, 1.0]. "
+        "Recorded as INVALID and NOT coerced; excluded from any confidence reading."
+    ),
 }
 
 NOT_FALSITY_NOTE = (
@@ -127,35 +140,90 @@ REWRITE_VERIFICATION_NOTE = (
     "human review."
 )
 # recommended_revision.rewrite_verification vocabulary
-REWRITE_VERIFICATIONS = ("unverified_proposal", "blocked_unsupported_new_facts", "no_rewrite_supplied")
+REWRITE_VERIFICATIONS = (
+    "unverified_proposal",
+    "blocked_unsupported_new_facts",
+    "no_rewrite_supplied",
+)
 
 # Allowed keys (schema additionalProperties:false mirror).
 _INPUT_TOP_KEYS = {
-    "meta", "parser", "claim", "verdict", "evidence", "failure_modes",
-    "reader_impact", "uncertainty", "recommended_revision", "provenance", "forensic_record",
+    "meta",
+    "parser",
+    "claim",
+    "verdict",
+    "evidence",
+    "failure_modes",
+    "reader_impact",
+    "uncertainty",
+    "recommended_revision",
+    "provenance",
+    "forensic_record",
 }
-_META_KEYS = {"report_id", "generated_at", "synthetic_fixture",
-              "development_or_production_status", "analysis_status"}
-_PARSER_KEYS = {"parse_ok", "strategy", "error", "finish_reason", "truncation_suspected"}
-_CLAIM_KEYS = {"claim_text", "claim_context", "claim_source_reference",
-               "claim_scope", "intended_reader_or_audience"}
+_META_KEYS = {
+    "report_id",
+    "generated_at",
+    "synthetic_fixture",
+    "development_or_production_status",
+    "analysis_status",
+}
+_PARSER_KEYS = {
+    "parse_ok",
+    "strategy",
+    "error",
+    "finish_reason",
+    "truncation_suspected",
+}
+_CLAIM_KEYS = {
+    "claim_text",
+    "claim_context",
+    "claim_source_reference",
+    "claim_scope",
+    "intended_reader_or_audience",
+}
 _VERDICT_KEYS = {"predicted_label", "verdict_summary", "confidence"}
-_EVIDENCE_KEYS = {"evidence_items", "supporting", "contradicting_or_limiting",
-                  "missing_comparison_group", "missing_causal_chain",
-                  "missing_human_evidence", "evidence_sufficiency",
-                  "evidence_sufficiency_rationale"}
+_EVIDENCE_KEYS = {
+    "evidence_items",
+    "supporting",
+    "contradicting_or_limiting",
+    "missing_comparison_group",
+    "missing_causal_chain",
+    "missing_human_evidence",
+    "evidence_sufficiency",
+    "evidence_sufficiency_rationale",
+}
 _EVIDENCE_ITEM_KEYS = {"text", "source_reference", "tier", "role", "why_it_matters"}
 _FAILURE_KEYS = {"detected"}
 _FAILURE_ITEM_KEYS = {"mode", "rationale", "evidence_refs"}
-_READER_KEYS = {"risk_level", "risk_rationale", "likely_reader_misunderstanding",
-                "affected_decision_type", "risk_uncertainty"}
-_UNCERTAINTY_KEYS = {"unresolved_questions", "missing_evidence", "ambiguity",
-                     "alternative_plausible_label", "alternative_label_rationale",
-                     "scope_limitations"}
-_REVISION_KEYS = {"defensible_rewrite", "rewrite_rationale", "claims_to_remove_or_narrow",
-                  "evidence_qualifiers_to_add", "claims_that_remain_supportable"}
-_PROVENANCE_KEYS = {"model", "provider", "prompt_contract_version",
-                    "repository_commit", "analysis_source"}
+_READER_KEYS = {
+    "risk_level",
+    "risk_rationale",
+    "likely_reader_misunderstanding",
+    "affected_decision_type",
+    "risk_uncertainty",
+}
+_UNCERTAINTY_KEYS = {
+    "unresolved_questions",
+    "missing_evidence",
+    "ambiguity",
+    "alternative_plausible_label",
+    "alternative_label_rationale",
+    "scope_limitations",
+}
+_REVISION_KEYS = {
+    "defensible_rewrite",
+    "rewrite_rationale",
+    "claims_to_remove_or_narrow",
+    "evidence_qualifiers_to_add",
+    "claims_that_remain_supportable",
+}
+_PROVENANCE_KEYS = {
+    "model",
+    "provider",
+    "prompt_contract_version",
+    "repository_commit",
+    "analysis_source",
+}
 
 # Leakage patterns — private identities / paths that must never appear in a report input.
 _LEAK_PATTERNS = (
@@ -179,6 +247,7 @@ class ForensicReportError(ValueError):
 # ---------------------------------------------------------------------------
 # Small helpers
 # ---------------------------------------------------------------------------
+
 
 def _iter_strings(obj):
     if isinstance(obj, dict):
@@ -228,6 +297,7 @@ def _numbers(text: str) -> set[str]:
 # Input validation
 # ---------------------------------------------------------------------------
 
+
 def _check_keys(obj, allowed, path, errors):
     if not isinstance(obj, dict):
         errors.append(f"{path} must be an object")
@@ -242,7 +312,7 @@ def _resolve_status(raw: dict) -> str:
     meta = raw.get("meta") or {}
     parser = raw.get("parser") or {}
     if parser.get("parse_ok") is False:
-        return "parser_failure"          # safety: a parser failure always wins
+        return "parser_failure"  # safety: a parser failure always wins
     explicit = meta.get("analysis_status")
     if explicit in ANALYSIS_STATUS:
         return explicit
@@ -276,7 +346,9 @@ def validate_forensic_report_input(raw: dict) -> tuple[bool, list[str]]:
     if "synthetic_fixture" in meta and not isinstance(meta["synthetic_fixture"], bool):
         errors.append("meta.synthetic_fixture must be a boolean")
     if meta.get("development_or_production_status") not in (None, *DEV_OR_PROD):
-        errors.append(f"meta.development_or_production_status must be one of {DEV_OR_PROD}")
+        errors.append(
+            f"meta.development_or_production_status must be one of {DEV_OR_PROD}"
+        )
     if meta.get("analysis_status") not in (None, *ANALYSIS_STATUS):
         errors.append(f"meta.analysis_status must be one of {ANALYSIS_STATUS}")
 
@@ -314,17 +386,29 @@ def validate_forensic_report_input(raw: dict) -> tuple[bool, list[str]]:
             errors.append("evidence.evidence_items must be a list")
         else:
             for i, it in enumerate(items):
-                if not _check_keys(it, _EVIDENCE_ITEM_KEYS, f"evidence.evidence_items[{i}]", errors):
+                if not _check_keys(
+                    it, _EVIDENCE_ITEM_KEYS, f"evidence.evidence_items[{i}]", errors
+                ):
                     continue
                 if not _str_or_none(it.get("text")):
                     errors.append(f"evidence.evidence_items[{i}].text is required")
                 if it.get("tier") not in (None, *EVIDENCE_TIER_VALUES):
-                    errors.append(f"evidence.evidence_items[{i}].tier is not a valid tier")
+                    errors.append(
+                        f"evidence.evidence_items[{i}].tier is not a valid tier"
+                    )
                 if it.get("role") not in (None, *EVIDENCE_ROLES):
-                    errors.append(f"evidence.evidence_items[{i}].role is not a valid role")
+                    errors.append(
+                        f"evidence.evidence_items[{i}].role is not a valid role"
+                    )
         if ev.get("evidence_sufficiency") not in (None, *EVIDENCE_SUFFICIENCY):
-            errors.append(f"evidence.evidence_sufficiency must be one of {EVIDENCE_SUFFICIENCY}")
-        for k in ("missing_comparison_group", "missing_causal_chain", "missing_human_evidence"):
+            errors.append(
+                f"evidence.evidence_sufficiency must be one of {EVIDENCE_SUFFICIENCY}"
+            )
+        for k in (
+            "missing_comparison_group",
+            "missing_causal_chain",
+            "missing_human_evidence",
+        ):
             if k in ev and not isinstance(ev[k], bool) and ev[k] is not None:
                 errors.append(f"evidence.{k} must be a boolean or null")
 
@@ -336,14 +420,20 @@ def validate_forensic_report_input(raw: dict) -> tuple[bool, list[str]]:
             errors.append("failure_modes.detected must be a list")
         else:
             for i, d in enumerate(detected):
-                if not _check_keys(d, _FAILURE_ITEM_KEYS, f"failure_modes.detected[{i}]", errors):
+                if not _check_keys(
+                    d, _FAILURE_ITEM_KEYS, f"failure_modes.detected[{i}]", errors
+                ):
                     continue
                 if d.get("mode") not in FAILURE_MODES:
-                    errors.append(f"failure_modes.detected[{i}].mode {d.get('mode')!r} "
-                                  "is not a frozen failure mode")
+                    errors.append(
+                        f"failure_modes.detected[{i}].mode {d.get('mode')!r} "
+                        "is not a frozen failure mode"
+                    )
                 if not _str_or_none(d.get("rationale")):
-                    errors.append(f"failure_modes.detected[{i}] must carry a non-empty "
-                                  "rationale (a failure mode is never asserted unsupported)")
+                    errors.append(
+                        f"failure_modes.detected[{i}] must carry a non-empty "
+                        "rationale (a failure mode is never asserted unsupported)"
+                    )
 
     ri = raw.get("reader_impact") or {}
     if ri:
@@ -356,7 +446,9 @@ def validate_forensic_report_input(raw: dict) -> tuple[bool, list[str]]:
         _check_keys(unc, _UNCERTAINTY_KEYS, "uncertainty", errors)
         alt = unc.get("alternative_plausible_label")
         if alt is not None and alt not in FORENSIC_LABELS:
-            errors.append("uncertainty.alternative_plausible_label must be a frozen label or null")
+            errors.append(
+                "uncertainty.alternative_plausible_label must be a frozen label or null"
+            )
 
     rev = raw.get("recommended_revision") or {}
     if rev:
@@ -373,8 +465,12 @@ def validate_forensic_report_input(raw: dict) -> tuple[bool, list[str]]:
 # Canonical serialization + digests
 # ---------------------------------------------------------------------------
 
+
 def _canonical_bytes(obj) -> bytes:
-    return json.dumps(obj, sort_keys=True, indent=2, ensure_ascii=False).encode("utf-8") + b"\n"
+    return (
+        json.dumps(obj, sort_keys=True, indent=2, ensure_ascii=False).encode("utf-8")
+        + b"\n"
+    )
 
 
 def canonical_input_bytes(raw: dict) -> bytes:
@@ -402,7 +498,10 @@ def report_digest(report: dict) -> str:
 # Report builder
 # ---------------------------------------------------------------------------
 
-def _rewrite_guard(rewrite: str | None, corpus: str) -> tuple[str | None, bool, list[str]]:
+
+def _rewrite_guard(
+    rewrite: str | None, corpus: str
+) -> tuple[str | None, bool, list[str]]:
     """Guard a proposed rewrite against introducing unsupported new numeric facts.
 
     Returns ``(accepted_rewrite_or_None, available, unsupported_new_facts)``. Every
@@ -430,7 +529,9 @@ def build_forensic_report(raw: dict) -> dict:
         raise ForensicReportError("; ".join(errors))
 
     warnings: list[str] = []
-    audit: list[str] = [f"input validated against forensic_report schema {REPORT_SCHEMA_VERSION}"]
+    audit: list[str] = [
+        f"input validated against forensic_report schema {REPORT_SCHEMA_VERSION}"
+    ]
     status = _resolve_status(raw)
     audit.append(f"analysis_status={status}")
 
@@ -451,13 +552,17 @@ def build_forensic_report(raw: dict) -> dict:
         synthetic = bool(meta["synthetic_fixture"])
     else:
         synthetic = True
-        warnings.append("synthetic_fixture not supplied; defaulted to true (prototype-safe)")
+        warnings.append(
+            "synthetic_fixture not supplied; defaulted to true (prototype-safe)"
+        )
     dev_or_prod = meta.get("development_or_production_status") or "development"
 
     report_id = _str_or_none(meta.get("report_id")) or f"FR-{input_digest[:12]}"
     generated_at = _str_or_none(meta.get("generated_at"))
     if generated_at is None:
-        warnings.append("generated_at not supplied; recorded as null (no wall-clock injected)")
+        warnings.append(
+            "generated_at not supplied; recorded as null (no wall-clock injected)"
+        )
 
     # --- confidence (raw → VALID/MISSING/INVALID; never coerced to 0.0) -------------
     has_conf_key = "confidence" in verdict_in
@@ -466,7 +571,9 @@ def build_forensic_report(raw: dict) -> dict:
     conf_value = float(raw_conf) if conf_status == VALID else None
     audit.append(f"confidence classified as {conf_status} (no coercion to 0.0)")
     if conf_status != VALID:
-        warnings.append(f"confidence {conf_status}: excluded from any confidence-dependent reading")
+        warnings.append(
+            f"confidence {conf_status}: excluded from any confidence-dependent reading"
+        )
 
     # --- verdict --------------------------------------------------------------------
     label = verdict_in.get("predicted_label")
@@ -481,19 +588,23 @@ def build_forensic_report(raw: dict) -> dict:
             "confidence_interpretation": CONFIDENCE_INTERPRETATION[conf_status],
             "classification_note": NOT_FALSITY_NOTE,
         }
-        warnings.append("parser failure: no verdict was produced; this is a failure report")
+        warnings.append(
+            "parser failure: no verdict was produced; this is a failure report"
+        )
     elif status == "insufficient_input":
         verdict = {
             "predicted_label": None,
             "verdict_title": "Insufficient input for a verdict",
             "verdict_summary": "No forensic classification was supplied; the analysis is "
-                               "incomplete and no verdict is asserted.",
+            "incomplete and no verdict is asserted.",
             "confidence_status": conf_status,
             "confidence_value": conf_value,
             "confidence_interpretation": CONFIDENCE_INTERPRETATION[conf_status],
             "classification_note": NOT_FALSITY_NOTE,
         }
-        warnings.append("insufficient input: no predicted_label supplied; no verdict asserted")
+        warnings.append(
+            "insufficient input: no predicted_label supplied; no verdict asserted"
+        )
     else:
         verdict = {
             "predicted_label": label,
@@ -509,45 +620,61 @@ def build_forensic_report(raw: dict) -> dict:
     # --- evidence -------------------------------------------------------------------
     evidence_items = []
     for it in ev_in.get("evidence_items", []) or []:
-        evidence_items.append({
-            "text": it.get("text", ""),
-            "source_reference": _str_or_none(it.get("source_reference")),
-            "tier": it.get("tier") or "unknown",
-            "role": it.get("role") or "supporting",
-            "why_it_matters": _str_or_none(it.get("why_it_matters")),
-        })
+        evidence_items.append(
+            {
+                "text": it.get("text", ""),
+                "source_reference": _str_or_none(it.get("source_reference")),
+                "tier": it.get("tier") or "unknown",
+                "role": it.get("role") or "supporting",
+                "why_it_matters": _str_or_none(it.get("why_it_matters")),
+            }
+        )
     evidence = {
         "evidence_items": evidence_items,
         "supporting": _list_of_str(ev_in.get("supporting")),
-        "contradicting_or_limiting": _list_of_str(ev_in.get("contradicting_or_limiting")),
-        "missing_comparison_group": _bool_or_none(ev_in.get("missing_comparison_group")),
+        "contradicting_or_limiting": _list_of_str(
+            ev_in.get("contradicting_or_limiting")
+        ),
+        "missing_comparison_group": _bool_or_none(
+            ev_in.get("missing_comparison_group")
+        ),
         "missing_causal_chain": _bool_or_none(ev_in.get("missing_causal_chain")),
         "missing_human_evidence": _bool_or_none(ev_in.get("missing_human_evidence")),
         "evidence_sufficiency": ev_in.get("evidence_sufficiency") or "unknown",
-        "evidence_sufficiency_rationale": _str_or_none(ev_in.get("evidence_sufficiency_rationale")),
+        "evidence_sufficiency_rationale": _str_or_none(
+            ev_in.get("evidence_sufficiency_rationale")
+        ),
     }
     if not evidence_items:
-        warnings.append("no evidence items supplied; evidence list is empty (shown, not hidden)")
+        warnings.append(
+            "no evidence items supplied; evidence list is empty (shown, not hidden)"
+        )
 
     # --- failure modes (echoed from analysis, never inferred) -----------------------
     detected = []
     for d in fm_in.get("detected", []) or []:
-        detected.append({
-            "mode": d.get("mode"),
-            "rationale": d.get("rationale", ""),
-            "evidence_refs": _list_of_str(d.get("evidence_refs")),
-        })
+        detected.append(
+            {
+                "mode": d.get("mode"),
+                "rationale": d.get("rationale", ""),
+                "evidence_refs": _list_of_str(d.get("evidence_refs")),
+            }
+        )
     failure_modes = {"detected": detected, "none_detected": len(detected) == 0}
     audit.append(f"{len(detected)} failure mode(s) echoed from analysis (not inferred)")
 
     # --- reader-impact risk (qualitative; unknown when absent) ----------------------
     risk_level = ri_in.get("risk_level") or RISK_UNKNOWN
     if risk_level == RISK_UNKNOWN and "risk_level" not in ri_in:
-        warnings.append("reader-impact risk not supplied; recorded as 'unknown' (insufficient)")
+        warnings.append(
+            "reader-impact risk not supplied; recorded as 'unknown' (insufficient)"
+        )
     reader_impact = {
         "risk_level": risk_level,
         "risk_rationale": _str_or_none(ri_in.get("risk_rationale")),
-        "likely_reader_misunderstanding": _str_or_none(ri_in.get("likely_reader_misunderstanding")),
+        "likely_reader_misunderstanding": _str_or_none(
+            ri_in.get("likely_reader_misunderstanding")
+        ),
         "affected_decision_type": _str_or_none(ri_in.get("affected_decision_type")),
         "risk_uncertainty": _str_or_none(ri_in.get("risk_uncertainty")),
         "not_a_harm_probability_note": NOT_HARM_PROBABILITY_NOTE,
@@ -559,32 +686,46 @@ def build_forensic_report(raw: dict) -> dict:
         "missing_evidence": _list_of_str(unc_in.get("missing_evidence")),
         "ambiguity": _str_or_none(unc_in.get("ambiguity")),
         "alternative_plausible_label": unc_in.get("alternative_plausible_label"),
-        "alternative_label_rationale": _str_or_none(unc_in.get("alternative_label_rationale")),
+        "alternative_label_rationale": _str_or_none(
+            unc_in.get("alternative_label_rationale")
+        ),
         "scope_limitations": _list_of_str(unc_in.get("scope_limitations")),
         "confidence_caveat": CONFIDENCE_INTERPRETATION[conf_status],
-        "development_caveat": DEVELOPMENT_CAVEAT if dev_or_prod == "development" else None,
+        "development_caveat": DEVELOPMENT_CAVEAT
+        if dev_or_prod == "development"
+        else None,
     }
 
     # --- recommended revision (guarded against unsupported new facts) ---------------
-    corpus = " ".join([
-        _str_or_none(claim.get("claim_text")) or "",
-        _str_or_none(claim.get("claim_context")) or "",
-        *[it["text"] for it in evidence_items],
-        *[s for s in evidence["supporting"]],
-        *[s for s in evidence["contradicting_or_limiting"]],
-    ])
+    corpus = " ".join(
+        [
+            _str_or_none(claim.get("claim_text")) or "",
+            _str_or_none(claim.get("claim_context")) or "",
+            *[it["text"] for it in evidence_items],
+            *[s for s in evidence["supporting"]],
+            *[s for s in evidence["contradicting_or_limiting"]],
+        ]
+    )
     rewrite_in = _str_or_none(rev_in.get("defensible_rewrite"))
-    accepted_rewrite, rewrite_available, unsupported_facts = _rewrite_guard(rewrite_in, corpus)
+    accepted_rewrite, rewrite_available, unsupported_facts = _rewrite_guard(
+        rewrite_in, corpus
+    )
     if unsupported_facts:
         verification = "blocked_unsupported_new_facts"
-        warnings.append("recommended rewrite blocked: introduces unsupported new fact(s) "
-                        f"{unsupported_facts}; dropped to 'no safe rewrite available'")
+        warnings.append(
+            "recommended rewrite blocked: introduces unsupported new fact(s) "
+            f"{unsupported_facts}; dropped to 'no safe rewrite available'"
+        )
         audit.append("rewrite guard: blocked (unsupported new facts)")
     elif accepted_rewrite:
         verification = "unverified_proposal"
-        warnings.append("recommended rewrite is an UNVERIFIED proposal; numeric guard passed "
-                        "but factual/semantic support still requires human review")
-        audit.append("rewrite guard: clean (numeric-only); rewrite marked unverified_proposal")
+        warnings.append(
+            "recommended rewrite is an UNVERIFIED proposal; numeric guard passed "
+            "but factual/semantic support still requires human review"
+        )
+        audit.append(
+            "rewrite guard: clean (numeric-only); rewrite marked unverified_proposal"
+        )
     else:
         verification = "no_rewrite_supplied"
         audit.append("rewrite guard: no rewrite supplied")
@@ -594,19 +735,30 @@ def build_forensic_report(raw: dict) -> dict:
         "rewrite_verification": verification,
         "rewrite_verification_note": REWRITE_VERIFICATION_NOTE,
         "rewrite_rationale": _str_or_none(rev_in.get("rewrite_rationale")),
-        "claims_to_remove_or_narrow": _list_of_str(rev_in.get("claims_to_remove_or_narrow")),
-        "evidence_qualifiers_to_add": _list_of_str(rev_in.get("evidence_qualifiers_to_add")),
-        "claims_that_remain_supportable": _list_of_str(rev_in.get("claims_that_remain_supportable")),
+        "claims_to_remove_or_narrow": _list_of_str(
+            rev_in.get("claims_to_remove_or_narrow")
+        ),
+        "evidence_qualifiers_to_add": _list_of_str(
+            rev_in.get("evidence_qualifiers_to_add")
+        ),
+        "claims_that_remain_supportable": _list_of_str(
+            rev_in.get("claims_that_remain_supportable")
+        ),
         "rewrite_guard": {
             "checked": True,
             "unsupported_new_facts": unsupported_facts,
-            "status": "blocked" if unsupported_facts else ("clean" if accepted_rewrite else "no_rewrite"),
+            "status": "blocked"
+            if unsupported_facts
+            else ("clean" if accepted_rewrite else "no_rewrite"),
         },
     }
 
     # --- provenance -----------------------------------------------------------------
-    parser_status = "failed" if status == "parser_failure" else (
-        "ok" if parser.get("parse_ok") in (True, None) else "unknown")
+    parser_status = (
+        "failed"
+        if status == "parser_failure"
+        else ("ok" if parser.get("parse_ok") in (True, None) else "unknown")
+    )
     provenance = {
         "model": _str_or_none(prov_in.get("model")),
         "provider": _str_or_none(prov_in.get("provider")),
@@ -614,7 +766,7 @@ def build_forensic_report(raw: dict) -> dict:
         "repository_commit": _str_or_none(prov_in.get("repository_commit")),
         "analysis_source": _str_or_none(prov_in.get("analysis_source")),
         "input_digest_sha256": input_digest,
-        "report_generation_digest_sha256": "",   # filled after the report is assembled
+        "report_generation_digest_sha256": "",  # filled after the report is assembled
         "parser_status": parser_status,
         "warnings": warnings,
         "audit_trail": audit,
@@ -637,7 +789,9 @@ def build_forensic_report(raw: dict) -> dict:
             "claim_context": _str_or_none(claim.get("claim_context")),
             "claim_source_reference": _str_or_none(claim.get("claim_source_reference")),
             "claim_scope": _str_or_none(claim.get("claim_scope")),
-            "intended_reader_or_audience": _str_or_none(claim.get("intended_reader_or_audience")),
+            "intended_reader_or_audience": _str_or_none(
+                claim.get("intended_reader_or_audience")
+            ),
         },
         "verdict": verdict,
         "evidence": evidence,
@@ -648,29 +802,44 @@ def build_forensic_report(raw: dict) -> dict:
         "provenance": provenance,
     }
     from inspektorium.audit.forensics.pipeline import assess_forensic_payload
+
     phase8 = assess_forensic_payload(
-        raw.get("forensic_record"), original_input=claim.get("claim_text") or "",
-        context=claim.get("claim_context") or "", original_label=label,
-        parse_complete=status != "parser_failure" and not parser.get("truncation_suspected"),
+        raw.get("forensic_record"),
+        original_input=claim.get("claim_text") or "",
+        context=claim.get("claim_context") or "",
+        original_label=label,
+        parse_complete=status != "parser_failure"
+        and not parser.get("truncation_suspected"),
     )
     report["phase8"] = phase8
     from inspektorium.audit.review.pipeline import historical_view
+
     report["phase9"] = historical_view()
-    report["phase8_parse_complete"] = (
-        status != "parser_failure" and not parser.get("truncation_suspected")
+    report["phase8_parse_complete"] = status != "parser_failure" and not parser.get(
+        "truncation_suspected"
     )
     report["original_model_verdict"] = dict(verdict)
     if raw.get("forensic_record") is not None:
         report["forensic_record"] = raw["forensic_record"]
         # The source label stays in original_model_verdict; derived support controls output.
-        if phase8["technical_status"] != "completed" or phase8["composite_state"] == "unknown":
-            verdict.update(predicted_label=None, verdict_title="UNKNOWN — Phase-8 assessment",
-                           verdict_summary="Support is unresolved or mandatory analysis is incomplete.")
+        if (
+            phase8["technical_status"] != "completed"
+            or phase8["composite_state"] == "unknown"
+        ):
+            verdict.update(
+                predicted_label=None,
+                verdict_title="UNKNOWN — Phase-8 assessment",
+                verdict_summary="Support is unresolved or mandatory analysis is incomplete.",
+            )
         elif phase8["composite_state"] != "supported" and label == "solid":
-            verdict.update(predicted_label=None,
-                           verdict_title="Claim is not supported as a whole",
-                           verdict_summary="Required components limit the composite claim.")
-    banner.append(f"PHASE 8: {phase8['technical_status']} / {phase8['composite_state'].upper()}")
+            verdict.update(
+                predicted_label=None,
+                verdict_title="Claim is not supported as a whole",
+                verdict_summary="Required components limit the composite claim.",
+            )
+    banner.append(
+        f"PHASE 8: {phase8['technical_status']} / {phase8['composite_state'].upper()}"
+    )
     report["provenance"]["report_generation_digest_sha256"] = report_digest(report)
     return report
 
@@ -678,6 +847,7 @@ def build_forensic_report(raw: dict) -> dict:
 # ---------------------------------------------------------------------------
 # Report re-validation (structural, mirrors the JSON schema)
 # ---------------------------------------------------------------------------
+
 
 def validate_forensic_report(report: dict) -> tuple[bool, list[str]]:
     """Re-validate a *built* report against the frozen output contract."""
@@ -702,7 +872,9 @@ def validate_forensic_report(report: dict) -> tuple[bool, list[str]]:
     cval = v.get("confidence_value")
     if isinstance(cval, bool):
         errors.append("confidence_value must never be a boolean")
-    elif cval is not None and not (isinstance(cval, (int, float)) and 0.0 <= float(cval) <= 1.0):
+    elif cval is not None and not (
+        isinstance(cval, (int, float)) and 0.0 <= float(cval) <= 1.0
+    ):
         errors.append("confidence_value must be null or a number in [0,1]")
     if v.get("confidence_status") != VALID and cval is not None:
         errors.append("confidence_value must be null unless confidence_status is VALID")
@@ -718,7 +890,10 @@ def validate_forensic_report(report: dict) -> tuple[bool, list[str]]:
     rev = report.get("recommended_revision") or {}
     if rev.get("rewrite_verification") not in REWRITE_VERIFICATIONS:
         errors.append("recommended_revision.rewrite_verification invalid")
-    if rev.get("defensible_rewrite") is not None and rev.get("rewrite_verification") != "unverified_proposal":
+    if (
+        rev.get("defensible_rewrite") is not None
+        and rev.get("rewrite_verification") != "unverified_proposal"
+    ):
         errors.append("a present rewrite must be marked 'unverified_proposal'")
     if rev.get("defensible_rewrite") is None and rev.get("rewrite_available"):
         errors.append("rewrite_available must be false when no rewrite is present")
@@ -733,33 +908,43 @@ def validate_forensic_report(report: dict) -> tuple[bool, list[str]]:
 # Markdown rendering (full + executive) — one report object, two views
 # ---------------------------------------------------------------------------
 
+
 def _checked_phase8_view(report: dict) -> dict:
     """Recompute semantic assessment when rendering a loaded or edited report."""
     from inspektorium.audit.forensics.pipeline import assess_forensic_payload
     from copy import deepcopy
+
     checked = deepcopy(report)
     claim = checked.get("claim") or {}
     original = checked.get("original_model_verdict") or checked.get("verdict") or {}
     assessment = assess_forensic_payload(
-        checked.get("forensic_record"), original_input=claim.get("claim_text") or "",
-        context=claim.get("claim_context") or "", original_label=original.get("predicted_label"),
+        checked.get("forensic_record"),
+        original_input=claim.get("claim_text") or "",
+        context=claim.get("claim_context") or "",
+        original_label=original.get("predicted_label"),
         parse_complete=checked.get("phase8_parse_complete", True)
         and checked.get("analysis_status") != "parser_failure",
     )
     checked["phase8"] = assessment
     # This legacy report input lacks a host RunRecord and authenticated review history.
     from inspektorium.audit.review.pipeline import historical_view
+
     checked["phase9"] = historical_view()
     checked["status_banner"] = [
         b for b in checked.get("status_banner", []) if not b.startswith("Phase 8:")
     ] + [f"Phase 8: {assessment['technical_status']} / {assessment['composite_state']}"]
     if checked.get("forensic_record") is not None and (
-        assessment["technical_status"] != "completed" or assessment["composite_state"] != "supported"
+        assessment["technical_status"] != "completed"
+        or assessment["composite_state"] != "supported"
     ):
-        checked["verdict"] = dict(checked["verdict"], predicted_label=None,
-                                  verdict_title=assessment["composite_state"].upper(),
-                                  verdict_summary="See derived component assessments and reasons.")
+        checked["verdict"] = dict(
+            checked["verdict"],
+            predicted_label=None,
+            verdict_title=assessment["composite_state"].upper(),
+            verdict_summary="See derived component assessments and reasons.",
+        )
     return checked
+
 
 def _fmt_conf(v: dict) -> str:
     status = v.get("confidence_status")
@@ -787,9 +972,11 @@ def render_forensic_report_markdown(report: dict) -> str:
         L.append(f"> **{b}**")
     L.append("")
     L.append(f"# Claim-forensics report — {report['report_id']}")
-    L.append(f"schema `{report['report_schema_version']}` · status "
-             f"`{report['analysis_status']}` · {report['development_or_production_status']} · "
-             f"synthetic={report['synthetic_fixture']} · generated_at={report.get('generated_at')}")
+    L.append(
+        f"schema `{report['report_schema_version']}` · status "
+        f"`{report['analysis_status']}` · {report['development_or_production_status']} · "
+        f"synthetic={report['synthetic_fixture']} · generated_at={report.get('generated_at')}"
+    )
     warnings = report.get("provenance", {}).get("warnings", [])
     if warnings:
         L.append("")
@@ -799,11 +986,18 @@ def render_forensic_report_markdown(report: dict) -> str:
     c = report["claim"]
     from inspektorium.audit.forensics.pipeline import render_phase8
     from inspektorium.audit.review.pipeline import render_phase9
+
     L += [render_phase8(report.get("phase8")), render_phase9(report.get("phase9")), ""]
     L += ["", "## Claim", f"> {c.get('claim_text')}"]
-    for lbl, key in (("Context", "claim_context"), ("Source", "claim_source_reference"),
-                     ("Scope", "claim_scope"), ("Audience", "intended_reader_or_audience")):
-        L.append(f"- {lbl}: {c.get(key) if c.get(key) is not None else '_not supplied_'}")
+    for lbl, key in (
+        ("Context", "claim_context"),
+        ("Source", "claim_source_reference"),
+        ("Scope", "claim_scope"),
+        ("Audience", "intended_reader_or_audience"),
+    ):
+        L.append(
+            f"- {lbl}: {c.get(key) if c.get(key) is not None else '_not supplied_'}"
+        )
 
     v = report["verdict"]
     L.append(
@@ -811,13 +1005,23 @@ def render_forensic_report_markdown(report: dict) -> str:
         "rewrite proposals are not certified by the Phase-8 assessment. Only the bound "
         "ledger assertions enter that assessment."
     )
-    heading = "Original analysis verdict (separate from Phase 8)" if report.get("forensic_record") else "Original model verdict (Phase 8 unverified)"
-    L += ["", f"## {heading}", f"**{v.get('verdict_title')}**"
-          + (f"  (`{v.get('predicted_label')}`)" if v.get("predicted_label") else ""),
-          "", v.get("verdict_summary", ""),
-          "", f"- Confidence: **{_fmt_conf(v)}**",
-          f"- _{v.get('confidence_interpretation')}_",
-          f"- _{v.get('classification_note')}_"]
+    heading = (
+        "Original analysis verdict (separate from Phase 8)"
+        if report.get("forensic_record")
+        else "Original model verdict (Phase 8 unverified)"
+    )
+    L += [
+        "",
+        f"## {heading}",
+        f"**{v.get('verdict_title')}**"
+        + (f"  (`{v.get('predicted_label')}`)" if v.get("predicted_label") else ""),
+        "",
+        v.get("verdict_summary", ""),
+        "",
+        f"- Confidence: **{_fmt_conf(v)}**",
+        f"- _{v.get('confidence_interpretation')}_",
+        f"- _{v.get('classification_note')}_",
+    ]
 
     fm = report["failure_modes"]
     L += ["", "## Why this verdict"]
@@ -825,13 +1029,24 @@ def render_forensic_report_markdown(report: dict) -> str:
         L.append("- _No specific claim-forensics failure mode was reported._")
     else:
         for d in fm["detected"]:
-            refs = f"  (evidence: {', '.join(d['evidence_refs'])})" if d.get("evidence_refs") else ""
+            refs = (
+                f"  (evidence: {', '.join(d['evidence_refs'])})"
+                if d.get("evidence_refs")
+                else ""
+            )
             L.append(f"- **{d['mode']}** — {d['rationale']}{refs}")
 
     ev = report["evidence"]
-    L += ["", "## Evidence assessment",
-          f"- Sufficiency: **{ev.get('evidence_sufficiency')}**"
-          + (f" — {ev['evidence_sufficiency_rationale']}" if ev.get("evidence_sufficiency_rationale") else "")]
+    L += [
+        "",
+        "## Evidence assessment",
+        f"- Sufficiency: **{ev.get('evidence_sufficiency')}**"
+        + (
+            f" — {ev['evidence_sufficiency_rationale']}"
+            if ev.get("evidence_sufficiency_rationale")
+            else ""
+        ),
+    ]
     if ev["evidence_items"]:
         for it in ev["evidence_items"]:
             src = f" [{it['source_reference']}]" if it.get("source_reference") else ""
@@ -842,24 +1057,34 @@ def render_forensic_report_markdown(report: dict) -> str:
     if ev["supporting"]:
         L += ["", "Supporting:"] + _bullets(ev["supporting"], "none")
     if ev["contradicting_or_limiting"]:
-        L += ["", "Contradicting / limiting:"] + _bullets(ev["contradicting_or_limiting"], "none")
+        L += ["", "Contradicting / limiting:"] + _bullets(
+            ev["contradicting_or_limiting"], "none"
+        )
 
     L += ["", "## What is missing"]
-    for lbl, key in (("Comparison group missing", "missing_comparison_group"),
-                     ("Causal chain missing", "missing_causal_chain"),
-                     ("Human evidence missing", "missing_human_evidence")):
+    for lbl, key in (
+        ("Comparison group missing", "missing_comparison_group"),
+        ("Causal chain missing", "missing_causal_chain"),
+        ("Human evidence missing", "missing_human_evidence"),
+    ):
         val = ev.get(key)
         shown = "unknown / not assessed" if val is None else ("yes" if val else "no")
         L.append(f"- {lbl}: {shown}")
-    L += _bullets(report["uncertainty"]["missing_evidence"], "no further missing evidence noted")
+    L += _bullets(
+        report["uncertainty"]["missing_evidence"], "no further missing evidence noted"
+    )
 
     ri = report["reader_impact"]
     L += ["", "## Reader-impact risk", f"- Risk level: **{ri.get('risk_level')}**"]
-    for lbl, key in (("Rationale", "risk_rationale"),
-                     ("Likely misunderstanding", "likely_reader_misunderstanding"),
-                     ("Affected decision", "affected_decision_type"),
-                     ("Risk uncertainty", "risk_uncertainty")):
-        L.append(f"- {lbl}: {ri.get(key) if ri.get(key) is not None else '_not supplied_'}")
+    for lbl, key in (
+        ("Rationale", "risk_rationale"),
+        ("Likely misunderstanding", "likely_reader_misunderstanding"),
+        ("Affected decision", "affected_decision_type"),
+        ("Risk uncertainty", "risk_uncertainty"),
+    ):
+        L.append(
+            f"- {lbl}: {ri.get(key) if ri.get(key) is not None else '_not supplied_'}"
+        )
     L.append(f"- _{ri.get('not_a_harm_probability_note')}_")
 
     u = report["uncertainty"]
@@ -868,8 +1093,14 @@ def render_forensic_report_markdown(report: dict) -> str:
     if u.get("ambiguity"):
         L.append(f"- Ambiguity: {u['ambiguity']}")
     if u.get("alternative_plausible_label"):
-        L.append(f"- Alternative plausible label: `{u['alternative_plausible_label']}`"
-                 + (f" — {u['alternative_label_rationale']}" if u.get("alternative_label_rationale") else ""))
+        L.append(
+            f"- Alternative plausible label: `{u['alternative_plausible_label']}`"
+            + (
+                f" — {u['alternative_label_rationale']}"
+                if u.get("alternative_label_rationale")
+                else ""
+            )
+        )
     if u["scope_limitations"]:
         L += ["", "Scope limitations:"] + _bullets(u["scope_limitations"], "none")
     L.append(f"- _Confidence caveat: {u.get('confidence_caveat')}_")
@@ -883,28 +1114,40 @@ def render_forensic_report_markdown(report: dict) -> str:
         L.append(f"> {rev['defensible_rewrite']}")
         L.append(f"- _{rev.get('rewrite_verification_note')}_")
     else:
-        reason = ("blocked: would introduce unsupported new facts "
-                  f"{rev['rewrite_guard']['unsupported_new_facts']}"
-                  if rev["rewrite_guard"]["status"] == "blocked" else "none provided")
+        reason = (
+            "blocked: would introduce unsupported new facts "
+            f"{rev['rewrite_guard']['unsupported_new_facts']}"
+            if rev["rewrite_guard"]["status"] == "blocked"
+            else "none provided"
+        )
         L.append(f"- _No safe rewrite available ({reason})._")
     if rev.get("rewrite_rationale"):
         L.append(f"- Rationale: {rev['rewrite_rationale']}")
     if rev["claims_to_remove_or_narrow"]:
-        L += ["", "Remove / narrow:"] + _bullets(rev["claims_to_remove_or_narrow"], "none")
+        L += ["", "Remove / narrow:"] + _bullets(
+            rev["claims_to_remove_or_narrow"], "none"
+        )
     if rev["evidence_qualifiers_to_add"]:
-        L += ["", "Qualifiers to add:"] + _bullets(rev["evidence_qualifiers_to_add"], "none")
+        L += ["", "Qualifiers to add:"] + _bullets(
+            rev["evidence_qualifiers_to_add"], "none"
+        )
     if rev["claims_that_remain_supportable"]:
-        L += ["", "Remains supportable:"] + _bullets(rev["claims_that_remain_supportable"], "none")
+        L += ["", "Remains supportable:"] + _bullets(
+            rev["claims_that_remain_supportable"], "none"
+        )
 
     p = report["provenance"]
-    L += ["", "## Provenance & audit",
-          f"- model / provider: {p.get('model') or '—'} / {p.get('provider') or '—'}",
-          f"- prompt contract: {p.get('prompt_contract_version') or '—'}",
-          f"- repository commit: {p.get('repository_commit') or '—'}",
-          f"- analysis source: {p.get('analysis_source') or '—'}",
-          f"- parser status: {p.get('parser_status')}",
-          f"- input digest: `{p.get('input_digest_sha256')}`",
-          f"- report digest: `{p.get('report_generation_digest_sha256')}`"]
+    L += [
+        "",
+        "## Provenance & audit",
+        f"- model / provider: {p.get('model') or '—'} / {p.get('provider') or '—'}",
+        f"- prompt contract: {p.get('prompt_contract_version') or '—'}",
+        f"- repository commit: {p.get('repository_commit') or '—'}",
+        f"- analysis source: {p.get('analysis_source') or '—'}",
+        f"- parser status: {p.get('parser_status')}",
+        f"- input digest: `{p.get('input_digest_sha256')}`",
+        f"- report digest: `{p.get('report_generation_digest_sha256')}`",
+    ]
     L += ["", "Audit trail:"] + _bullets(p.get("audit_trail", []), "none")
     if warnings:
         L += ["", "Warnings:"] + _bullets(warnings, "none")
@@ -929,22 +1172,32 @@ def render_executive_summary(report: dict) -> str:
     ]
     for b in report.get("status_banner", []):
         L.append(f"> **{b}**")
-    L += ["", f"# Executive summary — {report['report_id']}",
-          f"_schema {report['report_schema_version']} · {report['development_or_production_status']} "
-          f"· status {report['analysis_status']}_", ""]
+    L += [
+        "",
+        f"# Executive summary — {report['report_id']}",
+        f"_schema {report['report_schema_version']} · {report['development_or_production_status']} "
+        f"· status {report['analysis_status']}_",
+        "",
+    ]
     claim_text = report["claim"].get("claim_text") or ""
     short = claim_text if len(claim_text) <= 240 else claim_text[:237] + "…"
     L += [f"**Claim:** {short}", ""]
     from inspektorium.audit.forensics.pipeline import render_phase8
+
     L.append(render_phase8(report.get("phase8")))
     from inspektorium.audit.review.pipeline import render_phase9
+
     L.append(render_phase9(report.get("phase9")))
     L.append("**Original narrative, not certified by Phase 8:**")
-    L.append(f"**Verdict (original model classification for legacy inputs):** {v.get('verdict_title')}"
-             + (f" (`{v.get('predicted_label')}`)" if v.get("predicted_label") else ""))
+    L.append(
+        f"**Verdict (original model classification for legacy inputs):** {v.get('verdict_title')}"
+        + (f" (`{v.get('predicted_label')}`)" if v.get("predicted_label") else "")
+    )
     L.append(f"**Confidence:** {_fmt_conf(v)}")
-    L.append(f"**Reader-impact risk:** {ri.get('risk_level')}"
-             + (f" — {ri['risk_rationale']}" if ri.get("risk_rationale") else ""))
+    L.append(
+        f"**Reader-impact risk:** {ri.get('risk_level')}"
+        + (f" — {ri['risk_rationale']}" if ri.get("risk_rationale") else "")
+    )
     if not fm.get("none_detected"):
         modes = ", ".join(d["mode"] for d in fm["detected"])
         L.append(f"**Failure mode(s):** {modes}")
@@ -955,16 +1208,26 @@ def render_executive_summary(report: dict) -> str:
     L += ["", "**Key uncertainty:**"]
     material = list(u["unresolved_questions"])
     if u.get("alternative_plausible_label"):
-        material.append(f"alternative plausible label: {u['alternative_plausible_label']}")
+        material.append(
+            f"alternative plausible label: {u['alternative_plausible_label']}"
+        )
     if v.get("confidence_status") != VALID:
-        material.append(f"confidence is {v.get('confidence_status')} (not treated as 0.0)")
+        material.append(
+            f"confidence is {v.get('confidence_status')} (not treated as 0.0)"
+        )
     L += _bullets(material, "no material uncertainty recorded")
 
     if rev.get("rewrite_available") and rev.get("defensible_rewrite"):
-        L += ["", f"**Safer rewrite (unverified proposal — needs review):** {rev['defensible_rewrite']}",
-              f"_{rev.get('rewrite_verification_note')}_"]
+        L += [
+            "",
+            f"**Safer rewrite (unverified proposal — needs review):** {rev['defensible_rewrite']}",
+            f"_{rev.get('rewrite_verification_note')}_",
+        ]
     else:
-        L += ["", "**Safer rewrite:** none available (evidence does not support a stronger claim)"]
+        L += [
+            "",
+            "**Safer rewrite:** none available (evidence does not support a stronger claim)",
+        ]
 
     L += ["", f"_{v.get('classification_note')}_"]
     if report.get("development_or_production_status") == "development":

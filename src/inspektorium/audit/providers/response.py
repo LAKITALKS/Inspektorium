@@ -78,8 +78,13 @@ def classify_error_type(exc: Exception) -> str:
     def has(*keys: str) -> bool:
         return any(k in name or k in msg for k in keys)
 
-    if has("authentication", "permissiondenied", "unauthorized") or \
-            "401" in msg or "403" in msg or "api key" in msg or "api_key" in msg:
+    if (
+        has("authentication", "permissiondenied", "unauthorized")
+        or "401" in msg
+        or "403" in msg
+        or "api key" in msg
+        or "api_key" in msg
+    ):
         return "auth_error"
     if has("notfound", "not_found") or "404" in msg:
         return "not_found_error"

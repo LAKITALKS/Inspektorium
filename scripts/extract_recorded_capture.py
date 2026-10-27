@@ -4,6 +4,7 @@ This does not verify or recreate a historical live authorization, ledger, review
 history, or bundle. Output provenance records the actual supplied capture bytes.
 Run with the installed inspektorium package; no provider or network is used.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -28,17 +29,27 @@ def extract(capture_path: Path, task_path: Path, output: Path) -> dict:
         raise ValueError("Unsupported capture schema")
     expected_slot = f"{task.id}|{capture.get('profile_id')}|primary"
     if capture.get("slot_key") != expected_slot:
-        raise ValueError("A matching primary capture is required; review captures are not primary inputs")
-    if capture.get("task_id") != task.id or capture.get("task_sha256") != task_sha256(task):
-        raise ValueError("Task identity or canonical task hash does not match the capture")
+        raise ValueError(
+            "A matching primary capture is required; review captures are not primary inputs"
+        )
+    if capture.get("task_id") != task.id or capture.get("task_sha256") != task_sha256(
+        task
+    ):
+        raise ValueError(
+            "Task identity or canonical task hash does not match the capture"
+        )
     call = capture.get("call") or {}
     body = call.get("response_body")
     if call.get("http_status") != 200 or not isinstance(body, dict):
         raise ValueError("A successful recorded response body is required")
     info = interpret_message(body)
     if info["completion_state"] != "complete":
-        raise ValueError("Only a complete final response can become this offline example")
-    if info.get("final_text") != (capture.get("interpretation") or {}).get("final_text"):
+        raise ValueError(
+            "Only a complete final response can become this offline example"
+        )
+    if info.get("final_text") != (capture.get("interpretation") or {}).get(
+        "final_text"
+    ):
         raise ValueError("Stored interpretation differs from the response text blocks")
     recording = info["final_text"].encode("utf-8")
     task_bytes = task_path.read_bytes()
@@ -46,8 +57,13 @@ def extract(capture_path: Path, task_path: Path, output: Path) -> dict:
         "schema": "inspektorium-offline-capture-derivation/1.0",
         "method": "UTF-8 encoding of concatenated recorded response text blocks, unchanged",
         "scope": "New recorded_offline analysis; not native live replay or original bundle verification",
-        "unverified": ["historical authorization", "ledger binding", "historical review history",
-                       "provider authenticity", "unredacted original capture identity"],
+        "unverified": [
+            "historical authorization",
+            "ledger binding",
+            "historical review history",
+            "provider authenticity",
+            "unredacted original capture identity",
+        ],
         "capture_filename": capture_path.name,
         "supplied_capture_sha256": sha256(raw),
         "capture_authorization_id": capture.get("authorization_id"),

@@ -13,11 +13,18 @@ from tests.forensics_case_factory import raw_record
 def taxonomy_record(core="none", **flags):
     _, source, data = raw_record()
     data["phase8_taxonomy"] = {
-        "core_error": core, "causal_claim": True, "noncausal_result_used": False,
-        "described_biological_mechanism": False, "implies_human_benefit": True,
-        "proposition_ids": ["claim:p1"], "evidence_ids": ["e1"],
-        "trigger_proposition_id": "claim:p1", "trigger_evidence_id": "e1",
-        "trigger_quote": source, "reason": "Generic represented core-error analysis", **flags,
+        "core_error": core,
+        "causal_claim": True,
+        "noncausal_result_used": False,
+        "described_biological_mechanism": False,
+        "implies_human_benefit": True,
+        "proposition_ids": ["claim:p1"],
+        "evidence_ids": ["e1"],
+        "trigger_proposition_id": "claim:p1",
+        "trigger_evidence_id": "e1",
+        "trigger_quote": source,
+        "reason": "Generic represented core-error analysis",
+        **flags,
     }
     return ForensicRecord.model_validate(data)
 
@@ -53,8 +60,12 @@ def test_genuine_causal_inference_core_is_cvc(kind):
         source_text(record, "In adults, exposure X was associated with fewer events Q.")
     else:
         profile.update(evidence_type="controlled_intervention", randomized=False)
-        profile["attributes"].update(relation="description", comparison="within", comparator="baseline")
-        source_text(record, "Events decreased from baseline in the single treated group.")
+        profile["attributes"].update(
+            relation="description", comparison="within", comparator="baseline"
+        )
+        source_text(
+            record, "Events decreased from baseline in the single treated group."
+        )
     summary_state(record, "unsupported")
     assert result(record)["derived_label"] == "correlation_vs_causation"
 
@@ -64,7 +75,10 @@ def test_missing_efficacy_does_not_become_cvc_from_poor_design_alone():
     profile = record.phase8["evidence_descriptions"][0]
     profile.update(randomized=False)
     profile["attributes"]["relation"] = "description"
-    source_text(record, "The brochure invokes uncontrolled experiments without an established efficacy result.")
+    source_text(
+        record,
+        "The brochure invokes uncontrolled experiments without an established efficacy result.",
+    )
     summary_state(record, "unsupported")
     assert result(record)["derived_label"] == "overclaim"
     record.phase8_taxonomy["core_error"] = "causal_inference"
@@ -75,28 +89,44 @@ def test_population_overstatement_retains_core_even_when_causal_trigger_is_prese
     record = taxonomy_record("overstatement", noncausal_result_used=True)
     profile = record.phase8["evidence_descriptions"][0]
     profile.update(evidence_type="observational", randomized=None)
-    profile["attributes"].update(relation="association", population="selected older patients")
-    source_text(record, "A selected older cohort showed an association, generalized to all adults.")
+    profile["attributes"].update(
+        relation="association", population="selected older patients"
+    )
+    source_text(
+        record,
+        "A selected older cohort showed an association, generalized to all adults.",
+    )
     summary_state(record, "unsupported")
     assert result(record)["derived_label"] == "overclaim"
 
 
 def test_established_causation_with_excessive_population_scope_is_overclaim_not_cvc():
     record = taxonomy_record("overstatement")
-    record.phase8["evidence_descriptions"][0]["attributes"]["population"] = "older adults"
+    record.phase8["evidence_descriptions"][0]["attributes"]["population"] = (
+        "older adults"
+    )
     summary_state(record, "unsupported")
     assert result(record)["derived_label"] == "overclaim"
-    record.phase8_taxonomy.update(core_error="causal_inference", noncausal_result_used=True)
+    record.phase8_taxonomy.update(
+        core_error="causal_inference", noncausal_result_used=True
+    )
     assert result(record)["derived_label"] is None
 
 
 def test_genuine_biological_mechanism_to_human_benefit_is_me():
-    record = taxonomy_record("mechanism_to_outcome", described_biological_mechanism=True)
+    record = taxonomy_record(
+        "mechanism_to_outcome", described_biological_mechanism=True
+    )
     profile = record.phase8["evidence_descriptions"][0]
     profile.update(evidence_type="animal", randomized=None)
-    profile["attributes"].update(species="mouse", population="adult mice", relation="mechanism")
+    profile["attributes"].update(
+        species="mouse", population="adult mice", relation="mechanism"
+    )
     record.phase8["propositions"][0]["evidence_bindings"][0]["directness"] = "indirect"
-    source_text(record, "In mice, X activated pathway P, presented as the basis for preventing human events Q.")
+    source_text(
+        record,
+        "In mice, X activated pathway P, presented as the basis for preventing human events Q.",
+    )
     summary_state(record, "unsupported")
     assert result(record)["derived_label"] == "mechanism_vs_evidence"
 
@@ -105,10 +135,15 @@ def test_surrogate_shape_b_is_overclaim_and_cannot_be_stretched_to_me():
     record = taxonomy_record("overstatement")
     profile = record.phase8["evidence_descriptions"][0]
     profile["attributes"].update(endpoint="biomarker B", endpoint_type="biomarker")
-    source_text(record, "The trial changed biomarker B, marketed as protection from clinical events Q.")
+    source_text(
+        record,
+        "The trial changed biomarker B, marketed as protection from clinical events Q.",
+    )
     summary_state(record, "unsupported")
     assert result(record)["derived_label"] == "overclaim"
-    record.phase8_taxonomy.update(core_error="mechanism_to_outcome", described_biological_mechanism=True)
+    record.phase8_taxonomy.update(
+        core_error="mechanism_to_outcome", described_biological_mechanism=True
+    )
     assert result(record)["derived_label"] is None
 
 
@@ -119,8 +154,15 @@ def test_honest_direct_reporting_is_solid_without_mutating_original_payload():
     assert record.model_dump() == before
 
 
-@pytest.mark.parametrize("flag", ["causal_claim", "noncausal_result_used",
-                                  "described_biological_mechanism", "implies_human_benefit"])
+@pytest.mark.parametrize(
+    "flag",
+    [
+        "causal_claim",
+        "noncausal_result_used",
+        "described_biological_mechanism",
+        "implies_human_benefit",
+    ],
+)
 def test_unknown_trigger_does_not_force_any_label(flag):
     record = taxonomy_record(**{flag: None})
     assessed = result(record)
@@ -135,12 +177,18 @@ def test_scientific_unknown_alone_cannot_establish_overclaim():
     assert result(record)["derived_label"] is None
 
 
-@pytest.mark.parametrize("mutation", [
-    {"proposition_ids": ["unrelated"]}, {"evidence_ids": ["unrelated"]},
-    {"trigger_proposition_id": "unrelated"}, {"trigger_evidence_id": "unrelated"},
-    {"trigger_quote": "unquoted invention"}, {"trigger_quote": ""},
-    {"core_error": "whichever label passes"},
-])
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        {"proposition_ids": ["unrelated"]},
+        {"evidence_ids": ["unrelated"]},
+        {"trigger_proposition_id": "unrelated"},
+        {"trigger_evidence_id": "unrelated"},
+        {"trigger_quote": "unquoted invention"},
+        {"trigger_quote": ""},
+        {"core_error": "whichever label passes"},
+    ],
+)
 def test_invalid_trigger_or_reference_is_technical_incomplete(mutation):
     record = taxonomy_record()
     record.phase8_taxonomy.update(mutation)
@@ -149,9 +197,15 @@ def test_invalid_trigger_or_reference_is_technical_incomplete(mutation):
 
 def test_absent_or_technically_incomplete_analysis_cannot_relabel():
     record = taxonomy_record()
-    assert assess_taxonomy(record, {"technical_status": "incomplete"})["derived_label"] is None
+    assert (
+        assess_taxonomy(record, {"technical_status": "incomplete"})["derived_label"]
+        is None
+    )
     record.phase8_taxonomy = None
-    assert assess_taxonomy(record, evaluate_phase8(record))["technical_status"] == "not_executed"
+    assert (
+        assess_taxonomy(record, evaluate_phase8(record))["technical_status"]
+        == "not_executed"
+    )
 
 
 def test_false_causal_trigger_conflicts_with_a_genuine_association_claim():
@@ -180,15 +234,23 @@ def add_logical_component(record, *, operator, state):
     prop.update(proposition_id="claim:p2", reported_verdict=state)
     prop["original_span"].update(start=len(first_claim + separator), end=len(combined))
     prop["evidence_bindings"][0].update(
-        binding_id="b2", proposition_id="claim:p2", evidence_id="e2",
+        binding_id="b2",
+        proposition_id="claim:p2",
+        evidence_id="e2",
         observation="unknown" if state == "unknown" else "support",
         directness="indirect" if state == "unsupported" else "direct",
     )
     evidence = second.evidence[0].model_copy(update={"evidence_id": "e2"})
-    finding = second.findings[0].model_copy(update={"finding_id": "claim:p2", "supporting_evidence_ids": ["e2"]})
-    client = second.client_findings[0].model_copy(update={
-        "client_finding_id": "client2", "parent_finding_id": "claim:p2", "referenced_evidence_ids": ["e2"],
-    })
+    finding = second.findings[0].model_copy(
+        update={"finding_id": "claim:p2", "supporting_evidence_ids": ["e2"]}
+    )
+    client = second.client_findings[0].model_copy(
+        update={
+            "client_finding_id": "client2",
+            "parent_finding_id": "claim:p2",
+            "referenced_evidence_ids": ["e2"],
+        }
+    )
     record.evidence.append(evidence)
     record.findings.append(finding)
     record.client_findings.append(client)
@@ -197,9 +259,13 @@ def add_logical_component(record, *, operator, state):
     record.phase8["evidence_descriptions"].append(description)
     record.phase8["propositions"].append(prop)
     record.phase8["required_proposition_ids"].append("claim:p2")
-    record.phase8["logic"] = {"operator": operator, "children": [
-        {"operator": "leaf", "proposition_id": pid} for pid in ("claim:p1", "claim:p2")
-    ]}
+    record.phase8["logic"] = {
+        "operator": operator,
+        "children": [
+            {"operator": "leaf", "proposition_id": pid}
+            for pid in ("claim:p1", "claim:p2")
+        ],
+    }
     for t in second.phase8["transformations"]:
         t = deepcopy(t)
         t["transformation_id"] += "-second"
@@ -214,9 +280,13 @@ def add_logical_component(record, *, operator, state):
             t["asserts_whole_claim"] = False
 
 
-@pytest.mark.parametrize("core", ["overstatement", "causal_inference", "mechanism_to_outcome"])
+@pytest.mark.parametrize(
+    "core", ["overstatement", "causal_inference", "mechanism_to_outcome"]
+)
 def test_supported_or_cannot_be_relabeled_from_unsupported_alternative(core):
-    record = taxonomy_record(core, noncausal_result_used=True, described_biological_mechanism=True)
+    record = taxonomy_record(
+        core, noncausal_result_used=True, described_biological_mechanism=True
+    )
     profile = record.phase8["evidence_descriptions"][0]
     if core == "mechanism_to_outcome":
         profile.update(evidence_type="animal", randomized=None)
@@ -232,7 +302,9 @@ def test_supported_or_cannot_be_relabeled_from_unsupported_alternative(core):
 
 def test_unknown_and_does_not_force_overstatement_label():
     record = taxonomy_record("overstatement")
-    record.phase8["evidence_descriptions"][0].update(evidence_type="observational", randomized=None)
+    record.phase8["evidence_descriptions"][0].update(
+        evidence_type="observational", randomized=None
+    )
     summary_state(record, "unsupported")
     add_logical_component(record, operator="and", state="unknown")
     assert evaluate_phase8(record).composite_state == "unknown"
@@ -253,7 +325,8 @@ def test_unsupported_and_cannot_borrow_an_unreferenced_components_gap():
     assert semantics.technical_status == "completed"
     assert semantics.composite_state == "unsupported"
     assert {p.proposition_id: p.derived_state for p in semantics.propositions} == {
-        "claim:p1": "supported", "claim:p2": "unsupported",
+        "claim:p1": "supported",
+        "claim:p2": "unsupported",
     }
     assert record.phase8_taxonomy["proposition_ids"] == ["claim:p1"]
     assert assess_taxonomy(record, semantics)["derived_label"] is None

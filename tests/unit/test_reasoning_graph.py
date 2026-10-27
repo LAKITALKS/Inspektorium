@@ -91,10 +91,20 @@ class TestBuildReasoningGraph:
 
 class TestClassifySelfCheck:
     def test_deep_check(self):
-        assert classify_self_check("What if the data has a bias we haven't considered? Let me check for edge cases.") == "deep"
+        assert (
+            classify_self_check(
+                "What if the data has a bias we haven't considered? Let me check for edge cases."
+            )
+            == "deep"
+        )
 
     def test_arithmetic_check(self):
-        assert classify_self_check("Verified the calculation: 30/100 = 30%, 20/50 = 40%. Both correct.") == "arithmetic"
+        assert (
+            classify_self_check(
+                "Verified the calculation: 30/100 = 30%, 20/50 = 40%. Both correct."
+            )
+            == "arithmetic"
+        )
 
     def test_fluff_check(self):
         assert classify_self_check("I checked my work.") == "fluff"

@@ -30,59 +30,81 @@ from inspektorium.audit.schemas import (
 # Claim extraction
 # ---------------------------------------------------------------------------
 
+
 def _extract_claims(p: AgentResponse) -> list[NormalizedClaim]:
     """Extract normalized claims from all response fields."""
     claims: list[NormalizedClaim] = []
 
     # Assumptions
     for i, a in enumerate(p.assumptions):
-        claims.append(NormalizedClaim(
-            text=a, source_field=f"assumptions[{i}]",
-            claim_role="assumption",
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=a,
+                source_field=f"assumptions[{i}]",
+                claim_role="assumption",
+            )
+        )
 
     # Reasoning steps
     for i, s in enumerate(p.steps):
-        claims.append(NormalizedClaim(
-            text=s, source_field=f"steps[{i}]",
-            claim_role="assertion",
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=s,
+                source_field=f"steps[{i}]",
+                claim_role="assertion",
+            )
+        )
 
     # Key claims
     for i, c in enumerate(p.key_claims):
-        claims.append(NormalizedClaim(
-            text=c, source_field=f"key_claims[{i}]",
-            claim_role="claim",
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=c,
+                source_field=f"key_claims[{i}]",
+                claim_role="claim",
+            )
+        )
 
     # Alternative hypotheses
     for i, h in enumerate(p.alternative_hypotheses):
-        claims.append(NormalizedClaim(
-            text=h, source_field=f"alternative_hypotheses[{i}]",
-            claim_role="challenge",
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=h,
+                source_field=f"alternative_hypotheses[{i}]",
+                claim_role="challenge",
+            )
+        )
 
     # Uncertainties
     for i, u in enumerate(p.uncertainties):
-        claims.append(NormalizedClaim(
-            text=u, source_field=f"uncertainties[{i}]",
-            claim_role="challenge",
-            addressed=False,  # default: unaddressed until proven otherwise
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=u,
+                source_field=f"uncertainties[{i}]",
+                claim_role="challenge",
+                addressed=False,  # default: unaddressed until proven otherwise
+            )
+        )
 
     # Self-checks
     for i, sc in enumerate(p.self_check):
-        claims.append(NormalizedClaim(
-            text=sc, source_field=f"self_check[{i}]",
-            claim_role="check",
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=sc,
+                source_field=f"self_check[{i}]",
+                claim_role="check",
+            )
+        )
 
     # Final answer as conclusion
     if p.final_answer:
-        claims.append(NormalizedClaim(
-            text=p.final_answer, source_field="final_answer",
-            claim_role="conclusion",
-        ))
+        claims.append(
+            NormalizedClaim(
+                text=p.final_answer,
+                source_field="final_answer",
+                claim_role="conclusion",
+            )
+        )
 
     return claims
 
@@ -91,16 +113,55 @@ def _extract_claims(p: AgentResponse) -> list[NormalizedClaim]:
 # Content word extraction (shared)
 # ---------------------------------------------------------------------------
 
+
 def _content_words(text: str, min_len: int = 4) -> set[str]:
     """Extract meaningful content words from text."""
-    stopwords = {"about", "which", "would", "could", "should", "there", "their",
-                 "these", "those", "being", "where", "other", "because", "since",
-                 "however", "while", "though", "after", "before", "during",
-                 "between", "through", "with", "from", "into", "have", "this",
-                 "that", "what", "when", "than", "then", "also", "just", "more",
-                 "some", "very", "each", "they", "been", "were", "does", "only"}
-    return {w for w in text.lower().split()
-            if len(w) >= min_len and w not in stopwords}
+    stopwords = {
+        "about",
+        "which",
+        "would",
+        "could",
+        "should",
+        "there",
+        "their",
+        "these",
+        "those",
+        "being",
+        "where",
+        "other",
+        "because",
+        "since",
+        "however",
+        "while",
+        "though",
+        "after",
+        "before",
+        "during",
+        "between",
+        "through",
+        "with",
+        "from",
+        "into",
+        "have",
+        "this",
+        "that",
+        "what",
+        "when",
+        "than",
+        "then",
+        "also",
+        "just",
+        "more",
+        "some",
+        "very",
+        "each",
+        "they",
+        "been",
+        "were",
+        "does",
+        "only",
+    }
+    return {w for w in text.lower().split() if len(w) >= min_len and w not in stopwords}
 
 
 def _overlap_ratio(words_a: set[str], words_b: set[str]) -> float:
@@ -112,6 +173,7 @@ def _overlap_ratio(words_a: set[str], words_b: set[str]) -> float:
 # ---------------------------------------------------------------------------
 # Relation detection
 # ---------------------------------------------------------------------------
+
 
 def _detect_relations(claims: list[NormalizedClaim]) -> list[ClaimRelation]:
     """Detect support/contradiction/refinement relations between claims."""
@@ -135,25 +197,44 @@ def _detect_relations(claims: list[NormalizedClaim]) -> list[ClaimRelation]:
 
             # Determine relation type based on claim roles
             if ci.claim_role == "assumption" and cj.claim_role == "assertion":
-                relations.append(ClaimRelation(
-                    source_idx=i, target_idx=j,
-                    relation="assumes", strength=overlap,
-                ))
+                relations.append(
+                    ClaimRelation(
+                        source_idx=i,
+                        target_idx=j,
+                        relation="assumes",
+                        strength=overlap,
+                    )
+                )
             elif ci.claim_role == "assertion" and cj.claim_role == "conclusion":
-                relations.append(ClaimRelation(
-                    source_idx=i, target_idx=j,
-                    relation="supports", strength=overlap,
-                ))
-            elif ci.claim_role == "check" and cj.claim_role in ("assertion", "conclusion"):
-                relations.append(ClaimRelation(
-                    source_idx=i, target_idx=j,
-                    relation="checks", strength=overlap,
-                ))
+                relations.append(
+                    ClaimRelation(
+                        source_idx=i,
+                        target_idx=j,
+                        relation="supports",
+                        strength=overlap,
+                    )
+                )
+            elif ci.claim_role == "check" and cj.claim_role in (
+                "assertion",
+                "conclusion",
+            ):
+                relations.append(
+                    ClaimRelation(
+                        source_idx=i,
+                        target_idx=j,
+                        relation="checks",
+                        strength=overlap,
+                    )
+                )
             elif ci.claim_role == "claim" and cj.claim_role == "conclusion":
-                relations.append(ClaimRelation(
-                    source_idx=i, target_idx=j,
-                    relation="supports", strength=overlap,
-                ))
+                relations.append(
+                    ClaimRelation(
+                        source_idx=i,
+                        target_idx=j,
+                        relation="supports",
+                        strength=overlap,
+                    )
+                )
 
     return relations
 
@@ -161,6 +242,7 @@ def _detect_relations(claims: list[NormalizedClaim]) -> list[ClaimRelation]:
 # ---------------------------------------------------------------------------
 # Assumption usage audit
 # ---------------------------------------------------------------------------
+
 
 def _audit_assumption_usage(claims: list[NormalizedClaim]) -> list[int]:
     """Return indices of assumptions that are never referenced in steps."""
@@ -187,11 +269,13 @@ def _audit_assumption_usage(claims: list[NormalizedClaim]) -> list[int]:
 # Uncertainty resolution audit
 # ---------------------------------------------------------------------------
 
+
 def _audit_uncertainty_resolution(claims: list[NormalizedClaim]) -> list[int]:
     """Return indices of uncertainties that are never addressed in later reasoning."""
     unaddressed = []
     reasoning_text = " ".join(
-        c.text.lower() for c in claims
+        c.text.lower()
+        for c in claims
         if c.claim_role in ("assertion", "conclusion", "check")
     )
 
@@ -214,20 +298,46 @@ def _audit_uncertainty_resolution(claims: list[NormalizedClaim]) -> list[int]:
 # ---------------------------------------------------------------------------
 
 _FLUFF_INDICATORS = (
-    "i checked", "i verified", "double-check", "confirmed correct",
-    "looks right", "seems correct", "appears correct", "is correct",
-    "this is right", "verified my", "checked my work",
+    "i checked",
+    "i verified",
+    "double-check",
+    "confirmed correct",
+    "looks right",
+    "seems correct",
+    "appears correct",
+    "is correct",
+    "this is right",
+    "verified my",
+    "checked my work",
 )
 
 _ARITHMETIC_INDICATORS = (
-    "arithmetic", "calculation", "sum", "total", "equals",
-    "computed", "multiplied", "divided", "added", "subtracted",
+    "arithmetic",
+    "calculation",
+    "sum",
+    "total",
+    "equals",
+    "computed",
+    "multiplied",
+    "divided",
+    "added",
+    "subtracted",
 )
 
 _DEEP_CHECK_INDICATORS = (
-    "what if", "could this be wrong", "alternative", "edge case",
-    "counterexample", "fails when", "breaks if", "assuming the opposite",
-    "trap", "common error", "pitfall", "fallacy", "bias",
+    "what if",
+    "could this be wrong",
+    "alternative",
+    "edge case",
+    "counterexample",
+    "fails when",
+    "breaks if",
+    "assuming the opposite",
+    "trap",
+    "common error",
+    "pitfall",
+    "fallacy",
+    "bias",
 )
 
 
@@ -261,7 +371,10 @@ def _audit_self_checks(claims: list[NormalizedClaim]) -> list[int]:
 # Conclusion grounding check
 # ---------------------------------------------------------------------------
 
-def _check_conclusion_grounding(claims: list[NormalizedClaim]) -> tuple[bool, list[int]]:
+
+def _check_conclusion_grounding(
+    claims: list[NormalizedClaim],
+) -> tuple[bool, list[int]]:
     """Check whether the final answer is supported by reasoning steps.
     Returns (grounded, list_of_unsupported_conclusion_indices)."""
     conclusions = [(i, c) for i, c in enumerate(claims) if c.claim_role == "conclusion"]
@@ -290,8 +403,10 @@ def _check_conclusion_grounding(claims: list[NormalizedClaim]) -> tuple[bool, li
 # v0.4.1: Enhanced grounding audit
 # ---------------------------------------------------------------------------
 
-def _build_grounding_audit(claims: list[NormalizedClaim],
-                           relations: list[ClaimRelation]) -> GroundingAudit:
+
+def _build_grounding_audit(
+    claims: list[NormalizedClaim], relations: list[ClaimRelation]
+) -> GroundingAudit:
     """Build a detailed grounding audit for conclusion claims.
 
     Classifies each conclusion sub-claim as:
@@ -301,7 +416,9 @@ def _build_grounding_audit(claims: list[NormalizedClaim],
     - contradicted: step negates the claim direction
     """
     conclusions = [(i, c) for i, c in enumerate(claims) if c.claim_role == "conclusion"]
-    steps = [(i, c) for i, c in enumerate(claims) if c.claim_role in ("assertion", "claim")]
+    steps = [
+        (i, c) for i, c in enumerate(claims) if c.claim_role in ("assertion", "claim")
+    ]
 
     if not conclusions:
         return GroundingAudit()
@@ -325,9 +442,19 @@ def _build_grounding_audit(claims: list[NormalizedClaim],
     # directional alignment.  Pure lexical overlap (topic words shared
     # without a conclusion/sub-conclusion marker) counts as indirect only.
     _SUB_CONCLUSION_MARKERS = (
-        "therefore", "thus", "hence", "so ", "this means", "which means",
-        "this shows", "this proves", "this indicates", "consequently",
-        "the result", "we conclude", "we can see",
+        "therefore",
+        "thus",
+        "hence",
+        "so ",
+        "this means",
+        "which means",
+        "this shows",
+        "this proves",
+        "this indicates",
+        "consequently",
+        "the result",
+        "we conclude",
+        "we can see",
     )
 
     for sub in all_sub_claims:
@@ -367,10 +494,14 @@ def _build_grounding_audit(claims: list[NormalizedClaim],
         elif best_overlap >= 0.25:
             # High overlap without conclusion marker → still good but indirect
             indirect += 1
-            support_paths.append(f"INDIRECT: '{sub[:60]}...' <- step {best_step_idx} (no conclusion marker)")
+            support_paths.append(
+                f"INDIRECT: '{sub[:60]}...' <- step {best_step_idx} (no conclusion marker)"
+            )
         elif best_overlap >= 0.12:
             indirect += 1
-            support_paths.append(f"INDIRECT: '{sub[:60]}...' <- step {best_step_idx} (weak)")
+            support_paths.append(
+                f"INDIRECT: '{sub[:60]}...' <- step {best_step_idx} (weak)"
+            )
         else:
             unsupported_claims.append(sub[:100])
             support_paths.append(f"UNSUPPORTED: '{sub[:60]}...'")
@@ -387,13 +518,22 @@ def _build_grounding_audit(claims: list[NormalizedClaim],
 
 
 _NEGATION_PAIRS = [
-    ("valid", "not valid"), ("valid", "invalid"), ("valid", "misleading"),
-    ("correct", "incorrect"), ("correct", "not correct"), ("correct", "wrong"),
-    ("true", "not true"), ("true", "false"),
-    ("higher", "lower"), ("lower", "higher"),
-    ("more", "less"), ("less", "more"),
-    ("favors", "discriminates"), ("discrimination", "no discrimination"),
-    ("increases", "decreases"), ("decreases", "increases"),
+    ("valid", "not valid"),
+    ("valid", "invalid"),
+    ("valid", "misleading"),
+    ("correct", "incorrect"),
+    ("correct", "not correct"),
+    ("correct", "wrong"),
+    ("true", "not true"),
+    ("true", "false"),
+    ("higher", "lower"),
+    ("lower", "higher"),
+    ("more", "less"),
+    ("less", "more"),
+    ("favors", "discriminates"),
+    ("discrimination", "no discrimination"),
+    ("increases", "decreases"),
+    ("decreases", "increases"),
 ]
 
 
@@ -447,28 +587,65 @@ def _has_negation_conflict(text_a: str, text_b: str) -> bool:
 # ---------------------------------------------------------------------------
 
 _CONCEPT_NAMES = (
-    "paradox", "fallacy", "bias", "effect", "theorem",
-    "principle", "law", "heuristic", "phenomenon",
-    "simpson", "monty hall", "bayes", "base rate",
+    "paradox",
+    "fallacy",
+    "bias",
+    "effect",
+    "theorem",
+    "principle",
+    "law",
+    "heuristic",
+    "phenomenon",
+    "simpson",
+    "monty hall",
+    "bayes",
+    "base rate",
 )
 
 _MECHANISM_INDICATORS = (
-    "because", "causes", "leads to", "results in", "driven by",
-    "explained by", "due to", "reason is", "mechanism is",
-    "this happens when", "this occurs because", "the reason",
-    "this is why", "which means", "as a result",
+    "because",
+    "causes",
+    "leads to",
+    "results in",
+    "driven by",
+    "explained by",
+    "due to",
+    "reason is",
+    "mechanism is",
+    "this happens when",
+    "this occurs because",
+    "the reason",
+    "this is why",
+    "which means",
+    "as a result",
 )
 
 _CASE_GROUNDING_INDICATORS = (
-    "in this case", "in our case", "here,", "specifically,",
-    "the data shows", "the numbers show", "looking at the",
-    "for this university", "in this problem", "in this scenario",
-    "the department", "the engineering", "the arts",
-    "men applied", "women applied", "30%", "40%", "75%", "87",
+    "in this case",
+    "in our case",
+    "here,",
+    "specifically,",
+    "the data shows",
+    "the numbers show",
+    "looking at the",
+    "for this university",
+    "in this problem",
+    "in this scenario",
+    "the department",
+    "the engineering",
+    "the arts",
+    "men applied",
+    "women applied",
+    "30%",
+    "40%",
+    "75%",
+    "87",
 )
 
 
-def build_mechanism_analysis(p: AgentResponse, task: Task | None = None) -> MechanismAnalysis:
+def build_mechanism_analysis(
+    p: AgentResponse, task: Task | None = None
+) -> MechanismAnalysis:
     """Analyze whether the agent names, describes, and grounds a mechanism."""
     all_text = " ".join([p.final_answer] + p.steps + p.key_claims).lower()
 
@@ -494,7 +671,9 @@ def build_mechanism_analysis(p: AgentResponse, task: Task | None = None) -> Mech
             if mech_idx >= 0:
                 after_mech = step_l[mech_idx:]
                 after_words = [w for w in after_mech.split() if len(w) > 3]
-                if len(after_words) >= 4:  # at least 4 content words after the mechanism indicator
+                if (
+                    len(after_words) >= 4
+                ):  # at least 4 content words after the mechanism indicator
                     mechanism_sents.append(step[:150])
     # Also check final answer
     fa_l = p.final_answer.lower()
@@ -511,7 +690,9 @@ def build_mechanism_analysis(p: AgentResponse, task: Task | None = None) -> Mech
         step_l = step.lower()
         if any(ind in step_l for ind in _CASE_GROUNDING_INDICATORS):
             # Must also have some mechanism/causal language nearby
-            if any(ind in step_l for ind in _MECHANISM_INDICATORS) or any(c in step_l for c in named_concepts):
+            if any(ind in step_l for ind in _MECHANISM_INDICATORS) or any(
+                c in step_l for c in named_concepts
+            ):
                 grounding_sents.append(step[:150])
     if not grounding_sents:
         # Weaker check: does any step mention both a specific number AND a causal word?
@@ -554,8 +735,10 @@ def build_mechanism_analysis(p: AgentResponse, task: Task | None = None) -> Mech
 # Support chain length
 # ---------------------------------------------------------------------------
 
-def _compute_support_chain(claims: list[NormalizedClaim],
-                           relations: list[ClaimRelation]) -> int:
+
+def _compute_support_chain(
+    claims: list[NormalizedClaim], relations: list[ClaimRelation]
+) -> int:
     """Compute longest chain of supporting relations."""
     if not relations:
         return 0
@@ -581,6 +764,7 @@ def _compute_support_chain(claims: list[NormalizedClaim],
 # ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
+
 
 def build_reasoning_graph(p: AgentResponse, task: Task | None = None) -> ReasoningGraph:
     """Build a lightweight reasoning graph from an agent response."""

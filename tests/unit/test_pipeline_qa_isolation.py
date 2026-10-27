@@ -60,6 +60,7 @@ def test_qa_dir_contributes_zero_cases_to_enumeration():
 
 def test_qa_fixture_is_not_a_loadable_case():
     import json
+
     for fx in QA_DIR.glob("*.json"):
         data = json.loads(fx.read_text())
         # A ForensicRecord lacks the required Task fields, so it cannot be a case.

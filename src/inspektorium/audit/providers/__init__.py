@@ -84,5 +84,7 @@ def get_provider(name: str, **kwargs) -> BaseProvider:
     registry["ollama"] = OllamaProvider
 
     if name not in registry:
-        raise ValueError(f"Unknown provider: {name}. Available: {list(registry.keys())}")
+        raise ValueError(
+            f"Unknown provider: {name}. Available: {list(registry.keys())}"
+        )
     return registry[name](**kwargs)

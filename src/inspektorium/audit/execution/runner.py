@@ -6,7 +6,11 @@ import time
 import uuid
 
 from inspektorium.audit.integrity.output_contract import parse_structured_output
-from inspektorium.audit.forensics.pipeline import build_phase8_contract_r1, build_phase8_contract_r2, build_phase8_prompt
+from inspektorium.audit.forensics.pipeline import (
+    build_phase8_contract_r1,
+    build_phase8_contract_r2,
+    build_phase8_prompt,
+)
 from inspektorium.audit.providers import BaseProvider, get_provider
 from inspektorium.audit.schemas import AgentResponse, AgentResult, Task, TaskType
 
@@ -103,7 +107,9 @@ IMPORTANT:
 # Phase-7 condition (4,644 UTF-8 bytes; SHA-256 pinned by tests).  New-schema runs must
 # select one of these explicit versions; legacy callers continue to resolve the historical
 # bytes and are never silently retargeted.
-STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL = "study_forensics_prompt/v1-historical-phase7"
+STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL = (
+    "study_forensics_prompt/v1-historical-phase7"
+)
 STUDY_FORENSICS_PROMPT_VERSION_PROSPECTIVE = (
     "study_forensics_prompt/v2-taxonomy-aligned-phase5a"
 )
@@ -183,7 +189,9 @@ _STUDY_FORENSICS_PROMPT_REGISTRY[STUDY_FORENSICS_PROMPT_VERSION_PHASE9] = {
 # AA-P10-LIVE/1.0 repair revision R1: the frozen v3-phase8 bytes followed by the explicitly
 # stated deterministic AA-P8/1.0 host contract. Bound only by the @2 live profiles; every
 # version above keeps its bytes.
-STUDY_FORENSICS_PROMPT_VERSION_PHASE8_CONTRACT_R1 = "study_forensics_prompt/v3-phase8-contract-r1"
+STUDY_FORENSICS_PROMPT_VERSION_PHASE8_CONTRACT_R1 = (
+    "study_forensics_prompt/v3-phase8-contract-r1"
+)
 STUDY_FORENSICS_PROMPT_PHASE8_CONTRACT_R1 = (
     STUDY_FORENSICS_PROMPT_PHASE8 + "\n" + build_phase8_contract_r1()
 )
@@ -202,7 +210,9 @@ _STUDY_FORENSICS_PROMPT_REGISTRY[STUDY_FORENSICS_PROMPT_VERSION_PHASE9_CONTRACT_
 # AA-P8/1.1 + AA-P9/1.1 (docs/phase8_9_conflict_addendum.md), revision r2: own judgment instead of
 # predicting the host state; a conflict review receives both untrusted positions. Bound only by the
 # @3 live profiles; every version above keeps its bytes.
-STUDY_FORENSICS_PROMPT_VERSION_PHASE8_CONTRACT_R2 = "study_forensics_prompt/v3-phase8-contract-r2"
+STUDY_FORENSICS_PROMPT_VERSION_PHASE8_CONTRACT_R2 = (
+    "study_forensics_prompt/v3-phase8-contract-r2"
+)
 STUDY_FORENSICS_PROMPT_PHASE8_CONTRACT_R2 = (
     STUDY_FORENSICS_PROMPT_PHASE8 + "\n" + build_phase8_contract_r2()
 )
@@ -226,7 +236,8 @@ STUDY_FORENSICS_PROMPT_VERSION_PHASE9_CONTRACT_R2 = (
 )
 _STUDY_FORENSICS_PROMPT_REGISTRY[STUDY_FORENSICS_PROMPT_VERSION_PHASE9_CONTRACT_R2] = {
     "condition_id": "study_forensics_phase9_contract_r2_conflict_review",
-    "prompt": STUDY_FORENSICS_PROMPT_PHASE8_CONTRACT_R2 + _PHASE9_CONFLICT_REVIEW_SUFFIX,
+    "prompt": STUDY_FORENSICS_PROMPT_PHASE8_CONTRACT_R2
+    + _PHASE9_CONFLICT_REVIEW_SUFFIX,
 }
 
 
@@ -235,7 +246,9 @@ def resolve_study_forensics_prompt(prompt_version: str) -> str:
     try:
         return _STUDY_FORENSICS_PROMPT_REGISTRY[prompt_version]["prompt"]
     except KeyError as exc:
-        raise ValueError(f"unknown Study Forensics prompt version: {prompt_version}") from exc
+        raise ValueError(
+            f"unknown Study Forensics prompt version: {prompt_version}"
+        ) from exc
 
 
 def study_forensics_prompt_identity(prompt_version: str) -> dict[str, str]:
@@ -243,8 +256,13 @@ def study_forensics_prompt_identity(prompt_version: str) -> dict[str, str]:
     try:
         registered = _STUDY_FORENSICS_PROMPT_REGISTRY[prompt_version]
     except KeyError as exc:
-        raise ValueError(f"unknown Study Forensics prompt version: {prompt_version}") from exc
-    return {"prompt_version": prompt_version, "prompt_condition_id": registered["condition_id"]}
+        raise ValueError(
+            f"unknown Study Forensics prompt version: {prompt_version}"
+        ) from exc
+    return {
+        "prompt_version": prompt_version,
+        "prompt_condition_id": registered["condition_id"],
+    }
 
 
 def parse_agent_output(raw: str) -> tuple[AgentResponse | None, bool]:
@@ -267,9 +285,13 @@ def _select_system_prompt(
 ) -> str:
     """Select the appropriate system prompt based on task type."""
     if task.task_type == TaskType.STUDY_FORENSICS:
-        return resolve_study_forensics_prompt(prompt_version or STUDY_FORENSICS_PROMPT_VERSION_PHASE8)
+        return resolve_study_forensics_prompt(
+            prompt_version or STUDY_FORENSICS_PROMPT_VERSION_PHASE8
+        )
     if prompt_version not in (None, STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL):
-        raise ValueError("a Study Forensics prompt version cannot be applied to another task type")
+        raise ValueError(
+            "a Study Forensics prompt version cannot be applied to another task type"
+        )
     return SYSTEM_PROMPT
 
 
@@ -294,8 +316,11 @@ def run_agent(
         system_prompt = _select_system_prompt(task, prompt_version)
         resp = provider.generate(task, system_prompt)
         # Fall back to wall-clock latency if the provider did not record it.
-        latency = resp.latency_ms if resp.latency_ms is not None else \
-            int((time.monotonic() - start) * 1000)
+        latency = (
+            resp.latency_ms
+            if resp.latency_ms is not None
+            else int((time.monotonic() - start) * 1000)
+        )
 
         evidence = getattr(resp, "execution_evidence", None)
         if resp.error:
@@ -310,7 +335,9 @@ def run_agent(
                 execution_evidence=evidence,
             )
 
-        parsed, diag = parse_structured_output(resp.text, finish_reason=resp.finish_reason)
+        parsed, diag = parse_structured_output(
+            resp.text, finish_reason=resp.finish_reason
+        )
         result = AgentResult(
             provider=label,
             model=model_id or (resp.model or ""),
@@ -323,13 +350,16 @@ def run_agent(
             execution_evidence=evidence,
         )
         from inspektorium.audit.forensics.pipeline import assess_agent_result
+
         result.phase8 = assess_agent_result(task, result)
         from inspektorium.audit.review.pipeline import initial_assessment
+
         result.phase9 = initial_assessment(task, result)
         return result
     except Exception as e:
         latency = int((time.monotonic() - start) * 1000)
         from inspektorium.audit.providers.response import classify_error_type
+
         return AgentResult(
             provider=label,
             model=model_id,
@@ -350,7 +380,9 @@ def run_task(task: Task, provider_names: list[str]) -> tuple[str, list[AgentResu
     return run_id, results
 
 
-def run_task_with_providers(task: Task, providers: list[BaseProvider]) -> tuple[str, list[AgentResult]]:
+def run_task_with_providers(
+    task: Task, providers: list[BaseProvider]
+) -> tuple[str, list[AgentResult]]:
     """Run pre-configured providers on a task. Returns (run_id, results)."""
     run_id = f"run_{uuid.uuid4().hex[:8]}"
     results = []

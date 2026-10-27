@@ -34,9 +34,20 @@ from inspektorium.audit.integrity.artifact_binding import (
 from inspektorium.audit.execution.run_library import discover_cases
 from inspektorium.audit.schemas import FailureSeverity, Task
 
-FIXTURE = (Path(__file__).resolve().parents[1] / "fixtures" / "audit" / "pipeline_qa"
-           / "qa_release_gate_consolidated.json")
-CASE_DIR = Path(__file__).resolve().parents[2] / "tests" / "fixtures" / "audit" / "case_library"
+FIXTURE = (
+    Path(__file__).resolve().parents[1]
+    / "fixtures"
+    / "audit"
+    / "pipeline_qa"
+    / "qa_release_gate_consolidated.json"
+)
+CASE_DIR = (
+    Path(__file__).resolve().parents[2]
+    / "tests"
+    / "fixtures"
+    / "audit"
+    / "case_library"
+)
 
 
 def rec():
@@ -70,10 +81,13 @@ def vc(r, eid):
 
 
 def synthetic(sev: str, code: str = "synthetic_rollup_code") -> BindingFinding:
-    return BindingFinding(code=code, severity=sev, check="T", detail="roll-up unit finding")
+    return BindingFinding(
+        code=code, severity=sev, check="T", detail="roll-up unit finding"
+    )
 
 
 # --- Test A — a fully clean artifact releases -----------------------------------
+
 
 def test_A_clean_artifact_releases():
     report = evaluate_artifact_release(rec())
@@ -85,6 +99,7 @@ def test_A_clean_artifact_releases():
 
 
 # --- Test B — a single critical failure blocks ----------------------------------
+
 
 def test_B_single_critical_blocks():
     r = rec()
@@ -99,14 +114,18 @@ def test_B_single_critical_blocks():
 # No current Phase-7B QA code maps to `major` (all map to `critical`); the major
 # roll-up branch is therefore exercised directly with a typed synthetic finding.
 
+
 def test_C_single_major_blocks_rollup():
-    counts, releasable, blocking = _severity_rollup([synthetic(FailureSeverity.MAJOR.value)])
+    counts, releasable, blocking = _severity_rollup(
+        [synthetic(FailureSeverity.MAJOR.value)]
+    )
     assert counts["major"] == 1
     assert releasable is False
     assert "synthetic_rollup_code" in blocking
 
 
 # --- Test D — moderate/minor/stylistic findings do not block --------------------
+
 
 def test_D_sub_major_findings_do_not_block():
     findings = [
@@ -122,11 +141,12 @@ def test_D_sub_major_findings_do_not_block():
 
 # --- Test E — multiple independent failures are all reported (no early exit) -----
 
+
 def test_E_multiple_failures_all_reported():
     r = rec()
-    cf(r).referenced_evidence_ids = ["E1", "D1"]        # (1) drops opposing E2 -> asymmetry
-    vc(r, "D1").claimed_origin = "source_reported"       # (2) derived -> literature fact
-    na_client(r).client_scope = "global_nonexistence"    # (3) search-scope overreach
+    cf(r).referenced_evidence_ids = ["E1", "D1"]  # (1) drops opposing E2 -> asymmetry
+    vc(r, "D1").claimed_origin = "source_reported"  # (2) derived -> literature fact
+    na_client(r).client_scope = "global_nonexistence"  # (3) search-scope overreach
     report = evaluate_artifact_release(r)
     assert report.releasable is False
     codes = report.codes()
@@ -137,10 +157,16 @@ def test_E_multiple_failures_all_reported():
 
 # --- Test F — a binding failure does not mask another resolvable failure ---------
 
+
 def test_F_binding_failure_does_not_mask_others():
     r = rec()
-    cf(r).referenced_evidence_ids = ["E1", "E2", "D1", "E99"]   # E99 unknown -> binding drift
-    na_client(r).client_scope = "global_nonexistence"           # independent search-scope defect
+    cf(r).referenced_evidence_ids = [
+        "E1",
+        "E2",
+        "D1",
+        "E99",
+    ]  # E99 unknown -> binding drift
+    na_client(r).client_scope = "global_nonexistence"  # independent search-scope defect
     report = evaluate_artifact_release(r)
     assert report.releasable is False
     codes = report.codes()
@@ -150,9 +176,10 @@ def test_F_binding_failure_does_not_mask_others():
 
 # --- Test G — an unresolvable dependency does not produce a false pass -----------
 
+
 def test_G_unresolvable_dependency_no_false_pass():
     r = rec()
-    cf(r).parent_finding_id = "F-NOPE"       # parent cannot resolve
+    cf(r).parent_finding_id = "F-NOPE"  # parent cannot resolve
     report = evaluate_artifact_release(r)
     # The missing parent surfaces as a finding and blocks — it is never a silent pass.
     assert report.releasable is False
@@ -168,15 +195,17 @@ def test_G_unresolvable_dependency_no_false_pass():
 
 # --- Test H — evidence-symmetry integration -------------------------------------
 
+
 def test_H_evidence_symmetry_blocks():
     r = rec()
-    cf(r).referenced_evidence_ids = ["E1", "D1"]   # drops the opposing/qualifying E2
+    cf(r).referenced_evidence_ids = ["E1", "D1"]  # drops the opposing/qualifying E2
     report = evaluate_artifact_release(r)
     assert report.releasable is False
     assert QA_ASYMMETRIC_EVIDENCE_SELECTION in report.codes()
 
 
 # --- Test I — value-origin integration (derived -> source-reported) --------------
+
 
 def test_I_value_origin_derived_to_source_blocks():
     r = rec()
@@ -188,6 +217,7 @@ def test_I_value_origin_derived_to_source_blocks():
 
 # --- Test J — reverse value-origin integration (source-reported -> derived) ------
 
+
 def test_J_value_origin_source_to_derived_blocks():
     r = rec()
     vc(r, "E1").claimed_origin = "system_derived"
@@ -198,15 +228,17 @@ def test_J_value_origin_source_to_derived_blocks():
 
 # --- Test K — unresolved value origin -------------------------------------------
 
+
 def test_K_unresolved_value_origin_blocks():
     r = rec()
-    ev(r, "E1").value_origin = None            # client-visible value, origin unresolved
+    ev(r, "E1").value_origin = None  # client-visible value, origin unresolved
     report = evaluate_artifact_release(r)
     assert report.releasable is False
     assert QA_UNRESOLVED_VALUE_ORIGIN in report.codes()
 
 
 # --- Test L — search-scope globalization ----------------------------------------
+
 
 def test_L_search_scope_globalization_blocks():
     r = rec()
@@ -218,10 +250,13 @@ def test_L_search_scope_globalization_blocks():
 
 # --- Test M — narrowed search scope without a resolvable basis -------------------
 
+
 def test_M_narrowed_scope_without_basis_blocks():
     r = rec()
-    ss(r).reviewed_source_ids = []              # documented search still substantiated
-    na_client(r).client_scope = "reviewed_set"  # narrows without a represented reviewed set
+    ss(r).reviewed_source_ids = []  # documented search still substantiated
+    na_client(
+        r
+    ).client_scope = "reviewed_set"  # narrows without a represented reviewed set
     report = evaluate_artifact_release(r)
     assert report.releasable is False
     assert QA_ARTIFACT_SOURCE_BINDING_DRIFT in report.codes()
@@ -229,9 +264,10 @@ def test_M_narrowed_scope_without_basis_blocks():
 
 # --- Test N — summary-strength escalation ----------------------------------------
 
+
 def test_N_summary_strength_escalation_blocks():
     r = rec()
-    cf(r).client_strength = "disproven"         # far stronger than parent's ceiling
+    cf(r).client_strength = "disproven"  # far stronger than parent's ceiling
     report = evaluate_artifact_release(r)
     assert report.releasable is False
     assert QA_SUMMARY_STRENGTH_ESCALATION in report.codes()
@@ -239,6 +275,7 @@ def test_N_summary_strength_escalation_blocks():
 
 # --- Test O — a clean mixed-evidence artifact still releases ---------------------
 # Mixed evidence represented symmetrically and cautiously is NOT a QA defect.
+
 
 def test_O_clean_mixed_evidence_releases():
     report = evaluate_artifact_release(rec())
@@ -248,25 +285,28 @@ def test_O_clean_mixed_evidence_releases():
 
 # --- Test P — the input fingerprint changes when the record changes --------------
 
+
 def test_P_fingerprint_tracks_input():
     base = evaluate_artifact_release(rec())
     same = evaluate_artifact_release(rec())
-    assert base.record_fingerprint == same.record_fingerprint      # stable for same input
+    assert base.record_fingerprint == same.record_fingerprint  # stable for same input
     r = rec()
-    cf(r).display_claim = cf(r).display_claim + " (edited)"          # release-relevant change
+    cf(r).display_claim = cf(r).display_claim + " (edited)"  # release-relevant change
     changed = evaluate_artifact_release(r)
     assert changed.record_fingerprint != base.record_fingerprint
 
 
 # --- Test Q — report determinism -------------------------------------------------
 
+
 def test_Q_report_is_deterministic():
     a = evaluate_artifact_release(rec())
     b = evaluate_artifact_release(rec())
-    assert a.model_dump() == b.model_dump()     # no timestamp; fully canonical
+    assert a.model_dump() == b.model_dump()  # no timestamp; fully canonical
 
 
 # --- Test R — finding order is stable under irrelevant input reordering ----------
+
 
 def _three_failures(r):
     cf(r).referenced_evidence_ids = ["E1", "D1"]
@@ -281,14 +321,17 @@ def test_R_finding_order_is_canonical():
 
     r2 = rec()
     _three_failures(r2)
-    r2.evidence = list(reversed(r2.evidence))   # irrelevant collection reordering
+    r2.evidence = list(reversed(r2.evidence))  # irrelevant collection reordering
     report2 = evaluate_artifact_release(r2)
 
-    assert [f.model_dump() for f in report1.findings] == [f.model_dump() for f in report2.findings]
+    assert [f.model_dump() for f in report1.findings] == [
+        f.model_dump() for f in report2.findings
+    ]
     assert len(report1.findings) >= 3
 
 
 # --- Test S — the entrypoint invokes every mandatory control --------------------
+
 
 def test_S_mandatory_check_coverage():
     report = evaluate_artifact_release(rec())
@@ -308,6 +351,7 @@ def test_S_mandatory_check_coverage():
 
 # --- Test T — pipeline-QA isolation (the consolidated fixture is class C) --------
 
+
 def test_T_fixture_is_isolated_pipeline_qa():
     r = rec()
     assert r.synthetic_fixture is True
@@ -315,6 +359,7 @@ def test_T_fixture_is_isolated_pipeline_qa():
     discovered_names = {p.name for p, _ in discover_cases(task_dir=CASE_DIR)}
     assert FIXTURE.name not in discovered_names
     import json
+
     data = json.loads(FIXTURE.read_text())
     with pytest.raises(Exception):
         Task(**data)

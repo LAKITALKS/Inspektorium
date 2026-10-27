@@ -34,7 +34,9 @@ from inspektorium.audit.schemas import Difficulty, RunRecord, Task, TaskType
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-RECORD_FIXTURE = REPO_ROOT / "tests/fixtures/audit/pipeline_qa/qa_release_gate_consolidated.json"
+RECORD_FIXTURE = (
+    REPO_ROOT / "tests/fixtures/audit/pipeline_qa/qa_release_gate_consolidated.json"
+)
 REPORT_FIXTURE = REPO_ROOT / "tests/fixtures/audit/report_prototype/01_solid.json"
 
 
@@ -65,15 +67,21 @@ class MaterialFactory:
         _git(repo, "config", "user.name", "Inspektorium QA")
         _git(repo, "config", "user.email", "qa@example.invalid")
         source = repo / "release_source.json"
-        source.write_text(json.dumps({
-            "release_source_schema_version": rb.RELEASE_SOURCE_SCHEMA_VERSION,
-            "data_role": "synthetic_release_qa",
-            "execution_id": f"synthetic-execution-{self.counter}",
-            "analysis_id": f"synthetic-analysis-{self.counter}",
-            "package_fingerprint": "a" * 64,
-            "runtime_contract_fingerprint": "b" * 64,
-            "forensic_record_fingerprint": record_fingerprint(record),
-        }, sort_keys=True) + "\n")
+        source.write_text(
+            json.dumps(
+                {
+                    "release_source_schema_version": rb.RELEASE_SOURCE_SCHEMA_VERSION,
+                    "data_role": "synthetic_release_qa",
+                    "execution_id": f"synthetic-execution-{self.counter}",
+                    "analysis_id": f"synthetic-analysis-{self.counter}",
+                    "package_fingerprint": "a" * 64,
+                    "runtime_contract_fingerprint": "b" * 64,
+                    "forensic_record_fingerprint": record_fingerprint(record),
+                },
+                sort_keys=True,
+            )
+            + "\n"
+        )
         _git(repo, "add", "release_source.json")
         _git(repo, "commit", "-qm", "freeze synthetic release source")
         candidate = rb.build_release_object(
@@ -93,7 +101,11 @@ def material(tmp_path):
 
 def _packages(output: Path) -> list[Path]:
     namespace = output / rb.OFFICIAL_RELEASE_NAMESPACE
-    return sorted(path for path in namespace.iterdir() if path.is_dir()) if namespace.exists() else []
+    return (
+        sorted(path for path in namespace.iterdir() if path.is_dir())
+        if namespace.exists()
+        else []
+    )
 
 
 def _assert_no_write(result: rb.ReleaseResult, output: Path) -> None:
@@ -178,9 +190,7 @@ def test_F_caller_cannot_select_one_trivial_gate(material):
 
 
 @pytest.mark.parametrize("argument", ["release_report", "authorization", "releasable"])
-def test_G_H_caller_or_stored_all_green_dictionary_cannot_authorize(
-    material, argument
-):
+def test_G_H_caller_or_stored_all_green_dictionary_cannot_authorize(material, argument):
     candidate, repo, _source, output = material()
     with pytest.raises(TypeError):
         rb.release_official_artifact(
@@ -200,7 +210,9 @@ def test_I_gate_execution_failure_is_controlled_no_go(material, monkeypatch):
 
     first = replace(ab.MANDATORY_PHASE7B_GATE_SPECS[0], check=cannot_execute)
     monkeypatch.setattr(
-        ab, "MANDATORY_PHASE7B_GATE_SPECS", (first, *ab.MANDATORY_PHASE7B_GATE_SPECS[1:])
+        ab,
+        "MANDATORY_PHASE7B_GATE_SPECS",
+        (first, *ab.MANDATORY_PHASE7B_GATE_SPECS[1:]),
     )
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert result.status == "GATE_EXECUTION_ERROR"
@@ -215,7 +227,9 @@ def test_J_gate_internal_incomplete_state_is_no_go(material, monkeypatch):
 
     first = replace(ab.MANDATORY_PHASE7B_GATE_SPECS[0], check=malformed_result)
     monkeypatch.setattr(
-        ab, "MANDATORY_PHASE7B_GATE_SPECS", (first, *ab.MANDATORY_PHASE7B_GATE_SPECS[1:])
+        ab,
+        "MANDATORY_PHASE7B_GATE_SPECS",
+        (first, *ab.MANDATORY_PHASE7B_GATE_SPECS[1:]),
     )
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert result.status == "GATE_EXECUTION_ERROR"
@@ -227,7 +241,9 @@ def test_K_nonzero_evaluated_zero_findings_is_explicitly_clean(material):
     report = ab.evaluate_artifact_release(candidate.record)
     assert report.releasable is True
     assert all(check.eligible_count > 0 for check in report.checks_run)
-    assert all(check.evaluated_count == check.eligible_count for check in report.checks_run)
+    assert all(
+        check.evaluated_count == check.eligible_count for check in report.checks_run
+    )
     assert all(check.finding_count == 0 for check in report.checks_run)
     assert all(check.coverage_state == "evaluated_clean" for check in report.checks_run)
 
@@ -240,7 +256,9 @@ def test_L_zero_eligible_gate_is_explicit_and_fails_closed(material):
     candidate, repo, _source, output = material(mutate)
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     report = ab.evaluate_artifact_release(candidate.record)
-    search = next(check for check in report.checks_run if check.name == "search_scope_binding")
+    search = next(
+        check for check in report.checks_run if check.name == "search_scope_binding"
+    )
     assert search.eligible_count == search.evaluated_count == 0
     assert search.coverage_state == "zero_eligibility"
     assert result.status == "ZERO_ELIGIBILITY"
@@ -267,7 +285,9 @@ def test_N_unknown_eligibility_is_no_go(material, monkeypatch):
 
     first = replace(ab.MANDATORY_PHASE7B_GATE_SPECS[0], eligible_count=unknown)
     monkeypatch.setattr(
-        ab, "MANDATORY_PHASE7B_GATE_SPECS", (first, *ab.MANDATORY_PHASE7B_GATE_SPECS[1:])
+        ab,
+        "MANDATORY_PHASE7B_GATE_SPECS",
+        (first, *ab.MANDATORY_PHASE7B_GATE_SPECS[1:]),
     )
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert result.status == "GATE_EXECUTION_ERROR"
@@ -287,7 +307,9 @@ def test_O_partial_coverage_is_rejected(material, monkeypatch):
     _assert_no_write(result, output)
 
 
-@pytest.mark.parametrize("damage", ["evaluated_gt_eligible", "negative", "finding_count"])
+@pytest.mark.parametrize(
+    "damage", ["evaluated_gt_eligible", "negative", "finding_count"]
+)
 def test_P_impossible_or_contradictory_counters_are_rejected(
     material, monkeypatch, damage
 ):
@@ -362,8 +384,11 @@ def test_U_renderer_or_output_io_failure_leaves_no_partial_official_package(
     candidate, repo, _source, output = material()
     if failure == "renderer":
         monkeypatch.setattr(
-            rb, "_render_official_artifact",
-            lambda *_args: (_ for _ in ()).throw(OSError("controlled renderer failure")),
+            rb,
+            "_render_official_artifact",
+            lambda *_args: (_ for _ in ()).throw(
+                OSError("controlled renderer failure")
+            ),
         )
     else:
         original = rb.Path.write_bytes
@@ -410,7 +435,9 @@ def test_V_symlinked_official_namespace_is_rejected(material):
     output.mkdir()
     external = output.parent / "external-namespace"
     external.mkdir()
-    (output / rb.OFFICIAL_RELEASE_NAMESPACE).symlink_to(external, target_is_directory=True)
+    (output / rb.OFFICIAL_RELEASE_NAMESPACE).symlink_to(
+        external, target_is_directory=True
+    )
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert result.status == "INVALID_OUTPUT_NAMESPACE"
     assert result.official_release_write_count == 0
@@ -443,11 +470,15 @@ def test_public_client_renderers_return_diagnostic_only_content():
         timestamp="2026-08-27T00:00:00+00:00",
     )
     for content in (
-        generate_report(record), generate_client_report(record), generate_html_report(record),
+        generate_report(record),
+        generate_client_report(record),
+        generate_html_report(record),
     ):
         assert "DIAGNOSTIC / NON-RELEASE ARTIFACT" in content
         assert "official_release_authorized=false" in content
-        assert '"official_release_authorized":true' not in content.replace(" ", "").lower()
+        assert (
+            '"official_release_authorized":true' not in content.replace(" ", "").lower()
+        )
 
 
 def test_direct_pdf_renderer_cannot_write_into_official_namespace(tmp_path):
@@ -473,7 +504,9 @@ def test_direct_pdf_renderer_cannot_write_into_official_namespace(tmp_path):
 def test_Y_valid_package_cross_verifies_exact_object_report_and_hashes(material):
     candidate, repo, _source, output = material()
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
-    verification = rb.verify_official_release(result.package_path, release_object=candidate)
+    verification = rb.verify_official_release(
+        result.package_path, release_object=candidate
+    )
     assert verification.valid is True
     other = candidate.model_copy(deep=True)
     other.release_object_id = "different-object"
@@ -487,7 +520,9 @@ def test_official_release_api_still_releases(material, tmp_path):
     candidate, repo, _source, output = material()
     assert _packages(output) == []
     # The historical API stays available for verification of earlier packages.
-    released = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
+    released = rb.release_official_artifact(
+        candidate, output_root=output, repo_root=repo
+    )
     assert released.released is True and released.status == "RELEASED"
     assert len(_packages(output)) == 1
 
@@ -519,14 +554,18 @@ def test_wrong_release_object_schema_and_pipeline_qa_role_fail_closed(material):
 # Kept from the archived condition-contract tests: the release boundary itself rejects the role.
 def test_R_validation_artifact_role_is_not_a_supported_release_source(tmp_path):
     path = tmp_path / "diagnostic.json"
-    path.write_text(json.dumps({
-        "release_source_schema_version": rb.RELEASE_SOURCE_SCHEMA_VERSION,
-        "data_role": "diagnostic_validation",
-        "execution_id": "x",
-        "analysis_id": "y",
-        "package_fingerprint": "a" * 64,
-        "runtime_contract_fingerprint": "b" * 64,
-        "forensic_record_fingerprint": "c" * 64,
-    }))
+    path.write_text(
+        json.dumps(
+            {
+                "release_source_schema_version": rb.RELEASE_SOURCE_SCHEMA_VERSION,
+                "data_role": "diagnostic_validation",
+                "execution_id": "x",
+                "analysis_id": "y",
+                "package_fingerprint": "a" * 64,
+                "runtime_contract_fingerprint": "b" * 64,
+                "forensic_record_fingerprint": "c" * 64,
+            }
+        )
+    )
     with pytest.raises(rb.ReleaseBoundaryError, match="data role is unsupported"):
         rb._read_source_manifest(path)

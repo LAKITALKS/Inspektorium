@@ -25,8 +25,13 @@ _FINISH_REASON_MAP = {
 class OpenAIProvider(BaseProvider):
     name = "openai"
 
-    def __init__(self, model: str = "gpt-4o", temperature: float = 0.0,
-                 label: str = "", max_tokens: int = DEFAULT_MAX_TOKENS):
+    def __init__(
+        self,
+        model: str = "gpt-4o",
+        temperature: float = 0.0,
+        label: str = "",
+        max_tokens: int = DEFAULT_MAX_TOKENS,
+    ):
         self.model = model
         self.temperature = temperature
         self.label = label or model
@@ -55,7 +60,9 @@ class OpenAIProvider(BaseProvider):
             choice = response.choices[0] if response.choices else None
             text = (choice.message.content or "") if choice else ""
             raw_fr = getattr(choice, "finish_reason", None) if choice else None
-            finish_reason = _FINISH_REASON_MAP.get(raw_fr, "unknown") if raw_fr else None
+            finish_reason = (
+                _FINISH_REASON_MAP.get(raw_fr, "unknown") if raw_fr else None
+            )
 
             usage = None
             u = getattr(response, "usage", None)

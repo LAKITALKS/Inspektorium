@@ -20,14 +20,18 @@ from tests.unit.test_forensics_taxonomy import taxonomy_record
 def approved_case(tmp_path):
     payload = taxonomy_record().model_dump(mode="json")
     task = task_for(payload["phase8"]["original_claim"], payload["evidence"][0]["text"])
-    raw = json.dumps({"final_answer": "solid", "confidence": 0.82, "forensic_record": payload})
+    raw = json.dumps(
+        {"final_answer": "solid", "confidence": 0.82, "forensic_record": payload}
+    )
     provider = OfflineReviewProvider(raw)
     original = evaluate_run(task, "output-history", [run_agent(provider, task)])
     assert original.results[0].agent_result.phase8["derived_label"] == "solid"
     approved = submit_human_review(
-        original, base_dir=tmp_path,
+        original,
+        base_dir=tmp_path,
         selected_position_id=original.metadata["phase9"]["positions"][0]["position_id"],
-        reviewer_provenance="Explicit offline host", reason="Review complete bound history",
+        reviewer_provenance="Explicit offline host",
+        reason="Review complete bound history",
     )
     for evaluated in approved.results:
         evaluated.failures = []
@@ -37,14 +41,21 @@ def approved_case(tmp_path):
     return original, approved, provider
 
 
-def test_invalid_current_history_cannot_produce_positive_client_or_internal_conclusion(approved_case):
+def test_invalid_current_history_cannot_produce_positive_client_or_internal_conclusion(
+    approved_case,
+):
     original, approved, provider = approved_case
-    incoming = approved.model_copy(update={"metadata": deepcopy(original.metadata)}, deep=True)
+    incoming = approved.model_copy(
+        update={"metadata": deepcopy(original.metadata)}, deep=True
+    )
     before = incoming.model_dump(mode="json")
     checked = refresh_run_phase9(incoming)
     assert checked.metadata["phase9"]["route"] == "UNRESOLVED"
     assert checked.metadata["phase9"]["history_validation"] == "invalid"
-    assert checked.results[0].agent_result.phase9 == approved.results[0].agent_result.phase9
+    assert (
+        checked.results[0].agent_result.phase9
+        == approved.results[0].agent_result.phase9
+    )
     client, internal = generate_client_report(incoming), generate_report(incoming)
     for text in (client, internal):
         assert "UNRESOLVED" in text and "UNVALIDATED HISTORY" in text

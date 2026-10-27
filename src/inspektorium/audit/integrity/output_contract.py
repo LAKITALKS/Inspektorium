@@ -146,7 +146,7 @@ def _scan_outermost_object(text: str) -> tuple[str | None, bool]:
         elif ch == "}":
             depth -= 1
             if depth == 0:
-                return text[start:i + 1], True
+                return text[start : i + 1], True
     # Opened but never closed → truncated object, return from start to end.
     return text[start:], False
 
@@ -207,8 +207,7 @@ def _build_response(data: dict, diag: ParseDiagnostics) -> AgentResponse | None:
 
     diag.missing_fields = [f for f in _CORE_FIELDS if f not in data]
     diag.unexpected_fields = [
-        k for k in data
-        if k not in _CORE_FIELDS and k not in AgentResponse.model_fields
+        k for k in data if k not in _CORE_FIELDS and k not in AgentResponse.model_fields
     ]
 
     # Classify the raw JSON value before conversion.  Only a contract-valid JSON
@@ -261,10 +260,13 @@ def _fence_span(text: str) -> tuple[int, int] | None:
 _TRAILING_OPEN = re.compile(r"\{\s*$")
 
 
-def _holds_another_object(before: tuple[str, ...] = (), after: tuple[str, ...] = ()) -> bool:
+def _holds_another_object(
+    before: tuple[str, ...] = (), after: tuple[str, ...] = ()
+) -> bool:
     segments = (*before, *after)
-    return any("```json" in seg or _OBJECT_START.search(seg) for seg in segments) or any(
-        _TRAILING_OPEN.search(seg) for seg in after)
+    return any(
+        "```json" in seg or _OBJECT_START.search(seg) for seg in segments
+    ) or any(_TRAILING_OPEN.search(seg) for seg in after)
 
 
 def _try_load_dict(text: str) -> dict | None:
@@ -305,7 +307,7 @@ def extract_json_object(
     stripped = raw.strip()
     span = _fence_span(stripped) if diag.had_fence else None
     # Text outside the chosen fence (before and after it) may hold another analysis.
-    before, after = (stripped[:span[0]], stripped[span[1]:]) if span else ("", "")
+    before, after = (stripped[: span[0]], stripped[span[1] :]) if span else ("", "")
 
     # Fast path: the (de-fenced) text is already a clean JSON object.
     data = _try_load_dict(text)
@@ -327,7 +329,7 @@ def extract_json_object(
     if data is not None:
         diag.strategy = "brace_scan"
         diag.ok = True
-        rest = text[text.find("{") + len(candidate):]
+        rest = text[text.find("{") + len(candidate) :]
         diag.multiple_objects = _holds_another_object((before,), (rest, after))
         return data, diag
 

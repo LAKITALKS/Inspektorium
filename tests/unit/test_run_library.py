@@ -23,7 +23,9 @@ from inspektorium.audit.execution.run_library import (
 )
 
 # The case library is a test fixture; the harness default path is relative to the working directory.
-CASE_LIBRARY = Path(__file__).resolve().parents[1] / "fixtures" / "audit" / "case_library"
+CASE_LIBRARY = (
+    Path(__file__).resolve().parents[1] / "fixtures" / "audit" / "case_library"
+)
 
 
 @pytest.fixture(autouse=True)
@@ -32,17 +34,34 @@ def _case_library_fixture(monkeypatch):
 
 
 REQUIRED_FIELDS = {
-    "library_run_id", "case_id", "case_file", "gold_label", "run_index",
-    "provider", "model", "label", "label_correct", "score", "confidence",
+    "library_run_id",
+    "case_id",
+    "case_file",
+    "gold_label",
+    "run_index",
+    "provider",
+    "model",
+    "label",
+    "label_correct",
+    "score",
+    "confidence",
     "confidence_state",
-    "parse_ok", "finish_reason", "truncation_suspected", "error", "error_type",
-    "latency_ms", "usage", "timestamp", "raw_result_ref",
+    "parse_ok",
+    "finish_reason",
+    "truncation_suspected",
+    "error",
+    "error_type",
+    "latency_ms",
+    "usage",
+    "timestamp",
+    "raw_result_ref",
 }
 
 
 # ---------------------------------------------------------------------------
 # Fakes
 # ---------------------------------------------------------------------------
+
 
 class FakeMalformed(BaseProvider):
     name = "fake_malformed"
@@ -64,8 +83,13 @@ class FakeLength(BaseProvider):
 
     def generate(self, task, system_prompt) -> ModelResponse:
         payload = json.dumps({"final_answer": task.gold_label, "confidence": 0.7})
-        return ModelResponse(text=payload, provider=self.name, model=self.model,
-                             finish_reason="length", latency_ms=1)
+        return ModelResponse(
+            text=payload,
+            provider=self.name,
+            model=self.model,
+            finish_reason="length",
+            latency_ms=1,
+        )
 
     def send_prompt(self, task, system_prompt) -> str:
         return self.generate(task, system_prompt).text
@@ -79,9 +103,15 @@ class FakeError(BaseProvider):
         self.label = "FE"
 
     def generate(self, task, system_prompt) -> ModelResponse:
-        return ModelResponse(text="", provider=self.name, model=self.model,
-                             finish_reason="error", error="429 too many requests",
-                             error_type="rate_limit_error", latency_ms=1)
+        return ModelResponse(
+            text="",
+            provider=self.name,
+            model=self.model,
+            finish_reason="error",
+            error="429 too many requests",
+            error_type="rate_limit_error",
+            latency_ms=1,
+        )
 
     def send_prompt(self, task, system_prompt) -> str:
         raise RuntimeError("429 too many requests")
@@ -89,6 +119,7 @@ class FakeError(BaseProvider):
 
 class FakeUnstable(BaseProvider):
     """Alternates the detected label across runs of the same case."""
+
     name = "fake_unstable"
 
     def __init__(self):
@@ -105,6 +136,7 @@ class FakeUnstable(BaseProvider):
 # ---------------------------------------------------------------------------
 # Discovery
 # ---------------------------------------------------------------------------
+
 
 class TestDiscovery:
     def test_active_default_excludes_retired(self):
@@ -145,35 +177,40 @@ class TestDiscovery:
 # Batch execution
 # ---------------------------------------------------------------------------
 
+
 class TestBatchRun:
     def test_small_subset_fake(self):
         cases = discover_cases(limit=3)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=1,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=1, write_artifacts=False
+        )
         assert summary.total_cases == 3
         assert summary.total_runs == 3
         assert all(not r["error"] for r in summary.records)
 
     def test_runs_per_case_creates_n_results(self):
         cases = discover_cases(limit=4)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=3,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=3, write_artifacts=False
+        )
         assert summary.total_runs == 12
         for c in summary.case_stability:
             assert c.n_runs == 3
 
     def test_result_records_have_required_fields(self):
         cases = discover_cases(limit=2)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=1,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=1, write_artifacts=False
+        )
         for r in summary.records:
             assert REQUIRED_FIELDS.issubset(r.keys())
             assert "api_key" not in r and "ANTHROPIC_API_KEY" not in json.dumps(r)
 
     def test_fake_provider_is_label_correct(self):
         cases = discover_cases(limit=5)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=1,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=1, write_artifacts=False
+        )
         # fake echoes gold_label, so detected label should match gold
         for r in summary.records:
             assert r["label"] == r["gold_label"]
@@ -183,11 +220,13 @@ class TestBatchRun:
 # Stability metrics & flags
 # ---------------------------------------------------------------------------
 
+
 class TestStability:
     def test_label_consistency_stable(self):
         cases = discover_cases(limit=2)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=3,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=3, write_artifacts=False
+        )
         for c in summary.case_stability:
             assert c.label_consistency_rate == 1.0
             assert c.flags["stable_label"] is True
@@ -195,8 +234,9 @@ class TestStability:
 
     def test_unstable_label_flagged(self):
         cases = discover_cases(limit=1)
-        summary = run_library(FakeUnstable(), cases, runs_per_case=4,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeUnstable(), cases, runs_per_case=4, write_artifacts=False
+        )
         c = summary.case_stability[0]
         assert c.flags["unstable_label"] is True
         assert len(c.unique_labels) == 2
@@ -204,16 +244,18 @@ class TestStability:
 
     def test_parse_failure_flagged(self):
         cases = discover_cases(limit=1)
-        summary = run_library(FakeMalformed(), cases, runs_per_case=2,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeMalformed(), cases, runs_per_case=2, write_artifacts=False
+        )
         c = summary.case_stability[0]
         assert c.parse_failures == 2
         assert c.flags["parse_fragile"] is True
 
     def test_truncation_risk_flagged(self):
         cases = discover_cases(limit=1)
-        summary = run_library(FakeLength(), cases, runs_per_case=2,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLength(), cases, runs_per_case=2, write_artifacts=False
+        )
         c = summary.case_stability[0]
         assert c.truncation_count >= 1
         assert c.flags["truncation_risk"] is True
@@ -222,8 +264,9 @@ class TestStability:
 
     def test_provider_error_flagged(self):
         cases = discover_cases(limit=1)
-        summary = run_library(FakeError(), cases, runs_per_case=2,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeError(), cases, runs_per_case=2, write_artifacts=False
+        )
         c = summary.case_stability[0]
         assert c.flags["provider_error_seen"] is True
         assert c.failed_runs == 2
@@ -235,8 +278,9 @@ class TestStability:
 
     def test_summary_dict_aggregates(self):
         cases = discover_cases(limit=3)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=2,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=2, write_artifacts=False
+        )
         s = summary.summary_dict()
         assert s["total_runs"] == 6
         assert s["successful_runs"] == 6
@@ -245,18 +289,20 @@ class TestStability:
     def test_confidence_mean_requires_valid_state_and_reports_denominator(self):
         records = []
         for confidence, state in ((0.9, VALID), (None, MISSING), (0.8, INVALID)):
-            records.append({
-                "error": None,
-                "parse_ok": True,
-                "truncation_suspected": False,
-                "label": "solid",
-                "score": 80.0,
-                "confidence": confidence,
-                "confidence_state": state,
-                "error_type": None,
-                "case_file": "case.yaml",
-                "gold_label": "solid",
-            })
+            records.append(
+                {
+                    "error": None,
+                    "parse_ok": True,
+                    "truncation_suspected": False,
+                    "label": "solid",
+                    "score": 80.0,
+                    "confidence": confidence,
+                    "confidence_state": state,
+                    "error_type": None,
+                    "case_file": "case.yaml",
+                    "gold_label": "solid",
+                }
+            )
 
         stability = _case_stability("case", records)
 
@@ -270,12 +316,18 @@ class TestStability:
 # Artifacts
 # ---------------------------------------------------------------------------
 
+
 class TestArtifacts:
     def test_artifacts_written(self, tmp_path):
         cases = discover_cases(limit=2)
         out = tmp_path / "librun"
-        run_library(FakeLibraryProvider(), cases, runs_per_case=2,
-                    out_dir=out, write_artifacts=True)
+        run_library(
+            FakeLibraryProvider(),
+            cases,
+            runs_per_case=2,
+            out_dir=out,
+            write_artifacts=True,
+        )
         assert (out / "manifest.json").exists()
         assert (out / "results.jsonl").exists()
         assert (out / "summary.json").exists()
@@ -292,8 +344,9 @@ class TestArtifacts:
 
     def test_summary_md_content(self):
         cases = discover_cases(limit=2)
-        summary = run_library(FakeLibraryProvider(), cases, runs_per_case=1,
-                              write_artifacts=False)
+        summary = run_library(
+            FakeLibraryProvider(), cases, runs_per_case=1, write_artifacts=False
+        )
         md = render_summary_md(summary)
         assert "Case Library Run Summary" in md
         assert "Per-case stability" in md
@@ -304,12 +357,16 @@ class TestArtifacts:
 # Case retirement (docs/case_intake_policy.md)
 # ---------------------------------------------------------------------------
 
+
 class TestRetirement:
     RETIRED_ID = "study-forensics-042"
 
     def _load_042(self):
         from inspektorium.audit.execution.task_loader import load_task
-        return load_task("tests/fixtures/audit/case_library/case042_edge_ai_energy_blind_spot.yaml")
+
+        return load_task(
+            "tests/fixtures/audit/case_library/case042_edge_ai_energy_blind_spot.yaml"
+        )
 
     def test_retired_case_still_loads(self):
         # 1. case042 still loads and is not hard-deleted.
@@ -321,6 +378,7 @@ class TestRetirement:
 
     def test_is_retired_helper(self):
         from inspektorium.audit.execution.run_library import is_retired
+
         assert is_retired(self._load_042()) is True
 
     def test_retired_skipped_by_default(self):
@@ -352,6 +410,10 @@ class TestRetirement:
         assert t.task_family == "overclaim"
         # prompt still contains the evaluated central claim + all four subclaims
         assert "Evaluate the following central claim" in t.prompt
-        for sub in ('A. "Edge-AI hardware can support', 'B. "Energy efficiency',
-                    'C. "Enterprise readiness', 'D. "Lack of process-level'):
+        for sub in (
+            'A. "Edge-AI hardware can support',
+            'B. "Energy efficiency',
+            'C. "Enterprise readiness',
+            'D. "Lack of process-level',
+        ):
             assert sub in t.prompt

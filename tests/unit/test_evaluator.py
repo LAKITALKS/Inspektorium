@@ -41,7 +41,9 @@ class TestUtilities:
         assert not _keyword_in_text("quantum", "this is about statistics")
 
     def test_all_text_includes_key_claims(self):
-        p = AgentResponse(final_answer="answer", steps=["step1"], key_claims=["important claim"])
+        p = AgentResponse(
+            final_answer="answer", steps=["step1"], key_claims=["important claim"]
+        )
         text = _all_text(p)
         assert "important claim" in text
 
@@ -55,10 +57,13 @@ class TestInsightMatching:
 
     def test_functional_match(self):
         ins = KeyInsight(
-            keyword="xyznoexist", variants=[],
+            keyword="xyznoexist",
+            variants=[],
             functional_descriptions=["trend reverses when disaggregated"],
         )
-        score, level = insight_match_score(ins, "the trend reverses when disaggregated into subgroups")
+        score, level = insight_match_score(
+            ins, "the trend reverses when disaggregated into subgroups"
+        )
         assert score >= 0.5
 
     def test_miss(self):
@@ -69,9 +74,13 @@ class TestInsightMatching:
 
 def _make_task(**kwargs) -> Task:
     defaults = dict(
-        id="test-001", title="Test", domain="test",
-        difficulty=Difficulty.MEDIUM, task_type=TaskType.CLOSED_WITH_REASONING,
-        prompt="What is 2+2?", expected_answer="4",
+        id="test-001",
+        title="Test",
+        domain="test",
+        difficulty=Difficulty.MEDIUM,
+        task_type=TaskType.CLOSED_WITH_REASONING,
+        prompt="What is 2+2?",
+        expected_answer="4",
     )
     defaults.update(kwargs)
     return Task(**defaults)
@@ -84,14 +93,21 @@ def _make_result(final_answer="4", **kwargs) -> AgentResult:
         assumptions=["Basic arithmetic rules apply to this problem"],
         key_claims=["2+2 equals 4"],
         uncertainties=["None significant for this calculation"],
-        alternative_hypotheses=["Could be modular arithmetic, but no — standard math is assumed here based on context"],
-        self_check=["Verified: 2+2 = 4 by counting on fingers, also confirmed with calculator"],
+        alternative_hypotheses=[
+            "Could be modular arithmetic, but no — standard math is assumed here based on context"
+        ],
+        self_check=[
+            "Verified: 2+2 = 4 by counting on fingers, also confirmed with calculator"
+        ],
         confidence=0.95,
     )
     response_data.update(kwargs)
     return AgentResult(
-        provider="test-agent", model="test-model",
-        raw_output="", parsed=AgentResponse(**response_data), parse_ok=True,
+        provider="test-agent",
+        model="test-model",
+        raw_output="",
+        parsed=AgentResponse(**response_data),
+        parse_ok=True,
     )
 
 
@@ -104,10 +120,14 @@ class TestEvaluateResult:
     def test_wrong_answer_gets_failure(self):
         ev = evaluate_result(_make_task(), _make_result(final_answer="5"))
         assert ev.scores.correctness == 0.0
-        assert any(f.category == FailureCategory.WRONG_ANSWER.value for f in ev.failures)
+        assert any(
+            f.category == FailureCategory.WRONG_ANSWER.value for f in ev.failures
+        )
 
     def test_unparseable_output(self):
-        result = AgentResult(provider="test", model="test", raw_output="garbage", parse_ok=False)
+        result = AgentResult(
+            provider="test", model="test", raw_output="garbage", parse_ok=False
+        )
         ev = evaluate_result(_make_task(), result)
         assert ev.scores.total == 0.0
 
@@ -142,17 +162,27 @@ class TestEvaluateResult:
 
     def test_rubric_based_evaluation(self):
         task = _make_task(
-            task_type=TaskType.RUBRIC_BASED, expected_answer=None,
+            task_type=TaskType.RUBRIC_BASED,
+            expected_answer=None,
             rubric=[
-                RubricItem(criterion="identifies paradox", points=50,
-                           variants=["simpson's paradox"]),
-                RubricItem(criterion="per-department analysis", points=50,
-                           variants=["each department"]),
+                RubricItem(
+                    criterion="identifies paradox",
+                    points=50,
+                    variants=["simpson's paradox"],
+                ),
+                RubricItem(
+                    criterion="per-department analysis",
+                    points=50,
+                    variants=["each department"],
+                ),
             ],
         )
         result = _make_result(
             final_answer="This is Simpson's paradox. Each department shows different rates.",
-            steps=["Simpson's paradox: aggregate reverses", "Each department tells a different story"],
+            steps=[
+                "Simpson's paradox: aggregate reverses",
+                "Each department tells a different story",
+            ],
         )
         ev = evaluate_result(task, result)
         assert ev.scores.correctness > 0
@@ -161,7 +191,10 @@ class TestEvaluateResult:
         result = _make_result()
         result.parsed.assumptions = []
         ev = evaluate_result(_make_task(), result)
-        assert any(f.category == FailureCategory.NO_ASSUMPTIONS_STATED.value for f in ev.failures)
+        assert any(
+            f.category == FailureCategory.NO_ASSUMPTIONS_STATED.value
+            for f in ev.failures
+        )
 
     def test_support_strength_grounded(self):
         """When steps mention the same content as the answer, support should be decent."""

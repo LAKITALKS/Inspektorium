@@ -125,19 +125,27 @@ print(json.dumps({
                 for p in sorted(folder.rglob('*.py'))}}))
 """
     installed = call(
-        "installed package identity", [sys.executable, "-I", "-c", probe], json_output=True
+        "installed package identity",
+        [sys.executable, "-I", "-c", probe],
+        json_output=True,
     )
     result["package"] = {k: v for k, v in installed.items() if k != "modules"}
     result["package"]["module_count"] = len(installed["modules"])
     if not installed["inside_environment"]:
-        raise AssertionError("inspektorium was not imported from the installed environment")
+        raise AssertionError(
+            "inspektorium was not imported from the installed environment"
+        )
     if installed["modules"] != module_hashes(repo / "src/inspektorium"):
         raise AssertionError("installed modules differ from the supplied source")
     # One distribution, one package, one command: nothing else ships, so no shim exists.
     if installed["top_level"] != ["inspektorium"]:
-        raise AssertionError(f"the wheel ships more than one top-level package: {installed['top_level']}")
+        raise AssertionError(
+            f"the wheel ships more than one top-level package: {installed['top_level']}"
+        )
     if installed["console_scripts"] != ["inspektorium"]:
-        raise AssertionError(f"the wheel installs other commands: {installed['console_scripts']}")
+        raise AssertionError(
+            f"the wheel installs other commands: {installed['console_scripts']}"
+        )
     bin_dir = Path(sys.executable).parent
 
     public = str(bin_dir / "inspektorium")
@@ -145,15 +153,24 @@ print(json.dumps({
     bundles = output / "bundles"
 
     def audit(label, args, expected=0):
-        return call(label, [public, "audit", *map(str, args)], expected, json_output=True)
+        return call(
+            label, [public, "audit", *map(str, args)], expected, json_output=True
+        )
 
     root_help = call("root help", [public, "--help"])
     assert "audit" in root_help and "reference checker" in root_help
     for command in ([], ["run"]):
-        help_text = call("audit help " + " ".join(command), [public, "audit", *command, "--help"])
+        help_text = call(
+            "audit help " + " ".join(command), [public, "audit", *command, "--help"]
+        )
         assert "Usage: inspektorium audit" in help_text
     call("invalid option stays a usage error", [public, "audit", "run", "--invalid"], 2)
-    mode_args = ["--task", str(examples / "positive-task.json"), "--output-root", str(bundles)]
+    mode_args = [
+        "--task",
+        str(examples / "positive-task.json"),
+        "--output-root",
+        str(bundles),
+    ]
     call("missing mode is blocked", [public, "audit", "run", *mode_args], 2)
     call(
         "conflicting modes are blocked",
@@ -183,7 +200,16 @@ print(json.dumps({
         assert valid["input_valid"] is True
         run = audit(
             f"{case}: run",
-            ["run", "--offline", "--task", task, "--recording", recording, "--output-root", bundles],
+            [
+                "run",
+                "--offline",
+                "--task",
+                task,
+                "--recording",
+                recording,
+                "--output-root",
+                bundles,
+            ],
             2 if case == "unknown" else 0,
         )
         wanted = "REVIEW_REQUIRED" if case == "unknown" else "READY_FOR_RELEASE"
@@ -212,7 +238,9 @@ print(json.dumps({
     assert blocked["path"] is None
     assert before == {p.name: sha(p.read_bytes()) for p in unknown.iterdir()}
     unknown_record = json.loads((unknown / "record.json").read_text())
-    position = unknown_record["run_record"]["metadata"]["phase9"]["positions"][0]["position_id"]
+    position = unknown_record["run_record"]["metadata"]["phase9"]["positions"][0][
+        "position_id"
+    ]
     reviewed = audit(
         "explicit recorded correction",
         [
@@ -236,7 +264,10 @@ print(json.dumps({
     assert reviewed["status"] == "READY_FOR_RELEASE"
     assert before == {p.name: sha(p.read_bytes()) for p in unknown.iterdir()}
 
-    for label, candidate in (("positive", created["positive"]), ("reviewed", reviewed["path"])):
+    for label, candidate in (
+        ("positive", created["positive"]),
+        ("reviewed", reviewed["path"]),
+    ):
         released = audit(
             f"{label}: explicit release",
             [
@@ -252,14 +283,18 @@ print(json.dumps({
             ],
         )
         assert released["status"] == "RELEASED"
-        inspected = audit(f"{label}: inspection of release", ["inspect", "--bundle", released["path"]])
+        inspected = audit(
+            f"{label}: inspection of release", ["inspect", "--bundle", released["path"]]
+        )
         assert inspected["valid"] is True and inspected["status"] == "RELEASED"
 
     tampered = output / "tampered-bundle"
     shutil.copytree(created["positive"], tampered)
     with (tampered / "report.md").open("a", encoding="utf-8") as stream:
         stream.write("\nUnapproved report mutation.\n")
-    rejected = audit("tampered report is rejected", ["inspect", "--bundle", tampered], 2)
+    rejected = audit(
+        "tampered report is rejected", ["inspect", "--bundle", tampered], 2
+    )
     assert rejected["valid"] is False
 
     for case in sorted((repo / "examples/inspect").iterdir()):
@@ -282,7 +317,10 @@ print(json.dumps({
                     str(rendered),
                 ],
             )
-            assert rendered.read_bytes() == (case / f"expected_report.{suffix}").read_bytes()
+            assert (
+                rendered.read_bytes()
+                == (case / f"expected_report.{suffix}").read_bytes()
+            )
 
     call("installed dependency consistency", [sys.executable, "-m", "pip", "check"])
     events = [json.loads(line) for line in network_log.read_text().splitlines()]
@@ -295,7 +333,9 @@ print(json.dumps({
     assert result["network_monitor"]["refused_operations"] == 0
 
 
-def verify_readme(repo: Path, output: Path, result: dict, local_release: Path | None) -> None:
+def verify_readme(
+    repo: Path, output: Path, result: dict, local_release: Path | None
+) -> None:
     """Run the README quickstart blocks in one shell, in a new directory."""
     script = quickstart_script(repo / "README.md")
     substitutions = []
@@ -321,7 +361,9 @@ def verify_readme(repo: Path, output: Path, result: dict, local_release: Path | 
         capture_output=True,
         check=False,
     )
-    (output / "quickstart.log").write_text(process.stdout + process.stderr, encoding="utf-8")
+    (output / "quickstart.log").write_text(
+        process.stdout + process.stderr, encoding="utf-8"
+    )
     result["readme_quickstart"] = {
         "exit_code": process.returncode,
         "url_substitutions": [old for old, _ in substitutions],
@@ -333,8 +375,12 @@ def verify_readme(repo: Path, output: Path, result: dict, local_release: Path | 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, required=True, help="source checkout")
-    parser.add_argument("--output", type=Path, required=True, help="new directory outside the checkout")
-    parser.add_argument("--readme", action="store_true", help="also run the README quickstart")
+    parser.add_argument(
+        "--output", type=Path, required=True, help="new directory outside the checkout"
+    )
+    parser.add_argument(
+        "--readme", action="store_true", help="also run the README quickstart"
+    )
     parser.add_argument(
         "--local-release",
         type=Path,
@@ -362,12 +408,18 @@ def main() -> int:
         return_code = 0
     except Exception as exc:
         message = str(exc)
-        for path, label in ((repo, "<checkout>"), (output, "<verification>"), (Path(sys.prefix), "<environment>")):
+        for path, label in (
+            (repo, "<checkout>"),
+            (output, "<verification>"),
+            (Path(sys.prefix), "<environment>"),
+        ):
             message = message.replace(str(path), label)
         result.update(status="failed", error=f"{type(exc).__name__}: {message}")
         return_code = 1
     result["finished_at_utc"] = datetime.now(UTC).isoformat()
-    (output / "results.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    (output / "results.json").write_text(
+        json.dumps(result, indent=2) + "\n", encoding="utf-8"
+    )
     print(
         json.dumps(
             {

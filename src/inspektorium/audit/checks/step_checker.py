@@ -28,13 +28,14 @@ from inspektorium.audit.schemas import EvidenceSpan
 @dataclass
 class StepCheckResult:
     """Result of checking a single numeric assertion in a step."""
+
     step_index: int
-    claim_text: str           # the matched assertion text
-    expected_value: float     # what the arithmetic says
-    claimed_value: float      # what the agent wrote
+    claim_text: str  # the matched assertion text
+    expected_value: float  # what the arithmetic says
+    claimed_value: float  # what the agent wrote
     is_correct: bool
     explanation: str
-    confidence: str           # "VERIFIED" or "HEURISTIC"
+    confidence: str  # "VERIFIED" or "HEURISTIC"
     source_field: str = ""
     evidence: list[EvidenceSpan] = field(default_factory=list)
 
@@ -49,9 +50,7 @@ _ARITH_RE = re.compile(
 )
 
 # "A / B = C" (division producing decimal)
-_DIV_RE = re.compile(
-    r"(\d+(?:\.\d+)?)\s*/\s*(\d+(?:\.\d+)?)\s*=\s*(\d+(?:\.\d+)?)"
-)
+_DIV_RE = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*(\d+(?:\.\d+)?)\s*=\s*(\d+(?:\.\d+)?)")
 
 # "A/B = C%" (fraction to percentage)
 _FRAC_PCT_RE = re.compile(
@@ -88,23 +87,28 @@ def verify_step(step: str, step_index: int) -> list[StepCheckResult]:
             continue
         expected_pct = round(num / den * 100, 4)
         correct = _close(claimed_pct, expected_pct)
-        results.append(StepCheckResult(
-            step_index=step_index,
-            claim_text=m.group(0),
-            expected_value=round(expected_pct, 2),
-            claimed_value=claimed_pct,
-            is_correct=correct,
-            explanation=(
-                f"{num}/{den} = {expected_pct:.2f}%, agent claims {claimed_pct}%"
-                + ("" if correct else " — WRONG")
-            ),
-            confidence="VERIFIED",
-            source_field=source_field,
-            evidence=[EvidenceSpan(
-                text=m.group(0), source_field=source_field,
-                relevance="Fraction-to-percentage assertion",
-            )],
-        ))
+        results.append(
+            StepCheckResult(
+                step_index=step_index,
+                claim_text=m.group(0),
+                expected_value=round(expected_pct, 2),
+                claimed_value=claimed_pct,
+                is_correct=correct,
+                explanation=(
+                    f"{num}/{den} = {expected_pct:.2f}%, agent claims {claimed_pct}%"
+                    + ("" if correct else " — WRONG")
+                ),
+                confidence="VERIFIED",
+                source_field=source_field,
+                evidence=[
+                    EvidenceSpan(
+                        text=m.group(0),
+                        source_field=source_field,
+                        relevance="Fraction-to-percentage assertion",
+                    )
+                ],
+            )
+        )
 
     # 2. Division: "A / B = C"
     for m in _DIV_RE.finditer(step):
@@ -115,27 +119,37 @@ def verify_step(step: str, step_index: int) -> list[StepCheckResult]:
             continue
         expected = round(num / den, 6)
         correct = _close(claimed, expected)
-        results.append(StepCheckResult(
-            step_index=step_index,
-            claim_text=m.group(0),
-            expected_value=round(expected, 4),
-            claimed_value=claimed,
-            is_correct=correct,
-            explanation=(
-                f"{num} / {den} = {expected:.4f}, agent claims {claimed}"
-                + ("" if correct else " — WRONG")
-            ),
-            confidence="VERIFIED",
-            source_field=source_field,
-            evidence=[EvidenceSpan(
-                text=m.group(0), source_field=source_field,
-                relevance="Division assertion",
-            )],
-        ))
+        results.append(
+            StepCheckResult(
+                step_index=step_index,
+                claim_text=m.group(0),
+                expected_value=round(expected, 4),
+                claimed_value=claimed,
+                is_correct=correct,
+                explanation=(
+                    f"{num} / {den} = {expected:.4f}, agent claims {claimed}"
+                    + ("" if correct else " — WRONG")
+                ),
+                confidence="VERIFIED",
+                source_field=source_field,
+                evidence=[
+                    EvidenceSpan(
+                        text=m.group(0),
+                        source_field=source_field,
+                        relevance="Division assertion",
+                    )
+                ],
+            )
+        )
 
     # 3. Basic arithmetic: "A + B = C", "A - B = C", "A * B = C"
     for m in _ARITH_RE.finditer(step):
-        a, op, b, claimed = float(m.group(1)), m.group(2), float(m.group(3)), float(m.group(4))
+        a, op, b, claimed = (
+            float(m.group(1)),
+            m.group(2),
+            float(m.group(3)),
+            float(m.group(4)),
+        )
         if op == "+":
             expected = a + b
         elif op == "-":
@@ -146,23 +160,28 @@ def verify_step(step: str, step_index: int) -> list[StepCheckResult]:
             continue
 
         correct = _close(claimed, expected)
-        results.append(StepCheckResult(
-            step_index=step_index,
-            claim_text=m.group(0),
-            expected_value=round(expected, 4),
-            claimed_value=claimed,
-            is_correct=correct,
-            explanation=(
-                f"{a} {op} {b} = {expected}, agent claims {claimed}"
-                + ("" if correct else " — WRONG")
-            ),
-            confidence="VERIFIED",
-            source_field=source_field,
-            evidence=[EvidenceSpan(
-                text=m.group(0), source_field=source_field,
-                relevance="Arithmetic assertion",
-            )],
-        ))
+        results.append(
+            StepCheckResult(
+                step_index=step_index,
+                claim_text=m.group(0),
+                expected_value=round(expected, 4),
+                claimed_value=claimed,
+                is_correct=correct,
+                explanation=(
+                    f"{a} {op} {b} = {expected}, agent claims {claimed}"
+                    + ("" if correct else " — WRONG")
+                ),
+                confidence="VERIFIED",
+                source_field=source_field,
+                evidence=[
+                    EvidenceSpan(
+                        text=m.group(0),
+                        source_field=source_field,
+                        relevance="Arithmetic assertion",
+                    )
+                ],
+            )
+        )
 
     return results
 

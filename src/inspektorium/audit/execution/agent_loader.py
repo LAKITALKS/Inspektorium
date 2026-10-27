@@ -28,5 +28,9 @@ def load_agent_config(path: str | Path) -> AgentConfig:
         model=data["model"],
         label=data.get("label", data["model"]),
         temperature=data.get("temperature", 0.0),
-        extra={k: v for k, v in data.items() if k not in ("provider", "model", "label", "temperature")},
+        extra={
+            k: v
+            for k, v in data.items()
+            if k not in ("provider", "model", "label", "temperature")
+        },
     )

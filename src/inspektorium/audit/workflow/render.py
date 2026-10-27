@@ -1,4 +1,5 @@
 """Common semantic report serializers and independent actual-file content checks."""
+
 from __future__ import annotations
 
 import html
@@ -8,9 +9,22 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 from inspektorium.audit.workflow.pipeline import digest
-from inspektorium.audit.workflow.projection import LIMITS, NOTICE, TITLES, notice_for, projection
+from inspektorium.audit.workflow.projection import (
+    LIMITS,
+    NOTICE,
+    TITLES,
+    notice_for,
+    projection,
+)
 
-__all__ = ["LIMITS", "NOTICE", "projection", "markdown", "html_report", "validate_files"]
+__all__ = [
+    "LIMITS",
+    "NOTICE",
+    "projection",
+    "markdown",
+    "html_report",
+    "validate_files",
+]
 TITLE = "Canonical local audit"
 STYLE = """
 :root{color-scheme:light}*{box-sizing:border-box}body{font-family:system-ui,sans-serif;color:#18232d;
@@ -44,10 +58,18 @@ def _checked_sections(projected):
                 if not isinstance(block.get("text"), str):
                     raise ValueError("Invalid semantic text")
             elif kind == "table":
-                if (not isinstance(block.get("caption"), str) or not block.get("headers") or
-                        not block.get("rows") or any(len(row) != len(block["headers"]) for row in block["rows"])):
+                if (
+                    not isinstance(block.get("caption"), str)
+                    or not block.get("headers")
+                    or not block.get("rows")
+                    or any(len(row) != len(block["headers"]) for row in block["rows"])
+                ):
                     raise ValueError("Invalid semantic table")
-                if not all(isinstance(cell, str) for row in [block["headers"], *block["rows"]] for cell in row):
+                if not all(
+                    isinstance(cell, str)
+                    for row in [block["headers"], *block["rows"]]
+                    for cell in row
+                ):
                     raise ValueError("Invalid semantic table value")
             else:
                 raise ValueError("Unknown semantic block")
@@ -60,8 +82,12 @@ LINE_TERMINATORS = "\r\u2028\u2029\x85"
 
 def _md_inline(text):
     # Entities are decoded as text by Markdown, never reparsed as links/markup.
-    escaped = "".join(f"&#{ord(char)};" if char in "\\`*_{}[]|#!~@:" + LINE_TERMINATORS else
-                      html.escape(char, quote=True) for char in text)
+    escaped = "".join(
+        f"&#{ord(char)};"
+        if char in "\\`*_{}[]|#!~@:" + LINE_TERMINATORS
+        else html.escape(char, quote=True)
+        for char in text
+    )
     escaped = re.sub(r"(?i)www\.", "www&#46;", escaped)
     return escaped.replace("\n", "<br>")
 
@@ -75,23 +101,32 @@ def markdown(projected) -> bytes:
                 parts.append(_md_inline(block["text"]) + "\n")
             elif block["kind"] == "quote":
                 body = block["text"]
-                fence = "`" * max(3, max((len(s) for s in re.findall(r"`+", body)), default=0) + 1)
+                fence = "`" * max(
+                    3, max((len(s) for s in re.findall(r"`+", body)), default=0) + 1
+                )
                 parts.append(f"{fence}\n{body}\n{fence}\n")
             else:
                 parts.append("### " + _md_inline(block["caption"]) + "\n")
-                parts.append("| " + " | ".join(_md_inline(v) for v in block["headers"]) + " |")
+                parts.append(
+                    "| " + " | ".join(_md_inline(v) for v in block["headers"]) + " |"
+                )
                 parts.append("| " + " | ".join("---" for _ in block["headers"]) + " |")
-                parts.extend("| " + " | ".join(_md_inline(v) for v in row) + " |" for row in block["rows"])
+                parts.extend(
+                    "| " + " | ".join(_md_inline(v) for v in row) + " |"
+                    for row in block["rows"]
+                )
                 parts.append("")
     return ("\n".join(parts) + "\n").encode("utf-8")
 
 
 def html_report(projected) -> bytes:
-    parts = ['<!doctype html><html lang="en"><head><meta charset="utf-8">',
-             '<meta name="viewport" content="width=device-width,initial-scale=1">',
-             f'<title>{TITLE}</title><style>{STYLE}</style></head><body><h1>{TITLE}</h1>']
+    parts = [
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        f"<title>{TITLE}</title><style>{STYLE}</style></head><body><h1>{TITLE}</h1>",
+    ]
     for title, section in _checked_sections(projected):
-        parts.append(f'<section><h2>{html.escape(title)}</h2>')
+        parts.append(f"<section><h2>{html.escape(title)}</h2>")
         for block in section["blocks"]:
             kind = block["kind"]
             if kind == "text":
@@ -100,17 +135,27 @@ def html_report(projected) -> bytes:
                     raise ValueError("Unknown paragraph style")
                 parts.append(f'<p class="{style}">{html.escape(block["text"])}</p>')
             elif kind == "quote":
-                parts.append(f'<blockquote><pre>{html.escape(block["text"])}</pre></blockquote>')
+                parts.append(
+                    f"<blockquote><pre>{html.escape(block['text'])}</pre></blockquote>"
+                )
             else:
-                parts.append(f'<h3>{html.escape(block["caption"])}</h3><table><thead><tr>')
-                parts.extend(f'<th scope="col">{html.escape(v)}</th>' for v in block["headers"])
-                parts.append('</tr></thead><tbody>')
+                parts.append(
+                    f"<h3>{html.escape(block['caption'])}</h3><table><thead><tr>"
+                )
+                parts.extend(
+                    f'<th scope="col">{html.escape(v)}</th>' for v in block["headers"]
+                )
+                parts.append("</tr></thead><tbody>")
                 for row in block["rows"]:
-                    parts.append('<tr>' + ''.join(f'<td>{html.escape(v)}</td>' for v in row) + '</tr>')
-                parts.append('</tbody></table>')
-        parts.append('</section>')
-    parts.append('</body></html>\n')
-    return ''.join(parts).encode('utf-8')
+                    parts.append(
+                        "<tr>"
+                        + "".join(f"<td>{html.escape(v)}</td>" for v in row)
+                        + "</tr>"
+                    )
+                parts.append("</tbody></table>")
+        parts.append("</section>")
+    parts.append("</body></html>\n")
+    return "".join(parts).encode("utf-8")
 
 
 def _expected_tokens(projected):
@@ -131,8 +176,28 @@ def _expected_tokens(projected):
 
 class _HTMLText(HTMLParser):
     """Independent extraction: foreign content must remain inert text in visible cells."""
-    allowed = {"html", "head", "meta", "title", "style", "body", "section", "h1", "h2", "h3", "p",
-               "blockquote", "pre", "table", "thead", "tbody", "tr", "th", "td"}
+
+    allowed = {
+        "html",
+        "head",
+        "meta",
+        "title",
+        "style",
+        "body",
+        "section",
+        "h1",
+        "h2",
+        "h3",
+        "p",
+        "blockquote",
+        "pre",
+        "table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td",
+    }
     captures = {"h1", "h2", "h3", "p", "pre", "th", "td"}
 
     def __init__(self):
@@ -145,17 +210,39 @@ class _HTMLText(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag not in self.allowed or self.capture:
             raise ValueError("Active, nested or unexpected HTML markup")
-        parents = {"html": {None}, "head": {"html"}, "body": {"html"},
-                   "meta": {"head"}, "title": {"head"}, "style": {"head"},
-                   "section": {"body"}, "h1": {"body"}, "h2": {"section"}, "h3": {"section"},
-                   "p": {"section"}, "blockquote": {"section"}, "pre": {"blockquote"},
-                   "table": {"section"}, "thead": {"table"}, "tbody": {"table"},
-                   "tr": {"thead", "tbody"}, "th": {"tr"}, "td": {"tr"}}
+        parents = {
+            "html": {None},
+            "head": {"html"},
+            "body": {"html"},
+            "meta": {"head"},
+            "title": {"head"},
+            "style": {"head"},
+            "section": {"body"},
+            "h1": {"body"},
+            "h2": {"section"},
+            "h3": {"section"},
+            "p": {"section"},
+            "blockquote": {"section"},
+            "pre": {"blockquote"},
+            "table": {"section"},
+            "thead": {"table"},
+            "tbody": {"table"},
+            "tr": {"thead", "tbody"},
+            "th": {"tr"},
+            "td": {"tr"},
+        }
         if (self.stack[-1] if self.stack else None) not in parents[tag]:
             raise ValueError("Unexpected HTML element placement")
-        permitted = {"html": {("lang", "en")}, "meta": {("charset", "utf-8"), ("name", "viewport"),
-                     ("content", "width=device-width,initial-scale=1")},
-                     "p": {("class", v) for v in ("normal", "notice", "status")}, "th": {("scope", "col")}}
+        permitted = {
+            "html": {("lang", "en")},
+            "meta": {
+                ("charset", "utf-8"),
+                ("name", "viewport"),
+                ("content", "width=device-width,initial-scale=1"),
+            },
+            "p": {("class", v) for v in ("normal", "notice", "status")},
+            "th": {("scope", "col")},
+        }
         if any(attr not in permitted.get(tag, set()) for attr in attrs):
             raise ValueError("Unexpected or active HTML attribute")
         if tag == "meta":
@@ -172,7 +259,9 @@ class _HTMLText(HTMLParser):
             self.style_parts.append(data)
         elif self.stack and self.stack[-1] == "title":
             self.title_parts.append(data)
-        elif data.strip() and (not self.stack or self.stack[-1] not in {"style", "title"}):
+        elif data.strip() and (
+            not self.stack or self.stack[-1] not in {"style", "title"}
+        ):
             raise ValueError("Unaccounted visible HTML text")
 
     def handle_endtag(self, tag):
@@ -185,7 +274,7 @@ class _HTMLText(HTMLParser):
         if tag == "title" and "".join(self.title_parts) != TITLE:
             raise ValueError("Unexpected document title")
         if tag == self.capture:
-            self.tokens.append((tag, ''.join(self.parts)))
+            self.tokens.append((tag, "".join(self.parts)))
             self.capture = None
 
 
@@ -194,8 +283,10 @@ def _markdown_tokens(document):
     if any(char in document for char in LINE_TERMINATORS):
         raise ValueError("Raw line terminator inside a Markdown line")
     lines, tokens, index = document.split("\n"), [], 0
+
     def decode(value):
         return html.unescape(value.replace("<br>", "\n"))
+
     while index < len(lines):
         line = lines[index]
         index += 1
@@ -211,7 +302,9 @@ def _markdown_tokens(document):
             tokens.append(("pre", "\n".join(body)))
             index += 1
         elif line.startswith("| ") and line.endswith(" |"):
-            header = index < len(lines) and re.fullmatch(r"\|(?: --- \|)+", lines[index])
+            header = index < len(lines) and re.fullmatch(
+                r"\|(?: --- \|)+", lines[index]
+            )
             tag = "th" if header else "td"
             tokens.extend((tag, decode(cell)) for cell in line[2:-2].split(" | "))
             if header:
@@ -239,7 +332,9 @@ def _validate_record_references(directory, projected):
                 if not isinstance(path, str) or not path.startswith("record.json#/"):
                     raise ValueError("Invalid host record reference")
                 if block["rows"][reference["row"]][reference["column"]] != path:
-                    raise ValueError("Displayed host reference differs from its binding")
+                    raise ValueError(
+                        "Displayed host reference differs from its binding"
+                    )
                 target = record
                 try:
                     for component in path.removeprefix("record.json#/").split("/"):
@@ -251,21 +346,31 @@ def _validate_record_references(directory, projected):
                         else:
                             target = target[key]
                 except (KeyError, IndexError, TypeError, ValueError) as exc:
-                    raise ValueError(f"Host record reference does not resolve: {path}") from exc
+                    raise ValueError(
+                        f"Host record reference does not resolve: {path}"
+                    ) from exc
                 if digest(target) != reference["target_fingerprint"]:
-                    raise ValueError(f"Host record reference points to different content: {path}")
+                    raise ValueError(
+                        f"Host record reference points to different content: {path}"
+                    )
 
 
-def validate_files(directory: Path, projected, mode: str = "recorded_offline") -> dict[str, str]:
+def validate_files(
+    directory: Path, projected, mode: str = "recorded_offline"
+) -> dict[str, str]:
     """Actual UTF-8 bytes, all semantic cells/quotes in order, inert HTML and format parity."""
-    md, page = (directory / "report.md").read_bytes(), (directory / "report.html").read_bytes()
+    md, page = (
+        (directory / "report.md").read_bytes(),
+        (directory / "report.html").read_bytes(),
+    )
     expected = _expected_tokens(projected)
     _validate_record_references(directory, projected)
     parser = _HTMLText()
     parser.feed(page.decode("utf-8"))
     parser.close()
     if parser.style_count != 1 or parser.meta_values != [
-        {"charset": "utf-8"}, {"name": "viewport", "content": "width=device-width,initial-scale=1"}
+        {"charset": "utf-8"},
+        {"name": "viewport", "content": "width=device-width,initial-scale=1"},
     ]:
         raise ValueError("Mandatory encoding, viewport or print stylesheet is absent")
     if parser.stack or parser.tokens != expected:

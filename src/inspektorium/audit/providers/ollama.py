@@ -21,22 +21,29 @@ _DONE_REASON_MAP = {
 class OllamaProvider(BaseProvider):
     name = "ollama"
 
-    def __init__(self, model: str = "llama3", base_url: str = "http://localhost:11434",
-                 temperature: float = 0.0, label: str = ""):
+    def __init__(
+        self,
+        model: str = "llama3",
+        base_url: str = "http://localhost:11434",
+        temperature: float = 0.0,
+        label: str = "",
+    ):
         self.model = model
         self.base_url = base_url
         self.temperature = temperature
         self.label = label or model
 
     def generate(self, task: Task, system_prompt: str) -> ModelResponse:
-        payload = json.dumps({
-            "model": self.model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": task.prompt},
-            ],
-            "stream": False,
-        }).encode()
+        payload = json.dumps(
+            {
+                "model": self.model,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": task.prompt},
+                ],
+                "stream": False,
+            }
+        ).encode()
 
         req = urllib.request.Request(
             f"{self.base_url}/api/chat",

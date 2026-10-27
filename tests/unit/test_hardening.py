@@ -1,9 +1,16 @@
 """Tests of the Inspektorium audit runtime forensic hardening — integrated scenarios."""
 
-from inspektorium.audit.checks.claim_checker import run_claim_checks, count_contradictions
+from inspektorium.audit.checks.claim_checker import (
+    run_claim_checks,
+    count_contradictions,
+)
 from inspektorium.audit.checks.consistency import run_consistency_checks
 from inspektorium.audit.execution.evaluator import evaluate_result
-from inspektorium.audit.checks.reasoning_graph import build_mechanism_analysis, _build_grounding_audit, build_reasoning_graph
+from inspektorium.audit.checks.reasoning_graph import (
+    build_mechanism_analysis,
+    _build_grounding_audit,
+    build_reasoning_graph,
+)
 from inspektorium.audit.schemas import (
     AgentResponse,
     AgentResult,
@@ -17,8 +24,11 @@ from inspektorium.audit.schemas import (
 
 def _make_task(**kwargs) -> Task:
     defaults = dict(
-        id="test-001", title="Simpson Test", domain="statistics",
-        difficulty=Difficulty.HARD, task_type=TaskType.RUBRIC_BASED,
+        id="test-001",
+        title="Simpson Test",
+        domain="statistics",
+        difficulty=Difficulty.HARD,
+        task_type=TaskType.RUBRIC_BASED,
         prompt=(
             "Engineering: admitted 30/100 men (30%) and 20/50 women (40%)\n"
             "Arts: admitted 300/400 men (75%) and 350/400 women (87.5%)\n"
@@ -44,14 +54,18 @@ def _make_result(final_answer="", steps=None, **kwargs) -> AgentResult:
     )
     response_data.update(kwargs)
     return AgentResult(
-        provider="test-agent", model="test-model",
-        raw_output="", parsed=AgentResponse(**response_data), parse_ok=True,
+        provider="test-agent",
+        model="test-model",
+        raw_output="",
+        parsed=AgentResponse(**response_data),
+        parse_ok=True,
     )
 
 
 # ---------------------------------------------------------------------------
 # Scenario 1: Agent cites correct numbers but states wrong comparison
 # ---------------------------------------------------------------------------
+
 
 class TestWrongComparison:
     def test_wrong_direction_in_final_answer(self):
@@ -61,7 +75,10 @@ class TestWrongComparison:
         )
         ev = evaluate_result(_make_task(), result)
         # Should have verbal-numeric contradiction failure
-        assert any(f.category == FailureCategory.VERBAL_NUMERIC_CONTRADICTION.value for f in ev.failures)
+        assert any(
+            f.category == FailureCategory.VERBAL_NUMERIC_CONTRADICTION.value
+            for f in ev.failures
+        )
 
     def test_wrong_direction_reduces_score(self):
         # Correct comparison
@@ -85,6 +102,7 @@ class TestWrongComparison:
 # Scenario 2: Final answer contradicts own steps
 # ---------------------------------------------------------------------------
 
+
 class TestStepAnswerContradiction:
     def test_step_says_opposite(self):
         result = _make_result(
@@ -104,6 +122,7 @@ class TestStepAnswerContradiction:
 # ---------------------------------------------------------------------------
 # Scenario 3: Names concept but doesn't explain mechanism
 # ---------------------------------------------------------------------------
+
 
 class TestNamedNotExplained:
     def test_naming_without_mechanism(self):
@@ -132,6 +151,7 @@ class TestNamedNotExplained:
 # Scenario 4: Mechanism described without naming
 # ---------------------------------------------------------------------------
 
+
 class TestUnnamedMechanism:
     def test_describes_without_naming(self):
         result = _make_result(
@@ -150,6 +170,7 @@ class TestUnnamedMechanism:
 # ---------------------------------------------------------------------------
 # Scenario 5: Unsupported summary after reasonable steps
 # ---------------------------------------------------------------------------
+
 
 class TestUnsupportedConclusion:
     def test_leap_in_conclusion(self):
@@ -171,6 +192,7 @@ class TestUnsupportedConclusion:
 # Scenario 6: Self-check misses a real contradiction
 # ---------------------------------------------------------------------------
 
+
 class TestFailedSelfAudit:
     def test_self_check_blind_spot(self):
         task = _make_task()
@@ -188,6 +210,7 @@ class TestFailedSelfAudit:
 # ---------------------------------------------------------------------------
 # Scenario 7: Lexical overlap without real support
 # ---------------------------------------------------------------------------
+
 
 class TestShallowSupport:
     def test_word_overlap_not_real_support(self):
@@ -208,12 +231,17 @@ class TestShallowSupport:
 # Scenario 8: Unresolvable claim
 # ---------------------------------------------------------------------------
 
+
 class TestUnresolvableClaim:
     def test_insufficient_evidence(self):
         task = Task(
-            id="test-002", title="Simple", domain="test",
-            difficulty=Difficulty.EASY, task_type=TaskType.CLOSED_WITH_REASONING,
-            prompt="Is the sky blue?", expected_answer="yes",
+            id="test-002",
+            title="Simple",
+            domain="test",
+            difficulty=Difficulty.EASY,
+            task_type=TaskType.CLOSED_WITH_REASONING,
+            prompt="Is the sky blue?",
+            expected_answer="yes",
         )
         result = _make_result(
             final_answer="Cats are faster than dogs.",
@@ -228,6 +256,7 @@ class TestUnresolvableClaim:
 # Scenario 9: Correct answer with correct mechanism survives penalties
 # ---------------------------------------------------------------------------
 
+
 class TestCorrectSurvives:
     def test_good_answer_not_penalized(self):
         task = _make_task()
@@ -239,7 +268,10 @@ class TestCorrectSurvives:
                 "The aggregate reversal occurs because men applied disproportionately to engineering, which has lower base rates",
                 "This is Simpson's paradox — the trend reverses when data is disaggregated",
             ],
-            key_claims=["Simpson's paradox explains the reversal", "Women favored in both departments"],
+            key_claims=[
+                "Simpson's paradox explains the reversal",
+                "Women favored in both departments",
+            ],
             uncertainties=["Whether applicant qualifications differ"],
             alternative_hypotheses=[
                 "University intentionally discriminates — rejected because department-level data shows women favored in both"
@@ -250,7 +282,10 @@ class TestCorrectSurvives:
         )
         ev = evaluate_result(task, result)
         # Should not have verbal-numeric contradictions
-        assert not any(f.category == FailureCategory.VERBAL_NUMERIC_CONTRADICTION.value for f in ev.failures)
+        assert not any(
+            f.category == FailureCategory.VERBAL_NUMERIC_CONTRADICTION.value
+            for f in ev.failures
+        )
         # Score should be decent
         assert ev.scores.total > 40
 
@@ -258,6 +293,7 @@ class TestCorrectSurvives:
 # ---------------------------------------------------------------------------
 # Scenario 10: Wrong direction should strongly reduce score
 # ---------------------------------------------------------------------------
+
 
 class TestWrongDirectionPenalty:
     def test_wrong_local_direction_strong_penalty(self):
@@ -274,7 +310,11 @@ class TestWrongDirectionPenalty:
             key_claims=["Men favored in both departments"],
         )
         ev = evaluate_result(task, result)
-        contradictions = [f for f in ev.failures if f.category == FailureCategory.VERBAL_NUMERIC_CONTRADICTION.value]
+        contradictions = [
+            f
+            for f in ev.failures
+            if f.category == FailureCategory.VERBAL_NUMERIC_CONTRADICTION.value
+        ]
         assert len(contradictions) >= 1
         # Score should be significantly reduced
         assert ev.scores.total < 50
@@ -288,6 +328,7 @@ class TestWrongDirectionPenalty:
 # ---------------------------------------------------------------------------
 # Scenario 11: Wrong-but-well-structured must not score high (v0.4.2)
 # ---------------------------------------------------------------------------
+
 
 class TestCorrectnessHardening:
     """v0.4.2: correctness dominance — wrong answer can't hide behind structure."""
@@ -364,12 +405,14 @@ class TestCorrectnessHardening:
     def test_correctness_weight_is_30(self):
         """v0.4.2: correctness weight must be 30."""
         from inspektorium.audit.schemas import DIAGNOSTIC_WEIGHTS
+
         assert DIAGNOSTIC_WEIGHTS["correctness"] == 30
 
 
 # ---------------------------------------------------------------------------
 # Scenario 12: Negation conflict false positive regression (v0.4.2)
 # ---------------------------------------------------------------------------
+
 
 class TestNegationConflictFalsePositives:
     """v0.4.2: _has_negation_conflict must not fire on rebuttal patterns."""
@@ -435,13 +478,17 @@ class TestNegationConflictFalsePositives:
 # Scenario 13: Claim checker on base rate neglect (v0.4.2)
 # ---------------------------------------------------------------------------
 
+
 class TestClaimCheckerBaseRate:
     """v0.4.2: claim checker extracts probability facts from base rate tasks."""
 
     def _base_rate_task(self):
         return Task(
-            id="base-rate-001", title="Base Rate Test", domain="probability",
-            difficulty=Difficulty.MEDIUM, task_type=TaskType.CLOSED_WITH_REASONING,
+            id="base-rate-001",
+            title="Base Rate Test",
+            domain="probability",
+            difficulty=Difficulty.MEDIUM,
+            task_type=TaskType.CLOSED_WITH_REASONING,
             prompt=(
                 "A rare disease affects 1 in 1000 people. A test has 99% sensitivity "
                 "and 1% false positive rate. A person tests positive. "
@@ -449,31 +496,42 @@ class TestClaimCheckerBaseRate:
             ),
             expected_answer="0.09",
             reference_solution="P(Disease|Positive) = 0.00099 / 0.01098 ≈ 0.09 ≈ 9%",
-            evaluation={"method": "auto", "answer_match": "contains", "tolerance": 0.02},
+            evaluation={
+                "method": "auto",
+                "answer_match": "contains",
+                "tolerance": 0.02,
+            },
         )
 
     def test_extracts_probability_from_reference(self):
         from inspektorium.audit.checks.claim_checker import extract_probability_facts
+
         facts = extract_probability_facts(
             "P(Disease|Positive) = 0.00099 / 0.01098 ≈ 0.09 ≈ 9%",
             "reference_solution",
         )
         # Should find at least the 9% probability
         pct_values = [f.value for f in facts]
-        assert any(8.0 <= v <= 10.0 for v in pct_values), f"Expected ~9% in {pct_values}"
+        assert any(8.0 <= v <= 10.0 for v in pct_values), (
+            f"Expected ~9% in {pct_values}"
+        )
 
     def test_wrong_base_rate_answer_flagged(self):
         """Agent answering 99% instead of 9% should produce a fact mismatch."""
         from inspektorium.audit.checks.claim_checker import extract_probability_facts
+
         # Agent says probability is 99%
         agent_facts = extract_probability_facts(
             "The probability that the person has the disease is 99%.",
             "final_answer",
         )
-        assert any(f.value == 99.0 for f in agent_facts), f"Should extract 99% from agent: {agent_facts}"
+        assert any(f.value == 99.0 for f in agent_facts), (
+            f"Should extract 99% from agent: {agent_facts}"
+        )
 
     def test_correct_base_rate_answer_extracts(self):
         from inspektorium.audit.checks.claim_checker import extract_probability_facts
+
         facts = extract_probability_facts(
             "The probability of actually having the disease is approximately 9%.",
             "final_answer",
@@ -485,11 +543,15 @@ class TestClaimCheckerBaseRate:
 # Scenario 14: Claim checker on Monty Hall (v0.4.2)
 # ---------------------------------------------------------------------------
 
+
 class TestClaimCheckerMontyHall:
     """v0.4.2: claim checker extracts probability direction from Monty Hall."""
 
     def test_switch_recommendation_extracted(self):
-        from inspektorium.audit.checks.claim_checker import extract_probability_direction_claims
+        from inspektorium.audit.checks.claim_checker import (
+            extract_probability_direction_claims,
+        )
+
         claims = extract_probability_direction_claims(
             "You should switch. The probability of winning is higher if you switch.",
             "final_answer",
@@ -499,7 +561,10 @@ class TestClaimCheckerMontyHall:
         assert claims[0].subject == "door_2_switch"
 
     def test_equal_probability_claim_extracted(self):
-        from inspektorium.audit.checks.claim_checker import extract_probability_direction_claims
+        from inspektorium.audit.checks.claim_checker import (
+            extract_probability_direction_claims,
+        )
+
         claims = extract_probability_direction_claims(
             "The probability is the same whether you switch or stay.",
             "final_answer",
@@ -509,24 +574,31 @@ class TestClaimCheckerMontyHall:
 
     def test_probability_fraction_extraction(self):
         from inspektorium.audit.checks.claim_checker import extract_probability_facts
+
         facts = extract_probability_facts(
             "The probability of the car being behind door 2 is 2/3.",
             "steps[0]",
         )
-        assert any(abs(f.value - 66.67) < 1.0 for f in facts), f"Expected ~66.67%: {facts}"
+        assert any(abs(f.value - 66.67) < 1.0 for f in facts), (
+            f"Expected ~66.67%: {facts}"
+        )
 
     def test_probability_decimal_extraction(self):
         from inspektorium.audit.checks.claim_checker import extract_probability_facts
+
         facts = extract_probability_facts(
             "P(Car=1 | Host opens 3) = 1/3.",
             "steps[1]",
         )
-        assert any(abs(f.value - 33.33) < 1.0 for f in facts), f"Expected ~33.33%: {facts}"
+        assert any(abs(f.value - 33.33) < 1.0 for f in facts), (
+            f"Expected ~33.33%: {facts}"
+        )
 
 
 # ---------------------------------------------------------------------------
 # Scenario 15: Confidence labels in report (v0.4.2)
 # ---------------------------------------------------------------------------
+
 
 class TestConfidenceLabels:
     """v0.4.2: findings must carry confidence labels."""
@@ -541,8 +613,7 @@ class TestConfidenceLabels:
         ev = evaluate_result(task, result)
         # Check consistency findings
         high_findings = [
-            f for f in ev.consistency_findings
-            if f.confidence == "HIGH CONFIDENCE"
+            f for f in ev.consistency_findings if f.confidence == "HIGH CONFIDENCE"
         ]
         assert len(high_findings) >= 1, "Expected at least one HIGH CONFIDENCE finding"
 
@@ -554,9 +625,7 @@ class TestConfidenceLabels:
             steps=["Engineering: men 30%, women 40%"],
         )
         ev = evaluate_result(task, result)
-        high_failures = [
-            f for f in ev.failures if f.confidence == "HIGH CONFIDENCE"
-        ]
+        high_failures = [f for f in ev.failures if f.confidence == "HIGH CONFIDENCE"]
         assert len(high_failures) >= 1, "Expected at least one HIGH CONFIDENCE failure"
 
     def test_heuristic_findings_labeled(self):
@@ -565,7 +634,10 @@ class TestConfidenceLabels:
         result = _make_result(
             final_answer="The claim is misleading.",
             steps=["Engineering: men 30%, women 40%"],
-            assumptions=["Data is complete", "No sampling bias present anywhere at all"],
+            assumptions=[
+                "Data is complete",
+                "No sampling bias present anywhere at all",
+            ],
         )
         ev = evaluate_result(task, result)
         labeled = [f for f in ev.consistency_findings if f.confidence]
@@ -578,6 +650,7 @@ class TestConfidenceLabels:
         """Confidence labels must appear in the generated report text."""
         from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
+
         task = _make_task()
         result = _make_result(
             final_answer="Men have higher admission rates than women in engineering.",
@@ -586,7 +659,9 @@ class TestConfidenceLabels:
         ev = evaluate_result(task, result)
         record = RunRecord(run_id="test-run", task=task, results=[ev])
         report = generate_report(record)
-        assert "HIGH CONFIDENCE" in report, "Report should contain HIGH CONFIDENCE label"
+        assert "HIGH CONFIDENCE" in report, (
+            "Report should contain HIGH CONFIDENCE label"
+        )
 
     def test_wrong_answer_failure_is_high_confidence(self):
         """WRONG_ANSWER failure should be HIGH CONFIDENCE."""
@@ -600,7 +675,8 @@ class TestConfidenceLabels:
         )
         ev = evaluate_result(task, result)
         wrong_failures = [
-            f for f in ev.failures
+            f
+            for f in ev.failures
             if f.category == "wrong_answer" and f.confidence == "HIGH CONFIDENCE"
         ]
         assert len(wrong_failures) >= 1

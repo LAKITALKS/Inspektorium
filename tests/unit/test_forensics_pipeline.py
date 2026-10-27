@@ -9,15 +9,21 @@ import pytest
 from inspektorium.audit.integrity.artifact_binding import final_binding_check
 from inspektorium.audit.execution.evaluator import evaluate_result
 from inspektorium.audit.forensics.forensic_report import (
-    build_forensic_report, render_executive_summary, render_forensic_report_markdown,
+    build_forensic_report,
+    render_executive_summary,
+    render_forensic_report_markdown,
 )
-from inspektorium.audit.forensics.pipeline import assess_agent_result, assess_forensic_payload
+from inspektorium.audit.forensics.pipeline import (
+    assess_agent_result,
+    assess_forensic_payload,
+)
 from inspektorium.audit.providers import BaseProvider
 from inspektorium.audit.reports.reporter import generate_report
 from inspektorium.audit.reports.reporting import generate_client_report
 from inspektorium.audit.execution.run_library import run_single
 from inspektorium.audit.execution.runner import (
-    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL, STUDY_FORENSICS_PROMPT_VERSION_PHASE8,
+    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
+    STUDY_FORENSICS_PROMPT_VERSION_PHASE8,
     run_agent,
 )
 from inspektorium.audit.schemas import AgentResult, ForensicRecord, RunRecord, Task
@@ -25,8 +31,15 @@ from tests.forensics_case_factory import raw_record
 
 
 def task_for(claim, context):
-    return Task(id="synthetic-input", title="Abstract comparison", domain="study_forensics",
-                difficulty="medium", task_type="study_forensics", prompt=claim, context=context)
+    return Task(
+        id="synthetic-input",
+        title="Abstract comparison",
+        domain="study_forensics",
+        difficulty="medium",
+        task_type="study_forensics",
+        prompt=claim,
+        context=context,
+    )
 
 
 class ExtractionFake(BaseProvider):
@@ -49,8 +62,12 @@ class ExtractionFake(BaseProvider):
 
 
 def response(record):
-    return {"final_answer": "solid", "confidence": 0.99, "steps": [],
-            "forensic_record": record}
+    return {
+        "final_answer": "solid",
+        "confidence": 0.99,
+        "steps": [],
+        "forensic_record": record,
+    }
 
 
 def test_existing_input_to_parser_binding_semantics_and_existing_outputs():
@@ -68,8 +85,10 @@ def test_existing_input_to_parser_binding_semantics_and_existing_outputs():
     assert result.phase8["original_model_label"] == "solid"
     assert len(result.phase8["canonical_proposition_ids"]) == 1
     assert len(result.phase8["phase7_controls"]) == 5
-    assert all(c["status"] in {"executed", "not_applicable"}
-               for c in result.phase8["phase7_controls"])
+    assert all(
+        c["status"] in {"executed", "not_applicable"}
+        for c in result.phase8["phase7_controls"]
+    )
     evaluated = evaluate_result(task, result)
     record = RunRecord(run_id="offline", task=task, results=[evaluated])
     assert "Phase 8" in generate_report(record)
@@ -79,18 +98,23 @@ def test_existing_input_to_parser_binding_semantics_and_existing_outputs():
     assert payload == before
 
 
-@pytest.mark.parametrize("corrupt", [
-    lambda r: r["provenance"][0].update(exact_claim_text="Different claim"),
-    lambda r: r["evidence"][0].update(source_id="invented-journal"),
-    lambda r: r["evidence"][0].update(exact_reference="Nonexistent quotation"),
-    lambda r: r["evidence"][0].update(text="Unbound alleged evidence"),
-    lambda r: r["evidence"][0].update(value_origin=None, reported_value="5%"),
-    lambda r: r.update(client_findings=[]),
-    lambda r: r["search_scopes"][0].update(scope_type="documented_search"),
-    lambda r: r["phase8"].update(propositions=None),
-    lambda r: r["phase8"].update(propositions=[]),
-    lambda r: r["phase8"]["propositions"][0]["evidence_bindings"][0].update(evidence_id="absent"),
-])
+@pytest.mark.parametrize(
+    "corrupt",
+    [
+        lambda r: r["provenance"][0].update(exact_claim_text="Different claim"),
+        lambda r: r["evidence"][0].update(source_id="invented-journal"),
+        lambda r: r["evidence"][0].update(exact_reference="Nonexistent quotation"),
+        lambda r: r["evidence"][0].update(text="Unbound alleged evidence"),
+        lambda r: r["evidence"][0].update(value_origin=None, reported_value="5%"),
+        lambda r: r.update(client_findings=[]),
+        lambda r: r["search_scopes"][0].update(scope_type="documented_search"),
+        lambda r: r["phase8"].update(propositions=None),
+        lambda r: r["phase8"].update(propositions=[]),
+        lambda r: r["phase8"]["propositions"][0]["evidence_bindings"][0].update(
+            evidence_id="absent"
+        ),
+    ],
+)
 def test_corrupt_model_extraction_fails_closed_without_losing_raw(corrupt):
     claim, context, payload = raw_record()
     corrupt(payload)
@@ -112,12 +136,18 @@ def test_missing_vs_invalid_payload_survives_parser(payload):
 
 
 def test_explicit_historical_path_is_not_silently_phase8_verified():
-    fake = ExtractionFake({"final_answer": "solid", "confidence": 1}, expect_phase8=False)
+    fake = ExtractionFake(
+        {"final_answer": "solid", "confidence": 1}, expect_phase8=False
+    )
     task = task_for("Original claim", "Supplied source")
-    result = run_agent(fake, task, prompt_version=STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL)
+    result = run_agent(
+        fake, task, prompt_version=STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL
+    )
     assert "AA-P8/1.0" not in fake.requests[0][2]
     assert result.phase8["technical_status"] == "not_executed"
-    record = RunRecord(run_id="legacy", task=task, results=[evaluate_result(task, result)])
+    record = RunRecord(
+        run_id="legacy", task=task, results=[evaluate_result(task, result)]
+    )
     rendered = generate_client_report(record)
     assert "UNKNOWN" in rendered and "not_executed" in rendered
     assert "🟢 PASS" not in rendered
@@ -125,8 +155,13 @@ def test_explicit_historical_path_is_not_silently_phase8_verified():
 
 def test_library_path_keeps_payload_raw_and_assessment():
     claim, context, payload = raw_record()
-    flat = run_single(ExtractionFake(response(payload)), Path("fake.yaml"),
-                      task_for(claim, context), 0, "offline")
+    flat = run_single(
+        ExtractionFake(response(payload)),
+        Path("fake.yaml"),
+        task_for(claim, context),
+        0,
+        "offline",
+    )
     assert flat["phase8"]["technical_status"] == "completed", flat["phase8"]
     assert flat["forensic_record"] == payload
     assert json.loads(flat["raw_output"])["forensic_record"] == payload
@@ -135,10 +170,17 @@ def test_library_path_keeps_payload_raw_and_assessment():
 
 def test_manual_evaluation_recomputes_forged_cached_assessment():
     task = task_for("Claim", "Evidence")
-    result = AgentResult(provider="manual", raw_output='{"final_answer":"solid"}',
-                         parse_ok=True, parsed={"final_answer": "solid"},
-                         phase8={"technical_status": "completed", "composite_state": "supported"})
-    assert evaluate_result(task, result).agent_result.phase8["technical_status"] == "not_executed"
+    result = AgentResult(
+        provider="manual",
+        raw_output='{"final_answer":"solid"}',
+        parse_ok=True,
+        parsed={"final_answer": "solid"},
+        phase8={"technical_status": "completed", "composite_state": "supported"},
+    )
+    assert (
+        evaluate_result(task, result).agent_result.phase8["technical_status"]
+        == "not_executed"
+    )
 
 
 def test_truncated_output_cannot_gain_semantic_completion_from_parser_repair():
@@ -152,9 +194,11 @@ def test_truncated_output_cannot_gain_semantic_completion_from_parser_repair():
 
 def test_report_path_runs_same_checks_and_preserves_original_model_verdict():
     claim, context, payload = raw_record()
-    raw = {"claim": {"claim_text": claim, "claim_context": context},
-           "verdict": {"predicted_label": "solid", "confidence": 1.0},
-           "forensic_record": payload}
+    raw = {
+        "claim": {"claim_text": claim, "claim_context": context},
+        "verdict": {"predicted_label": "solid", "confidence": 1.0},
+        "forensic_record": payload,
+    }
     report = build_forensic_report(raw)
     assert report["phase8"]["composite_state"] == "supported", report["phase8"]
     payload["phase8"]["propositions"] = []
@@ -166,8 +210,9 @@ def test_report_path_runs_same_checks_and_preserves_original_model_verdict():
 
 
 def test_legacy_report_explicitly_exposes_unexecuted_phase8():
-    report = build_forensic_report({"claim": {"claim_text": "Claim"},
-                                    "verdict": {"predicted_label": "solid"}})
+    report = build_forensic_report(
+        {"claim": {"claim_text": "Claim"}, "verdict": {"predicted_label": "solid"}}
+    )
     assert report["phase8"]["technical_status"] == "not_executed"
     assert "not_executed" in render_executive_summary(report)
 
@@ -181,20 +226,32 @@ def test_empty_legacy_binding_check_is_not_a_clean_pass():
 def test_explicit_phase8_version_and_canonical_ids_are_reproducible():
     claim, context, record = raw_record()
     task = task_for(claim, context)
-    output = run_agent(ExtractionFake(response(record)), task,
-                       prompt_version=STUDY_FORENSICS_PROMPT_VERSION_PHASE8)
+    output = run_agent(
+        ExtractionFake(response(record)),
+        task,
+        prompt_version=STUDY_FORENSICS_PROMPT_VERSION_PHASE8,
+    )
     first = assess_forensic_payload(record, original_input=claim, context=context)
-    second = assess_forensic_payload(deepcopy(record), original_input=claim, context=context)
+    second = assess_forensic_payload(
+        deepcopy(record), original_input=claim, context=context
+    )
     assert first == second
-    assert first["canonical_proposition_ids"] == output.phase8["canonical_proposition_ids"]
+    assert (
+        first["canonical_proposition_ids"] == output.phase8["canonical_proposition_ids"]
+    )
 
 
 @pytest.mark.parametrize("cached", [{}, {"is_study_forensics": False}])
 def test_loaded_high_score_cannot_bypass_phase8_using_cached_routing(cached):
     from inspektorium.audit.schemas import DIAGNOSTIC_WEIGHTS
+
     task = task_for("Claim", "Evidence")
-    raw = AgentResult(provider="legacy", raw_output='{"final_answer":"solid"}',
-                      parse_ok=True, parsed={"final_answer": "solid"})
+    raw = AgentResult(
+        provider="legacy",
+        raw_output='{"final_answer":"solid"}',
+        parse_ok=True,
+        parsed={"final_answer": "solid"},
+    )
     evaluated = evaluate_result(task, raw)
     evaluated.study_forensics = cached
     evaluated.failures = []
@@ -217,11 +274,17 @@ def test_loaded_high_score_cannot_bypass_phase8_using_cached_routing(cached):
 def test_taxonomy_extraction_crosses_real_prompt_parser_and_report(malformed):
     claim, context, payload = raw_record()
     payload["phase8_taxonomy"] = {
-        "core_error": "none", "causal_claim": True, "noncausal_result_used": False,
-        "described_biological_mechanism": False, "implies_human_benefit": True,
-        "proposition_ids": ["claim:p1"], "evidence_ids": ["e1"],
-        "trigger_proposition_id": "claim:p1", "trigger_evidence_id": "e1",
-        "trigger_quote": context, "reason": "Honest description of the supplied comparison",
+        "core_error": "none",
+        "causal_claim": True,
+        "noncausal_result_used": False,
+        "described_biological_mechanism": False,
+        "implies_human_benefit": True,
+        "proposition_ids": ["claim:p1"],
+        "evidence_ids": ["e1"],
+        "trigger_proposition_id": "claim:p1",
+        "trigger_evidence_id": "e1",
+        "trigger_quote": context,
+        "reason": "Honest description of the supplied comparison",
     }
     if malformed:
         payload["phase8_taxonomy"]["trigger_evidence_id"] = "unrelated"
@@ -233,9 +296,12 @@ def test_taxonomy_extraction_crosses_real_prompt_parser_and_report(malformed):
     assert raw.parsed.forensic_record == payload
     assert raw.phase8["original_model_label"] == "solid"
     assert raw.phase8["derived_label"] == (None if malformed else "solid")
-    assert raw.phase8["taxonomy"]["technical_status"] == ("incomplete" if malformed else "completed")
-    report = generate_client_report(RunRecord(run_id="taxonomy", task=task,
-                                              results=[evaluate_result(task, raw)]))
+    assert raw.phase8["taxonomy"]["technical_status"] == (
+        "incomplete" if malformed else "completed"
+    )
+    report = generate_client_report(
+        RunRecord(run_id="taxonomy", task=task, results=[evaluate_result(task, raw)])
+    )
     assert "Taxonomy control" in report
     if malformed:
         assert "🟢 PASS" not in report
@@ -250,11 +316,17 @@ def test_original_cvc_is_preserved_when_bound_generic_overstatement_derives_over
     payload["phase8"]["propositions"][0]["reported_verdict"] = "unsupported"
     payload["phase8"]["transformations"][-1]["asserted_state"] = "unsupported"
     payload["phase8_taxonomy"] = {
-        "core_error": "overstatement", "causal_claim": True, "noncausal_result_used": False,
-        "described_biological_mechanism": False, "implies_human_benefit": True,
-        "proposition_ids": ["claim:p1"], "evidence_ids": ["e1"],
-        "trigger_proposition_id": "claim:p1", "trigger_evidence_id": "e1",
-        "trigger_quote": context, "reason": "Generic efficacy overstatement; no noncausal result was used",
+        "core_error": "overstatement",
+        "causal_claim": True,
+        "noncausal_result_used": False,
+        "described_biological_mechanism": False,
+        "implies_human_benefit": True,
+        "proposition_ids": ["claim:p1"],
+        "evidence_ids": ["e1"],
+        "trigger_proposition_id": "claim:p1",
+        "trigger_evidence_id": "e1",
+        "trigger_quote": context,
+        "reason": "Generic efficacy overstatement; no noncausal result was used",
     }
     extraction = response(payload)
     extraction["final_answer"] = "correlation_vs_causation"
@@ -265,7 +337,10 @@ def test_original_cvc_is_preserved_when_bound_generic_overstatement_derives_over
     assert result.phase8["original_model_label"] == "correlation_vs_causation"
     assert result.phase8["derived_label"] == "overclaim", result.phase8
     assert result.phase8["technical_status"] == "completed"
-    rendered = generate_client_report(RunRecord(run_id="cvc-correction", task=task,
-                                                results=[evaluate_result(task, result)]))
+    rendered = generate_client_report(
+        RunRecord(
+            run_id="cvc-correction", task=task, results=[evaluate_result(task, result)]
+        )
+    )
     assert "derived classification: `overclaim`" in rendered
     assert "Original model classification: `correlation_vs_causation`" in rendered

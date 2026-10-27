@@ -1,11 +1,19 @@
 """Strict local artifact envelope for AA-P10/1.0. Hashes are not authentication."""
+
 from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 CONTRACT_VERSION = "AA-P10/1.0"
 SCHEMA_VERSION = "1.0"
-Status = Literal["PREFLIGHT_BLOCKED", "RUN_FAILED", "ANALYSIS_INCOMPLETE", "REVIEW_REQUIRED",
-                 "RELEASE_BLOCKED", "READY_FOR_RELEASE", "RELEASED"]
+Status = Literal[
+    "PREFLIGHT_BLOCKED",
+    "RUN_FAILED",
+    "ANALYSIS_INCOMPLETE",
+    "REVIEW_REQUIRED",
+    "RELEASE_BLOCKED",
+    "READY_FOR_RELEASE",
+    "RELEASED",
+]
 FILES = ("record.json", "decision.json", "report.md", "report.html", "manifest.json")
 # AA-P10-LIVE/1.0 adds two truthful modes; "recorded_offline" keeps its historical meaning.
 ExecutionMode = Literal["recorded_offline", "live_generation", "offline_replay_of_live"]

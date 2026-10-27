@@ -40,8 +40,11 @@ from inspektorium.audit.execution.evaluator import evaluate_result
 from inspektorium.audit.integrity.output_contract import parse_structured_output
 from inspektorium.audit.providers import BaseProvider
 from inspektorium.audit.execution.runner import (
-    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL, STUDY_FORENSICS_PROMPT_VERSION_PROSPECTIVE, _select_system_prompt,
-    run_agent, study_forensics_prompt_identity,
+    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
+    STUDY_FORENSICS_PROMPT_VERSION_PROSPECTIVE,
+    _select_system_prompt,
+    run_agent,
+    study_forensics_prompt_identity,
 )
 from inspektorium.audit.schemas import Task, TaskType
 from inspektorium.audit.execution.task_loader import load_task
@@ -58,6 +61,7 @@ HIGH_SCORE_VARIANCE_THRESHOLD = 15.0
 # ---------------------------------------------------------------------------
 # Deterministic fake provider (tests + dry runs; never touches the network)
 # ---------------------------------------------------------------------------
+
 
 class FakeLibraryProvider(BaseProvider):
     """Deterministic provider that echoes each task's gold_label as valid JSON.
@@ -88,6 +92,7 @@ class FakeLibraryProvider(BaseProvider):
 # Case discovery
 # ---------------------------------------------------------------------------
 
+
 def is_retired(task: Task) -> bool:
     """A case is retired (excluded from active metrics) if flagged as such.
 
@@ -95,8 +100,10 @@ def is_retired(task: Task) -> bool:
     discoverable when explicitly requested by ``case_id`` or in bulk via
     ``include_retired``.
     """
-    return bool(getattr(task, "excluded_from_active_metrics", False)
-                or getattr(task, "status", None) == "retired")
+    return bool(
+        getattr(task, "excluded_from_active_metrics", False)
+        or getattr(task, "status", None) == "retired"
+    )
 
 
 def discover_cases(
@@ -143,6 +150,7 @@ def discover_cases(
 # Per-run execution → flat record
 # ---------------------------------------------------------------------------
 
+
 def run_single(
     provider: BaseProvider,
     case_file: Path,
@@ -162,9 +170,7 @@ def run_single(
     label_correct = sf.get("label_correct")
     score = round(evaluated.scores.total, 1) if result.parse_ok else None
     confidence = result.parsed.confidence if result.parsed else None
-    confidence_state = (
-        result.parsed.confidence_state if result.parsed else None
-    )
+    confidence_state = result.parsed.confidence_state if result.parsed else None
     if confidence_state not in (VALID, MISSING, INVALID):
         confidence_state = classify_confidence(confidence)
 
@@ -210,6 +216,7 @@ def run_single(
 # ---------------------------------------------------------------------------
 # Stability summary
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class CaseStability:
@@ -276,8 +283,9 @@ def _case_stability(case_id: str, records: list[dict]) -> CaseStability:
         "parse_fragile": parse_failures > 0,
         "truncation_risk": truncation > 0,
         "provider_error_seen": len(failed) > 0,
-        "high_score_variance": bool(score_range is not None
-                                    and score_range > HIGH_SCORE_VARIANCE_THRESHOLD),
+        "high_score_variance": bool(
+            score_range is not None and score_range > HIGH_SCORE_VARIANCE_THRESHOLD
+        ),
     }
 
     return CaseStability(
@@ -324,12 +332,22 @@ class LibrarySummary:
         parse_failures = sum(1 for r in self.records if not r["parse_ok"])
         truncation = sum(1 for r in self.records if r["truncation_suspected"])
         label_dist = dict(Counter(r["label"] for r in self.records if r["label"]))
-        error_dist = dict(Counter(r["error_type"] for r in self.records if r["error_type"]))
+        error_dist = dict(
+            Counter(r["error_type"] for r in self.records if r["error_type"])
+        )
         unstable = [c.case_id for c in self.case_stability if c.flags["unstable_label"]]
-        parse_fragile = [c.case_id for c in self.case_stability if c.flags["parse_fragile"]]
-        truncation_cases = [c.case_id for c in self.case_stability if c.flags["truncation_risk"]]
-        error_cases = [c.case_id for c in self.case_stability if c.flags["provider_error_seen"]]
-        high_var = [c.case_id for c in self.case_stability if c.flags["high_score_variance"]]
+        parse_fragile = [
+            c.case_id for c in self.case_stability if c.flags["parse_fragile"]
+        ]
+        truncation_cases = [
+            c.case_id for c in self.case_stability if c.flags["truncation_risk"]
+        ]
+        error_cases = [
+            c.case_id for c in self.case_stability if c.flags["provider_error_seen"]
+        ]
+        high_var = [
+            c.case_id for c in self.case_stability if c.flags["high_score_variance"]
+        ]
         confidence_eligible = sum(c.n_confidence_eligible for c in self.case_stability)
         return {
             "library_run_id": self.library_run_id,
@@ -365,16 +383,28 @@ class LibrarySummary:
 # path), so a prompt that asks the model to use and cite task.context would be a withheld-source
 # condition; library contexts are curator commentary and must never be sent either (Package B,
 # P4-F1). The P4 default stays the historical Phase-7 condition, as at v0.7.1.
-LIBRARY_PROMPT_VERSIONS = (STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL, STUDY_FORENSICS_PROMPT_VERSION_PROSPECTIVE)
+LIBRARY_PROMPT_VERSIONS = (
+    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
+    STUDY_FORENSICS_PROMPT_VERSION_PROSPECTIVE,
+)
 
 
 def library_prompt_identity(task: Task, prompt_version: str) -> dict:
     """Recorded prompt identity of one harness call (version, condition, system prompt hash)."""
     import hashlib
-    identity = (study_forensics_prompt_identity(prompt_version) if task.task_type == TaskType.STUDY_FORENSICS
-                else {"prompt_version": None, "prompt_condition_id": None})
-    system = _select_system_prompt(task, prompt_version if task.task_type == TaskType.STUDY_FORENSICS else None)
-    return {**identity, "system_prompt_sha256": hashlib.sha256(system.encode("utf-8")).hexdigest()}
+
+    identity = (
+        study_forensics_prompt_identity(prompt_version)
+        if task.task_type == TaskType.STUDY_FORENSICS
+        else {"prompt_version": None, "prompt_condition_id": None}
+    )
+    system = _select_system_prompt(
+        task, prompt_version if task.task_type == TaskType.STUDY_FORENSICS else None
+    )
+    return {
+        **identity,
+        "system_prompt_sha256": hashlib.sha256(system.encode("utf-8")).hexdigest(),
+    }
 
 
 def run_library(
@@ -394,17 +424,30 @@ def run_library(
     prompt (``LIBRARY_PROMPT_VERSIONS``); every record carries its prompt identity.
     """
     if prompt_version not in LIBRARY_PROMPT_VERSIONS:
-        raise ValueError(f"the library harness sends no task context; prompt {prompt_version!r} is not allowed "
-                         f"(allowed: {', '.join(LIBRARY_PROMPT_VERSIONS)})")
-    library_run_id = library_run_id or f"lib_{datetime.now(timezone.utc):%Y%m%d_%H%M%S}_{uuid.uuid4().hex[:6]}"
+        raise ValueError(
+            f"the library harness sends no task context; prompt {prompt_version!r} is not allowed "
+            f"(allowed: {', '.join(LIBRARY_PROMPT_VERSIONS)})"
+        )
+    library_run_id = (
+        library_run_id
+        or f"lib_{datetime.now(timezone.utc):%Y%m%d_%H%M%S}_{uuid.uuid4().hex[:6]}"
+    )
     records: list[dict] = []
     by_case: dict[str, list[dict]] = {}
 
     for case_file, task in cases:
         identity = library_prompt_identity(task, prompt_version)
         for i in range(runs_per_case):
-            rec = run_single(provider, case_file, task, i, library_run_id,
-                             prompt_version=prompt_version if task.task_type == TaskType.STUDY_FORENSICS else None)
+            rec = run_single(
+                provider,
+                case_file,
+                task,
+                i,
+                library_run_id,
+                prompt_version=prompt_version
+                if task.task_type == TaskType.STUDY_FORENSICS
+                else None,
+            )
             rec.update(identity)
             records.append(rec)
             by_case.setdefault(task.id, []).append(rec)
@@ -436,7 +479,9 @@ def _write_artifacts(target: Path, summary: LibrarySummary) -> Path:
     manifest = {
         "library_run_id": summary.library_run_id,
         "prompt_version": summary.prompt_version,
-        "prompt_condition_id": study_forensics_prompt_identity(summary.prompt_version)["prompt_condition_id"],
+        "prompt_condition_id": study_forensics_prompt_identity(summary.prompt_version)[
+            "prompt_condition_id"
+        ],
         "timestamp": summary.timestamp,
         "provider": summary.provider,
         "model": summary.model,
@@ -460,6 +505,7 @@ def _write_artifacts(target: Path, summary: LibrarySummary) -> Path:
 # Markdown summary
 # ---------------------------------------------------------------------------
 
+
 def render_summary_md(summary: LibrarySummary) -> str:
     s = summary.summary_dict()
     lines: list[str] = []
@@ -472,7 +518,9 @@ def render_summary_md(summary: LibrarySummary) -> str:
     lines.append(f"- Cases: **{s['total_cases']}**")
     lines.append(f"- Individual runs: **{s['total_runs']}**")
     lines.append(f"- Successful: {s['successful_runs']} | Failed: {s['failed_runs']}")
-    lines.append(f"- Parse failures: {s['parse_failures']} | Truncation-suspected runs: {s['truncation_runs']}\n")
+    lines.append(
+        f"- Parse failures: {s['parse_failures']} | Truncation-suspected runs: {s['truncation_runs']}\n"
+    )
     lines.append(
         f"- Confidence eligible: {s['n_confidence_eligible']}/"
         f"{s['n_confidence_observations']} | "
@@ -484,7 +532,9 @@ def render_summary_md(summary: LibrarySummary) -> str:
     for record in summary.records:
         state = (record.get("phase8") or {}).get("technical_status", "not_executed")
         phase8_states[state] = phase8_states.get(state, 0) + 1
-    lines.append(f"Phase-8 execution (separate from original model labels): {phase8_states}\n")
+    lines.append(
+        f"Phase-8 execution (separate from original model labels): {phase8_states}\n"
+    )
     if s["label_distribution"]:
         for lab, n in sorted(s["label_distribution"].items(), key=lambda x: -x[1]):
             lines.append(f"- {lab}: {n}")
@@ -496,18 +546,28 @@ def render_summary_md(summary: LibrarySummary) -> str:
         lines.append("## Provider errors\n")
         for et, n in sorted(s["error_distribution"].items(), key=lambda x: -x[1]):
             lines.append(f"- {et}: {n}")
-        lines.append(f"\nCases with provider errors: {', '.join(s['provider_error_cases']) or '—'}\n")
+        lines.append(
+            f"\nCases with provider errors: {', '.join(s['provider_error_cases']) or '—'}\n"
+        )
 
     lines.append("## Stability flags\n")
-    lines.append(f"- Unstable-label cases: {', '.join(s['unstable_label_cases']) or '—'}")
+    lines.append(
+        f"- Unstable-label cases: {', '.join(s['unstable_label_cases']) or '—'}"
+    )
     lines.append(f"- Parse-fragile cases: {', '.join(s['parse_fragile_cases']) or '—'}")
-    lines.append(f"- Truncation-risk cases: {', '.join(s['truncation_risk_cases']) or '—'}")
-    lines.append(f"- High-score-variance cases (range > {s['thresholds']['high_score_variance']}): "
-                 f"{', '.join(s['high_score_variance_cases']) or '—'}\n")
+    lines.append(
+        f"- Truncation-risk cases: {', '.join(s['truncation_risk_cases']) or '—'}"
+    )
+    lines.append(
+        f"- High-score-variance cases (range > {s['thresholds']['high_score_variance']}): "
+        f"{', '.join(s['high_score_variance_cases']) or '—'}\n"
+    )
 
     lines.append("## Per-case stability\n")
-    lines.append("| Case | gold | runs | ok | parse_fail | trunc | labels | consistency | "
-                 "score mean | range | flags |")
+    lines.append(
+        "| Case | gold | runs | ok | parse_fail | trunc | labels | consistency | "
+        "score mean | range | flags |"
+    )
     lines.append("|" + "---|" * 11)
     for c in summary.case_stability:
         active = [k for k, v in c.flags.items() if v]
@@ -520,12 +580,18 @@ def render_summary_md(summary: LibrarySummary) -> str:
     lines.append("")
 
     inspect = sorted(
-        {*s["unstable_label_cases"], *s["parse_fragile_cases"],
-         *s["truncation_risk_cases"], *s["provider_error_cases"],
-         *s["high_score_variance_cases"]}
+        {
+            *s["unstable_label_cases"],
+            *s["parse_fragile_cases"],
+            *s["truncation_risk_cases"],
+            *s["provider_error_cases"],
+            *s["high_score_variance_cases"],
+        }
     )
     lines.append("## Recommended cases to inspect manually\n")
-    lines.append(", ".join(inspect) if inspect else "None — all cases stable in this run.")
+    lines.append(
+        ", ".join(inspect) if inspect else "None — all cases stable in this run."
+    )
     lines.append("")
     return "\n".join(lines)
 
@@ -534,10 +600,12 @@ def render_summary_md(summary: LibrarySummary) -> str:
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def _build_provider(fake: bool, provider: str, model: str | None):
     if fake:
         return FakeLibraryProvider(model=model or "fake-model")
     from inspektorium.audit.providers import get_provider
+
     kwargs = {}
     if model:
         kwargs["model"] = model
@@ -546,6 +614,7 @@ def _build_provider(fake: bool, provider: str, model: str | None):
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
+
     p = argparse.ArgumentParser(
         prog="inspektorium.audit.execution.run_library",
         description=(
@@ -553,26 +622,49 @@ def main(argv: list[str] | None = None) -> int:
             "AA-P10-LIVE authorization. Batch-run the study_forensics case library with a stability summary."
         ),
     )
-    p.add_argument("--task-family", default="study_forensics",
-                   help="Task family / type to select (default: study_forensics).")
+    p.add_argument(
+        "--task-family",
+        default="study_forensics",
+        help="Task family / type to select (default: study_forensics).",
+    )
     p.add_argument("--case-id", default=None, help="Run a single case by ID.")
-    p.add_argument("--label", default=None,
-                   help="Filter by gold_label (solid/overclaim/mechanism_vs_evidence/correlation_vs_causation).")
+    p.add_argument(
+        "--label",
+        default=None,
+        help="Filter by gold_label (solid/overclaim/mechanism_vs_evidence/correlation_vs_causation).",
+    )
     p.add_argument("--all", action="store_true", help="Run all matching cases.")
     p.add_argument("--limit", type=int, default=None, help="Limit number of cases.")
-    p.add_argument("--synthetic-only", action="store_true", help="Only synthetic fixtures.")
-    p.add_argument("--runs-per-case", type=int, default=1, help="Repeat each case N times.")
-    p.add_argument("--provider", default="anthropic", help="Provider name for live runs.")
+    p.add_argument(
+        "--synthetic-only", action="store_true", help="Only synthetic fixtures."
+    )
+    p.add_argument(
+        "--runs-per-case", type=int, default=1, help="Repeat each case N times."
+    )
+    p.add_argument(
+        "--provider", default="anthropic", help="Provider name for live runs."
+    )
     p.add_argument("--model", default=None, help="Model id for live runs.")
-    p.add_argument("--fake", "--dry-run", dest="fake", action="store_true",
-                   help="Use the deterministic in-process fake provider (no network).")
-    p.add_argument("--include-retired", action="store_true",
-                   help="Also run cases flagged status: retired / excluded_from_active_metrics "
-                        "(excluded from active runs by default).")
+    p.add_argument(
+        "--fake",
+        "--dry-run",
+        dest="fake",
+        action="store_true",
+        help="Use the deterministic in-process fake provider (no network).",
+    )
+    p.add_argument(
+        "--include-retired",
+        action="store_true",
+        help="Also run cases flagged status: retired / excluded_from_active_metrics "
+        "(excluded from active runs by default).",
+    )
     p.add_argument("--out-dir", default=None, help="Override output directory.")
-    p.add_argument("--prompt-version", default=STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
-                   choices=LIBRARY_PROMPT_VERSIONS,
-                   help="Context-free Study Forensics prompt (default: historical Phase-7 condition).")
+    p.add_argument(
+        "--prompt-version",
+        default=STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
+        choices=LIBRARY_PROMPT_VERSIONS,
+        help="Context-free Study Forensics prompt (default: historical Phase-7 condition).",
+    )
     args = p.parse_args(argv)
 
     cases = discover_cases(
@@ -589,27 +681,49 @@ def main(argv: list[str] | None = None) -> int:
 
     # Report active vs retired counts for transparency.
     all_active = discover_cases(task_family=args.task_family)
-    retired = [t for _, t in discover_cases(task_family=args.task_family, include_retired=True)
-               if is_retired(t)]
-    print(f"Library: {len(all_active)} active case(s), {len(retired)} retired "
-          f"(retired excluded by default; use --include-retired to include).")
+    retired = [
+        t
+        for _, t in discover_cases(task_family=args.task_family, include_retired=True)
+        if is_retired(t)
+    ]
+    print(
+        f"Library: {len(all_active)} active case(s), {len(retired)} retired "
+        f"(retired excluded by default; use --include-retired to include)."
+    )
 
     if not (args.all or args.case_id or args.limit):
-        print(f"{len(cases)} cases match. Pass --all to run them, or --limit N / --case-id.")
+        print(
+            f"{len(cases)} cases match. Pass --all to run them, or --limit N / --case-id."
+        )
         return 1
 
     provider = _build_provider(args.fake, args.provider, args.model)
-    mode = "FAKE (no network)" if args.fake else f"LIVE {args.provider}/{args.model or 'default'}"
-    print(f"Running {len(cases)} case(s) x {args.runs_per_case} run(s) — provider: {mode}")
+    mode = (
+        "FAKE (no network)"
+        if args.fake
+        else f"LIVE {args.provider}/{args.model or 'default'}"
+    )
+    print(
+        f"Running {len(cases)} case(s) x {args.runs_per_case} run(s) — provider: {mode}"
+    )
 
     out_dir = Path(args.out_dir) if args.out_dir else None
-    summary = run_library(provider, cases, runs_per_case=args.runs_per_case, out_dir=out_dir,
-                          prompt_version=args.prompt_version)
+    summary = run_library(
+        provider,
+        cases,
+        runs_per_case=args.runs_per_case,
+        out_dir=out_dir,
+        prompt_version=args.prompt_version,
+    )
 
     s = summary.summary_dict()
     print(f"Library run: {s['library_run_id']}")
-    print(f"  total runs: {s['total_runs']} | ok: {s['successful_runs']} | failed: {s['failed_runs']}")
-    print(f"  parse failures: {s['parse_failures']} | truncation: {s['truncation_runs']}")
+    print(
+        f"  total runs: {s['total_runs']} | ok: {s['successful_runs']} | failed: {s['failed_runs']}"
+    )
+    print(
+        f"  parse failures: {s['parse_failures']} | truncation: {s['truncation_runs']}"
+    )
     print(f"  unstable-label cases: {len(s['unstable_label_cases'])}")
     target = out_dir or (LIBRARY_RUNS_DIR / s["library_run_id"])
     print(f"  artifacts: {target}/")

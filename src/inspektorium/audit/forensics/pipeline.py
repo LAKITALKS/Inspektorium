@@ -11,7 +11,13 @@ import hashlib
 import json
 from typing import Any
 
-from inspektorium.audit.schemas import AgentResult, ForensicRecord, RunRecord, Task, TaskType
+from inspektorium.audit.schemas import (
+    AgentResult,
+    ForensicRecord,
+    RunRecord,
+    Task,
+    TaskType,
+)
 
 
 LIMITATION = (
@@ -24,7 +30,9 @@ def build_phase8_prompt() -> str:
     """Versioned extraction contract; semantic annotations originate in this response."""
     from inspektorium.audit.forensics.models import PropositionLedger
     from inspektorium.audit.forensics.taxonomy import TaxonomyAssessment
-    return """You are a scientific claim analyst using AA-P8/1.0.
+
+    return (
+        """You are a scientific claim analyst using AA-P8/1.0.
 Use only the supplied task prompt and context. Return JSON with final_answer (one of
 solid, overclaim, correlation_vs_causation, mechanism_vs_evidence), confidence,
 brief reasons in steps/uncertainties, and forensic_record matching the schemas below.
@@ -78,11 +86,13 @@ A trigger description is not proof of its presence. Preserve uncertainty with nu
 The taxonomy check is separate from scientific support; neither silently replaces
 final_answer or the original proposition verdicts.
 ForensicRecord schema (phase8 uses the second schema):
-""" + json.dumps(ForensicRecord.model_json_schema(), separators=(",", ":")) + (
-        "\nPropositionLedger schema:\n"
-    ) + json.dumps(PropositionLedger.model_json_schema(), separators=(",", ":")) + (
-        "\nTaxonomyAssessment schema:\n"
-    ) + json.dumps(TaxonomyAssessment.model_json_schema(), separators=(",", ":"))
+"""
+        + json.dumps(ForensicRecord.model_json_schema(), separators=(",", ":"))
+        + ("\nPropositionLedger schema:\n")
+        + json.dumps(PropositionLedger.model_json_schema(), separators=(",", ":"))
+        + ("\nTaxonomyAssessment schema:\n")
+        + json.dumps(TaxonomyAssessment.model_json_schema(), separators=(",", ":"))
+    )
 
 
 def build_phase8_contract_r1() -> str:
@@ -96,24 +106,48 @@ def build_phase8_contract_r1() -> str:
     """
     from typing import get_args
 
-    from inspektorium.audit.forensics.models import Directness, Observation, SemanticAttributes
-    from inspektorium.audit.forensics.semantics import CORE_DIMENSIONS, PRODUCT_DIMENSIONS, RELATIONS
-    from inspektorium.audit.forensics.taxonomy import CAUSAL_RELATIONS, CLINICAL_ENDPOINTS
+    from inspektorium.audit.forensics.models import (
+        Directness,
+        Observation,
+        SemanticAttributes,
+    )
+    from inspektorium.audit.forensics.semantics import (
+        CORE_DIMENSIONS,
+        PRODUCT_DIMENSIONS,
+        RELATIONS,
+    )
+    from inspektorium.audit.forensics.taxonomy import (
+        CAUSAL_RELATIONS,
+        CLINICAL_ENDPOINTS,
+    )
     from inspektorium.audit.schemas import (
-        ASSERTION_SCOPES, SUMMARY_STRENGTH_ORDER, VALUE_ORIGINS, EvidenceRole,
+        ASSERTION_SCOPES,
+        SUMMARY_STRENGTH_ORDER,
+        VALUE_ORIGINS,
+        EvidenceRole,
     )
 
     def names(values) -> str:
         return ", ".join(values)
 
     # The strings phase8_semantics._unknown_value treats as unknown besides None and "" (test-pinned).
-    unknown_values = ("unknown", "unspecified", "unresolved", "unclear", "not_reported", "not reported",
-                      "n/a", "not_applicable")
+    unknown_values = (
+        "unknown",
+        "unspecified",
+        "unresolved",
+        "unclear",
+        "not_reported",
+        "not reported",
+        "n/a",
+        "not_applicable",
+    )
 
     groups: dict[str, list[str]] = {}
     for value, group in RELATIONS.items():
         groups.setdefault(group, []).append(value)
-    relations = "; ".join(f"{group}: {names(values)}" for group, values in groups.items())
+    relations = "; ".join(
+        f"{group}: {names(values)}" for group, values in groups.items()
+    )
     return f"""AA-P8/1.0 deterministic host contract (live repair revision R1). The host checks your JSON
 with exactly these rules; they make the instructions above precise. Any violation makes the analysis
 technically incomplete, so copy values literally wherever a rule says equal. IDs are unique within their
@@ -239,10 +273,11 @@ contradicted."""
 
 _R2_REPLACEMENTS = (
     # (R1 text, R2 text). Each R1 segment must occur exactly once; see build_phase8_contract_r2.
-    ("""AA-P8/1.0 deterministic host contract (live repair revision R1). The host checks your JSON
+    (
+        """AA-P8/1.0 deterministic host contract (live repair revision R1). The host checks your JSON
 with exactly these rules; they make the instructions above precise. Any violation makes the analysis
 technically incomplete, so copy values literally wherever a rule says equal.""",
-     """AA-P8/1.1 output contract (revision r2). Responsibilities: you report your own scientific judgment
+        """AA-P8/1.1 output contract (revision r2). Responsibilities: you report your own scientific judgment
 for every proposition (reported_verdict) and for the whole claim, based only on the supplied evidence.
 The host separately derives an evidence state from the fields you represent and compares it with your
 judgment; a difference is allowed and is never a format error. A difference that can change the whole-claim
@@ -250,32 +285,43 @@ result or a decisive summary statement goes to a mandatory review; any other dif
 open, non-material conflict. Do not adjust your judgment to guess the host. This contract replaces the
 AA-P8/1.0 references in the text above. The host checks the structure of your JSON with exactly these rules;
 they make the instructions above precise. Any structural violation makes the analysis technically
-incomplete, so copy values literally wherever a rule says equal."""),
-    ("""known value or a not_applicable reason; otherwise the proposition stays unknown.""",
-     """known value or a not_applicable reason; otherwise the host evidence state of the proposition stays
-unknown."""),
-    ("""comparison is "between" (between groups or arms) or "within" (change within one group). species is
+incomplete, so copy values literally wherever a rule says equal.""",
+    ),
+    (
+        """known value or a not_applicable reason; otherwise the proposition stays unknown.""",
+        """known value or a not_applicable reason; otherwise the host evidence state of the proposition stays
+unknown.""",
+    ),
+    (
+        """comparison is "between" (between groups or arms) or "within" (change within one group). species is
 "human" for human data.""",
-     """comparison is "between" (between groups or arms) or "within" (change within one group); if the source
+        """comparison is "between" (between groups or arms) or "within" (change within one group); if the source
 does not state the design or comparison, leave comparison null rather than guessing "within". species is
-"human" for human data."""),
-    ("""C23. extraction: from_text equals P.original_span.text, to_text equals P.proposition_text and to_attributes
+"human" for human data.""",
+    ),
+    (
+        """C23. extraction: from_text equals P.original_span.text, to_text equals P.proposition_text and to_attributes
 equals P.attributes.""",
-     """C23. extraction: from_text equals P.original_span.text, to_text equals P.proposition_text and to_attributes
+        """C23. extraction: from_text equals P.original_span.text, to_text equals P.proposition_text and to_attributes
 equals P.attributes. from_attributes either equals P.attributes or is left completely empty (all null); the
-host then uses P.attributes for the meaning audit and records that. Never fill it partially."""),
-    ("""an asserted_state that differs from the
+host then uses P.attributes for the meaning audit and records that. Never fill it partially.""",
+    ),
+    (
+        """an asserted_state that differs from the
 host-derived state of P (of the whole claim when asserts_whole_claim is true), or a whole-claim supported
 for an unsupported claim is an output finding.""",
-     """an asserted_state that differs from your own
+        """an asserted_state that differs from your own
 judgment (P.reported_verdict; for asserts_whole_claim your whole-claim judgment per C29), or a whole-claim
-supported while your own whole-claim judgment is not supported is an output finding."""),
-    ("""State bookkeeping
+supported while your own whole-claim judgment is not supported is an output finding.""",
+    ),
+    (
+        """State bookkeeping
 C29. Part of the host derivation that C25 compares with: a proposition with reported_verdict unknown is
 unknown; a reported unsupported or contradicted that differs from the evidence-derived state becomes
 unknown. The whole claim combines its logic tree:""",
-     """Whole-claim judgment
-C29. Your whole-claim judgment combines your reported_verdict values over the logic tree:"""),
+        """Whole-claim judgment
+C29. Your whole-claim judgment combines your reported_verdict values over the logic tree:""",
+    ),
 )
 
 
@@ -288,7 +334,9 @@ def build_phase8_contract_r2() -> str:
     text = build_phase8_contract_r1()
     for old, new in _R2_REPLACEMENTS:
         if text.count(old) != 1:
-            raise RuntimeError("R1 contract text changed; the r2 derivation must be revised explicitly")
+            raise RuntimeError(
+                "R1 contract text changed; the r2 derivation must be revised explicitly"
+            )
         text = text.replace(old, new)
     return text
 
@@ -317,15 +365,20 @@ def assess_forensic_payload(
     """Validate extraction against host-owned material, then run semantic checks."""
     if not parse_complete:
         return unavailable(
-            "incomplete", "Parsing was failed, truncated or repaired; extraction is incomplete.",
+            "incomplete",
+            "Parsing was failed, truncated or repaired; extraction is incomplete.",
             original_label,
         )
     if payload is None:
-        return unavailable("not_executed", "No Phase-8 analysis was supplied.", original_label)
+        return unavailable(
+            "not_executed", "No Phase-8 analysis was supplied.", original_label
+        )
     try:
         record = ForensicRecord.model_validate(payload)
     except (ValueError, TypeError) as exc:
-        return unavailable("incomplete", f"Invalid forensic record: {exc}", original_label)
+        return unavailable(
+            "incomplete", f"Invalid forensic record: {exc}", original_label
+        )
 
     errors = []
     sources = {"input": original_input, "context": context}
@@ -334,12 +387,19 @@ def assess_forensic_payload(
     if len(record.provenance) != 1:
         errors.append("Exactly one host-bound original claim provenance is required.")
     for provenance in record.provenance:
-        if provenance.source_id != "input" or provenance.exact_claim_text != original_input:
+        if (
+            provenance.source_id != "input"
+            or provenance.exact_claim_text != original_input
+        ):
             errors.append("Original claim/provenance differs from the captured input.")
         if provenance.content_fingerprint is not None:
-            from inspektorium.audit.integrity.artifact_binding import compute_content_fingerprint
+            from inspektorium.audit.integrity.artifact_binding import (
+                compute_content_fingerprint,
+            )
+
             expected = compute_content_fingerprint(
-                provenance.exact_claim_text, provenance.provenance_state,
+                provenance.exact_claim_text,
+                provenance.provenance_state,
             )
             if provenance.content_fingerprint != expected:
                 errors.append("Original claim content fingerprint is invalid.")
@@ -347,25 +407,39 @@ def assess_forensic_payload(
         source = sources.get(evidence.source_id)
         quote = evidence.exact_reference
         if source is None or not quote or not quote.strip() or quote not in source:
-            errors.append(f"Evidence {evidence.evidence_id}: exact source quote does not resolve.")
+            errors.append(
+                f"Evidence {evidence.evidence_id}: exact source quote does not resolve."
+            )
         if not evidence.text.strip() or source is None or evidence.text not in source:
-            errors.append(f"Evidence {evidence.evidence_id}: text is not bound to supplied material.")
+            errors.append(
+                f"Evidence {evidence.evidence_id}: text is not bound to supplied material."
+            )
     for scope in record.search_scopes:
-        if any(s not in sources or not sources[s].strip() for s in scope.reviewed_source_ids):
-            errors.append(f"Search scope {scope.search_scope_id}: source was not supplied.")
+        if any(
+            s not in sources or not sources[s].strip()
+            for s in scope.reviewed_source_ids
+        ):
+            errors.append(
+                f"Search scope {scope.search_scope_id}: source was not supplied."
+            )
         # A model cannot certify an external search the host did not execute.
         if scope.scope_type == "documented_search":
-            errors.append(f"Search scope {scope.search_scope_id}: external search not executed.")
+            errors.append(
+                f"Search scope {scope.search_scope_id}: external search not executed."
+            )
     if errors:
         assessment = unavailable("incomplete", errors[0], original_label)
         assessment["reasons"] = errors
     else:
         from inspektorium.audit.forensics.semantics import evaluate_phase8
+
         try:
             result = evaluate_phase8(record)
             assessment = result.model_dump(mode="json")
         except Exception as exc:
-            assessment = unavailable("incomplete", f"Semantic control failed: {exc}", original_label)
+            assessment = unavailable(
+                "incomplete", f"Semantic control failed: {exc}", original_label
+            )
         assessment["original_model_label"] = original_label
         assessment.setdefault("derived_label", None)
         assessment.setdefault("limitations", []).append(LIMITATION)
@@ -377,27 +451,40 @@ def assess_forensic_payload(
         assessment["derived_label"] = None
         assessment.setdefault("reasons", []).extend(gate_errors)
     from inspektorium.audit.forensics.taxonomy import assess_taxonomy
+
     taxonomy = assess_taxonomy(record, assessment)
     assessment["taxonomy"] = taxonomy
     assessment["derived_label"] = taxonomy["derived_label"]
     from inspektorium.audit.integrity.artifact_binding import record_fingerprint
+
     assessment["record_fingerprint"] = record_fingerprint(record)
     assessment["input_sha256"] = hashlib.sha256(original_input.encode()).hexdigest()
     ledger = record.phase8 or {}
     propositions = ledger.get("propositions", [])
-    assessment["canonical_proposition_ids"] = {
-        p.get("proposition_id", ""): "p8:" + hashlib.sha256(json.dumps(
-            [original_input, p.get("original_span"), p.get("proposition_text")],
-            sort_keys=True,
-        ).encode()).hexdigest()[:24]
-        for p in propositions if isinstance(p, dict)
-    } if isinstance(propositions, list) else {}
+    assessment["canonical_proposition_ids"] = (
+        {
+            p.get("proposition_id", ""): "p8:"
+            + hashlib.sha256(
+                json.dumps(
+                    [original_input, p.get("original_span"), p.get("proposition_text")],
+                    sort_keys=True,
+                ).encode()
+            ).hexdigest()[:24]
+            for p in propositions
+            if isinstance(p, dict)
+        }
+        if isinstance(propositions, list)
+        else {}
+    )
     return assessment
 
 
 def _phase7_controls(record: ForensicRecord) -> tuple[list[dict], list[str]]:
     """Reuse every existing check; derive applicability, never accept model opt-outs."""
-    from inspektorium.audit.integrity.artifact_binding import MANDATORY_PHASE7B_GATE_SPECS
+    from inspektorium.audit.integrity.artifact_binding import (
+        MANDATORY_PHASE7B_GATE_SPECS,
+    )
+
     controls, errors = [], []
     if not record.provenance or not record.findings or not record.client_findings:
         errors.append("Required claim/finding/client trace population is empty.")
@@ -406,20 +493,36 @@ def _phase7_controls(record: ForensicRecord) -> tuple[list[dict], list[str]]:
             count = spec.eligible_count(record)
             findings = spec.check(record)
             required = spec.population == "client_findings"
-            state = "executed" if count else ("incomplete" if required else "not_applicable")
-            controls.append({
-                "name": spec.gate_id, "status": state, "eligible_count": count,
-                "evaluated_count": count,
-                "reason": "Objects evaluated" if count else (
-                    "Required output population absent" if required else
-                    f"No {spec.population} in this record"
-                ),
-                "findings": [f.model_dump(mode="json") for f in findings],
-            })
-            errors.extend(f"Phase 7 {f.code}: {f.detail}" for f in findings
-                          if f.severity in {"critical", "major"})
+            state = (
+                "executed"
+                if count
+                else ("incomplete" if required else "not_applicable")
+            )
+            controls.append(
+                {
+                    "name": spec.gate_id,
+                    "status": state,
+                    "eligible_count": count,
+                    "evaluated_count": count,
+                    "reason": "Objects evaluated"
+                    if count
+                    else (
+                        "Required output population absent"
+                        if required
+                        else f"No {spec.population} in this record"
+                    ),
+                    "findings": [f.model_dump(mode="json") for f in findings],
+                }
+            )
+            errors.extend(
+                f"Phase 7 {f.code}: {f.detail}"
+                for f in findings
+                if f.severity in {"critical", "major"}
+            )
         except Exception as exc:
-            controls.append({"name": spec.gate_id, "status": "incomplete", "reason": str(exc)})
+            controls.append(
+                {"name": spec.gate_id, "status": "incomplete", "reason": str(exc)}
+            )
             errors.append(f"Phase 7 {spec.gate_id} failed: {exc}")
     return controls, errors
 
@@ -434,10 +537,18 @@ def assess_agent_result(task: Task, result: AgentResult) -> dict:
     parsed = result.parsed
     complete = result.parse_ok and not result.error
     if result.raw_output:
-        parsed, diagnostics = parse_structured_output(result.raw_output, result.finish_reason)
+        parsed, diagnostics = parse_structured_output(
+            result.raw_output, result.finish_reason
+        )
         # An output with a second analysis (draft and correction) is ambiguous, never complete.
-        complete = complete and diagnostics.ok and not (
-            diagnostics.truncation_suspected or diagnostics.repaired or diagnostics.multiple_objects
+        complete = (
+            complete
+            and diagnostics.ok
+            and not (
+                diagnostics.truncation_suspected
+                or diagnostics.repaired
+                or diagnostics.multiple_objects
+            )
         )
     else:
         # Without the raw text no parse can be re-checked (truncation, repair, a second analysis),
@@ -445,7 +556,9 @@ def assess_agent_result(task: Task, result: AgentResult) -> dict:
         complete = False
     original_label = _detect_label(parsed) if parsed else None
     if not complete:
-        assessment = unavailable("incomplete", "Analysis/parse did not complete.", original_label)
+        assessment = unavailable(
+            "incomplete", "Analysis/parse did not complete.", original_label
+        )
     else:
         assessment = assess_forensic_payload(
             parsed.forensic_record if parsed else None,
@@ -454,13 +567,17 @@ def assess_agent_result(task: Task, result: AgentResult) -> dict:
             original_label=original_label,
             parse_complete=complete,
         )
-    assessment["raw_response_sha256"] = hashlib.sha256(result.raw_output.encode()).hexdigest()
+    assessment["raw_response_sha256"] = hashlib.sha256(
+        result.raw_output.encode()
+    ).hexdigest()
     return assessment
 
 
 def phase8_view(assessment: dict | None) -> dict:
     """Explicit legacy fallback for loaded results and existing renderers."""
-    return assessment or unavailable("not_executed", "Legacy result: Phase-8 control not executed.")
+    return assessment or unavailable(
+        "not_executed", "Legacy result: Phase-8 control not executed."
+    )
 
 
 def refresh_run_phase8(record: RunRecord) -> RunRecord:
@@ -469,16 +586,25 @@ def refresh_run_phase8(record: RunRecord) -> RunRecord:
         return record
     results = []
     for evaluated in record.results:
-        agent = evaluated.agent_result.model_copy(update={
-            "phase8": assess_agent_result(record.task, evaluated.agent_result),
-        })
+        agent = evaluated.agent_result.model_copy(
+            update={
+                "phase8": assess_agent_result(record.task, evaluated.agent_result),
+            }
+        )
         forensic = dict(evaluated.study_forensics or {})
-        forensic.update(is_study_forensics=True,
-                        detected_label=agent.phase8.get("original_model_label"),
-                        phase8=agent.phase8)
-        results.append(evaluated.model_copy(update={
-            "agent_result": agent, "study_forensics": forensic,
-        }))
+        forensic.update(
+            is_study_forensics=True,
+            detected_label=agent.phase8.get("original_model_label"),
+            phase8=agent.phase8,
+        )
+        results.append(
+            evaluated.model_copy(
+                update={
+                    "agent_result": agent,
+                    "study_forensics": forensic,
+                }
+            )
+        )
     return record.model_copy(update={"results": results})
 
 
@@ -494,7 +620,9 @@ def render_phase8(assessment: dict | None) -> str:
     if taxonomy:
         lines.append(f"Taxonomy control: `{taxonomy['technical_status']}`.")
         lines.extend(f"- {reason}" for reason in taxonomy.get("reasons", []))
-    if data.get("assessed_composite_state") and data["assessed_composite_state"] != data.get("composite_state"):
+    if data.get("assessed_composite_state") and data[
+        "assessed_composite_state"
+    ] != data.get("composite_state"):
         lines.append(
             "Component aggregate before the failed output audit: "
             f"`{data['assessed_composite_state']}`; this is not a completed output decision."
@@ -504,8 +632,12 @@ def render_phase8(assessment: dict | None) -> str:
     for proposition in data.get("propositions", []):
         if isinstance(proposition, dict):
             # AA-P8/1.1: a conflict-derived unknown must not read like an agreed unknown.
-            conflict = (f" (open model/host conflict: model {proposition.get('reported_verdict')}, "
-                        f"host {proposition.get('host_state')})" if proposition.get("model_host_conflict") else "")
+            conflict = (
+                f" (open model/host conflict: model {proposition.get('reported_verdict')}, "
+                f"host {proposition.get('host_state')})"
+                if proposition.get("model_host_conflict")
+                else ""
+            )
             lines.append(
                 f"- `{proposition.get('proposition_id', '?')}`: "
                 f"{proposition.get('derived_state', proposition.get('state', 'unknown'))}{conflict}"

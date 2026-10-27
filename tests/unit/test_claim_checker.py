@@ -21,6 +21,7 @@ from inspektorium.audit.schemas import (
 # Numeric fact extraction
 # ---------------------------------------------------------------------------
 
+
 class TestNumericFactExtraction:
     def test_extracts_percentages(self):
         text = "Engineering: admitted 30/100 men (30%) and 20/50 women (40%)"
@@ -44,6 +45,7 @@ class TestNumericFactExtraction:
 # ---------------------------------------------------------------------------
 # Comparative claim extraction
 # ---------------------------------------------------------------------------
+
 
 class TestComparativeClaimExtraction:
     def test_higher_than_pattern(self):
@@ -71,12 +73,19 @@ class TestComparativeClaimExtraction:
 # Claim verification
 # ---------------------------------------------------------------------------
 
+
 class TestClaimVerification:
     def test_correct_higher_claim(self):
-        claims = [ComparativeClaim(
-            subject="women", object="men", relation="higher_than",
-            metric="rate", source_field="test", source_text="women higher than men",
-        )]
+        claims = [
+            ComparativeClaim(
+                subject="women",
+                object="men",
+                relation="higher_than",
+                metric="rate",
+                source_field="test",
+                source_text="women higher than men",
+            )
+        ]
         facts = [
             NumericFact(entity="women", metric="rate", value=82.2, source_field="task"),
             NumericFact(entity="men", metric="rate", value=66.0, source_field="task"),
@@ -86,10 +95,16 @@ class TestClaimVerification:
 
     def test_incorrect_higher_claim(self):
         """Agent says men have higher rates when they don't."""
-        claims = [ComparativeClaim(
-            subject="men", object="women", relation="higher_than",
-            metric="rate", source_field="test", source_text="men have higher rates",
-        )]
+        claims = [
+            ComparativeClaim(
+                subject="men",
+                object="women",
+                relation="higher_than",
+                metric="rate",
+                source_field="test",
+                source_text="men have higher rates",
+            )
+        ]
         facts = [
             NumericFact(entity="men", metric="rate", value=30.0, source_field="task"),
             NumericFact(entity="women", metric="rate", value=40.0, source_field="task"),
@@ -99,10 +114,16 @@ class TestClaimVerification:
 
     def test_reversed_direction(self):
         """Agent reverses the direction of comparison."""
-        claims = [ComparativeClaim(
-            subject="men", object="women", relation="lower_than",
-            metric="rate", source_field="test", source_text="men lower rate",
-        )]
+        claims = [
+            ComparativeClaim(
+                subject="men",
+                object="women",
+                relation="lower_than",
+                metric="rate",
+                source_field="test",
+                source_text="men lower rate",
+            )
+        ]
         facts = [
             NumericFact(entity="men", metric="rate", value=75.0, source_field="task"),
             NumericFact(entity="women", metric="rate", value=40.0, source_field="task"),
@@ -111,10 +132,16 @@ class TestClaimVerification:
         assert results[0].truth_status == ClaimTruthStatus.CONTRADICTED
 
     def test_unresolvable_claim(self):
-        claims = [ComparativeClaim(
-            subject="cats", object="dogs", relation="higher_than",
-            metric="rate", source_field="test", source_text="cats higher",
-        )]
+        claims = [
+            ComparativeClaim(
+                subject="cats",
+                object="dogs",
+                relation="higher_than",
+                metric="rate",
+                source_field="test",
+                source_text="cats higher",
+            )
+        ]
         results = check_claims_against_facts(claims, [])
         assert results[0].truth_status == ClaimTruthStatus.UNRESOLVED
 
@@ -123,10 +150,14 @@ class TestClaimVerification:
 # Full pipeline: run_claim_checks
 # ---------------------------------------------------------------------------
 
+
 def _make_task() -> Task:
     return Task(
-        id="test-001", title="Test", domain="test",
-        difficulty=Difficulty.HARD, task_type=TaskType.RUBRIC_BASED,
+        id="test-001",
+        title="Test",
+        domain="test",
+        difficulty=Difficulty.HARD,
+        task_type=TaskType.RUBRIC_BASED,
         prompt=(
             "Engineering: admitted 30/100 men (30%) and 20/50 women (40%)\n"
             "Arts: admitted 300/400 men (75%) and 350/400 women (87.5%)\n"
@@ -144,7 +175,9 @@ class TestRunClaimChecks:
             steps=["The overall rate for women is 82.2% vs 66% for men."],
         )
         results = run_claim_checks(task, response)
-        contradictions = [r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED]
+        contradictions = [
+            r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED
+        ]
         assert len(contradictions) == 0
 
     def test_wrong_comparison_flagged(self):
@@ -155,7 +188,9 @@ class TestRunClaimChecks:
             steps=["Men are admitted at 66% which is higher than women at 82.2%."],
         )
         results = run_claim_checks(task, response)
-        contradictions = [r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED]
+        contradictions = [
+            r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED
+        ]
         assert len(contradictions) >= 1
 
     def test_correct_with_mechanism_survives(self):
@@ -170,13 +205,16 @@ class TestRunClaimChecks:
             ],
         )
         results = run_claim_checks(task, response)
-        contradictions = [r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED]
+        contradictions = [
+            r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED
+        ]
         assert len(contradictions) == 0
 
 
 # ---------------------------------------------------------------------------
 # Self-check misses contradiction
 # ---------------------------------------------------------------------------
+
 
 class TestSelfCheckBlindSpot:
     def test_self_check_misses_error(self):
@@ -188,5 +226,7 @@ class TestSelfCheckBlindSpot:
             self_check=["Verified: my arithmetic is correct and consistent."],
         )
         results = run_claim_checks(task, response)
-        contradictions = [r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED]
+        contradictions = [
+            r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED
+        ]
         assert len(contradictions) >= 1

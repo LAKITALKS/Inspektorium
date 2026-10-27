@@ -1286,9 +1286,7 @@ def test_claim_paragraph_precedes_host_checks(
     inspection_input: InspectionInput,
     supported_proposal_data: dict[str, Any],
 ) -> None:
-    report = _report(
-        inspection_input, {**supported_proposal_data, "claim_text": claim}
-    )
+    report = _report(inspection_input, {**supported_proposal_data, "claim_text": claim})
     before = render_json(report)
     view = assert_report_structure(render_markdown(report), report, md)
     tokens = view.findings[0].tokens
@@ -1305,7 +1303,9 @@ def test_claim_paragraph_precedes_host_checks(
     assert tokens[start + 2].type == "paragraph_close"
     # The first host control is outside the claim paragraph, in a tight list.
     assert [token.type for token in tokens[start + 3 : start + 6]] == [
-        "bullet_list_open", "list_item_open", "paragraph_open"
+        "bullet_list_open",
+        "list_item_open",
+        "paragraph_open",
     ]
     answer_span = _labeled(tokens[start + 6])
     assert answer_span is not None and answer_span.label == "Answer span:"

@@ -39,9 +39,9 @@ def run_audit(arguments: Sequence[str]) -> int:
     try:
         backend = import_module("inspektorium.audit.cli")
     except ModuleNotFoundError as exc:
-        if exc.name != "inspektorium.audit" and not (
-            exc.name or ""
-        ).startswith("inspektorium.audit."):
+        if exc.name != "inspektorium.audit" and not (exc.name or "").startswith(
+            "inspektorium.audit."
+        ):
             raise
         print(
             "inspektorium audit: the audit runtime is missing from this "

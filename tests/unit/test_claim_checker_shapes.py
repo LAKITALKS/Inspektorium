@@ -34,12 +34,16 @@ from inspektorium.audit.schemas import (
 # Blind:              implicit comparisons, semantic equivalence
 # Unsupported:        non-percentage claims, multi-hop inference
 
+
 class TestSimpsonsParadox:
     """Validation of claim checker on Simpson's Paradox task shape."""
 
     TASK = Task(
-        id="simpson-001", title="Simpson Test", domain="statistics",
-        difficulty=Difficulty.HARD, task_type=TaskType.RUBRIC_BASED,
+        id="simpson-001",
+        title="Simpson Test",
+        domain="statistics",
+        difficulty=Difficulty.HARD,
+        task_type=TaskType.RUBRIC_BASED,
         prompt=(
             "Engineering: admitted 30/100 men (30%) and 20/50 women (40%)\n"
             "Arts: admitted 300/400 men (75%) and 350/400 women (87.5%)\n"
@@ -60,7 +64,9 @@ class TestSimpsonsParadox:
     def test_extracts_fractions_from_prompt(self):
         facts = extract_numeric_facts(self.TASK.prompt, "task_prompt")
         # Fractions like 30/100 should also be extracted (as 30.0%)
-        values = [f.value for f in facts if f.entity == "men" and f.context == "engineering"]
+        values = [
+            f.value for f in facts if f.entity == "men" and f.context == "engineering"
+        ]
         assert 30.0 in values
 
     def test_extracts_overall_rates(self):
@@ -101,7 +107,9 @@ class TestSimpsonsParadox:
             steps=["Engineering: men 30%, women 40%."],
         )
         results = run_claim_checks(self.TASK, parsed)
-        contradicted = [r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED]
+        contradicted = [
+            r for r in results if r.truth_status == ClaimTruthStatus.CONTRADICTED
+        ]
         assert len(contradicted) >= 1
 
     def test_correct_answer_zero_contradictions(self):
@@ -141,12 +149,16 @@ class TestSimpsonsParadox:
 # Blind:              Bayesian derivation correctness, intermediate steps
 # Unsupported:        multi-step calculation verification
 
+
 class TestBaseRateNeglect:
     """Validation of claim checker on base rate neglect task shape."""
 
     TASK = Task(
-        id="base-rate-001", title="Base Rate Test", domain="probability",
-        difficulty=Difficulty.MEDIUM, task_type=TaskType.CLOSED_WITH_REASONING,
+        id="base-rate-001",
+        title="Base Rate Test",
+        domain="probability",
+        difficulty=Difficulty.MEDIUM,
+        task_type=TaskType.CLOSED_WITH_REASONING,
         prompt=(
             "A rare disease affects 1 in 1000 people. A test has 99% sensitivity "
             "and 1% false positive rate. A person tests positive. "
@@ -154,7 +166,9 @@ class TestBaseRateNeglect:
         ),
         expected_answer="0.09",
         reference_solution="P(Disease|Positive) = 0.00099 / 0.01098 ≈ 0.09 ≈ 9%",
-        evaluation=EvaluationConfig(method="auto", answer_match="contains", tolerance=0.02),
+        evaluation=EvaluationConfig(
+            method="auto", answer_match="contains", tolerance=0.02
+        ),
     )
 
     # --- Extraction ---
@@ -234,12 +248,16 @@ class TestBaseRateNeglect:
 # Blind:              host behavior reasoning, conditional probability chain
 # Unsupported:        verifying WHY 2/3 is the right answer
 
+
 class TestMontyHallVariant:
     """Validation of claim checker on Monty Hall variant task shape."""
 
     TASK = Task(
-        id="monty-001", title="Monty Hall Lazy Host", domain="probability",
-        difficulty=Difficulty.HARD, task_type=TaskType.CLOSED_WITH_REASONING,
+        id="monty-001",
+        title="Monty Hall Lazy Host",
+        domain="probability",
+        difficulty=Difficulty.HARD,
+        task_type=TaskType.CLOSED_WITH_REASONING,
         prompt=(
             "3 doors, car behind one. You pick door 1. "
             "Lazy host: if car behind door 1, randomly opens 2 or 3 (50/50). "
@@ -252,7 +270,9 @@ class TestMontyHallVariant:
             "P(Car=1 | Host opens 3) = (1/3 * 1/2) / (1/2) = 1/3. "
             "You should switch."
         ),
-        evaluation=EvaluationConfig(method="auto", answer_match="contains", tolerance=0.02),
+        evaluation=EvaluationConfig(
+            method="auto", answer_match="contains", tolerance=0.02
+        ),
     )
 
     # --- Extraction ---
@@ -279,7 +299,9 @@ class TestMontyHallVariant:
             "You should switch. Switching gives a 2/3 chance of winning.",
             "final_answer",
         )
-        assert any(c.relation == "higher_than" and c.subject == "door_2_switch" for c in claims)
+        assert any(
+            c.relation == "higher_than" and c.subject == "door_2_switch" for c in claims
+        )
 
     def test_extracts_equal_probability_claim(self):
         """'Doesn't matter if you switch' → equal claim."""

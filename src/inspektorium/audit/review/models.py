@@ -9,10 +9,18 @@ from pydantic import BaseModel, ConfigDict, Field
 # of its source propositions. Stored 1.0/1.1/1.2 case states fail closed, never silently adopted.
 CONTRACT_VERSION = "AA-P9/1.3"
 Origin = Literal["original", "model_review", "stability", "human_correction"]
-Route = Literal["AUTO_RESOLVABLE", "REVIEW_RECOMMENDED", "HUMAN_REVIEW_REQUIRED", "UNRESOLVED"]
+Route = Literal[
+    "AUTO_RESOLVABLE", "REVIEW_RECOMMENDED", "HUMAN_REVIEW_REQUIRED", "UNRESOLVED"
+]
 Dimension = Literal[
-    "label", "evidence", "proposition", "causal_strength", "product_transfer",
-    "search_scope", "composite", "unknown",
+    "label",
+    "evidence",
+    "proposition",
+    "causal_strength",
+    "product_transfer",
+    "search_scope",
+    "composite",
+    "unknown",
 ]
 
 
@@ -75,7 +83,9 @@ class Phase9Assessment(StrictModel):
     route: Route
     mandatory: bool = False
     execution_status: Literal["not_executed", "completed", "failed"] = "not_executed"
-    review_state: Literal["not_required", "pending", "unresolved", "adjudicated"] = "not_required"
+    review_state: Literal["not_required", "pending", "unresolved", "adjudicated"] = (
+        "not_required"
+    )
     positions: list[ReviewPosition] = Field(default_factory=list)
     conflicts: list[Disagreement] = Field(default_factory=list)
     triggers: list[ReviewTrigger] = Field(default_factory=list)

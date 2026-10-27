@@ -6,8 +6,11 @@ from inspektorium.audit.schemas import AgentResponse, Difficulty, Task, TaskType
 
 def _make_task(difficulty: str = "medium", **kwargs) -> Task:
     defaults = dict(
-        id="test-001", title="Test Task", domain="test",
-        difficulty=Difficulty(difficulty), task_type=TaskType.CLOSED_WITH_REASONING,
+        id="test-001",
+        title="Test Task",
+        domain="test",
+        difficulty=Difficulty(difficulty),
+        task_type=TaskType.CLOSED_WITH_REASONING,
         prompt="Test prompt",
     )
     defaults.update(kwargs)
@@ -17,7 +20,11 @@ def _make_task(difficulty: str = "medium", **kwargs) -> Task:
 def _make_response(**kwargs) -> AgentResponse:
     defaults = dict(
         final_answer="The answer is 42",
-        steps=["Step 1: analyze the data", "Step 2: compute the result", "Step 3: conclude with 42"],
+        steps=[
+            "Step 1: analyze the data",
+            "Step 2: compute the result",
+            "Step 3: conclude with 42",
+        ],
         assumptions=["Data is accurate and complete"],
         key_claims=["The computed value is 42"],
         confidence=0.85,
@@ -32,6 +39,7 @@ def _make_response(**kwargs) -> AgentResponse:
 
 # --- v0.3 checks still work ---
 
+
 class TestSelfCorrections:
     def test_no_corrections(self):
         findings = run_consistency_checks(_make_response(), _make_task())
@@ -39,12 +47,16 @@ class TestSelfCorrections:
         assert len(corrections) == 0
 
     def test_detects_wait_marker(self):
-        p = _make_response(steps=["First X = 5", "Wait, that's incorrect. X = 10", "Answer is 10"])
+        p = _make_response(
+            steps=["First X = 5", "Wait, that's incorrect. X = 10", "Answer is 10"]
+        )
         findings = run_consistency_checks(p, _make_task())
         assert any(f.check_type == "self_correction" for f in findings)
 
     def test_no_false_positive_on_actually(self):
-        p = _make_response(steps=["The trend is actually explained by composition effects"])
+        p = _make_response(
+            steps=["The trend is actually explained by composition effects"]
+        )
         findings = run_consistency_checks(p, _make_task())
         assert not any(f.check_type == "self_correction" for f in findings)
 
@@ -53,7 +65,11 @@ class TestConfidenceUncertainty:
     def test_high_confidence_many_uncertainties(self):
         p = _make_response(confidence=0.95, uncertainties=["u1", "u2", "u3"])
         findings = run_consistency_checks(p, _make_task())
-        assert any(f.check_type == "confidence_uncertainty" and "performative" in f.description.lower() for f in findings)
+        assert any(
+            f.check_type == "confidence_uncertainty"
+            and "performative" in f.description.lower()
+            for f in findings
+        )
 
     def test_moderate_confidence_ok(self):
         p = _make_response(confidence=0.80, uncertainties=["some concern"])
@@ -69,10 +85,13 @@ class TestContradictions:
             steps=["Therefore the claim is correct and well-supported."],
         )
         findings = run_consistency_checks(p, _make_task())
-        assert any(f.check_type == "contradiction" and f.status == "fail" for f in findings)
+        assert any(
+            f.check_type == "contradiction" and f.status == "fail" for f in findings
+        )
 
 
 # --- v0.4 new checks ---
+
 
 class TestAssumptionUsage:
     def test_detects_unused_assumption(self):
@@ -100,7 +119,9 @@ class TestAssumptionUsage:
 class TestUncertaintyResolution:
     def test_detects_decorative_uncertainty(self):
         p = _make_response(
-            uncertainties=["The gravitational constant of the moon might affect results"],
+            uncertainties=[
+                "The gravitational constant of the moon might affect results"
+            ],
             steps=["We analyze admissions data", "The paradox is clear"],
             self_check=["Checked arithmetic"],
         )
@@ -110,8 +131,12 @@ class TestUncertaintyResolution:
 
     def test_addressed_uncertainty_ok(self):
         p = _make_response(
-            uncertainties=["Whether applicant qualifications differ between departments"],
-            steps=["We consider whether qualifications differ — the data doesn't suggest this"],
+            uncertainties=[
+                "Whether applicant qualifications differ between departments"
+            ],
+            steps=[
+                "We consider whether qualifications differ — the data doesn't suggest this"
+            ],
             self_check=["Verified qualifications assumption is reasonable"],
         )
         findings = run_consistency_checks(p, _make_task())
@@ -128,10 +153,16 @@ class TestSelfCheckDepth:
 
     def test_substantive_check_ok(self):
         p = _make_response(
-            self_check=["Verified arithmetic: 30/100=30%, 20/50=40%, confirming department-level rates are correct"]
+            self_check=[
+                "Verified arithmetic: 30/100=30%, 20/50=40%, confirming department-level rates are correct"
+            ]
         )
         findings = run_consistency_checks(p, _make_task())
-        depth = [f for f in findings if f.check_type == "self_check_depth" and f.status == "warning"]
+        depth = [
+            f
+            for f in findings
+            if f.check_type == "self_check_depth" and f.status == "warning"
+        ]
         assert len(depth) == 0
 
 
@@ -176,7 +207,11 @@ class TestMechanismGap:
         )
         findings = run_consistency_checks(p, _make_task())
         mech = [f for f in findings if f.check_type == "mechanism_gap"]
-        assert any("named but" in f.description.lower() or "not explained" in f.description.lower() for f in mech)
+        assert any(
+            "named but" in f.description.lower()
+            or "not explained" in f.description.lower()
+            for f in mech
+        )
 
     def test_expected_mechanism_terms(self):
         p = _make_response(
@@ -185,5 +220,9 @@ class TestMechanismGap:
         )
         task = _make_task(expected_mechanism_terms=["simpson", "confounding"])
         findings = run_consistency_checks(p, task)
-        mech = [f for f in findings if f.check_type == "mechanism_gap" and "missing" in f.description.lower()]
+        mech = [
+            f
+            for f in findings
+            if f.check_type == "mechanism_gap" and "missing" in f.description.lower()
+        ]
         assert len(mech) >= 1

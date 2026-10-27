@@ -52,6 +52,7 @@ def _generate(model_id: str, text: str = VALID_JSON):
 
 # ------------------- client construction (no SDK-default fallback) -------------------
 
+
 def test_client_receives_timeout_120():
     MockCls, _inst, _ = _generate("claude-sonnet-4-5-20250929")
     kwargs = MockCls.call_args.kwargs
@@ -91,6 +92,7 @@ def test_observed_http_attempts_and_transport_retries_are_reported_exactly():
 
 # ------------------- request parameters -------------------
 
+
 def test_request_omits_top_p_and_seed():
     _MockCls, inst, _ = _generate("claude-haiku-4-5-20251001")
     create_kwargs = inst.messages.create.call_args.kwargs
@@ -107,16 +109,23 @@ def test_request_temperature_and_max_tokens():
 
 def test_exact_dated_model_from_config_is_sent():
     cfg = load_agent_config("tests/fixtures/audit/agents/claude_opus.yaml")
-    assert cfg.model == "claude-opus-4-5-20251101"  # config is pinned to the dated snapshot
+    assert (
+        cfg.model == "claude-opus-4-5-20251101"
+    )  # config is pinned to the dated snapshot
     with patch("anthropic.Anthropic") as MockCls:
         inst = MockCls.return_value
         inst.messages.create.return_value = _mock_message(VALID_JSON)
-        provider = get_provider("anthropic", model=cfg.model, temperature=cfg.temperature, label=cfg.label)
+        provider = get_provider(
+            "anthropic", model=cfg.model, temperature=cfg.temperature, label=cfg.label
+        )
         provider.generate(TASK, "SYSTEM")
-        assert inst.messages.create.call_args.kwargs["model"] == "claude-opus-4-5-20251101"
+        assert (
+            inst.messages.create.call_args.kwargs["model"] == "claude-opus-4-5-20251101"
+        )
 
 
 # ------------------- no semantic/quality retries -------------------
+
 
 def test_parser_failure_does_not_trigger_another_request():
     with patch("anthropic.Anthropic") as MockCls:
@@ -124,7 +133,7 @@ def test_parser_failure_does_not_trigger_another_request():
         inst.messages.create.return_value = _mock_message(MALFORMED)
         provider = AnthropicProvider(model="claude-haiku-4-5-20251001")
         result = run_agent(provider, TASK)
-        assert inst.messages.create.call_count == 1     # no re-request on parse failure
+        assert inst.messages.create.call_count == 1  # no re-request on parse failure
         assert result.parse_ok is False
 
 
@@ -139,7 +148,7 @@ def test_exhausted_transport_failure_is_an_explicit_failed_record():
         inst.messages.create.side_effect = RuntimeError("boom")
         provider = AnthropicProvider(model="claude-haiku-4-5-20251001")
         resp = provider.generate(TASK, "SYSTEM")
-        assert inst.messages.create.call_count == 1     # no application-layer retry
+        assert inst.messages.create.call_count == 1  # no application-layer retry
         assert resp.error and resp.finish_reason == "error"
         assert resp.usage["http_attempts"] == 0
         assert resp.usage["transport_retries"] == 0

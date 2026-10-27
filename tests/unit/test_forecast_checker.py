@@ -86,8 +86,11 @@ SIMPSON_TASK = Task(
 
 def _make_result(parsed: AgentResponse) -> AgentResult:
     return AgentResult(
-        provider="test", model="test-model",
-        raw_output="{}", parsed=parsed, parse_ok=True,
+        provider="test",
+        model="test-model",
+        raw_output="{}",
+        parsed=parsed,
+        parse_ok=True,
     )
 
 
@@ -95,8 +98,8 @@ def _make_result(parsed: AgentResponse) -> AgentResult:
 # Task type detection
 # ===========================================================================
 
-class TestTaskDetection:
 
+class TestTaskDetection:
     def test_forecast_task_detected(self):
         assert is_forecast_task(RULE_TRAP_TASK)
 
@@ -113,8 +116,8 @@ class TestTaskDetection:
 # A. Probability-Reasoning Alignment
 # ===========================================================================
 
-class TestProbabilityAlignment:
 
+class TestProbabilityAlignment:
     def test_overconfident_with_many_uncertainties(self):
         """High probability + many uncertainties = overconfident."""
         parsed = AgentResponse(
@@ -172,8 +175,8 @@ class TestProbabilityAlignment:
 # B. Base Rate Usage
 # ===========================================================================
 
-class TestBaseRateUsage:
 
+class TestBaseRateUsage:
     def test_base_rate_omission(self):
         """Task provides base rate but agent ignores it."""
         parsed = AgentResponse(
@@ -220,8 +223,8 @@ class TestBaseRateUsage:
 # C. Rule / Resolution Integrity
 # ===========================================================================
 
-class TestRuleIntegrity:
 
+class TestRuleIntegrity:
     def test_rule_not_engaged(self):
         """Agent ignores the resolution rule entirely."""
         parsed = AgentResponse(
@@ -256,8 +259,8 @@ class TestRuleIntegrity:
 # D. Skeptic Coverage
 # ===========================================================================
 
-class TestSkepticCoverage:
 
+class TestSkepticCoverage:
     def test_no_counterarguments(self):
         """Zero counterarguments = insufficient skepticism."""
         parsed = AgentResponse(
@@ -303,8 +306,8 @@ class TestSkepticCoverage:
 # E. No-Trade Integrity
 # ===========================================================================
 
-class TestNoTradeIntegrity:
 
+class TestNoTradeIntegrity:
     def test_well_justified_no_trade(self):
         """Substantive no_trade with reasoning = high score."""
         parsed = AgentResponse(
@@ -362,8 +365,8 @@ class TestNoTradeIntegrity:
 # F. Shrinkage Discipline
 # ===========================================================================
 
-class TestShrinkageDiscipline:
 
+class TestShrinkageDiscipline:
     def test_extreme_without_shrinkage(self):
         """Extreme probability without shrinkage rationale = failure."""
         parsed = AgentResponse(
@@ -407,8 +410,8 @@ class TestShrinkageDiscipline:
 # G. Narrative Edge
 # ===========================================================================
 
-class TestNarrativeEdge:
 
+class TestNarrativeEdge:
     def test_rhetorical_edge(self):
         """Edge with narrative words and no evidence = narrative overreach."""
         parsed = AgentResponse(
@@ -454,8 +457,8 @@ class TestNarrativeEdge:
 # Decision Category
 # ===========================================================================
 
-class TestDecisionCategory:
 
+class TestDecisionCategory:
     def test_wrong_decision_category(self):
         """Agent forecasts when no_trade is correct."""
         parsed = AgentResponse(
@@ -494,8 +497,8 @@ class TestDecisionCategory:
 # Evaluator Integration
 # ===========================================================================
 
-class TestEvaluatorIntegration:
 
+class TestEvaluatorIntegration:
     def test_forecast_task_produces_forecast_integrity(self):
         """Evaluator attaches forecast_integrity for forecast tasks."""
         parsed = AgentResponse(
@@ -551,8 +554,8 @@ class TestEvaluatorIntegration:
 # Report Integration
 # ===========================================================================
 
-class TestReportIntegration:
 
+class TestReportIntegration:
     def test_report_contains_forecast_section(self):
         from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
@@ -602,8 +605,8 @@ class TestReportIntegration:
 # No Regression
 # ===========================================================================
 
-class TestNoRegression:
 
+class TestNoRegression:
     def test_simpson_task_unaffected(self):
         """Non-forecast tasks must produce the same results as before."""
         parsed = AgentResponse(
@@ -620,4 +623,6 @@ class TestNoRegression:
         # Must still have scores, no crash, no forecast data
         assert result.scores.total > 0
         assert result.forecast_integrity == {}
-        assert FailureCategory.OVERCONFIDENT_FORECAST.value not in {f.category for f in result.failures}
+        assert FailureCategory.OVERCONFIDENT_FORECAST.value not in {
+            f.category for f in result.failures
+        }

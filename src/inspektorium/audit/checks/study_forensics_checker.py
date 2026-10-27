@@ -44,17 +44,43 @@ def is_study_forensics_task(task: Task) -> bool:
 _NEGATION_WINDOW = 6  # max words between negation cue and keyword start
 
 _NEGATION_CUES = (
-    "no ", "no evidence", "not ", "not an ", "not a ", "don't ", "do not ",
-    "does not ", "doesn't ", "isn't ", "is not ", "without ", "absence of ",
-    "lack of ", "did not find ", "found no ", "none of the ",
-    "there is no ", "there are no ", "i do not see ",
-    "cannot identify ", "no sign of ", "no indication of ",
+    "no ",
+    "no evidence",
+    "not ",
+    "not an ",
+    "not a ",
+    "don't ",
+    "do not ",
+    "does not ",
+    "doesn't ",
+    "isn't ",
+    "is not ",
+    "without ",
+    "absence of ",
+    "lack of ",
+    "did not find ",
+    "found no ",
+    "none of the ",
+    "there is no ",
+    "there are no ",
+    "i do not see ",
+    "cannot identify ",
+    "no sign of ",
+    "no indication of ",
     # v0.6.2: anti-claim constructions
-    "avoids ", "avoid ", "avoiding ",
-    "refrains from ", "refrain from ", "refraining from ",
-    "stops short of ", "stop short of ", "stopped short of ",
-    "free of ", "free from ",
-    "steers clear of ", "steer clear of ",
+    "avoids ",
+    "avoid ",
+    "avoiding ",
+    "refrains from ",
+    "refrain from ",
+    "refraining from ",
+    "stops short of ",
+    "stop short of ",
+    "stopped short of ",
+    "free of ",
+    "free from ",
+    "steers clear of ",
+    "steer clear of ",
 )
 
 
@@ -125,9 +151,12 @@ def _keyword_match_non_negated(text: str, keyword: str) -> bool:
             # Double-check: look at this specific occurrence
             window_start = max(0, idx - 80)
             before = low[window_start:idx]
-            negated = any(cue.strip() in before.split()[-_NEGATION_WINDOW:]
-                          if len(before.split()) >= 1 else False
-                          for cue in [])  # placeholder, use proper check below
+            negated = any(
+                cue.strip() in before.split()[-_NEGATION_WINDOW:]
+                if len(before.split()) >= 1
+                else False
+                for cue in []
+            )  # placeholder, use proper check below
             # Use the direct check
             before_text = " ".join(before.split()[-_NEGATION_WINDOW:])
             is_neg = any(cue.strip() in before_text for cue in _NEGATION_CUES)
@@ -149,140 +178,318 @@ _FINDING_PATTERNS: dict[str, dict] = {
     # --- Solid-case signals ---
     "evidence_matches_claim": {
         "keywords": [
-            "evidence supports", "evidence matches", "claim is supported",
-            "well-supported", "well supported", "findings support",
-            "data supports", "results support", "consistent with",
-            "appropriately supported", "adequate evidence",
-            "evidence aligns", "claims are justified",
-            "findings are consistent", "data back",
-            "empirically supported", "conclusions follow from",
+            "evidence supports",
+            "evidence matches",
+            "claim is supported",
+            "well-supported",
+            "well supported",
+            "findings support",
+            "data supports",
+            "results support",
+            "consistent with",
+            "appropriately supported",
+            "adequate evidence",
+            "evidence aligns",
+            "claims are justified",
+            "findings are consistent",
+            "data back",
+            "empirically supported",
+            "conclusions follow from",
         ],
         "patterns": [
-            re.compile(r"evidence\s+(?:clearly\s+)?(?:supports?|backs?|confirms?|matches)", re.I),
-            re.compile(r"(?:claim|conclusion)s?\s+(?:is|are)\s+(?:well[- ])?supported", re.I),
-            re.compile(r"results?\s+(?:support|justify|back)\s+(?:the\s+)?(?:claim|conclusion)", re.I),
-            re.compile(r"(?:data|findings?)\s+(?:support|confirm|match)\s+(?:the\s+)?(?:claim|conclusion)", re.I),
+            re.compile(
+                r"evidence\s+(?:clearly\s+)?(?:supports?|backs?|confirms?|matches)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:claim|conclusion)s?\s+(?:is|are)\s+(?:well[- ])?supported", re.I
+            ),
+            re.compile(
+                r"results?\s+(?:support|justify|back)\s+(?:the\s+)?(?:claim|conclusion)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:data|findings?)\s+(?:support|confirm|match)\s+(?:the\s+)?(?:claim|conclusion)",
+                re.I,
+            ),
         ],
     },
     "cautious_scope_control": {
         "keywords": [
-            "limitation", "acknowledge", "caveat", "scope",
-            "restrict", "careful", "appropriate uncertainty",
-            "honest", "transparent", "qualified",
-            "appropriate caution", "properly qualified",
-            "limit their conclusions", "appropriate caveats",
-            "do not overgenerali", "appropriately hedged",
+            "limitation",
+            "acknowledge",
+            "caveat",
+            "scope",
+            "restrict",
+            "careful",
+            "appropriate uncertainty",
+            "honest",
+            "transparent",
+            "qualified",
+            "appropriate caution",
+            "properly qualified",
+            "limit their conclusions",
+            "appropriate caveats",
+            "do not overgenerali",
+            "appropriately hedged",
         ],
         "patterns": [
-            re.compile(r"(?:author|researcher|study)s?\s+(?:appropriately\s+)?(?:acknowledge|note|caution|limit|qualify)", re.I),
-            re.compile(r"(?:caution|limitation|caveat)s?\s+(?:are\s+)?(?:noted|acknowledged|stated|appropriate)", re.I),
-            re.compile(r"(?:scope|generali[sz]ability)\s+(?:is\s+)?(?:limited|restricted|narrow|appropriately)", re.I),
-            re.compile(r"(?:honest|transparent|careful)\s+(?:about|regarding|in)\s+(?:limitation|uncertainty)", re.I),
+            re.compile(
+                r"(?:author|researcher|study)s?\s+(?:appropriately\s+)?(?:acknowledge|note|caution|limit|qualify)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:caution|limitation|caveat)s?\s+(?:are\s+)?(?:noted|acknowledged|stated|appropriate)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:scope|generali[sz]ability)\s+(?:is\s+)?(?:limited|restricted|narrow|appropriately)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:honest|transparent|careful)\s+(?:about|regarding|in)\s+(?:limitation|uncertainty)",
+                re.I,
+            ),
         ],
     },
     "none_or_minor": {
         "keywords": [
-            "no major", "no significant", "no substantive", "minor issue",
-            "well-designed", "well designed", "appropriate",
-            "no epistemic", "no serious", "no fundamental",
-            "no critical flaw", "methodologically sound",
+            "no major",
+            "no significant",
+            "no substantive",
+            "minor issue",
+            "well-designed",
+            "well designed",
+            "appropriate",
+            "no epistemic",
+            "no serious",
+            "no fundamental",
+            "no critical flaw",
+            "methodologically sound",
         ],
         "patterns": [
-            re.compile(r"no\s+(?:major|significant|serious|substantive|fundamental|critical)\s+(?:flaw|issue|problem|error|weakness)", re.I),
-            re.compile(r"(?:study|trial|research)\s+(?:is|appears?)\s+(?:well[- ]designed|sound|solid|rigorous)", re.I),
+            re.compile(
+                r"no\s+(?:major|significant|serious|substantive|fundamental|critical)\s+(?:flaw|issue|problem|error|weakness)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:study|trial|research)\s+(?:is|appears?)\s+(?:well[- ]designed|sound|solid|rigorous)",
+                re.I,
+            ),
         ],
     },
-
     # --- Overclaim signals ---
     "conclusion_exceeds_results": {
         "keywords": [
-            "exceeds", "beyond the data", "beyond the evidence",
-            "overstated", "overinterpret", "exaggerat", "not warranted",
-            "not supported by", "goes beyond", "stronger than",
-            "disproportionate", "inflated", "beyond what the",
-            "overreach", "unwarranted", "unjustified conclusion",
-            "claim is stronger than", "more than the data",
+            "exceeds",
+            "beyond the data",
+            "beyond the evidence",
+            "overstated",
+            "overinterpret",
+            "exaggerat",
+            "not warranted",
+            "not supported by",
+            "goes beyond",
+            "stronger than",
+            "disproportionate",
+            "inflated",
+            "beyond what the",
+            "overreach",
+            "unwarranted",
+            "unjustified conclusion",
+            "claim is stronger than",
+            "more than the data",
         ],
         "patterns": [
-            re.compile(r"conclusion\s+(?:goes?\s+)?(?:beyond|exceeds?|overreach)", re.I),
-            re.compile(r"(?:claim|conclusion|interpretation)s?\s+(?:is|are)\s+(?:not\s+)?(?:supported|warranted|justified)\s+by", re.I),
-            re.compile(r"(?:results?|data|evidence|findings?)\s+(?:do\s+not\s+|don'?t\s+)?(?:support|justify|warrant)\s+(?:the\s+)?(?:claim|conclusion)", re.I),
+            re.compile(
+                r"conclusion\s+(?:goes?\s+)?(?:beyond|exceeds?|overreach)", re.I
+            ),
+            re.compile(
+                r"(?:claim|conclusion|interpretation)s?\s+(?:is|are)\s+(?:not\s+)?(?:supported|warranted|justified)\s+by",
+                re.I,
+            ),
+            re.compile(
+                r"(?:results?|data|evidence|findings?)\s+(?:do\s+not\s+|don'?t\s+)?(?:support|justify|warrant)\s+(?:the\s+)?(?:claim|conclusion)",
+                re.I,
+            ),
             re.compile(r"(?:over(?:stat|interpret|claim|reach|sell))", re.I),
-            re.compile(r"(?:goes?|went)\s+beyond\s+(?:the\s+)?(?:data|evidence|results?|findings?)", re.I),
-            re.compile(r"stronger\s+(?:claim|conclusion)\s+than\s+(?:the\s+)?(?:data|evidence|results?)", re.I),
+            re.compile(
+                r"(?:goes?|went)\s+beyond\s+(?:the\s+)?(?:data|evidence|results?|findings?)",
+                re.I,
+            ),
+            re.compile(
+                r"stronger\s+(?:claim|conclusion)\s+than\s+(?:the\s+)?(?:data|evidence|results?)",
+                re.I,
+            ),
         ],
     },
     "unsupported_generalization": {
         "keywords": [
-            "all ages", "all people", "everyone",
-            "overgenerali", "extrapolat", "beyond the sample",
-            "broader population", "universal", "sweeping",
-            "beyond the study population", "beyond the studied",
-            "unjustified extension", "unwarranted generali",
+            "all ages",
+            "all people",
+            "everyone",
+            "overgenerali",
+            "extrapolat",
+            "beyond the sample",
+            "broader population",
+            "universal",
+            "sweeping",
+            "beyond the study population",
+            "beyond the studied",
+            "unjustified extension",
+            "unwarranted generali",
         ],
         "patterns": [
-            re.compile(r"generali[sz](?:e|es|ed|ation|ations?)\s+(?:beyond|to\s+(?:all|other|broader|wider))", re.I),
+            re.compile(
+                r"generali[sz](?:e|es|ed|ation|ations?)\s+(?:beyond|to\s+(?:all|other|broader|wider))",
+                re.I,
+            ),
             re.compile(r"(?:unsupported|unwarranted|unjustified)\s+generali[sz]", re.I),
             re.compile(r"extrapolat(?:e|es|ed|ion|ions?)\s+(?:beyond|from|to)", re.I),
-            re.compile(r"(?:extends?|applied|applies)\s+(?:the\s+)?(?:findings?|results?|conclusions?)\s+(?:to\s+)?(?:all|broader|wider|other|general)", re.I),
-            re.compile(r"(?:beyond|outside)\s+(?:the\s+)?(?:study|sample|studied)\s+(?:population|group|sample)", re.I),
-            re.compile(r"(?:claim|suggest)s?\s+(?:it\s+)?(?:could|might|may)\s+(?:help|benefit|work\s+for)\s+(?:all|everyone|people\s+of\s+all)", re.I),
+            re.compile(
+                r"(?:extends?|applied|applies)\s+(?:the\s+)?(?:findings?|results?|conclusions?)\s+(?:to\s+)?(?:all|broader|wider|other|general)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:beyond|outside)\s+(?:the\s+)?(?:study|sample|studied)\s+(?:population|group|sample)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:claim|suggest)s?\s+(?:it\s+)?(?:could|might|may)\s+(?:help|benefit|work\s+for)\s+(?:all|everyone|people\s+of\s+all)",
+                re.I,
+            ),
         ],
     },
     "decorative_uncertainty": {
         "keywords": [
-            "decorative", "performative", "token", "lip service",
-            "hedge", "nominal", "surface-level caveat",
-            "pro forma", "formulaic caveat",
-            "caveat does not constrain", "hedge without substance",
+            "decorative",
+            "performative",
+            "token",
+            "lip service",
+            "hedge",
+            "nominal",
+            "surface-level caveat",
+            "pro forma",
+            "formulaic caveat",
+            "caveat does not constrain",
+            "hedge without substance",
         ],
         "patterns": [
-            re.compile(r"(?:decorative|performative|token|nominal|formulaic)\s+(?:uncertainty|caveat|hedge|caution|qualification)", re.I),
-            re.compile(r"(?:caveat|hedge|caution)\s+(?:is|appears?|seems?)\s+(?:decorative|performative|token|nominal|cosmetic|superficial)", re.I),
-            re.compile(r"(?:further|more)\s+research\s+(?:is\s+)?needed.*(?:but|yet|however|while|despite)", re.I),
-            re.compile(r"(?:caveat|hedge)s?\s+(?:do\s+not|doesn'?t|does\s+not)\s+(?:constrain|limit|qualify)", re.I),
+            re.compile(
+                r"(?:decorative|performative|token|nominal|formulaic)\s+(?:uncertainty|caveat|hedge|caution|qualification)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:caveat|hedge|caution)\s+(?:is|appears?|seems?)\s+(?:decorative|performative|token|nominal|cosmetic|superficial)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:further|more)\s+research\s+(?:is\s+)?needed.*(?:but|yet|however|while|despite)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:caveat|hedge)s?\s+(?:do\s+not|doesn'?t|does\s+not)\s+(?:constrain|limit|qualify)",
+                re.I,
+            ),
         ],
     },
-
     # --- Mechanism vs evidence signals ---
     "mechanism_not_demonstrated": {
         "keywords": [
-            "not demonstrated", "not proven in human",
-            "animal model", "mice", "rodent", "preclinical",
-            "translation gap", "unproven", "not established",
-            "not shown in human", "not demonstrated in human",
-            "preclinical to clinical", "mouse to human",
-            "animal to human", "rodent model",
-            "in vitro", "not yet established in",
+            "not demonstrated",
+            "not proven in human",
+            "animal model",
+            "mice",
+            "rodent",
+            "preclinical",
+            "translation gap",
+            "unproven",
+            "not established",
+            "not shown in human",
+            "not demonstrated in human",
+            "preclinical to clinical",
+            "mouse to human",
+            "animal to human",
+            "rodent model",
+            "in vitro",
+            "not yet established in",
         ],
         "patterns": [
-            re.compile(r"mechanism\s+(?:is\s+)?(?:not|hasn'?t\s+been)\s+(?:demonstrated|established|proven|shown|confirmed)", re.I),
-            re.compile(r"(?:causal|mechanistic)\s+(?:pathway|link|chain|relationship)\s+(?:is\s+)?(?:not|hasn'?t\s+been)\s+(?:demonstrated|established|proven)", re.I),
-            re.compile(r"(?:only|exclusively)\s+(?:shown|demonstrated|tested|proven)\s+in\s+(?:mice|rodents?|animals?|vitro)", re.I),
-            re.compile(r"(?:translat|transfer|extend)(?:e|es|ed|ion)\s+(?:from\s+)?(?:animal|mice|rodent|preclinical)\s+(?:to\s+)?human", re.I),
-            re.compile(r"(?:no|lack\s+of|without)\s+(?:human\s+)?(?:clinical\s+)?(?:evidence|data|trials?|studies)", re.I),
-            re.compile(r"(?:evidence|data)\s+(?:is\s+)?(?:limited\s+to|restricted\s+to|only\s+from)\s+(?:animal|mice|rodent|preclinical)", re.I),
-            re.compile(r"(?:does\s+not|cannot|can'?t)\s+(?:justify|support)\s+(?:a\s+)?(?:causal|mechanistic)\s+(?:claim|interpretation)", re.I),
+            re.compile(
+                r"mechanism\s+(?:is\s+)?(?:not|hasn'?t\s+been)\s+(?:demonstrated|established|proven|shown|confirmed)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:causal|mechanistic)\s+(?:pathway|link|chain|relationship)\s+(?:is\s+)?(?:not|hasn'?t\s+been)\s+(?:demonstrated|established|proven)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:only|exclusively)\s+(?:shown|demonstrated|tested|proven)\s+in\s+(?:mice|rodents?|animals?|vitro)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:translat|transfer|extend)(?:e|es|ed|ion)\s+(?:from\s+)?(?:animal|mice|rodent|preclinical)\s+(?:to\s+)?human",
+                re.I,
+            ),
+            re.compile(
+                r"(?:no|lack\s+of|without)\s+(?:human\s+)?(?:clinical\s+)?(?:evidence|data|trials?|studies)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:evidence|data)\s+(?:is\s+)?(?:limited\s+to|restricted\s+to|only\s+from)\s+(?:animal|mice|rodent|preclinical)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:does\s+not|cannot|can'?t)\s+(?:justify|support)\s+(?:a\s+)?(?:causal|mechanistic)\s+(?:claim|interpretation)",
+                re.I,
+            ),
         ],
     },
-
     # --- Correlation vs causation signals ---
     "correlation_as_causation": {
         "keywords": [
-            "correlation", "causation", "correlat", "causal",
-            "cross-sectional", "observational", "confound",
-            "not causal", "does not prove", "association",
-            "reverse causation", "third variable",
-            "causal claim from correlat", "spurious",
-            "cannot infer causation", "does not establish causation",
+            "correlation",
+            "causation",
+            "correlat",
+            "causal",
+            "cross-sectional",
+            "observational",
+            "confound",
+            "not causal",
+            "does not prove",
+            "association",
+            "reverse causation",
+            "third variable",
+            "causal claim from correlat",
+            "spurious",
+            "cannot infer causation",
+            "does not establish causation",
         ],
         "patterns": [
-            re.compile(r"correlation\s+(?:is\s+)?(?:not|doesn'?t|does\s+not)\s+(?:imply|prove|mean|equal|establish)\s+causation", re.I),
-            re.compile(r"(?:causal|causation)\s+(?:claim|inference|conclusion|interpretation)\s+(?:from|based\s+on)\s+(?:correlat|observat|cross-sectional|survey)", re.I),
-            re.compile(r"(?:treat|present|interpret|equat)(?:s|ed|ing)?\s+(?:a\s+)?(?:correlation|association|observat)\s+(?:as|like)\s+(?:causation|causal)", re.I),
-            re.compile(r"(?:confound|confounder|confounding)\s+(?:variable|factor)s?\s+(?:are\s+)?(?:not\s+)?(?:controlled|accounted|addressed|considered)", re.I),
-            re.compile(r"(?:cross-sectional|observational|survey)\s+(?:data|design|study|evidence)\s+(?:cannot|does\s+not|can'?t)\s+(?:prove|establish|demonstrate)\s+(?:caus)", re.I),
-            re.compile(r"(?:implies?|suggests?|assumes?)\s+causation\s+(?:from|without|despite)\s+(?:only\s+)?(?:correlat|associat|observat)", re.I),
+            re.compile(
+                r"correlation\s+(?:is\s+)?(?:not|doesn'?t|does\s+not)\s+(?:imply|prove|mean|equal|establish)\s+causation",
+                re.I,
+            ),
+            re.compile(
+                r"(?:causal|causation)\s+(?:claim|inference|conclusion|interpretation)\s+(?:from|based\s+on)\s+(?:correlat|observat|cross-sectional|survey)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:treat|present|interpret|equat)(?:s|ed|ing)?\s+(?:a\s+)?(?:correlation|association|observat)\s+(?:as|like)\s+(?:causation|causal)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:confound|confounder|confounding)\s+(?:variable|factor)s?\s+(?:are\s+)?(?:not\s+)?(?:controlled|accounted|addressed|considered)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:cross-sectional|observational|survey)\s+(?:data|design|study|evidence)\s+(?:cannot|does\s+not|can'?t)\s+(?:prove|establish|demonstrate)\s+(?:caus)",
+                re.I,
+            ),
+            re.compile(
+                r"(?:implies?|suggests?|assumes?)\s+causation\s+(?:from|without|despite)\s+(?:only\s+)?(?:correlat|associat|observat)",
+                re.I,
+            ),
         ],
     },
 }
@@ -294,38 +501,82 @@ _FINDING_PATTERNS: dict[str, dict] = {
 
 # Optimistic hedge phrases that may mask weak evidence
 _OPTIMISTIC_HEDGE_PHRASES = [
-    "promising signal", "promising finding", "promising result",
-    "encouraging trend", "encouraging result", "encouraging finding",
-    "suggestive result", "suggestive finding", "suggestive evidence",
-    "may help", "may benefit", "may improve", "may protect",
-    "potentially beneficial", "potentially effective", "potentially helpful",
-    "could help", "could benefit", "could improve",
-    "appears to help", "appears to benefit", "appears to improve",
-    "hopeful", "reason for optimism", "grounds for hope",
+    "promising signal",
+    "promising finding",
+    "promising result",
+    "encouraging trend",
+    "encouraging result",
+    "encouraging finding",
+    "suggestive result",
+    "suggestive finding",
+    "suggestive evidence",
+    "may help",
+    "may benefit",
+    "may improve",
+    "may protect",
+    "potentially beneficial",
+    "potentially effective",
+    "potentially helpful",
+    "could help",
+    "could benefit",
+    "could improve",
+    "appears to help",
+    "appears to benefit",
+    "appears to improve",
+    "hopeful",
+    "reason for optimism",
+    "grounds for hope",
 ]
 
 # Markers indicating the primary/main outcome was null or weak
 _NULL_OUTCOME_MARKERS = [
-    "did not change", "did not affect", "did not improve",
-    "no effect on", "no significant effect", "no statistically significant",
-    "null result", "null finding", "null primary",
-    "primary outcome was null", "primary outcome showed no",
-    "failed to show", "failed to demonstrate", "failed to reach",
-    "no difference in the primary", "no significant difference in primary",
-    "primary endpoint was not met", "did not meet the primary",
+    "did not change",
+    "did not affect",
+    "did not improve",
+    "no effect on",
+    "no significant effect",
+    "no statistically significant",
+    "null result",
+    "null finding",
+    "null primary",
+    "primary outcome was null",
+    "primary outcome showed no",
+    "failed to show",
+    "failed to demonstrate",
+    "failed to reach",
+    "no difference in the primary",
+    "no significant difference in primary",
+    "primary endpoint was not met",
+    "did not meet the primary",
 ]
 
 # Markers indicating strong study limitations
 _STRONG_LIMITATION_MARKERS = [
-    "small sample", "limited sample", "modest sample",
-    "conducted remotely", "remote conduct", "self-report",
-    "after onset", "after infection", "after diagnosis",
-    "short follow-up", "short duration", "brief follow-up",
-    "no blinding", "unblinded", "open-label",
-    "wait-list control", "waitlist control",
-    "single site", "single center", "single centre",
-    "percentage point", "4 percentage", "small absolute",
-    "clinically marginal", "clinically modest",
+    "small sample",
+    "limited sample",
+    "modest sample",
+    "conducted remotely",
+    "remote conduct",
+    "self-report",
+    "after onset",
+    "after infection",
+    "after diagnosis",
+    "short follow-up",
+    "short duration",
+    "brief follow-up",
+    "no blinding",
+    "unblinded",
+    "open-label",
+    "wait-list control",
+    "waitlist control",
+    "single site",
+    "single center",
+    "single centre",
+    "percentage point",
+    "4 percentage",
+    "small absolute",
+    "clinically marginal",
+    "clinically modest",
 ]
 
 # Compiled regex for small effect sizes mentioned with optimism
@@ -347,9 +598,13 @@ def _detect_hedge_overclaim(task: Task, p: AgentResponse) -> dict:
     Returns a dict with detection result and evidence.
     """
     input_text = task.prompt.lower()
-    agent_text = " ".join([
-        p.final_answer, *p.steps, *p.key_claims,
-    ]).lower()
+    agent_text = " ".join(
+        [
+            p.final_answer,
+            *p.steps,
+            *p.key_claims,
+        ]
+    ).lower()
 
     # Score each dimension
     hedge_hits = [ph for ph in _OPTIMISTIC_HEDGE_PHRASES if ph in input_text]
@@ -369,11 +624,21 @@ def _detect_hedge_overclaim(task: Task, p: AgentResponse) -> dict:
 
     # The agent should flag this pattern — did it?
     agent_flagged = any(
-        phrase in agent_text for phrase in [
-            "decorative", "overclaim", "overstated", "exceeds",
-            "beyond the data", "beyond the evidence", "weak finding",
-            "null primary", "small effect", "marginal",
-            "not warranted", "disproportionate", "inflated",
+        phrase in agent_text
+        for phrase in [
+            "decorative",
+            "overclaim",
+            "overstated",
+            "exceeds",
+            "beyond the data",
+            "beyond the evidence",
+            "weak finding",
+            "null primary",
+            "small effect",
+            "marginal",
+            "not warranted",
+            "disproportionate",
+            "inflated",
         ]
     )
 
@@ -395,30 +660,62 @@ def _detect_hedge_overclaim(task: Task, p: AgentResponse) -> dict:
 # ---------------------------------------------------------------------------
 
 _SOLID_FALSE_POSITIVE_KEYWORDS = [
-    "overclaim", "conclusion exceeds", "unsupported generalization",
-    "correlation as causation", "mechanism not demonstrated",
-    "major flaw", "serious error", "fundamental problem",
-    "fabricat", "fraud", "p-hack",
+    "overclaim",
+    "conclusion exceeds",
+    "unsupported generalization",
+    "correlation as causation",
+    "mechanism not demonstrated",
+    "major flaw",
+    "serious error",
+    "fundamental problem",
+    "fabricat",
+    "fraud",
+    "p-hack",
 ]
 
 # v0.6.3: Analytical reference cues — when the agent mentions a keyword
 # as part of its analysis process ("checked for X", "looked for X"),
 # this is NOT a positive finding of X.
 _ANALYTICAL_REFERENCE_CUES = (
-    "checked for ", "check for ", "checking for ",
-    "looked for ", "look for ", "looking for ",
-    "searched for ", "search for ", "searching for ",
-    "tested whether ", "test whether ", "testing whether ",
-    "assessed whether ", "assess whether ", "assessing whether ",
-    "evaluated whether ", "evaluate whether ", "evaluating whether ",
-    "examined for ", "examine for ", "examining for ",
-    "screened for ", "screen for ", "screening for ",
-    "inspected for ", "inspect for ", "inspecting for ",
-    "investigated whether ", "investigate whether ",
-    "considered whether ", "consider whether ",
-    "ruled out ", "rule out ", "ruling out ",
-    "signs of ", "sign of ",
-    "evidence of ", "indication of ", "indications of ",
+    "checked for ",
+    "check for ",
+    "checking for ",
+    "looked for ",
+    "look for ",
+    "looking for ",
+    "searched for ",
+    "search for ",
+    "searching for ",
+    "tested whether ",
+    "test whether ",
+    "testing whether ",
+    "assessed whether ",
+    "assess whether ",
+    "assessing whether ",
+    "evaluated whether ",
+    "evaluate whether ",
+    "evaluating whether ",
+    "examined for ",
+    "examine for ",
+    "examining for ",
+    "screened for ",
+    "screen for ",
+    "screening for ",
+    "inspected for ",
+    "inspect for ",
+    "inspecting for ",
+    "investigated whether ",
+    "investigate whether ",
+    "considered whether ",
+    "consider whether ",
+    "ruled out ",
+    "rule out ",
+    "ruling out ",
+    "signs of ",
+    "sign of ",
+    "evidence of ",
+    "indication of ",
+    "indications of ",
 )
 
 # v0.6.3: Criticism-direction cues — phrases that WEAKEN a claim rather
@@ -426,19 +723,35 @@ _ANALYTICAL_REFERENCE_CUES = (
 # the agent is noting limitations (positive analytical behaviour), not
 # asserting that the study has the flaw.
 _WEAKENING_CUES = (
-    "limited sample", "small sample", "modest sample",
-    "cautious interpretation", "interpreted cautiously", "interpret with caution",
-    "further research needed", "further research is needed",
-    "more research is needed", "additional research needed",
-    "preliminary evidence", "preliminary findings", "preliminary results",
-    "does not establish causality", "does not establish causation",
-    "does not prove causation", "cannot establish causation",
-    "should be interpreted carefully", "interpret carefully",
-    "results are suggestive only", "suggestive but not conclusive",
-    "tentative conclusion", "tentative finding",
-    "acknowledges limitation", "acknowledge limitation",
-    "within appropriate scope", "appropriately scoped",
-    "honest about limitation", "transparent about limitation",
+    "limited sample",
+    "small sample",
+    "modest sample",
+    "cautious interpretation",
+    "interpreted cautiously",
+    "interpret with caution",
+    "further research needed",
+    "further research is needed",
+    "more research is needed",
+    "additional research needed",
+    "preliminary evidence",
+    "preliminary findings",
+    "preliminary results",
+    "does not establish causality",
+    "does not establish causation",
+    "does not prove causation",
+    "cannot establish causation",
+    "should be interpreted carefully",
+    "interpret carefully",
+    "results are suggestive only",
+    "suggestive but not conclusive",
+    "tentative conclusion",
+    "tentative finding",
+    "acknowledges limitation",
+    "acknowledge limitation",
+    "within appropriate scope",
+    "appropriately scoped",
+    "honest about limitation",
+    "transparent about limitation",
 )
 
 
@@ -448,11 +761,13 @@ def _detect_false_positives(p: AgentResponse) -> list[str]:
     v0.6.1: Negation-aware — phrases like "no evidence of overclaiming"
     or "this is not a correlation-as-causation problem" no longer match.
     """
-    all_text = " ".join([
-        p.final_answer,
-        *p.steps,
-        *p.key_claims,
-    ]).lower()
+    all_text = " ".join(
+        [
+            p.final_answer,
+            *p.steps,
+            *p.key_claims,
+        ]
+    ).lower()
 
     found = []
     for kw in _SOLID_FALSE_POSITIVE_KEYWORDS:
@@ -477,7 +792,7 @@ def _detect_false_positives(p: AgentResponse) -> list[str]:
             for sep in (".", ",", ";", "!", "?"):
                 last_sep = before.rfind(sep)
                 if last_sep >= 0:
-                    before = before[last_sep + 1:]
+                    before = before[last_sep + 1 :]
 
             before_words = before.split()
             # Check the last few words for negation cues
@@ -486,7 +801,9 @@ def _detect_false_positives(p: AgentResponse) -> list[str]:
             is_negated = any(cue.strip() in tail for cue in _NEGATION_CUES)
 
             # v0.6.3: Check for analytical reference cues
-            is_analytical = any(cue.strip() in tail for cue in _ANALYTICAL_REFERENCE_CUES)
+            is_analytical = any(
+                cue.strip() in tail for cue in _ANALYTICAL_REFERENCE_CUES
+            )
 
             # v0.6.3: Check for weakening/criticism-direction cues in the
             # surrounding sentence. If the keyword appears in a context where
@@ -504,7 +821,9 @@ def _detect_false_positives(p: AgentResponse) -> list[str]:
                 search_text.find("!", idx + len(kw)),
                 search_text.find("?", idx + len(kw)),
             ]
-            sent_end = min((c for c in sent_end_candidates if c >= 0), default=len(search_text))
+            sent_end = min(
+                (c for c in sent_end_candidates if c >= 0), default=len(search_text)
+            )
             sentence = search_text[sent_start:sent_end].lower()
             is_weakening = any(wc in sentence for wc in _WEAKENING_CUES)
 
@@ -523,6 +842,7 @@ def _detect_false_positives(p: AgentResponse) -> list[str]:
 # ---------------------------------------------------------------------------
 # Label detection
 # ---------------------------------------------------------------------------
+
 
 def _detect_label(p: AgentResponse) -> str | None:
     """Attempt to detect what label the agent assigned.
@@ -547,10 +867,13 @@ def _detect_label(p: AgentResponse) -> str | None:
         return "correlation_vs_causation"
 
     # Single-word labels need negation + analytical reference checks
-    if ("overclaim" in fa or "over-claim" in fa):
-        if (not _is_negated(fa, "overclaim") and not _is_negated(fa, "over-claim")
-                and not _is_analytical_reference(fa, "overclaim")
-                and not _is_analytical_reference(fa, "over-claim")):
+    if "overclaim" in fa or "over-claim" in fa:
+        if (
+            not _is_negated(fa, "overclaim")
+            and not _is_negated(fa, "over-claim")
+            and not _is_analytical_reference(fa, "overclaim")
+            and not _is_analytical_reference(fa, "over-claim")
+        ):
             return "overclaim"
 
     # v0.6.6: "solid" in final_answer — strongest signal for solid classification
@@ -559,22 +882,48 @@ def _detect_label(p: AgentResponse) -> str | None:
 
     # 2. Keyword scoring — final_answer gets full weight, key_claims get 0.5x
     label_keywords = {
-        "solid": ["well-designed", "well designed", "no major issue",
-                  "no significant flaw", "sound methodology",
-                  "methodologically sound", "solid study", "solid reporting"],
-        "overclaim": ["overstated", "exaggerat",
-                      "goes beyond", "exceeds the evidence", "inflated",
-                      "overreach", "unwarranted conclusion"],
-        "mechanism_vs_evidence": ["mechanism vs", "mechanism versus",
-                                  "animal model", "preclinical", "translation gap",
-                                  "mechanism not demonstrated", "not proven in human",
-                                  "not demonstrated in humans"],
-        "correlation_vs_causation": ["correlation treated as", "correlation as causation",
-                                     "correlation is treated as", "correlation mistaken for",
-                                     "does not establish causation",
-                                     "cannot prove causation", "causal claim from",
-                                     "cross-sectional", "merely correlational",
-                                     "only correlational", "associational not causal"],
+        "solid": [
+            "well-designed",
+            "well designed",
+            "no major issue",
+            "no significant flaw",
+            "sound methodology",
+            "methodologically sound",
+            "solid study",
+            "solid reporting",
+        ],
+        "overclaim": [
+            "overstated",
+            "exaggerat",
+            "goes beyond",
+            "exceeds the evidence",
+            "inflated",
+            "overreach",
+            "unwarranted conclusion",
+        ],
+        "mechanism_vs_evidence": [
+            "mechanism vs",
+            "mechanism versus",
+            "animal model",
+            "preclinical",
+            "translation gap",
+            "mechanism not demonstrated",
+            "not proven in human",
+            "not demonstrated in humans",
+        ],
+        "correlation_vs_causation": [
+            "correlation treated as",
+            "correlation as causation",
+            "correlation is treated as",
+            "correlation mistaken for",
+            "does not establish causation",
+            "cannot prove causation",
+            "causal claim from",
+            "cross-sectional",
+            "merely correlational",
+            "only correlational",
+            "associational not causal",
+        ],
     }
 
     # Score final_answer (full weight = 2 per hit)
@@ -620,21 +969,24 @@ def _detect_label(p: AgentResponse) -> str | None:
 # Finding detection — v0.6.1 with pattern families
 # ---------------------------------------------------------------------------
 
+
 def _detect_findings(p: AgentResponse) -> list[str]:
     """Detect which finding types the agent's response mentions.
 
     v0.6.1: Uses both keyword and regex pattern matching for each finding
     type. Either a keyword hit or a pattern match triggers detection.
     """
-    all_text = " ".join([
-        p.final_answer,
-        *p.steps,
-        *p.key_claims,
-        *p.assumptions,
-        *p.alternative_hypotheses,
-        *p.uncertainties,
-        *p.self_check,
-    ]).lower()
+    all_text = " ".join(
+        [
+            p.final_answer,
+            *p.steps,
+            *p.key_claims,
+            *p.assumptions,
+            *p.alternative_hypotheses,
+            *p.uncertainties,
+            *p.self_check,
+        ]
+    ).lower()
 
     detected = []
     for finding_type, config in _FINDING_PATTERNS.items():
@@ -655,6 +1007,7 @@ def _detect_findings(p: AgentResponse) -> list[str]:
 # ---------------------------------------------------------------------------
 # Main checker
 # ---------------------------------------------------------------------------
+
 
 def run_study_forensics_checks(
     task: Task,
@@ -692,7 +1045,9 @@ def run_study_forensics_checks(
     missed = [f for f in expected_finding_types if f not in detected_findings]
     extra = [f for f in detected_findings if f not in expected_finding_types]
 
-    finding_recall = len(matched) / len(expected_finding_types) if expected_finding_types else 1.0
+    finding_recall = (
+        len(matched) / len(expected_finding_types) if expected_finding_types else 1.0
+    )
 
     # Label correctness
     label_correct = (detected_label == gold_label) if detected_label else False
@@ -710,21 +1065,25 @@ def run_study_forensics_checks(
     flags: list[ForensicFlag] = []
 
     if not label_correct:
-        failures.append(FailureInstance(
-            category=FailureCategory.WRONG_ANSWER.value,
-            severity=FailureSeverity.MAJOR.value,
-            description=(
-                f"Study classification incorrect: expected '{gold_label}', "
-                f"detected '{detected_label or 'unknown'}'"
-            ),
-            evidence=[EvidenceSpan(
-                text=parsed.final_answer[:200],
-                source_field="final_answer",
-                relevance="Agent's classification",
-            )],
-            impact_on_score="correctness",
-            confidence="MEDIUM CONFIDENCE",
-        ))
+        failures.append(
+            FailureInstance(
+                category=FailureCategory.WRONG_ANSWER.value,
+                severity=FailureSeverity.MAJOR.value,
+                description=(
+                    f"Study classification incorrect: expected '{gold_label}', "
+                    f"detected '{detected_label or 'unknown'}'"
+                ),
+                evidence=[
+                    EvidenceSpan(
+                        text=parsed.final_answer[:200],
+                        source_field="final_answer",
+                        relevance="Agent's classification",
+                    )
+                ],
+                impact_on_score="correctness",
+                confidence="MEDIUM CONFIDENCE",
+            )
+        )
 
     for m in missed:
         severity = FailureSeverity.MODERATE.value
@@ -733,58 +1092,72 @@ def run_study_forensics_checks(
                 severity = FailureSeverity.MAJOR.value
                 break
 
-        failures.append(FailureInstance(
-            category=FailureCategory.MISSED_KEY_INSIGHT.value,
-            severity=severity,
-            description=f"Missed expected finding: {m}",
-            evidence=[EvidenceSpan(
-                text=f"Expected: {m}",
-                source_field="(task expectation)",
-                relevance=f"Finding '{m}' not detected in agent response",
-            )],
-            impact_on_score="insight_depth",
-            confidence="HEURISTIC",
-        ))
+        failures.append(
+            FailureInstance(
+                category=FailureCategory.MISSED_KEY_INSIGHT.value,
+                severity=severity,
+                description=f"Missed expected finding: {m}",
+                evidence=[
+                    EvidenceSpan(
+                        text=f"Expected: {m}",
+                        source_field="(task expectation)",
+                        relevance=f"Finding '{m}' not detected in agent response",
+                    )
+                ],
+                impact_on_score="insight_depth",
+                confidence="HEURISTIC",
+            )
+        )
 
     for fp in false_positives:
-        failures.append(FailureInstance(
-            category=FailureCategory.OVERCLAIMING.value,
-            severity=FailureSeverity.MAJOR.value,
-            description=f"False positive: agent flagged '{fp}' in a solid case",
-            evidence=[EvidenceSpan(
-                text=parsed.final_answer[:200],
-                source_field="final_answer",
-                relevance="Agent hallucinated a major issue in a solid study",
-            )],
-            impact_on_score="correctness",
-            confidence="MEDIUM CONFIDENCE",
-        ))
+        failures.append(
+            FailureInstance(
+                category=FailureCategory.OVERCLAIMING.value,
+                severity=FailureSeverity.MAJOR.value,
+                description=f"False positive: agent flagged '{fp}' in a solid case",
+                evidence=[
+                    EvidenceSpan(
+                        text=parsed.final_answer[:200],
+                        source_field="final_answer",
+                        relevance="Agent hallucinated a major issue in a solid study",
+                    )
+                ],
+                impact_on_score="correctness",
+                confidence="MEDIUM CONFIDENCE",
+            )
+        )
 
     if extra and gold_label == "solid":
-        flags.append(ForensicFlag(
-            flag_type="study_forensics_overflagging",
-            description=f"Agent raised extra findings in solid case: {', '.join(extra)}",
-            severity="minor",
-        ))
+        flags.append(
+            ForensicFlag(
+                flag_type="study_forensics_overflagging",
+                description=f"Agent raised extra findings in solid case: {', '.join(extra)}",
+                severity="minor",
+            )
+        )
 
     # v0.6.1: Hedge-overclaim flag
     if hedge_result["is_suspicious"] and not hedge_result["agent_flagged"]:
-        flags.append(ForensicFlag(
-            flag_type="hedge_overclaim_undetected",
-            description=(
-                f"Input text contains optimistic hedge language "
-                f"({', '.join(hedge_result['hedge_phrases'][:2])}) "
-                f"combined with "
-                f"{'null outcome markers' if hedge_result['null_outcome_markers'] else 'strong limitations'}"
-                f", but agent did not flag this as overclaim or decorative uncertainty"
-            ),
-            evidence=[EvidenceSpan(
-                text=task.prompt[:200],
-                source_field="(task prompt)",
-                relevance="Hedge + null/weak evidence pattern in input",
-            )],
-            severity="moderate",
-        ))
+        flags.append(
+            ForensicFlag(
+                flag_type="hedge_overclaim_undetected",
+                description=(
+                    f"Input text contains optimistic hedge language "
+                    f"({', '.join(hedge_result['hedge_phrases'][:2])}) "
+                    f"combined with "
+                    f"{'null outcome markers' if hedge_result['null_outcome_markers'] else 'strong limitations'}"
+                    f", but agent did not flag this as overclaim or decorative uncertainty"
+                ),
+                evidence=[
+                    EvidenceSpan(
+                        text=task.prompt[:200],
+                        source_field="(task prompt)",
+                        relevance="Hedge + null/weak evidence pattern in input",
+                    )
+                ],
+                severity="moderate",
+            )
+        )
 
     # Scores
     label_score = 1.0 if label_correct else 0.0

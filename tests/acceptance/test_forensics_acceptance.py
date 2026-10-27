@@ -39,7 +39,9 @@ ACCEPTANCE = (
 
 
 def corpus_case(name):
-    claim, source, record = raw_record(endpoint="functional outcome R", intervention="preparation Z")
+    claim, source, record = raw_record(
+        endpoint="functional outcome R", intervention="preparation Z"
+    )
     ledger = record["phase8"]
     prop = ledger["propositions"][0]
     desc = ledger["evidence_descriptions"][0]
@@ -102,7 +104,9 @@ def corpus_case(name):
     elif name == "unknown_design":
         desc["evidence_type"] = "unknown"
         desc["randomized"] = None
-        source = source.replace("randomized comparison", "comparison of unspecified design")
+        source = source.replace(
+            "randomized comparison", "comparison of unspecified design"
+        )
     elif name == "scientific_unknown":
         prop["reported_verdict"] = "unknown"
         prop["uncertainty"] = ["Material interpretation remains unresolved."]
@@ -118,15 +122,22 @@ def corpus_case(name):
     record["client_findings"][0]["display_claim"] = claim
     for transformation in ledger["transformations"]:
         transformation["from_text"] = claim
-        transformation["to_text"] = prop["search_question"] if transformation["stage"] == "search_question" else claim
-    record["evidence"][0].update(text=source, exact_reference=source,
-                                   endpoint=desc["attributes"]["endpoint"])
+        transformation["to_text"] = (
+            prop["search_question"]
+            if transformation["stage"] == "search_question"
+            else claim
+        )
+    record["evidence"][0].update(
+        text=source, exact_reference=source, endpoint=desc["attributes"]["endpoint"]
+    )
     if name == "lost_required_proposition":
         ledger["propositions"] = []
     elif name == "unbound_source":
         record["evidence"][0]["source_id"] = "not-supplied"
     elif name == "unchecked_summary_explanation":
-        record["client_findings"][0]["client_explanation"] = "This proves universal lasting benefit."
+        record["client_findings"][0]["client_explanation"] = (
+            "This proves universal lasting benefit."
+        )
     return claim, source, None if name == "legacy_absent_analysis" else record
 
 
@@ -138,8 +149,9 @@ class CorpusProvider(BaseProvider):
 
     def send_prompt(self, task, system_prompt):
         assert "AA-P8/1.0" in system_prompt and "target_id" in system_prompt
-        return json.dumps({"final_answer": "solid", "confidence": 1.0,
-                           "forensic_record": self.record})
+        return json.dumps(
+            {"final_answer": "solid", "confidence": 1.0, "forensic_record": self.record}
+        )
 
 
 # AA-P8/1.1 (docs/phase8_9_conflict_addendum.md) is a separately versioned contract; the AA-P8/1.0
@@ -148,9 +160,15 @@ class CorpusProvider(BaseProvider):
 # conflict (effective state unknown) instead of incomplete. These are technical expectation
 # changes; the scientific state and the host derivation of the component are unchanged.
 CONFLICT_ROWS_1_1 = {
-    "observational_causal_claim", "mouse_to_human_benefit", "surrogate_to_clinical_event",
-    "ingredient_to_product", "wrong_comparator", "short_to_long_followup", "within_to_between",
-    "unidentified_controlled_design", "unknown_design",
+    "observational_causal_claim",
+    "mouse_to_human_benefit",
+    "surrogate_to_clinical_event",
+    "ingredient_to_product",
+    "wrong_comparator",
+    "short_to_long_followup",
+    "within_to_between",
+    "unidentified_controlled_design",
+    "unknown_design",
 }
 # The 1.0 component of this row merged the model's UNKNOWN into the derived state; 1.1 keeps the
 # host derivation (supported) separately and records the conflict, closing the unknown bypass.
@@ -161,28 +179,61 @@ def acceptance_1_1():
     rows = []
     for name, technical, scientific, component in ACCEPTANCE:
         conflict = name in CONFLICT_ROWS_1_1 or name in SPLIT_ROWS_1_1
-        rows.append((name, "completed" if name in CONFLICT_ROWS_1_1 else technical, scientific,
-                     SPLIT_ROWS_1_1.get(name, component), conflict))
+        rows.append(
+            (
+                name,
+                "completed" if name in CONFLICT_ROWS_1_1 else technical,
+                scientific,
+                SPLIT_ROWS_1_1.get(name, component),
+                conflict,
+            )
+        )
     return rows
 
 
 def test_aa_p8_1_1_changes_only_technical_status_and_the_split_component():
-    for (name, technical, scientific, component), (_, new_technical, new_scientific, host, conflict) in zip(
-            ACCEPTANCE, acceptance_1_1()):
+    for (name, technical, scientific, component), (
+        _,
+        new_technical,
+        new_scientific,
+        host,
+        conflict,
+    ) in zip(ACCEPTANCE, acceptance_1_1()):
         assert new_scientific == scientific, name
         if name in SPLIT_ROWS_1_1:
-            assert (component, host, new_technical) == ("unknown", "supported", technical)
+            assert (component, host, new_technical) == (
+                "unknown",
+                "supported",
+                technical,
+            )
         elif name in CONFLICT_ROWS_1_1:
-            assert (technical, new_technical, host) == ("incomplete", "completed", component) and conflict
+            assert (technical, new_technical, host) == (
+                "incomplete",
+                "completed",
+                component,
+            ) and conflict
         else:
-            assert (new_technical, host, conflict) == (technical, component, False), name
+            assert (new_technical, host, conflict) == (technical, component, False), (
+                name
+            )
 
 
-@pytest.mark.parametrize("name,technical,scientific,host_component,conflict", acceptance_1_1())
-def test_frozen_offline_acceptance(name, technical, scientific, host_component, conflict):
+@pytest.mark.parametrize(
+    "name,technical,scientific,host_component,conflict", acceptance_1_1()
+)
+def test_frozen_offline_acceptance(
+    name, technical, scientific, host_component, conflict
+):
     claim, context, payload = corpus_case(name)
-    task = Task(id=name, title=name, domain="study_forensics", difficulty="medium",
-                task_type="study_forensics", prompt=claim, context=context)
+    task = Task(
+        id=name,
+        title=name,
+        domain="study_forensics",
+        difficulty="medium",
+        task_type="study_forensics",
+        prompt=claim,
+        context=context,
+    )
     raw = run_agent(CorpusProvider(payload), task)
     assessed = evaluate_result(task, raw).agent_result.phase8
     assert raw.parse_ok and raw.parsed.final_answer == "solid"
@@ -193,9 +244,16 @@ def test_frozen_offline_acceptance(name, technical, scientific, host_component, 
         proposition = assessed["propositions"][0]
         assert proposition["host_state"] == host_component, assessed
         assert proposition["model_host_conflict"] is conflict, assessed
-        assert proposition["derived_state"] == ("unknown" if conflict else host_component), assessed
-        assert proposition["reported_verdict"] == payload["phase8"]["propositions"][0]["reported_verdict"]
-    output = generate_client_report(RunRecord(run_id=name, task=task, results=[evaluate_result(task, raw)]))
+        assert proposition["derived_state"] == (
+            "unknown" if conflict else host_component
+        ), assessed
+        assert (
+            proposition["reported_verdict"]
+            == payload["phase8"]["propositions"][0]["reported_verdict"]
+        )
+    output = generate_client_report(
+        RunRecord(run_id=name, task=task, results=[evaluate_result(task, raw)])
+    )
     assert scientific.upper() in output and technical in output
     if scientific == "unknown":
         assert "🟢 PASS" not in output

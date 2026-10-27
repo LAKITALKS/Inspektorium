@@ -70,6 +70,10 @@ skip_covered = true
 line-length = 88
 target-version = "py311"
 
+[tool.ruff.format]
+# These files are byte-bound to the v0.1.1 evidence package and are never reformatted.
+exclude = ["evidence/**", "src/inspektorium/core/**", "src/inspektorium/report/**", "src/inspektorium/providers/**"]
+
 [tool.ruff.lint]
 select = ["B", "E", "F", "I", "UP"]
 

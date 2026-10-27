@@ -49,7 +49,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
 
-from inspektorium.audit.forensics.forensic_report import canonical_report_bytes, leakage_findings
+from inspektorium.audit.forensics.forensic_report import (
+    canonical_report_bytes,
+    leakage_findings,
+)
 from inspektorium.audit.schemas import (
     ALLOWED_CLIENT_ORIGINS,
     ALLOWED_CLIENT_SCOPES,
@@ -107,7 +110,12 @@ SYSTEM_QA_CODES = (
 )
 
 # The frozen claim taxonomy — QA codes must stay disjoint from it.
-CLAIM_LABELS = ("solid", "overclaim", "correlation_vs_causation", "mechanism_vs_evidence")
+CLAIM_LABELS = (
+    "solid",
+    "overclaim",
+    "correlation_vs_causation",
+    "mechanism_vs_evidence",
+)
 
 # Code → severity. For this slice every gate failure is release-blocking (a wrong
 # binding, a material omission, or a strength escalation each makes the artifact
@@ -132,18 +140,21 @@ BLOCKING_SEVERITIES = (FailureSeverity.CRITICAL, FailureSeverity.MAJOR)
 # Results
 # ---------------------------------------------------------------------------
 
+
 class BindingFinding(BaseModel):
     """One deterministic QA finding from the binding gate."""
+
     code: str
-    severity: str                       # FailureSeverity value
-    check: str                          # which binding check produced it (A..F)
+    severity: str  # FailureSeverity value
+    check: str  # which binding check produced it (A..F)
     detail: str
     client_finding_id: str = ""
-    refs: list[str] = Field(default_factory=list)   # evidence / finding ids involved
+    refs: list[str] = Field(default_factory=list)  # evidence / finding ids involved
 
 
 class BindingResult(BaseModel):
     """Outcome of the final binding gate over a whole record."""
+
     record_id: str = ""
     findings: list[BindingFinding] = Field(default_factory=list)
     releasable: bool = True
@@ -157,6 +168,7 @@ class BindingResult(BaseModel):
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def compute_content_fingerprint(exact_claim_text: str, provenance_state: str) -> str:
     """Recomputable SHA-256 over the frozen claim text + its provenance state.
@@ -177,7 +189,11 @@ def _strength_rank(label: str) -> int | None:
 
 def _coarse_direction(role: EvidenceRole) -> str:
     """Collapse EvidenceRole to a two-valued direction for symmetry accounting."""
-    return "supports_finding" if role == EvidenceRole.SUPPORTING else "opposes_or_qualifies_finding"
+    return (
+        "supports_finding"
+        if role == EvidenceRole.SUPPORTING
+        else "opposes_or_qualifies_finding"
+    )
 
 
 def _unresolved_value_finding(eid: str, cf_id: str) -> BindingFinding:
@@ -185,9 +201,13 @@ def _unresolved_value_finding(eid: str, cf_id: str) -> BindingFinding:
     return BindingFinding(
         code=QA_UNRESOLVED_VALUE_ORIGIN,
         severity=QA_CODE_SEVERITY[QA_UNRESOLVED_VALUE_ORIGIN].value,
-        check="VF", client_finding_id=cf_id, refs=[eid],
-        detail=(f"client-visible value {eid!r} has an unresolved internal value_origin; "
-                f"a missing origin must not be treated as source-reported (fail closed)"),
+        check="VF",
+        client_finding_id=cf_id,
+        refs=[eid],
+        detail=(
+            f"client-visible value {eid!r} has an unresolved internal value_origin; "
+            f"a missing origin must not be treated as source-reported (fail closed)"
+        ),
     )
 
 
@@ -209,6 +229,7 @@ def load_forensic_record(path: str | Path) -> ForensicRecord:
 # ---------------------------------------------------------------------------
 # QA primitive: evidence symmetry
 # ---------------------------------------------------------------------------
+
 
 def check_evidence_symmetry(record: ForensicRecord) -> list[BindingFinding]:
     """First independent 7B QA primitive (deterministic).
@@ -235,7 +256,9 @@ def check_evidence_symmetry(record: ForensicRecord) -> list[BindingFinding]:
         # evidence_symmetry 1.1.0 (Package B, P7-F1): every item the parent finding itself binds
         # as supporting or contrary counts for direction accounting. The producer's material flag
         # is not an opt-out (docs/phase8_semantic_contract.md: applicability from actual objects).
-        parent_ev_ids = set(parent.supporting_evidence_ids) | set(parent.contrary_evidence_ids)
+        parent_ev_ids = set(parent.supporting_evidence_ids) | set(
+            parent.contrary_evidence_ids
+        )
         material_ids = {eid for eid in parent_ev_ids if eid in ev_by_id}
         if not material_ids:
             continue
@@ -246,22 +269,27 @@ def check_evidence_symmetry(record: ForensicRecord) -> list[BindingFinding]:
         missing_dirs = parent_dirs - kept_dirs
         if missing_dirs:
             dropped = sorted(material_ids - kept_ids)
-            findings.append(BindingFinding(
-                code=QA_ASYMMETRIC_EVIDENCE_SELECTION,
-                severity=QA_CODE_SEVERITY[QA_ASYMMETRIC_EVIDENCE_SELECTION].value,
-                check="E",
-                client_finding_id=cf.client_finding_id,
-                refs=dropped,
-                detail=("materially relevant evidence in direction(s) "
+            findings.append(
+                BindingFinding(
+                    code=QA_ASYMMETRIC_EVIDENCE_SELECTION,
+                    severity=QA_CODE_SEVERITY[QA_ASYMMETRIC_EVIDENCE_SELECTION].value,
+                    check="E",
+                    client_finding_id=cf.client_finding_id,
+                    refs=dropped,
+                    detail=(
+                        "materially relevant evidence in direction(s) "
                         f"{sorted(missing_dirs)} was dropped from the client finding "
-                        f"(omitted material ids: {dropped})"),
-            ))
+                        f"(omitted material ids: {dropped})"
+                    ),
+                )
+            )
     return findings
 
 
 # ---------------------------------------------------------------------------
 # QA primitive: derived / source-reported value origin
 # ---------------------------------------------------------------------------
+
 
 def check_value_origin(record: ForensicRecord) -> list[BindingFinding]:
     """Deterministic value-origin QA primitive (Phase-7B slice 2).
@@ -292,32 +320,48 @@ def check_value_origin(record: ForensicRecord) -> list[BindingFinding]:
     ev_by_id = {e.evidence_id: e for e in record.evidence}
 
     def drift(check: str, detail: str, cf_id: str, refs: list[str]) -> None:
-        findings.append(BindingFinding(
-            code=QA_ARTIFACT_SOURCE_BINDING_DRIFT,
-            severity=QA_CODE_SEVERITY[QA_ARTIFACT_SOURCE_BINDING_DRIFT].value,
-            check=check, detail=detail, client_finding_id=cf_id, refs=refs,
-        ))
+        findings.append(
+            BindingFinding(
+                code=QA_ARTIFACT_SOURCE_BINDING_DRIFT,
+                severity=QA_CODE_SEVERITY[QA_ARTIFACT_SOURCE_BINDING_DRIFT].value,
+                check=check,
+                detail=detail,
+                client_finding_id=cf_id,
+                refs=refs,
+            )
+        )
 
     for cf in record.client_findings:
-        flagged_unresolved: set[str] = set()   # dedupe per client finding
+        flagged_unresolved: set[str] = set()  # dedupe per client finding
 
         # (a) explicit per-value origin claims: fail-closed, then categorical compatibility.
         for vc in cf.value_claims:
             ev = ev_by_id.get(vc.evidence_id)
             if ev is None:
-                drift("VA", f"client value claim references unknown evidence "
-                            f"{vc.evidence_id!r}", cf.client_finding_id, [vc.evidence_id])
+                drift(
+                    "VA",
+                    f"client value claim references unknown evidence "
+                    f"{vc.evidence_id!r}",
+                    cf.client_finding_id,
+                    [vc.evidence_id],
+                )
                 continue
             if ev.value_origin not in VALUE_ORIGINS:
                 # FAIL-CLOSED: parent origin unresolved — cannot ship this client value.
                 if vc.evidence_id not in flagged_unresolved:
                     flagged_unresolved.add(vc.evidence_id)
-                    findings.append(_unresolved_value_finding(vc.evidence_id, cf.client_finding_id))
+                    findings.append(
+                        _unresolved_value_finding(vc.evidence_id, cf.client_finding_id)
+                    )
                 continue
             if vc.claimed_origin not in CLIENT_ORIGIN_CLAIMS:
-                drift("VA", f"client value claim on {vc.evidence_id!r} has unknown "
-                            f"claimed_origin {vc.claimed_origin!r}", cf.client_finding_id,
-                      [vc.evidence_id])
+                drift(
+                    "VA",
+                    f"client value claim on {vc.evidence_id!r} has unknown "
+                    f"claimed_origin {vc.claimed_origin!r}",
+                    cf.client_finding_id,
+                    [vc.evidence_id],
+                )
             elif vc.claimed_origin not in ALLOWED_CLIENT_ORIGINS[ev.value_origin]:
                 # Categorical falsification (not a ranking): the client rewrote one
                 # provenance category into the other. Both directions are release-blocking.
@@ -325,24 +369,38 @@ def check_value_origin(record: ForensicRecord) -> list[BindingFinding]:
                     code = QA_MODEL_OUTPUT_TO_LITERATURE_FACT
                 else:  # internal source_reported represented as derived
                     code = QA_SOURCE_REPORTED_TO_MODELLED_FACT
-                findings.append(BindingFinding(
-                    code=code, severity=QA_CODE_SEVERITY[code].value,
-                    check="VB", client_finding_id=cf.client_finding_id,
-                    refs=[vc.evidence_id, ev.value_origin, vc.claimed_origin],
-                    detail=(f"client represents value {vc.evidence_id!r} as "
+                findings.append(
+                    BindingFinding(
+                        code=code,
+                        severity=QA_CODE_SEVERITY[code].value,
+                        check="VB",
+                        client_finding_id=cf.client_finding_id,
+                        refs=[vc.evidence_id, ev.value_origin, vc.claimed_origin],
+                        detail=(
+                            f"client represents value {vc.evidence_id!r} as "
                             f"{vc.claimed_origin!r} but its internal origin is the distinct "
                             f"category {ev.value_origin!r} (provenance may be omitted, not "
-                            f"rewritten into a different origin)"),
-                ))
+                            f"rewritten into a different origin)"
+                        ),
+                    )
+                )
             # invented lineage: attributed sources must lie within the derivation lineage.
             if ev.value_origin == VALUE_ORIGIN_SYSTEM_DERIVED and vc.claimed_source_ids:
-                lineage = {ev_by_id[iid].source_id for iid in ev.input_evidence_ids
-                           if iid in ev_by_id}
+                lineage = {
+                    ev_by_id[iid].source_id
+                    for iid in ev.input_evidence_ids
+                    if iid in ev_by_id
+                }
                 invented = sorted(s for s in vc.claimed_source_ids if s not in lineage)
                 if invented:
-                    drift("VE", f"client attributes derived value {vc.evidence_id!r} to "
-                                f"source(s) {invented} absent from its derivation lineage "
-                                f"{sorted(lineage)}", cf.client_finding_id, invented)
+                    drift(
+                        "VE",
+                        f"client attributes derived value {vc.evidence_id!r} to "
+                        f"source(s) {invented} absent from its derivation lineage "
+                        f"{sorted(lineage)}",
+                        cf.client_finding_id,
+                        invented,
+                    )
 
         # (b) structural integrity of referenced values by origin.
         for eid in cf.referenced_evidence_ids:
@@ -353,22 +411,41 @@ def check_value_origin(record: ForensicRecord) -> list[BindingFinding]:
             if ev.reported_value is not None and ev.value_origin not in VALUE_ORIGINS:
                 if eid not in flagged_unresolved:
                     flagged_unresolved.add(eid)
-                    findings.append(_unresolved_value_finding(eid, cf.client_finding_id))
+                    findings.append(
+                        _unresolved_value_finding(eid, cf.client_finding_id)
+                    )
                 continue
             if ev.value_origin == VALUE_ORIGIN_SOURCE_REPORTED:
                 # A positive provenance claim requires positive source binding.
                 if not ev.source_id:
-                    drift("VC", f"source-reported value {eid!r} has no resolvable source "
-                                f"binding (empty source_id)", cf.client_finding_id, [eid])
+                    drift(
+                        "VC",
+                        f"source-reported value {eid!r} has no resolvable source "
+                        f"binding (empty source_id)",
+                        cf.client_finding_id,
+                        [eid],
+                    )
                 elif not ev.exact_reference:
-                    drift("VC", f"source-reported value {eid!r} has no source locator/span "
-                                f"(exact_reference); source-reported requires positive "
-                                f"binding", cf.client_finding_id, [eid])
+                    drift(
+                        "VC",
+                        f"source-reported value {eid!r} has no source locator/span "
+                        f"(exact_reference); source-reported requires positive "
+                        f"binding",
+                        cf.client_finding_id,
+                        [eid],
+                    )
             if ev.value_origin == VALUE_ORIGIN_SYSTEM_DERIVED:
-                missing = sorted(iid for iid in ev.input_evidence_ids if iid not in ev_by_id)
+                missing = sorted(
+                    iid for iid in ev.input_evidence_ids if iid not in ev_by_id
+                )
                 if missing:
-                    drift("VD", f"system-derived value {eid!r} references unknown input "
-                                f"evidence {missing}", cf.client_finding_id, missing)
+                    drift(
+                        "VD",
+                        f"system-derived value {eid!r} references unknown input "
+                        f"evidence {missing}",
+                        cf.client_finding_id,
+                        missing,
+                    )
     return findings
 
 
@@ -376,13 +453,18 @@ def check_value_origin(record: ForensicRecord) -> list[BindingFinding]:
 # QA primitive: search-scope binding for negative evidence claims
 # ---------------------------------------------------------------------------
 
+
 def _scope_substantiated(scope) -> bool:
     """True iff a SearchScope carries positive machine-readable evidence of a search."""
     if scope.scope_type == SCOPE_REVIEWED_SET:
         return bool(scope.reviewed_source_ids)
     if scope.scope_type == SCOPE_DOCUMENTED_SEARCH:
-        return bool(scope.reviewed_source_ids or scope.resources
-                    or scope.query_terms or scope.date_cutoff)
+        return bool(
+            scope.reviewed_source_ids
+            or scope.resources
+            or scope.query_terms
+            or scope.date_cutoff
+        )
     return False
 
 
@@ -398,10 +480,11 @@ def _resolve_basis(assertion, scope_by_id, ev_ids) -> str | None:
         if scope is None or scope.scope_type not in SEARCH_SCOPE_TYPES:
             return None
         if not _scope_substantiated(scope):
-            return None                          # a claimed search with no record — fail closed
+            return None  # a claimed search with no record — fail closed
         return scope.scope_type
     if assertion.source_local_evidence_ids and all(
-            eid in ev_ids for eid in assertion.source_local_evidence_ids):
+        eid in ev_ids for eid in assertion.source_local_evidence_ids
+    ):
         return SCOPE_SOURCE_LOCAL
     return None
 
@@ -418,8 +501,9 @@ def _source_local_basis_resolves(assertion, ev_by_id) -> bool:
     ids = assertion.source_local_evidence_ids
     if not ids:
         return False
-    return all(ev_by_id.get(eid) is not None and bool(ev_by_id[eid].source_id)
-               for eid in ids)
+    return all(
+        ev_by_id.get(eid) is not None and bool(ev_by_id[eid].source_id) for eid in ids
+    )
 
 
 def _reviewed_set_resolves(assertion, scope_by_id) -> bool:
@@ -469,70 +553,113 @@ def check_search_scope(record: ForensicRecord) -> list[BindingFinding]:
     ev_ids = set(ev_by_id)
 
     def drift(check: str, detail: str, cf_id: str, refs: list[str]) -> None:
-        findings.append(BindingFinding(
-            code=QA_ARTIFACT_SOURCE_BINDING_DRIFT,
-            severity=QA_CODE_SEVERITY[QA_ARTIFACT_SOURCE_BINDING_DRIFT].value,
-            check=check, detail=detail, client_finding_id=cf_id, refs=refs,
-        ))
+        findings.append(
+            BindingFinding(
+                code=QA_ARTIFACT_SOURCE_BINDING_DRIFT,
+                severity=QA_CODE_SEVERITY[QA_ARTIFACT_SOURCE_BINDING_DRIFT].value,
+                check=check,
+                detail=detail,
+                client_finding_id=cf_id,
+                refs=refs,
+            )
+        )
 
     # Internal assertions must bind to a real finding.
     for a in record.negative_assertions:
         if a.finding_id not in find_ids:
-            drift("SA", f"negative assertion {a.assertion_id!r} binds to unknown finding "
-                        f"{a.finding_id!r}", "", [a.assertion_id, a.finding_id])
+            drift(
+                "SA",
+                f"negative assertion {a.assertion_id!r} binds to unknown finding "
+                f"{a.finding_id!r}",
+                "",
+                [a.assertion_id, a.finding_id],
+            )
 
     for cf in record.client_findings:
         for cna in cf.client_negative_assertions:
             a = assertion_by_id.get(cna.assertion_id)
             if a is None:
-                drift("SA", f"client negative assertion references unknown internal "
-                            f"assertion {cna.assertion_id!r}", cf.client_finding_id,
-                      [cna.assertion_id])
+                drift(
+                    "SA",
+                    f"client negative assertion references unknown internal "
+                    f"assertion {cna.assertion_id!r}",
+                    cf.client_finding_id,
+                    [cna.assertion_id],
+                )
                 continue
             if cna.client_scope not in ASSERTION_SCOPES:
-                drift("SA", f"client negative assertion on {cna.assertion_id!r} has unknown "
-                            f"client_scope {cna.client_scope!r}", cf.client_finding_id,
-                      [cna.assertion_id])
+                drift(
+                    "SA",
+                    f"client negative assertion on {cna.assertion_id!r} has unknown "
+                    f"client_scope {cna.client_scope!r}",
+                    cf.client_finding_id,
+                    [cna.assertion_id],
+                )
                 continue
             basis = _resolve_basis(a, scope_by_id, ev_ids)
             if basis is None:
                 # FAIL-CLOSED: no resolvable/substantiated search basis.
-                findings.append(BindingFinding(
-                    code=QA_UNRESOLVED_SEARCH_SCOPE,
-                    severity=QA_CODE_SEVERITY[QA_UNRESOLVED_SEARCH_SCOPE].value,
-                    check="SB", client_finding_id=cf.client_finding_id,
-                    refs=[cna.assertion_id],
-                    detail=(f"client negative assertion {cna.assertion_id!r} claims scope "
+                findings.append(
+                    BindingFinding(
+                        code=QA_UNRESOLVED_SEARCH_SCOPE,
+                        severity=QA_CODE_SEVERITY[QA_UNRESOLVED_SEARCH_SCOPE].value,
+                        check="SB",
+                        client_finding_id=cf.client_finding_id,
+                        refs=[cna.assertion_id],
+                        detail=(
+                            f"client negative assertion {cna.assertion_id!r} claims scope "
                             f"{cna.client_scope!r} but no search basis resolves; missing "
-                            f"search scope is not a global search (fail closed)"),
-                ))
+                            f"search scope is not a global search (fail closed)"
+                        ),
+                    )
+                )
                 continue
             if cna.client_scope not in ALLOWED_CLIENT_SCOPES[basis]:
-                findings.append(BindingFinding(
-                    code=QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION,
-                    severity=QA_CODE_SEVERITY[QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION].value,
-                    check="SC", client_finding_id=cf.client_finding_id,
-                    refs=[cna.assertion_id, basis, cna.client_scope],
-                    detail=(f"client asserts scope {cna.client_scope!r} broader than the "
+                findings.append(
+                    BindingFinding(
+                        code=QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION,
+                        severity=QA_CODE_SEVERITY[
+                            QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION
+                        ].value,
+                        check="SC",
+                        client_finding_id=cf.client_finding_id,
+                        refs=[cna.assertion_id, basis, cna.client_scope],
+                        detail=(
+                            f"client asserts scope {cna.client_scope!r} broader than the "
                             f"documented basis {basis!r} supports (a bounded search is not "
-                            f"evidence of global (non-)existence)"),
-                ))
+                            f"evidence of global (non-)existence)"
+                        ),
+                    )
+                )
                 continue
             # Curator hardening: containment holds, but a narrower scope is valid only if
             # the narrower evidence basis it asserts actually resolves. A narrower label
             # must not silently manufacture a source-local source or a reviewed set.
-            if (cna.client_scope == SCOPE_SOURCE_LOCAL
-                    and not _source_local_basis_resolves(a, ev_by_id)):
-                drift("SD", f"client narrows assertion {cna.assertion_id!r} to "
-                            f"{SCOPE_SOURCE_LOCAL!r} but no concrete source-local evidence "
-                            f"basis resolves (a narrower scope label may not invent a source "
-                            f"basis)", cf.client_finding_id, [cna.assertion_id])
-            elif (cna.client_scope == SCOPE_REVIEWED_SET
-                    and not _reviewed_set_resolves(a, scope_by_id)):
-                drift("SD", f"client narrows assertion {cna.assertion_id!r} to "
-                            f"{SCOPE_REVIEWED_SET!r} but no reviewed source set is represented "
-                            f"(a documented search does not by itself prove an explicit "
-                            f"reviewed set)", cf.client_finding_id, [cna.assertion_id])
+            if (
+                cna.client_scope == SCOPE_SOURCE_LOCAL
+                and not _source_local_basis_resolves(a, ev_by_id)
+            ):
+                drift(
+                    "SD",
+                    f"client narrows assertion {cna.assertion_id!r} to "
+                    f"{SCOPE_SOURCE_LOCAL!r} but no concrete source-local evidence "
+                    f"basis resolves (a narrower scope label may not invent a source "
+                    f"basis)",
+                    cf.client_finding_id,
+                    [cna.assertion_id],
+                )
+            elif cna.client_scope == SCOPE_REVIEWED_SET and not _reviewed_set_resolves(
+                a, scope_by_id
+            ):
+                drift(
+                    "SD",
+                    f"client narrows assertion {cna.assertion_id!r} to "
+                    f"{SCOPE_REVIEWED_SET!r} but no reviewed source set is represented "
+                    f"(a documented search does not by itself prove an explicit "
+                    f"reviewed set)",
+                    cf.client_finding_id,
+                    [cna.assertion_id],
+                )
     return findings
 
 
@@ -540,12 +667,17 @@ def check_search_scope(record: ForensicRecord) -> list[BindingFinding]:
 # QA primitive: finding / artifact binding + summary-strength monotonicity
 # ---------------------------------------------------------------------------
 
-def _binding_drift(check: str, detail: str, cf_id: str = "",
-                   refs: list[str] | None = None) -> BindingFinding:
+
+def _binding_drift(
+    check: str, detail: str, cf_id: str = "", refs: list[str] | None = None
+) -> BindingFinding:
     return BindingFinding(
         code=QA_ARTIFACT_SOURCE_BINDING_DRIFT,
         severity=QA_CODE_SEVERITY[QA_ARTIFACT_SOURCE_BINDING_DRIFT].value,
-        check=check, detail=detail, client_finding_id=cf_id, refs=refs or [],
+        check=check,
+        detail=detail,
+        client_finding_id=cf_id,
+        refs=refs or [],
     )
 
 
@@ -568,50 +700,83 @@ def check_finding_binding(record: ForensicRecord) -> list[BindingFinding]:
         # A — parent finding must exist.
         parent = find_by_id.get(cf.parent_finding_id)
         if parent is None:
-            findings.append(_binding_drift(
-                "A", f"client finding {cf.client_finding_id!r} binds to unknown parent "
-                     f"finding {cf.parent_finding_id!r}", cf.client_finding_id,
-                [cf.parent_finding_id]))
+            findings.append(
+                _binding_drift(
+                    "A",
+                    f"client finding {cf.client_finding_id!r} binds to unknown parent "
+                    f"finding {cf.parent_finding_id!r}",
+                    cf.client_finding_id,
+                    [cf.parent_finding_id],
+                )
+            )
             continue  # remaining parent-dependent checks cannot run
 
-        parent_ev_ids = set(parent.supporting_evidence_ids) | set(parent.contrary_evidence_ids)
+        parent_ev_ids = set(parent.supporting_evidence_ids) | set(
+            parent.contrary_evidence_ids
+        )
 
         # B — referenced evidence must exist.
         for eid in cf.referenced_evidence_ids:
             if eid not in ev_by_id:
-                findings.append(_binding_drift(
-                    "B", f"client finding {cf.client_finding_id!r} references unknown "
-                         f"evidence id {eid!r}", cf.client_finding_id, [eid]))
+                findings.append(
+                    _binding_drift(
+                        "B",
+                        f"client finding {cf.client_finding_id!r} references unknown "
+                        f"evidence id {eid!r}",
+                        cf.client_finding_id,
+                        [eid],
+                    )
+                )
         # C — referenced (existing) evidence must belong to the parent finding's context.
         for eid in cf.referenced_evidence_ids:
             if eid in ev_by_id and eid not in parent_ev_ids:
-                findings.append(_binding_drift(
-                    "C", f"client finding {cf.client_finding_id!r} references evidence "
-                         f"{eid!r} that is not bound to parent finding "
-                         f"{parent.finding_id!r} (evidence used out of context)",
-                    cf.client_finding_id, [eid]))
+                findings.append(
+                    _binding_drift(
+                        "C",
+                        f"client finding {cf.client_finding_id!r} references evidence "
+                        f"{eid!r} that is not bound to parent finding "
+                        f"{parent.finding_id!r} (evidence used out of context)",
+                        cf.client_finding_id,
+                        [eid],
+                    )
+                )
 
         # F — provenance reference must resolve and match the parent's frozen provenance.
         if cf.provenance_id not in prov_ids:
-            findings.append(_binding_drift(
-                "F", f"client finding {cf.client_finding_id!r} references unknown "
-                     f"provenance {cf.provenance_id!r}", cf.client_finding_id,
-                [cf.provenance_id]))
+            findings.append(
+                _binding_drift(
+                    "F",
+                    f"client finding {cf.client_finding_id!r} references unknown "
+                    f"provenance {cf.provenance_id!r}",
+                    cf.client_finding_id,
+                    [cf.provenance_id],
+                )
+            )
         elif cf.provenance_id != parent.provenance_id:
-            findings.append(_binding_drift(
-                "F", f"client finding {cf.client_finding_id!r} resolves to provenance "
-                     f"{cf.provenance_id!r} but its parent finding froze "
-                     f"{parent.provenance_id!r} (provenance mismatch)",
-                cf.client_finding_id, [cf.provenance_id, parent.provenance_id]))
+            findings.append(
+                _binding_drift(
+                    "F",
+                    f"client finding {cf.client_finding_id!r} resolves to provenance "
+                    f"{cf.provenance_id!r} but its parent finding froze "
+                    f"{parent.provenance_id!r} (provenance mismatch)",
+                    cf.client_finding_id,
+                    [cf.provenance_id, parent.provenance_id],
+                )
+            )
     if record.phase8 is not None:
         # Every existing binding entrypoint checks a present semantic payload;
         # clients cannot route an invalid Phase-8 record around the runner.
         from inspektorium.audit.forensics.semantics import evaluate_phase8
+
         assessment = evaluate_phase8(record)
         if assessment.technical_status != "completed":
-            findings.append(_binding_drift(
-                "P8", "Phase-8 output binding incomplete: " + "; ".join(assessment.reasons),
-            ))
+            findings.append(
+                _binding_drift(
+                    "P8",
+                    "Phase-8 output binding incomplete: "
+                    + "; ".join(assessment.reasons),
+                )
+            )
     return findings
 
 
@@ -636,23 +801,37 @@ def check_summary_strength(record: ForensicRecord) -> list[BindingFinding]:
         c_rank = _strength_rank(cf.client_strength)
         p_rank = _strength_rank(parent.allowed_summary_strength)
         if c_rank is None:
-            findings.append(_binding_drift(
-                "D", f"client finding {cf.client_finding_id!r} has unknown "
-                     f"client_strength {cf.client_strength!r}", cf.client_finding_id))
+            findings.append(
+                _binding_drift(
+                    "D",
+                    f"client finding {cf.client_finding_id!r} has unknown "
+                    f"client_strength {cf.client_strength!r}",
+                    cf.client_finding_id,
+                )
+            )
         elif p_rank is None:
-            findings.append(_binding_drift(
-                "D", f"parent finding {parent.finding_id!r} has unknown "
-                     f"allowed_summary_strength {parent.allowed_summary_strength!r}",
-                cf.client_finding_id))
+            findings.append(
+                _binding_drift(
+                    "D",
+                    f"parent finding {parent.finding_id!r} has unknown "
+                    f"allowed_summary_strength {parent.allowed_summary_strength!r}",
+                    cf.client_finding_id,
+                )
+            )
         elif c_rank > p_rank:
-            findings.append(BindingFinding(
-                code=QA_SUMMARY_STRENGTH_ESCALATION,
-                severity=QA_CODE_SEVERITY[QA_SUMMARY_STRENGTH_ESCALATION].value,
-                check="D", client_finding_id=cf.client_finding_id,
-                refs=[cf.client_strength, parent.allowed_summary_strength],
-                detail=(f"client summary strength {cf.client_strength!r} exceeds the parent "
-                        f"finding's allowed strength {parent.allowed_summary_strength!r}"),
-            ))
+            findings.append(
+                BindingFinding(
+                    code=QA_SUMMARY_STRENGTH_ESCALATION,
+                    severity=QA_CODE_SEVERITY[QA_SUMMARY_STRENGTH_ESCALATION].value,
+                    check="D",
+                    client_finding_id=cf.client_finding_id,
+                    refs=[cf.client_strength, parent.allowed_summary_strength],
+                    detail=(
+                        f"client summary strength {cf.client_strength!r} exceeds the parent "
+                        f"finding's allowed strength {parent.allowed_summary_strength!r}"
+                    ),
+                )
+            )
     return findings
 
 
@@ -671,6 +850,7 @@ PHASE7B_ASSURANCE_SCOPE = (
     "internal consistency under the tracked Phase-7B contract. It does not independently "
     "prove that producer-supplied scientific claims are true."
 )
+
 
 # The EXPLICIT, ordered, mandatory Phase-7B representation-QA control set. A future
 # developer adding a release path invokes this registry — a control cannot be silently
@@ -693,7 +873,9 @@ def _symmetry_population(record: ForensicRecord) -> int:
         parent = findings.get(client.parent_finding_id)
         if parent is None:
             continue
-        parent_ids = set(parent.supporting_evidence_ids) | set(parent.contrary_evidence_ids)
+        parent_ids = set(parent.supporting_evidence_ids) | set(
+            parent.contrary_evidence_ids
+        )
         if any(eid in evidence for eid in parent_ids):
             eligible += 1
     return eligible
@@ -714,7 +896,9 @@ def _value_origin_population(record: ForensicRecord) -> int:
 
 
 def _search_scope_population(record: ForensicRecord) -> int:
-    return sum(len(client.client_negative_assertions) for client in record.client_findings)
+    return sum(
+        len(client.client_negative_assertions) for client in record.client_findings
+    )
 
 
 @dataclass(frozen=True)
@@ -728,24 +912,39 @@ class MandatoryGateSpec:
 
 MANDATORY_PHASE7B_GATE_SPECS: tuple[MandatoryGateSpec, ...] = (
     MandatoryGateSpec(
-        "finding_artifact_binding", "1.1.0", "client_findings",
-        check_finding_binding, _client_finding_population,
+        "finding_artifact_binding",
+        "1.1.0",
+        "client_findings",
+        check_finding_binding,
+        _client_finding_population,
     ),
     MandatoryGateSpec(
-        "summary_strength_monotonicity", "1.0.0", "client_findings",
-        check_summary_strength, _client_finding_population,
+        "summary_strength_monotonicity",
+        "1.0.0",
+        "client_findings",
+        check_summary_strength,
+        _client_finding_population,
     ),
     MandatoryGateSpec(
-        "evidence_symmetry", "1.1.0", "client_finding_material_evidence_contexts",
-        check_evidence_symmetry, _symmetry_population,
+        "evidence_symmetry",
+        "1.1.0",
+        "client_finding_material_evidence_contexts",
+        check_evidence_symmetry,
+        _symmetry_population,
     ),
     MandatoryGateSpec(
-        "value_origin_provenance", "1.0.0", "client_visible_evidence_references",
-        check_value_origin, _value_origin_population,
+        "value_origin_provenance",
+        "1.0.0",
+        "client_visible_evidence_references",
+        check_value_origin,
+        _value_origin_population,
     ),
     MandatoryGateSpec(
-        "search_scope_binding", "1.0.0", "client_negative_assertions",
-        check_search_scope, _search_scope_population,
+        "search_scope_binding",
+        "1.0.0",
+        "client_negative_assertions",
+        check_search_scope,
+        _search_scope_population,
     ),
 )
 
@@ -761,7 +960,9 @@ def mandatory_gate_set_fingerprint() -> str:
     payload = {
         "gate_set_id": MANDATORY_PHASE7B_GATE_SET_ID,
         "gate_set_version": MANDATORY_PHASE7B_GATE_SET_VERSION,
-        "implementation_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "implementation_sha256": hashlib.sha256(
+            Path(__file__).read_bytes()
+        ).hexdigest(),
         "gates": [
             {
                 "gate_id": spec.gate_id,
@@ -777,11 +978,15 @@ def mandatory_gate_set_fingerprint() -> str:
     }
     return hashlib.sha256(canonical_report_bytes(payload)).hexdigest()
 
+
 # Deterministic severity roll-up order (worst → least). Reuses the existing
 # FailureSeverity enum; no second severity taxonomy is introduced.
 SEVERITY_ORDER = (
-    FailureSeverity.CRITICAL, FailureSeverity.MAJOR, FailureSeverity.MODERATE,
-    FailureSeverity.MINOR, FailureSeverity.STYLISTIC,
+    FailureSeverity.CRITICAL,
+    FailureSeverity.MAJOR,
+    FailureSeverity.MODERATE,
+    FailureSeverity.MINOR,
+    FailureSeverity.STYLISTIC,
 )
 _SEVERITY_RANK = {s.value: i for i, s in enumerate(SEVERITY_ORDER)}
 
@@ -803,12 +1008,19 @@ def record_fingerprint(record: ForensicRecord) -> str:
 
 def _finding_sort_key(f: BindingFinding) -> tuple:
     """Total, content-based order — stable under irrelevant input-collection reordering."""
-    return (_SEVERITY_RANK.get(f.severity, len(SEVERITY_ORDER)), f.code, f.check,
-            f.client_finding_id, tuple(f.refs), f.detail)
+    return (
+        _SEVERITY_RANK.get(f.severity, len(SEVERITY_ORDER)),
+        f.code,
+        f.check,
+        f.client_finding_id,
+        tuple(f.refs),
+        f.detail,
+    )
 
 
 class CheckRun(BaseModel):
     """Execution and coverage accounting for one mandatory control."""
+
     model_config = ConfigDict(extra="forbid")
 
     name: str
@@ -832,6 +1044,7 @@ class ReleaseReport(BaseModel):
     states the decision with the blocking codes. It is NOT a public benchmark result, a
     client-facing scientific report, or a replacement for Forensic Report 6.3.0.
     """
+
     model_config = ConfigDict(extra="forbid")
 
     release_report_id: str
@@ -856,7 +1069,9 @@ class ReleaseReport(BaseModel):
         return [f.code for f in self.findings]
 
 
-def _severity_rollup(findings: list[BindingFinding]) -> tuple[dict[str, int], bool, list[str]]:
+def _severity_rollup(
+    findings: list[BindingFinding],
+) -> tuple[dict[str, int], bool, list[str]]:
     """Deterministic severity roll-up + frozen release policy (single source of truth).
 
     Counts findings across the full FailureSeverity range and derives releasability from
@@ -872,7 +1087,9 @@ def _severity_rollup(findings: list[BindingFinding]) -> tuple[dict[str, int], bo
     return counts, (not blocking_codes), blocking_codes
 
 
-def _run_mandatory_checks(record: ForensicRecord) -> tuple[list[CheckRun], list[BindingFinding]]:
+def _run_mandatory_checks(
+    record: ForensicRecord,
+) -> tuple[list[CheckRun], list[BindingFinding]]:
     """Run every mandatory control in registry order, collecting ALL findings.
 
     No early exit: an independent failure in one control never suppresses another. Findings
@@ -884,17 +1101,25 @@ def _run_mandatory_checks(record: ForensicRecord) -> tuple[list[CheckRun], list[
     for spec in MANDATORY_PHASE7B_GATE_SPECS:
         try:
             eligible = spec.eligible_count(record)
-            if isinstance(eligible, bool) or not isinstance(eligible, int) or eligible < 0:
+            if (
+                isinstance(eligible, bool)
+                or not isinstance(eligible, int)
+                or eligible < 0
+            ):
                 raise TypeError("eligibility count must be a non-negative integer")
-        except Exception as exc:  # pragma: no cover - exercised through adversarial monkeypatch
-            checks_run.append(CheckRun(
-                name=spec.gate_id,
-                gate_version=spec.gate_version,
-                status="eligibility_unknown",
-                population=spec.population,
-                coverage_state="eligibility_unknown",
-                status_reason=f"{type(exc).__name__}: {exc}",
-            ))
+        except (
+            Exception
+        ) as exc:  # pragma: no cover - exercised through adversarial monkeypatch
+            checks_run.append(
+                CheckRun(
+                    name=spec.gate_id,
+                    gate_version=spec.gate_version,
+                    status="eligibility_unknown",
+                    population=spec.population,
+                    coverage_state="eligibility_unknown",
+                    status_reason=f"{type(exc).__name__}: {exc}",
+                )
+            )
             continue
         try:
             produced = spec.check(record)
@@ -903,42 +1128,52 @@ def _run_mandatory_checks(record: ForensicRecord) -> tuple[list[CheckRun], list[
             ):
                 raise TypeError("gate result must be a list of BindingFinding objects")
         except Exception as exc:  # controlled fail-closed gate execution state
-            checks_run.append(CheckRun(
-                name=spec.gate_id,
-                gate_version=spec.gate_version,
-                status="execution_error",
-                population=spec.population,
-                eligible_count=eligible,
-                evaluated_count=0,
-                unevaluated_count=eligible,
-                coverage_state="incomplete",
-                status_reason=f"{type(exc).__name__}: {exc}",
-            ))
+            checks_run.append(
+                CheckRun(
+                    name=spec.gate_id,
+                    gate_version=spec.gate_version,
+                    status="execution_error",
+                    population=spec.population,
+                    eligible_count=eligible,
+                    evaluated_count=0,
+                    unevaluated_count=eligible,
+                    coverage_state="incomplete",
+                    status_reason=f"{type(exc).__name__}: {exc}",
+                )
+            )
             continue
-        coverage_state = "evaluated_clean" if not produced else "evaluated_with_findings"
+        coverage_state = (
+            "evaluated_clean" if not produced else "evaluated_with_findings"
+        )
         status_reason = ""
         if eligible == 0:
             coverage_state = "zero_eligibility"
             status_reason = "mandatory gate had zero eligible structured objects"
-        checks_run.append(CheckRun(
-            name=spec.gate_id,
-            gate_version=spec.gate_version,
-            status="ran",
-            population=spec.population,
-            eligible_count=eligible,
-            evaluated_count=eligible,
-            finding_count=len(produced),
-            unevaluated_count=0,
-            coverage_state=coverage_state,
-            status_reason=status_reason,
-        ))
+        checks_run.append(
+            CheckRun(
+                name=spec.gate_id,
+                gate_version=spec.gate_version,
+                status="ran",
+                population=spec.population,
+                eligible_count=eligible,
+                evaluated_count=eligible,
+                finding_count=len(produced),
+                unevaluated_count=0,
+                coverage_state=coverage_state,
+                status_reason=status_reason,
+            )
+        )
         findings.extend(produced)
     findings.sort(key=_finding_sort_key)
     return checks_run, findings
 
 
 def release_report_fingerprint(report: ReleaseReport | dict) -> str:
-    payload = report.model_dump(mode="json") if isinstance(report, ReleaseReport) else dict(report)
+    payload = (
+        report.model_dump(mode="json")
+        if isinstance(report, ReleaseReport)
+        else dict(report)
+    )
     payload["release_report_fingerprint"] = ""
     return hashlib.sha256(canonical_report_bytes(payload)).hexdigest()
 
@@ -960,17 +1195,23 @@ def validate_release_report_contract(report: ReleaseReport) -> list[str]:
     if report.assurance_scope != PHASE7B_ASSURANCE_SCOPE:
         errors.append("release assurance scope mismatch")
     observed_identity = [
-        (check.name, check.gate_version, check.population) for check in report.checks_run
+        (check.name, check.gate_version, check.population)
+        for check in report.checks_run
     ]
     expected_identity = [
         (spec.gate_id, spec.gate_version, spec.population) for spec in expected_specs
     ]
     if observed_identity != expected_identity:
-        errors.append("mandatory gate identities, versions, populations, or order mismatch")
+        errors.append(
+            "mandatory gate identities, versions, populations, or order mismatch"
+        )
     allowed_statuses = {"ran", "execution_error", "eligibility_unknown"}
     allowed_coverage = {
-        "evaluated_clean", "evaluated_with_findings", "zero_eligibility",
-        "incomplete", "eligibility_unknown",
+        "evaluated_clean",
+        "evaluated_with_findings",
+        "zero_eligibility",
+        "incomplete",
+        "eligibility_unknown",
     }
     for check in report.checks_run:
         if check.status not in allowed_statuses:
@@ -982,38 +1223,71 @@ def validate_release_report_contract(report: ReleaseReport) -> list[str]:
         if check.unevaluated_count != check.eligible_count - check.evaluated_count:
             errors.append(f"gate {check.name} has inconsistent unevaluated count")
         if check.status == "ran":
-            if check.evaluated_count != check.eligible_count or check.unevaluated_count != 0:
-                errors.append(f"gate {check.name} ran without complete population coverage")
+            if (
+                check.evaluated_count != check.eligible_count
+                or check.unevaluated_count != 0
+            ):
+                errors.append(
+                    f"gate {check.name} ran without complete population coverage"
+                )
             expected_coverage = (
-                "zero_eligibility" if check.eligible_count == 0
-                else "evaluated_with_findings" if check.finding_count
+                "zero_eligibility"
+                if check.eligible_count == 0
+                else "evaluated_with_findings"
+                if check.finding_count
                 else "evaluated_clean"
             )
             if check.coverage_state != expected_coverage:
-                errors.append(f"gate {check.name} coverage state contradicts its counters")
+                errors.append(
+                    f"gate {check.name} coverage state contradicts its counters"
+                )
         elif check.status == "execution_error":
-            if check.evaluated_count != 0 or check.unevaluated_count != check.eligible_count:
-                errors.append(f"gate {check.name} execution error has inconsistent counters")
+            if (
+                check.evaluated_count != 0
+                or check.unevaluated_count != check.eligible_count
+            ):
+                errors.append(
+                    f"gate {check.name} execution error has inconsistent counters"
+                )
             if check.finding_count != 0 or check.coverage_state != "incomplete":
-                errors.append(f"gate {check.name} execution error has inconsistent state")
+                errors.append(
+                    f"gate {check.name} execution error has inconsistent state"
+                )
         elif check.status == "eligibility_unknown":
-            if any((check.eligible_count, check.evaluated_count, check.finding_count,
-                    check.unevaluated_count)):
-                errors.append(f"gate {check.name} unknown eligibility has non-zero counters")
+            if any(
+                (
+                    check.eligible_count,
+                    check.evaluated_count,
+                    check.finding_count,
+                    check.unevaluated_count,
+                )
+            ):
+                errors.append(
+                    f"gate {check.name} unknown eligibility has non-zero counters"
+                )
             if check.coverage_state != "eligibility_unknown":
-                errors.append(f"gate {check.name} unknown eligibility has inconsistent state")
+                errors.append(
+                    f"gate {check.name} unknown eligibility has inconsistent state"
+                )
     if sum(check.finding_count for check in report.checks_run) != len(report.findings):
         errors.append("per-gate finding counts do not match release-report findings")
-    expected_counts, expected_releasable, expected_codes, expected_status, expected_reason = (
-        _decision_from_evidence(report.checks_run, report.findings)
-    )
+    (
+        expected_counts,
+        expected_releasable,
+        expected_codes,
+        expected_status,
+        expected_reason,
+    ) = _decision_from_evidence(report.checks_run, report.findings)
     if report.severity_counts != expected_counts:
         errors.append("release-report severity counts are inconsistent")
     if report.releasable != expected_releasable:
         errors.append("release-report releasable state is inconsistent")
     if report.blocking_codes != expected_codes:
         errors.append("release-report blocking codes are inconsistent")
-    if report.decision_status != expected_status or report.decision_reason != expected_reason:
+    if (
+        report.decision_status != expected_status
+        or report.decision_reason != expected_reason
+    ):
         errors.append("release-report consolidated decision is inconsistent")
     if report.release_report_fingerprint != release_report_fingerprint(report):
         errors.append("release report fingerprint mismatch")
@@ -1024,29 +1298,61 @@ def _decision_from_evidence(
     checks_run: list[CheckRun], findings: list[BindingFinding]
 ) -> tuple[dict[str, int], bool, list[str], str, str]:
     counts, finding_releasable, blocking_codes = _severity_rollup(findings)
-    if any(check.status in {"execution_error", "eligibility_unknown"} for check in checks_run):
-        return counts, False, blocking_codes, "gate_execution_error", (
-            "one or more mandatory gates could not establish and evaluate eligibility"
+    if any(
+        check.status in {"execution_error", "eligibility_unknown"}
+        for check in checks_run
+    ):
+        return (
+            counts,
+            False,
+            blocking_codes,
+            "gate_execution_error",
+            (
+                "one or more mandatory gates could not establish and evaluate eligibility"
+            ),
         )
     if any(check.eligible_count == 0 for check in checks_run):
         names = [check.name for check in checks_run if check.eligible_count == 0]
-        return counts, False, blocking_codes, "zero_eligibility", (
-            "mandatory gate zero eligibility (not evaluated-and-clean): " + ", ".join(names)
+        return (
+            counts,
+            False,
+            blocking_codes,
+            "zero_eligibility",
+            (
+                "mandatory gate zero eligibility (not evaluated-and-clean): "
+                + ", ".join(names)
+            ),
         )
     if any(
         check.evaluated_count != check.eligible_count or check.unevaluated_count != 0
         for check in checks_run
     ):
-        return counts, False, blocking_codes, "incomplete_coverage", (
-            "one or more mandatory gates did not evaluate the complete eligible population"
+        return (
+            counts,
+            False,
+            blocking_codes,
+            "incomplete_coverage",
+            (
+                "one or more mandatory gates did not evaluate the complete eligible population"
+            ),
         )
     if not finding_releasable:
         n = sum(counts[severity.value] for severity in BLOCKING_SEVERITIES)
-        return counts, False, blocking_codes, "not_releasable", (
-            f"blocked by {n} critical/major finding(s): {', '.join(blocking_codes)}"
+        return (
+            counts,
+            False,
+            blocking_codes,
+            "not_releasable",
+            (f"blocked by {n} critical/major finding(s): {', '.join(blocking_codes)}"),
         )
-    return counts, True, blocking_codes, "releasable", (
-        "all mandatory gates evaluated non-zero eligible populations with no blocking findings"
+    return (
+        counts,
+        True,
+        blocking_codes,
+        "releasable",
+        (
+            "all mandatory gates evaluated non-zero eligible populations with no blocking findings"
+        ),
     )
 
 
@@ -1091,7 +1397,9 @@ def evaluate_artifact_release(record: ForensicRecord) -> ReleaseReport:
     return report
 
 
-def validate_release_report(report: ReleaseReport, record: ForensicRecord) -> tuple[bool, list[str]]:
+def validate_release_report(
+    report: ReleaseReport, record: ForensicRecord
+) -> tuple[bool, list[str]]:
     """Re-execute the current tracked gate contract and compare the complete report."""
     expected = evaluate_artifact_release(record)
     errors = validate_release_report_contract(report)
@@ -1110,13 +1418,18 @@ def final_binding_check(record: ForensicRecord) -> BindingResult:
     """
     _checks_run, findings = _run_mandatory_checks(record)
     if not record.findings or not record.client_findings or not record.provenance:
-        findings.append(_binding_drift(
-            "coverage", "Required claim/finding/client population is empty; no binding proof ran.",
-        ))
+        findings.append(
+            _binding_drift(
+                "coverage",
+                "Required claim/finding/client population is empty; no binding proof ran.",
+            )
+        )
     counts, releasable, _blocking = _severity_rollup(findings)
     releasable = releasable and all(check.status == "ran" for check in _checks_run)
     return BindingResult(
-        record_id=record.record_id, findings=findings, releasable=releasable,
+        record_id=record.record_id,
+        findings=findings,
+        releasable=releasable,
         blocker_count=counts[FailureSeverity.CRITICAL.value],
         major_count=counts[FailureSeverity.MAJOR.value],
     )

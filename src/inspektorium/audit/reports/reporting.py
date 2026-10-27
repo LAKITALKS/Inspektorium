@@ -101,11 +101,16 @@ def _best_result(results: list[EvaluatedResult]) -> EvaluatedResult | None:
     return max(results, key=lambda r: r.scores.total)
 
 
-def _overall_status(results: list[EvaluatedResult], phase9: dict | None = None) -> tuple[str, str]:
+def _overall_status(
+    results: list[EvaluatedResult], phase9: dict | None = None
+) -> tuple[str, str]:
     if not results:
         return "unknown", "No results available"
-    if phase9 is not None and (phase9.get("route") != "AUTO_RESOLVABLE"
-                              or phase9.get("history_validation") == "invalid" or phase9.get("mandatory")):
+    if phase9 is not None and (
+        phase9.get("route") != "AUTO_RESOLVABLE"
+        or phase9.get("history_validation") == "invalid"
+        or phase9.get("mandatory")
+    ):
         return "unknown", "Phase-9 case review is unresolved or its history is invalid"
 
     best = _best_result(results)
@@ -122,19 +127,39 @@ def _overall_status(results: list[EvaluatedResult], phase9: dict | None = None) 
 
     if critical_failures:
         return "critical", "Critical issues found — review required before use"
-    forensic = [r for r in results if r.agent_result.phase8 or r.study_forensics.get("is_study_forensics")]
+    forensic = [
+        r
+        for r in results
+        if r.agent_result.phase8 or r.study_forensics.get("is_study_forensics")
+    ]
     if forensic:
-        if any(r.agent_result.phase9.get("route") != "AUTO_RESOLVABLE" for r in forensic):
+        if any(
+            r.agent_result.phase9.get("route") != "AUTO_RESOLVABLE" for r in forensic
+        ):
             return "unknown", "Phase-9 mandatory review is unresolved or not executed"
         assessments = [phase8_view(r.agent_result.phase8) for r in forensic]
-        if any(a["technical_status"] != "completed" or a["composite_state"] == "unknown"
-               for a in assessments):
-            return "unknown", "Phase-8 support is UNKNOWN or has not been completely assessed"
-        if any(a.get("taxonomy", {}).get("technical_status") != "completed"
-               or a.get("derived_label") is None for a in assessments):
-            return "unknown", "Phase-8 classification is UNKNOWN or has not been completely assessed"
+        if any(
+            a["technical_status"] != "completed" or a["composite_state"] == "unknown"
+            for a in assessments
+        ):
+            return (
+                "unknown",
+                "Phase-8 support is UNKNOWN or has not been completely assessed",
+            )
+        if any(
+            a.get("taxonomy", {}).get("technical_status") != "completed"
+            or a.get("derived_label") is None
+            for a in assessments
+        ):
+            return (
+                "unknown",
+                "Phase-8 classification is UNKNOWN or has not been completely assessed",
+            )
         if any(a["composite_state"] != "supported" for a in assessments):
-            return "caution", "The claim is not supported as a whole; see the component assessments"
+            return (
+                "caution",
+                "The claim is not supported as a whole; see the component assessments",
+            )
     if score >= 75:
         return "good", "Analysis appears sound — minor issues only"
     if score >= 50:
@@ -157,6 +182,7 @@ def _status_indicator(status: str) -> str:
 # Section builders — Markdown
 # ---------------------------------------------------------------------------
 
+
 def _section_executive_summary(record: RunRecord) -> str:
     task = record.task
     results = record.results
@@ -178,17 +204,19 @@ def _section_executive_summary(record: RunRecord) -> str:
     if task.task_family:
         lines.append(f"**Category:** {_label(task.task_family)}  ")
 
-    lines.extend([
-        "",
-        "---",
-        "",
-        "## 1. Executive Summary",
-        "",
-        f"### Overall Assessment: {_status_indicator(status)}",
-        "",
-        f"> {status_text}",
-        "",
-    ])
+    lines.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 1. Executive Summary",
+            "",
+            f"### Overall Assessment: {_status_indicator(status)}",
+            "",
+            f"> {status_text}",
+            "",
+        ]
+    )
 
     if best:
         lines.append(f"**Overall score:** {best.scores.total:.0f} / 100  ")
@@ -200,7 +228,11 @@ def _section_executive_summary(record: RunRecord) -> str:
         lines.append(f"**Models tested:** {', '.join(agents)}  ")
 
     # Study forensics classification
-    sf_results = [r for r in results if r.study_forensics and r.study_forensics.get("is_study_forensics")]
+    sf_results = [
+        r
+        for r in results
+        if r.study_forensics and r.study_forensics.get("is_study_forensics")
+    ]
     if sf_results:
         labels = set()
         for r in sf_results:
@@ -209,7 +241,9 @@ def _section_executive_summary(record: RunRecord) -> str:
                 labels.add(detected)
         if labels:
             label_strs = [f"`{label}`" for label in sorted(labels)]
-            lines.append(f"**Original model classification:** {', '.join(label_strs)}  ")
+            lines.append(
+                f"**Original model classification:** {', '.join(label_strs)}  "
+            )
         for result in sf_results:
             lines.append(render_phase8(result.agent_result.phase8))
 
@@ -238,7 +272,9 @@ def _extract_top_findings(
 
     for r in results:
         for f in r.failures:
-            sev_idx = SEVERITY_ORDER.index(f.severity) if f.severity in SEVERITY_ORDER else 4
+            sev_idx = (
+                SEVERITY_ORDER.index(f.severity) if f.severity in SEVERITY_ORDER else 4
+            )
             findings.append((sev_idx, f.severity, f.category, f.description))
 
     findings.sort(key=lambda x: x[0])
@@ -255,30 +291,33 @@ def _extract_top_findings(
     return deduped
 
 
-def _extract_recommendations(
-    results: list[EvaluatedResult], status: str
-) -> list[str]:
+def _extract_recommendations(results: list[EvaluatedResult], status: str) -> list[str]:
     recs: list[str] = []
 
-    has_critical = any(
-        f.severity == "critical" for r in results for f in r.failures
-    )
+    has_critical = any(f.severity == "critical" for r in results for f in r.failures)
     has_contradictions = any(
-        f.category == "verbal_numeric_contradiction" for r in results for f in r.failures
+        f.category == "verbal_numeric_contradiction"
+        for r in results
+        for f in r.failures
     )
     has_overclaim = any(
         f.category == "overclaiming" or f.category == "unsupported_conclusion"
-        for r in results for f in r.failures
+        for r in results
+        for f in r.failures
     )
 
     if has_critical:
         recs.append("Address critical issues before publication or further use.")
     if has_contradictions:
-        recs.append("Resolve numeric/verbal contradictions — these undermine credibility.")
+        recs.append(
+            "Resolve numeric/verbal contradictions — these undermine credibility."
+        )
     if has_overclaim:
         recs.append("Review and temper unsupported claims.")
     if status == "good":
-        recs.append("No blocking issues found. Minor refinements may still improve quality.")
+        recs.append(
+            "No blocking issues found. Minor refinements may still improve quality."
+        )
     if not recs:
         recs.append("Review findings below and address issues by severity.")
 
@@ -289,6 +328,7 @@ def _extract_recommendations(
 # Section 2: Key Findings
 # ---------------------------------------------------------------------------
 
+
 def _section_key_findings(record: RunRecord) -> str:
     results = record.results
     all_failures: list[tuple[EvaluatedResult, FailureInstance]] = []
@@ -297,15 +337,21 @@ def _section_key_findings(record: RunRecord) -> str:
             all_failures.append((r, f))
 
     if not all_failures:
-        return "\n".join([
-            "",
-            "## 2. Key Findings",
-            "",
-            "No significant findings detected.",
-        ])
+        return "\n".join(
+            [
+                "",
+                "## 2. Key Findings",
+                "",
+                "No significant findings detected.",
+            ]
+        )
 
     all_failures.sort(
-        key=lambda x: SEVERITY_ORDER.index(x[1].severity) if x[1].severity in SEVERITY_ORDER else 4
+        key=lambda x: (
+            SEVERITY_ORDER.index(x[1].severity)
+            if x[1].severity in SEVERITY_ORDER
+            else 4
+        )
     )
 
     lines = ["", "## 2. Key Findings", ""]
@@ -328,7 +374,7 @@ def _section_key_findings(record: RunRecord) -> str:
             lines.append("**Evidence:**")
             for ev in f.evidence[:2]:
                 text = ev.text.replace("\n", " ")[:200]
-                lines.append(f"> `{ev.source_field}`: \"{text}\"")
+                lines.append(f'> `{ev.source_field}`: "{text}"')
         lines.append("")
 
     # Study forensics findings
@@ -340,7 +386,11 @@ def _section_key_findings(record: RunRecord) -> str:
 
 
 def _section_study_forensics_findings(results: list[EvaluatedResult]) -> str:
-    sf_results = [r for r in results if r.study_forensics and r.study_forensics.get("is_study_forensics")]
+    sf_results = [
+        r
+        for r in results
+        if r.study_forensics and r.study_forensics.get("is_study_forensics")
+    ]
     if not sf_results:
         return ""
 
@@ -353,7 +403,9 @@ def _section_study_forensics_findings(results: list[EvaluatedResult]) -> str:
         label_ok = sf.get("label_correct", False)
 
         lines.append(f"**Agent:** {_agent_name(r)}  ")
-        lines.append(f"**Original classification:** `{detected}` {'✅' if label_ok else '❌'}  ")
+        lines.append(
+            f"**Original classification:** `{detected}` {'✅' if label_ok else '❌'}  "
+        )
         lines.append(render_phase8(r.agent_result.phase8))
         if gold:
             lines.append(f"**Expected:** {_label(gold)}  ")
@@ -379,6 +431,7 @@ def _section_study_forensics_findings(results: list[EvaluatedResult]) -> str:
 # ---------------------------------------------------------------------------
 # Section 3: Recommendations
 # ---------------------------------------------------------------------------
+
 
 def _section_recommendations(record: RunRecord) -> str:
     results = record.results
@@ -406,7 +459,9 @@ def _section_recommendations(record: RunRecord) -> str:
             val = getattr(best.scores, dim_name)
             if val >= 0.7:
                 label = dim_name.replace("_", " ").title()
-                stable.append(f"{label} ({best.scores.weighted(dim_name):.0f}/{weight})")
+                stable.append(
+                    f"{label} ({best.scores.weighted(dim_name):.0f}/{weight})"
+                )
 
     if critical:
         lines.append("### Must Fix Before Use")
@@ -437,18 +492,27 @@ def _section_recommendations(record: RunRecord) -> str:
         lines.append("")
 
     phase8_pending = any(
-        r.agent_result.phase8 and (
+        r.agent_result.phase8
+        and (
             r.agent_result.phase8.get("technical_status") != "completed"
             or r.agent_result.phase8.get("composite_state") != "supported"
             or r.agent_result.phase8.get("derived_label") is None
-        ) for r in results
+        )
+        for r in results
     )
     phase9 = record.metadata.get("phase9")
-    if phase9 is not None and (phase9.get("route") != "AUTO_RESOLVABLE"
-                              or phase9.get("history_validation") == "invalid" or phase9.get("mandatory")):
-        lines.append("Resolve the Phase-9 case review and history validation before relying on this analysis.")
+    if phase9 is not None and (
+        phase9.get("route") != "AUTO_RESOLVABLE"
+        or phase9.get("history_validation") == "invalid"
+        or phase9.get("mandatory")
+    ):
+        lines.append(
+            "Resolve the Phase-9 case review and history validation before relying on this analysis."
+        )
     elif phase8_pending:
-        lines.append("Resolve the Phase-8 limitations before treating the claim as supported.")
+        lines.append(
+            "Resolve the Phase-8 limitations before treating the claim as supported."
+        )
     elif not critical and not major and not borderline:
         lines.append("No significant changes required. Analysis appears sound.")
         lines.append("")
@@ -459,6 +523,7 @@ def _section_recommendations(record: RunRecord) -> str:
 # ---------------------------------------------------------------------------
 # Section 4: Method Note
 # ---------------------------------------------------------------------------
+
 
 def _section_method_note(record: RunRecord) -> str:
     task = record.task
@@ -502,16 +567,18 @@ def _section_method_note(record: RunRecord) -> str:
                 lines.append(f"- **{cat}**: {label}")
         lines.append("")
 
-    lines.extend([
-        "### Confidence Levels",
-        "",
-        "Findings are tagged with confidence levels:",
-        "",
-        "- **HIGH CONFIDENCE**: Deterministic or numerically verified",
-        "- **MEDIUM CONFIDENCE**: Grounded heuristic with supporting evidence",
-        "- **HEURISTIC**: Pattern-based detection, may require manual review",
-        "",
-    ])
+    lines.extend(
+        [
+            "### Confidence Levels",
+            "",
+            "Findings are tagged with confidence levels:",
+            "",
+            "- **HIGH CONFIDENCE**: Deterministic or numerically verified",
+            "- **MEDIUM CONFIDENCE**: Grounded heuristic with supporting evidence",
+            "- **HEURISTIC**: Pattern-based detection, may require manual review",
+            "",
+        ]
+    )
 
     return "\n".join(lines)
 
@@ -519,6 +586,7 @@ def _section_method_note(record: RunRecord) -> str:
 # ---------------------------------------------------------------------------
 # Section 5: Technical Appendix
 # ---------------------------------------------------------------------------
+
 
 def _section_technical_appendix(record: RunRecord) -> str:
     results = record.results
@@ -564,7 +632,9 @@ def _appendix_score_matrix(results: list[EvaluatedResult]) -> list[str]:
     dims = list(DIAGNOSTIC_WEIGHTS.keys())
     lines = ["### Score Matrix", ""]
 
-    header = "| Dimension | Weight | " + " | ".join(_agent_name(r) for r in results) + " |"
+    header = (
+        "| Dimension | Weight | " + " | ".join(_agent_name(r) for r in results) + " |"
+    )
     sep = "|" + "|".join(["---"] * (len(results) + 2)) + "|"
     lines.extend([header, sep])
 
@@ -599,7 +669,9 @@ def _appendix_agent_detail(r: EvaluatedResult) -> list[str]:
         p = r.agent_result.parsed
         conf = confidence_value_if_valid(p.confidence, p.confidence_state)
         if conf is None:
-            lines.append(f"**Agent confidence:** unavailable ({p.confidence_state or 'UNKNOWN'})  ")
+            lines.append(
+                f"**Agent confidence:** unavailable ({p.confidence_state or 'UNKNOWN'})  "
+            )
         else:
             conf_tag = " `[UNKALIBRIERT]`" if conf > 0 else ""
             lines.append(f"**Agent confidence:** {conf:.0%}{conf_tag}  ")
@@ -616,9 +688,15 @@ def _appendix_agent_detail(r: EvaluatedResult) -> list[str]:
 
     # Claim check summary
     if r.claim_check_results:
-        supported = sum(1 for c in r.claim_check_results if c.truth_status.value == "supported")
-        contradicted = sum(1 for c in r.claim_check_results if c.truth_status.value == "contradicted")
-        lines.append(f"**Claims verified:** {supported} supported, {contradicted} contradicted  ")
+        supported = sum(
+            1 for c in r.claim_check_results if c.truth_status.value == "supported"
+        )
+        contradicted = sum(
+            1 for c in r.claim_check_results if c.truth_status.value == "contradicted"
+        )
+        lines.append(
+            f"**Claims verified:** {supported} supported, {contradicted} contradicted  "
+        )
 
     # Mechanism analysis
     ma = r.mechanism_analysis
@@ -687,7 +765,7 @@ def _appendix_forensic_flags(results: list[EvaluatedResult]) -> list[str]:
             lines.append(f"- {sev} `{ff.flag_type}`: {ff.description}")
             for ev in ff.evidence[:1]:
                 text = ev.text.replace("\n", " ")[:150]
-                lines.append(f"  > `{ev.source_field}`: \"{text}\"")
+                lines.append(f'  > `{ev.source_field}`: "{text}"')
         lines.append("")
 
     return lines
@@ -758,11 +836,14 @@ def _appendix_task_metadata(task) -> list[str]:
 # Main entry point — Markdown
 # ---------------------------------------------------------------------------
 
+
 def generate_client_report(record: RunRecord) -> str:
     """Generate a diagnostic client-style preview, never an official release."""
     from inspektorium.audit.forensics.pipeline import refresh_run_phase8
+
     record = refresh_run_phase8(record)
     from inspektorium.audit.review.pipeline import refresh_run_phase9, render_phase9
+
     record = refresh_run_phase9(record)
     diagnostic_header = [
         "> **DIAGNOSTIC / NON-RELEASE ARTIFACT — NOT OFFICIALLY RELEASE-AUTHORIZED**",
@@ -771,7 +852,9 @@ def generate_client_report(record: RunRecord) -> str:
         "",
     ]
     sections = [
-        render_phase9(record.metadata.get("phase9")) if record.task.task_type == TaskType.STUDY_FORENSICS else "",
+        render_phase9(record.metadata.get("phase9"))
+        if record.task.task_type == TaskType.STUDY_FORENSICS
+        else "",
         _section_executive_summary(record),
         _section_key_findings(record),
         _section_recommendations(record),
@@ -947,11 +1030,12 @@ def _md_to_html(md: str) -> str:
 
     def _inline(text: str) -> str:
         import re
+
         text = html_module.escape(text)
-        text = re.sub(r'`\[([^\]]+)\]`', r'<code>[\1]</code>', text)
-        text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
-        text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
-        text = re.sub(r'\*([^*]+)\*', r'<em>\1</em>', text)
+        text = re.sub(r"`\[([^\]]+)\]`", r"<code>[\1]</code>", text)
+        text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
+        text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+        text = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", text)
         text = text.replace("  ", "<br>")
         return text
 
@@ -1002,11 +1086,17 @@ def _md_to_html(md: str) -> str:
             text = stripped.split(". ", 1)[1]
             html_lines.append(f"<li>{_inline(text)}</li>")
         elif stripped.startswith("  > "):
-            html_lines.append(f"<blockquote><p>{_inline(stripped[4:])}</p></blockquote>")
+            html_lines.append(
+                f"<blockquote><p>{_inline(stripped[4:])}</p></blockquote>"
+            )
         elif stripped == "":
             _close_list()
             html_lines.append("")
-        elif stripped.startswith("*") and stripped.endswith("*") and not stripped.startswith("**"):
+        elif (
+            stripped.startswith("*")
+            and stripped.endswith("*")
+            and not stripped.startswith("**")
+        ):
             _close_list()
             html_lines.append(f"<p><em>{_inline(stripped[1:-1])}</em></p>")
         else:
@@ -1031,15 +1121,20 @@ def _render_table(rows: list[str], html_lines: list[str]) -> None:
 
     # Skip separator row
     data_start = 1
-    if len(rows) > 1 and all(c.strip().replace("-", "").replace(":", "") == "" for c in _cells(rows[1])):
+    if len(rows) > 1 and all(
+        c.strip().replace("-", "").replace(":", "") == "" for c in _cells(rows[1])
+    ):
         data_start = 2
 
     html_lines.append("<table>")
     html_lines.append("<thead><tr>")
     for cell in header:
         import re
-        cell = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', html_module.escape(cell))
-        cell = re.sub(r'`([^`]+)`', r'<code>\1</code>', cell)
+
+        cell = re.sub(
+            r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", html_module.escape(cell)
+        )
+        cell = re.sub(r"`([^`]+)`", r"<code>\1</code>", cell)
         html_lines.append(f"  <th>{cell}</th>")
     html_lines.append("</tr></thead>")
 
@@ -1049,8 +1144,11 @@ def _render_table(rows: list[str], html_lines: list[str]) -> None:
         html_lines.append("<tr>")
         for cell in cells:
             import re
-            cell = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', html_module.escape(cell))
-            cell = re.sub(r'`([^`]+)`', r'<code>\1</code>', cell)
+
+            cell = re.sub(
+                r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", html_module.escape(cell)
+            )
+            cell = re.sub(r"`([^`]+)`", r"<code>\1</code>", cell)
             html_lines.append(f"  <td>{cell}</td>")
         html_lines.append("</tr>")
     html_lines.append("</tbody>")
@@ -1069,21 +1167,25 @@ def generate_html_report(record: RunRecord) -> str:
 # PDF rendering (optional — requires weasyprint)
 # ---------------------------------------------------------------------------
 
+
 def generate_pdf_report(record: RunRecord, output_path: Path) -> Path:
     """Generate a diagnostic/non-release PDF. Requires weasyprint to be installed.
 
     Raises ImportError if weasyprint is not available.
     """
-    from inspektorium.audit.integrity.release_boundary import is_authoritative_release_path
+    from inspektorium.audit.integrity.release_boundary import (
+        is_authoritative_release_path,
+    )
 
     if is_authoritative_release_path(output_path):
-        raise ValueError("diagnostic renderer cannot write into the official release namespace")
+        raise ValueError(
+            "diagnostic renderer cannot write into the official release namespace"
+        )
     try:
         from weasyprint import HTML as WeasyprintHTML
     except ImportError:
         raise ImportError(
-            "PDF generation requires weasyprint. "
-            "Install with: pip install weasyprint"
+            "PDF generation requires weasyprint. Install with: pip install weasyprint"
         )
 
     html_content = generate_html_report(record)
@@ -1096,6 +1198,7 @@ def pdf_available() -> bool:
     """Check if PDF generation is available."""
     try:
         import weasyprint  # noqa: F401
+
         return True
     except ImportError:
         return False

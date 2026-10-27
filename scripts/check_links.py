@@ -20,7 +20,9 @@ from urllib.parse import unquote, urlsplit
 
 FENCE = re.compile(r"^(```|~~~)")
 INLINE_CODE = re.compile(r"`[^`\n]*`")
-INLINE_LINK = re.compile(r"!?\[(?:[^\[\]]|\[[^\]]*\])*\]\(\s*<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\s*\)")
+INLINE_LINK = re.compile(
+    r"!?\[(?:[^\[\]]|\[[^\]]*\])*\]\(\s*<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\s*\)"
+)
 REFERENCE_LINK = re.compile(r"!?\[(?:[^\[\]]|\[[^\]]*\])*\]\[([^\]]+)\]")
 DEFINITION = re.compile(r"^\s{0,3}\[([^\]]+)\]:\s*<?(\S+?)>?(?:\s+.*)?$")
 AUTOLINK = re.compile(r"<(https?://[^>\s]+)>")
@@ -79,7 +81,9 @@ def scan(path: Path) -> tuple[list[tuple[int, str]], set[str]]:
         visible = INLINE_CODE.sub("", line)
         links += [(number, target) for target in INLINE_LINK.findall(visible)]
         links += [(number, target) for target in AUTOLINK.findall(visible)]
-        references += [(number, name.lower()) for name in REFERENCE_LINK.findall(visible)]
+        references += [
+            (number, name.lower()) for name in REFERENCE_LINK.findall(visible)
+        ]
     for number, name in references:
         if name in definitions:
             links.append(definitions[name])
@@ -90,9 +94,15 @@ def scan(path: Path) -> tuple[list[tuple[int, str]], set[str]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--external", action="store_true", help="also request http(s) links")
-    parser.add_argument("--strict-external", action="store_true", help="fail on external errors")
+    parser.add_argument(
+        "--root", type=Path, default=Path(__file__).resolve().parents[1]
+    )
+    parser.add_argument(
+        "--external", action="store_true", help="also request http(s) links"
+    )
+    parser.add_argument(
+        "--strict-external", action="store_true", help="fail on external errors"
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     files = tracked_files(root)
@@ -107,7 +117,9 @@ def main() -> int:
         for number, target in links:
             where = f"{path.relative_to(root)}:{number}"
             if target.startswith("undefined-reference:"):
-                errors.append(f"{where}: undefined reference [{target.split(':', 1)[1]}]")
+                errors.append(
+                    f"{where}: undefined reference [{target.split(':', 1)[1]}]"
+                )
                 continue
             parts = urlsplit(target)
             if parts.scheme in ("http", "https"):
@@ -116,10 +128,16 @@ def main() -> int:
             if parts.scheme or target.startswith("//"):
                 continue
             fragment = unquote(parts.fragment)
-            destination = path if not parts.path else (path.parent / unquote(parts.path)).resolve()
+            destination = (
+                path
+                if not parts.path
+                else (path.parent / unquote(parts.path)).resolve()
+            )
             if destination not in existing:
                 if (path.relative_to(root).as_posix(), target) in FROZEN:
-                    frozen.append(f"{where}: frozen link {target} (see evidence/README.md)")
+                    frozen.append(
+                        f"{where}: frozen link {target} (see evidence/README.md)"
+                    )
                 else:
                     errors.append(f"{where}: missing {target}")
                 continue
@@ -130,7 +148,9 @@ def main() -> int:
     failures = []
     if args.external:
         for url, where in sorted(external.items()):
-            request = urllib.request.Request(url, headers={"User-Agent": "inspektorium-link-check"})
+            request = urllib.request.Request(
+                url, headers={"User-Agent": "inspektorium-link-check"}
+            )
             try:
                 with urllib.request.urlopen(request, timeout=20) as response:
                     status = response.status
@@ -146,7 +166,11 @@ def main() -> int:
     print(
         f"checked {len(markdown)} Markdown files: {len(errors)} broken relative links, "
         f"{len(frozen)} documented frozen links"
-        + (f", {len(failures)} of {len(external)} external links not 200" if args.external else "")
+        + (
+            f", {len(failures)} of {len(external)} external links not 200"
+            if args.external
+            else ""
+        )
     )
     if errors or (args.strict_external and failures):
         return 1

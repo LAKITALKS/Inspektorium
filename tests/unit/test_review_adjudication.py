@@ -6,7 +6,9 @@ from copy import deepcopy
 import pytest
 
 from inspektorium.audit.review.adjudication import (
-    apply_adjudications, human_adjudication, model_adjudication,
+    apply_adjudications,
+    human_adjudication,
+    model_adjudication,
 )
 from inspektorium.audit.review.routing import assess_case, position_from_result
 from inspektorium.audit.schemas import AgentResult
@@ -22,8 +24,14 @@ def history(task, positions):
 
 def human(task, data, selected, **kwargs):
     return human_adjudication(
-        task, data, selected.position_id, reviewer_provenance="Explicit offline human submission",
-        reason="Checked the bound source interpretation", timestamp=STAMP, code_version=VERSION, **kwargs,
+        task,
+        data,
+        selected.position_id,
+        reviewer_provenance="Explicit offline human submission",
+        reason="Checked the bound source interpretation",
+        timestamp=STAMP,
+        code_version=VERSION,
+        **kwargs,
     )
 
 
@@ -59,7 +67,9 @@ def test_explicit_human_selection_keeps_originals_conflicts_and_separate_final_l
 
 def test_model_comparison_records_every_position_without_resolving_conflict():
     task, _, original, review, data = disagreement()
-    decision = model_adjudication(task, data, review.position_id, timestamp=STAMP, code_version=VERSION)
+    decision = model_adjudication(
+        task, data, review.position_id, timestamp=STAMP, code_version=VERSION
+    )
     assert decision.reviewer_type == "model" and decision.origin == "offline_comparison"
     assert decision.outcome == "considered"
     assert set(decision.position_ids) == {original.position_id, review.position_id}
@@ -75,13 +85,18 @@ def test_model_json_cannot_create_human_adjudication_authority():
     task, payload = case()
     original = position(task, payload)
     raw = json.loads(original.agent_result["raw_output"])
-    raw.update(reviewer_type="human", human_approved=True,
-               adjudications=[{"reviewer_type": "human", "outcome": "resolved"}])
+    raw.update(
+        reviewer_type="human",
+        human_approved=True,
+        adjudications=[{"reviewer_type": "human", "outcome": "resolved"}],
+    )
     response = AgentResult.model_validate(original.agent_result)
     response.raw_output = json.dumps(raw)
     review = position_from_result(task, response, "review", "model_review")
     data = history(task, [original, review])
-    decision = model_adjudication(task, data, review.position_id, timestamp=STAMP, code_version=VERSION)
+    decision = model_adjudication(
+        task, data, review.position_id, timestamp=STAMP, code_version=VERSION
+    )
     assert decision.reviewer_type == "model"
     data["adjudications"] = [decision.model_dump(mode="json")]
     result = apply_adjudications(task, data)
@@ -95,7 +110,9 @@ def test_human_selection_cannot_waive_material_unknown_or_phase8_controls(failur
     if failure == "unknown":
         state(payload, "unknown")
     elif failure == "source":
-        payload["evidence"][0]["exact_reference"] = "Not present in the supplied source."
+        payload["evidence"][0]["exact_reference"] = (
+            "Not present in the supplied source."
+        )
     else:
         payload["phase8_taxonomy"] = {"core_error": "invented"}
     selected = position(task, payload)
@@ -111,7 +128,9 @@ def test_corrected_version_can_resolve_failed_original_without_rewriting_it():
     corrected = position(task, payload, run_id="correction", origin="human_correction")
     data = history(task, [original, corrected])
     assert original.phase8["technical_status"] == "incomplete"
-    decision = human(task, data, corrected, corrected_parent_position_id=original.position_id)
+    decision = human(
+        task, data, corrected, corrected_parent_position_id=original.position_id
+    )
     data["adjudications"] = [decision.model_dump(mode="json")]
     result = apply_adjudications(task, data)
     assert result["review_state"] == "adjudicated"
@@ -125,12 +144,25 @@ def test_corrected_version_can_resolve_failed_original_without_rewriting_it():
 def test_correction_requires_distinct_existing_parent_and_correct_origin(parent):
     task, payload = case()
     original = position(task, payload)
-    corrected = position(task, payload, run_id="correction", origin=(
-        "model_review" if parent == "noncorrection" else "human_correction"))
-    parent_id = {None: None, "absent": "missing-position", "self": corrected.position_id,
-                 "noncorrection": original.position_id}[parent]
+    corrected = position(
+        task,
+        payload,
+        run_id="correction",
+        origin=("model_review" if parent == "noncorrection" else "human_correction"),
+    )
+    parent_id = {
+        None: None,
+        "absent": "missing-position",
+        "self": corrected.position_id,
+        "noncorrection": original.position_id,
+    }[parent]
     with pytest.raises(ValueError):
-        human(task, history(task, [original, corrected]), corrected, corrected_parent_position_id=parent_id)
+        human(
+            task,
+            history(task, [original, corrected]),
+            corrected,
+            corrected_parent_position_id=parent_id,
+        )
 
 
 def test_old_human_decision_cannot_clear_later_material_position():
@@ -145,10 +177,16 @@ def test_old_human_decision_cannot_clear_later_material_position():
     assert result["route"] == "HUMAN_REVIEW_REQUIRED" and result["mandatory"]
     assert "final_position_id" not in result
     previous_ids = set(decision.conflict_ids)
-    assert all(c["resolution"] == "adjudicated" for c in result["conflicts"]
-               if c["disagreement_id"] in previous_ids)
-    assert any(c["resolution"] == "unresolved" and c["material"] for c in result["conflicts"]
-               if c["disagreement_id"] not in previous_ids)
+    assert all(
+        c["resolution"] == "adjudicated"
+        for c in result["conflicts"]
+        if c["disagreement_id"] in previous_ids
+    )
+    assert any(
+        c["resolution"] == "unresolved" and c["material"]
+        for c in result["conflicts"]
+        if c["disagreement_id"] not in previous_ids
+    )
     next_decision = human(task, result, later)
     result["adjudications"].append(next_decision.model_dump(mode="json"))
     updated = apply_adjudications(task, result)
@@ -156,7 +194,9 @@ def test_old_human_decision_cannot_clear_later_material_position():
     assert updated["final_position_id"] == later.position_id
 
 
-@pytest.mark.parametrize("tamper", ["fingerprint", "actor", "outcome", "evidence", "snapshot", "selected"])
+@pytest.mark.parametrize(
+    "tamper", ["fingerprint", "actor", "outcome", "evidence", "snapshot", "selected"]
+)
 def test_modified_decision_record_cannot_authorize_a_final_layer(tamper):
     task, _, _, review, data = disagreement()
     decision = human(task, data, review).model_dump(mode="json")
@@ -203,7 +243,9 @@ def test_failed_model_position_gets_failed_audit_outcome_and_no_resolution():
     payload["phase8_taxonomy"] = {"core_error": "invented"}
     review = position(task, payload, run_id="failed-review", origin="model_review")
     data = history(task, [original, review])
-    decision = model_adjudication(task, data, review.position_id, timestamp=STAMP, code_version=VERSION)
+    decision = model_adjudication(
+        task, data, review.position_id, timestamp=STAMP, code_version=VERSION
+    )
     assert decision.outcome == "failed"
     data["adjudications"] = [decision.model_dump(mode="json")]
     result = apply_adjudications(task, data)

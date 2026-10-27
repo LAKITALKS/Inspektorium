@@ -44,6 +44,7 @@ from inspektorium.audit.schemas import (
 # Fixtures — reusable test data
 # ---------------------------------------------------------------------------
 
+
 def _make_task(**overrides) -> Task:
     defaults = dict(
         id="test-001",
@@ -143,6 +144,7 @@ def _make_run_record(**overrides) -> RunRecord:
 # 1. Report generation works
 # ---------------------------------------------------------------------------
 
+
 class TestReportGeneration:
     def test_basic_generation(self):
         record = _make_run_record()
@@ -198,6 +200,7 @@ class TestReportGeneration:
 # 2. Executive summary quality
 # ---------------------------------------------------------------------------
 
+
 class TestExecutiveSummary:
     def test_summary_generated(self):
         record = _make_run_record()
@@ -252,6 +255,7 @@ class TestExecutiveSummary:
 # 3. Format rendering
 # ---------------------------------------------------------------------------
 
+
 class TestFormatRendering:
     def test_markdown_is_valid(self):
         record = _make_run_record()
@@ -305,6 +309,7 @@ class TestFormatRendering:
 # ---------------------------------------------------------------------------
 # 4. Missing fields / degraded input
 # ---------------------------------------------------------------------------
+
 
 class TestDegradedInput:
     def test_no_failures(self):
@@ -390,6 +395,7 @@ class TestDegradedInput:
 # 5. Confidence marking
 # ---------------------------------------------------------------------------
 
+
 class TestConfidenceMarking:
     def test_confidence_marked_unkalibriert(self):
         result = _make_evaluated_result()
@@ -426,6 +432,7 @@ class TestConfidenceMarking:
 # 6. No raw dump
 # ---------------------------------------------------------------------------
 
+
 class TestNoRawDump:
     def test_no_dict_repr(self):
         record = _make_run_record()
@@ -442,7 +449,9 @@ class TestNoRawDump:
         assert "model_fields" not in report
 
     def test_categories_are_readable(self):
-        failure = _make_failure("verbal_numeric_contradiction", "critical", "Numbers disagree")
+        failure = _make_failure(
+            "verbal_numeric_contradiction", "critical", "Numbers disagree"
+        )
         result = _make_evaluated_result(failures=[failure])
         record = _make_run_record(results=[result])
         report = generate_client_report(record)
@@ -461,10 +470,16 @@ class TestNoRawDump:
 # 7. Overall status logic
 # ---------------------------------------------------------------------------
 
+
 class TestOverallStatus:
     def test_good_status(self):
-        scores = _make_scores(correctness=1.0, support_strength=0.9, structural_reasoning=0.9,
-                              mechanism_quality=0.9, communication_efficiency=0.9)
+        scores = _make_scores(
+            correctness=1.0,
+            support_strength=0.9,
+            structural_reasoning=0.9,
+            mechanism_quality=0.9,
+            communication_efficiency=0.9,
+        )
         result = _make_evaluated_result(failures=[], scores=scores)
         status, _ = _overall_status([result])
         assert status == "good"
@@ -490,9 +505,12 @@ class TestOverallStatus:
 # 8. Category label translation
 # ---------------------------------------------------------------------------
 
+
 class TestCategoryLabels:
     def test_known_labels(self):
-        assert "overclaim" not in _label("overclaim").lower() or "Overclaim" in _label("overclaim")
+        assert "overclaim" not in _label("overclaim").lower() or "Overclaim" in _label(
+            "overclaim"
+        )
         assert _label("solid") != "solid"
         assert _label("correlation_vs_causation") != "correlation_vs_causation"
 
@@ -508,6 +526,7 @@ class TestCategoryLabels:
 # ---------------------------------------------------------------------------
 # 9. Rich report content
 # ---------------------------------------------------------------------------
+
 
 class TestRichContent:
     def test_consistency_in_appendix(self):
@@ -574,7 +593,7 @@ class TestRichContent:
                 "matched_findings": ["overclaiming_language"],
                 "missed_findings": [],
                 "extra_findings": ["hedge_weakness"],
-            }
+            },
         )
         record = _make_run_record(results=[result])
         findings = _section_key_findings(record)
@@ -613,6 +632,7 @@ class TestRichContent:
 # 10. HTML-specific tests
 # ---------------------------------------------------------------------------
 
+
 class TestHTMLSpecific:
     def test_html_escapes_special_chars(self):
         task = _make_task(title="Test <script>alert('xss')</script>")
@@ -646,6 +666,7 @@ class TestHTMLSpecific:
 # ---------------------------------------------------------------------------
 # 11. Real run file integration test
 # ---------------------------------------------------------------------------
+
 
 class TestRealRunIntegration:
     """Exercise JSON roundtrip integration with tracked synthetic builders only."""

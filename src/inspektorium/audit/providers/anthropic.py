@@ -30,8 +30,13 @@ _STOP_REASON_MAP = {
 class AnthropicProvider(BaseProvider):
     name = "anthropic"
 
-    def __init__(self, model: str = "claude-sonnet-4-20250514", temperature: float = 0.0,
-                 label: str = "", max_tokens: int = DEFAULT_MAX_TOKENS):
+    def __init__(
+        self,
+        model: str = "claude-sonnet-4-20250514",
+        temperature: float = 0.0,
+        label: str = "",
+        max_tokens: int = DEFAULT_MAX_TOKENS,
+    ):
         self.model = model
         self.temperature = temperature
         self.label = label or model
@@ -41,7 +46,9 @@ class AnthropicProvider(BaseProvider):
         try:
             import anthropic
         except ImportError:
-            raise RuntimeError("Install anthropic: pip install 'inspektorium[providers]'")
+            raise RuntimeError(
+                "Install anthropic: pip install 'inspektorium[providers]'"
+            )
 
         import httpx
 
