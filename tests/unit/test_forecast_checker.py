@@ -9,8 +9,8 @@ Tests cover:
   - No regression on existing task families
 """
 
-from inspektorium.audit.evaluator import evaluate_result
-from inspektorium.audit.forecast_checker import (
+from inspektorium.audit.execution.evaluator import evaluate_result
+from inspektorium.audit.checks.forecast_checker import (
     is_forecast_task,
     run_forecast_checks,
 )
@@ -554,7 +554,7 @@ class TestEvaluatorIntegration:
 class TestReportIntegration:
 
     def test_report_contains_forecast_section(self):
-        from inspektorium.audit.reporter import generate_report
+        from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
 
         parsed = AgentResponse(
@@ -571,7 +571,7 @@ class TestReportIntegration:
         assert "Forecast Integrity Audit" in report
 
     def test_report_shows_probability(self):
-        from inspektorium.audit.reporter import generate_report
+        from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
 
         parsed = AgentResponse(
@@ -588,7 +588,7 @@ class TestReportIntegration:
         assert "Probability Estimate" in report
 
     def test_report_no_forecast_section_for_non_forecast(self):
-        from inspektorium.audit.reporter import generate_report
+        from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
 
         parsed = AgentResponse(final_answer="No", steps=["paradox"])

@@ -12,12 +12,12 @@ import json
 
 import pytest
 
-from inspektorium.audit.confidence_validity import INVALID, MISSING, VALID
-from inspektorium.audit.output_contract import (
+from inspektorium.audit.checks.confidence_validity import INVALID, MISSING, VALID
+from inspektorium.audit.integrity.output_contract import (
     ParseDiagnostics,
     parse_structured_output,
 )
-from inspektorium.audit.runner import parse_agent_output
+from inspektorium.audit.execution.runner import parse_agent_output
 
 
 def _full_payload() -> dict:

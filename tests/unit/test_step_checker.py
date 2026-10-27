@@ -1,6 +1,6 @@
 """v0.4.3: Tests for intermediate step verification engine."""
 
-from inspektorium.audit.step_checker import verify_step, verify_all_steps
+from inspektorium.audit.checks.step_checker import verify_step, verify_all_steps
 
 
 class TestArithmeticVerification:

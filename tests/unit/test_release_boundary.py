@@ -17,19 +17,19 @@ from pathlib import Path
 import pytest
 from click.testing import CliRunner
 
-from inspektorium.audit import artifact_binding as ab
-from inspektorium.audit import release_boundary as rb
-from inspektorium.audit.artifact_binding import record_fingerprint
-from inspektorium.audit.forensic_report import (
+from inspektorium.audit.integrity import artifact_binding as ab
+from inspektorium.audit.integrity import release_boundary as rb
+from inspektorium.audit.integrity.artifact_binding import record_fingerprint
+from inspektorium.audit.forensics.forensic_report import (
     build_forensic_report,
     render_forensic_report_markdown,
 )
-from inspektorium.audit.reporting import (
+from inspektorium.audit.reports.reporting import (
     generate_client_report,
     generate_html_report,
     generate_pdf_report,
 )
-from inspektorium.audit.reporter import generate_report
+from inspektorium.audit.reports.reporter import generate_report
 from inspektorium.audit.schemas import Difficulty, RunRecord, Task, TaskType
 
 
@@ -62,7 +62,7 @@ class MaterialFactory:
         repo = self.root / f"source-{self.counter}"
         repo.mkdir()
         _git(repo, "init", "-q")
-        _git(repo, "config", "user.name", "Agent Arena QA")
+        _git(repo, "config", "user.name", "Inspektorium QA")
         _git(repo, "config", "user.email", "qa@example.invalid")
         source = repo / "release_source.json"
         source.write_text(json.dumps({
@@ -377,7 +377,7 @@ def test_U_renderer_or_output_io_failure_leaves_no_partial_official_package(
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert result.status == "WRITE_FAILED"
     _assert_no_write(result, output)
-    assert list(output.glob(".agent-arena-release-staging-*")) == []
+    assert list(output.glob(".inspektorium-release-staging-*")) == []
 
 
 def test_V_preexisting_target_is_not_overwritten_or_reported_as_new(material):
@@ -514,3 +514,19 @@ def test_wrong_release_object_schema_and_pipeline_qa_role_fail_closed(material):
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert result.status == "INVALID_OBJECT"
     _assert_no_write(result, output)
+
+
+# Kept from the archived condition-contract tests: the release boundary itself rejects the role.
+def test_R_validation_artifact_role_is_not_a_supported_release_source(tmp_path):
+    path = tmp_path / "diagnostic.json"
+    path.write_text(json.dumps({
+        "release_source_schema_version": rb.RELEASE_SOURCE_SCHEMA_VERSION,
+        "data_role": "diagnostic_validation",
+        "execution_id": "x",
+        "analysis_id": "y",
+        "package_fingerprint": "a" * 64,
+        "runtime_contract_fingerprint": "b" * 64,
+        "forensic_record_fingerprint": "c" * 64,
+    }))
+    with pytest.raises(rb.ReleaseBoundaryError, match="data role is unsupported"):
+        rb._read_source_manifest(path)

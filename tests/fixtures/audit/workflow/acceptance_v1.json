@@ -1,0 +1,120 @@
+{
+  "version": "AA-P10-ACCEPTANCE/1.1",
+  "contract": "AA-P10/1.0",
+  "scope": "Generic recorded offline consistency checks; separate from development and future efficacy holdout",
+  "cases": [
+    {
+      "id": "positive_full_path",
+      "released": true,
+      "scientific": "supported",
+      "provider_calls": 1
+    },
+    {
+      "id": "negative_full_path",
+      "released": true,
+      "scientific": "contradicted",
+      "provider_calls": 1
+    },
+    {
+      "id": "material_unknown",
+      "released": false,
+      "scientific": "unknown",
+      "mandatory_review": true
+    },
+    {
+      "id": "empty_trace_population",
+      "released": false
+    },
+    {
+      "id": "missing_control",
+      "released": false
+    },
+    {
+      "id": "stale_control",
+      "released": false
+    },
+    {
+      "id": "gate_registry_bypass",
+      "released": false
+    },
+    {
+      "id": "phase8_source_failure",
+      "released": false
+    },
+    {
+      "id": "foreign_case",
+      "valid": false
+    },
+    {
+      "id": "modified_report",
+      "valid": false
+    },
+    {
+      "id": "modified_manifest",
+      "valid": false
+    },
+    {
+      "id": "human_import_history",
+      "silent_loss": false,
+      "accepted_consistent_control": true
+    },
+    {
+      "id": "durable_variant_limit",
+      "additional_calls_after_reopen": 0
+    },
+    {
+      "id": "long_hostile_render",
+      "complete": true,
+      "active_content": false,
+      "parity": true
+    },
+    {
+      "id": "malformed_render",
+      "released": false
+    },
+    {
+      "id": "inspect_replay",
+      "additional_calls": 0,
+      "history_unchanged": true
+    },
+    {
+      "id": "offline_provider_isolation",
+      "provider_calls": 0,
+      "released": false
+    },
+    {
+      "id": "missing_format",
+      "valid": false
+    },
+    {
+      "id": "explicit_human_revision",
+      "released": true,
+      "history_unchanged": true,
+      "new_revision": true
+    },
+    {
+      "id": "invalid_input",
+      "provider_calls": 0,
+      "released": false
+    },
+    {
+      "id": "optional_unknown",
+      "released": true,
+      "unknown_visible": true,
+      "mandatory_review": false
+    }
+  ],
+  "input_sha256": {
+    "examples/audit/conflict-recording.json": "60b459914871cc5da49895b02eddc0c1d577b3a6fdd72ef0e9f4c21bbc33e371",
+    "examples/audit/long-hostile-recording.json": "717ca66eadb68805ed0f4c292f8f5fe06df0a8b077f3af5cf60087b1713da870",
+    "examples/audit/long-hostile-task.json": "a374d072e9a4ffe106498f21d2cd49e7bd1943c60ca1b0d25ee7e5eefdea7583",
+    "examples/audit/negative-recording.json": "f0cded6b43a281f719b932dc741a38f0865e17d1ca14474bff0e769ce3d9f82a",
+    "examples/audit/negative-task.json": "09a78c11813b9aeb17354aed1bb378262c717c0bb813f1ff11195a7da066aa15",
+    "examples/audit/optional-unknown-recording.json": "42d42905bd5250ee904159f03244a014a3ec77c2d87f52457ff99d6d485e066a",
+    "examples/audit/positive-recording.json": "7c38ae8815370440e444cbbcabca683b859f79338da2bb1712788000f321dca7",
+    "examples/audit/positive-task.json": "1fdfd840af02545704edede44f26a578c40539b79ded9a720ba821f393a057fa",
+    "examples/audit/unknown-recording.json": "13c0f2cf642485c81585fd8b089f36713c16094ee668e6bbdd563105bf975a76",
+    "examples/audit/unknown-task.json": "0be1086dabd163d1d102c0a48c055e350e7d11e2f8e3669e59098583c9fbe127"
+  },
+  "revision_reason": "Before first declared execution, add explicit nonmaterial UNKNOWN release/visibility criterion from AA-P10/1.0; existing expectations unchanged."
+}

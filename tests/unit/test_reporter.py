@@ -1,6 +1,6 @@
-"""Tests for agent-arena v0.4 reporter — forensic dossier."""
+"""Tests of the Inspektorium audit runtime reporter — forensic dossier."""
 
-from inspektorium.audit.reporter import generate_report
+from inspektorium.audit.reports.reporter import generate_report
 from inspektorium.audit.schemas import (
     AgentResponse,
     AgentResult,

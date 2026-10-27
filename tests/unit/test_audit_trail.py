@@ -1,4 +1,4 @@
-"""Tests for Gen 6 Audit Trail — agent-arena v0.6.11.
+"""Tests for Gen 6 Audit Trail of the Inspektorium audit runtime.
 
 Tests cover:
 - Decision entry persistence (write / read)
@@ -25,7 +25,7 @@ from inspektorium.audit.schemas import (
     DependencySummary,
     UpstreamStep,
 )
-from inspektorium.audit.audit_trail import (
+from inspektorium.audit.integrity.audit_trail import (
     log_decision,
     log_decisions,
     read_decisions,

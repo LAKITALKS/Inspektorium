@@ -1,9 +1,9 @@
-"""Tests for agent-arena v0.4.1 forensic hardening — integrated scenarios."""
+"""Tests of the Inspektorium audit runtime forensic hardening — integrated scenarios."""
 
-from inspektorium.audit.claim_checker import run_claim_checks, count_contradictions
-from inspektorium.audit.consistency import run_consistency_checks
-from inspektorium.audit.evaluator import evaluate_result
-from inspektorium.audit.reasoning_graph import build_mechanism_analysis, _build_grounding_audit, build_reasoning_graph
+from inspektorium.audit.checks.claim_checker import run_claim_checks, count_contradictions
+from inspektorium.audit.checks.consistency import run_consistency_checks
+from inspektorium.audit.execution.evaluator import evaluate_result
+from inspektorium.audit.checks.reasoning_graph import build_mechanism_analysis, _build_grounding_audit, build_reasoning_graph
 from inspektorium.audit.schemas import (
     AgentResponse,
     AgentResult,
@@ -376,7 +376,7 @@ class TestNegationConflictFalsePositives:
 
     def test_rebuttal_in_conclusion_not_flagged(self):
         """A conclusion that discusses and rebuts a claim must not be contradicted."""
-        from inspektorium.audit.reasoning_graph import _has_negation_conflict
+        from inspektorium.audit.checks.reasoning_graph import _has_negation_conflict
 
         conclusion = (
             "The journalist's claim that men face discrimination is not valid. "
@@ -412,7 +412,7 @@ class TestNegationConflictFalsePositives:
 
     def test_actual_contradiction_still_detected(self):
         """A real contradiction (pure split polarity) must still be caught."""
-        from inspektorium.audit.reasoning_graph import _has_negation_conflict
+        from inspektorium.audit.checks.reasoning_graph import _has_negation_conflict
 
         text_a = "The overall admission rate for women is higher than for men."
         text_b = "The overall admission rate for women is lower than for men."
@@ -420,7 +420,7 @@ class TestNegationConflictFalsePositives:
 
     def test_both_polarities_in_one_text_not_flagged(self):
         """If one text contains both 'higher' and 'lower', skip that pair."""
-        from inspektorium.audit.reasoning_graph import _has_negation_conflict
+        from inspektorium.audit.checks.reasoning_graph import _has_negation_conflict
 
         text_a = (
             "While the overall rate is higher for women, "
@@ -453,7 +453,7 @@ class TestClaimCheckerBaseRate:
         )
 
     def test_extracts_probability_from_reference(self):
-        from inspektorium.audit.claim_checker import extract_probability_facts
+        from inspektorium.audit.checks.claim_checker import extract_probability_facts
         facts = extract_probability_facts(
             "P(Disease|Positive) = 0.00099 / 0.01098 ≈ 0.09 ≈ 9%",
             "reference_solution",
@@ -464,7 +464,7 @@ class TestClaimCheckerBaseRate:
 
     def test_wrong_base_rate_answer_flagged(self):
         """Agent answering 99% instead of 9% should produce a fact mismatch."""
-        from inspektorium.audit.claim_checker import extract_probability_facts
+        from inspektorium.audit.checks.claim_checker import extract_probability_facts
         # Agent says probability is 99%
         agent_facts = extract_probability_facts(
             "The probability that the person has the disease is 99%.",
@@ -473,7 +473,7 @@ class TestClaimCheckerBaseRate:
         assert any(f.value == 99.0 for f in agent_facts), f"Should extract 99% from agent: {agent_facts}"
 
     def test_correct_base_rate_answer_extracts(self):
-        from inspektorium.audit.claim_checker import extract_probability_facts
+        from inspektorium.audit.checks.claim_checker import extract_probability_facts
         facts = extract_probability_facts(
             "The probability of actually having the disease is approximately 9%.",
             "final_answer",
@@ -489,7 +489,7 @@ class TestClaimCheckerMontyHall:
     """v0.4.2: claim checker extracts probability direction from Monty Hall."""
 
     def test_switch_recommendation_extracted(self):
-        from inspektorium.audit.claim_checker import extract_probability_direction_claims
+        from inspektorium.audit.checks.claim_checker import extract_probability_direction_claims
         claims = extract_probability_direction_claims(
             "You should switch. The probability of winning is higher if you switch.",
             "final_answer",
@@ -499,7 +499,7 @@ class TestClaimCheckerMontyHall:
         assert claims[0].subject == "door_2_switch"
 
     def test_equal_probability_claim_extracted(self):
-        from inspektorium.audit.claim_checker import extract_probability_direction_claims
+        from inspektorium.audit.checks.claim_checker import extract_probability_direction_claims
         claims = extract_probability_direction_claims(
             "The probability is the same whether you switch or stay.",
             "final_answer",
@@ -508,7 +508,7 @@ class TestClaimCheckerMontyHall:
         assert claims[0].relation == "equal_to"
 
     def test_probability_fraction_extraction(self):
-        from inspektorium.audit.claim_checker import extract_probability_facts
+        from inspektorium.audit.checks.claim_checker import extract_probability_facts
         facts = extract_probability_facts(
             "The probability of the car being behind door 2 is 2/3.",
             "steps[0]",
@@ -516,7 +516,7 @@ class TestClaimCheckerMontyHall:
         assert any(abs(f.value - 66.67) < 1.0 for f in facts), f"Expected ~66.67%: {facts}"
 
     def test_probability_decimal_extraction(self):
-        from inspektorium.audit.claim_checker import extract_probability_facts
+        from inspektorium.audit.checks.claim_checker import extract_probability_facts
         facts = extract_probability_facts(
             "P(Car=1 | Host opens 3) = 1/3.",
             "steps[1]",
@@ -576,7 +576,7 @@ class TestConfidenceLabels:
 
     def test_labels_appear_in_report(self):
         """Confidence labels must appear in the generated report text."""
-        from inspektorium.audit.reporter import generate_report
+        from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
         task = _make_task()
         result = _make_result(

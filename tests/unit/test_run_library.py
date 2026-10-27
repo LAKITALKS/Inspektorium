@@ -10,10 +10,10 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit import run_library as run_library_module
-from inspektorium.audit.confidence_validity import INVALID, MISSING, VALID
+from inspektorium.audit.execution import run_library as run_library_module
+from inspektorium.audit.checks.confidence_validity import INVALID, MISSING, VALID
 from inspektorium.audit.providers import BaseProvider, ModelResponse
-from inspektorium.audit.run_library import (
+from inspektorium.audit.execution.run_library import (
     FakeLibraryProvider,
     _case_stability,
     discover_cases,
@@ -308,7 +308,7 @@ class TestRetirement:
     RETIRED_ID = "study-forensics-042"
 
     def _load_042(self):
-        from inspektorium.audit.task_loader import load_task
+        from inspektorium.audit.execution.task_loader import load_task
         return load_task("tests/fixtures/audit/case_library/case042_edge_ai_energy_blind_spot.yaml")
 
     def test_retired_case_still_loads(self):
@@ -320,7 +320,7 @@ class TestRetirement:
         assert t.origin == "demo_derived"
 
     def test_is_retired_helper(self):
-        from inspektorium.audit.run_library import is_retired
+        from inspektorium.audit.execution.run_library import is_retired
         assert is_retired(self._load_042()) is True
 
     def test_retired_skipped_by_default(self):

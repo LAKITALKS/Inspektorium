@@ -47,7 +47,7 @@ def test_top_level_help_does_not_load_engine(monkeypatch, capsys):
 
 def install_group(monkeypatch, group):
     def load(name):
-        if name == "inspektorium.audit.phase10_cli":
+        if name == "inspektorium.audit.cli":
             return SimpleNamespace(audit=group)
         return importlib.import_module(name)
 

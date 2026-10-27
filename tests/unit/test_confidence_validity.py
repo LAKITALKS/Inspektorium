@@ -9,7 +9,7 @@ import math
 
 import pytest
 
-from inspektorium.audit.confidence_validity import (
+from inspektorium.audit.checks.confidence_validity import (
     INVALID,
     MISSING,
     VALID,

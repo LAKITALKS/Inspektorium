@@ -41,7 +41,7 @@ class AnthropicProvider(BaseProvider):
         try:
             import anthropic
         except ImportError:
-            raise RuntimeError("Install anthropic: pip install 'agent-arena[providers]'")
+            raise RuntimeError("Install anthropic: pip install 'inspektorium[providers]'")
 
         import httpx
 

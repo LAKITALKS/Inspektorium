@@ -10,24 +10,24 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit.artifact_binding import (
+from inspektorium.audit.integrity.artifact_binding import (
     QA_ASYMMETRIC_EVIDENCE_SELECTION, MANDATORY_PHASE7B_GATE_SPECS, check_evidence_symmetry, final_binding_check,
     load_forensic_record,
 )
-from inspektorium.audit.evaluator import evaluate_run
-from inspektorium.audit.output_contract import extract_json_object
-from inspektorium.audit.phase8_pipeline import assess_agent_result
-from inspektorium.audit.phase9_runtime import OfflineReviewProvider
-from inspektorium.audit.phase10_bundle import run_audit
-from inspektorium.audit.phase10_pipeline import GATE_VERSIONS, REGISTRY, preflight, reconstruct
+from inspektorium.audit.execution.evaluator import evaluate_run
+from inspektorium.audit.integrity.output_contract import extract_json_object
+from inspektorium.audit.forensics.pipeline import assess_agent_result
+from inspektorium.audit.review.runtime import OfflineReviewProvider
+from inspektorium.audit.workflow.bundle import run_audit
+from inspektorium.audit.workflow.pipeline import GATE_VERSIONS, REGISTRY, preflight, reconstruct
 from inspektorium.audit.providers.anthropic_live import build_user_message
-from inspektorium.audit.run_library import LIBRARY_PROMPT_VERSIONS, run_library
-from inspektorium.audit.runner import (
+from inspektorium.audit.execution.run_library import LIBRARY_PROMPT_VERSIONS, run_library
+from inspektorium.audit.execution.runner import (
     STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL, STUDY_FORENSICS_PROMPT_VERSION_PHASE8, run_agent,
 )
 from inspektorium.audit.schemas import Task
-from inspektorium.audit.task_loader import load_task
-from tests.phase8_case_factory import raw_record
+from inspektorium.audit.execution.task_loader import load_task
+from tests.forensics_case_factory import raw_record
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -41,6 +41,40 @@ def _payload_text(label="solid"):
 
 
 # ---------------------------------------------------------------- P1-F1 / P1-A2: ambiguous outputs
+
+@pytest.mark.parametrize("shape,flagged", [
+    ("single", False),
+    ("single_with_prose_braces", False),
+    ("two_fences", True),
+    ("two_raw_objects", True),
+    ("truncated_trailing_object", True),
+    ("bare_fence_then_json_fence", True),
+    ("trailing_bare_brace", True),
+    ("fenced_then_bare_brace_with_whitespace", True),
+])
+def test_P1_a_second_analysis_is_flagged_and_never_a_complete_phase8_analysis(shape, flagged):
+    task, one = _payload_text("overclaim")
+    _, two = _payload_text("solid")
+    raw = {
+        "single": f"```json\n{one}\n```",
+        "single_with_prose_braces": f"```json\n{one}\n```\nNote: the set {{x}} is empty.",
+        "two_fences": f"```json\n{one}\n```\n**CORRECTED RESPONSE:**\n```json\n{two}\n```",
+        "two_raw_objects": f"{one}\nCorrection: {two}",
+        "truncated_trailing_object": f"```json\n{one}\n```\nCorrected:\n{two[:200]}",
+        "bare_fence_then_json_fence": f"```\n{one}\n```\n```json\n{two}\n```",
+        "trailing_bare_brace": f"{one}\nCorrected:\n{{",  # BE10: cut right after the opening brace
+        "fenced_then_bare_brace_with_whitespace": f"```json\n{one}\n```\nCorrected:\n{{\n  ",
+    }[shape]
+    data, diagnostics = extract_json_object(raw, "stop")
+    assert data is not None and diagnostics.ok
+    assert diagnostics.multiple_objects is flagged
+    result = run_agent(OfflineReviewProvider(raw), task)
+    phase8 = assess_agent_result(task, result)
+    assert (phase8["technical_status"] == "completed") is (not flagged)
+    record = evaluate_run(task, "run-b", [result])
+    _, _, _, forensic = reconstruct(record)
+    assert (forensic is None) is flagged
+
 
 @pytest.mark.parametrize("finish_reason", ["length", None, "stop"])
 def test_P1_F2_a_cached_parse_without_raw_text_is_never_complete(finish_reason):
@@ -124,11 +158,9 @@ def test_P7_material_false_no_longer_switches_off_evidence_symmetry(which):
     assert final_binding_check(record).releasable is False
     spec = next(s for s in MANDATORY_PHASE7B_GATE_SPECS if s.gate_id == "evidence_symmetry")
     assert spec.gate_version == GATE_VERSIONS["evidence_symmetry"] == "1.1.0"
-    from inspektorium.audit.artifact_binding import _symmetry_population
+    from inspektorium.audit.integrity.artifact_binding import _symmetry_population
     assert _symmetry_population(record) == 1  # the context stays eligible; no host-derived N/A
 
-
-# ---------------------------------------------------------------- P5-F1: one-shot namespace
 
 # ---------------------------------------------------------------- P8-F1 / P8-AF1 and P8-F2
 
@@ -221,7 +253,7 @@ def _taxonomy_case(p1_model="unsupported", optional_support_on_contrary=False):
 
 
 def test_P8_F1_a_conflict_that_alone_decides_the_derived_label_is_material(tmp_path):
-    from inspektorium.audit.phase9_review import assess_case, position_from_result
+    from inspektorium.audit.review.routing import assess_case, position_from_result
     task, raw = _taxonomy_case("unsupported")
     position = position_from_result(task, run_agent(OfflineReviewProvider(raw), task), "run1")
     assert position.phase8["derived_label"] == "correlation_vs_causation"
@@ -244,8 +276,8 @@ def test_P8_F2_an_optional_proposition_cannot_bind_contradictory_evidence_as_sup
 # ---------------------------------------------------------------- P8-F3 and P9-F5 (Package A follow-ups)
 
 def test_P8_F3_bridge_host_reasons_use_ordinals_even_for_prefix_sharing_ids():
-    from inspektorium.audit.phase8_semantics import evaluate_phase8
-    from tests.unit.test_phase8_semantics import add_auxiliary_evidence, ledger_record
+    from inspektorium.audit.forensics.semantics import evaluate_phase8
+    from tests.unit.test_forensics_semantics import add_auxiliary_evidence, ledger_record
     record = ledger_record(("supported",))
     record.phase8["propositions"][0]["evidence_bindings"][0]["directness"] = "indirect"
     add_auxiliary_evidence(record)
@@ -263,8 +295,8 @@ def test_P8_F3_bridge_host_reasons_use_ordinals_even_for_prefix_sharing_ids():
 
 
 def test_P9_F5_a_whole_claim_conflict_entry_carries_both_positions_with_reasons():
-    from tests.acceptance.test_phase8_9_conflict import case, position
-    from inspektorium.audit.phase9_runtime import build_challenge
+    from tests.acceptance.test_forensics_review_conflict import case, position
+    from inspektorium.audit.review.runtime import build_challenge
     task, payload = case("supported", "unsupported")
     entry = next(c for c in build_challenge(task, position(task, payload))["model_host_conflicts"]
                  if c["scope"] == "composite")
@@ -274,9 +306,20 @@ def test_P9_F5_a_whole_claim_conflict_entry_carries_both_positions_with_reasons(
 
 # ---------------------------------------------------------------- Package B round 1 (BF2, BF4, BF5)
 
+def test_BF4_the_library_harness_records_a_second_analysis(tmp_path):
+    from inspektorium.audit.execution.run_library import run_single
+    task, one = _payload_text("overclaim")
+    _, two = _payload_text("solid")
+    raw = f"```json\n{one}\n```\n**CORRECTED RESPONSE:**\n```json\n{two}\n```"
+    record = run_single(OfflineReviewProvider(raw), Path("pkg-b.yaml"), task, 0, "pkg-b-run")
+    assert record["parse_multiple_objects"] is True and record["parse_ok"] is True
+    single = run_single(OfflineReviewProvider(f"```json\n{one}\n```"), Path("pkg-b.yaml"), task, 0, "pkg-b-run")
+    assert single["parse_multiple_objects"] is False
+
+
 def test_BF5_an_agreed_unknown_on_the_taxonomy_trigger_is_a_mandatory_review(tmp_path):
     """P8-AF1: no conflict, but the shared UNKNOWN alone decides the released CvC label."""
-    from inspektorium.audit.phase9_review import assess_case, position_from_result
+    from inspektorium.audit.review.routing import assess_case, position_from_result
     task, raw = _taxonomy_case("unknown")
     data = json.loads(raw)
     for description in data["forensic_record"]["phase8"]["evidence_descriptions"]:
@@ -294,9 +337,9 @@ def test_BF5_an_agreed_unknown_on_the_taxonomy_trigger_is_a_mandatory_review(tmp
 
 @pytest.mark.parametrize("stored", ["AA-P9/1.1", "AA-P9/1.2"])
 def test_BF2_a_stored_older_case_state_fails_closed_under_aa_p9_1_3(tmp_path, stored):
-    from tests.acceptance.test_phase8_9_conflict import case, raw_output
-    from inspektorium.audit.phase9_models import CONTRACT_VERSION
-    from inspektorium.audit.phase9_runtime import execute_review, replay_review
+    from tests.acceptance.test_forensics_review_conflict import case, raw_output
+    from inspektorium.audit.review.models import CONTRACT_VERSION
+    from inspektorium.audit.review.runtime import execute_review, replay_review
     task, payload = case("supported", "unsupported")
     record = evaluate_run(task, "run1", [run_agent(OfflineReviewProvider(raw_output(payload)), task)])
     execute_review(record, OfflineReviewProvider(raw_output(payload)), base_dir=tmp_path, authorized=True,
@@ -304,7 +347,7 @@ def test_BF2_a_stored_older_case_state_fails_closed_under_aa_p9_1_3(tmp_path, st
     assert CONTRACT_VERSION == "AA-P9/1.3"
     current = replay_review(task, base_dir=tmp_path).metadata["phase9"]
     assert current.get("history_validation") != "invalid"
-    from inspektorium.audit.phase9_review import case_key
+    from inspektorium.audit.review.routing import case_key
     path = tmp_path / "phase9" / f"{case_key(task)}.json"
     text = path.read_text()
     assert '"AA-P9/1.3"' in text
@@ -319,14 +362,14 @@ def test_BF2_a_stored_older_case_state_fails_closed_under_aa_p9_1_3(tmp_path, st
 def test_registry_versions_of_package_b():
     assert (REGISTRY["input_preflight"], REGISTRY["evidence_symmetry"], REGISTRY["phase8_semantics_taxonomy"],
             REGISTRY["phase9_history_review"]) == ("1.1", "1.1.0", "1.3", "1.3")
-    from inspektorium.audit.phase10_pipeline import LIVE_REGISTRY
+    from inspektorium.audit.workflow.pipeline import LIVE_REGISTRY
     assert {k: v for k, v in LIVE_REGISTRY.items() if k != "provenance"} == \
         {k: v for k, v in REGISTRY.items() if k != "provenance"}
 
 
 def test_P9_F2_offline_adjudication_texts_for_blind_and_disclosed_reviews(tmp_path):
-    from tests.acceptance.test_phase8_9_conflict import case, raw_output
-    from inspektorium.audit.phase9_runtime import execute_review
+    from tests.acceptance.test_forensics_review_conflict import case, raw_output
+    from inspektorium.audit.review.runtime import execute_review
 
     def model_decision(host, model, base):
         task, payload = case(host, model)

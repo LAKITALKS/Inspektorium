@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit.phase10_live import task_sha256
-from inspektorium.audit.task_loader import load_task
+from inspektorium.audit.workflow.live import task_sha256
+from inspektorium.audit.execution.task_loader import load_task
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location(

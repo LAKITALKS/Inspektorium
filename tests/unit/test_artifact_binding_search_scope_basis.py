@@ -21,7 +21,7 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit.artifact_binding import (
+from inspektorium.audit.integrity.artifact_binding import (
     QA_ARTIFACT_SOURCE_BINDING_DRIFT,
     QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION,
     QA_UNRESOLVED_SEARCH_SCOPE,

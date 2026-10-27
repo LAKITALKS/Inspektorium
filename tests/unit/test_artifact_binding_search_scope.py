@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from inspektorium.audit.artifact_binding import (
+from inspektorium.audit.integrity.artifact_binding import (
     CLAIM_LABELS,
     QA_SEARCH_SCOPE_TO_WORLD_GENERALIZATION,
     QA_UNRESOLVED_SEARCH_SCOPE,

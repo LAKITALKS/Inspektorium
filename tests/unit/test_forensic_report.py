@@ -1,4 +1,4 @@
-"""Tests for the Phase 6.3 claim-forensics report prototype (inspektorium.audit.forensic_report).
+"""Tests for the Phase 6.3 claim-forensics report prototype (inspektorium.audit.forensics.forensic_report).
 
 All fixtures are SYNTHETIC (loaded from analysis/phase6_3_report_prototype/fixtures).
 The tests exercise the frozen taxonomy, the biological mechanism_vs_evidence scope,
@@ -14,8 +14,8 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit import forensic_report as fr
-from inspektorium.audit.forensic_report import (
+from inspektorium.audit.forensics import forensic_report as fr
+from inspektorium.audit.forensics.forensic_report import (
     FORENSIC_LABELS,
     REPORT_SCHEMA_VERSION,
     VERDICT_TITLES,

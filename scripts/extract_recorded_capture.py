@@ -2,7 +2,7 @@
 
 This does not verify or recreate a historical live authorization, ledger, review
 history, or bundle. Output provenance records the actual supplied capture bytes.
-Run with the installed agent-arena package; no provider or network is used.
+Run with the installed inspektorium package; no provider or network is used.
 """
 from __future__ import annotations
 
@@ -11,9 +11,9 @@ import hashlib
 import json
 from pathlib import Path
 
-from inspektorium.audit.phase10_live import task_sha256
+from inspektorium.audit.workflow.live import task_sha256
 from inspektorium.audit.providers.anthropic_live import interpret_message
-from inspektorium.audit.task_loader import load_task
+from inspektorium.audit.execution.task_loader import load_task
 
 
 def sha256(raw: bytes) -> str:
@@ -43,7 +43,7 @@ def extract(capture_path: Path, task_path: Path, output: Path) -> dict:
     recording = info["final_text"].encode("utf-8")
     task_bytes = task_path.read_bytes()
     manifest = {
-        "schema": "agent-arena-offline-capture-derivation/1.0",
+        "schema": "inspektorium-offline-capture-derivation/1.0",
         "method": "UTF-8 encoding of concatenated recorded response text blocks, unchanged",
         "scope": "New recorded_offline analysis; not native live replay or original bundle verification",
         "unverified": ["historical authorization", "ledger binding", "historical review history",

@@ -1,6 +1,6 @@
 """Phase 7B slice 2 — derived / source-reported value provenance.
 
-Core invariant: SYSTEM-DERIVED VALUE != SOURCE-REPORTED VALUE. A value Agent Arena
+Core invariant: SYSTEM-DERIVED VALUE != SOURCE-REPORTED VALUE. A value Inspektorium
 derives must never be represented downstream as a source-reported / literature fact.
 Failing variants are derived by mutation from one generic synthetic fixture.
 """
@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit.artifact_binding import (
+from inspektorium.audit.integrity.artifact_binding import (
     CLAIM_LABELS,
     QA_ARTIFACT_SOURCE_BINDING_DRIFT,
     QA_MODEL_OUTPUT_TO_LITERATURE_FACT,

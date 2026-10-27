@@ -8,7 +8,7 @@ These tests prove that the engine can now detect a new class of failures:
   5. No regression on existing task shapes
 """
 
-from inspektorium.audit.evaluator import (
+from inspektorium.audit.execution.evaluator import (
     evaluate_result,
     _classify_load_bearing_steps,
     _content_words,
@@ -376,7 +376,7 @@ class TestReportIntegration:
     """Reasoning integrity section appears in reports."""
 
     def test_report_contains_integrity_section(self):
-        from inspektorium.audit.reporter import generate_report
+        from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
 
         parsed = AgentResponse(
@@ -394,7 +394,7 @@ class TestReportIntegration:
         assert "Reasoning Integrity Audit" in report
 
     def test_report_shows_classification(self):
-        from inspektorium.audit.reporter import generate_report
+        from inspektorium.audit.reports.reporter import generate_report
         from inspektorium.audit.schemas import RunRecord
 
         parsed = AgentResponse(

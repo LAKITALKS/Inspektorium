@@ -6,15 +6,15 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
-from inspektorium.audit.agent_loader import load_agent_config
+from inspektorium.audit.execution.agent_loader import load_agent_config
 from inspektorium.audit.providers import get_provider
 from inspektorium.audit.providers.anthropic import (
     MAX_TRANSPORT_RETRIES,
     REQUEST_TIMEOUT_SECONDS,
     AnthropicProvider,
 )
-from inspektorium.audit.runner import run_agent
-from inspektorium.audit.task_loader import load_task
+from inspektorium.audit.execution.runner import run_agent
+from inspektorium.audit.execution.task_loader import load_task
 
 TASK = load_task("tests/fixtures/audit/case_library/case013_gut_microbes.yaml")
 VALID_JSON = '{"final_answer":"mechanism_vs_evidence","confidence":0.8}'

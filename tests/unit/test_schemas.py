@@ -1,4 +1,4 @@
-"""Tests for agent-arena v0.4 schemas."""
+"""Tests of the Inspektorium audit runtime schemas."""
 
 from inspektorium.audit.schemas import (
     AgentResponse,

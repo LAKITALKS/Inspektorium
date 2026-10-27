@@ -1,6 +1,6 @@
-"""Tests for agent-arena v0.4.1 claim checker — numeric/verbal consistency engine."""
+"""Tests of the Inspektorium audit runtime claim checker — numeric/verbal consistency engine."""
 
-from inspektorium.audit.claim_checker import (
+from inspektorium.audit.checks.claim_checker import (
     check_claims_against_facts,
     extract_comparative_claims,
     extract_numeric_facts,

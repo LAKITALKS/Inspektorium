@@ -6,7 +6,7 @@ import hashlib
 
 import pytest
 
-from inspektorium.audit.runner import (
+from inspektorium.audit.execution.runner import (
     STUDY_FORENSICS_CONDITION_HISTORICAL,
     STUDY_FORENSICS_CONDITION_PROSPECTIVE,
     STUDY_FORENSICS_PROMPT,

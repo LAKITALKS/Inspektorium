@@ -27,7 +27,7 @@ EVIDENCE_SCHEMA = "aa-p10-live-evidence/1.0"
 FRAMING_TOKENS = 2048
 PROMPT_TAGS = ("<task_prompt", "</task_prompt>", "<task_context", "</task_context>")
 TRANSIENT_ERRORS = {"overloaded", "rate_limit", "server_error", "timeout", "connection"}
-# Prompt versions are registered in inspektorium.audit.runner; tests assert these names resolve there.
+# Prompt versions are registered in inspektorium.audit.execution.runner; tests assert these names resolve there.
 LEGACY_PROMPT_BINDING = ("study_forensics_prompt/v3-phase8", "study_forensics_prompt/v3-phase8-review-p9-1")
 CONTRACT_R1_PROMPT_BINDING = ("study_forensics_prompt/v3-phase8-contract-r1",
                               "study_forensics_prompt/v3-phase8-contract-r1-review-p9-1")
@@ -115,7 +115,7 @@ def profile_dict(profile: LiveProfile) -> dict:
             "pricing_source": profile.pricing_source, "rationale": profile.rationale}
     if profile.prompt_binding is not None:
         # Bind prompt bytes, not only names: a changed registry entry changes the fingerprint.
-        from inspektorium.audit.runner import resolve_study_forensics_prompt
+        from inspektorium.audit.execution.runner import resolve_study_forensics_prompt
         primary, review = profile.prompt_binding
         data["prompt_binding"] = {
             "primary": primary, "primary_sha256": sha256_text(resolve_study_forensics_prompt(primary)),

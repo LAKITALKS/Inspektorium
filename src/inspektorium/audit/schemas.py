@@ -1,4 +1,4 @@
-"""Core data models for agent-arena v0.5 — forensic reasoning analysis engine."""
+"""Core data models of the Inspektorium audit runtime — forensic reasoning analysis engine."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, model_serializer, model_validator
 
-from inspektorium.audit.confidence_validity import (
+from inspektorium.audit.checks.confidence_validity import (
     INVALID,
     MISSING,
     VALID,
@@ -1191,7 +1191,7 @@ class DependencySummary(BaseModel):
 # FINDING → CLIENT FINDING chain and its deterministic QA gates. It does NOT modify
 # the frozen forensic_report 6.3.0 output schema (which stays byte-compatible). The
 # four-label claim taxonomy is unchanged; pipeline-QA codes live in a SEPARATE
-# namespace (see inspektorium.audit.artifact_binding) and are never claim labels.
+# namespace (see inspektorium.audit.integrity.artifact_binding) and are never claim labels.
 
 FORENSIC_RECORD_SCHEMA_VERSION = "0.1.0"
 
@@ -1220,7 +1220,7 @@ SUMMARY_STRENGTH_ORDER = (
 
 # Value origin — a dimension SEPARATE from evidence strength, claim provenance,
 # source provenance and search scope (Phase-7B slice 2). It answers: did the SOURCE
-# report this quantitative/evidential value, or did Agent Arena DERIVE it (compute /
+# report this quantitative/evidential value, or did Inspektorium DERIVE it (compute /
 # model / estimate / aggregate)? A system-derived value must never silently become a
 # source-reported (literature) fact downstream.
 #
@@ -1228,7 +1228,7 @@ SUMMARY_STRENGTH_ORDER = (
 # A missing origin is represented as ``None`` (unresolved) and must NEVER be treated as
 # source_reported — absence of provenance metadata is not evidence of source provenance.
 VALUE_ORIGIN_SOURCE_REPORTED = "source_reported"   # the cited source states this value
-VALUE_ORIGIN_SYSTEM_DERIVED = "system_derived"     # Agent Arena produced it from inputs
+VALUE_ORIGIN_SYSTEM_DERIVED = "system_derived"     # Inspektorium produced it from inputs
 VALUE_ORIGINS = (VALUE_ORIGIN_SOURCE_REPORTED, VALUE_ORIGIN_SYSTEM_DERIVED)
 
 # What origin a CLIENT representation may assert. "unspecified" means the client makes
@@ -1303,6 +1303,9 @@ class ClaimProvenance(BaseModel):
     context_after: str | None = None
 
 
+# This docstring is part of the JSON schema embedded in the frozen live prompt
+# study_forensics_prompt/v3-phase8. Its bytes, including the former product name,
+# stay unchanged; see docs/development/migration-0.3.md.
 class QAEvidenceItem(BaseModel):
     """One stable-identified evidence item participating in the QA path.
 

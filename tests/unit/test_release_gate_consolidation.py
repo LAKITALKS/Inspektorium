@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit.artifact_binding import (
+from inspektorium.audit.integrity.artifact_binding import (
     MANDATORY_PHASE7B_CHECKS,
     QA_ARTIFACT_SOURCE_BINDING_DRIFT,
     QA_ASYMMETRIC_EVIDENCE_SELECTION,
@@ -31,7 +31,7 @@ from inspektorium.audit.artifact_binding import (
     evaluate_artifact_release,
     load_forensic_record,
 )
-from inspektorium.audit.run_library import discover_cases
+from inspektorium.audit.execution.run_library import discover_cases
 from inspektorium.audit.schemas import FailureSeverity, Task
 
 FIXTURE = (Path(__file__).resolve().parents[1] / "fixtures" / "audit" / "pipeline_qa"

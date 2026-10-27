@@ -1,6 +1,6 @@
-"""Tests for agent-arena v0.4 evaluator — forensic evaluation engine."""
+"""Tests of the Inspektorium audit runtime evaluator — forensic evaluation engine."""
 
-from inspektorium.audit.evaluator import (
+from inspektorium.audit.execution.evaluator import (
     _all_text,
     _keyword_in_text,
     _normalize,

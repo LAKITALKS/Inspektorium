@@ -7,7 +7,7 @@ Documents for each shape:
   - what patterns are intentionally unsupported
 """
 
-from inspektorium.audit.claim_checker import (
+from inspektorium.audit.checks.claim_checker import (
     count_contradictions,
     extract_comparative_claims,
     extract_numeric_facts,

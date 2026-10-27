@@ -1,4 +1,4 @@
-"""Tests for study forensics integration — agent-arena v0.6 pilot."""
+"""Tests for study forensics integration of the Inspektorium audit runtime pilot."""
 
 from __future__ import annotations
 
@@ -18,8 +18,8 @@ from inspektorium.audit.schemas import (
     Task,
     TaskType,
 )
-from inspektorium.audit.task_loader import load_task
-from inspektorium.audit.study_forensics_checker import (
+from inspektorium.audit.execution.task_loader import load_task
+from inspektorium.audit.checks.study_forensics_checker import (
     is_study_forensics_task,
     run_study_forensics_checks,
     _detect_label,
@@ -29,9 +29,9 @@ from inspektorium.audit.study_forensics_checker import (
     _is_negated,
     _keyword_match_non_negated,
 )
-from inspektorium.audit.evaluator import evaluate_result
-from inspektorium.audit.reporter import generate_report
-from inspektorium.audit.runner import (
+from inspektorium.audit.execution.evaluator import evaluate_result
+from inspektorium.audit.reports.reporter import generate_report
+from inspektorium.audit.execution.runner import (
     _select_system_prompt, STUDY_FORENSICS_PROMPT, STUDY_FORENSICS_PROMPT_PHASE8,
     STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL, SYSTEM_PROMPT,
 )
@@ -385,7 +385,7 @@ class TestReporterIntegration:
                 steps=["Analysis step."],
             )
             result = _make_agent_result(p)
-            from inspektorium.audit.evaluator import evaluate_run
+            from inspektorium.audit.execution.evaluator import evaluate_run
             record = evaluate_run(task, "test-run", [result])
             report = generate_report(record)
             assert len(report) > 0
@@ -400,7 +400,7 @@ class TestReporterIntegration:
             steps=["Overstated conclusion."],
         )
         result = _make_agent_result(p)
-        from inspektorium.audit.evaluator import evaluate_run
+        from inspektorium.audit.execution.evaluator import evaluate_run
         record = evaluate_run(task, "test-run", [result])
         report = generate_report(record)
         assert "Study Forensics Audit" in report
@@ -442,7 +442,7 @@ class TestPilotRun:
 
     def test_pilot_end_to_end(self, tmp_path):
         """Run six tracked synthetic responses through evaluation and report generation."""
-        from inspektorium.audit.evaluator import evaluate_run
+        from inspektorium.audit.execution.evaluator import evaluate_run
 
         fixture = json.loads(PILOT_RESPONSE_FIXTURE.read_text())["responses"]
         runs_dir = tmp_path / "runs"

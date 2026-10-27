@@ -36,7 +36,7 @@ class OpenAIProvider(BaseProvider):
         try:
             from openai import OpenAI
         except ImportError:
-            raise RuntimeError("Install openai: pip install 'agent-arena[providers]'")
+            raise RuntimeError("Install openai: pip install 'inspektorium[providers]'")
 
         start = time.monotonic()
         try:

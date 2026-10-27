@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from inspektorium.audit.reporting import (
+from inspektorium.audit.reports.reporting import (
     generate_client_report,
     generate_html_report,
     pdf_available,
@@ -173,7 +173,7 @@ class TestReportGeneration:
     def test_report_contains_footer(self):
         record = _make_run_record()
         report = generate_client_report(record)
-        assert "Agent Arena" in report
+        assert "Inspektorium" in report
 
     def test_multi_agent_report(self):
         r1 = _make_evaluated_result(

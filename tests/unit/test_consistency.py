@@ -1,6 +1,6 @@
-"""Tests for agent-arena v0.4 Forensic Consistency 2.0."""
+"""Tests of the Inspektorium audit runtime Forensic Consistency 2.0."""
 
-from inspektorium.audit.consistency import run_consistency_checks
+from inspektorium.audit.checks.consistency import run_consistency_checks
 from inspektorium.audit.schemas import AgentResponse, Difficulty, Task, TaskType
 
 

@@ -18,7 +18,7 @@ from inspektorium.audit.providers import (
     get_provider,
 )
 from inspektorium.audit.providers.response import DEFAULT_MAX_TOKENS
-from inspektorium.audit.runner import run_agent
+from inspektorium.audit.execution.runner import run_agent
 from inspektorium.audit.schemas import Task, TaskType
 
 

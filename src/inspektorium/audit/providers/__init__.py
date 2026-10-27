@@ -1,4 +1,4 @@
-"""Provider abstraction for agent-arena."""
+"""Provider abstraction for the Inspektorium audit runtime."""
 
 from __future__ import annotations
 

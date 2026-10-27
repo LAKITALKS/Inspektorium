@@ -1,6 +1,6 @@
-"""Tests for agent-arena v0.4 reasoning graph module."""
+"""Tests of the Inspektorium audit runtime reasoning graph module."""
 
-from inspektorium.audit.reasoning_graph import (
+from inspektorium.audit.checks.reasoning_graph import (
     build_reasoning_graph,
     classify_self_check,
     _content_words,

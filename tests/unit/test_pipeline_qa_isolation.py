@@ -18,7 +18,7 @@ from pathlib import Path
 
 import pytest
 
-from inspektorium.audit.run_library import discover_cases
+from inspektorium.audit.execution.run_library import discover_cases
 from inspektorium.audit.schemas import Task, TaskType
 
 ROOT = Path(__file__).resolve().parents[2]
