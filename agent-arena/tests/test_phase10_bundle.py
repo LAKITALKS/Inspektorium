@@ -8,7 +8,7 @@ import pytest
 from click.testing import CliRunner
 
 from agent_arena import artifact_binding, phase10_render
-from agent_arena.cli import cli
+from agent_arena.phase10_cli import audit
 from agent_arena.evaluator import evaluate_run
 from agent_arena.phase10_bundle import (
     create_candidate, inspect_bundle, release_candidate, review_candidate, run_audit,
@@ -216,24 +216,26 @@ def test_divergent_history_carriers_remain_visible_and_block(tmp_path):
 
 
 def test_cli_offline_pipeline_inspect_release_and_no_name_resolution(tmp_path, monkeypatch):
-    import agent_arena.cli as legacy
-    monkeypatch.setattr(legacy, "get_provider", lambda *_: pytest.fail("No named provider in offline path"))
+    import agent_arena.providers as providers
+    import agent_arena.runner as runner_module
+    monkeypatch.setattr(providers, "get_provider", lambda *_: pytest.fail("No named provider in offline path"))
+    monkeypatch.setattr(runner_module, "get_provider", lambda *_: pytest.fail("No named provider in offline path"))
     task, raw = recorded()
     task_path, recording = tmp_path / "task.json", tmp_path / "recording.json"
     task_path.write_text(task.model_dump_json())
     recording.write_text(raw)
     runner = CliRunner()
-    assert runner.invoke(cli, ["audit", "validate", "--task", str(task_path)]).exit_code == 0
-    run = runner.invoke(cli, ["audit", "run", "--offline", "--task", str(task_path), "--recording",
+    assert runner.invoke(audit, ["validate", "--task", str(task_path)]).exit_code == 0
+    run = runner.invoke(audit, ["run", "--offline", "--task", str(task_path), "--recording",
                               str(recording), "--output-root", str(tmp_path / "bundles")])
     assert run.exit_code == 0, run.output
     path = json.loads(run.output)["path"]
-    assert runner.invoke(cli, ["audit", "inspect", "--bundle", path]).exit_code == 0
-    release = runner.invoke(cli, ["audit", "release", "--bundle", path, "--output-root",
+    assert runner.invoke(audit, ["inspect", "--bundle", path]).exit_code == 0
+    release = runner.invoke(audit, ["release", "--bundle", path, "--output-root",
                                  str(tmp_path / "bundles"), "--reviewer", "test", "--reason", "local test"])
     assert release.exit_code == 0, release.output
     assert json.loads(release.output)["status"] == "RELEASED"
-    assert "Not the canonical Phase10 path" in runner.invoke(cli, ["official-release", "--help"]).output
+    assert set(audit.commands) == {"validate", "run", "inspect", "review", "release"}
 
 
 def test_human_correction_of_failed_original_uses_new_analysis_without_erasing_failure(tmp_path):

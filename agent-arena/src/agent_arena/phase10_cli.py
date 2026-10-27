@@ -75,7 +75,7 @@ def run(offline, live, replay, task, recording, authorization_dir, profile, outp
     if recording is not None or authorization_dir is None or not profile:
         raise click.UsageError("--live/--replay require --authorization-dir and --profile, not --recording.")
     from uuid import uuid4
-    from agent_arena.bounded_harness_mission import MissionError
+    from agent_arena.budget_ledger import MissionError
     from agent_arena.phase10_live import LiveAuditProvider, LiveSession, ReplayProvider
     from agent_arena.providers.anthropic_live import PROFILES
     loaded = _task(task)

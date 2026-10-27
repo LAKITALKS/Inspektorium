@@ -300,7 +300,7 @@ def test_model_ids_cannot_add_host_lines_to_control_reasons_or_the_open_cause(tm
 def test_cli_json_never_prints_raw_control_or_bidi_characters(tmp_path):
     # Critic VC-2: CLI errors quote model-supplied ids; the JSON is ASCII-escaped and still exact.
     from click.testing import CliRunner
-    from agent_arena.cli import cli
+    from agent_arena.phase10_cli import audit
     data = json.loads((EXAMPLES / "positive-recording.json").read_text())
     raw = json.dumps(data).replace(json.dumps("claim:p1")[1:-1], json.dumps("claim:p1\u202e\x85ssap")[1:-1])
     data = json.loads(raw)
@@ -309,7 +309,7 @@ def test_cli_json_never_prints_raw_control_or_bidi_characters(tmp_path):
         proposition["original_span"]["end"] += 1
     recording = tmp_path / "recording.json"
     recording.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
-    result = CliRunner().invoke(cli, ["audit", "run", "--offline", "--task", str(EXAMPLES / "positive-task.json"),
+    result = CliRunner().invoke(audit, ["run", "--offline", "--task", str(EXAMPLES / "positive-task.json"),
                                       "--recording", str(recording), "--output-root", str(tmp_path / "out")])
     assert result.exit_code == 2
     assert result.output.isascii()

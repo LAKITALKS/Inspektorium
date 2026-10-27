@@ -15,7 +15,7 @@ from pathlib import Path
 import pytest
 from click.testing import CliRunner
 
-from agent_arena.cli import cli
+from agent_arena.phase10_cli import audit
 from agent_arena.phase10_bundle import inspect_bundle, release_candidate, run_audit
 from agent_arena.phase9_runtime import OfflineReviewProvider
 from agent_arena.schemas import Task
@@ -284,7 +284,7 @@ def test_offline_cli_stores_the_recording_bytes_exactly(tmp_path):
     task_path = tmp_path / "task.json"
     task_path.write_text(_task("positive").model_dump_json())
     data = _crlf_file(tmp_path / "recording.json", json.dumps(json.loads(_recording("positive")), indent=2))
-    run = CliRunner().invoke(cli, ["audit", "run", "--offline", "--task", str(task_path), "--recording",
+    run = CliRunner().invoke(audit, ["run", "--offline", "--task", str(task_path), "--recording",
                                    str(tmp_path / "recording.json"), "--output-root", str(tmp_path / "b")])
     assert run.exit_code == 0, run.output
     path = Path(json.loads(run.output)["path"])
@@ -301,7 +301,7 @@ def test_review_cli_stores_the_correction_bytes_exactly(tmp_path):
     assert first.status == "ANALYSIS_INCOMPLETE"
     original = json.loads((Path(first.path) / "record.json").read_text())["run_record"]["metadata"]["phase9"]
     data = _crlf_file(tmp_path / "correction.json", json.dumps(json.loads(_recording("positive")), indent=2))
-    review = CliRunner().invoke(cli, ["audit", "review", "--bundle", first.path, "--state-dir", str(tmp_path / "s"),
+    review = CliRunner().invoke(audit, ["review", "--bundle", first.path, "--state-dir", str(tmp_path / "s"),
                                       "--output-root", str(tmp_path / "b"),
                                       "--select", original["positions"][0]["position_id"],
                                       "--reviewer", "TEST human", "--reason", "complete correction",

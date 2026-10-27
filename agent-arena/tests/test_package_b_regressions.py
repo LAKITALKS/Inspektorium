@@ -16,7 +16,6 @@ from agent_arena.artifact_binding import (
 )
 from agent_arena.evaluator import evaluate_run
 from agent_arena.output_contract import extract_json_object
-from agent_arena.phase7a_execution import is_classification_valid
 from agent_arena.phase8_pipeline import assess_agent_result
 from agent_arena.phase9_runtime import OfflineReviewProvider
 from agent_arena.phase10_bundle import run_audit
@@ -43,43 +42,6 @@ def _payload_text(label="solid"):
 
 # ---------------------------------------------------------------- P1-F1 / P1-A2: ambiguous outputs
 
-@pytest.mark.parametrize("shape,flagged", [
-    ("single", False),
-    ("single_with_prose_braces", False),
-    ("two_fences", True),
-    ("two_raw_objects", True),
-    ("truncated_trailing_object", True),
-    ("bare_fence_then_json_fence", True),
-    ("trailing_bare_brace", True),
-    ("fenced_then_bare_brace_with_whitespace", True),
-])
-def test_P1_a_second_analysis_is_flagged_and_never_a_complete_phase8_analysis(shape, flagged):
-    task, one = _payload_text("overclaim")
-    _, two = _payload_text("solid")
-    raw = {
-        "single": f"```json\n{one}\n```",
-        "single_with_prose_braces": f"```json\n{one}\n```\nNote: the set {{x}} is empty.",
-        "two_fences": f"```json\n{one}\n```\n**CORRECTED RESPONSE:**\n```json\n{two}\n```",
-        "two_raw_objects": f"{one}\nCorrection: {two}",
-        "truncated_trailing_object": f"```json\n{one}\n```\nCorrected:\n{two[:200]}",
-        "bare_fence_then_json_fence": f"```\n{one}\n```\n```json\n{two}\n```",
-        "trailing_bare_brace": f"{one}\nCorrected:\n{{",  # BE10: cut right after the opening brace
-        "fenced_then_bare_brace_with_whitespace": f"```json\n{one}\n```\nCorrected:\n{{\n  ",
-    }[shape]
-    data, diagnostics = extract_json_object(raw, "stop")
-    assert data is not None and diagnostics.ok
-    assert diagnostics.multiple_objects is flagged
-    result = run_agent(OfflineReviewProvider(raw), task)
-    phase8 = assess_agent_result(task, result)
-    assert (phase8["technical_status"] == "completed") is (not flagged)
-    record = evaluate_run(task, "run-b", [result])
-    _, _, _, forensic = reconstruct(record)
-    assert (forensic is None) is flagged
-    row = {"error": None, "parse_ok": True, "truncation_suspected": False, "label": "solid",
-           "parse_multiple_objects": flagged, "error_type": None}
-    assert is_classification_valid(row) is (not flagged)
-
-
 @pytest.mark.parametrize("finish_reason", ["length", None, "stop"])
 def test_P1_F2_a_cached_parse_without_raw_text_is_never_complete(finish_reason):
     task, text = _payload_text()
@@ -87,11 +49,6 @@ def test_P1_F2_a_cached_parse_without_raw_text_is_never_complete(finish_reason):
     assert assess_agent_result(task, result)["technical_status"] == "completed"
     stripped = result.model_copy(update={"raw_output": "", "finish_reason": finish_reason})
     assert assess_agent_result(task, stripped)["technical_status"] == "incomplete"  # BE11
-
-
-def test_P1_frozen_records_without_the_new_flag_are_evaluated_as_before():
-    old = {"error": None, "parse_ok": True, "truncation_suspected": False, "label": "solid", "error_type": None}
-    assert is_classification_valid(old) is True
 
 
 # ---------------------------------------------------------------- P2-F1 / P3-F1 / P6-F1: curated cases
@@ -172,27 +129,6 @@ def test_P7_material_false_no_longer_switches_off_evidence_symmetry(which):
 
 
 # ---------------------------------------------------------------- P5-F1: one-shot namespace
-
-def test_P5_lost_lease_or_aborted_namespace_never_opens_a_second_one_shot_batch(tmp_path):
-    import tests.test_full_replication_contract as frc_tests
-    from agent_arena import full_replication_contract as frc
-    from agent_arena.phase7a_real_run import ConditionAuthorizationError
-    document = frc_tests._synthetic_document()
-    complete = tmp_path / "complete"
-    frc_tests._run_synthetic(complete, document, frc_tests._ProviderBuilder())
-    (complete / frc.LEASE_FILENAME).unlink()  # A3: lease lost after a complete run
-    builder = frc_tests._ProviderBuilder()
-    with pytest.raises(ConditionAuthorizationError, match="prior-run artifacts without its lease"):
-        frc_tests._run_synthetic(complete, document, builder)
-    assert builder.constructions == 0
-    aborted = tmp_path / "aborted"
-    frc_tests._run_synthetic(aborted, document, frc_tests._AuthErrorBuilder())
-    (aborted / frc.LEASE_FILENAME).unlink()  # B2: aborted run, lease lost
-    builder = frc_tests._ProviderBuilder()
-    with pytest.raises(ConditionAuthorizationError, match="prior-run artifacts without its lease"):
-        frc_tests._run_synthetic(aborted, document, builder)
-    assert sum(p.requests for p in builder.providers) == 0
-
 
 # ---------------------------------------------------------------- P8-F1 / P8-AF1 and P8-F2
 
@@ -338,18 +274,6 @@ def test_P9_F5_a_whole_claim_conflict_entry_carries_both_positions_with_reasons(
 
 # ---------------------------------------------------------------- Package B round 1 (BF2, BF4, BF5)
 
-def test_BF4_the_harness_records_a_second_analysis_and_marks_the_classification_invalid(tmp_path):
-    from agent_arena.run_library import run_single
-    task, one = _payload_text("overclaim")
-    _, two = _payload_text("solid")
-    raw = f"```json\n{one}\n```\n**CORRECTED RESPONSE:**\n```json\n{two}\n```"
-    record = run_single(OfflineReviewProvider(raw), Path("pkg-b.yaml"), task, 0, "pkg-b-run")
-    assert record["parse_multiple_objects"] is True and record["parse_ok"] is True
-    assert is_classification_valid(record) is False
-    single = run_single(OfflineReviewProvider(f"```json\n{one}\n```"), Path("pkg-b.yaml"), task, 0, "pkg-b-run")
-    assert single["parse_multiple_objects"] is False
-
-
 def test_BF5_an_agreed_unknown_on_the_taxonomy_trigger_is_a_mandatory_review(tmp_path):
     """P8-AF1: no conflict, but the shared UNKNOWN alone decides the released CvC label."""
     from agent_arena.phase9_review import assess_case, position_from_result
@@ -391,27 +315,6 @@ def test_BF2_a_stored_older_case_state_fails_closed_under_aa_p9_1_3(tmp_path, st
 
 
 # ---------------------------------------------------------------- Package B round 2 (RE4/RF3)
-
-def test_BF8_record_fingerprint_binds_the_new_flag_only_where_present():
-    from agent_arena.phase7a_real_run import _RECORD_FP_FIELDS, record_fingerprint
-    from agent_arena import phase7a_execution as p7
-    legacy = {field: f"v-{field}" for field in _RECORD_FP_FIELDS}
-    # A frozen record without the field keeps exactly its historical fingerprint.
-    assert record_fingerprint(legacy) == p7._fp({k: legacy.get(k) for k in _RECORD_FP_FIELDS})
-    flagged, clear = dict(legacy, parse_multiple_objects=True), dict(legacy, parse_multiple_objects=False)
-    assert record_fingerprint(flagged) != record_fingerprint(clear) != record_fingerprint(legacy)
-
-
-def test_BF6_a_namespace_with_only_finder_metadata_is_not_a_prior_run(tmp_path):
-    import tests.test_full_replication_contract as frc_tests
-    document = frc_tests._synthetic_document()
-    fresh = tmp_path / "fresh"
-    fresh.mkdir()
-    (fresh / ".DS_Store").write_bytes(b"\x00\x00\x00\x01Bud1")
-    builder = frc_tests._ProviderBuilder()
-    frc_tests._run_synthetic(fresh, document, builder)
-    assert builder.constructions >= 1
-
 
 def test_registry_versions_of_package_b():
     assert (REGISTRY["input_preflight"], REGISTRY["evidence_symmetry"], REGISTRY["phase8_semantics_taxonomy"],

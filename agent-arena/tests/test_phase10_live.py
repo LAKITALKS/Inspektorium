@@ -12,7 +12,7 @@ import httpx
 import pytest
 
 from agent_arena import phase10_live as live
-from agent_arena.bounded_harness_mission import MissionError
+from agent_arena.budget_ledger import MissionError
 from agent_arena.phase10_bundle import create_candidate, inspect_bundle, release_candidate, run_audit
 from agent_arena.phase10_pipeline import REGISTRY, LIVE_REGISTRY, registry_fingerprint
 from agent_arena.phase10_projection import LIVE_NOTICE, NOTICE, REPLAY_NOTICE
@@ -495,7 +495,7 @@ def test_L8_capture_persisted_before_crash_is_settled_on_resume(tmp_path):
         body = json.loads(message(_recording("positive")).content)
         call = {"request_sent": True, "http_status": 200, "request_id": "req_x", "response_body": body,
                 "billing": "usage_reported", "request_sha256": "x"}
-        from agent_arena.bounded_harness_mission import atomic
+        from agent_arena.budget_ledger import atomic
         atomic(session.capture_path(aid), {"profile_id": HAIKU, "call": call, "attempt_id": aid, "slot_key": slot,
                                            "authorization_id": "TEST-LIVE-AUTH"})
     with _session(directory, Transport()) as session:
@@ -610,7 +610,7 @@ def test_round2_foreign_capture_does_not_settle_and_interrupted_retry_resumes(tm
     slot = live.slot_key(task.id, HAIKU, "primary")
     with _session(directory, Transport()) as session:
         aid = session.ledger.reserve(slot, "p", "w", microusd=10_000)
-        from agent_arena.bounded_harness_mission import atomic
+        from agent_arena.budget_ledger import atomic
         atomic(session.capture_path(aid), {"profile_id": HAIKU, "attempt_id": aid, "slot_key": "other|slot|primary",
                                            "authorization_id": "TEST-LIVE-AUTH", "call": {"http_status": 200}})
     with _session(directory, Transport()) as session:

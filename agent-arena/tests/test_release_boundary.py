@@ -428,79 +428,6 @@ def test_W_direct_forensic_renderer_is_diagnostic_and_verifier_rejects_it(tmp_pa
     assert rb.verify_official_release(package).valid is False
 
 
-def test_X_legacy_client_cli_is_diagnostic_and_cannot_target_official_namespace(
-    tmp_path, monkeypatch
-):
-    cli_module = importlib.import_module("agent_arena.cli")
-    record = RunRecord(
-        run_id="diagnostic-cli-test",
-        task=Task(
-            id="diagnostic-cli-task",
-            title="Diagnostic CLI task",
-            domain="synthetic",
-            difficulty=Difficulty.EASY,
-            task_type=TaskType.CLOSED_WITH_REASONING,
-            prompt="Synthetic diagnostic input.",
-        ),
-        results=[],
-        timestamp="2026-08-27T00:00:00+00:00",
-    )
-    monkeypatch.setattr(cli_module, "_load_run", lambda _path: record)
-    runner = CliRunner()
-    preview = tmp_path / "preview.md"
-    result = runner.invoke(
-        cli_module.cli,
-        ["client-report", "--run", "unused.json", "--output", str(preview), "--quiet"],
-    )
-    assert result.exit_code == 2
-    assert "Diagnostic non-release report saved" in result.output
-    assert "DIAGNOSTIC / NON-RELEASE ARTIFACT" in preview.read_text()
-    for fmt in ("markdown", "html", "pdf"):
-        forbidden = tmp_path / rb.OFFICIAL_RELEASE_NAMESPACE / f"preview.{fmt}"
-        blocked = runner.invoke(
-            cli_module.cli,
-            [
-                "client-report", "--run", "unused.json", "--format", fmt,
-                "--output", str(forbidden), "--quiet",
-            ],
-        )
-        assert blocked.exit_code != 0
-        assert not forbidden.exists()
-
-
-def test_diagnostic_cli_cannot_enter_official_namespace_through_symlink(
-    tmp_path, monkeypatch
-):
-    cli_module = importlib.import_module("agent_arena.cli")
-    record = RunRecord(
-        run_id="diagnostic-symlink-test",
-        task=Task(
-            id="diagnostic-symlink-task",
-            title="Diagnostic symlink task",
-            domain="synthetic",
-            difficulty=Difficulty.EASY,
-            task_type=TaskType.CLOSED_WITH_REASONING,
-            prompt="Synthetic diagnostic input.",
-        ),
-        results=[],
-        timestamp="2026-08-27T00:00:00+00:00",
-    )
-    official = tmp_path / rb.OFFICIAL_RELEASE_NAMESPACE
-    official.mkdir()
-    alias = tmp_path / "diagnostic-alias"
-    alias.symlink_to(official, target_is_directory=True)
-    monkeypatch.setattr(cli_module, "_load_run", lambda _path: record)
-    blocked = CliRunner().invoke(
-        cli_module.cli,
-        [
-            "client-report", "--run", "unused.json", "--output", str(alias / "preview.md"),
-            "--quiet",
-        ],
-    )
-    assert blocked.exit_code != 0
-    assert not (official / "preview.md").exists()
-
-
 def test_public_client_renderers_return_diagnostic_only_content():
     record = RunRecord(
         run_id="diagnostic-renderer-test",
@@ -543,55 +470,6 @@ def test_direct_pdf_renderer_cannot_write_into_official_namespace(tmp_path):
     assert not forbidden.exists()
 
 
-def test_internal_report_cli_writes_only_an_explicit_diagnostic(
-    tmp_path, monkeypatch
-):
-    cli_module = importlib.import_module("agent_arena.cli")
-    record = RunRecord(
-        run_id="internal-diagnostic-test",
-        task=Task(
-            id="internal-diagnostic-task",
-            title="Internal diagnostic task",
-            domain="synthetic",
-            difficulty=Difficulty.EASY,
-            task_type=TaskType.CLOSED_WITH_REASONING,
-            prompt="Synthetic diagnostic input.",
-        ),
-        results=[],
-        timestamp="2026-08-27T00:00:00+00:00",
-    )
-    monkeypatch.setattr(cli_module, "_load_run", lambda _path: record)
-    monkeypatch.setattr(cli_module, "REPORTS_DIR", tmp_path)
-    result = CliRunner().invoke(cli_module.cli, ["report", "--run", "unused.json"])
-    assert result.exit_code == 0
-    content = (tmp_path / "internal-diagnostic-test.md").read_text()
-    assert content.startswith("> **DIAGNOSTIC / NON-RELEASE ARTIFACT")
-    assert "official_release_authorized=false" in content
-
-
-@pytest.mark.parametrize("fmt", ["markdown", "summary", "json"])
-def test_public_forensic_cli_is_diagnostic_and_nonzero(fmt, tmp_path):
-    cli_module = importlib.import_module("agent_arena.cli")
-    output = tmp_path / f"forensic-preview.{fmt}"
-    result = CliRunner().invoke(
-        cli_module.cli,
-        [
-            "forensic-report", "--input", str(REPORT_FIXTURE),
-            "--format", fmt, "--output", str(output),
-        ],
-    )
-    assert result.exit_code == 2
-    assert "diagnostic non-release forensic report written" in result.output
-    content = output.read_text()
-    if fmt == "json":
-        envelope = json.loads(content)
-        assert envelope["artifact_role"] == rb.DIAGNOSTIC_ARTIFACT_ROLE
-        assert envelope["official_release_authorized"] is False
-    else:
-        assert "DIAGNOSTIC / NON-RELEASE ARTIFACT" in content
-        assert "official_release_authorized=false" in content
-
-
 def test_Y_valid_package_cross_verifies_exact_object_report_and_hashes(material):
     candidate, repo, _source, output = material()
     result = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
@@ -605,26 +483,8 @@ def test_Y_valid_package_cross_verifies_exact_object_report_and_hashes(material)
     assert "different release object" in "; ".join(mismatch.errors)
 
 
-def _invoke_official_release_cli(candidate_file, output, repo):
-    cli_module = importlib.import_module("agent_arena.cli")
-    return CliRunner().invoke(
-        cli_module.cli,
-        [
-            "official-release", "--input", str(candidate_file), "--output-root", str(output),
-            "--repo-root", str(repo),
-        ],
-    )
-
-
-def test_public_official_release_cli_is_disabled_in_v1_while_api_still_releases(material, tmp_path):
+def test_official_release_api_still_releases(material, tmp_path):
     candidate, repo, _source, output = material()
-    candidate_file = tmp_path / "candidate.json"
-    candidate_file.write_text(candidate.model_dump_json(indent=2))
-    result = _invoke_official_release_cli(candidate_file, output, repo)
-    assert result.exit_code == 2, result.output
-    assert "historical Phase-7B release path and is disabled in v1" in result.output
-    assert "agent-arena audit release --bundle BUNDLE" in result.output
-    assert "official release written:" not in result.output
     assert _packages(output) == []
     # The historical API stays available for verification of earlier packages.
     released = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
@@ -632,16 +492,11 @@ def test_public_official_release_cli_is_disabled_in_v1_while_api_still_releases(
     assert len(_packages(output)) == 1
 
 
-def test_public_official_release_cli_denial_is_nonzero_and_writes_nothing(material, tmp_path):
+def test_official_release_api_denial_writes_nothing(material, tmp_path):
     def mutate(record):
         record.client_findings[0].client_strength = "disproven"
 
     candidate, repo, _source, output = material(mutate)
-    candidate_file = tmp_path / "denied-candidate.json"
-    candidate_file.write_text(candidate.model_dump_json(indent=2))
-    result = _invoke_official_release_cli(candidate_file, output, repo)
-    assert result.exit_code == 2, result.output
-    assert "disabled in v1" in result.output
     assert _packages(output) == []
     denied = rb.release_official_artifact(candidate, output_root=output, repo_root=repo)
     assert denied.released is False and denied.status == "NOT_RELEASABLE"

@@ -327,7 +327,7 @@ def _case_lease(base: Path, case_id: str):
 
 def _save(base: Path, path: Path, record: RunRecord) -> None:
     from agent_arena.audit_trail import log_decision, read_decisions
-    from agent_arena.bounded_harness_mission import atomic
+    from agent_arena.budget_ledger import atomic
     atomic(path, record.model_dump(mode="json"))
     known = {d.decision_id for d in read_decisions(base)}
     for decision in record.metadata["phase9"].get("adjudications", []):
@@ -362,7 +362,7 @@ def execute_review(record: RunRecord, provider: OfflineReviewProvider | None = N
     ``denial_reason`` names the caller's reason for withholding authorization (e.g. a per-model
     review cap); it only replaces the generic text of a denial and never grants anything.
     """
-    from agent_arena.bounded_harness_mission import BudgetLedger, atomic
+    from agent_arena.budget_ledger import BudgetLedger, atomic
     from agent_arena.phase9_pipeline import assess_run, attach_assessment, refresh_run_phase9
     from agent_arena.phase9_review import case_key, position_from_result
     from agent_arena.runner import (
