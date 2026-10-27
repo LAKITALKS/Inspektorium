@@ -2,7 +2,6 @@
 
 import fcntl
 import json
-from pathlib import Path
 
 import pytest
 
@@ -20,8 +19,6 @@ from inspektorium.audit.review.runtime import (
     execute_review,
     replay_review,
 )
-from inspektorium.audit.reports.reporter import generate_report
-from inspektorium.audit.execution.run_library import run_single
 from inspektorium.audit.schemas import RunRecord
 from tests.unit.test_forensic_report import base_input
 from tests.unit.test_review_runtime import fixture
@@ -244,20 +241,9 @@ def test_malformed_review_is_a_consumed_failed_attempt_with_raw_audit_and_no_ret
     assert len(provider.requests) == 1
 
 
-def test_library_and_runrecord_roundtrip_preserve_raw_and_separate_phase_statuses(
-    tmp_path,
-):
+def test_runrecord_roundtrip_preserves_raw_and_positions(tmp_path):
     record, raw = run_record()
     provider = OfflineReviewProvider(raw)
-    row = run_single(
-        provider, Path("offline-case.yaml"), record.task, 1, "offline-library"
-    )
-    loaded_row = json.loads(json.dumps(row))
-    assert loaded_row["raw_output"] == raw
-    assert loaded_row["forensic_record"] == json.loads(raw)["forensic_record"]
-    assert loaded_row["phase8"]["composite_state"] == "unknown"
-    assert loaded_row["phase9"]["execution_status"] == "not_executed"
-    assert loaded_row["phase9"]["route"] == "REVIEW_RECOMMENDED"
     reviewed = execute_review(
         record, provider, base_dir=tmp_path, authorized=True, budget_calls=1
     )
@@ -268,10 +254,6 @@ def test_library_and_runrecord_roundtrip_preserve_raw_and_separate_phase_statuse
         == reviewed.metadata["phase9"]["positions"]
     )
     assert refreshed.results[0].agent_result.raw_output == raw
-    calls = len(provider.requests)
-    rendered = generate_report(refreshed)
-    assert "HUMAN_REVIEW_REQUIRED" in rendered and "execution `completed`" in rendered
-    assert len(provider.requests) == calls
 
 
 def test_legacy_forensic_report_ignores_forged_review_cache_and_reports_not_executed():

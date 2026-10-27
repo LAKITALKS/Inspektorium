@@ -408,51 +408,6 @@ class TestLoadBearingClassification:
 
 
 # ===========================================================================
-# 7. REPORT INTEGRATION
-# ===========================================================================
-
-
-class TestReportIntegration:
-    """Reasoning integrity section appears in reports."""
-
-    def test_report_contains_integrity_section(self):
-        from inspektorium.audit.reports.reporter import generate_report
-        from inspektorium.audit.schemas import RunRecord
-
-        parsed = AgentResponse(
-            final_answer="Men 66%, women 82%.",
-            steps=[
-                "30 + 300 = 340",  # WRONG — triggers integrity finding
-                "340/500 = 68%",
-            ],
-            confidence=0.8,
-        )
-        result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
-        record = RunRecord(run_id="test-ri", task=SIMPSON_TASK, results=[result])
-        report = generate_report(record)
-
-        assert "Reasoning Integrity Audit" in report
-
-    def test_report_shows_classification(self):
-        from inspektorium.audit.reports.reporter import generate_report
-        from inspektorium.audit.schemas import RunRecord
-
-        parsed = AgentResponse(
-            final_answer="Men 66%, women 82%.",
-            steps=[
-                "30 + 300 = 330",
-                "330/500 = 66%",
-            ],
-            confidence=0.8,
-        )
-        result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
-        record = RunRecord(run_id="test-ri", task=SIMPSON_TASK, results=[result])
-        report = generate_report(record)
-
-        assert "Classification" in report
-
-
-# ===========================================================================
 # 8. NO REGRESSION
 # ===========================================================================
 

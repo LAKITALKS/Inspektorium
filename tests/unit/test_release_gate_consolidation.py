@@ -31,7 +31,6 @@ from inspektorium.audit.integrity.artifact_binding import (
     evaluate_artifact_release,
     load_forensic_record,
 )
-from inspektorium.audit.execution.run_library import discover_cases
 from inspektorium.audit.schemas import FailureSeverity, Task
 
 FIXTURE = (
@@ -356,8 +355,6 @@ def test_T_fixture_is_isolated_pipeline_qa():
     r = rec()
     assert r.synthetic_fixture is True
     assert r.fixture_class == "pipeline_qa"
-    discovered_names = {p.name for p, _ in discover_cases(task_dir=CASE_DIR)}
-    assert FIXTURE.name not in discovered_names
     import json
 
     data = json.loads(FIXTURE.read_text())

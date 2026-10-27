@@ -645,23 +645,6 @@ class TestConfidenceLabels:
         non_high = [f for f in labeled if f.confidence != "HIGH CONFIDENCE"]
         assert len(non_high) >= 0  # just verify labels are present
 
-    def test_labels_appear_in_report(self):
-        """Confidence labels must appear in the generated report text."""
-        from inspektorium.audit.reports.reporter import generate_report
-        from inspektorium.audit.schemas import RunRecord
-
-        task = _make_task()
-        result = _make_result(
-            final_answer="Men have higher admission rates than women in engineering.",
-            steps=["Engineering: men 30%, women 40%"],
-        )
-        ev = evaluate_result(task, result)
-        record = RunRecord(run_id="test-run", task=task, results=[ev])
-        report = generate_report(record)
-        assert "HIGH CONFIDENCE" in report, (
-            "Report should contain HIGH CONFIDENCE label"
-        )
-
     def test_wrong_answer_failure_is_high_confidence(self):
         """WRONG_ANSWER failure should be HIGH CONFIDENCE."""
         task = _make_task(

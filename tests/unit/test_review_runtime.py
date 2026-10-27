@@ -17,7 +17,6 @@ from inspektorium.audit.review.runtime import (
     submit_human_review,
 )
 from inspektorium.audit.review.routing import position_from_result
-from inspektorium.audit.reports.reporting import generate_client_report
 from inspektorium.audit.execution.runner import run_agent
 from tests.forensics_case_factory import raw_record
 from tests.unit.test_forensics_pipeline import task_for
@@ -75,7 +74,6 @@ def test_stable_case_no_extra_calls_and_roundtrip_output(tmp_path):
     )
     assert outcome.metadata["phase9"]["route"] == "AUTO_RESOLVABLE"
     assert reviewer.requests == []
-    assert "Phase 9" in generate_client_report(outcome)
     assert record.results[0].agent_result.raw_output == raw
 
 
@@ -176,7 +174,6 @@ def test_review_uses_existing_parser_retains_original_and_unknown(tmp_path):
     # AA-P8/1.1: this model UNKNOWN against a host-derived supported is a model/host conflict, so the
     # offline review gets the AA-P9/1.1 prompt that announces both positions, not the blind one.
     assert "AA-P9/1.1 targeted review" in reviewer.requests[0]["system_prompt"]
-    assert "UNKNOWN" in generate_client_report(outcome)
     loaded = replay_review(record.task, base_dir=tmp_path)
     assert loaded.metadata["phase9"]["positions"] == data["positions"]
 
@@ -216,12 +213,6 @@ def test_historical_and_stale_outputs_do_not_gain_review_pass():
         refresh_run_phase9(historical).metadata["phase9"]["technical_status"]
         == "not_executed"
     )
-    assert "🟢 PASS" not in generate_client_report(historical)
-    stale = record.model_copy(deep=True)
-    stale.results[0].agent_result.raw_output = "{}"
-    text = generate_client_report(stale)
-    assert "Invalid Phase9 history" in text
-    assert "🟢 PASS" not in text
 
 
 def test_frozen_historical_prompt_bytes():
@@ -305,10 +296,6 @@ def test_human_selection_history_replay_and_existing_audit_log(tmp_path):
     for _ in range(2):
         replay = replay_review(task, base_dir=tmp_path)
         assert replay.metadata["phase9"]["review_state"] == "adjudicated"
-        assert (
-            "Final adjudicated scientific state: **CONTRADICTED**"
-            in generate_client_report(replay)
-        )
     assert len(read_decisions(tmp_path)) == 1
     assert record.model_dump() == before
 
@@ -475,10 +462,6 @@ def test_invalid_replay_retains_all_unvalidated_history_and_cannot_claim_executi
     )
     for field in ("positions", "adjudications", "attempts"):
         assert outcome[field] == broken[field]
-    rendered = generate_client_report(
-        reviewed.model_copy(update={"metadata": {"phase9": broken}})
-    )
-    assert "UNVALIDATED HISTORY" in rendered and "Adjudication" in rendered
     fake = deepcopy(record.metadata["phase9"])
     fake["attempts"] = [{"kind": "counterreview", "status": "completed"}]
     invalid = revalidate_assessment(record.task, fake, record)

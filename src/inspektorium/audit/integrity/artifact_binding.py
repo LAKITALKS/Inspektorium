@@ -30,9 +30,9 @@ severities up deterministically using the existing
 :class:`~inspektorium.audit.schemas.FailureSeverity` (no second severity taxonomy, no aggregate
 score), and returns a machine-readable :class:`ReleaseReport`. Releasability requires
 complete non-zero mandatory-gate coverage as well as no critical/major finding.
-Prospective official output is written only by
-:func:`inspektorium.audit.integrity.release_boundary.release_official_artifact`, which freshly executes and
-authenticates this report before atomic promotion.
+Earlier releases wrote prospective official output only through their release boundary
+(``release_official_artifact``, now in the research record), which freshly executed and
+authenticated this report before atomic promotion.
 
 Scope discipline: the gate operates on the *structured* / pre-render artifact only — no
 LLM critic, no PDF/HTML post-render extraction, no literature-search automation. These
@@ -84,8 +84,8 @@ QA_SUMMARY_STRENGTH_ESCALATION = "summary_strength_escalation"
 # A system-derived value/proposition represented downstream as source-reported /
 # published evidence (Phase-7B slice 2). SYSTEM-DERIVED VALUE ≠ SOURCE-REPORTED VALUE.
 QA_MODEL_OUTPUT_TO_LITERATURE_FACT = "model_output_to_literature_fact"
-# The reverse falsification: a source-reported value represented downstream as an Agent
-# Arena modelled/derived value. Provenance is categorical — neither direction is allowed.
+# The reverse falsification: a source-reported value represented downstream as a value
+# modelled or derived by Inspektorium. Provenance is categorical — neither direction is allowed.
 QA_SOURCE_REPORTED_TO_MODELLED_FACT = "source_reported_to_modelled_fact"
 # A client-visible quantitative value whose internal origin is unresolved (fail-closed,
 # curator hardening). NO VALUE ORIGIN ≠ SOURCE-REPORTED.

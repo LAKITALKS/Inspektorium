@@ -11,12 +11,11 @@ source paths below are relative to that folder. Copies are byte-identical unless
   pinned values, so they are never edited and keep their original wording.
 - `live_capture_attempt_010_final_text.json` keeps only `interpretation.final_text` of the
   source capture. The value is byte-identical; the echoed request prompt is omitted.
-- `case_library/`, `robustness_cases/`, `report_prototype/` and `agents/` are research inputs
+- `case_library/`, `robustness_cases/` and `report_prototype/` are research inputs
   that the tests use as realistic data.
 
 | Fixture | Source path in the record's runtime folder | SHA-256 of the fixture |
 | --- | --- | --- |
-| `agents/claude_opus.yaml` | `agents/claude_opus.yaml` | `36a7d3b92b77157a254015ce762b54f20f53b440a357821bf28baf8d04e4d6ca` |
 | `case_library/case001_social_media.yaml` | `tasks/study_forensics/case001_social_media.yaml` | `b0be7f9bb18de920cae2fb5f73ada759c9ae75991a8012a08928681c0a3d1e4f` |
 | `case_library/case004_multivitamin.yaml` | `tasks/study_forensics/case004_multivitamin.yaml` | `5de0dea4e6294c3e527b252ed43f6199b9f001febf49cbeea2a0ead4ab5241ac` |
 | `case_library/case007_vitamin_d_covid.yaml` | `tasks/study_forensics/case007_vitamin_d_covid.yaml` | `340dca8bcb4ebd60b45580d7935a90af6dbd12bd3b42c69456953aa7905620bb` |

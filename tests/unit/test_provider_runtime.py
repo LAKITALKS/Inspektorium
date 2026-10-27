@@ -6,8 +6,6 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
-from inspektorium.audit.execution.agent_loader import load_agent_config
-from inspektorium.audit.providers import get_provider
 from inspektorium.audit.providers.anthropic import (
     MAX_TRANSPORT_RETRIES,
     REQUEST_TIMEOUT_SECONDS,
@@ -105,23 +103,6 @@ def test_request_temperature_and_max_tokens():
     create_kwargs = inst.messages.create.call_args.kwargs
     assert create_kwargs["temperature"] == 0.0
     assert create_kwargs["max_tokens"] == 4096
-
-
-def test_exact_dated_model_from_config_is_sent():
-    cfg = load_agent_config("tests/fixtures/audit/agents/claude_opus.yaml")
-    assert (
-        cfg.model == "claude-opus-4-5-20251101"
-    )  # config is pinned to the dated snapshot
-    with patch("anthropic.Anthropic") as MockCls:
-        inst = MockCls.return_value
-        inst.messages.create.return_value = _mock_message(VALID_JSON)
-        provider = get_provider(
-            "anthropic", model=cfg.model, temperature=cfg.temperature, label=cfg.label
-        )
-        provider.generate(TASK, "SYSTEM")
-        assert (
-            inst.messages.create.call_args.kwargs["model"] == "claude-opus-4-5-20251101"
-        )
 
 
 # ------------------- no semantic/quality retries -------------------

@@ -30,13 +30,7 @@ from inspektorium.audit.workflow.pipeline import (
     reconstruct,
 )
 from inspektorium.audit.providers.anthropic_live import build_user_message
-from inspektorium.audit.execution.run_library import (
-    LIBRARY_PROMPT_VERSIONS,
-    run_library,
-)
 from inspektorium.audit.execution.runner import (
-    STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
-    STUDY_FORENSICS_PROMPT_VERSION_PHASE8,
     run_agent,
 )
 from inspektorium.audit.schemas import Task
@@ -168,33 +162,6 @@ def test_P2_P3_every_tracked_library_and_robustness_case_is_refused():
 class _Recorder(OfflineReviewProvider):
     def __init__(self, raw):
         super().__init__(raw)
-
-
-def test_P4_library_harness_uses_a_context_free_prompt_and_records_its_identity(
-    tmp_path,
-):
-    case_file = ROOT / "tests/fixtures/audit/case_library/case001_social_media.yaml"
-    task = load_task(case_file)
-    provider = _Recorder(json.dumps({"final_answer": "solid", "confidence": 0.7}))
-    summary = run_library(provider, [(case_file, task)], out_dir=tmp_path / "lib")
-    record = summary.records[0]
-    assert record["prompt_version"] == STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL
-    assert record["prompt_condition_id"] == "study_forensics.historical.v1"
-    assert (
-        record["system_prompt_sha256"]
-        == "f7704fa50a7689ae56f8fc6d7a383205a5aca34d0c400be36335d6ad8abfcfd5"
-    )
-    assert "task.context" not in provider.requests[0]["system_prompt"]
-    manifest = json.loads((tmp_path / "lib" / "manifest.json").read_text())
-    assert manifest["prompt_version"] == STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL
-    assert STUDY_FORENSICS_PROMPT_VERSION_PHASE8 not in LIBRARY_PROMPT_VERSIONS
-    with pytest.raises(ValueError, match="sends no task context"):
-        run_library(
-            provider,
-            [(case_file, task)],
-            write_artifacts=False,
-            prompt_version=STUDY_FORENSICS_PROMPT_VERSION_PHASE8,
-        )
 
 
 # ---------------------------------------------------------------- P7-F1 / P7-V1: symmetry opt-out
@@ -559,26 +526,6 @@ def test_P9_F5_a_whole_claim_conflict_entry_carries_both_positions_with_reasons(
 
 
 # ---------------------------------------------------------------- Package B round 1 (BF2, BF4, BF5)
-
-
-def test_BF4_the_library_harness_records_a_second_analysis(tmp_path):
-    from inspektorium.audit.execution.run_library import run_single
-
-    task, one = _payload_text("overclaim")
-    _, two = _payload_text("solid")
-    raw = f"```json\n{one}\n```\n**CORRECTED RESPONSE:**\n```json\n{two}\n```"
-    record = run_single(
-        OfflineReviewProvider(raw), Path("pkg-b.yaml"), task, 0, "pkg-b-run"
-    )
-    assert record["parse_multiple_objects"] is True and record["parse_ok"] is True
-    single = run_single(
-        OfflineReviewProvider(f"```json\n{one}\n```"),
-        Path("pkg-b.yaml"),
-        task,
-        0,
-        "pkg-b-run",
-    )
-    assert single["parse_multiple_objects"] is False
 
 
 def test_BF5_an_agreed_unknown_on_the_taxonomy_trigger_is_a_mandatory_review(tmp_path):

@@ -30,7 +30,6 @@ from inspektorium.audit.checks.study_forensics_checker import (
     _keyword_match_non_negated,
 )
 from inspektorium.audit.execution.evaluator import evaluate_result
-from inspektorium.audit.reports.reporter import generate_report
 from inspektorium.audit.execution.runner import (
     _select_system_prompt,
     STUDY_FORENSICS_PROMPT,
@@ -456,50 +455,6 @@ class TestEvaluatorIntegration:
 
 
 # ---------------------------------------------------------------------------
-# 5. Reporter integration tests
-# ---------------------------------------------------------------------------
-
-
-class TestReporterIntegration:
-    def test_report_generation_no_crash(self, all_tasks):
-        """Ensure report generation doesn't crash for any study forensics task."""
-        for task in all_tasks:
-            p = _make_response(
-                final_answer=f"This is {task.gold_label}.",
-                steps=["Analysis step."],
-            )
-            result = _make_agent_result(p)
-            from inspektorium.audit.execution.evaluator import evaluate_run
-
-            record = evaluate_run(task, "test-run", [result])
-            report = generate_report(record)
-            assert len(report) > 0
-            assert "Forensic Dossier" in report
-
-    def test_report_contains_study_forensics_section(self):
-        task = _make_task(
-            "overclaim",
-            [
-                {
-                    "finding": "conclusion_exceeds_results",
-                    "severity": "moderate",
-                    "confidence": "medium",
-                },
-            ],
-        )
-        p = _make_response(
-            final_answer="This is overclaim. The conclusion exceeds the results.",
-            steps=["Overstated conclusion."],
-        )
-        result = _make_agent_result(p)
-        from inspektorium.audit.execution.evaluator import evaluate_run
-
-        record = evaluate_run(task, "test-run", [result])
-        report = generate_report(record)
-        assert "Study Forensics Audit" in report
-
-
-# ---------------------------------------------------------------------------
 # 6. Runner tests
 # ---------------------------------------------------------------------------
 
@@ -541,14 +496,12 @@ class TestPilotRun:
         assert set(fixture["responses"]) == set(PILOT_IDS)
 
     def test_pilot_end_to_end(self, tmp_path):
-        """Run six tracked synthetic responses through evaluation and report generation."""
+        """Run six tracked synthetic responses through evaluation and run-record serialization."""
         from inspektorium.audit.execution.evaluator import evaluate_run
 
         fixture = json.loads(PILOT_RESPONSE_FIXTURE.read_text())["responses"]
         runs_dir = tmp_path / "runs"
-        reports_dir = tmp_path / "reports"
         runs_dir.mkdir()
-        reports_dir.mkdir()
         task_paths = {
             load_task(path).id: path for path in sorted(TASK_DIR.glob("*.yaml"))
         }
@@ -564,13 +517,10 @@ class TestPilotRun:
             )
             record = evaluate_run(task, f"qa-{task_id}", [result])
             (runs_dir / f"{task_id}.json").write_text(record.model_dump_json(indent=2))
-            (reports_dir / f"{task_id}.md").write_text(generate_report(record))
 
         runs = list(runs_dir.glob("*.json"))
-        reports = list(reports_dir.glob("*.md"))
 
         assert len(runs) == len(PILOT_IDS)
-        assert len(reports) == len(PILOT_IDS)
 
         # Verify all runs parse back
         for rp in runs:

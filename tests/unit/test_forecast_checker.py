@@ -550,57 +550,6 @@ class TestEvaluatorIntegration:
 
 
 # ===========================================================================
-# Report Integration
-# ===========================================================================
-
-
-class TestReportIntegration:
-    def test_report_contains_forecast_section(self):
-        from inspektorium.audit.reports.reporter import generate_report
-        from inspektorium.audit.schemas import RunRecord
-
-        parsed = AgentResponse(
-            final_answer="65% likely.",
-            probability_estimate=0.65,
-            decision_category="forecast",
-            steps=["Base rate is 87.5%"],
-            key_drivers=["base rate"],
-            base_rate_reference="87.5%",
-        )
-        result = evaluate_result(RULE_TRAP_TASK, _make_result(parsed))
-        record = RunRecord(run_id="test-fc", task=RULE_TRAP_TASK, results=[result])
-        report = generate_report(record)
-        assert "Forecast Integrity Audit" in report
-
-    def test_report_shows_probability(self):
-        from inspektorium.audit.reports.reporter import generate_report
-        from inspektorium.audit.schemas import RunRecord
-
-        parsed = AgentResponse(
-            final_answer="65% likely.",
-            probability_estimate=0.65,
-            decision_category="forecast",
-            steps=["Analysis"],
-            key_drivers=["trend"],
-        )
-        result = evaluate_result(RULE_TRAP_TASK, _make_result(parsed))
-        record = RunRecord(run_id="test-fc", task=RULE_TRAP_TASK, results=[result])
-        report = generate_report(record)
-        assert "65%" in report
-        assert "Probability Estimate" in report
-
-    def test_report_no_forecast_section_for_non_forecast(self):
-        from inspektorium.audit.reports.reporter import generate_report
-        from inspektorium.audit.schemas import RunRecord
-
-        parsed = AgentResponse(final_answer="No", steps=["paradox"])
-        result = evaluate_result(SIMPSON_TASK, _make_result(parsed))
-        record = RunRecord(run_id="test-nf", task=SIMPSON_TASK, results=[result])
-        report = generate_report(record)
-        assert "Forecast Integrity Audit" not in report
-
-
-# ===========================================================================
 # No Regression
 # ===========================================================================
 

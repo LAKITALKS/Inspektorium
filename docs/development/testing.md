@@ -120,16 +120,15 @@ The baseline was recorded for 0.3.0 with mypy 1.20.2, the version CI installs:
 
 | Error code | Count |
 | --- | ---: |
-| `arg-type` | 33 |
+| `arg-type` | 31 |
 | `union-attr` | 21 |
 | `assignment` | 8 |
-| `operator` | 7 |
+| `operator` | 4 |
 | `var-annotated` | 4 |
 | `index` | 4 |
-| `import-untyped` | 2 |
-| `import-not-found` | 1 |
+| `import-untyped` | 1 |
 | `attr-defined` | 1 |
-| **Total, in 19 of 51 files** | **81** |
+| **Total, in 15 of 45 files** | **74** |
 
 ## Installation check
 

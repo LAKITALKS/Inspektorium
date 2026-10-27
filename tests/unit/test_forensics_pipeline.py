@@ -2,7 +2,6 @@
 
 import json
 from copy import deepcopy
-from pathlib import Path
 
 import pytest
 
@@ -18,15 +17,12 @@ from inspektorium.audit.forensics.pipeline import (
     assess_forensic_payload,
 )
 from inspektorium.audit.providers import BaseProvider
-from inspektorium.audit.reports.reporter import generate_report
-from inspektorium.audit.reports.reporting import generate_client_report
-from inspektorium.audit.execution.run_library import run_single
 from inspektorium.audit.execution.runner import (
     STUDY_FORENSICS_PROMPT_VERSION_HISTORICAL,
     STUDY_FORENSICS_PROMPT_VERSION_PHASE8,
     run_agent,
 )
-from inspektorium.audit.schemas import AgentResult, ForensicRecord, RunRecord, Task
+from inspektorium.audit.schemas import AgentResult, ForensicRecord, Task
 from tests.forensics_case_factory import raw_record
 
 
@@ -89,12 +85,6 @@ def test_existing_input_to_parser_binding_semantics_and_existing_outputs():
         c["status"] in {"executed", "not_applicable"}
         for c in result.phase8["phase7_controls"]
     )
-    evaluated = evaluate_result(task, result)
-    record = RunRecord(run_id="offline", task=task, results=[evaluated])
-    assert "Phase 8" in generate_report(record)
-    client = generate_client_report(record)
-    assert "SUPPORTED" in client
-    assert "not prove correct model extraction" in client
     assert payload == before
 
 
@@ -145,27 +135,6 @@ def test_explicit_historical_path_is_not_silently_phase8_verified():
     )
     assert "AA-P8/1.0" not in fake.requests[0][2]
     assert result.phase8["technical_status"] == "not_executed"
-    record = RunRecord(
-        run_id="legacy", task=task, results=[evaluate_result(task, result)]
-    )
-    rendered = generate_client_report(record)
-    assert "UNKNOWN" in rendered and "not_executed" in rendered
-    assert "🟢 PASS" not in rendered
-
-
-def test_library_path_keeps_payload_raw_and_assessment():
-    claim, context, payload = raw_record()
-    flat = run_single(
-        ExtractionFake(response(payload)),
-        Path("fake.yaml"),
-        task_for(claim, context),
-        0,
-        "offline",
-    )
-    assert flat["phase8"]["technical_status"] == "completed", flat["phase8"]
-    assert flat["forensic_record"] == payload
-    assert json.loads(flat["raw_output"])["forensic_record"] == payload
-    assert flat["label"] == "solid"  # historical scoring target retained separately
 
 
 def test_manual_evaluation_recomputes_forged_cached_assessment():
@@ -241,35 +210,6 @@ def test_explicit_phase8_version_and_canonical_ids_are_reproducible():
     )
 
 
-@pytest.mark.parametrize("cached", [{}, {"is_study_forensics": False}])
-def test_loaded_high_score_cannot_bypass_phase8_using_cached_routing(cached):
-    from inspektorium.audit.schemas import DIAGNOSTIC_WEIGHTS
-
-    task = task_for("Claim", "Evidence")
-    raw = AgentResult(
-        provider="legacy",
-        raw_output='{"final_answer":"solid"}',
-        parse_ok=True,
-        parsed={"final_answer": "solid"},
-    )
-    evaluated = evaluate_result(task, raw)
-    evaluated.study_forensics = cached
-    evaluated.failures = []
-    evaluated.failure_modes = []
-    for name in DIAGNOSTIC_WEIGHTS:
-        setattr(evaluated.scores, name, 1.0)
-    record = RunRecord(run_id="cached-bypass", task=task, results=[evaluated])
-    client = generate_client_report(record)
-    internal = generate_report(record)
-    assert "not_executed" in client and "UNKNOWN" in client
-    assert "🟢 PASS" not in client and "Analysis appears sound" not in client
-    assert "No significant changes required" not in client
-    verdict = internal.split("## Final Verdict", 1)[1]
-    assert "UNKNOWN" in verdict and "not_executed" in verdict
-    assert "All agents completed without critical failure modes" not in verdict
-    assert evaluated.study_forensics == cached  # rendering preserves original record
-
-
 @pytest.mark.parametrize("malformed", [False, True])
 def test_taxonomy_extraction_crosses_real_prompt_parser_and_report(malformed):
     claim, context, payload = raw_record()
@@ -299,12 +239,6 @@ def test_taxonomy_extraction_crosses_real_prompt_parser_and_report(malformed):
     assert raw.phase8["taxonomy"]["technical_status"] == (
         "incomplete" if malformed else "completed"
     )
-    report = generate_client_report(
-        RunRecord(run_id="taxonomy", task=task, results=[evaluate_result(task, raw)])
-    )
-    assert "Taxonomy control" in report
-    if malformed:
-        assert "🟢 PASS" not in report
 
 
 def test_original_cvc_is_preserved_when_bound_generic_overstatement_derives_overclaim():
@@ -337,10 +271,3 @@ def test_original_cvc_is_preserved_when_bound_generic_overstatement_derives_over
     assert result.phase8["original_model_label"] == "correlation_vs_causation"
     assert result.phase8["derived_label"] == "overclaim", result.phase8
     assert result.phase8["technical_status"] == "completed"
-    rendered = generate_client_report(
-        RunRecord(
-            run_id="cvc-correction", task=task, results=[evaluate_result(task, result)]
-        )
-    )
-    assert "derived classification: `overclaim`" in rendered
-    assert "Original model classification: `correlation_vs_causation`" in rendered

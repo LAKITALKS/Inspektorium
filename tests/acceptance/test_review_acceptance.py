@@ -15,7 +15,6 @@ from inspektorium.audit.review.runtime import (
     replay_review,
     submit_human_review,
 )
-from inspektorium.audit.reports.reporting import generate_client_report
 from inspektorium.audit.execution.runner import run_agent
 from inspektorium.audit.schemas import Task
 from tests.forensics_case_factory import raw_record
@@ -257,8 +256,3 @@ def test_frozen_phase9_acceptance(expected, tmp_path):
             for c in data["conflicts"]
         )
     assert record.results[0].agent_result.raw_output == first_raw
-    rendered = generate_client_report(record)
-    assert "Phase 9 review" in rendered
-    assert data["route"] in rendered
-    if data["route"] != "AUTO_RESOLVABLE":
-        assert "🟢 PASS" not in rendered

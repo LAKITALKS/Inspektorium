@@ -10,9 +10,8 @@ import pytest
 
 from inspektorium.audit.execution.evaluator import evaluate_result
 from inspektorium.audit.providers import BaseProvider
-from inspektorium.audit.reports.reporting import generate_client_report
 from inspektorium.audit.execution.runner import run_agent
-from inspektorium.audit.schemas import RunRecord, Task
+from inspektorium.audit.schemas import Task
 from tests.forensics_case_factory import raw_record
 
 # (case, technical status, scientific state, component state)
@@ -251,9 +250,3 @@ def test_frozen_offline_acceptance(
             proposition["reported_verdict"]
             == payload["phase8"]["propositions"][0]["reported_verdict"]
         )
-    output = generate_client_report(
-        RunRecord(run_id=name, task=task, results=[evaluate_result(task, raw)])
-    )
-    assert scientific.upper() in output and technical in output
-    if scientific == "unknown":
-        assert "🟢 PASS" not in output
