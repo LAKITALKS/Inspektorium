@@ -8,6 +8,7 @@ Each folder is a versioned, frozen evidence package. Its files stay unchanged af
 | [`v0.1.1/addendum-20261024/`](v0.1.1/addendum-20261024/README.md) | Same product | Display and setup follow-up (E1, E2, E3) |
 | [`v0.1.1/addendum-20261024-e1-layout/`](v0.1.1/addendum-20261024-e1-layout/README.md) | Same product | Layout follow-up for E1, with product file hashes |
 | [`v0.3.0-behavior/`](v0.3.0-behavior/README.md) | Releases 0.2.0 and 0.3.0 | Behavior comparison of `inspect` and `audit` across the 0.3.0 consolidation |
+| [`judge-replay-2026-10-27/`](judge-replay-2026-10-27/README.md) | Release 0.3.0 | Preregistered replay of three LLM judges' quotations through `inspect`, with controls and a sensitivity analysis |
 
 [Evidence](../docs/evaluation/evidence.md) explains what each package establishes and what it does not.
 [Reproducibility](../docs/evaluation/reproducibility.md) explains how to recompute the results.

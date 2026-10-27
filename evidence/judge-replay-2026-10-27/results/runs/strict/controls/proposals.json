@@ -1,0 +1,61 @@
+{
+ "schema_version": "0.1",
+ "findings": [
+  {
+   "claim_id": "control-pos-1",
+   "claim_text": "Of the 509 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+   "claim_start": 0,
+   "claim_end": 227,
+   "proposed_relation": "supported",
+   "source_id": "early-body",
+   "evidence_quote": "Of the 509 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+   "evidence_start": 12908,
+   "evidence_end": 13135,
+   "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+   "evidence_sufficiency": "sufficient",
+   "evaluator_certainty": "medium"
+  },
+  {
+   "claim_id": "control-pos-2",
+   "claim_text": "Two patients in the empagliflozin group experienced serious adverse events, including severe rash and hospitalization due to increased blood ketones, which resolved with treatment.",
+   "claim_start": 228,
+   "claim_end": 408,
+   "proposed_relation": "supported",
+   "source_id": "early-body",
+   "evidence_quote": "Two patients in the empagliflozin group experienced serious adverse events, including severe rash and hospitalization due to increased blood ketones, which resolved with treatment.",
+   "evidence_start": 18534,
+   "evidence_end": 18714,
+   "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+   "evidence_sufficiency": "sufficient",
+   "evaluator_certainty": "medium"
+  },
+  {
+   "claim_id": "control-neg-1",
+   "claim_text": "Of the 508 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+   "claim_start": 409,
+   "claim_end": 636,
+   "proposed_relation": "supported",
+   "source_id": "early-body",
+   "evidence_quote": "Of the 508 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+   "evidence_start": 12908,
+   "evidence_end": 13135,
+   "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+   "evidence_sufficiency": "sufficient",
+   "evaluator_certainty": "medium"
+  },
+  {
+   "claim_id": "control-neg-2",
+   "claim_text": "Two patients in the empagliflozin group experienced serious adverse events, including severe rush and hospitalization due to increased blood ketones, which resolved with treatment.",
+   "claim_start": 637,
+   "claim_end": 817,
+   "proposed_relation": "supported",
+   "source_id": "early-body",
+   "evidence_quote": "Two patients in the empagliflozin group experienced serious adverse events, including severe rush and hospitalization due to increased blood ketones, which resolved with treatment.",
+   "evidence_start": 18534,
+   "evidence_end": 18714,
+   "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+   "evidence_sufficiency": "sufficient",
+   "evaluator_certainty": "medium"
+  }
+ ]
+}

@@ -1,0 +1,182 @@
+{
+ "gemini-1a": {
+  "method": "L1",
+  "evidence_start": 2162,
+  "evidence_end": 2442,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-1A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-1b": {
+  "method": "L1",
+  "evidence_start": 14023,
+  "evidence_end": 14265,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-1B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-2a": {
+  "method": "L1",
+  "evidence_start": 16264,
+  "evidence_end": 16455,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-2A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-2b": {
+  "method": "L1",
+  "evidence_start": 14023,
+  "evidence_end": 14398,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-2B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-3a": {
+  "method": "L2",
+  "evidence_start": 15154,
+  "evidence_end": 15302,
+  "l2_ratio": 0.9864864864864865,
+  "exact_occurrences_in_canonical_source": 0,
+  "piece_id": "gemini-3A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-3b": {
+  "method": "L1",
+  "evidence_start": 13201,
+  "evidence_end": 13392,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-3B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-4a": {
+  "method": "L1",
+  "evidence_start": 20340,
+  "evidence_end": 20519,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-4A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-4b": {
+  "method": "L1",
+  "evidence_start": 14023,
+  "evidence_end": 14398,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-4B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-5a": {
+  "method": "L1",
+  "evidence_start": 9187,
+  "evidence_end": 9323,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-5A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-5b": {
+  "method": "L1",
+  "evidence_start": 9509,
+  "evidence_end": 9681,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-5B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-6a": {
+  "method": "L1",
+  "evidence_start": 14934,
+  "evidence_end": 15153,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-6A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-6b": {
+  "method": "L1",
+  "evidence_start": 16456,
+  "evidence_end": 16555,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-6B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-7a": {
+  "method": "L1",
+  "evidence_start": 23184,
+  "evidence_end": 23432,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-7A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-7b": {
+  "method": "L1",
+  "evidence_start": 17742,
+  "evidence_end": 18059,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-7B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-8a": {
+  "method": "L1",
+  "evidence_start": 22092,
+  "evidence_end": 22231,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-8A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-8b": {
+  "method": "L1",
+  "evidence_start": 24662,
+  "evidence_end": 24851,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-8B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-9a": {
+  "method": "L1",
+  "evidence_start": 20933,
+  "evidence_end": 21204,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-9A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-9b": {
+  "method": "L1",
+  "evidence_start": 20829,
+  "evidence_end": 20932,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-9B",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-10a": {
+  "method": "L1",
+  "evidence_start": 25196,
+  "evidence_end": 25375,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-10A",
+  "quote_changed_by_normalize_text": false
+ },
+ "gemini-10b": {
+  "method": "L1",
+  "evidence_start": 24209,
+  "evidence_end": 24434,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "gemini-10B",
+  "quote_changed_by_normalize_text": false
+ }
+}

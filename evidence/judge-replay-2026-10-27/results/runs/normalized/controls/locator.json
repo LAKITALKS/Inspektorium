@@ -1,0 +1,34 @@
+{
+ "control-pos-1": {
+  "method": "L1",
+  "evidence_start": 12908,
+  "evidence_end": 13135,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "control-pos-1"
+ },
+ "control-pos-2": {
+  "method": "L1",
+  "evidence_start": 18534,
+  "evidence_end": 18714,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "control-pos-2"
+ },
+ "control-neg-1": {
+  "method": "L2",
+  "evidence_start": 12908,
+  "evidence_end": 13135,
+  "l2_ratio": 0.9955947136563876,
+  "exact_occurrences_in_canonical_source": 0,
+  "piece_id": "control-neg-1"
+ },
+ "control-neg-2": {
+  "method": "L2",
+  "evidence_start": 18534,
+  "evidence_end": 18714,
+  "l2_ratio": 0.9944444444444445,
+  "exact_occurrences_in_canonical_source": 0,
+  "piece_id": "control-neg-2"
+ }
+}

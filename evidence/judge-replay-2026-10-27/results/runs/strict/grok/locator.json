@@ -1,0 +1,137 @@
+{
+ "grok-1a": {
+  "method": "L1",
+  "evidence_start": 2386,
+  "evidence_end": 2441,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-1A",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-1b": {
+  "method": "L1",
+  "evidence_start": 14209,
+  "evidence_end": 14264,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-1B",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-2a": {
+  "method": "L1",
+  "evidence_start": 16264,
+  "evidence_end": 16455,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-2A",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-2b-1": {
+  "method": "L1",
+  "evidence_start": 14209,
+  "evidence_end": 14264,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-2B-1",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-2b-2": {
+  "method": "L1",
+  "evidence_start": 2485,
+  "evidence_end": 2540,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 2,
+  "piece_id": "grok-2B-2",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-3a": {
+  "method": "L2",
+  "evidence_start": 15246,
+  "evidence_end": 15302,
+  "l2_ratio": 0.9642857142857143,
+  "exact_occurrences_in_canonical_source": 0,
+  "piece_id": "grok-3A",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-3b": {
+  "method": "L1",
+  "evidence_start": 13201,
+  "evidence_end": 13270,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-3B",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-4a": {
+  "method": "L1",
+  "evidence_start": 20409,
+  "evidence_end": 20518,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-4A",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-4b": {
+  "method": "L2",
+  "evidence_start": 2306,
+  "evidence_end": 2541,
+  "l2_ratio": 0.9957446808510638,
+  "exact_occurrences_in_canonical_source": 0,
+  "piece_id": "grok-4B",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-5a-p1": {
+  "method": "L1",
+  "evidence_start": 20740,
+  "evidence_end": 20828,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-5A-p1",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-5a-p2": {
+  "method": "L1",
+  "evidence_start": 21077,
+  "evidence_end": 21204,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-5A-p2",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-5b-p1": {
+  "method": "L1",
+  "evidence_start": 20580,
+  "evidence_end": 20739,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-5B-p1",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-5b-p2": {
+  "method": "L1",
+  "evidence_start": 20829,
+  "evidence_end": 20932,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-5B-p2",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-6a": {
+  "method": "L1",
+  "evidence_start": 23184,
+  "evidence_end": 23266,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-6A",
+  "quote_changed_by_normalize_text": false
+ },
+ "grok-6b": {
+  "method": "L1",
+  "evidence_start": 17755,
+  "evidence_end": 18031,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "grok-6B",
+  "quote_changed_by_normalize_text": false
+ }
+}

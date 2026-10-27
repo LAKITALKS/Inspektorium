@@ -1,0 +1,34 @@
+{
+ "environment": {
+  "python": "3.12.14",
+  "platform": "darwin",
+  "inspektorium_version": "0.3.0",
+  "installed_record_sha256": "3bf489e886f0194465db48a61a71f8d7fcb40f9c2fd240fbd41bf782018a7936",
+  "wheel_sha256": "d8e56b730c7a181bab1e80f35c798817d3a8cda071186ef362ddf30ef5ba2a92"
+ },
+ "guard": {
+  "canary_passed": true,
+  "refused_canary_operations": 5
+ },
+ "network": {
+  "armed_records": 8,
+  "refused_operations": 0
+ },
+ "space_normalization_replacements": {
+  "judges/astra_lauf3.txt": 0,
+  "judges/gemini_lauf3.txt": 0,
+  "judges/grok_lauf3.txt": 0,
+  "source/early_body.txt": 28,
+  "extraction/pieces.json": 0
+ },
+ "exit_codes": {
+  "strict/grok": 0,
+  "strict/astra": 0,
+  "strict/gemini": 0,
+  "strict/controls": 0,
+  "normalized/grok": 0,
+  "normalized/astra": 0,
+  "normalized/gemini": 0,
+  "normalized/controls": 0
+ }
+}
