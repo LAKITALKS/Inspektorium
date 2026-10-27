@@ -82,4 +82,4 @@ Acceptance: three pilot users document use on their own material, with their per
 
 Not claimed: endorsement by pilot users or reviewers before they give it.
 
-Each milestone has a GitHub issue with the label `roadmap`.
+Each milestone has a GitHub issue with the label `roadmap`: [M1 #18](https://github.com/LAKITALKS/Inspektorium/issues/18), [M2 #19](https://github.com/LAKITALKS/Inspektorium/issues/19), [M3 #20](https://github.com/LAKITALKS/Inspektorium/issues/20), [M4 #21](https://github.com/LAKITALKS/Inspektorium/issues/21) and [M5 #22](https://github.com/LAKITALKS/Inspektorium/issues/22).

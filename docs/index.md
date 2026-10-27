@@ -44,3 +44,4 @@ Evaluators propose findings; Inspektorium verifies their quotations and offsets 
 - [Architecture](development/architecture.md), [testing](development/testing.md) and [release process](development/release-process.md).
 - [AI assistance](development/ai-assistance.md): how AI was used in development.
 - [Migrating from 0.2.0](development/migration-0.3.md).
+- [Release 0.3.0](releases/0.3.0.md): how the release was built and checked.
