@@ -1,6 +1,0 @@
-{"argv": ["Python", "offline_canary.py"], "event": "armed", "guard": "evidence-netguard/1", "pid": 58010, "time": 1793005959.868}
-{"argv": ["Python", "offline_canary.py"], "event": "refused", "guard": "evidence-netguard/1", "operation": "getaddrinfo", "pid": 58010, "target": "'api.anthropic.com'", "time": 1793005959.869}
-{"argv": ["Python", "offline_canary.py"], "event": "refused", "guard": "evidence-netguard/1", "operation": "getaddrinfo", "pid": 58010, "target": "'1.1.1.1'", "time": 1793005959.869}
-{"argv": ["Python", "offline_canary.py"], "event": "refused", "guard": "evidence-netguard/1", "operation": "connect", "pid": 58010, "target": "('1.1.1.1', 443)", "time": 1793005959.869}
-{"argv": ["Python", "offline_canary.py"], "event": "refused", "guard": "evidence-netguard/1", "operation": "connect", "pid": 58010, "target": "('2606:4700:4700::1111', 443)", "time": 1793005959.869}
-{"argv": ["Python", "offline_canary.py"], "event": "refused", "guard": "evidence-netguard/1", "operation": "sendto", "pid": 58010, "target": "('1.1.1.1', 53)", "time": 1793005959.869}

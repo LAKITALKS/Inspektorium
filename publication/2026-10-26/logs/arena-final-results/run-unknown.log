@@ -1,7 +1,0 @@
-{
-  "status": "REVIEW_REQUIRED",
-  "path": "<PUBLICATION_WORK>/arena-final-results/cli-bundles/58133b44-88da-464c-b843-4ec77451cfe3",
-  "errors": [
-    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
-  ]
-}

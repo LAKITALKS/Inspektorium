@@ -1,0 +1,44 @@
+name: Bug report
+description: Something does not work as documented.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities here; use the private report link instead.
+        Do not paste API keys, credentials or private data.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `python -c "import inspektorium; print(inspektorium.__version__)"`, or the commit.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Python version and operating system
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The exact command or API call and minimal input files.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Output, exit code and any traceback.
+      render: text
+    validations:
+      required: true

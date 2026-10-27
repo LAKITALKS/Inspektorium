@@ -1,6 +1,0 @@
-{
-  "src/agent_arena/phase10_projection.py": "fb8d0bfce8017a9382f17bd79abcaaffd5e56554a839b333dd8afc50e9bd8e2a",
-  "src/agent_arena/phase10_render.py": "62769f40d3c137367bb9b4febf3d41906edd66e0dbe21481b120f9276c1f3b11",
-  "tests/test_phase10_render.py": "98af6689eb71d99e0ed086c35ae55d63ddbcedd6ac8591fa9214cf45718884fb",
-  "tests/test_phase10_bundle.py": "4ea461d3fa36f6109c2f7572fd3aaec8859b625a41edb4adb4fa88194b993488"
-}

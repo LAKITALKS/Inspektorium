@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "inspektorium"
-version = "0.2.0"
-description = "Inspektorium audit entry and evidence-binding reference checker"
+version = "0.3.0"
+description = "Fail-closed evidence integrity for AI-generated claims and AI evaluation reports"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
@@ -13,25 +13,36 @@ authors = [
   { name = "Lazaros Varvatis", email = "varvatislazaros@gmail.com" },
 ]
 dependencies = [
+  "click>=8.1",
   "pydantic>=2.8,<3",
+  "pyyaml>=6.0",
 ]
 
 [project.scripts]
 inspektorium = "inspektorium.cli:main"
 
 [project.optional-dependencies]
-# SDK 1.x uses httpx2; retain the validated httpx-based adapter contract.
+# Provider SDKs for the live paths. SDK 1.x uses httpx2; the counted transport
+# and the validated adapter contract use httpx.Client.
+providers = [
+  "anthropic>=0.77,<1",
+  "httpx>=0.27,<1",
+  "openai>=1.0",
+]
+# Former name of the provider extra, kept as an alias.
 anthropic = [
   "anthropic>=0.77,<1",
+  "httpx>=0.27,<1",
+  "openai>=1.0",
 ]
 dev = [
   "anthropic>=0.77,<1",
   "build>=1.2,<2",
-  "click>=8.1",
   "httpx>=0.27,<1",
-  "markdown-it-py>=3,<5",
   "linkify-it-py>=2,<3",
+  "markdown-it-py>=3,<5",
   "mypy>=1.13,<2",
+  "openai>=1.0",
   "pytest>=8,<10",
   "pytest-cov>=5,<8",
   "ruff>=0.8,<1",
@@ -41,8 +52,7 @@ dev = [
 packages = ["src/inspektorium"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/src", "/tests", "/examples", "/evidence", "/docs", "/scripts", "/*.md", "/CITATION.cff", "/LICENSE", "/NOTICE", "/pyproject.toml"]
-exclude = ["/agent-arena", "/publication"]
+include = ["/src", "/tests", "/examples", "/evidence", "/docs", "/paper", "/scripts", "/*.md", "/CITATION.cff", "/LICENSE", "/NOTICE", "/pyproject.toml"]
 
 [tool.pytest.ini_options]
 addopts = "--strict-config --strict-markers"
@@ -57,13 +67,92 @@ show_missing = true
 skip_covered = true
 
 [tool.ruff]
-extend-exclude = ["agent-arena", "publication/historical-source", "publication/2026-10-26-publication-closeout"]
 line-length = 88
 target-version = "py311"
+
+[tool.ruff.format]
+# These files are byte-bound to the v0.1.1 evidence package and are never reformatted.
+exclude = ["evidence/**", "src/inspektorium/core/**", "src/inspektorium/report/**", "src/inspektorium/providers/**"]
 
 [tool.ruff.lint]
 select = ["B", "E", "F", "I", "UP"]
 
+[tool.ruff.lint.per-file-ignores]
+# The audit runtime, its tests and its scripts keep the runtime's historical rule set
+# (E4, E7, E9, F); docs/development/testing.md records this baseline.
+"src/inspektorium/audit/**" = ["B", "E501", "I", "UP"]
+# The recording tools of the 0.3.0 behavior comparison stay as they ran.
+"evidence/v0.3.0-behavior/tools/compare.py" = ["B", "E501", "I", "UP"]
+"evidence/v0.3.0-behavior/tools/golden.py" = ["B", "E501", "I", "UP"]
+"evidence/v0.3.0-behavior/tools/project.py" = ["B", "E501", "I", "UP"]
+"evidence/v0.3.0-behavior/tools/project2.py" = ["B", "E501", "I", "UP"]
+"scripts/extract_recorded_capture.py" = ["B", "E501", "I", "UP"]
+"scripts/run_acceptance.py" = ["B", "E501", "I", "UP"]
+"tests/forensics_case_factory.py" = ["B", "E501", "I", "UP"]
+"tests/acceptance/test_forensics_acceptance.py" = ["B", "E501", "I", "UP"]
+"tests/acceptance/test_forensics_review_conflict.py" = ["B", "E501", "I", "UP"]
+"tests/acceptance/test_review_acceptance.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_capture_derivation.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_bundle.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_entry.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_live.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_outcome_report.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_render.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_render_injection.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_semantics.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding_search_scope.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding_search_scope_basis.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding_value_origin.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_audit_trail.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_claim_checker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_claim_checker_shapes.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_confidence_validity.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_consistency.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_evaluator.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forecast_checker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensic_report.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensics_pipeline.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensics_semantics.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensics_taxonomy.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_hardening.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_output_contract.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_package_b_regressions.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_pipeline_qa_isolation.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_provider_contract.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_provider_runtime.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_reasoning_graph.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_reasoning_integrity.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_release_gate_consolidation.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_adjudication.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_budget.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_history_blocker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_history_repair.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_routing.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_runtime.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_variant_repair.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_schemas.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_scientific_contract_alignment.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_step_checker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_study_forensics.py" = ["B", "E501", "I", "UP"]
+
 [tool.mypy]
 python_version = "3.11"
 strict = true
+
+[[tool.mypy.overrides]]
+# The audit runtime is checked in mypy's default mode against a recorded baseline
+# (scripts/check_type_baseline.py); core, report and cli stay strict.
+module = ["inspektorium.audit", "inspektorium.audit.*"]
+disallow_any_generics = false
+disallow_subclassing_any = false
+disallow_untyped_calls = false
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+disallow_untyped_decorators = false
+warn_unused_ignores = false
+warn_return_any = false
+no_implicit_reexport = false
+strict_equality = false
+extra_checks = false

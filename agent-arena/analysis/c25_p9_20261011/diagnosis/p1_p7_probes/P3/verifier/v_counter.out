@@ -1,8 +1,0 @@
-F1 active-library stats: {'preflight_ok': 48, 'ctx_in_msg': 48, 'p60_real_passed': 48}
-F1 gold label word (\b...\b) present in live user message: 19
-F1 check_contamination would flag the LIVE packet for 1 of 48 : [('study-forensics-044', ['expected_answer_in_claim', 'label_token_in_claim'])]
-case001 live msg tail: '"context">\nThis is a well-designed randomized trial with honest uncertainty.\nThe agent should recognize it as solid and not overflag.\n\n</task_context>'
-case001 contamination(live): True
-CLI audit validate case001: exit 0 out {"input_valid": true, "errors": [], "release_authorized": false}
-CLI audit validate RETIRED case042: exit 0 out {"input_valid": true, "errors": [], "release_authorized": false}
-F2 active after variants: ['cc-v_cap', 'cc-v_intake_only', 'cc-v_space', 'cc-v_typo_key', 'cc-v_upper']

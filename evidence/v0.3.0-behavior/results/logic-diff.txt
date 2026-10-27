@@ -1,0 +1,53 @@
+modules moved to the research record: 5
+   agent-arena/src/agent_arena/agent_loader.py
+   agent-arena/src/agent_arena/release_boundary.py
+   agent-arena/src/agent_arena/reporter.py
+   agent-arena/src/agent_arena/reporting.py
+   agent-arena/src/agent_arena/run_library.py
+== agent-arena/src/agent_arena/artifact_binding.py -> src/inspektorium/audit/integrity/artifact_binding.py: 4 changed lines
+   -PHASE7B_RELEASE_REPORT_SCHEMA_VERSION = 'agent_arena.phase7b_release_report/v2'
+   -MANDATORY_PHASE7B_GATE_SET_ID = 'agent_arena.phase7b.mandatory'
+   +PHASE7B_RELEASE_REPORT_SCHEMA_VERSION = 'inspektorium.audit.phase7b_release_report/v2'
+   +MANDATORY_PHASE7B_GATE_SET_ID = 'inspektorium.audit.phase7b.mandatory'
+== agent-arena/src/agent_arena/audit_trail.py -> src/inspektorium/audit/integrity/audit_trail.py: 6 changed lines
+   -_DEFAULT_DIR = '.agent_arena'
+   +_DEFAULT_DIR = '.inspektorium'
+   -    _h1('Agent Arena — Gen 6 Audit Trail Summary')
+   +    _h1('Inspektorium — Gen 6 Audit Trail Summary')
+   -        _p('_No decisions recorded. Use `agent-arena audit-log add` to log decisions._')
+   +        _p('_No decisions recorded._')
+== agent-arena/src/agent_arena/claim_checker.py -> src/inspektorium/audit/checks/claim_checker.py: 1 changed lines
+   -    text_lower = text.lower()
+== agent-arena/src/agent_arena/forecast_checker.py -> src/inspektorium/audit/checks/forecast_checker.py: 2 changed lines
+   -    edge_score = _check_narrative_edge(task, p, failures, flags)
+   +    _check_narrative_edge(task, p, failures, flags)
+== agent-arena/src/agent_arena/forensic_report.py -> src/inspektorium/audit/forensics/forensic_report.py: 2 changed lines
+   -        banner.append('SYNTHETIC EXAMPLE — not real Agent Arena performance')
+   +        banner.append('SYNTHETIC EXAMPLE — not real Inspektorium performance')
+== agent-arena/src/agent_arena/phase10_pipeline.py -> src/inspektorium/audit/workflow/pipeline.py: 11 changed lines
+   -OPEN_SENTENCE = f'{ENDED} The result is not conclusively resolved and is not scientifically released. No human reviewer or review queue is assumed. This revision is immutable: only a recorded human decision (agent-arena audit review) or a new, explicitly commissioned run creates a new revision.'
+   +OPEN_SENTENCE = f'{ENDED} The result is not conclusively resolved and is not scientifically released. No human reviewer or review queue is assumed. This revision is immutable: only a recorded human decision (inspektorium audit review) or a new, explicitly commissioned run creates a new revision.'
+   +def _runtime_directory() -> Path:
+   +    return Path(runtime_package.__file__).resolve().parent
+   +
+   -    directory = Path(__file__).resolve().parent
+   +    directory = _runtime_directory()
+   -    directory = Path(__file__).resolve().parent
+   +    directory = _runtime_directory()
+   -    bound = {'contract': CONTRACT_VERSION, 'config': 'offline-recording-v1', 'package_version': version('agent-arena'), 'code': code_identity(), 'case_id': case_key(record.task), 'run_id': record.run_id, 'input_fingerprint': digest(record.task.model_dump(mode='json')), 'analysis_fingerprint': digest(record.model_dump(mode='json')), 'evidence_fingerprint': digest(payload.get('evidence', [])), 'ledger_fingerprint': digest(payload.get('phase8')), 'review_fingerprint': digest(review), 'phase8_summary': {'technical_status': assessment.get('technical_status', 'not_executed'), 'composite_state': assessment.get('composite_state', 'unknown'), 'original_model_label': assessment.get('original_model_label'), 'derived_label': assessment.get('derived_label'), 'taxonomy_status': assessment.get('taxonomy', {}).get('technical_status', 'not_executed')}, 'phase9_summary': {key: review.get(key) for key in ('technical_status', 'route', 'review_state', 'execution_status', 'mandatory', 'history_validation', 'final_position_id')}, 'review_counts': {'positions': len(review.get('positions', [])), 'conflicts': len(review.get('conflicts', [])), 'attempts': len(review.get('attempts', [])), 'adjudications': len(review.get('adjudications', []))}, 'selected_position_id': selected['position_id'] if selected else None, 'providers': [{'provider': r.agent_result.provider, 'model': r.agent_result.model, 'usage': r.agent_result.usage} for r in record.results], 'recording_notice': 'RECORDED OFFLINE / SYNTHETIC; no live model execution'}
+   +    bound = {'contract': CONTRACT_VERSION, 'config': 'offline-recording-v1', 'package_version': version('inspektorium'), 'code': code_identity(), 'case_id': case_key(record.task), 'run_id': record.run_id, 'input_fingerprint': digest(record.task.model_dump(mode='json')), 'analysis_fingerprint': digest(record.model_dump(mode='json')), 'evidence_fingerprint': digest(payload.get('evidence', [])), 'ledger_fingerprint': digest(payload.get('phase8')), 'review_fingerprint': digest(review), 'phase8_summary': {'technical_status': assessment.get('technical_status', 'not_executed'), 'composite_state': assessment.get('composite_state', 'unknown'), 'original_model_label': assessment.get('original_model_label'), 'derived_label': assessment.get('derived_label'), 'taxonomy_status': assessment.get('taxonomy', {}).get('technical_status', 'not_executed')}, 'phase9_summary': {key: review.get(key) for key in ('technical_status', 'route', 'review_state', 'execution_status', 'mandatory', 'history_validation', 'final_position_id')}, 'review_counts': {'positions': len(review.get('positions', [])), 'conflicts': len(review.get('conflicts', [])), 'attempts': len(review.get('attempts', [])), 'adjudications': len(review.get('adjudications', []))}, 'selected_position_id': selected['position_id'] if selected else None, 'providers': [{'provider': r.agent_result.provider, 'model': r.agent_result.model, 'usage': r.agent_result.usage} for r in record.results], 'recording_notice': 'RECORDED OFFLINE / SYNTHETIC; no live model execution'}
+== agent-arena/src/agent_arena/phase9_runtime.py -> src/inspektorium/audit/review/runtime.py: 3 changed lines
+   +REVIEW_MODULES = ('adjudication.py', 'models.py', 'pipeline.py', 'routing.py', 'runtime.py')
+   -    return _hash({p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.glob('phase9_*.py'))})
+   +    return _hash({name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in REVIEW_MODULES})
+== agent-arena/src/agent_arena/providers/anthropic.py -> src/inspektorium/audit/providers/anthropic.py: 2 changed lines
+   -            raise RuntimeError("Install anthropic: pip install 'agent-arena[providers]'")
+   +            raise RuntimeError("Install anthropic: pip install 'inspektorium[providers]'")
+== agent-arena/src/agent_arena/providers/openai.py -> src/inspektorium/audit/providers/openai.py: 2 changed lines
+   -            raise RuntimeError("Install openai: pip install 'agent-arena[providers]'")
+   +            raise RuntimeError("Install openai: pip install 'inspektorium[providers]'")
+== agent-arena/src/agent_arena/reasoning_graph.py -> src/inspektorium/audit/checks/reasoning_graph.py: 1 changed lines
+   -            words = step_l.split()
+== agent-arena/src/agent_arena/study_forensics_checker.py -> src/inspektorium/audit/checks/study_forensics_checker.py: 1 changed lines
+   -            negated = any((cue.strip() in before.split()[-_NEGATION_WINDOW:] if len(before.split()) >= 1 else False for cue in []))
+modules with identical logic: 26 of 37

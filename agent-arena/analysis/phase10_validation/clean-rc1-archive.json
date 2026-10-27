@@ -1,8 +1,0 @@
-{
-  "file": "clean-rc1.tar.gz",
-  "sha256": "0792fc0f7536c4d92adf235246a621ca4041b9e4c350e678613c6b388e1e8bf0",
-  "members": 197,
-  "bytes": 1002705,
-  "all_members_byte_verified": true,
-  "status": "Preserved initial failed reproducibility attempt; no full suite"
-}

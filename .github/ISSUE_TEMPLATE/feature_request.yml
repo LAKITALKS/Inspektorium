@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose a change or a new capability.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Inspektorium checks evidence pointers and gates reports on them; it does not judge meaning.
+        Please check the roadmap (docs/roadmap.md) and the limitations (docs/evaluation/limitations.md) first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What do you need to do, and why does Inspektorium not support it today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: The behavior you propose, including how a failed check must be reported.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

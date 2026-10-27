@@ -1,0 +1,137 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Ruff
+        run: python -m pip install "ruff==0.17.3"
+      - name: Lint
+        run: ruff check .
+      - name: Format
+        run: ruff format --check .
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: python -m pip install -e ".[dev,providers]" "mypy==1.20.2"
+      - name: Strict type check of core, report, providers and cli
+        run: >-
+          mypy src/inspektorium/core src/inspektorium/report src/inspektorium/providers
+          src/inspektorium/cli.py src/inspektorium/__init__.py src/inspektorium/__main__.py
+      - name: Audit runtime against its recorded baseline
+        run: python scripts/check_type_baseline.py
+
+  test:
+    name: test (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: "3.11"
+          - os: ubuntu-latest
+            python: "3.12"
+          - os: ubuntu-latest
+            python: "3.13"
+          - os: macos-latest
+            python: "3.12"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install
+        run: python -m pip install -e ".[dev,providers]"
+      - name: Test
+        run: python -m pytest -p no:cacheprovider
+
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install the package
+        run: python -m pip install .
+      - name: Frozen offline acceptance
+        run: python scripts/run_acceptance.py --output "$RUNNER_TEMP/acceptance"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: acceptance-results
+          path: ${{ runner.temp }}/acceptance/results.json
+          if-no-files-found: warn
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build wheel and sdist
+        run: |
+          python -m pip install build twine
+          python -m build --outdir "$RUNNER_TEMP/dist"
+          python -m twine check --strict "$RUNNER_TEMP"/dist/*
+      - name: Install the wheel into a clean environment outside the checkout
+        run: |
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/python" -m pip install "$RUNNER_TEMP"/dist/inspektorium-*.whl
+          "$RUNNER_TEMP/venv/bin/python" -c "import sys; from pathlib import Path; sys.path.insert(0, 'evidence/v0.1.1/tools'); import setup_env; print(setup_env.install_guard(Path(sys.prefix)))"
+      - name: Verify the installation and the README quickstart
+        working-directory: ${{ runner.temp }}
+        run: |
+          "$RUNNER_TEMP/venv/bin/python" "$GITHUB_WORKSPACE/scripts/verify_installation.py" \
+            --repo "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/verify" \
+            --readme --local-release "$RUNNER_TEMP/dist"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: installation-check
+          path: |
+            ${{ runner.temp }}/verify/results.json
+            ${{ runner.temp }}/verify/quickstart.log
+          if-no-files-found: warn
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check relative links and anchors
+        run: python scripts/check_links.py

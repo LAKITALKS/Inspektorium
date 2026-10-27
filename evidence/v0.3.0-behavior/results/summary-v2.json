@@ -1,0 +1,2241 @@
+{
+ "comparison": {
+  "0.2.0-r1 vs 0.2.0-r2": {
+   "steps": 79,
+   "identical_steps": 79,
+   "different_steps": []
+  },
+  "0.2.0-r1 vs 0.3.0-r1": {
+   "steps": 79,
+   "identical_steps": 79,
+   "different_steps": []
+  },
+  "0.2.0-r1 vs 0.3.0-r2": {
+   "steps": 79,
+   "identical_steps": 79,
+   "different_steps": []
+  }
+ },
+ "runs": {
+  "0.2.0-r1": [
+   {
+    "label": "inspect 01_supported json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8f720542bd45fa1992aeacbca5453310f989d15a2956a8bd7c4520ed5f234dc7"
+   },
+   {
+    "label": "inspect 01_supported json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "973271edae40271f4d9bfdd22b801c5cebbc70a10ecf4bbd1448f993103fc9db"
+   },
+   {
+    "label": "inspect 01_supported markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6caaae9da8e5ed6dbf68864cd71118ddaccd4ac188787dd162104bb01f9b1451"
+   },
+   {
+    "label": "inspect 01_supported markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2279177e3e2363260c8eea788ebec1ac99bc7869cac0bfd3976c33546de34d5c"
+   },
+   {
+    "label": "inspect 02_contradicted json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8632f9a6c8eb333bad427529f77d53509892a5a83811636e7b0aa040d79d86b9"
+   },
+   {
+    "label": "inspect 02_contradicted json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "322e2de2bb015eac91faa06d86103271de81fe1f42b88ac41905355173e88ca1"
+   },
+   {
+    "label": "inspect 02_contradicted markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "46900188973416dd9e663e07c327e7ce37fad67e1c8266ead19d128fe3ca5b2c"
+   },
+   {
+    "label": "inspect 02_contradicted markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5a63da8e9d084171f48e4cf51794f33a910e52ffa28e82525f993c559cbdfbbd"
+   },
+   {
+    "label": "inspect 03_not_established json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd2b0f4718db0a37e225dc3850d06f668a6d42e739101500633c36533d98cb0e"
+   },
+   {
+    "label": "inspect 03_not_established json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "b942fbd5e9ae0927f41e6ed74969d3dbe10b6e6e409fe3f64816a46c62dfec6b"
+   },
+   {
+    "label": "inspect 03_not_established markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f357c211a1bd18d817ba7d06aa8ca6085821595f6c78cc9d9cae367fd40245af"
+   },
+   {
+    "label": "inspect 03_not_established markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a9160809a32956627d3d06a5b6fcf638bbd1c3ed4bef9ba316884c5eb975b0f"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8cae9d457c2d5f0342f1cd558440e43a5fd22de4e6ac3bf9b41d046edcdabcdd"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a073d586864f69d31c111034e1204102beb118ede80ac06dec66af2591609c3c"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0efb52ae96f99978aab0f1113efdc0f4299debe7177bff7b0d556d6bc7022e1d"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "293ee34f3fbcc92bbe543c7c415267a6143cdf212f29a141207c8e7866f33619"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5dc5fc46a9dec1a24eb29764dacff570f5ed64e1dda6979288e23532548accfa"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd0e628b84c82de838393ccf72d88cf9b6aea728074fbbf1269d5060b4e2bdbf"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c1cd1f1136057987457b0cde47a6cc40f0ea595eba22e808f27049a42a8e0141"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "623c596608fef70bf385b7de17de9e75a29d8c2a011b48787769d6f5988192a6"
+   },
+   {
+    "label": "positive: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0ac20800b6ca0803a80afc87d50b8866a963595a7aaf9d331f9bd97135558fac"
+   },
+   {
+    "label": "positive: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "b8753d48ddd5e1cf630306f497042b64b09cf6707a22476f840fb2dc49b266b0"
+   },
+   {
+    "label": "positive: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "96819cb2c4d6d952441de881a0fa06eec9c97fc5fda87f6acb08e4f106359a51"
+   },
+   {
+    "label": "positive: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "1e7736097909c5f394a755077ca21c951b4e2b54b31448c7e747a5f61a843ae8"
+   },
+   {
+    "label": "positive: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "0f336f450104e399a90ed0cdf4c6abf241927ea561a80ebe5a481b329e16259c"
+   },
+   {
+    "label": "positive: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2caabbf2b6a29a49c31b6b5eaefe204896a04ade041163c6c3bda8b6531ee971"
+   },
+   {
+    "label": "positive: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "51a9df2c96c6f1392430f314d17f1dff87fcc66b30a33471023fe403863e9199"
+   },
+   {
+    "label": "positive: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "586c4b028e787d7b3bdb4d38543232e5febab874f73a4d0ba89fe7661c939f60"
+   },
+   {
+    "label": "positive: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a4e918858447fe0470195832cbcb01f4ee03e77c77c2930e1eacdc4d7c104eb"
+   },
+   {
+    "label": "positive: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "7a38f02ca3815f872e625f1ecbf234ddd518285aa600b39bf9e01d59197ee549"
+   },
+   {
+    "label": "positive: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "c510a53eb948024674602da60907b0944363921dc17d9e8d91e801b6297e3f12"
+   },
+   {
+    "label": "positive: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "cb16d77cd040e301b7dbbec52e151bef46b4ca8fcc3f75f5a25f1256a01fc300"
+   },
+   {
+    "label": "positive: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "a81c1d27cebc682b010a42c0fa77e16a3410294c4701d01bb33be2bb2c7dc927"
+   },
+   {
+    "label": "negative: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "e50f24b4573daf013ed314c80dde72a9494083d36aa6e3cb2ac2967fcf204259"
+   },
+   {
+    "label": "negative: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "75763f79e350e7185cc8286083fc94a6d43a1d0b782d540b24138a5e328d88d1"
+   },
+   {
+    "label": "negative: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd1d995eabb9bc911c8509134a3b15d75d935d03b7e65f0c75482b717aad82c9"
+   },
+   {
+    "label": "negative: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "2233a386ff400ef75f8603bcefe9e9984f795f85cd3dcab860a98b14af9124eb"
+   },
+   {
+    "label": "negative: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "4edbd00d9560f132d299fffaf9a1a00f540b60d8c125b18c00875df28d06adb0"
+   },
+   {
+    "label": "negative: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "37a482e1d50f96c300200c4297812d5e3f146f2bf8184d6a689d59b9f6cba2f9"
+   },
+   {
+    "label": "negative: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "24060e02207d487b1f8c625cb6846a3ea1208aca5a373c561bdb46a62c33691c"
+   },
+   {
+    "label": "negative: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "92e10b0c520059fce41024a9bfa9ca0ad74ae28e791c06e9ca4384797dab4169"
+   },
+   {
+    "label": "negative: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f6624dd21305f97853e4a3dfced03d9009b34035862af372faea8dfd65c425b9"
+   },
+   {
+    "label": "negative: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "69a585f9ad381cd3827cc2e5568857455e0124639a30f55312697b5fe5b8e543"
+   },
+   {
+    "label": "negative: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "a835f54e6143dc759d4ed42a26e9171b147a93cdb658b445470c3311ea949729"
+   },
+   {
+    "label": "negative: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "98012c5412fd451daef0c4212d3e521d4c8d38585e944731b538ff29fe8aeba8"
+   },
+   {
+    "label": "negative: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "b89648e9794997810c6be86d360cc8cf4570793c711ded63514bf6294f877715"
+   },
+   {
+    "label": "unknown: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3ff881529375d39cb63b1a0d4b02aad5507694b2178fea91f11fdbc164e2f2e7"
+   },
+   {
+    "label": "unknown: run --offline",
+    "exit_code": 2,
+    "status": "REVIEW_REQUIRED",
+    "valid": null,
+    "projection_sha256": "1f0dfd9f32fd1c0e42fd91ce70896716561c401615ce687c50c1ee4eaa393f2b"
+   },
+   {
+    "label": "unknown: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6cd51502adc2bce1369bcf98d4ea47dbe2a0a8dd055abf0e666af79823eb73e7"
+   },
+   {
+    "label": "unknown: inspect candidate",
+    "exit_code": 0,
+    "status": "REVIEW_REQUIRED",
+    "valid": true,
+    "projection_sha256": "5ef463de3e415cf5bf66735f854e79812daf38afc5af2af59fccdb08cc34cd4d"
+   },
+   {
+    "label": "unknown: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "403cbba5f3bf3e2342ecc3e079b8badc3466e8a17517302553b72e2d106b968d"
+   },
+   {
+    "label": "unknown: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "9f861c20efae16cddf711b513f8ace86d34a4fcf6c2d808c522d04cf6271a4e2"
+   },
+   {
+    "label": "unknown: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "f391928cc4f3433fc61a9ed122a9d26122464fe95911417ce2b9f47dd33cccab"
+   },
+   {
+    "label": "unknown: release candidate",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": null,
+    "projection_sha256": "339fa8aa61fd5b2643bb5f198dd73bc4f865223bad7a6b0d44738ff29f8e8c3b"
+   },
+   {
+    "label": "unknown: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "daec91b6ea7f9f8870ecc68af6acb4bc3e60d13b36d137c3573821a3745c62ef"
+   },
+   {
+    "label": "unknown: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "30ef1ac409e03fa50b58bad70ae7d80da171ec5857b51fd3f6522c3a60a1f630"
+   },
+   {
+    "label": "unknown: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "80501062817004e39bd5c53d0ed57dc92fdb97d5da17344beb54568d19ba8c6f"
+   },
+   {
+    "label": "long-hostile: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "62c6664573592bfc940a839010140ac0ff233225da30e38b61ad47a8bfcf6b04"
+   },
+   {
+    "label": "long-hostile: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "10093bafe646fcc75d020048486afdd46876f4a43d1381587474728073d01aaf"
+   },
+   {
+    "label": "long-hostile: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "66f8eda221022ab9c0aeab0bee0d2dbc72c314eee76e1118e5b8aeb116a8eca1"
+   },
+   {
+    "label": "long-hostile: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "3f03acaa0a0d8a9a0fa36d511e48422f073ae76ccf6bf30fe20d8be771dac387"
+   },
+   {
+    "label": "long-hostile: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "f6694e780fc4b40e0257a311bdebb3be64d3ef6fb7e16118e65a0c963c8cc328"
+   },
+   {
+    "label": "long-hostile: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "1ec30f5fc8a2b381566b0bb39c1d20a245c00d263fe618ff07dfb18a54c4eee6"
+   },
+   {
+    "label": "long-hostile: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "bf30247333286af837cca071d355b5d8102cf05c9ea4f2c72eba5fa341d5907b"
+   },
+   {
+    "label": "long-hostile: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "0699d294663ddbb89d9921a743bbc05e1de1462f5b6916873d5e321819d1202e"
+   },
+   {
+    "label": "long-hostile: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "d065130d1ad215bb12f50a879cb6537960b7963588b3c3583eb62c1597a9f8ac"
+   },
+   {
+    "label": "long-hostile: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "d3baf5bd6ec91b5350bd89a05f28eda2904b64905e44223d465bc02507f335ea"
+   },
+   {
+    "label": "long-hostile: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "dbcf1d2a01a2b72fec4f7eacd5481372238587e797eb2eab4cc4cd30d6fad784"
+   },
+   {
+    "label": "long-hostile: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a455efc657ea1ff49705e4e7b531838da54a9b31d9a3b93e7faecd31e27d7f3d"
+   },
+   {
+    "label": "long-hostile: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "21a5abd704c11aa7128f108c69d80748f553ba7e81b7cf2111f0c73de9981b76"
+   },
+   {
+    "label": "counter: tampered report rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "0798578f9c9868a9d1e54085ca0d5be4fe3d9f81d04facd6687eaac8520a1fc8"
+   },
+   {
+    "label": "counter: tampered record rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "c1604a15d36363a271f71a45a826d602e8ed7cd272d4ae2e2b9a9bc740b3fd41"
+   },
+   {
+    "label": "counter: live without authorization",
+    "exit_code": 2,
+    "status": "PREFLIGHT_BLOCKED",
+    "valid": null,
+    "projection_sha256": "774d65d23e7c05b04b678884485be63b906701afffb31b3dcf1a2fed25f16bc7"
+   },
+   {
+    "label": "counter: missing mode",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3dd8cdd187935180cf21cd77be2fcc2d98bd6ddf2b683efa6ba978896c04f2ba"
+   },
+   {
+    "label": "counter: conflicting modes",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "68076ba3e0daa31ffe3a7c9fb243be783aea99cfba20c6420e0aa17d7d3f10ae"
+   },
+   {
+    "label": "counter: duplicate key in inspect input",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c2500d88c49d68b17d4cf8847582a86be4cd6131b03cd2c19841deec1288e785"
+   },
+   {
+    "label": "counter: duplicate key in inspect proposals",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "ac450aa165f87010b620e61cd9ff1d4a4388233c7b12d0b2051eda20d4396421"
+   },
+   {
+    "label": "counter: duplicate key in audit task",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fb87fc4524aa982463e5eb9b6fc11ccd436493d8893ea6c6be1df83a5fa96ce4"
+   },
+   {
+    "label": "counter: unknown command",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "15169e94754ada636337ee3d21e4120e476b9f47234d78ffe4e530ffaafb936e"
+   }
+  ],
+  "0.2.0-r2": [
+   {
+    "label": "inspect 01_supported json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8f720542bd45fa1992aeacbca5453310f989d15a2956a8bd7c4520ed5f234dc7"
+   },
+   {
+    "label": "inspect 01_supported json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "973271edae40271f4d9bfdd22b801c5cebbc70a10ecf4bbd1448f993103fc9db"
+   },
+   {
+    "label": "inspect 01_supported markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6caaae9da8e5ed6dbf68864cd71118ddaccd4ac188787dd162104bb01f9b1451"
+   },
+   {
+    "label": "inspect 01_supported markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2279177e3e2363260c8eea788ebec1ac99bc7869cac0bfd3976c33546de34d5c"
+   },
+   {
+    "label": "inspect 02_contradicted json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8632f9a6c8eb333bad427529f77d53509892a5a83811636e7b0aa040d79d86b9"
+   },
+   {
+    "label": "inspect 02_contradicted json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "322e2de2bb015eac91faa06d86103271de81fe1f42b88ac41905355173e88ca1"
+   },
+   {
+    "label": "inspect 02_contradicted markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "46900188973416dd9e663e07c327e7ce37fad67e1c8266ead19d128fe3ca5b2c"
+   },
+   {
+    "label": "inspect 02_contradicted markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5a63da8e9d084171f48e4cf51794f33a910e52ffa28e82525f993c559cbdfbbd"
+   },
+   {
+    "label": "inspect 03_not_established json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd2b0f4718db0a37e225dc3850d06f668a6d42e739101500633c36533d98cb0e"
+   },
+   {
+    "label": "inspect 03_not_established json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "b942fbd5e9ae0927f41e6ed74969d3dbe10b6e6e409fe3f64816a46c62dfec6b"
+   },
+   {
+    "label": "inspect 03_not_established markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f357c211a1bd18d817ba7d06aa8ca6085821595f6c78cc9d9cae367fd40245af"
+   },
+   {
+    "label": "inspect 03_not_established markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a9160809a32956627d3d06a5b6fcf638bbd1c3ed4bef9ba316884c5eb975b0f"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8cae9d457c2d5f0342f1cd558440e43a5fd22de4e6ac3bf9b41d046edcdabcdd"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a073d586864f69d31c111034e1204102beb118ede80ac06dec66af2591609c3c"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0efb52ae96f99978aab0f1113efdc0f4299debe7177bff7b0d556d6bc7022e1d"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "293ee34f3fbcc92bbe543c7c415267a6143cdf212f29a141207c8e7866f33619"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5dc5fc46a9dec1a24eb29764dacff570f5ed64e1dda6979288e23532548accfa"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd0e628b84c82de838393ccf72d88cf9b6aea728074fbbf1269d5060b4e2bdbf"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c1cd1f1136057987457b0cde47a6cc40f0ea595eba22e808f27049a42a8e0141"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "623c596608fef70bf385b7de17de9e75a29d8c2a011b48787769d6f5988192a6"
+   },
+   {
+    "label": "positive: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0ac20800b6ca0803a80afc87d50b8866a963595a7aaf9d331f9bd97135558fac"
+   },
+   {
+    "label": "positive: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "b8753d48ddd5e1cf630306f497042b64b09cf6707a22476f840fb2dc49b266b0"
+   },
+   {
+    "label": "positive: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "96819cb2c4d6d952441de881a0fa06eec9c97fc5fda87f6acb08e4f106359a51"
+   },
+   {
+    "label": "positive: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "1e7736097909c5f394a755077ca21c951b4e2b54b31448c7e747a5f61a843ae8"
+   },
+   {
+    "label": "positive: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "0f336f450104e399a90ed0cdf4c6abf241927ea561a80ebe5a481b329e16259c"
+   },
+   {
+    "label": "positive: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2caabbf2b6a29a49c31b6b5eaefe204896a04ade041163c6c3bda8b6531ee971"
+   },
+   {
+    "label": "positive: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "51a9df2c96c6f1392430f314d17f1dff87fcc66b30a33471023fe403863e9199"
+   },
+   {
+    "label": "positive: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "586c4b028e787d7b3bdb4d38543232e5febab874f73a4d0ba89fe7661c939f60"
+   },
+   {
+    "label": "positive: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a4e918858447fe0470195832cbcb01f4ee03e77c77c2930e1eacdc4d7c104eb"
+   },
+   {
+    "label": "positive: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "7a38f02ca3815f872e625f1ecbf234ddd518285aa600b39bf9e01d59197ee549"
+   },
+   {
+    "label": "positive: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "c510a53eb948024674602da60907b0944363921dc17d9e8d91e801b6297e3f12"
+   },
+   {
+    "label": "positive: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "cb16d77cd040e301b7dbbec52e151bef46b4ca8fcc3f75f5a25f1256a01fc300"
+   },
+   {
+    "label": "positive: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "a81c1d27cebc682b010a42c0fa77e16a3410294c4701d01bb33be2bb2c7dc927"
+   },
+   {
+    "label": "negative: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "e50f24b4573daf013ed314c80dde72a9494083d36aa6e3cb2ac2967fcf204259"
+   },
+   {
+    "label": "negative: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "75763f79e350e7185cc8286083fc94a6d43a1d0b782d540b24138a5e328d88d1"
+   },
+   {
+    "label": "negative: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd1d995eabb9bc911c8509134a3b15d75d935d03b7e65f0c75482b717aad82c9"
+   },
+   {
+    "label": "negative: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "2233a386ff400ef75f8603bcefe9e9984f795f85cd3dcab860a98b14af9124eb"
+   },
+   {
+    "label": "negative: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "4edbd00d9560f132d299fffaf9a1a00f540b60d8c125b18c00875df28d06adb0"
+   },
+   {
+    "label": "negative: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "37a482e1d50f96c300200c4297812d5e3f146f2bf8184d6a689d59b9f6cba2f9"
+   },
+   {
+    "label": "negative: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "24060e02207d487b1f8c625cb6846a3ea1208aca5a373c561bdb46a62c33691c"
+   },
+   {
+    "label": "negative: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "92e10b0c520059fce41024a9bfa9ca0ad74ae28e791c06e9ca4384797dab4169"
+   },
+   {
+    "label": "negative: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f6624dd21305f97853e4a3dfced03d9009b34035862af372faea8dfd65c425b9"
+   },
+   {
+    "label": "negative: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "69a585f9ad381cd3827cc2e5568857455e0124639a30f55312697b5fe5b8e543"
+   },
+   {
+    "label": "negative: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "a835f54e6143dc759d4ed42a26e9171b147a93cdb658b445470c3311ea949729"
+   },
+   {
+    "label": "negative: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "98012c5412fd451daef0c4212d3e521d4c8d38585e944731b538ff29fe8aeba8"
+   },
+   {
+    "label": "negative: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "b89648e9794997810c6be86d360cc8cf4570793c711ded63514bf6294f877715"
+   },
+   {
+    "label": "unknown: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3ff881529375d39cb63b1a0d4b02aad5507694b2178fea91f11fdbc164e2f2e7"
+   },
+   {
+    "label": "unknown: run --offline",
+    "exit_code": 2,
+    "status": "REVIEW_REQUIRED",
+    "valid": null,
+    "projection_sha256": "1f0dfd9f32fd1c0e42fd91ce70896716561c401615ce687c50c1ee4eaa393f2b"
+   },
+   {
+    "label": "unknown: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6cd51502adc2bce1369bcf98d4ea47dbe2a0a8dd055abf0e666af79823eb73e7"
+   },
+   {
+    "label": "unknown: inspect candidate",
+    "exit_code": 0,
+    "status": "REVIEW_REQUIRED",
+    "valid": true,
+    "projection_sha256": "5ef463de3e415cf5bf66735f854e79812daf38afc5af2af59fccdb08cc34cd4d"
+   },
+   {
+    "label": "unknown: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "403cbba5f3bf3e2342ecc3e079b8badc3466e8a17517302553b72e2d106b968d"
+   },
+   {
+    "label": "unknown: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "9f861c20efae16cddf711b513f8ace86d34a4fcf6c2d808c522d04cf6271a4e2"
+   },
+   {
+    "label": "unknown: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "f391928cc4f3433fc61a9ed122a9d26122464fe95911417ce2b9f47dd33cccab"
+   },
+   {
+    "label": "unknown: release candidate",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": null,
+    "projection_sha256": "339fa8aa61fd5b2643bb5f198dd73bc4f865223bad7a6b0d44738ff29f8e8c3b"
+   },
+   {
+    "label": "unknown: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "daec91b6ea7f9f8870ecc68af6acb4bc3e60d13b36d137c3573821a3745c62ef"
+   },
+   {
+    "label": "unknown: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "30ef1ac409e03fa50b58bad70ae7d80da171ec5857b51fd3f6522c3a60a1f630"
+   },
+   {
+    "label": "unknown: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "80501062817004e39bd5c53d0ed57dc92fdb97d5da17344beb54568d19ba8c6f"
+   },
+   {
+    "label": "long-hostile: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "62c6664573592bfc940a839010140ac0ff233225da30e38b61ad47a8bfcf6b04"
+   },
+   {
+    "label": "long-hostile: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "10093bafe646fcc75d020048486afdd46876f4a43d1381587474728073d01aaf"
+   },
+   {
+    "label": "long-hostile: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "66f8eda221022ab9c0aeab0bee0d2dbc72c314eee76e1118e5b8aeb116a8eca1"
+   },
+   {
+    "label": "long-hostile: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "3f03acaa0a0d8a9a0fa36d511e48422f073ae76ccf6bf30fe20d8be771dac387"
+   },
+   {
+    "label": "long-hostile: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "f6694e780fc4b40e0257a311bdebb3be64d3ef6fb7e16118e65a0c963c8cc328"
+   },
+   {
+    "label": "long-hostile: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "1ec30f5fc8a2b381566b0bb39c1d20a245c00d263fe618ff07dfb18a54c4eee6"
+   },
+   {
+    "label": "long-hostile: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "bf30247333286af837cca071d355b5d8102cf05c9ea4f2c72eba5fa341d5907b"
+   },
+   {
+    "label": "long-hostile: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "0699d294663ddbb89d9921a743bbc05e1de1462f5b6916873d5e321819d1202e"
+   },
+   {
+    "label": "long-hostile: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "d065130d1ad215bb12f50a879cb6537960b7963588b3c3583eb62c1597a9f8ac"
+   },
+   {
+    "label": "long-hostile: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "d3baf5bd6ec91b5350bd89a05f28eda2904b64905e44223d465bc02507f335ea"
+   },
+   {
+    "label": "long-hostile: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "dbcf1d2a01a2b72fec4f7eacd5481372238587e797eb2eab4cc4cd30d6fad784"
+   },
+   {
+    "label": "long-hostile: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a455efc657ea1ff49705e4e7b531838da54a9b31d9a3b93e7faecd31e27d7f3d"
+   },
+   {
+    "label": "long-hostile: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "21a5abd704c11aa7128f108c69d80748f553ba7e81b7cf2111f0c73de9981b76"
+   },
+   {
+    "label": "counter: tampered report rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "0798578f9c9868a9d1e54085ca0d5be4fe3d9f81d04facd6687eaac8520a1fc8"
+   },
+   {
+    "label": "counter: tampered record rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "c1604a15d36363a271f71a45a826d602e8ed7cd272d4ae2e2b9a9bc740b3fd41"
+   },
+   {
+    "label": "counter: live without authorization",
+    "exit_code": 2,
+    "status": "PREFLIGHT_BLOCKED",
+    "valid": null,
+    "projection_sha256": "774d65d23e7c05b04b678884485be63b906701afffb31b3dcf1a2fed25f16bc7"
+   },
+   {
+    "label": "counter: missing mode",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3dd8cdd187935180cf21cd77be2fcc2d98bd6ddf2b683efa6ba978896c04f2ba"
+   },
+   {
+    "label": "counter: conflicting modes",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "68076ba3e0daa31ffe3a7c9fb243be783aea99cfba20c6420e0aa17d7d3f10ae"
+   },
+   {
+    "label": "counter: duplicate key in inspect input",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c2500d88c49d68b17d4cf8847582a86be4cd6131b03cd2c19841deec1288e785"
+   },
+   {
+    "label": "counter: duplicate key in inspect proposals",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "ac450aa165f87010b620e61cd9ff1d4a4388233c7b12d0b2051eda20d4396421"
+   },
+   {
+    "label": "counter: duplicate key in audit task",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fb87fc4524aa982463e5eb9b6fc11ccd436493d8893ea6c6be1df83a5fa96ce4"
+   },
+   {
+    "label": "counter: unknown command",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "15169e94754ada636337ee3d21e4120e476b9f47234d78ffe4e530ffaafb936e"
+   }
+  ],
+  "0.3.0-r1": [
+   {
+    "label": "inspect 01_supported json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8f720542bd45fa1992aeacbca5453310f989d15a2956a8bd7c4520ed5f234dc7"
+   },
+   {
+    "label": "inspect 01_supported json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "973271edae40271f4d9bfdd22b801c5cebbc70a10ecf4bbd1448f993103fc9db"
+   },
+   {
+    "label": "inspect 01_supported markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6caaae9da8e5ed6dbf68864cd71118ddaccd4ac188787dd162104bb01f9b1451"
+   },
+   {
+    "label": "inspect 01_supported markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2279177e3e2363260c8eea788ebec1ac99bc7869cac0bfd3976c33546de34d5c"
+   },
+   {
+    "label": "inspect 02_contradicted json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8632f9a6c8eb333bad427529f77d53509892a5a83811636e7b0aa040d79d86b9"
+   },
+   {
+    "label": "inspect 02_contradicted json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "322e2de2bb015eac91faa06d86103271de81fe1f42b88ac41905355173e88ca1"
+   },
+   {
+    "label": "inspect 02_contradicted markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "46900188973416dd9e663e07c327e7ce37fad67e1c8266ead19d128fe3ca5b2c"
+   },
+   {
+    "label": "inspect 02_contradicted markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5a63da8e9d084171f48e4cf51794f33a910e52ffa28e82525f993c559cbdfbbd"
+   },
+   {
+    "label": "inspect 03_not_established json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd2b0f4718db0a37e225dc3850d06f668a6d42e739101500633c36533d98cb0e"
+   },
+   {
+    "label": "inspect 03_not_established json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "b942fbd5e9ae0927f41e6ed74969d3dbe10b6e6e409fe3f64816a46c62dfec6b"
+   },
+   {
+    "label": "inspect 03_not_established markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f357c211a1bd18d817ba7d06aa8ca6085821595f6c78cc9d9cae367fd40245af"
+   },
+   {
+    "label": "inspect 03_not_established markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a9160809a32956627d3d06a5b6fcf638bbd1c3ed4bef9ba316884c5eb975b0f"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8cae9d457c2d5f0342f1cd558440e43a5fd22de4e6ac3bf9b41d046edcdabcdd"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a073d586864f69d31c111034e1204102beb118ede80ac06dec66af2591609c3c"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0efb52ae96f99978aab0f1113efdc0f4299debe7177bff7b0d556d6bc7022e1d"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "293ee34f3fbcc92bbe543c7c415267a6143cdf212f29a141207c8e7866f33619"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5dc5fc46a9dec1a24eb29764dacff570f5ed64e1dda6979288e23532548accfa"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd0e628b84c82de838393ccf72d88cf9b6aea728074fbbf1269d5060b4e2bdbf"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c1cd1f1136057987457b0cde47a6cc40f0ea595eba22e808f27049a42a8e0141"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "623c596608fef70bf385b7de17de9e75a29d8c2a011b48787769d6f5988192a6"
+   },
+   {
+    "label": "positive: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0ac20800b6ca0803a80afc87d50b8866a963595a7aaf9d331f9bd97135558fac"
+   },
+   {
+    "label": "positive: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "b8753d48ddd5e1cf630306f497042b64b09cf6707a22476f840fb2dc49b266b0"
+   },
+   {
+    "label": "positive: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "96819cb2c4d6d952441de881a0fa06eec9c97fc5fda87f6acb08e4f106359a51"
+   },
+   {
+    "label": "positive: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "1e7736097909c5f394a755077ca21c951b4e2b54b31448c7e747a5f61a843ae8"
+   },
+   {
+    "label": "positive: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "0f336f450104e399a90ed0cdf4c6abf241927ea561a80ebe5a481b329e16259c"
+   },
+   {
+    "label": "positive: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2caabbf2b6a29a49c31b6b5eaefe204896a04ade041163c6c3bda8b6531ee971"
+   },
+   {
+    "label": "positive: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "51a9df2c96c6f1392430f314d17f1dff87fcc66b30a33471023fe403863e9199"
+   },
+   {
+    "label": "positive: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "586c4b028e787d7b3bdb4d38543232e5febab874f73a4d0ba89fe7661c939f60"
+   },
+   {
+    "label": "positive: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a4e918858447fe0470195832cbcb01f4ee03e77c77c2930e1eacdc4d7c104eb"
+   },
+   {
+    "label": "positive: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "7a38f02ca3815f872e625f1ecbf234ddd518285aa600b39bf9e01d59197ee549"
+   },
+   {
+    "label": "positive: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "c510a53eb948024674602da60907b0944363921dc17d9e8d91e801b6297e3f12"
+   },
+   {
+    "label": "positive: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "cb16d77cd040e301b7dbbec52e151bef46b4ca8fcc3f75f5a25f1256a01fc300"
+   },
+   {
+    "label": "positive: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "a81c1d27cebc682b010a42c0fa77e16a3410294c4701d01bb33be2bb2c7dc927"
+   },
+   {
+    "label": "negative: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "e50f24b4573daf013ed314c80dde72a9494083d36aa6e3cb2ac2967fcf204259"
+   },
+   {
+    "label": "negative: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "75763f79e350e7185cc8286083fc94a6d43a1d0b782d540b24138a5e328d88d1"
+   },
+   {
+    "label": "negative: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd1d995eabb9bc911c8509134a3b15d75d935d03b7e65f0c75482b717aad82c9"
+   },
+   {
+    "label": "negative: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "2233a386ff400ef75f8603bcefe9e9984f795f85cd3dcab860a98b14af9124eb"
+   },
+   {
+    "label": "negative: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "4edbd00d9560f132d299fffaf9a1a00f540b60d8c125b18c00875df28d06adb0"
+   },
+   {
+    "label": "negative: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "37a482e1d50f96c300200c4297812d5e3f146f2bf8184d6a689d59b9f6cba2f9"
+   },
+   {
+    "label": "negative: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "24060e02207d487b1f8c625cb6846a3ea1208aca5a373c561bdb46a62c33691c"
+   },
+   {
+    "label": "negative: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "92e10b0c520059fce41024a9bfa9ca0ad74ae28e791c06e9ca4384797dab4169"
+   },
+   {
+    "label": "negative: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f6624dd21305f97853e4a3dfced03d9009b34035862af372faea8dfd65c425b9"
+   },
+   {
+    "label": "negative: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "69a585f9ad381cd3827cc2e5568857455e0124639a30f55312697b5fe5b8e543"
+   },
+   {
+    "label": "negative: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "a835f54e6143dc759d4ed42a26e9171b147a93cdb658b445470c3311ea949729"
+   },
+   {
+    "label": "negative: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "98012c5412fd451daef0c4212d3e521d4c8d38585e944731b538ff29fe8aeba8"
+   },
+   {
+    "label": "negative: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "b89648e9794997810c6be86d360cc8cf4570793c711ded63514bf6294f877715"
+   },
+   {
+    "label": "unknown: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3ff881529375d39cb63b1a0d4b02aad5507694b2178fea91f11fdbc164e2f2e7"
+   },
+   {
+    "label": "unknown: run --offline",
+    "exit_code": 2,
+    "status": "REVIEW_REQUIRED",
+    "valid": null,
+    "projection_sha256": "1f0dfd9f32fd1c0e42fd91ce70896716561c401615ce687c50c1ee4eaa393f2b"
+   },
+   {
+    "label": "unknown: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6cd51502adc2bce1369bcf98d4ea47dbe2a0a8dd055abf0e666af79823eb73e7"
+   },
+   {
+    "label": "unknown: inspect candidate",
+    "exit_code": 0,
+    "status": "REVIEW_REQUIRED",
+    "valid": true,
+    "projection_sha256": "5ef463de3e415cf5bf66735f854e79812daf38afc5af2af59fccdb08cc34cd4d"
+   },
+   {
+    "label": "unknown: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "403cbba5f3bf3e2342ecc3e079b8badc3466e8a17517302553b72e2d106b968d"
+   },
+   {
+    "label": "unknown: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "9f861c20efae16cddf711b513f8ace86d34a4fcf6c2d808c522d04cf6271a4e2"
+   },
+   {
+    "label": "unknown: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "f391928cc4f3433fc61a9ed122a9d26122464fe95911417ce2b9f47dd33cccab"
+   },
+   {
+    "label": "unknown: release candidate",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": null,
+    "projection_sha256": "339fa8aa61fd5b2643bb5f198dd73bc4f865223bad7a6b0d44738ff29f8e8c3b"
+   },
+   {
+    "label": "unknown: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "daec91b6ea7f9f8870ecc68af6acb4bc3e60d13b36d137c3573821a3745c62ef"
+   },
+   {
+    "label": "unknown: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "30ef1ac409e03fa50b58bad70ae7d80da171ec5857b51fd3f6522c3a60a1f630"
+   },
+   {
+    "label": "unknown: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "80501062817004e39bd5c53d0ed57dc92fdb97d5da17344beb54568d19ba8c6f"
+   },
+   {
+    "label": "long-hostile: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "62c6664573592bfc940a839010140ac0ff233225da30e38b61ad47a8bfcf6b04"
+   },
+   {
+    "label": "long-hostile: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "10093bafe646fcc75d020048486afdd46876f4a43d1381587474728073d01aaf"
+   },
+   {
+    "label": "long-hostile: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "66f8eda221022ab9c0aeab0bee0d2dbc72c314eee76e1118e5b8aeb116a8eca1"
+   },
+   {
+    "label": "long-hostile: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "3f03acaa0a0d8a9a0fa36d511e48422f073ae76ccf6bf30fe20d8be771dac387"
+   },
+   {
+    "label": "long-hostile: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "f6694e780fc4b40e0257a311bdebb3be64d3ef6fb7e16118e65a0c963c8cc328"
+   },
+   {
+    "label": "long-hostile: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "1ec30f5fc8a2b381566b0bb39c1d20a245c00d263fe618ff07dfb18a54c4eee6"
+   },
+   {
+    "label": "long-hostile: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "bf30247333286af837cca071d355b5d8102cf05c9ea4f2c72eba5fa341d5907b"
+   },
+   {
+    "label": "long-hostile: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "0699d294663ddbb89d9921a743bbc05e1de1462f5b6916873d5e321819d1202e"
+   },
+   {
+    "label": "long-hostile: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "d065130d1ad215bb12f50a879cb6537960b7963588b3c3583eb62c1597a9f8ac"
+   },
+   {
+    "label": "long-hostile: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "d3baf5bd6ec91b5350bd89a05f28eda2904b64905e44223d465bc02507f335ea"
+   },
+   {
+    "label": "long-hostile: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "dbcf1d2a01a2b72fec4f7eacd5481372238587e797eb2eab4cc4cd30d6fad784"
+   },
+   {
+    "label": "long-hostile: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a455efc657ea1ff49705e4e7b531838da54a9b31d9a3b93e7faecd31e27d7f3d"
+   },
+   {
+    "label": "long-hostile: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "21a5abd704c11aa7128f108c69d80748f553ba7e81b7cf2111f0c73de9981b76"
+   },
+   {
+    "label": "counter: tampered report rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "0798578f9c9868a9d1e54085ca0d5be4fe3d9f81d04facd6687eaac8520a1fc8"
+   },
+   {
+    "label": "counter: tampered record rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "c1604a15d36363a271f71a45a826d602e8ed7cd272d4ae2e2b9a9bc740b3fd41"
+   },
+   {
+    "label": "counter: live without authorization",
+    "exit_code": 2,
+    "status": "PREFLIGHT_BLOCKED",
+    "valid": null,
+    "projection_sha256": "774d65d23e7c05b04b678884485be63b906701afffb31b3dcf1a2fed25f16bc7"
+   },
+   {
+    "label": "counter: missing mode",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3dd8cdd187935180cf21cd77be2fcc2d98bd6ddf2b683efa6ba978896c04f2ba"
+   },
+   {
+    "label": "counter: conflicting modes",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "68076ba3e0daa31ffe3a7c9fb243be783aea99cfba20c6420e0aa17d7d3f10ae"
+   },
+   {
+    "label": "counter: duplicate key in inspect input",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c2500d88c49d68b17d4cf8847582a86be4cd6131b03cd2c19841deec1288e785"
+   },
+   {
+    "label": "counter: duplicate key in inspect proposals",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "ac450aa165f87010b620e61cd9ff1d4a4388233c7b12d0b2051eda20d4396421"
+   },
+   {
+    "label": "counter: duplicate key in audit task",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fb87fc4524aa982463e5eb9b6fc11ccd436493d8893ea6c6be1df83a5fa96ce4"
+   },
+   {
+    "label": "counter: unknown command",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "15169e94754ada636337ee3d21e4120e476b9f47234d78ffe4e530ffaafb936e"
+   }
+  ],
+  "0.3.0-r2": [
+   {
+    "label": "inspect 01_supported json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8f720542bd45fa1992aeacbca5453310f989d15a2956a8bd7c4520ed5f234dc7"
+   },
+   {
+    "label": "inspect 01_supported json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "973271edae40271f4d9bfdd22b801c5cebbc70a10ecf4bbd1448f993103fc9db"
+   },
+   {
+    "label": "inspect 01_supported markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6caaae9da8e5ed6dbf68864cd71118ddaccd4ac188787dd162104bb01f9b1451"
+   },
+   {
+    "label": "inspect 01_supported markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2279177e3e2363260c8eea788ebec1ac99bc7869cac0bfd3976c33546de34d5c"
+   },
+   {
+    "label": "inspect 02_contradicted json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8632f9a6c8eb333bad427529f77d53509892a5a83811636e7b0aa040d79d86b9"
+   },
+   {
+    "label": "inspect 02_contradicted json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "322e2de2bb015eac91faa06d86103271de81fe1f42b88ac41905355173e88ca1"
+   },
+   {
+    "label": "inspect 02_contradicted markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "46900188973416dd9e663e07c327e7ce37fad67e1c8266ead19d128fe3ca5b2c"
+   },
+   {
+    "label": "inspect 02_contradicted markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5a63da8e9d084171f48e4cf51794f33a910e52ffa28e82525f993c559cbdfbbd"
+   },
+   {
+    "label": "inspect 03_not_established json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd2b0f4718db0a37e225dc3850d06f668a6d42e739101500633c36533d98cb0e"
+   },
+   {
+    "label": "inspect 03_not_established json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "b942fbd5e9ae0927f41e6ed74969d3dbe10b6e6e409fe3f64816a46c62dfec6b"
+   },
+   {
+    "label": "inspect 03_not_established markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f357c211a1bd18d817ba7d06aa8ca6085821595f6c78cc9d9cae367fd40245af"
+   },
+   {
+    "label": "inspect 03_not_established markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a9160809a32956627d3d06a5b6fcf638bbd1c3ed4bef9ba316884c5eb975b0f"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "8cae9d457c2d5f0342f1cd558440e43a5fd22de4e6ac3bf9b41d046edcdabcdd"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a073d586864f69d31c111034e1204102beb118ede80ac06dec66af2591609c3c"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0efb52ae96f99978aab0f1113efdc0f4299debe7177bff7b0d556d6bc7022e1d"
+   },
+   {
+    "label": "inspect 04_attribution_mismatch markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "293ee34f3fbcc92bbe543c7c415267a6143cdf212f29a141207c8e7866f33619"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "5dc5fc46a9dec1a24eb29764dacff570f5ed64e1dda6979288e23532548accfa"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote json file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd0e628b84c82de838393ccf72d88cf9b6aea728074fbbf1269d5060b4e2bdbf"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown stdout",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c1cd1f1136057987457b0cde47a6cc40f0ea595eba22e808f27049a42a8e0141"
+   },
+   {
+    "label": "inspect 05_mixed_and_fabricated_quote markdown file",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "623c596608fef70bf385b7de17de9e75a29d8c2a011b48787769d6f5988192a6"
+   },
+   {
+    "label": "positive: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0ac20800b6ca0803a80afc87d50b8866a963595a7aaf9d331f9bd97135558fac"
+   },
+   {
+    "label": "positive: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "b8753d48ddd5e1cf630306f497042b64b09cf6707a22476f840fb2dc49b266b0"
+   },
+   {
+    "label": "positive: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "96819cb2c4d6d952441de881a0fa06eec9c97fc5fda87f6acb08e4f106359a51"
+   },
+   {
+    "label": "positive: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "1e7736097909c5f394a755077ca21c951b4e2b54b31448c7e747a5f61a843ae8"
+   },
+   {
+    "label": "positive: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "0f336f450104e399a90ed0cdf4c6abf241927ea561a80ebe5a481b329e16259c"
+   },
+   {
+    "label": "positive: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "2caabbf2b6a29a49c31b6b5eaefe204896a04ade041163c6c3bda8b6531ee971"
+   },
+   {
+    "label": "positive: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "51a9df2c96c6f1392430f314d17f1dff87fcc66b30a33471023fe403863e9199"
+   },
+   {
+    "label": "positive: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "586c4b028e787d7b3bdb4d38543232e5febab874f73a4d0ba89fe7661c939f60"
+   },
+   {
+    "label": "positive: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "0a4e918858447fe0470195832cbcb01f4ee03e77c77c2930e1eacdc4d7c104eb"
+   },
+   {
+    "label": "positive: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "7a38f02ca3815f872e625f1ecbf234ddd518285aa600b39bf9e01d59197ee549"
+   },
+   {
+    "label": "positive: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "c510a53eb948024674602da60907b0944363921dc17d9e8d91e801b6297e3f12"
+   },
+   {
+    "label": "positive: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "cb16d77cd040e301b7dbbec52e151bef46b4ca8fcc3f75f5a25f1256a01fc300"
+   },
+   {
+    "label": "positive: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "a81c1d27cebc682b010a42c0fa77e16a3410294c4701d01bb33be2bb2c7dc927"
+   },
+   {
+    "label": "negative: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "e50f24b4573daf013ed314c80dde72a9494083d36aa6e3cb2ac2967fcf204259"
+   },
+   {
+    "label": "negative: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "75763f79e350e7185cc8286083fc94a6d43a1d0b782d540b24138a5e328d88d1"
+   },
+   {
+    "label": "negative: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fd1d995eabb9bc911c8509134a3b15d75d935d03b7e65f0c75482b717aad82c9"
+   },
+   {
+    "label": "negative: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "2233a386ff400ef75f8603bcefe9e9984f795f85cd3dcab860a98b14af9124eb"
+   },
+   {
+    "label": "negative: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "4edbd00d9560f132d299fffaf9a1a00f540b60d8c125b18c00875df28d06adb0"
+   },
+   {
+    "label": "negative: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "37a482e1d50f96c300200c4297812d5e3f146f2bf8184d6a689d59b9f6cba2f9"
+   },
+   {
+    "label": "negative: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "24060e02207d487b1f8c625cb6846a3ea1208aca5a373c561bdb46a62c33691c"
+   },
+   {
+    "label": "negative: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "92e10b0c520059fce41024a9bfa9ca0ad74ae28e791c06e9ca4384797dab4169"
+   },
+   {
+    "label": "negative: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "f6624dd21305f97853e4a3dfced03d9009b34035862af372faea8dfd65c425b9"
+   },
+   {
+    "label": "negative: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "69a585f9ad381cd3827cc2e5568857455e0124639a30f55312697b5fe5b8e543"
+   },
+   {
+    "label": "negative: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "a835f54e6143dc759d4ed42a26e9171b147a93cdb658b445470c3311ea949729"
+   },
+   {
+    "label": "negative: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "98012c5412fd451daef0c4212d3e521d4c8d38585e944731b538ff29fe8aeba8"
+   },
+   {
+    "label": "negative: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "b89648e9794997810c6be86d360cc8cf4570793c711ded63514bf6294f877715"
+   },
+   {
+    "label": "unknown: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3ff881529375d39cb63b1a0d4b02aad5507694b2178fea91f11fdbc164e2f2e7"
+   },
+   {
+    "label": "unknown: run --offline",
+    "exit_code": 2,
+    "status": "REVIEW_REQUIRED",
+    "valid": null,
+    "projection_sha256": "1f0dfd9f32fd1c0e42fd91ce70896716561c401615ce687c50c1ee4eaa393f2b"
+   },
+   {
+    "label": "unknown: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "6cd51502adc2bce1369bcf98d4ea47dbe2a0a8dd055abf0e666af79823eb73e7"
+   },
+   {
+    "label": "unknown: inspect candidate",
+    "exit_code": 0,
+    "status": "REVIEW_REQUIRED",
+    "valid": true,
+    "projection_sha256": "5ef463de3e415cf5bf66735f854e79812daf38afc5af2af59fccdb08cc34cd4d"
+   },
+   {
+    "label": "unknown: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "403cbba5f3bf3e2342ecc3e079b8badc3466e8a17517302553b72e2d106b968d"
+   },
+   {
+    "label": "unknown: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "9f861c20efae16cddf711b513f8ace86d34a4fcf6c2d808c522d04cf6271a4e2"
+   },
+   {
+    "label": "unknown: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "f391928cc4f3433fc61a9ed122a9d26122464fe95911417ce2b9f47dd33cccab"
+   },
+   {
+    "label": "unknown: release candidate",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": null,
+    "projection_sha256": "339fa8aa61fd5b2643bb5f198dd73bc4f865223bad7a6b0d44738ff29f8e8c3b"
+   },
+   {
+    "label": "unknown: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "daec91b6ea7f9f8870ecc68af6acb4bc3e60d13b36d137c3573821a3745c62ef"
+   },
+   {
+    "label": "unknown: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "30ef1ac409e03fa50b58bad70ae7d80da171ec5857b51fd3f6522c3a60a1f630"
+   },
+   {
+    "label": "unknown: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "80501062817004e39bd5c53d0ed57dc92fdb97d5da17344beb54568d19ba8c6f"
+   },
+   {
+    "label": "long-hostile: validate",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "62c6664573592bfc940a839010140ac0ff233225da30e38b61ad47a8bfcf6b04"
+   },
+   {
+    "label": "long-hostile: run --offline",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "10093bafe646fcc75d020048486afdd46876f4a43d1381587474728073d01aaf"
+   },
+   {
+    "label": "long-hostile: candidate [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "66f8eda221022ab9c0aeab0bee0d2dbc72c314eee76e1118e5b8aeb116a8eca1"
+   },
+   {
+    "label": "long-hostile: inspect candidate",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "3f03acaa0a0d8a9a0fa36d511e48422f073ae76ccf6bf30fe20d8be771dac387"
+   },
+   {
+    "label": "long-hostile: review",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": null,
+    "projection_sha256": "f6694e780fc4b40e0257a311bdebb3be64d3ef6fb7e16118e65a0c963c8cc328"
+   },
+   {
+    "label": "long-hostile: reviewed [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "1ec30f5fc8a2b381566b0bb39c1d20a245c00d263fe618ff07dfb18a54c4eee6"
+   },
+   {
+    "label": "long-hostile: inspect reviewed",
+    "exit_code": 0,
+    "status": "READY_FOR_RELEASE",
+    "valid": true,
+    "projection_sha256": "bf30247333286af837cca071d355b5d8102cf05c9ea4f2c72eba5fa341d5907b"
+   },
+   {
+    "label": "long-hostile: release candidate",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "0699d294663ddbb89d9921a743bbc05e1de1462f5b6916873d5e321819d1202e"
+   },
+   {
+    "label": "long-hostile: release candidate output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "d065130d1ad215bb12f50a879cb6537960b7963588b3c3583eb62c1597a9f8ac"
+   },
+   {
+    "label": "long-hostile: release candidate inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "d3baf5bd6ec91b5350bd89a05f28eda2904b64905e44223d465bc02507f335ea"
+   },
+   {
+    "label": "long-hostile: release reviewed",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": null,
+    "projection_sha256": "dbcf1d2a01a2b72fec4f7eacd5481372238587e797eb2eab4cc4cd30d6fad784"
+   },
+   {
+    "label": "long-hostile: release reviewed output [bundle files]",
+    "exit_code": null,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "a455efc657ea1ff49705e4e7b531838da54a9b31d9a3b93e7faecd31e27d7f3d"
+   },
+   {
+    "label": "long-hostile: release reviewed inspect",
+    "exit_code": 0,
+    "status": "RELEASED",
+    "valid": true,
+    "projection_sha256": "21a5abd704c11aa7128f108c69d80748f553ba7e81b7cf2111f0c73de9981b76"
+   },
+   {
+    "label": "counter: tampered report rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "0798578f9c9868a9d1e54085ca0d5be4fe3d9f81d04facd6687eaac8520a1fc8"
+   },
+   {
+    "label": "counter: tampered record rejected",
+    "exit_code": 2,
+    "status": "RELEASE_BLOCKED",
+    "valid": false,
+    "projection_sha256": "c1604a15d36363a271f71a45a826d602e8ed7cd272d4ae2e2b9a9bc740b3fd41"
+   },
+   {
+    "label": "counter: live without authorization",
+    "exit_code": 2,
+    "status": "PREFLIGHT_BLOCKED",
+    "valid": null,
+    "projection_sha256": "774d65d23e7c05b04b678884485be63b906701afffb31b3dcf1a2fed25f16bc7"
+   },
+   {
+    "label": "counter: missing mode",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "3dd8cdd187935180cf21cd77be2fcc2d98bd6ddf2b683efa6ba978896c04f2ba"
+   },
+   {
+    "label": "counter: conflicting modes",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "68076ba3e0daa31ffe3a7c9fb243be783aea99cfba20c6420e0aa17d7d3f10ae"
+   },
+   {
+    "label": "counter: duplicate key in inspect input",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "c2500d88c49d68b17d4cf8847582a86be4cd6131b03cd2c19841deec1288e785"
+   },
+   {
+    "label": "counter: duplicate key in inspect proposals",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "ac450aa165f87010b620e61cd9ff1d4a4388233c7b12d0b2051eda20d4396421"
+   },
+   {
+    "label": "counter: duplicate key in audit task",
+    "exit_code": 0,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "fb87fc4524aa982463e5eb9b6fc11ccd436493d8893ea6c6be1df83a5fa96ce4"
+   },
+   {
+    "label": "counter: unknown command",
+    "exit_code": 2,
+    "status": null,
+    "valid": null,
+    "projection_sha256": "15169e94754ada636337ee3d21e4120e476b9f47234d78ffe4e530ffaafb936e"
+   }
+  ]
+ }
+}

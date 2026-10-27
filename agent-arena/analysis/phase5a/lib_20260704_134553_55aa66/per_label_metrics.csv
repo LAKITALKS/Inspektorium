@@ -1,5 +1,0 @@
-gold_label,correct_runs,total_runs,accuracy_pct
-solid,42,42,100.0
-overclaim,66,72,91.7
-mechanism_vs_evidence,18,18,100.0
-correlation_vs_causation,18,18,100.0

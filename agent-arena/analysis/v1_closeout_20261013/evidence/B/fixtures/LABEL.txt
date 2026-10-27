@@ -1,2 +1,0 @@
-SYNTHETIC TEST FIXTURE — not an empirical model response
-Every *.task.json and *.recording.json in this directory is a synthetic test fixture built by the repository test builders named in INDEX.json.

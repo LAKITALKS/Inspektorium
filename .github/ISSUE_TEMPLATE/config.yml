@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/LAKITALKS/Inspektorium/security/advisories/new
+    about: Report vulnerabilities privately, not in a public issue.
+  - name: Documentation
+    url: https://github.com/LAKITALKS/Inspektorium/blob/main/docs/index.md
+    about: Getting started, concepts, guides and reference.

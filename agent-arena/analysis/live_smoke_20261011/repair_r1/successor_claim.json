@@ -1,8 +1,0 @@
-{
-  "schema": "aa-p10-live-successor-claim/1.0",
-  "predecessor_authorization_id": "AA-P10-LIVE-SMOKE-20261011-003",
-  "successor_authorization_id": "AA-P10-LIVE-RETEST-20261011-004",
-  "successor_canonical_directory": "__LOCAL_HOME__/Documents/Projects/agent-arena/analysis/c25_p9_20261011/live_retest",
-  "successor_authorization_sha256": "63f94f028d721f5547b1344fc8afa9377a24368e0743af1a4411ac8740126b0a",
-  "claimed_at": "2026-10-12T15:07:43.059214+00:00"
-}

@@ -1,8 +1,59 @@
 # Changelog
 
-Package versions follow `pyproject.toml`. The report schema is versioned
-separately and remains **0.1**. Release records are kept under `publication/`;
-[RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) is the historical v0.1.0 checklist.
+Package versions follow `pyproject.toml`. The report schema of `inspektorium inspect` is versioned
+separately and remains **0.1**. Entries before 0.3.0 are historical and describe the repository as it
+was then; their release records are kept in the
+[research record](https://github.com/LAKITALKS/inspektorium-research-record/tree/record-2026-10-27).
+
+## [0.3.0] — 2026-10-27
+
+Inspektorium 0.3.0 is one distribution, `inspektorium`, with one command, `inspektorium`.
+Evaluation behavior is unchanged. See the
+[migration guide](docs/development/migration-0.3.md) for every renamed module, command and identifier.
+
+### One package
+
+- The audit runtime is the subpackage `inspektorium.audit`. The separate audit-runtime distribution,
+  its Python package and its command are removed, with no compatibility shim.
+- `inspektorium audit` (`validate`, `run`, `inspect`, `review`, `release`) keeps its options, exit
+  codes and status values. A missing audit runtime is still reported with exit code 2.
+- All dependencies are declared in one `pyproject.toml`: `click`, `pydantic` and `pyyaml`, plus the
+  optional extra `providers`; the extra `anthropic` stays as an alias.
+- Audit modules are named by responsibility instead of project phase: `workflow`, `forensics`,
+  `review`, `execution`, `integrity` and `checks`.
+- Modules that no `inspektorium` command loads moved to the research record together with their
+  tests, among them the historical research harness, the legacy report generators and the former
+  official-release boundary. The provider adapters stay; the Python API loads them on request. The
+  suite has 2686 tests; the [migration guide](docs/development/migration-0.3.md#tests) lists each
+  moved test file and its subject.
+
+### Names in outputs
+
+- Generated reports, help texts and identifiers name Inspektorium. Bundles record
+  the `inspektorium` package version. The migration guide lists the changed values, and the
+  logic comparison in `evidence/v0.3.0-behavior/` lists every code change.
+- Prompt versions and prompt bytes, status values, exit codes, control identifiers and gate versions
+  are unchanged.
+
+### Repository
+
+- The research material, the publication records and the former top-level documents moved to the
+  archived companion repository
+  [inspektorium-research-record](https://github.com/LAKITALKS/inspektorium-research-record/tree/record-2026-10-27).
+- New documentation under `docs/`, a shorter README, `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1),
+  `SECURITY.md`, issue and pull request templates, a JOSS paper draft under `paper/` and a
+  [roadmap](docs/roadmap.md) of proposed milestones.
+- Continuous integration runs lint, type checks, the test suite on Ubuntu with Python 3.11, 3.12 and
+  3.13 and on macOS with Python 3.12, the frozen acceptance, a package check and a link check.
+- `scripts/verify_installation.py` verifies an installed wheel outside the checkout, including the
+  README quickstart.
+
+### Unchanged
+
+- `src/inspektorium/core/` and `src/inspektorium/report/` are byte-identical to 0.2.0; the v0.1.1
+  evidence package is unchanged.
+- Bundles from 0.2.0 or earlier are verified with the release that produced them, not with 0.3.0.
+- No new live validation. Scientific efficacy is not established.
 
 ## [0.2.0] — 2026-10-26
 
@@ -193,7 +244,7 @@ parsing and adds a public, offline-reproducible evidence package.
   files change by the new citation labels and the display note; the one of
   `05_mixed_and_fabricated_quote` also gains backslash escapes (for example
   `p\.m.`) in one claim and two quotations.
-- Documentation: new [AGENTS.md](AGENTS.md); clearer purpose and known limits
+- Documentation: new [AGENTS.md](https://github.com/LAKITALKS/Inspektorium/blob/v0.1.1/AGENTS.md); clearer purpose and known limits
   in README, SCOPE and METHODOLOGY; new claim rows P12–P17; status of the
   Phase 8–10 rows (R08–R10); owner-reported historical numbers presented
   qualitatively in the README while the original records stay unchanged (see
@@ -201,11 +252,11 @@ parsing and adds a public, offline-reproducible evidence package.
 
 ### Added
 
-- Regression tests: [render safety](tests/test_render_safety.py) and
-  [display encoders](tests/test_display.py) for the Markdown display,
-  [CLI input rejection](tests/test_cli_input_rejection.py) and
-  [input parsing](tests/test_input_parsing.py) for strict input handling, and
-  [model invariants](tests/test_model_invariants.py) for every model invariant
+- Regression tests: [render safety](https://github.com/LAKITALKS/Inspektorium/blob/v0.1.1/tests/test_render_safety.py) and
+  [display encoders](https://github.com/LAKITALKS/Inspektorium/blob/v0.1.1/tests/test_display.py) for the Markdown display,
+  [CLI input rejection](https://github.com/LAKITALKS/Inspektorium/blob/v0.1.1/tests/test_cli_input_rejection.py) and
+  [input parsing](https://github.com/LAKITALKS/Inspektorium/blob/v0.1.1/tests/test_input_parsing.py) for strict input handling, and
+  [model invariants](https://github.com/LAKITALKS/Inspektorium/blob/v0.1.1/tests/test_model_invariants.py) for every model invariant
   failure branch; further cases in the existing report, example, CLI and parser
   tests. Measured on `fae18242de35facb7c493ff18e86baff3afe2c24`, the full
   suite gives 1123 passed, 0 failed and 0 skipped with 98.02% branch coverage

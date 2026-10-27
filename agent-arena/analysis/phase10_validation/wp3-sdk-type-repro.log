@@ -1,1 +1,0 @@
-TypeError: Invalid `http_client` argument; `httpx.Client` is from the `httpx` package, but this SDK uses `httpx2`. Use `httpx2.Client` instead.

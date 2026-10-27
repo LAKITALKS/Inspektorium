@@ -1,8 +1,0 @@
-{
-  "all_starting_tracked_files_unchanged_except": [
-    "src/agent_arena/condition_contract.py",
-    "src/agent_arena/phase7a_real_run.py"
-  ],
-  "exception_reason": "13 added registry/dispatch lines for the new mission only; scientific logic unchanged",
-  "historical_gold_raw_prompt_taxonomy_authorizations_unchanged": true
-}

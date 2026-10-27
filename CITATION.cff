@@ -2,21 +2,32 @@ cff-version: 1.2.0
 message: "If you use Inspektorium, please cite the software using this metadata."
 title: "Inspektorium"
 type: software
-version: 0.2.0
-date-released: 2026-10-26
+version: 0.3.0
+date-released: 2026-10-27
 repository-code: "https://github.com/LAKITALKS/Inspektorium"
+url: "https://inspektorium.org"
 authors:
   - family-names: "Varvatis"
     given-names: "Lazaros"
+    email: "varvatislazaros@gmail.com"
+    affiliation: "Independent Researcher"
+    city: "Berlin"
+    country: "DE"
 abstract: >-
-  Inspektorium is one instrument for evidence integrity and review in AI
-  assurance research. Its official workflow, inspektorium audit, runs the
-  Inspektorium audit runtime (internal/former name Agent Arena, retained in
-  package, module and folder names for provenance). It also retains a smaller
-  evidence-binding reference checker.
-  Technical controls and recorded provenance do not establish scientific truth.
+  Inspektorium is a fail-closed integrity layer for AI-generated claims and AI
+  evaluation reports. Evaluators propose relations between claims and sources;
+  Inspektorium checks that every claim span and quotation matches the supplied
+  text exactly at its stated character offsets, keeps findings that fail a check
+  out of the reportable result, and renders untrusted text so that it cannot
+  forge report structure or hide warnings. Its audit workflow writes hash-bound
+  bundles, records human review and releases artifacts only on an explicit step.
+  Inspektorium does not judge meaning, and its scientific efficacy has not been
+  established.
 license: Apache-2.0
 keywords:
-  - evidence binding
-  - source grounding
-  - citation validation
+  - ai-safety
+  - ai-assurance
+  - llm-evaluation
+  - citation-verification
+  - provenance
+  - evidence-integrity

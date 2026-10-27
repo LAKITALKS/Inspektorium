@@ -1,0 +1,56 @@
+test files compared: 64
+test files archived whole: 5
+  agent-arena/tests/test_phase9_history_outputs.py: 2 functions
+  agent-arena/tests/test_release_boundary.py: 34 functions
+  agent-arena/tests/test_reporter.py: 8 functions
+  agent-arena/tests/test_reporting.py: 59 functions
+  agent-arena/tests/test_run_library.py: 26 functions
+functions with fewer checks: 14
+  tests/unit/test_package_b_regressions.py::test_P1_a_second_analysis_is_flagged_and_never_a_complete_phase8_analysis: 5 -> 4
+  tests/acceptance/test_forensics_acceptance.py::test_frozen_offline_acceptance: 10 -> 8
+  tests/unit/test_forensics_pipeline.py::test_existing_input_to_parser_binding_semantics_and_existing_outputs: 14 -> 11
+  tests/unit/test_forensics_pipeline.py::test_explicit_historical_path_is_not_silently_phase8_verified: 4 -> 2
+  tests/unit/test_forensics_pipeline.py::test_taxonomy_extraction_crosses_real_prompt_parser_and_report: 8 -> 6
+  tests/unit/test_forensics_pipeline.py::test_original_cvc_is_preserved_when_bound_generic_overstatement_derives_overclaim: 7 -> 5
+  tests/acceptance/test_review_acceptance.py::test_frozen_phase9_acceptance: 20 -> 17
+  tests/unit/test_review_runtime.py::test_stable_case_no_extra_calls_and_roundtrip_output: 4 -> 3
+  tests/unit/test_review_runtime.py::test_review_uses_existing_parser_retains_original_and_unknown: 9 -> 8
+  tests/unit/test_review_runtime.py::test_historical_and_stale_outputs_do_not_gain_review_pass: 4 -> 1
+  tests/unit/test_review_runtime.py::test_human_selection_history_replay_and_existing_audit_log: 9 -> 8
+  tests/unit/test_review_runtime.py::test_invalid_replay_retains_all_unvalidated_history_and_cannot_claim_execution: 6 -> 5
+  tests/unit/test_release_gate_consolidation.py::test_T_fixture_is_isolated_pipeline_qa: 6 -> 5
+  tests/unit/test_study_forensics.py::TestPilotRun.test_pilot_end_to_end: 4 -> 3
+functions no longer present: 32
+  tests/unit/test_forecast_checker.py::TestReportIntegration.test_report_contains_forecast_section
+  tests/unit/test_forecast_checker.py::TestReportIntegration.test_report_shows_probability
+  tests/unit/test_forecast_checker.py::TestReportIntegration.test_report_no_forecast_section_for_non_forecast
+  tests/unit/test_hardening.py::TestConfidenceLabels.test_labels_appear_in_report
+  tests/unit/test_package_b_regressions.py::test_P1_frozen_records_without_the_new_flag_are_evaluated_as_before
+  tests/unit/test_package_b_regressions.py::test_P4_library_harness_uses_a_context_free_prompt_and_records_its_identity
+  tests/unit/test_package_b_regressions.py::test_P5_lost_lease_or_aborted_namespace_never_opens_a_second_one_shot_batch
+  tests/unit/test_package_b_regressions.py::test_BF4_the_harness_records_a_second_analysis_and_marks_the_classification_invalid
+  tests/unit/test_package_b_regressions.py::test_BF8_record_fingerprint_binds_the_new_flag_only_where_present
+  tests/unit/test_package_b_regressions.py::test_BF6_a_namespace_with_only_finder_metadata_is_not_a_prior_run
+  tests/unit/test_forensics_pipeline.py::test_library_path_keeps_payload_raw_and_assessment
+  tests/unit/test_forensics_pipeline.py::test_loaded_high_score_cannot_bypass_phase8_using_cached_routing
+  tests/unit/test_review_budget.py::test_library_and_runrecord_roundtrip_preserve_raw_and_separate_phase_statuses
+  tests/unit/test_pipeline_qa_isolation.py::test_case_discovery_never_yields_a_qa_fixture
+  tests/unit/test_pipeline_qa_isolation.py::test_qa_dir_contributes_zero_cases_to_enumeration
+  tests/unit/test_pipeline_qa_isolation.py::test_discovered_cases_are_study_forensics_tasks
+  tests/unit/test_pipeline_qa_isolation.py::test_value_origin_fixture_contributes_zero_cases
+  tests/unit/test_pipeline_qa_isolation.py::test_search_scope_fixture_contributes_zero_cases
+  tests/unit/test_pipeline_qa_isolation.py::test_release_gate_fixture_contributes_zero_cases
+  tests/unit/test_provider_runtime.py::test_exact_dated_model_from_config_is_sent
+  tests/unit/test_reasoning_integrity.py::TestReportIntegration.test_report_contains_integrity_section
+  tests/unit/test_reasoning_integrity.py::TestReportIntegration.test_report_shows_classification
+  tests/unit/test_study_forensics.py::TestReporterIntegration.test_report_generation_no_crash
+  tests/unit/test_study_forensics.py::TestReporterIntegration.test_report_contains_study_forensics_section
+  tests/integration/test_workflow_entry.py::test_legacy_run_is_rejected_before_task_or_provider
+  tests/integration/test_workflow_entry.py::test_run_keeps_its_options_and_cli_keeps_get_provider_patchable
+  tests/integration/test_workflow_entry.py::test_official_release_cli_is_rejected_before_any_release_object
+  tests/integration/test_workflow_entry.py::test_root_help_names_the_v1_path_and_marks_every_other_command
+  tests/integration/test_workflow_entry.py::test_command_help_keeps_the_addendum_without_stray_indentation
+  tests/integration/test_workflow_entry.py::test_run_library_help_states_it_is_not_a_v1_audit
+  tests/integration/test_workflow_entry.py::test_disabled_commands_say_so_in_their_own_help
+  tests/integration/test_workflow_semantics.py::test_package_version_is_1_0_2
+new functions: 2
