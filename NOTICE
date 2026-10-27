@@ -1,21 +1,22 @@
 Inspektorium
 Copyright 2026 Lazaros Varvatis
 
-Inspektorium includes its audit runtime, distributed as agent-arena
-(internal/former name Agent Arena).
-
 From version 0.2.0, the author's own code and documentation in this
 repository are licensed under the Apache License, Version 2.0. See LICENSE.
 
 Earlier releases were published under the PolyForm Noncommercial License
 1.0.0 and remain under that license as published: Inspektorium v0.1.0 and
-v0.1.1, and the audit runtime 1.0.1 research prerelease (agent-arena-v1.0.1).
+v0.1.1, and the audit-runtime research prerelease 1.0.1.
+
+Until release 0.2.0 the audit runtime was distributed as agent-arena, the
+former working title "Agent Arena"; it is part of Inspektorium, not a separate
+product (see docs/research/history.md).
 
 Third-party material keeps its own rights and is not relicensed:
 
 - Quoted third-party texts, cited source excerpts and source references in
-  case packs, task files, datasets and evidence records keep the rights of
-  their sources.
+  case files, test fixtures and evidence records keep the rights of their
+  sources.
 - Dependencies are installed separately and keep their own licenses, for
   example Pydantic, Click, PyYAML, the Anthropic and OpenAI SDKs, HTTPX and
   the development tools.
@@ -23,7 +24,10 @@ Third-party material keeps its own rights and is not relicensed:
   and fonts (for example cmark-gfm, markdown-it-py, Python-Markdown,
   Playwright/Chromium and Noto fonts). Those tools and font files are not
   included and not relicensed.
+- CODE_OF_CONDUCT.md is adapted from the Contributor Covenant, version 2.1
+  (https://www.contributor-covenant.org/version/2/1/code_of_conduct.html);
+  its attribution section is retained.
 
 No file in this repository declares a license of its own. Dated third-party
-notes for the 2026-10-26 publication are in
-publication/2026-10-26/THIRD_PARTY.md.
+notes for the 2026-10-26 publication are kept in the research record:
+https://github.com/LAKITALKS/inspektorium-research-record/blob/record-2026-10-27/publication/2026-10-26/THIRD_PARTY.md

@@ -1,25 +1,10 @@
 # Research plan
 
-> **Classification — Inspektorium 0.2.0 (2026-10-26):** Inspektorium is one
-> instrument with the official `inspektorium audit` workflow. The P1–P10
-> implementation that the dated note below calls a separate research package is
-> the Inspektorium audit runtime, retained under its internal/former name in
-> package, module and folder names for provenance; it is not a second product.
-> Dated passages that say Arena refer to that runtime. Statements that the
-> public package is 0.1.1 concern the smaller reference checker. See
-> [one instrument](docs/ONE_INSTRUMENT.md).
+**Planned research, not shipped capability:** this page defines open questions and future evaluation work, not features of Inspektorium 0.3.0.
 
-> **Current scope — 2026-10-26:** Inspektorium core remains 0.1.1/schema 0.1.
-> Agent Arena P1–P10 is now included as a separate [public research package](agent-arena/README.md).
-> [Publication mapping and current checks](publication/2026-10-26/README.md)
-> supersede earlier access/publication statements below. Historical numbers,
-> original dates and limits remain unchanged; publication is not independent
-> replication. The scientific Final v1 gate is not met. No new live calls.
-
-**PLAN ONLY — no new runtime, fixtures or experiments ship with this document.**
-Public software is 0.1.1/schema 0.1. Phase 8, Phase 9, Phase 10 and the
-final v1 gate are described in [ROADMAP.md](ROADMAP.md); their claims are
-R08–R10 and H01 in [CLAIMS.md](CLAIMS.md). Phases 8–10 are implemented in the Inspektorium audit runtime,
+Phase 8, Phase 9, Phase 10 and the
+final v1 gate are described in the [roadmap][roadmap]; their claims are
+R08–R10 and H01 in the [claim ledger](claims.md). Phases 8–10 are implemented in the audit runtime,
 first published as research prerelease 1.0.1 and derived from internal technical 1.0.0. That
 implementation answers none of the questions below; they remain open.
 
@@ -49,9 +34,9 @@ finite-fault software observations separate from model efficacy comparisons.
 
 All rows below are proposed evaluation work, not tests included in this commit.
 Execution, checkpoint, budget, inference, review and operational release
-controls are inspectable in the Inspektorium audit runtime. Their technical
+controls are inspectable in the audit runtime. Their technical
 implementation and offline tests do not answer the efficacy questions here. The small display and input catalog in
-[evidence/v0.1.1](evidence/v0.1.1/) is software-regression evidence for v0.1.1,
+[evidence/v0.1.1](../../evidence/v0.1.1/) is software-regression evidence for v0.1.1,
 not this fault suite.
 
 | Category | Threat/injected fault | Expected response | Pass criterion | Clean counterpart | Metric |
@@ -94,11 +79,11 @@ population reliability claim follows from a few fixtures.
 
 | Status | Demonstration | What it can show |
 | --- | --- | --- |
-| CURRENT PUBLIC v0.1 | [Example 05](examples/05_mixed_and_fabricated_quote/input.json), using its saved proposals | Failed quotation retained with null reportable_relation; unrelated clean finding survives; CLI still exits 0 |
-| CURRENT PUBLIC v0.1 LIMITATION | [Example 02](examples/02_contradicted/proposals.json); reviewer probe swaps contradicted to supported while keeping exact evidence | Valid text binding can accompany a false semantic relationship; no new fixture is added |
-| CURRENT PUBLIC v0.1 | Current [fingerprint behavior](src/inspektorium/core/fingerprints.py) with source-change/order observations | Source order invariance; text changes affect digest; an unchanged quote does not authenticate historical state |
-| CURRENT PUBLIC v0.1.1 | Synthetic catalog in [evidence/v0.1.1](evidence/v0.1.1/), run on public `main` `4bd0ba9` and on v0.1.1 | Whether untrusted text can forge report lines or hide warnings in the rendered page structure, and whether ambiguous `--input` JSON is rejected, with clean counterparts; no semantic or efficacy claim |
-| PUBLIC AUDIT RUNTIME TECHNICAL CHECKS / RESEARCH QUESTION OPEN | Checkpoint/environment mismatch and unauthorized/over-budget execution | Inspectable implementation and bounded offline checks are now [published](publication/2026-10-26/VALIDATION.md); general prevention performance remains a research question |
+| CURRENT PUBLIC v0.1 | [Example 05](../../examples/inspect/05_mixed_and_fabricated_quote/input.json), using its saved proposals | Failed quotation retained with null reportable_relation; unrelated clean finding survives; CLI still exits 0 |
+| CURRENT PUBLIC v0.1 LIMITATION | [Example 02](../../examples/inspect/02_contradicted/proposals.json); reviewer probe swaps contradicted to supported while keeping exact evidence | Valid text binding can accompany a false semantic relationship; no new fixture is added |
+| CURRENT PUBLIC v0.1 | Current [fingerprint behavior](../../src/inspektorium/core/fingerprints.py) with source-change/order observations | Source order invariance; text changes affect digest; an unchanged quote does not authenticate historical state |
+| CURRENT PUBLIC v0.1.1 | Synthetic catalog in [evidence/v0.1.1](../../evidence/v0.1.1/), run on public `main` `4bd0ba9` and on v0.1.1 | Whether untrusted text can forge report lines or hide warnings in the rendered page structure, and whether ambiguous `--input` JSON is rejected, with clean counterparts; no semantic or efficacy claim |
+| PUBLIC AUDIT RUNTIME TECHNICAL CHECKS / RESEARCH QUESTION OPEN | Checkpoint/environment mismatch and unauthorized/over-budget execution | Inspectable implementation and bounded offline checks are now [published][validation]; general prevention performance remains a research question |
 | FUTURE EFFICACY STUDY — PHASE 8 | Unsupported numerical confidence and semantic entity/population transfer | Whether specific inferential errors with valid text bindings can be detected |
 | FUTURE EFFICACY STUDY — PHASE 9 | Material disagreement and budget-limited human review | Preserved judgments, routing errors and reviewer effort |
 | FUTURE EFFICACY STUDY — PHASE 10 | Incomplete audit trail or corrupted rendered artifact | General performance of UNKNOWN and official-release containment beyond the published bounded technical checks |
@@ -106,9 +91,14 @@ population reliability claim follows from a few fixtures.
 Reuse the five existing example directories. No sixth example, live-model demo
 or new research runner is added by this plan; the v0.1.1 evidence tooling is a
 reproducibility harness for display and input regressions. The
-inspectable [Inspektorium audit runtime](agent-arena/README.md) and its
-[2026-10-26 provenance record](publication/2026-10-26/README.md) now provide
+inspectable [audit runtime](../../src/inspektorium/audit/) and its
+[2026-10-26 provenance record][pub-readme] now provide
 the authorized source/evidence publication, preserved originals and hash/version
 mapping, with disclosed exclusions. No efficacy study is added by that publication.
 New data collection, paid execution and publications outside the
-[current authorization](publication/2026-10-26/AUTHORIZATION.md) require separate authorization.
+[current authorization][authorization] require separate authorization.
+
+[roadmap]: https://github.com/LAKITALKS/inspektorium-research-record/blob/record-2026-10-27/historical-docs/ROADMAP.md
+[validation]: https://github.com/LAKITALKS/inspektorium-research-record/blob/record-2026-10-27/publication/2026-10-26/VALIDATION.md
+[pub-readme]: https://github.com/LAKITALKS/inspektorium-research-record/blob/record-2026-10-27/publication/2026-10-26/README.md
+[authorization]: https://github.com/LAKITALKS/inspektorium-research-record/blob/record-2026-10-27/publication/2026-10-26/AUTHORIZATION.md

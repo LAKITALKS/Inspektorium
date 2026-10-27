@@ -110,14 +110,17 @@ def verify_installed(repo: Path, output: Path, result: dict) -> None:
         return process.stdout
 
     probe = """
-import hashlib, importlib, importlib.metadata, importlib.util, json, pathlib, sys
+import hashlib, importlib, importlib.metadata, json, pathlib, sys
 package = importlib.import_module('inspektorium')
 folder = pathlib.Path(package.__file__).resolve().parent
 print(json.dumps({
     'version': importlib.metadata.version('inspektorium'),
     'package_version': package.__version__,
     'inside_environment': folder.is_relative_to(pathlib.Path(sys.prefix).resolve()),
-    'former_package_importable': importlib.util.find_spec('agent_arena') is not None,
+    'top_level': sorted({f.parts[0] for f in importlib.metadata.distribution('inspektorium').files
+                         if not f.parts[0].endswith('.dist-info') and f.parts[0] != '..'}),
+    'console_scripts': sorted(e.name for e in importlib.metadata.distribution('inspektorium').entry_points
+                              if e.group == 'console_scripts'),
     'modules': {p.relative_to(folder).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in sorted(folder.rglob('*.py'))}}))
 """
@@ -130,11 +133,12 @@ print(json.dumps({
         raise AssertionError("inspektorium was not imported from the installed environment")
     if installed["modules"] != module_hashes(repo / "src/inspektorium"):
         raise AssertionError("installed modules differ from the supplied source")
-    if installed["former_package_importable"]:
-        raise AssertionError("the removed second package is still importable")
+    # One distribution, one package, one command: nothing else ships, so no shim exists.
+    if installed["top_level"] != ["inspektorium"]:
+        raise AssertionError(f"the wheel ships more than one top-level package: {installed['top_level']}")
+    if installed["console_scripts"] != ["inspektorium"]:
+        raise AssertionError(f"the wheel installs other commands: {installed['console_scripts']}")
     bin_dir = Path(sys.executable).parent
-    if (bin_dir / "agent-arena").exists():
-        raise AssertionError("the removed second command is still installed")
 
     public = str(bin_dir / "inspektorium")
     examples = repo / "examples/audit"
