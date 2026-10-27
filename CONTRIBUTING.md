@@ -9,7 +9,7 @@ Use Python 3.11 or newer and a fresh virtual environment:
 ```bash
 git clone https://github.com/LAKITALKS/Inspektorium.git
 cd Inspektorium
-python -m venv .venv
+python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e ".[dev,providers]"
 ```

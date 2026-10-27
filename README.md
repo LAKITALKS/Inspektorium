@@ -45,7 +45,7 @@ See [how it works](docs/concepts/how-it-works.md).
 Install the release into a fresh virtual environment (Python 3.11 or newer):
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install "https://github.com/LAKITALKS/Inspektorium/releases/download/v0.3.0/inspektorium-0.3.0-py3-none-any.whl"
 ```

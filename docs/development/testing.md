@@ -141,7 +141,7 @@ Before a release exists, `--local-release DIST` maps the release and raw URLs to
 
 ```sh
 python -m build --outdir dist
-python -m venv /tmp/verify-venv
+python3 -m venv /tmp/verify-venv
 /tmp/verify-venv/bin/python -m pip install dist/inspektorium-*.whl
 /tmp/verify-venv/bin/python -c "import sys; from pathlib import Path; sys.path.insert(0, 'evidence/v0.1.1/tools'); import setup_env; setup_env.install_guard(Path(sys.prefix))"
 /tmp/verify-venv/bin/python scripts/verify_installation.py --repo . --output /tmp/verify --readme --local-release dist
