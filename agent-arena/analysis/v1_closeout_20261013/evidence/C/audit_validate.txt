@@ -1,4 +1,0 @@
-$ (cd __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/supported && env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 COLUMNS=100 __LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python -I -B __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/guard_cli.py __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/counts/audit_validate.json cli audit validate --task __LOCAL_HOME__/Documents/Projects/agent-arena/examples/phase10/positive-task.json)
---- output (stdout+stderr) ---
-{"input_valid": true, "errors": [], "release_authorized": false}
---- exit_code: 0

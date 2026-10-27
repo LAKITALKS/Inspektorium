@@ -1,1 +1,0 @@
-Classify the claim using only the supplied evidence packet and the common label definitions. Select one permitted label. Report confidence as a number from 0 to 1 representing the probability that your selected label is correct, and provide the concise explanation required by the common output schema. Return only the required JSON object.

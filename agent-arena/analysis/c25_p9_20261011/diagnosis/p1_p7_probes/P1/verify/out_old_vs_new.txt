@@ -1,3 +1,0 @@
-TWO_FENCES: old=('mechanism_vs_evidence', True) new=(mechanism_vs_evidence, True, fenced_json)
-TWO_RAW: old=(None, False) new=(mechanism_vs_evidence, True, brace_scan)
-PROSE_TWO_RAW: old=(None, False) new=(mechanism_vs_evidence, True, brace_scan)

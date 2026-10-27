@@ -52,8 +52,7 @@ dev = [
 packages = ["src/inspektorium"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/src", "/tests", "/examples", "/evidence", "/docs", "/scripts", "/*.md", "/CITATION.cff", "/LICENSE", "/NOTICE", "/pyproject.toml"]
-exclude = ["/agent-arena", "/publication"]
+include = ["/src", "/tests", "/examples", "/evidence", "/docs", "/paper", "/scripts", "/*.md", "/CITATION.cff", "/LICENSE", "/NOTICE", "/pyproject.toml"]
 
 [tool.pytest.ini_options]
 addopts = "--strict-config --strict-markers"
@@ -68,7 +67,6 @@ show_missing = true
 skip_covered = true
 
 [tool.ruff]
-extend-exclude = ["agent-arena", "publication"]
 line-length = 88
 target-version = "py311"
 

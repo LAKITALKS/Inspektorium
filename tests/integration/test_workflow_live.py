@@ -1301,7 +1301,8 @@ def test_a_chain_continues_only_through_the_recorded_successor(tmp_path):
 def test_pinned_closed_history_binds_every_new_live_budget(tmp_path, monkeypatch):
     import hashlib
     # Runtime pins bind the original source bytes, not the intentionally INERT public derivatives.
-    # This packaged four-row fixture is extracted from publication/2026-10-26/import-index.json.
+    # This packaged four-row fixture is extracted from publication/2026-10-26/import-index.json
+    # of the research record (LAKITALKS/inspektorium-research-record, tag record-2026-10-27).
     bindings = json.loads((ROOT / "tests/fixtures/audit/historical/public_archive_bindings.json").read_text())
     index = {row["source_path"]: row for row in bindings["entries"]}
     base = ROOT / "tests/fixtures/audit/historical/live_smoke_20261011"

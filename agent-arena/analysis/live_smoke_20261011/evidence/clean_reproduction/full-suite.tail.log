@@ -1,5 +1,0 @@
-  See https://docs.pytest.org/en/stable/deprecations.html#parametrize-iterators
-    metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-2372 passed, 1 warning in 441.72s (0:07:21)

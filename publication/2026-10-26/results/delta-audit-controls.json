@@ -1,8 +1,0 @@
-{
-  "positive_unchanged_frozen_passed": true,
-  "negative_transient_deleted_secret_detected": true,
-  "final_tree_counterexample_absent": true,
-  "new_commit_count_checked": 2,
-  "new_blob_count_checked": 1,
-  "test_material": "Explicitly synthetic credential-shaped string; no real secret used. Only W test repository written."
-}

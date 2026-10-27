@@ -1,7 +1,0 @@
-$ (cd __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/cwd_official && env -u ANTHROPIC_API_KEY -u OPENAI_API_KEY PYTHONDONTWRITEBYTECODE=1 COLUMNS=100 __LOCAL_HOME__/Documents/Projects/agent-arena/.venv/bin/python -I -B __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/guard_cli.py __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/counts/official_release.json cli official-release --input __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/dummy_release_input.json --output-root __LOCAL_AGENT_SCRATCH__/-PUBLIC-HOME-Documents-Projects-agent-arena/cda624d0-c2aa-47a5-842e-e471afe176b7/scratchpad/v1/evidence-C/work/official_out/out --repo-root __LOCAL_HOME__/Documents/Projects/agent-arena)
---- output (stdout+stderr) ---
-Usage: agent-arena official-release [OPTIONS]
-Try 'agent-arena official-release --help' for help.
-
-Error: 'official-release' is the historical Phase-7B release path and is disabled in v1: it applies no AA-P8 scientific state, AA-P9 review or AA-P10 controls. Use 'agent-arena audit release --bundle BUNDLE' for the supported local release.
---- exit_code: 2

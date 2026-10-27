@@ -1,7 +1,0 @@
-{
-  "status": "REVIEW_REQUIRED",
-  "path": "<WORK>/work/outside-source/arena-wheel-bundles/8f24a2c3-68cb-47f5-93e9-63cdda98fcec",
-  "errors": [
-    "phase9_history_review: Review open: mandatory review not executed: no automatic review was authorized or run in this execution"
-  ]
-}

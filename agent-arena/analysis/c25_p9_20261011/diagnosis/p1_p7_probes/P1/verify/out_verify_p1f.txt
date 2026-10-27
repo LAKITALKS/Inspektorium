@@ -1,7 +1,0 @@
-DRAFT_ONLY: strategy=fenced_json ok=True trunc=False label=overclaim p8=completed/contradicted p9=completed/AUTO_RESOLVABLE row_label=overclaim class_valid=True p10_forensic_binding=contradiction
-TWO_FENCES(valid draft): strategy=fenced_json ok=True trunc=False label=overclaim p8=completed/contradicted p9=completed/AUTO_RESOLVABLE row_label=overclaim class_valid=True p10_forensic_binding=contradiction
-TWO_RAW(valid draft): strategy=brace_scan ok=True trunc=False label=overclaim p8=completed/contradicted p9=completed/AUTO_RESOLVABLE row_label=overclaim class_valid=True p10_forensic_binding=contradiction
-TRUNC_SECOND(valid draft) fr=None: strategy=fenced_json ok=True trunc=False label=overclaim p8=completed/contradicted p9=completed/AUTO_RESOLVABLE row_label=overclaim class_valid=True p10_forensic_binding=contradiction
-TRUNC_SECOND(valid draft) fr=unknown: strategy=fenced_json ok=True trunc=False label=overclaim p8=completed/contradicted p9=completed/AUTO_RESOLVABLE row_label=overclaim class_valid=True p10_forensic_binding=contradiction
-TRUNC_SECOND(valid draft) fr=stop: strategy=fenced_json ok=True trunc=False label=overclaim p8=completed/contradicted p9=completed/AUTO_RESOLVABLE row_label=overclaim class_valid=True p10_forensic_binding=contradiction
-TRUNC_SECOND(valid draft) fr=length: strategy=fenced_json ok=True trunc=True label=overclaim p8=incomplete/unknown p9=incomplete/HUMAN_REVIEW_REQUIRED row_label=overclaim class_valid=False p10_forensic_binding=None

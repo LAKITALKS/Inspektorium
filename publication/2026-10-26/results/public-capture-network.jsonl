@@ -1,4 +1,0 @@
-{"argv": ["Python", "extract_recorded_capture.py", "--capture"], "event": "armed", "guard": "evidence-netguard/1", "pid": 70396, "time": 1793006379.643}
-{"argv": ["Python", "agent-arena", "audit"], "event": "armed", "guard": "evidence-netguard/1", "pid": 70398, "time": 1793006379.923}
-{"argv": ["Python", "agent-arena", "audit"], "event": "armed", "guard": "evidence-netguard/1", "pid": 70404, "time": 1793006380.426}
-{"argv": ["Python", "extract_recorded_capture.py", "--capture"], "event": "armed", "guard": "evidence-netguard/1", "pid": 70413, "time": 1793006380.722}
