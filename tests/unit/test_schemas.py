@@ -1,20 +1,15 @@
 """Tests of the Inspektorium audit runtime schemas."""
 
 from inspektorium.audit.schemas import (
-    AgentResponse,
-    ConsistencyFinding,
     DIAGNOSTIC_WEIGHTS,
     DiagnosticScores,
     EvidenceRole,
     EvidenceSpan,
     FailureCategory,
-    FailureInstance,
     FailureSeverity,
     ForensicFlag,
-    KeyInsight,
     NormalizedClaim,
     ReasoningGraph,
-    ScoredDimension,
     Task,
     TaskType,
     Difficulty,

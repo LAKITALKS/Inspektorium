@@ -17,7 +17,6 @@ from inspektorium.audit.checks.claim_checker import (
 )
 from inspektorium.audit.schemas import (
     AgentResponse,
-    AgentResult,
     ClaimTruthStatus,
     Difficulty,
     EvaluationConfig,

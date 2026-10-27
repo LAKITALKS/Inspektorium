@@ -1,4 +1,4 @@
-"""Audit entry boundaries; installed real-runtime checks live in scripts/verify_instrument.py."""
+"""Audit entry boundaries; installed-runtime checks: scripts/verify_installation.py."""
 
 from __future__ import annotations
 

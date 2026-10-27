@@ -2,7 +2,6 @@
 
 from inspektorium.audit.checks.claim_checker import (
     run_claim_checks,
-    count_contradictions,
 )
 from inspektorium.audit.checks.consistency import run_consistency_checks
 from inspektorium.audit.execution.evaluator import evaluate_result

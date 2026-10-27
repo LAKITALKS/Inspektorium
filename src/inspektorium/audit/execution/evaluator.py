@@ -91,11 +91,9 @@ from inspektorium.audit.checks.claim_checker import (
 )
 from inspektorium.audit.checks.confidence_validity import confidence_value_if_valid
 from inspektorium.audit.checks.forecast_checker import (
-    is_forecast_task,
     run_forecast_checks,
 )
 from inspektorium.audit.checks.study_forensics_checker import (
-    is_study_forensics_task,
     run_study_forensics_checks,
 )
 from inspektorium.audit.checks.step_checker import StepCheckResult, verify_all_steps

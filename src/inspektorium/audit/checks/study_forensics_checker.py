@@ -151,12 +151,6 @@ def _keyword_match_non_negated(text: str, keyword: str) -> bool:
             # Double-check: look at this specific occurrence
             window_start = max(0, idx - 80)
             before = low[window_start:idx]
-            negated = any(
-                cue.strip() in before.split()[-_NEGATION_WINDOW:]
-                if len(before.split()) >= 1
-                else False
-                for cue in []
-            )  # placeholder, use proper check below
             # Use the direct check
             before_text = " ".join(before.split()[-_NEGATION_WINDOW:])
             is_neg = any(cue.strip() in before_text for cue in _NEGATION_CUES)

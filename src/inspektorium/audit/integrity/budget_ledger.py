@@ -6,7 +6,8 @@ and revocation semantics are unchanged.
 """
 
 from __future__ import annotations
-import json, os
+import json
+import os
 from pathlib import Path
 
 MAX_ATTEMPT_MICROUSD = 26480

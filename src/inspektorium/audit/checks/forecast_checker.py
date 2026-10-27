@@ -73,7 +73,7 @@ def run_forecast_checks(
     scores["uncertainty_honesty"] = shrink_score
 
     # --- G. Narrative Edge ---
-    edge_score = _check_narrative_edge(task, p, failures, flags)
+    _check_narrative_edge(task, p, failures, flags)
 
     # Decision category check
     _check_decision_category(task, p, failures)

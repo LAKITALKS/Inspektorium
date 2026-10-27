@@ -662,7 +662,6 @@ def build_mechanism_analysis(
         step_l = step.lower()
         if any(ind in step_l for ind in _MECHANISM_INDICATORS):
             # Must be more than just "because X" — needs some substance
-            words = step_l.split()
             mech_idx = -1
             for ind in _MECHANISM_INDICATORS:
                 if ind in step_l:

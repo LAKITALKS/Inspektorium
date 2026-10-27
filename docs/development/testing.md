@@ -88,19 +88,70 @@ ruff format --check .
 ```
 
 Ruff targets Python 3.11 with line length 88 and the rule sets `B`, `E`, `F`, `I` and `UP` ([pyproject.toml](../../pyproject.toml)).
+The audit runtime, its tests and its two scripts keep the runtime's historical rule set: `E4`, `E7`, `E9` and `F`.
+`pyproject.toml` lists these files under `per-file-ignores`.
+`src/inspektorium/core/`, `report/`, `providers/` and `evidence/` are never reformatted, because they are byte-bound to the v0.1.1 evidence package.
+CI pins Ruff to the version that formatted the tree ([`ci.yml`](../../.github/workflows/ci.yml)).
+
+Comments and docstrings in the audit runtime and its tests cite design documents such as `docs/phase8_9_conflict_addendum.md`.
+These paths refer to the runtime folder of the research record ([history](../research/history.md#research-record)).
 
 ## Type checking
 
 ```sh
-mypy src
+mypy src/inspektorium/core src/inspektorium/report src/inspektorium/providers \
+  src/inspektorium/cli.py src/inspektorium/__init__.py src/inspektorium/__main__.py
+python scripts/check_type_baseline.py
 ```
 
 Mypy runs in strict mode for Python 3.11.
-The reference checker (`core`, `report`, `providers`), `cli.py` and the package root must pass strict mode.
-An override sets `ignore_errors` for `inspektorium.audit` and its subpackages.
+The reference checker (`core`, `report`, `providers`), `cli.py` and the package root must pass strict mode without errors.
 
 ## Type-checking baseline for the audit runtime
 
-The audit runtime is checked against a recorded baseline, not in strict mode.
+The audit runtime `src/inspektorium/audit/` is checked in mypy's default mode; an override in `pyproject.toml` turns the strict flags off for it.
+Its known errors are recorded per file in [`scripts/type_baseline.json`](../../scripts/type_baseline.json).
+[`scripts/check_type_baseline.py`](../../scripts/check_type_baseline.py) fails when a file has more errors than recorded or a new file has errors.
+It also fails when it cannot match mypy's summary line, so a changed output format cannot pass silently.
+Fixing errors is welcome; run the script with `--write` afterwards to record the lower count.
+Type fixes must not change behavior.
 
-<!-- MYPY-BASELINE: filled by the coordinator -->
+The baseline was recorded for 0.3.0 with mypy 1.20.2, the version CI installs:
+
+| Error code | Count |
+| --- | ---: |
+| `arg-type` | 33 |
+| `union-attr` | 21 |
+| `assignment` | 8 |
+| `operator` | 7 |
+| `var-annotated` | 4 |
+| `index` | 4 |
+| `import-untyped` | 2 |
+| `import-not-found` | 1 |
+| `attr-defined` | 1 |
+| **Total, in 19 of 51 files** | **81** |
+
+## Installation check
+
+[`scripts/verify_installation.py`](../../scripts/verify_installation.py) checks a built wheel in a fresh virtual environment outside the checkout.
+It verifies that the wheel ships one package and one command and that the installed modules match the source.
+It runs the offline counter-checks under the Python network guard of the evidence package and compares the reference examples byte for byte.
+With `--readme` it also runs the README quickstart in a new directory.
+Before a release exists, `--local-release DIST` maps the release and raw URLs to the local build and checkout; every command stays as written.
+
+```sh
+python -m build --outdir dist
+python -m venv /tmp/verify-venv
+/tmp/verify-venv/bin/python -m pip install dist/inspektorium-*.whl
+/tmp/verify-venv/bin/python -c "import sys; from pathlib import Path; sys.path.insert(0, 'evidence/v0.1.1/tools'); import setup_env; setup_env.install_guard(Path(sys.prefix))"
+/tmp/verify-venv/bin/python scripts/verify_installation.py --repo . --output /tmp/verify --readme --local-release dist
+```
+
+## Links
+
+```sh
+python scripts/check_links.py
+```
+
+It checks every relative link and anchor in the tracked Markdown files.
+`--external` also requests each web link once and reports its status.

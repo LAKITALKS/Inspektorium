@@ -18,7 +18,6 @@ from inspektorium.audit.schemas import (
     AgentResponse,
     AgentResult,
     Difficulty,
-    EvaluationConfig,
     FailureCategory,
     Task,
     TaskType,

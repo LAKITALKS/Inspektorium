@@ -17,12 +17,10 @@ from __future__ import annotations
 
 import json
 import pytest
-from pathlib import Path
 
 from inspektorium.audit.schemas import (
     AuditSummary,
     DecisionEntry,
-    DependencySummary,
     UpstreamStep,
 )
 from inspektorium.audit.integrity.audit_trail import (
@@ -129,7 +127,7 @@ class TestPersistence:
         log_decision(_decision(), base_dir=tmp_path)
         path = tmp_path / "decisions.jsonl"
         content = path.read_text()
-        lines = [l for l in content.strip().split("\n") if l.strip()]
+        lines = [line for line in content.strip().split("\n") if line.strip()]
         assert len(lines) == 1
         data = json.loads(lines[0])
         assert data["decision_id"] == "dec_test_001"

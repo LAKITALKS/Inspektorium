@@ -8,14 +8,12 @@ tracked suite never depends on ignored real-case material.
 
 from __future__ import annotations
 
-import importlib
 import json
 import subprocess
 from dataclasses import replace
 from pathlib import Path
 
 import pytest
-from click.testing import CliRunner
 
 from inspektorium.audit.integrity import artifact_binding as ab
 from inspektorium.audit.integrity import release_boundary as rb

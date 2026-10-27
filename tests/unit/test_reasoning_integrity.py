@@ -11,7 +11,6 @@ These tests prove that the engine can now detect a new class of failures:
 from inspektorium.audit.execution.evaluator import (
     evaluate_result,
     _classify_load_bearing_steps,
-    _content_words,
 )
 from inspektorium.audit.schemas import (
     AgentResponse,
@@ -94,7 +93,6 @@ class TestRightAnswerWrongReasoning:
         result = evaluate_result(BASE_RATE_TASK, _make_result(parsed))
 
         # Must have intermediate_numeric_error or right_answer_wrong_reasoning failure
-        categories = {f.category for f in result.failures}
         # The step "0.00099 + 0.00999 = 0.01098" is correct, but the division
         # 0.00099 / 0.01098 = 0.09 is approximately correct (0.0901...).
         # This test shows the engine processes step checks without false positives.

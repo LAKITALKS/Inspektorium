@@ -8,22 +8,16 @@ from inspektorium.audit.reports.reporting import (
     generate_client_report,
     generate_html_report,
     pdf_available,
-    _extract_top_findings,
-    _extract_recommendations,
     _overall_status,
     _label,
     _section_executive_summary,
     _section_key_findings,
-    _section_recommendations,
     _section_method_note,
     _section_technical_appendix,
 )
 from inspektorium.audit.schemas import (
     AgentResponse,
     AgentResult,
-    ClaimCheckResult,
-    ClaimTruthStatus,
-    ComparativeClaim,
     ConsistencyFinding,
     DiagnosticScores,
     Difficulty,
@@ -34,7 +28,6 @@ from inspektorium.audit.schemas import (
     GroundingAudit,
     MechanismAnalysis,
     RunRecord,
-    ScoredDimension,
     Task,
     TaskType,
 )
@@ -294,8 +287,8 @@ class TestFormatRendering:
         record = _make_run_record()
         html = generate_html_report(record)
         lines = html.split("\n")
-        body_start = next(i for i, l in enumerate(lines) if "<body>" in l)
-        body_end = next(i for i, l in enumerate(lines) if "</body>" in l)
+        body_start = next(i for i, line in enumerate(lines) if "<body>" in line)
+        body_end = next(i for i, line in enumerate(lines) if "</body>" in line)
         body = "\n".join(lines[body_start:body_end])
         # Markdown headings should not appear raw in HTML body
         assert "\n# " not in body

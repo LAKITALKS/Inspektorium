@@ -125,12 +125,12 @@ class LiveProfile:
 
 
 def profile_dict(profile: LiveProfile) -> dict:
-    tier = lambda t: (
+    tier = lambda t: (  # noqa: E731
         None
         if t is None
         else {
             "input": t.input,
-            "output": t.output,  # noqa: E731
+            "output": t.output,
             "cache_write_5m": t.cache_write_5m,
             "cache_read": t.cache_read,
         }

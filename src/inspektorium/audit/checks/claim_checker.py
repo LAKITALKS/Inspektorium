@@ -339,7 +339,6 @@ _BETTER_WORSE_PATTERNS = [
 def extract_comparative_claims(text: str, source_field: str) -> list[ComparativeClaim]:
     """Extract comparative claims from text."""
     claims: list[ComparativeClaim] = []
-    text_lower = text.lower()
 
     # Sentence-level scanning (avoid splitting on decimal points)
     sentences = re.split(r"(?<!\d)\.(?!\d)|\n|!|\?", text)

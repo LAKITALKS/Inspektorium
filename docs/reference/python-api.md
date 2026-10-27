@@ -67,20 +67,37 @@ Run from the repository root:
 from pathlib import Path
 
 from inspektorium import inspect_proposals
-from inspektorium.providers.parsing import parse_inspection_input_json, parse_proposal_json
+from inspektorium.providers.parsing import (
+    parse_inspection_input_json,
+    parse_proposal_json,
+)
 from inspektorium.report import render_json, render_markdown
 
 example = Path("examples/inspect/05_mixed_and_fabricated_quote")
-inspection_input = parse_inspection_input_json((example / "input.json").read_text(encoding="utf-8"))
-proposals = parse_proposal_json((example / "proposals.json").read_text(encoding="utf-8"))
+inspection_input = parse_inspection_input_json(
+    (example / "input.json").read_text(encoding="utf-8")
+)
+proposals = parse_proposal_json(
+    (example / "proposals.json").read_text(encoding="utf-8")
+)
 report = inspect_proposals(inspection_input, proposals)
 
 print(report.summary)
 for finding in report.findings:
-    print(finding.claim_id, finding.deterministic_validation_status.value,
-          finding.reportable_relation, [issue.code.value for issue in finding.validation_issues])
-print(render_json(report) == (example / "expected_report.json").read_text(encoding="utf-8"))
-print(render_markdown(report) == (example / "expected_report.md").read_text(encoding="utf-8"))
+    print(
+        finding.claim_id,
+        finding.deterministic_validation_status.value,
+        finding.reportable_relation,
+        [issue.code.value for issue in finding.validation_issues],
+    )
+print(
+    render_json(report)
+    == (example / "expected_report.json").read_text(encoding="utf-8")
+)
+print(
+    render_markdown(report)
+    == (example / "expected_report.md").read_text(encoding="utf-8")
+)
 ```
 
 ```text
@@ -223,7 +240,11 @@ from pathlib import Path
 
 from inspektorium.audit.execution.task_loader import load_task
 from inspektorium.audit.review.runtime import OfflineReviewProvider
-from inspektorium.audit.workflow.bundle import inspect_bundle, release_candidate, run_audit
+from inspektorium.audit.workflow.bundle import (
+    inspect_bundle,
+    release_candidate,
+    run_audit,
+)
 
 examples = Path("examples/audit")
 output_root = Path("reports/api-audit")
@@ -234,9 +255,12 @@ candidate = run_audit(task, OfflineReviewProvider(recording), output_root=output
 print(candidate.status, candidate.errors)
 print(inspect_bundle(Path(candidate.path)))
 
-released = release_candidate(Path(candidate.path), output_root=output_root,
-                             reviewer="Local offline operator",
-                             reason="Explicit release of this synthetic test artifact")
+released = release_candidate(
+    Path(candidate.path),
+    output_root=output_root,
+    reviewer="Local offline operator",
+    reason="Explicit release of this synthetic test artifact",
+)
 print(released.status, released.errors)
 print(inspect_bundle(Path(released.path)))
 ```

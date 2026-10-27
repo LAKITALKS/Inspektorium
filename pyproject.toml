@@ -77,11 +77,82 @@ exclude = ["evidence/**", "src/inspektorium/core/**", "src/inspektorium/report/*
 [tool.ruff.lint]
 select = ["B", "E", "F", "I", "UP"]
 
+[tool.ruff.lint.per-file-ignores]
+# The audit runtime, its tests and its scripts keep the runtime's historical rule set
+# (E4, E7, E9, F); docs/development/testing.md records this baseline.
+"src/inspektorium/audit/**" = ["B", "E501", "I", "UP"]
+"scripts/extract_recorded_capture.py" = ["B", "E501", "I", "UP"]
+"scripts/run_acceptance.py" = ["B", "E501", "I", "UP"]
+"tests/forensics_case_factory.py" = ["B", "E501", "I", "UP"]
+"tests/acceptance/test_forensics_acceptance.py" = ["B", "E501", "I", "UP"]
+"tests/acceptance/test_forensics_review_conflict.py" = ["B", "E501", "I", "UP"]
+"tests/acceptance/test_review_acceptance.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_capture_derivation.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_bundle.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_entry.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_live.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_outcome_report.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_render.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_render_injection.py" = ["B", "E501", "I", "UP"]
+"tests/integration/test_workflow_semantics.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding_search_scope.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding_search_scope_basis.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_artifact_binding_value_origin.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_audit_trail.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_claim_checker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_claim_checker_shapes.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_confidence_validity.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_consistency.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_evaluator.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forecast_checker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensic_report.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensics_pipeline.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensics_semantics.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_forensics_taxonomy.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_hardening.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_output_contract.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_package_b_regressions.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_pipeline_qa_isolation.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_provider_contract.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_provider_runtime.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_reasoning_graph.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_reasoning_integrity.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_release_boundary.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_release_gate_consolidation.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_reporter.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_reporting.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_adjudication.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_budget.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_history_blocker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_history_outputs.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_history_repair.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_routing.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_runtime.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_review_variant_repair.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_run_library.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_schemas.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_scientific_contract_alignment.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_step_checker.py" = ["B", "E501", "I", "UP"]
+"tests/unit/test_study_forensics.py" = ["B", "E501", "I", "UP"]
+
 [tool.mypy]
 python_version = "3.11"
 strict = true
 
 [[tool.mypy.overrides]]
-# The audit runtime is checked against a recorded baseline, not strict mode.
+# The audit runtime is checked in mypy's default mode against a recorded baseline
+# (scripts/check_type_baseline.py); core, report and cli stay strict.
 module = ["inspektorium.audit", "inspektorium.audit.*"]
-ignore_errors = true
+disallow_any_generics = false
+disallow_subclassing_any = false
+disallow_untyped_calls = false
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+disallow_untyped_decorators = false
+warn_unused_ignores = false
+warn_return_any = false
+no_implicit_reexport = false
+strict_equality = false
+extra_checks = false

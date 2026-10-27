@@ -12,7 +12,6 @@ from __future__ import annotations
 import html as html_module
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 from inspektorium.audit.checks.confidence_validity import confidence_value_if_valid
 from inspektorium.audit.forensics.pipeline import phase8_view, render_phase8
@@ -20,7 +19,6 @@ from inspektorium.audit.schemas import TaskType
 from inspektorium.audit.schemas import (
     DIAGNOSTIC_WEIGHTS,
     EvaluatedResult,
-    EvidenceRole,
     FailureInstance,
     RunRecord,
 )
@@ -526,7 +524,6 @@ def _section_recommendations(record: RunRecord) -> str:
 
 
 def _section_method_note(record: RunRecord) -> str:
-    task = record.task
     lines = [
         "",
         "## 4. Method Note",
@@ -809,8 +806,8 @@ def _appendix_reasoning_integrity(results: list[EvaluatedResult]) -> list[str]:
 def _appendix_task_metadata(task) -> list[str]:
     lines = ["### Task Metadata", ""]
 
-    lines.append(f"| Field | Value |")
-    lines.append(f"|---|---|")
+    lines.append("| Field | Value |")
+    lines.append("|---|---|")
     lines.append(f"| Task ID | `{task.id}` |")
     lines.append(f"| Type | {task.task_type.value} |")
     lines.append(f"| Domain | {task.domain} |")

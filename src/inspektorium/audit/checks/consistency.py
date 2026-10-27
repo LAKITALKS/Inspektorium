@@ -26,7 +26,6 @@ from inspektorium.audit.schemas import (
     ClaimCheckResult,
     ClaimTruthStatus,
     ConsistencyFinding,
-    EvidenceRole,
     EvidenceSpan,
     Task,
     get_confidence_label,

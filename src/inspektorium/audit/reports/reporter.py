@@ -10,7 +10,6 @@ from inspektorium.audit.schemas import (
     EvaluatedResult,
     EvidenceRole,
     FailureInstance,
-    ForensicFlag,
     PatternCluster,
     PostmortemReport,
     RunRecord,
@@ -443,7 +442,6 @@ def _concept_coverage(record: RunRecord) -> str:
     from inspektorium.audit.execution.evaluator import (
         _all_text,
         _insight_matches,
-        _content_words,
     )
 
     # Build header
@@ -1052,8 +1050,8 @@ def _mechanism_analysis_section(results: list[EvaluatedResult]) -> str:
         desc_icon = ":white_check_mark:" if ma.mechanism_described else ":x:"
         ground_icon = ":white_check_mark:" if ma.mechanism_grounded_to_case else ":x:"
 
-        lines.append(f"| Aspect | Status |")
-        lines.append(f"|--------|--------|")
+        lines.append("| Aspect | Status |")
+        lines.append("|--------|--------|")
         lines.append(
             f"| Concept named | {named_icon} {', '.join(ma.named_concepts) if ma.named_concepts else 'none'} |"
         )

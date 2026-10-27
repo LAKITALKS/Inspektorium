@@ -113,15 +113,19 @@ def verify_installed(repo: Path, output: Path, result: dict) -> None:
 import hashlib, importlib, importlib.metadata, json, pathlib, sys
 package = importlib.import_module('inspektorium')
 folder = pathlib.Path(package.__file__).resolve().parent
+dist = importlib.metadata.distribution('inspektorium')
 print(json.dumps({
-    'version': importlib.metadata.version('inspektorium'),
+    'version': dist.version,
     'package_version': package.__version__,
-    'inside_environment': folder.is_relative_to(pathlib.Path(sys.prefix).resolve()),
-    'top_level': sorted({f.parts[0] for f in importlib.metadata.distribution('inspektorium').files
-                         if not f.parts[0].endswith('.dist-info') and f.parts[0] != '..'}),
-    'console_scripts': sorted(e.name for e in importlib.metadata.distribution('inspektorium').entry_points
+    'inside_environment':
+        folder.is_relative_to(pathlib.Path(sys.prefix).resolve()),
+    'top_level': sorted({f.parts[0] for f in dist.files
+                         if f.parts[0] != '..'
+                         and not f.parts[0].endswith('.dist-info')}),
+    'console_scripts': sorted(e.name for e in dist.entry_points
                               if e.group == 'console_scripts'),
-    'modules': {p.relative_to(folder).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+    'modules': {p.relative_to(folder).as_posix():
+                hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in sorted(folder.rglob('*.py'))}}))
 """
     installed = call(
@@ -384,7 +388,7 @@ def main() -> int:
     parser.add_argument(
         "--local-release",
         type=Path,
-        help="directory with the built wheel; maps the release and raw URLs to local files",
+        help="directory with the built wheel; maps release and raw URLs to local files",
     )
     args = parser.parse_args()
     repo, output = args.repo.resolve(), args.output.resolve()

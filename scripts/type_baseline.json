@@ -1,0 +1,37 @@
+{
+  "mypy": "1.20.2",
+  "target": "src/inspektorium/audit",
+  "total": 81,
+  "codes": {
+    "arg-type": 33,
+    "assignment": 8,
+    "attr-defined": 1,
+    "import-not-found": 1,
+    "import-untyped": 2,
+    "index": 4,
+    "operator": 7,
+    "union-attr": 21,
+    "var-annotated": 4
+  },
+  "files": {
+    "src/inspektorium/audit/checks/confidence_validity.py": 3,
+    "src/inspektorium/audit/checks/consistency.py": 18,
+    "src/inspektorium/audit/execution/agent_loader.py": 1,
+    "src/inspektorium/audit/execution/evaluator.py": 6,
+    "src/inspektorium/audit/execution/run_library.py": 3,
+    "src/inspektorium/audit/execution/task_loader.py": 1,
+    "src/inspektorium/audit/forensics/forensic_report.py": 5,
+    "src/inspektorium/audit/integrity/artifact_binding.py": 1,
+    "src/inspektorium/audit/integrity/output_contract.py": 1,
+    "src/inspektorium/audit/integrity/release_boundary.py": 2,
+    "src/inspektorium/audit/providers/anthropic.py": 12,
+    "src/inspektorium/audit/providers/anthropic_live.py": 3,
+    "src/inspektorium/audit/reports/reporting.py": 1,
+    "src/inspektorium/audit/review/adjudication.py": 2,
+    "src/inspektorium/audit/review/routing.py": 2,
+    "src/inspektorium/audit/review/runtime.py": 9,
+    "src/inspektorium/audit/workflow/live.py": 4,
+    "src/inspektorium/audit/workflow/models.py": 5,
+    "src/inspektorium/audit/workflow/pipeline.py": 2
+  }
+}
