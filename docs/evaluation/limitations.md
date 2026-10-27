@@ -63,8 +63,10 @@ These limits concern the Markdown display of the reference checker (P12).
 - **Review names are not authentication.** Reviewer names and reasons are recorded provenance.
   They cannot waive a failed control. No reviewer or review queue is assumed.
   A mandatory unresolved review stays unresolved and unreleased.
-- **Duplicate JSON keys.** `audit validate` accepts a task file with duplicate JSON keys. Only `inspect` rejects them.
+- **Duplicate JSON keys.** `audit validate` and `audit run` accept a task file with duplicate JSON keys. `inspektorium inspect` rejects them in its inputs, and `audit inspect` rejects them in bundle files.
 - **No reference-checker guards.** Audit does not run the reference checker's strict decoder, exact-span rules or display protections.
+- **Python API outside the gate.** Only `inspektorium audit run --live` checks a written authorization and budget.
+  `inspektorium.audit.providers.get_provider` and `execution.runner.run_task` call named providers directly.
 - **Parent link not re-verified.** `audit inspect` checks one bundle on its own.
   It does not re-check that `parent.manifest_fingerprint` matches the parent bundle; `review` and `release` set the link after inspecting the parent.
 - **Hashes, not signatures.** Bundle fingerprints provide integrity, not signatures, immutable remote storage or PKI.

@@ -21,11 +21,10 @@ src/inspektorium/
     ├── workflow/      bundle, live, models, pipeline, projection, render
     ├── forensics/     models, pipeline, semantics, taxonomy, forensic_report
     ├── review/        adjudication, models, pipeline, routing, runtime
-    ├── execution/     runner, evaluator, task_loader, run_library, agent_loader
-    ├── integrity/     artifact_binding, audit_trail, output_contract, release_boundary, budget_ledger
+    ├── execution/     runner, evaluator, task_loader
+    ├── integrity/     artifact_binding, audit_trail, output_contract, budget_ledger
     ├── checks/        claim_checker, consistency, forecast_checker, reasoning_graph,
     │                  step_checker, study_forensics_checker, confidence_validity
-    ├── reports/       reporter, reporting
     └── providers/     provider base, live adapter and SDK adapters
 ```
 
@@ -50,14 +49,14 @@ The [evidence page](../evaluation/evidence.md#relation-to-030) explains why that
 | [`forensics/`](../../src/inspektorium/audit/forensics/) | Semantic and inferential analysis of the recorded answer and its taxonomy |
 | [`review/`](../../src/inspektorium/audit/review/) | Disagreement routing, bounded review attempts and human or model adjudication |
 | [`execution/`](../../src/inspektorium/audit/execution/) | Task loading, one agent run against one provider, and evaluation of the run |
-| [`integrity/`](../../src/inspektorium/audit/integrity/) | Artifact-binding gates, structured-output parsing, the audit trail, release boundary and the durable budget ledger |
+| [`integrity/`](../../src/inspektorium/audit/integrity/) | Artifact-binding gates, structured-output parsing, the audit trail and the durable budget ledger |
 | [`checks/`](../../src/inspektorium/audit/checks/) | Deterministic checks on claims, consistency, forecasts, reasoning graphs, steps, study forensics and confidence values |
-| [`reports/`](../../src/inspektorium/audit/reports/) | Earlier report builders, retained because product tests use them |
 | [`providers/`](../../src/inspektorium/audit/providers/) | `BaseProvider`, the live Anthropic adapter with its registered profiles, and SDK adapters |
 | [`schemas.py`](../../src/inspektorium/audit/schemas.py) | `Task`, `RunRecord`, `AgentResult` and related models |
 
-`execution/run_library.py`, `execution/agent_loader.py`, `integrity/release_boundary.py` and `reports/` are not on the path of any `audit` command.
-They stay because retained tests use them, including the frozen forensics and review acceptance.
+No `inspektorium` command loads the provider adapters `providers/anthropic.py`, `providers/openai.py` and `providers/ollama.py`.
+`providers.get_provider` loads them on request through the Python API; they make live calls without an audit authorization ([limitations](../evaluation/limitations.md#audit-workflow-inspektorium-audit)).
+Other modules that no command loads moved to the research record with their tests ([migration](migration-0.3.md#python-imports)).
 The audit commands pass provider objects directly. They never resolve a provider by name.
 
 ## Data flow: `inspektorium inspect`
@@ -143,7 +142,7 @@ On inspection, the provenance control passes only if the recomputed provenance e
 A bound source-commit claim must also still verify against Git.
 
 Any change to any runtime `*.py` file changes the fingerprint.
-This includes modules that no command reaches, such as `reports/`.
+This includes the provider adapters, which no command loads.
 Files outside `inspektorium/audit/`, such as `core/` or `cli.py`, are not part of this identity.
 
 ### Review code version

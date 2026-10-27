@@ -1,3 +1,9 @@
+modules moved to the research record: 5
+   agent-arena/src/agent_arena/agent_loader.py
+   agent-arena/src/agent_arena/release_boundary.py
+   agent-arena/src/agent_arena/reporter.py
+   agent-arena/src/agent_arena/reporting.py
+   agent-arena/src/agent_arena/run_library.py
 == agent-arena/src/agent_arena/artifact_binding.py -> src/inspektorium/audit/integrity/artifact_binding.py: 4 changed lines
    -PHASE7B_RELEASE_REPORT_SCHEMA_VERSION = 'agent_arena.phase7b_release_report/v2'
    -MANDATORY_PHASE7B_GATE_SET_ID = 'agent_arena.phase7b.mandatory'
@@ -42,49 +48,6 @@
    +            raise RuntimeError("Install openai: pip install 'inspektorium[providers]'")
 == agent-arena/src/agent_arena/reasoning_graph.py -> src/inspektorium/audit/checks/reasoning_graph.py: 1 changed lines
    -            words = step_l.split()
-== agent-arena/src/agent_arena/release_boundary.py -> src/inspektorium/audit/integrity/release_boundary.py: 24 changed lines
-   -RELEASE_SOURCE_SCHEMA_VERSION = 'agent_arena.release_source/v1'
-   -CONDITION_RELEASE_SOURCE_SCHEMA_VERSION = 'agent_arena.release_source/v2-condition-aware'
-   -RELEASE_OBJECT_SCHEMA_VERSION = 'agent_arena.release_object/v1'
-   -OFFICIAL_RELEASE_SCHEMA_VERSION = 'agent_arena.official_release/v1'
-   -CONDITION_OFFICIAL_RELEASE_SCHEMA_VERSION = 'agent_arena.official_release/v2-condition-aware'
-   -OFFICIAL_RELEASE_MANIFEST_SCHEMA_VERSION = 'agent_arena.official_release_manifest/v1'
-   -CONDITION_OFFICIAL_RELEASE_MANIFEST_SCHEMA_VERSION = 'agent_arena.official_release_manifest/v2-condition-aware'
-   -OFFICIAL_ARTIFACT_ROLE = 'official_agent_arena_release'
-   +RELEASE_SOURCE_SCHEMA_VERSION = 'inspektorium.audit.release_source/v1'
-   +CONDITION_RELEASE_SOURCE_SCHEMA_VERSION = 'inspektorium.audit.release_source/v2-condition-aware'
-   +RELEASE_OBJECT_SCHEMA_VERSION = 'inspektorium.audit.release_object/v1'
-   +OFFICIAL_RELEASE_SCHEMA_VERSION = 'inspektorium.audit.official_release/v1'
-   +CONDITION_OFFICIAL_RELEASE_SCHEMA_VERSION = 'inspektorium.audit.official_release/v2-condition-aware'
-   +OFFICIAL_RELEASE_MANIFEST_SCHEMA_VERSION = 'inspektorium.audit.official_release_manifest/v1'
-   +CONDITION_OFFICIAL_RELEASE_MANIFEST_SCHEMA_VERSION = 'inspektorium.audit.official_release_manifest/v2-condition-aware'
-   +OFFICIAL_ARTIFACT_ROLE = 'official_inspektorium_release'
-   -OFFICIAL_RELEASE_NAMESPACE = 'official-agent-arena-releases'
-   +OFFICIAL_RELEASE_NAMESPACE = 'official-inspektorium-releases'
-   -    release_source_schema_version: Literal['agent_arena.release_source/v1', 'agent_arena.release_source/v2-condition-aware']
-   +    release_source_schema_version: Literal['inspektorium.audit.release_source/v1', 'inspektorium.audit.release_source/v2-condition-aware']
-   -    release_object_schema_version: Literal['agent_arena.release_object/v1']
-   +    release_object_schema_version: Literal['inspektorium.audit.release_object/v1']
-   -        staging = Path(tempfile.mkdtemp(prefix='.agent-arena-release-staging-', dir=output))
-   +        staging = Path(tempfile.mkdtemp(prefix='.inspektorium-release-staging-', dir=output))
-== agent-arena/src/agent_arena/reporter.py -> src/inspektorium/audit/reports/reporter.py: 4 changed lines
-   -        lines.append(f'| Aspect | Status |')
-   -        lines.append(f'|--------|--------|')
-   +        lines.append('| Aspect | Status |')
-   +        lines.append('|--------|--------|')
-== agent-arena/src/agent_arena/reporting.py -> src/inspektorium/audit/reports/reporting.py: 9 changed lines
-   -    task = record.task
-   -    lines = ['', '## 4. Method Note', '', '### What This Audit Covers', '', 'Agent Arena performs automated forensic analysis of AI-generated reasoning. The system evaluates:', '', '- **Correctness** — Does the answer match the expected result?', '- **Reasoning quality** — Are claims supported by evidence and logic?', '- **Internal consistency** — Do different parts of the response agree?', '- **Mechanism quality** — Are causal explanations grounded, not just named?', '- **Self-monitoring** — Does the response acknowledge its own limitations?', '', '### What This Audit Does Not Cover', '', '- External fact-checking against live databases or sources', '- Ethical or legal assessment of conclusions', '- Domain-specific regulatory compliance', '- Comparison with human expert judgment', '', '### Category Definitions', '']
-   +    lines = ['', '## 4. Method Note', '', '### What This Audit Covers', '', 'Inspektorium performs automated forensic analysis of AI-generated reasoning. The system evaluates:', '', '- **Correctness** — Does the answer match the expected result?', '- **Reasoning quality** — Are claims supported by evidence and logic?', '- **Internal consistency** — Do different parts of the response agree?', '- **Mechanism quality** — Are causal explanations grounded, not just named?', '- **Self-monitoring** — Does the response acknowledge its own limitations?', '', '### What This Audit Does Not Cover', '', '- External fact-checking against live databases or sources', '- Ethical or legal assessment of conclusions', '- Domain-specific regulatory compliance', '- Comparison with human expert judgment', '', '### Category Definitions', '']
-   -    lines.append(f'| Field | Value |')
-   -    lines.append(f'|---|---|')
-   +    lines.append('| Field | Value |')
-   +    lines.append('|---|---|')
-   -    footer = ['---', '', '*Report generated by Agent Arena — local-first AI evaluation engine.*  ', f"*Run ID: `{record.run_id}` | {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}*"]
-   +    footer = ['---', '', '*Report generated by Inspektorium — local-first AI evaluation engine.*  ', f"*Run ID: `{record.run_id}` | {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}*"]
-== agent-arena/src/agent_arena/run_library.py -> src/inspektorium/audit/execution/run_library.py: 2 changed lines
-   -    p = argparse.ArgumentParser(prog='agent_arena.run_library', description='Historical research harness; not an AA-P10/v1 audit or release. Provider calls are not gated by an AA-P10-LIVE authorization. Batch-run the study_forensics case library with a stability summary.')
-   +    p = argparse.ArgumentParser(prog='inspektorium.audit.execution.run_library', description='Historical research harness; not an AA-P10/v1 audit or release. Provider calls are not gated by an AA-P10-LIVE authorization. Batch-run the study_forensics case library with a stability summary.')
 == agent-arena/src/agent_arena/study_forensics_checker.py -> src/inspektorium/audit/checks/study_forensics_checker.py: 1 changed lines
    -            negated = any((cue.strip() in before.split()[-_NEGATION_WINDOW:] if len(before.split()) >= 1 else False for cue in []))
-modules with identical logic: 27 of 42
+modules with identical logic: 26 of 37

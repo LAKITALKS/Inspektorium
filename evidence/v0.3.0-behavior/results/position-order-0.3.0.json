@@ -4,8 +4,8 @@
   "original > human_correction": 16
  },
  "report_order": {
-  "original > human_correction": 9,
-  "human_correction > original": 7
+  "human_correction > original": 3,
+  "original > human_correction": 13
  },
  "report_sorted_by_position_id": 16
 }

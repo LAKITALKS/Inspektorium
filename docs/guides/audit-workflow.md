@@ -140,7 +140,7 @@ A changed byte makes the bundle invalid. Here one line was appended to `report.m
 }
 ```
 
-The exit code is 2. A path that is not a bundle directory gives the same shape with the error `Bundle must be a real directory`.
+The exit code is 2. A path that is not a directory gives the same shape with the error `Bundle must be a real directory`; a directory without the bundle files reports `Bundle must contain exactly the five canonical files`.
 
 Open `report.md` or `report.html` in the bundle for the human-readable result.
 Both reports start with the status, the open cause, the independent states and the revision identity.

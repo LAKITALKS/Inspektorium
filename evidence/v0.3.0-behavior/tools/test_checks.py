@@ -5,7 +5,8 @@ test_checks.py --base DIR --repo DIR > test-checks.txt
 DIR for --base is an export of the 0.2.0 source commit (git archive d086973);
 --repo is the 0.3.0 checkout. A check is an assert statement or a call of
 pytest.raises, pytest.warns or pytest.fail. test_file_map.json maps each 0.2.0
-test file to its 0.3.0 path. The output lists every function with fewer checks,
+test file to its 0.3.0 path, or to null when the whole file moved to the research
+record. The output lists the archived files, every function with fewer checks,
 every function that is no longer present and the number of new functions.
 """
 
@@ -52,8 +53,12 @@ def main() -> int:
     parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--repo", type=Path, required=True)
     args = parser.parse_args()
-    fewer, missing, new = [], [], 0
+    fewer, missing, new, archived = [], [], 0, []
     for old, current in sorted(MAP.items()):
+        if current is None:
+            before = checks(args.base / old)
+            archived.append(f"{old}: {len(before)} functions")
+            continue
         before, after = checks(args.base / old), checks(args.repo / current)
         for name, count in before.items():
             if name not in after:
@@ -61,7 +66,9 @@ def main() -> int:
             elif after[name] < count:
                 fewer.append(f"{current}::{name}: {count} -> {after[name]}")
         new += sum(name not in before for name in after)
-    print(f"test files compared: {len(MAP)}")
+    print(f"test files compared: {len(MAP) - len(archived)}")
+    print(f"test files archived whole: {len(archived)}")
+    print("\n".join(f"  {line}" for line in archived))
     print(f"functions with fewer checks: {len(fewer)}")
     print("\n".join(f"  {line}" for line in fewer))
     print(f"functions no longer present: {len(missing)}")

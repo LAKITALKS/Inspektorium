@@ -48,14 +48,15 @@ Typical users are evaluation engineers, auditors of AI-assisted documents and re
 Most related tools *decide support* with a model.
 RAGAS computes a faithfulness score with an LLM [@es2024ragas], and FActScore scores atomic facts [@min2023factscore].
 MiniCheck and RefChecker classify claim support with small models or LLMs [@tang2024minicheck; @hu2024refchecker].
-SelfCheckGPT detects hallucinations from sampling consistency [@manakul2023selfcheckgpt].
+SelfCheckGPT detects hallucinations from sampling consistency [@manakul2023selfcheckgpt], and TruLens[^trulens] scores groundedness with an LLM judge.
 LettuceDetect predicts hallucinated character spans with a token classifier [@kovacs2025lettucedetect].
 The open-source tool anchor[^anchor] gates on natural language inference and emits offsets for the sentences it matched.
 These tools answer whether a claim is supported; Inspektorium answers whether the evidence an evaluator cites is exactly where the evaluator says it is.
 
 Provider features such as the Anthropic Citations API[^citations] return cited text with character locations during generation.
 Inspektorium instead checks pointers after the fact, independent of who produced them.
-The lexical tool verbatimeter[^verbatimeter] measures verbatim reuse of source text offline but does not bind quotations to offsets or gate reports.
+The lexical tool verbatimeter[^verbatimeter] measures verbatim reuse offline and can fail a run when a quotation differs token by token.
+It does not bind quotations to stated offsets or decide reportability per finding.
 
 On the security side, garak probes whether a model can be induced to emit harmful output, including terminal escape codes [@derczynski2024garak].
 Inspektorium works on the receiving end: it neutralizes such text when it renders reports.
@@ -76,7 +77,7 @@ The audit workflow (`inspektorium audit`) runs a case through a recorded or auth
 It writes a candidate bundle: a manifest binds the hash of every file, and the record binds the bytes of the installed audit runtime.
 Unresolved cases stop with an open mandatory review.
 A human decision creates a new immutable revision, and only an explicit release step produces a released artifact.
-Live model calls require a written authorization with a budget ledger; tests and examples run offline.
+A live model call through `inspektorium audit run --live` requires a written authorization with a budget ledger; tests and examples run offline.
 
 # Research impact statement
 
@@ -98,6 +99,7 @@ Statements about other tools and papers were checked against their primary sourc
 [^anchor]: <https://github.com/hnvivek/anchor>
 [^citations]: <https://platform.claude.com/docs/en/build-with-claude/citations>
 [^verbatimeter]: <https://pypi.org/project/verbatimeter/>
+[^trulens]: <https://github.com/truera/trulens>
 [^inspect]: <https://github.com/UKGovernmentBEIS/inspect_ai>
 
 # References

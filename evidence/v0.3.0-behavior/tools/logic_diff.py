@@ -4,7 +4,8 @@ logic_diff.py --base DIR --repo DIR > logic-diff.txt
 
 Imports and docstrings are removed from both syntax trees; the rest is
 unparsed and compared. module_map.json maps each 0.2.0 module to its 0.3.0
-path. The output lists every module whose remaining code differs, with the
+path, or to null when the module moved to the research record. The output lists
+the archived modules and every module whose remaining code differs, with the
 changed lines.
 """
 
@@ -48,7 +49,12 @@ def main() -> int:
     parser.add_argument("--repo", type=Path, required=True)
     args = parser.parse_args()
     identical = 0
+    archived = sorted(old for old, new in MAP.items() if new is None)
+    print(f"modules moved to the research record: {len(archived)}")
+    print("\n".join(f"   {name}" for name in archived))
     for old, new in sorted(MAP.items()):
+        if new is None:
+            continue
         before, after = logic(args.base / old), logic(args.repo / new)
         if before == after:
             identical += 1
@@ -60,7 +66,7 @@ def main() -> int:
         ]
         print(f"== {old} -> {new}: {len(changed)} changed lines")
         print("\n".join(f"   {line}" for line in changed))
-    print(f"modules with identical logic: {identical} of {len(MAP)}")
+    print(f"modules with identical logic: {identical} of {len(MAP) - len(archived)}")
     return 0
 
 

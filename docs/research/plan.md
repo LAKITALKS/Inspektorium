@@ -3,7 +3,7 @@
 **Planned research, not shipped capability:** this page defines open questions and future evaluation work, not features of Inspektorium 0.3.0.
 
 Phase 8, Phase 9, Phase 10 and the
-final v1 gate are described in the [roadmap][roadmap]; their claims are
+final v1 gate are described in the [historical roadmap][roadmap]; their claims are
 R08–R10 and H01 in the [claim ledger](claims.md). Phases 8–10 are implemented in the audit runtime,
 first published as research prerelease 1.0.1 and derived from internal technical 1.0.0. That
 implementation answers none of the questions below; they remain open.

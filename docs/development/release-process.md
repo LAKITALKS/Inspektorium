@@ -30,7 +30,7 @@ Run every check from [testing](testing.md) in a fresh environment:
 
 - `python -m pytest`, including the byte-for-byte reference examples;
 - `ruff check .` and `ruff format --check .`;
-- `mypy src`, and the audit-runtime type-checking baseline;
+- strict `mypy` for `core`, `report`, `providers`, `cli.py` and the package root, and `python scripts/check_type_baseline.py` for the audit runtime, as in [`ci.yml`](../../.github/workflows/ci.yml);
 - `python scripts/run_acceptance.py --output DIR` against the installed package;
 - a relative-link check over the changed Markdown files.
 
@@ -103,4 +103,4 @@ After publication, check the release as an anonymous user:
 3. Compare each download with the local build, byte for byte, and with the asset digest that GitHub shows.
 4. Install the downloaded wheel and, separately, the sdist into fresh environments. Repeat the checks of step 5.
 5. Read the release page without signing in. Every link in the notes must resolve.
-6. Add the CI run links of the release to [evidence](../evaluation/evidence.md#continuous-integration).
+6. Before tagging, link the pull request checks and the CI runs on `main` from [evidence](../evaluation/evidence.md#continuous-integration); the release notes link the run of the tagged commit.

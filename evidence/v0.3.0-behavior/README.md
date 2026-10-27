@@ -8,7 +8,7 @@ Only names, versions, module-hash manifests and fields that vary between two run
 
 - Python 3.12.14 on macOS arm64, one fresh virtual environment per release.
 - 0.2.0: the two release wheels, verified against their published SHA-256 values; examples from commit `d086973`.
-- 0.3.0: the wheel built from commit `320dcd4`; examples from the same commit.
+- 0.3.0: the wheel built from commit `1d43c6d`; examples from the same commit.
 - The Python network guard of the [v0.1.1 package](../v0.1.1/tools/netguard.py) was installed in each environment.
 - [`results/environment.json`](results/environment.json) lists the wheel hashes and the guard records: every recorded process was armed, and no network operation was refused.
 
@@ -35,7 +35,7 @@ Only names, versions, module-hash manifests and fields that vary between two run
 | Pairing | Differences | Cause |
 | --- | ---: | --- |
 | 0.2.0 run 1 with runs 2, 3 and 4 | 0 | — |
-| 0.2.0 run 1 with 0.3.0 run 1 | 32 | The report row `code / module count` shows 74 bound modules in 0.2.0 and 51 in 0.3.0 |
+| 0.2.0 run 1 with 0.3.0 run 1 | 32 | The report row `code / module count` shows 74 bound modules in 0.2.0 and 45 in 0.3.0 |
 | 0.3.0 run 1 with 0.3.0 run 2 | 24 | The two review positions of the reviewed unknown case appear in swapped order |
 
 Version 2 masks the module-count row, which belongs to the module-hash manifest.
@@ -55,9 +55,9 @@ The four 0.2.0 recordings happened to share one order; this field was therefore 
 ### Code and tests
 
 - [`tools/logic_diff.py`](tools/logic_diff.py) compares every audit-runtime module of 0.2.0 with its 0.3.0 successor, without imports and docstrings.
-  27 of 42 modules are identical. The others differ only in names and identifiers, the package version lookup, dead assignments, f-strings without placeholders and the two code-binding functions ([logic diff](results/logic-diff.txt)).
+  Five modules moved to the research record. 26 of the remaining 37 are identical; the others differ only in names and identifiers, the package version lookup, dead assignments, f-strings without placeholders and the two code-binding functions ([logic diff](results/logic-diff.txt)).
 - [`tools/test_checks.py`](tools/test_checks.py) counts the `assert` and `pytest.raises` checks of every retained test function.
-  One function has one check fewer: the dropped check of the archived study harness. The functions no longer present are the archived harness and legacy-CLI tests ([test checks](results/test-checks.txt)).
+  Every function with fewer checks lost only checks of archived modules; the functions and files no longer present tested archived modules ([test checks](results/test-checks.txt)).
 
 ## Reproduce
 

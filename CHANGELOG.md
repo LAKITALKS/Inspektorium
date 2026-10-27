@@ -20,14 +20,16 @@ Evaluation behavior is unchanged. See the
 - All dependencies are declared in one `pyproject.toml`: `click`, `pydantic` and `pyyaml`, plus the
   optional extra `providers`; the extra `anthropic` stays as an alias.
 - Audit modules are named by responsibility instead of project phase: `workflow`, `forensics`,
-  `review`, `execution`, `integrity`, `checks` and `reports`.
-- Modules that the audit command does not reach moved to the research record together with their
-  tests. The suite has 2840 tests; the
-  [migration guide](docs/development/migration-0.3.md#tests) lists each moved test file and its subject.
+  `review`, `execution`, `integrity` and `checks`.
+- Modules that no `inspektorium` command loads moved to the research record together with their
+  tests, among them the historical research harness, the legacy report generators and the former
+  official-release boundary. The provider adapters stay; the Python API loads them on request. The
+  suite has 2686 tests; the [migration guide](docs/development/migration-0.3.md#tests) lists each
+  moved test file and its subject.
 
 ### Names in outputs
 
-- Generated reports, help texts and release-boundary identifiers name Inspektorium. Bundles record
+- Generated reports, help texts and identifiers name Inspektorium. Bundles record
   the `inspektorium` package version. The migration guide lists every changed value.
 - Prompt versions and prompt bytes, status values, exit codes, control identifiers and gate versions
   are unchanged.

@@ -290,7 +290,7 @@ Its code lives in `inspektorium.audit`:
 | Forensics | `forensics/` | Semantic and inferential analysis and taxonomy (Phase 8) |
 | Review | `review/` | Disagreement routing, adjudication, review history (Phase 9) |
 | Execution | `execution/` | Runner, evaluator, task loading |
-| Integrity | `integrity/` | Artifact binding, audit trail, output contract, release boundary, budget ledger |
+| Integrity | `integrity/` | Artifact binding, audit trail, output contract, budget ledger |
 | Checks | `checks/` | Claim, consistency, forecast, reasoning, step and confidence checks |
 
 ### Operational states and exits

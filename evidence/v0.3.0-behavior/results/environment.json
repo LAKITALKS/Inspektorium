@@ -9,9 +9,9 @@
   "examples": "commit d086973: examples/ and agent-arena/examples/phase10/"
  },
  "candidate_0_3_0": {
-  "wheel": "inspektorium-0.3.0-py3-none-any.whl built from commit 320dcd4",
-  "wheel_sha256": "8ff7e38d7dac989b86f5de68f29f9fcac20f84674bbdc1f767e70d10002f9024",
-  "examples": "commit 320dcd4: examples/inspect/ and examples/audit/"
+  "wheel": "inspektorium-0.3.0-py3-none-any.whl built from commit 1d43c6d",
+  "wheel_sha256": "99cc792420a9b4dbbe30488b7b400e32a44db9bab0a02ddec3a5e85cce87af57",
+  "examples": "commit 1d43c6d: examples/inspect/ and examples/audit/"
  },
  "network_guard": {
   "0.2.0-r1": {

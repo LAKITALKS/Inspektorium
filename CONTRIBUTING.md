@@ -21,7 +21,8 @@ The `providers` extra installs the provider SDKs for adapter tests. No test call
 ```bash
 ruff check .
 ruff format --check .
-mypy src/inspektorium/core src/inspektorium/report src/inspektorium/providers src/inspektorium/cli.py
+mypy src/inspektorium/core src/inspektorium/report src/inspektorium/providers \
+  src/inspektorium/cli.py src/inspektorium/__init__.py src/inspektorium/__main__.py
 python scripts/check_type_baseline.py
 python -m pytest
 python scripts/run_acceptance.py --output "$(mktemp -d)/acceptance"

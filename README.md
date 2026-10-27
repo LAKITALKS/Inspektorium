@@ -14,6 +14,8 @@ Evaluation reports can be manipulated by the very text they contain.
 A reader then trusts a citation or a report line that nobody checked.
 Inspektorium makes both visible and blocks by default.
 
+It is for people who audit model answers or evaluation reports and need every reported finding to rest on evidence they can check.
+
 ## What it does
 
 - **Exact citation binding.** Every quotation and claim span must match the supplied text exactly at its stated character offsets.
@@ -36,7 +38,7 @@ flowchart LR
 ```
 
 Evaluators, human or model, *propose* relations between claims and sources.
-Inspektorium never judges meaning; it checks the evidence pointers and gates the report on them.
+Inspektorium does not decide whether a claim is true; it checks the evidence pointers and gates the report on them.
 See [how it works](docs/concepts/how-it-works.md).
 
 ## Quickstart
@@ -92,7 +94,7 @@ The [getting-started guide](docs/getting-started.md) walks through both workflow
 
 ## What it is not
 
-- **Not a check of meaning.** An exact quotation can still be quoted out of context.
+- **Not a truth check.** An exact quotation can still be quoted out of context, and a released audit result is not scientific truth.
 - **Not a hallucination score.** There is no global score or answer-level label.
 - **Not yet shown to work scientifically.** An owner-reported pilot found no accuracy difference between its prompt conditions. This null result sits at a ceiling; see [results](docs/research/results.md#outcomes-including-the-null-result).
 
@@ -115,14 +117,14 @@ Inspektorium is not a better judge. It is an integrity layer for the evidence an
 | Tool | What it does | Difference |
 | --- | --- | --- |
 | [Anthropic Citations API](https://platform.claude.com/docs/en/build-with-claude/citations) | The model returns cited text with character locations in supplied documents | Pointers come from the provider during generation; Inspektorium checks evaluator pointers afterwards |
-| [verbatimeter](https://pypi.org/project/verbatimeter/) | Measures verbatim reuse of source text, offline | Lexical reuse measure; no offset binding or report gating |
+| [verbatimeter](https://pypi.org/project/verbatimeter/) | Measures verbatim reuse offline; `--quotes --fail` fails a run on a differing quotation | Checks quotations token by token; no binding to stated offsets and no per-finding reportability |
 | [anchor](https://github.com/hnvivek/anchor) | Grounding gate with NLI and an optional LLM judge; emits offsets | Decides support with a model; Inspektorium decides no support |
 | [LettuceDetect](https://github.com/KRLabsOrg/LettuceDetect) | Predicts hallucinated character spans with a classifier | Predicts spans; Inspektorium verifies given spans |
 | [RAGAS faithfulness](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/) | LLM-judged share of supported statements | A model-based score; Inspektorium produces no score |
 | [garak `ansiescape`](https://github.com/NVIDIA/garak/blob/main/garak/probes/ansiescape.py) | Probes whether a model emits terminal escape codes | Probes the model; Inspektorium neutralizes such text in reports |
 | [Inspect](https://github.com/UKGovernmentBEIS/inspect_ai) | General framework for LLM evaluations | A harness; Inspektorium checks the evidence and reports it produces |
 
-TruLens, RefChecker and MiniCheck are model-based groundedness scorers like RAGAS. The comparison is in the [paper draft](paper/paper.md).
+[TruLens](https://github.com/truera/trulens), RefChecker and MiniCheck are model-based groundedness scorers like RAGAS; the [paper draft](paper/paper.md) compares them.
 
 ## Documentation
 

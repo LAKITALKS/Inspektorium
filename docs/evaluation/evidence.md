@@ -110,4 +110,6 @@ Historical counters are not current results. No historical live evidence concern
 
 ## Continuous integration
 
-<!-- CI-LINKS: filled at release -->
+The release candidate was checked by every CI job on its pull request: [pull request #5 checks](https://github.com/LAKITALKS/Inspektorium/pull/5/checks).
+Runs on `main`, including the run of the release merge, are listed under [CI runs on `main`](https://github.com/LAKITALKS/Inspektorium/actions/workflows/ci.yml?query=branch%3Amain).
+The [GitHub release](https://github.com/LAKITALKS/Inspektorium/releases/tag/v0.3.0) links the run of the tagged commit.
