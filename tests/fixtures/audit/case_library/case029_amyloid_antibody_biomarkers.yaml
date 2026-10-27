@@ -1,0 +1,86 @@
+id: study-forensics-029
+title: "Study Forensics: Amyloid-targeting antibody improves biomarkers without cognitive benefit"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: solid
+trap_type: borderline_solid_with_caveats
+ambiguity_level: medium
+prompt: |
+  In a randomized Phase 2/3 trial, researchers tested a monoclonal antibody that clears amyloid plaques in people with inherited Alzheimer's disease. The drug dramatically reduced amyloid deposits and improved markers of neurodegeneration in participants' brains. Despite these biomarker successes, the trial failed to show any slowing of cognitive decline. Investigators emphasised the drug's strong impact on biomarkers and proposed an open-label extension, but acknowledged that its cognitive benefits remain unproven.
+context: |
+  A human clinical trial that hits its mechanistic target (amyloid clearance,
+  biomarker improvement) but fails to meet the primary clinical endpoint
+  (cognitive decline). The reporting is honest: failure is acknowledged,
+  cognitive benefits are stated as unproven.
+expected_answer: "solid"
+reference_solution: |
+  The summary describes a therapy that successfully clears amyloid plaques and improves biomarkers in a human trial, but honestly reports that cognitive benefit was not achieved. Investigators acknowledge the unproven cognitive benefits. The reporting accurately conveys the mixed results without overclaiming clinical efficacy.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  v0.6.4 relabel from mechanism_vs_evidence to solid. All three models (Haiku,
+  Sonnet, Opus) independently classified this as solid with plausible reasoning:
+  the investigators honestly report the failed cognitive endpoint, explicitly
+  acknowledge unproven cognitive benefits, and do not conflate biomarker success
+  with clinical efficacy. The "emphasised biomarker impact" is mild rhetorical
+  framing, not an active mechanism-evidence conflation. The open-label extension
+  proposal is standard clinical practice, not overclaim. The text presents an
+  honest mixed-result report — exactly what "solid" means.
+gold_alternative_reading: |
+  One could argue that emphasising biomarker success while proposing continued
+  treatment despite a failed primary endpoint constitutes a subtle mechanism-vs-evidence
+  tension. However, the explicit acknowledgment that "cognitive benefits remain
+  unproven" makes this a case of honest reporting, not overclaim or mechanism
+  conflation.
+gold_summary: |
+  Honest reporting of a clinical trial with biomarker success but failed cognitive endpoint. Investigators acknowledge unproven cognitive benefits. Relabeled from mechanism_vs_evidence to solid after calibration sprint showed all 3 models correctly identified honest reporting.
+curator_notes: |
+  v0.6.4 RELABELED. Originally Shape B of mechanism_vs_evidence (biomarker success
+  without clinical outcome). After Mechanism Calibration Sprint, all 3 models
+  (Haiku, Sonnet, Opus) independently classified as solid with strong reasoning.
+  The key insight: the text does NOT actively sell biomarker success as clinical
+  benefit. The investigators acknowledge failure honestly. This is "weak evidence
+  honestly reported" (solid), not "mechanism conflated with evidence". For a true
+  Shape-B mechanism_vs_evidence case, the biomarker success must be rhetorically
+  presented as therapeutic proof — which case032 now provides.
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: medium
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: medium
+gold_evidence_spans:
+  - span: "the trial failed to show any slowing of cognitive decline"
+    why_it_matters: "Honest reporting of a negative primary endpoint — key marker of solid reporting."
+    supports_finding: evidence_matches_claim
+  - span: "acknowledged that its cognitive benefits remain unproven"
+    why_it_matters: "Explicit caveat demonstrating appropriate epistemic restraint."
+    supports_finding: cautious_scope_control
+  - span: "Investigators emphasised the drug's strong impact on biomarkers and proposed an open-label extension"
+    why_it_matters: "Mild rhetorical emphasis on positive aspects, but within bounds of honest reporting."
+    supports_finding: evidence_matches_claim
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "honest reporting"
+    variants: ["acknowledged", "remain unproven", "failed to show"]
+    functional_descriptions:
+      - "investigators honestly report the failed primary endpoint"
+  - keyword: "appropriate scope"
+    variants: ["cognitive benefits remain unproven", "despite these biomarker successes"]
+    functional_descriptions:
+      - "the text does not conflate biomarker changes with clinical efficacy"
+common_errors:
+  - overflagging because of biomarker-clinical mismatch
+  - missing the honest caveating as a strength
+expected_failure_modes:
+  - overclaiming
+  - false_positive_flagging
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent recognise honest reporting of mixed clinical results without overflagging the biomarker-clinical gap?"

@@ -1,0 +1,173 @@
+id: P7A-BND-002
+title: "Boundary: '10,000 steps a day is required for health' (marketing-derived threshold)"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: unsupported_threshold_overclaim
+ambiguity_level: medium
+prompt: |
+  A wellness brand's campaign asserts: "The science is clear — you must walk 10,000 steps every day to stay healthy and lower your risk of early death. Anything less and you are not doing enough."
+
+  The 10,000-steps figure originated in 1965 as a marketing slogan for the Japanese "manpo-kei" ("10,000-steps meter") pedometer; it was chosen as a memorable round number and has no scientific basis. A 2022 meta-analysis of 15 international cohorts (Paluch et al., Lancet Public Health, 47,471 adults) found that all-cause mortality risk decreases with more daily steps but the benefit PLATEAUS at roughly 6,000-8,000 steps/day for older adults (60+) and roughly 8,000-10,000 steps/day for younger adults, with no clear additional mortality benefit beyond those ranges. Related cohort work found much of the mortality benefit is already captured well below 10,000 steps (e.g. around 7,000 steps/day). Step-count/mortality evidence is observational (associational).
+context: |
+  Evidence tier: pooled prospective cohort meta-analysis (observational). The dose-response
+  association is real but the benefit plateaus below 10,000 steps; the specific 10,000 threshold is
+  a 1965 marketing number, not an evidence-derived cut-point. The claim's error is asserting a
+  specific unsupported threshold ("must ... 10,000 ... anything less is not enough"), not a
+  causal-inference leap.
+expected_answer: "overclaim"
+reference_solution: |
+  The public claim manufactures a hard, specific requirement ("must walk 10,000 ... anything less is
+  not enough") that the evidence does not support: the 10,000 number is a marketing artifact and the
+  observed mortality benefit plateaus at ~6,000-8,000 (older) / ~8,000-10,000 (younger) steps, with
+  much of the benefit already below 10,000. The framing exceeds the evidence via an unsupported
+  specific threshold and false all-or-nothing certainty = overclaim. It is not primarily a
+  correlation/causation error: the claim's defect is the fabricated threshold and certainty, not the
+  (separate) observational-vs-causal question.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: a mandatory, specific threshold — 10,000 steps/day is required, and any
+     amount below it is insufficient for health.
+  2. What the evidence establishes: an observational dose-response in which mortality risk falls with
+     more steps but plateaus at ~6,000-8,000 (older) / ~8,000-10,000 (younger) steps; the 10,000
+     figure is a 1965 marketing slogan with no scientific basis.
+  3. Mismatch: the claim converts a graded, plateauing association into a hard specific cut-point and
+     an all-or-nothing rule — a threshold and certainty the data do not support.
+  4. Frozen label triggered: overclaim (unsupported specificity + certainty inflation; framing
+     exceeds evidence).
+  5. Why correlation_vs_causation is tempting: the step-mortality evidence is observational, so a
+     reviewer may reach for the correlation/causation boundary.
+  6. Why precedence rejects it as primary: the claim's central failure is not "causation inferred
+     from a non-causal design"; even granting an effect of walking, the specific 10,000 requirement
+     and "anything less is not enough" are unsupported by the dose-response, which plateaus lower.
+     The generic inflation (unsupported threshold/certainty) is the core error, so the primary stays
+     overclaim (docs/taxonomy_precedence.md rule 2).
+  7. What would change the classification: if the claim were "people who walk more tend to live
+     longer, so walking causes longer life — everyone should walk to prevent death," the
+     causal-from-observational trigger would move to the foreground (correlation_vs_causation).
+gold_alternative_reading: |
+  Alternative: correlation_vs_causation. Plausible because step-count/mortality data are
+  observational and confounded (healthier people walk more). It loses under precedence because the
+  claim's decisive defect is the fabricated specific threshold and all-or-nothing certainty, not a
+  causal inference from a confounded design; the association's direction is not the disputed point.
+gold_summary: |
+  A campaign insists 10,000 steps/day is required and anything less is "not enough." The 10,000
+  figure is a 1965 marketing slogan; the observational dose-response plateaus at ~6,000-8,000
+  (older)/8,000-10,000 (younger) steps. The defect is an unsupported specific threshold + certainty
+  = overclaim, not a causal-inference error.
+curator_notes: |
+  Boundary family B1 (overclaim <-> correlation_vs_causation), overclaim direction. Sourced from the
+  manpo-kei marketing origin and Paluch et al. 2022 (Lancet Public Health). Independent proposition
+  (no steps/exercise case in Class A). Gold frozen before any model output.
+expected_findings:
+  - finding: unsupported_threshold
+    severity: major
+    confidence: high
+    note: "10,000 is a 1965 marketing number; benefit plateaus below it"
+  - finding: certainty_inflation
+    severity: moderate
+    confidence: high
+    note: "'Must ... anything less is not enough' is an all-or-nothing rule the graded data do not support"
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+    note: "Observational dose-response reframed as a hard mandatory cut-point"
+gold_evidence_spans:
+  - span: "you must walk 10,000 steps every day to stay healthy"
+    why_it_matters: "Asserts a specific, mandatory threshold that the evidence does not support."
+    supports_finding: unsupported_threshold
+  - span: "Anything less and you are not doing enough"
+    why_it_matters: "All-or-nothing certainty contradicted by a graded, plateauing dose-response."
+    supports_finding: certainty_inflation
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "marketing origin"
+    variants: ["manpo-kei", "1965", "no scientific basis"]
+    functional_descriptions:
+      - "The 10,000 figure is a marketing slogan, not an evidence-derived threshold"
+  - keyword: "benefit plateau"
+    variants: ["6,000-8,000", "diminishing returns", "below 10,000"]
+    functional_descriptions:
+      - "Mortality benefit plateaus below 10,000 steps in cohort meta-analysis"
+common_errors:
+  - defaulting to correlation_vs_causation for any observational health claim
+  - accepting 10,000 as an evidence-based target
+  - missing the plateau / diminishing returns
+expected_failure_modes:
+  - overclaim_to_over_specific
+  - threshold_fabrication
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent identify an unsupported specific threshold as overclaim rather than a causal-inference error?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-002
+  case_family: boundary
+  boundary_family_id: B1
+  boundary: "overclaim <-> correlation_vs_causation"
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) plus one genuinely plausible alternate (correlation_vs_causation,
+    invited by the observational data); precedence decides. Moderate claim-evidence distance; no
+    deep evidence-tier conflict. Property-based tagging.
+  precedence_rationale: |
+    The specific correlation_vs_causation trigger (causal claim from a non-causal design) is not the
+    decisive defect; even if walking helps, the claim's unsupported 10,000 threshold and
+    all-or-nothing certainty are generic inflation. Under docs/taxonomy_precedence.md the primary
+    stays overclaim; correlation_vs_causation is the documented alternative.
+  ambiguity_note: |
+    Difficult but determinate: overclaim is the single defensible primary; the observational nature
+    of the evidence makes correlation_vs_causation tempting but not controlling.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the step-mortality data are observational and confounded, so
+    the whole claim could be attacked as correlation_vs_causation. Counter-evidence weighed: the
+    claim does not hinge on inferring causation from a confounded design; its decisive, checkable
+    error is the fabricated 10,000 threshold and certainty, which stands even if walking is causally
+    beneficial. Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "The ubiquitous '10,000 steps a day' health mandate (marketing-slogan origin, popularized by fitness trackers and corporate wellness)"
+    claim_source_url: "https://www.mcgill.ca/oss/article/health/10000-steps-myth-or-fact"
+    claim_source_publisher: "Recurring wellness/fitness-tracker mandate; origin and non-scientific basis documented by McGill Office for Science and Society (and ScienceFocus)"
+    claim_source_date: "1965"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "The '10,000 steps a day' target originated as a 1965 marketing slogan for the Japanese 'manpo-kei' pedometer and became a default goal on fitness trackers and in corporate wellness programs; it is routinely asserted as a required health minimum. The frozen span is the bounded 'you must walk 10,000 steps / anything less is not enough' mandate that the step-mortality evidence does not support."
+    claim_exact_span: "you must walk 10,000 steps every day to stay healthy ... Anything less and you are not doing enough"
+    evidence_sources:
+      - citation: "Paluch AE et al. Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts. Lancet Public Health 2022;7(3):e219-e228"
+        url: "https://pubmed.ncbi.nlm.nih.gov/35247352/"
+        design: "Meta-analysis of prospective cohorts (observational)"
+        population: "47,471 adults (Asia, Australia, Europe, North America)"
+        intervention_or_exposure: "Daily step count"
+        comparator: "Lower step counts (by quartile)"
+        endpoint: "All-cause mortality"
+        result: "Inverse dose-response that plateaus at ~6,000-8,000 steps/day (older adults 60+) and ~8,000-10,000 (younger adults); no clear additional benefit beyond"
+        source_role: systematic_review
+        evidence_tier: "Observational cohort meta-analysis"
+        limitations: "Associational; confounded by overall health/activity; cannot prove causation"
+      - citation: "Origin of the 10,000-steps target: 1965 'manpo-kei' pedometer marketing slogan (no scientific basis)"
+        url: "https://www.sciencealert.com/scientists-identify-the-optimal-number-of-daily-steps-for-longevity-and-its-not-10000"
+        design: "Historical/marketing provenance"
+        population: "n/a"
+        intervention_or_exposure: "n/a"
+        comparator: "n/a"
+        endpoint: "n/a"
+        result: "10,000 chosen as a memorable round number for a pedometer campaign; not evidence-derived"
+        source_role: secondary_discovery
+        evidence_tier: "Documentary/provenance"
+        limitations: "Establishes the number's non-scientific origin"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: correlation_vs_causation
+    probes: "overclaim -> over-specific (correlation) attractor"
+  case_fingerprint: "fd7e595d106cbef18ea87abe7fea1b6fc76ddf3ea6282413ef8248124a5b42c9"

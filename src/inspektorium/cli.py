@@ -6,11 +6,11 @@ import argparse
 import sys
 from collections.abc import Sequence
 from datetime import datetime
+from importlib import import_module
 from pathlib import Path
 
 from pydantic import ValidationError
 
-from inspektorium.audit import run_audit
 from inspektorium.core.inspection import inspect_proposals
 from inspektorium.core.models import (
     AnswerInput,
@@ -26,6 +26,46 @@ from inspektorium.providers.parsing import (
     parse_proposal_json,
 )
 from inspektorium.report import render_json, render_markdown
+
+
+def run_audit(arguments: Sequence[str]) -> int:
+    """Run the audit command group and preserve its exit status.
+
+    The audit runtime is imported lazily, so ``inspektorium --help`` and
+    ``inspektorium inspect`` do not load it. A missing runtime is reported with
+    exit status 2; there is no fallback to the reference checker.
+    """
+
+    try:
+        backend = import_module("inspektorium.audit.phase10_cli")
+    except ModuleNotFoundError as exc:
+        if exc.name != "inspektorium.audit" and not (
+            exc.name or ""
+        ).startswith("inspektorium.audit."):
+            raise
+        print(
+            "inspektorium audit: the audit runtime is missing from this "
+            "installation; reinstall the inspektorium package.",
+            file=sys.stderr,
+        )
+        return 2
+
+    click = import_module("click")
+    try:
+        result: object = backend.audit.main(
+            args=list(arguments), prog_name="inspektorium audit", standalone_mode=False
+        )
+    except click.ClickException as exc:
+        exc.show()
+        return int(exc.exit_code)
+    except click.Abort:
+        print("Aborted!", file=sys.stderr)
+        return 1
+    if result is None:
+        return 0
+    if isinstance(result, int):
+        return result
+    raise TypeError("The audit runtime returned a non-integer exit status")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -196,4 +236,4 @@ def main(argv: Sequence[str] | None = None) -> int:
     return 2
 
 
-__all__ = ["build_parser", "main"]
+__all__ = ["build_parser", "main", "run_audit"]

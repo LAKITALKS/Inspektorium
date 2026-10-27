@@ -1,0 +1,68 @@
+id: study-forensics-060
+title: 'Study Forensics: Synthetic-benchmark success framed as real-world readiness'
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: synthetic_to_real_overreach
+ambiguity_level: low
+origin: synthetic_fixture
+prompt: |
+  A robotics team reports 98% task success in a simulated warehouse environment and announces the system 'works in the real world' and is 'ready for deployment'. All evaluation was in simulation; no physical-world testing is reported.
+context: |
+  Simulation success is generalised to real-world performance and deployment readiness, despite the well-known sim-to-real gap. Generalisation overclaim.
+expected_answer: overclaim
+reference_solution: |
+  Simulation omits real-world sensor noise, physical variability, and edge cases (the sim-to-real gap). A 98% simulated success does not establish that the system 'works in the real world' or is deployment-ready — an overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  Simulated-only success is extended to real-world performance and readiness without any physical testing. The synthetic-to-real generalisation is the primary overclaim.
+gold_alternative_reading: null
+gold_summary: |
+  98% success in simulation is announced as 'works in the real world' and 'deployment-ready' with no physical testing. Sim-to-real overclaim.
+curator_notes: |
+  Synthetic-to-real generalisation overclaim. Complements case058/case042. Discrimination: separates weak from strong models on the sim-to-real gap.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: unsupported_generalization
+  severity: major
+  confidence: high
+- finding: conclusion_exceeds_results
+  severity: moderate
+  confidence: high
+gold_evidence_spans:
+- span: 98% task success in a simulated warehouse environment
+  why_it_matters: Evidence is simulation-only.
+  supports_finding: conclusion_exceeds_results
+- span: '''works in the real world'' and is ''ready for deployment'''
+  why_it_matters: Real-world readiness claimed with no physical testing.
+  supports_finding: unsupported_generalization
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: sim-to-real gap
+  variants:
+  - simulation
+  - simulated
+  - no physical testing
+  functional_descriptions:
+  - simulation does not equal the real world
+- keyword: deployment readiness
+  variants:
+  - works in the real world
+  - ready for deployment
+  functional_descriptions:
+  - readiness asserted from synthetic evaluation
+common_errors:
+- treating simulation success as real-world proof
+- ignoring the sim-to-real gap
+expected_failure_modes:
+- missing_overclaim
+- generalization_blindness
+discriminative_dimensions:
+- correctness
+- insight_depth
+diagnostic_focus: Can the agent flag real-world readiness claimed from synthetic-only evaluation?

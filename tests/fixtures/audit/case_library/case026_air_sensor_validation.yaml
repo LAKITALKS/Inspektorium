@@ -1,0 +1,73 @@
+id: study-forensics-026
+title: "Study Forensics: Low-cost air sensor validation"
+domain: study_forensics
+difficulty: easy
+task_type: study_forensics
+task_family: solid
+trap_type: overflagging_technical_validation
+ambiguity_level: low
+prompt: |
+  Researchers validated low-cost particulate matter sensors against regulatory-grade reference instruments at three urban monitoring sites over six months. The study compared readings from 45 low-cost sensors costing approximately 250 dollars each against Federal Reference Method monitors for PM2.5 concentrations ranging from 5 to 85 micrograms per cubic meter. Linear regression showed strong correlation between low-cost and reference sensors with an R-squared of 0.87, slope of 0.94, and intercept of 1.2 micrograms per cubic meter. However, accuracy degraded significantly at humidity levels above 80 percent, with measurement error increasing from plus or minus 3 to plus or minus 8 micrograms per cubic meter. Sensors also underestimated concentrations during wildfire smoke events by an average of 15 percent. The authors recommend these sensors for identifying spatial patterns and temporal trends in typical urban conditions but caution against using them for regulatory compliance monitoring or health studies requiring precise exposure assessment during extreme pollution events. They provide site-specific calibration equations and note that sensors require recalibration every 12 months.
+context: |
+  A rigorous validation study that explicitly states where the technology works and where it fails.
+  The agent should recognise the appropriate epistemic boundaries.
+expected_answer: "solid"
+reference_solution: |
+  Rigorous validation study with explicit boundary conditions, degradation analysis under stress conditions, and appropriate usage recommendations that respect instrument limitations. The authors explicitly forbid inappropriate use cases despite potential demand.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The study demonstrates excellent metrological practice: correlation is not treated as
+  interchangeability, specific failure modes are characterized (humidity, high concentration),
+  and recommendations are appropriately bounded. The R-squared of 0.87 is strong but not
+  overstated as perfect agreement. Authors explicitly forbid inappropriate use cases
+  (regulatory compliance) despite potential demand for such applications.
+gold_alternative_reading: null
+gold_summary: |
+  Rigorous validation study with explicit boundary conditions, degradation analysis under stress conditions, and appropriate usage recommendations that respect instrument limitations.
+curator_notes: |
+  Non-health solid case from environmental science. Tests whether agents can recognise
+  proper technical validation and appropriate "do not use for X" recommendations.
+  Diversifies domain coverage beyond health/supplements.
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: high
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: high
+  - finding: none_or_minor
+    severity: minor
+    confidence: high
+gold_evidence_spans:
+  - span: "accuracy degraded significantly at humidity levels above 80 percent"
+    why_it_matters: "Identifies specific environmental conditions where instrument fails."
+    supports_finding: evidence_matches_claim
+  - span: "recommend these sensors for identifying spatial patterns and temporal trends in typical urban conditions but caution against using them for regulatory compliance monitoring"
+    why_it_matters: "Explicit prohibition of inappropriate use despite potential market pressure."
+    supports_finding: cautious_scope_control
+  - span: "sensors require recalibration every 12 months"
+    why_it_matters: "Practical limitation openly disclosed."
+    supports_finding: cautious_scope_control
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "boundary conditions"
+    variants: ["caution against", "degrade", "failure mode"]
+    functional_descriptions:
+      - "authors state where the technology does and does not work"
+  - keyword: "validation"
+    variants: ["reference instruments", "R-squared", "calibration"]
+    functional_descriptions:
+      - "proper metrological comparison against gold standard"
+common_errors:
+  - treating acknowledged limitations as unacknowledged flaws
+  - overflagging because the technology has known weaknesses
+expected_failure_modes:
+  - false_positive_flagging
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent recognise proper technical validation with appropriate epistemic boundaries?"

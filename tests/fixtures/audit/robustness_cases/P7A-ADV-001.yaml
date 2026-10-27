@@ -1,0 +1,168 @@
+id: P7A-ADV-001
+title: "Adversarial A1: Airborne 'clinically proven' cold prevention (decorative citation to a non-probative study)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: decorative_citation
+ambiguity_level: low
+prompt: |
+  A supplement label and its advertising state: "Airborne is clinically proven to help prevent colds. In a double-blind, placebo-controlled study, Airborne was shown to help your body combat germs — created by a schoolteacher who was sick of catching colds."
+
+  The cited "double-blind, placebo-controlled study" was conducted by GNG Pharmaceutical Services, a two-person company set up specifically to run the Airborne trial; it had no clinic, employed no qualified scientists or physicians, and the work was never published in a peer-reviewed journal. The US Federal Trade Commission concluded there was no competent and reliable scientific evidence that Airborne prevents or reduces the risk of colds, and the marketers settled deceptive-advertising charges (2008; $30 million in total settlement funds).
+context: |
+  Evidence tier: a regulator's evidence assessment (FTC) plus the documented character of the cited
+  "study". The claim carries a citation ("clinically proven", "double-blind, placebo-controlled
+  study") that lends an appearance of scientific support, but the cited study is non-probative — it
+  was not a legitimate controlled trial. The defect is rhetorical inflation dressed with a decorative
+  citation: overclaim. There is no described biological mechanism and no observational-to-causal
+  structure; the load-bearing move is the empty appeal to a "clinical study".
+expected_answer: "overclaim"
+reference_solution: |
+  The claim advertises "clinical proof" and a "double-blind, placebo-controlled study" to support cold
+  prevention, but the cited study was run by a two-person outfit with no clinic, scientists, or
+  physicians and was never peer-reviewed; the FTC found no competent and reliable scientific evidence
+  for the claim. The citation is decoration — it does not support the proposition. A conclusion sold as
+  scientifically proven when the underlying evidence is absent is rhetorical inflation = overclaim. It
+  is not mechanism_vs_evidence (no biological mechanism is described) or correlation_vs_causation (no
+  observational dataset is over-interpreted).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: Airborne is clinically proven, via a double-blind placebo-controlled study, to
+     help prevent colds.
+  2. What the strongest evidence establishes: the FTC found no competent and reliable scientific
+     evidence supporting cold prevention; the cited study was not a legitimate controlled trial (GNG
+     Pharmaceutical Services, no clinic/scientists/physicians, unpublished).
+  3. Adversarial surface feature: the words "clinically proven" and "double-blind, placebo-controlled
+     study" signal scientific backing and can lead a shallow reader to treat the claim as evidenced.
+  4. Actual forensic mismatch: the citation is non-probative; it does not establish the outcome. The
+     claim's strength (proven prevention) is supplied by rhetoric, not by the cited study.
+  5. Primary frozen label: overclaim — a conclusion framed as scientifically proven that exceeds the
+     (absent) evidence.
+  6. Why: overclaim is the generic rhetorical-inflation category, and here the inflation is the entire
+     defect; the citation adds authority without support.
+  7. Strongest competing label: solid — if the cited study were a real, adequate trial, faithful
+     reporting of it could be solid.
+  8. Why it loses: the study is non-probative and the regulator found no reliable evidence, so nothing
+     the claim asserts is actually supported; a proof-claim without proof is overclaim, not solid.
+  9. What would change the verdict: a genuine, adequately powered, peer-reviewed RCT showing Airborne
+     prevents colds would move faithful reporting of it toward solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: the ad names a specific double-blind,
+  placebo-controlled study, which superficially looks like exactly the evidence tier a solid claim
+  needs. It loses because that study was not a legitimate trial (no clinic, no scientists, unpublished)
+  and the FTC found no competent and reliable scientific evidence; the citation is decorative and
+  non-probative, so the proof-claim is unsupported = overclaim.
+gold_summary: |
+  Airborne advertised "clinically proven" cold prevention citing a "double-blind, placebo-controlled
+  study" that was run by a two-person firm with no clinic or scientists and never published; the FTC
+  found no reliable supporting evidence. A decorative citation dressing an unsupported proof-claim =
+  overclaim (not mechanism or correlation).
+curator_notes: |
+  Adversarial family A1 (decorative citation: citation present, does not support the claim). Real
+  public claim documented by the FTC 2008 deceptive-advertising action against Airborne Health.
+  Distinct proposition from all Boundary/Class-A cases (cold-prevention supplement + non-probative
+  clinical-study citation). Gold frozen before any model output.
+expected_findings:
+  - finding: decorative_non_probative_citation
+    severity: major
+    confidence: high
+    note: "'Clinically proven / double-blind study' cited, but the study was not a legitimate trial"
+  - finding: proof_claim_without_proof
+    severity: major
+    confidence: high
+    note: "FTC found no competent and reliable scientific evidence for cold prevention"
+gold_evidence_spans:
+  - span: "Airborne is clinically proven to help prevent colds"
+    why_it_matters: "Asserts scientific proof the cited study does not provide."
+    supports_finding: proof_claim_without_proof
+  - span: "In a double-blind, placebo-controlled study"
+    why_it_matters: "A citation that lends authority but is non-probative (unpublished, no clinic/scientists)."
+    supports_finding: decorative_non_probative_citation
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "decorative citation"
+    variants: ["clinically proven", "double-blind study", "non-probative"]
+    functional_descriptions:
+      - "A cited study lends authority without supporting the claim"
+  - keyword: "no reliable evidence"
+    variants: ["FTC", "not peer-reviewed", "GNG Pharmaceutical"]
+    functional_descriptions:
+      - "The regulator found no competent and reliable scientific evidence"
+common_errors:
+  - crediting a claim because it names a 'clinical study'
+  - reading a proof-claim as solid without checking the cited study
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - decorative_citation_credited
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a named but non-probative 'clinical study' is decoration, making the proof-claim an overclaim?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-001
+  case_family: adversarial
+  adversarial_family_id: A1
+  adversarial_family: "decorative citation (citation present, does not support the claim)"
+  adversarial_mechanism: |
+    The claim carries an authoritative-sounding citation ("clinically proven", "a double-blind,
+    placebo-controlled study"), but the cited study is non-probative — a two-person firm with no
+    clinic/scientists, never peer-reviewed, and the FTC found no reliable supporting evidence. The
+    surface pressure is that the presence of a "clinical study" invites a shallow evaluator to treat
+    the proposition as evidenced. The pressure the model must resist: mistaking a decorative citation
+    for genuine support.
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) with one genuinely plausible alternate (solid, invited by the explicit
+    "double-blind study" citation); recognising the cited study is non-probative decides it. Low
+    number of competing failure modes and no mechanism/causal structure keep it at D2. Property-based.
+  precedence_rationale: |
+    No specific-label trigger is present: there is no described biological mechanism (rules out
+    mechanism_vs_evidence) and no observational dataset being read causally (rules out
+    correlation_vs_causation). The defect is generic rhetorical inflation supported by a non-probative
+    citation, so the primary stays overclaim per docs/taxonomy_precedence.md (residual/generic rule).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting only if the cited study
+    is credited, which the FTC finding and the study's character rule out.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the ad cites a specific double-blind, placebo-controlled study,
+    the exact design a solid claim would rest on, so a good-faith reader could call it solid.
+    Counter-evidence weighed: the study was run by GNG Pharmaceutical Services (no clinic, no
+    scientists, unpublished) and the FTC found no competent and reliable scientific evidence for cold
+    prevention; searching for supporting evidence returns none. Resolution: the citation is decorative
+    and non-probative, so gold remains overclaim.
+  provenance:
+    claim_source_title: "FTC: Makers of Airborne Settle Charges of Deceptive Advertising (Airborne 'clinically proven' cold-prevention claim)"
+    claim_source_url: "https://www.ftc.gov/news-events/news/press-releases/2008/08/makers-airborne-settle-ftc-charges-deceptive-advertising-agreement-brings-total-settlement-funds-30"
+    claim_source_publisher: "Airborne Health, Inc. (marketer of Airborne effervescent supplement); the claim and its disposition are documented by the US Federal Trade Commission"
+    claim_source_date: "2008"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Airborne was mass-marketed (packaging and TV/print ads, 'created by a schoolteacher') as clinically proven to prevent colds, citing a double-blind, placebo-controlled study. The FTC and reporting established that the cited study was run by GNG Pharmaceutical Services — a two-person operation with no clinic, scientists, or physicians — and was never peer-reviewed, and that no competent and reliable scientific evidence supported the claim; the marketers settled (total settlement funds $30 million). The frozen span is the bounded proof-claim plus its decorative citation."
+    claim_exact_span: "Airborne is clinically proven to help prevent colds. In a double-blind, placebo-controlled study, Airborne was shown to help your body combat germs"
+    evidence_sources:
+      - citation: "US Federal Trade Commission. Makers of Airborne Settle FTC Charges of Deceptive Advertising (2008); complaint FTC File No. 072 3020, FTC v. Airborne Health, Inc."
+        url: "https://www.ftc.gov/news-events/news/press-releases/2008/08/makers-airborne-settle-ftc-charges-deceptive-advertising-agreement-brings-total-settlement-funds-30"
+        design: "Regulatory deceptive-advertising action and evidence assessment"
+        population: "Consumers targeted by Airborne cold-prevention advertising"
+        intervention_or_exposure: "Airborne effervescent supplement, marketed for cold prevention"
+        comparator: "Standard of proof: competent and reliable scientific evidence"
+        endpoint: "Substantiation of cold-prevention/immune claims"
+        result: "No competent and reliable scientific evidence for the claims; the cited 'clinical study' was not a legitimate controlled trial; marketers settled deceptive-advertising charges"
+        source_role: regulatory_assessment
+        evidence_tier: "Regulatory evidence assessment / enforcement record"
+        limitations: "Enforcement/consumer-protection record, not a clinical trial; adjudicates substantiation, not a specific effect size"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "decorative citation: a named but non-probative 'clinical study' dressing an unsupported proof-claim"
+  case_fingerprint: "10681b9faa8bbcebcb75c2af429422202653c7cf28049d36b49c069418d3810f"

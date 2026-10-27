@@ -1,0 +1,204 @@
+id: P7A-BND-018
+title: "Boundary: 'calcium and vitamin D build strong bones, so supplements prevent fractures' (mechanism/BMD surrogate framed as clinical benefit, Shape B)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: surrogate_endpoint_overclaim
+ambiguity_level: medium
+prompt: |
+  A bone-health message urges: "Calcium and vitamin D are the building blocks of bone — vitamin D helps you absorb the calcium your skeleton needs. Take a daily calcium plus vitamin D supplement to build strong bones and protect yourself from the fractures of osteoporosis. Everyone over 50 should be taking them."
+
+  The biological rationale is real and is the basis of the message: calcium is the mineral substrate of bone and vitamin D is required for its absorption, and adequate intake supports bone mineral density (a surrogate). But the clinical outcome — whether taking calcium/vitamin D SUPPLEMENTS actually prevents fractures — has been tested directly in humans. A 2017 systematic review and meta-analysis of randomized trials (Zhao et al., JAMA; 33 trials, 51,145 community-dwelling older adults) found that calcium, vitamin D, or both, versus placebo/no treatment, was NOT associated with a lower incidence of fractures, regardless of dose, sex, fracture history, dietary calcium, or baseline vitamin D. On that basis the US Preventive Services Task Force (2018) recommends AGAINST daily supplementation with ≤400 IU vitamin D and ≤1000 mg calcium for the primary prevention of fractures in community-dwelling postmenopausal women (and found supplementation increases kidney stones). Bone mineral density is a surrogate; fracture incidence is the clinical outcome that matters.
+context: |
+  Evidence tier: a large meta-analysis of randomized trials with a clinical endpoint (fracture
+  incidence) plus an authoritative guideline. The calcium/vitamin-D bone MECHANISM is real and
+  materially invoked ("building blocks of bone"), and a SURROGATE (bone mineral density) is
+  supported — but the CLINICAL outcome (fracture prevention by SUPPLEMENTS) was tested directly in
+  community-dwelling adults and not supported. The message sells the mechanism + surrogate as the
+  clinical benefit. Under the frozen taxonomy this "Shape B" surrogate-to-clinical framing routes to
+  overclaim, not mechanism_vs_evidence.
+expected_answer: "overclaim"
+reference_solution: |
+  Calcium/vitamin D have a real, textbook bone mechanism (mineral substrate + absorption) and support
+  the surrogate (bone mineral density), but the clinical claim — that taking SUPPLEMENTS prevents
+  fractures — was tested head-on in randomized trials (Zhao 2017 meta-analysis) and NOT supported in
+  community-dwelling older adults; the USPSTF recommends against low-dose supplementation for primary
+  fracture prevention. Selling the mechanism/surrogate as the clinical benefit, generalized to
+  "everyone over 50," is a surrogate-framed-as-clinical-outcome overclaim. Under the frozen taxonomy,
+  surrogate-to-clinical ("Shape B") routes to overclaim. It is not mechanism_vs_evidence: that label
+  is for a described animal/preclinical pathway extrapolated to a human benefit with no direct human
+  outcome data; here direct human fracture-outcome trials exist (and do not support the supplement
+  claim), so the failure is inflation of a mechanism/surrogate against human clinical data = overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: because calcium/vitamin D are the building blocks of bone (a mechanism)
+     and support bone density, taking supplements builds strong bones and prevents osteoporotic
+     fractures — for everyone over 50.
+  2. What the evidence establishes: the mechanism/surrogate (bone mineral density) is real, but
+     randomized trials (Zhao 2017 meta-analysis, 51,145 community-dwelling adults) show calcium/
+     vitamin-D supplements do NOT lower fracture incidence, and the USPSTF recommends against low-dose
+     supplementation for primary fracture prevention.
+  3. Mismatch: a mechanism plus a surrogate is presented as a clinical benefit (and generalized to a
+     whole population) that direct human trials do not support.
+  4. Frozen label triggered: overclaim — a surrogate/mechanism framed as a clinical benefit, plus
+     population over-generalization (rhetorical inflation); per docs/study_forensics_taxonomy.md this
+     "Shape B" routes to overclaim.
+  5. Why mechanism_vs_evidence is tempting: the calcium/vitamin-D bone mechanism ("building blocks of
+     bone", vitamin-D-dependent absorption) is real, textbook, and the explicit rhetorical basis, so
+     the mechanism boundary looks directly relevant.
+  6. Why precedence rejects it as primary: mechanism_vs_evidence applies when a described animal/
+     preclinical PATHWAY is extrapolated to a human benefit with NO direct human outcome data. Here
+     the human clinical outcome (fracture incidence) has been tested directly in randomized trials and
+     not supported for supplements; the decisive gap is surrogate/mechanism-to-clinical against
+     existing human data, which the taxonomy routes to overclaim (Shape B; docs/taxonomy_precedence.md;
+     case054 precedent).
+  7. What would change the classification: had the message said "get enough calcium and vitamin D to
+     support bone density; supplements have not been shown to prevent fractures in healthy adults,"
+     it would be solid; had it rested only on a cell/animal bone-formation pathway with no human
+     fracture trials, mechanism_vs_evidence could apply.
+gold_alternative_reading: |
+  Alternative: mechanism_vs_evidence. Plausible because the calcium/vitamin-D bone mechanism
+  ("building blocks of bone", vitamin-D-dependent calcium absorption) is real and is the explicit
+  basis of the claim. It loses under precedence because this is not a preclinical-only extrapolation:
+  the human clinical outcome (fracture incidence) was tested directly in randomized trials (Zhao 2017)
+  and not supported for supplements, so the failure is a mechanism/surrogate inflated against human
+  clinical data. The taxonomy routes surrogate-to-clinical ("Shape B") to overclaim.
+gold_summary: |
+  A bone-health message sells calcium/vitamin D's real bone mechanism and surrogate (BMD) as fracture
+  prevention for everyone over 50, but randomized trials (Zhao 2017; 51,145 adults) show supplements
+  do NOT lower fractures and the USPSTF recommends against them for primary prevention. Mechanism +
+  surrogate framed as clinical benefit = overclaim (Shape B), not mechanism_vs_evidence, because
+  direct human fracture trials exist and do not support the claim.
+curator_notes: |
+  Boundary family B2 (overclaim <-> mechanism_vs_evidence), overclaim direction. Independent
+  replacement for retired P7A-BND-006 (fluoride/BMD); supersedes it. Preserves the SAME forensic
+  object (a bone-building/BMD surrogate framed as fracture prevention) but with a REAL, identifiable,
+  ubiquitous public claim (calcium/vitamin-D supplement + bone-health messaging) and strong RCT/
+  guideline evidence (Zhao 2017 JAMA; USPSTF 2018) — resolving 006's archetype-only claim-provenance
+  gap. Genuine B2: the calcium/vitamin-D bone mechanism is real and is the explicit rhetorical basis,
+  so mechanism_vs_evidence is a strong attractor, but frozen Shape-B routing keeps overclaim primary.
+  Distinct from P7A-BND-015 (oncology/PFS) and P7A-BND-016 (ginkgo/blood-flow): different agent
+  (nutrient supplement), different surrogate (BMD), bone domain. Gold frozen before any model output.
+expected_findings:
+  - finding: surrogate_framed_as_clinical
+    severity: major
+    confidence: high
+    note: "Bone mineral density / 'building blocks of bone' (surrogate/mechanism) sold as fracture prevention (clinical outcome)"
+  - finding: claim_contradicted_by_rct
+    severity: major
+    confidence: high
+    note: "Randomized-trial meta-analysis (Zhao 2017) shows calcium/vitamin-D supplements do not lower fracture incidence in community-dwelling adults"
+  - finding: population_overgeneralization
+    severity: moderate
+    confidence: high
+    note: "'Everyone over 50 should take them' generalizes beyond any supported benefit (USPSTF recommends against for primary prevention)"
+gold_evidence_spans:
+  - span: "Take a daily calcium plus vitamin D supplement to build strong bones and protect yourself from the fractures of osteoporosis"
+    why_it_matters: "Frames a mechanism/surrogate (bone building blocks / BMD) as a clinical benefit (fracture prevention)."
+    supports_finding: surrogate_framed_as_clinical
+  - span: "was NOT associated with a lower incidence of fractures"
+    why_it_matters: "The direct human RCT-meta-analysis outcome that contradicts the supplement claim and rules out a preclinical-only reading."
+    supports_finding: claim_contradicted_by_rct
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "surrogate endpoint"
+    variants: ["bone mineral density", "building blocks of bone", "not fracture incidence"]
+    functional_descriptions:
+      - "BMD is a surrogate; fracture incidence is the clinical outcome that matters"
+  - keyword: "Shape B routes to overclaim"
+    variants: ["surrogate-to-clinical", "not mechanism_vs_evidence", "human RCT exists"]
+    functional_descriptions:
+      - "A real mechanism/surrogate framed as clinical benefit is overclaim, not a preclinical-to-human leap"
+common_errors:
+  - labelling a calcium/bone mechanism claim mechanism_vs_evidence
+  - accepting 'builds strong bones' as proof supplements prevent fractures
+  - missing that RCTs tested supplement fracture prevention directly and found none
+expected_failure_modes:
+  - overclaim_to_over_specific
+  - surrogate_to_clinical_leap
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Does the agent route a real-mechanism, surrogate-to-clinical supplement claim (contradicted by human fracture RCTs) to overclaim rather than mechanism_vs_evidence?"
+origin: curated
+supersedes: P7A-BND-006
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-018
+  case_family: boundary
+  boundary_family_id: B2
+  boundary: "overclaim <-> mechanism_vs_evidence"
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    >=2 plausible labels and a subtle precedence call: the real, textbook calcium/vitamin-D bone
+    mechanism ("building blocks of bone") strongly invites mechanism_vs_evidence, and the partial
+    truth (calcium/D matter for bone) adds pull toward solid, but the frozen taxonomy routes the human
+    surrogate/mechanism-to-clinical gap (BMD framed as fracture prevention, contradicted by RCTs) to
+    overclaim. Property-based tagging.
+  precedence_rationale: |
+    mechanism_vs_evidence requires a described animal/preclinical pathway extrapolated to a human
+    benefit with no direct human outcome evidence. Here the human clinical outcome (fracture
+    incidence) was tested directly in randomized trials (Zhao 2017) and not supported for supplements,
+    so the decisive gap is a surrogate/mechanism inflated against human clinical data. The taxonomy
+    routes this surrogate-to-clinical gap ("Shape B") to overclaim (docs/taxonomy_precedence.md;
+    case054). Primary = overclaim.
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary under the frozen Shape-B routing;
+    mechanism_vs_evidence is a genuine but documented-and-rejected alternative (the mechanism is real
+    and invoked, but direct human fracture trials exist and do not support the supplement claim). The
+    scoped 'solid' reading is defeated because the frozen claim is unscoped ('everyone over 50').
+  steelman_challenge: |
+    Strongest case the gold is wrong: calcium is literally the mineral substrate of bone and vitamin D
+    is required to absorb it, so the claim could be read as a mechanism-to-human leap
+    (mechanism_vs_evidence). Counter-evidence weighed: this is not a preclinical-only extrapolation —
+    a large randomized-trial meta-analysis (Zhao 2017, 51,145 community-dwelling adults) tested the
+    clinical outcome (fractures) directly and found no benefit for supplements, and the USPSTF (2018)
+    recommends against low-dose supplementation for primary fracture prevention; the failure is a
+    mechanism/surrogate inflated against human clinical data. The taxonomy routes surrogate-to-clinical
+    to overclaim (Shape B; case054 precedent). Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "'Calcium and vitamin D build strong bones and prevent fractures' - bone-health / supplement public messaging"
+    claim_source_url: "https://www.bonehealthandosteoporosis.org/patients/treatment/calciumvitamin-d/get-the-facts-on-calcium-and-vitamin-d/"
+    claim_source_publisher: "Bone Health & Osteoporosis Foundation (formerly National Osteoporosis Foundation), 'Get the Facts on Calcium and Vitamin D'; echoed by calcium+D supplement marketing (e.g. Caltrate, Citracal) and NIAMS bone-health messaging"
+    claim_source_date: "2022-01-01"
+    claim_source_role: public_claim_source
+    claim_source_type: public_health_summary
+    claim_context: "Calcium+vitamin-D 'build strong bones and reduce fracture/osteoporosis risk; everyone should get enough (via supplements as needed)' is a ubiquitous public claim from advocacy bodies and supplement marketing. The frozen span is the bounded strong consumer version (take supplements to prevent fractures, for everyone over 50) that the randomized supplement-fracture evidence (Zhao 2017) and USPSTF (2018) do not support in community-dwelling adults."
+    claim_exact_span: "Take a daily calcium plus vitamin D supplement to build strong bones and protect yourself from the fractures of osteoporosis. Everyone over 50 should be taking them"
+    evidence_sources:
+      - citation: "Zhao JG, Zeng XT, Wang J, Liu L. Association Between Calcium or Vitamin D Supplementation and Fracture Incidence in Community-Dwelling Older Adults: A Systematic Review and Meta-analysis. JAMA 2017;318(24):2466-2482"
+        url: "https://pubmed.ncbi.nlm.nih.gov/29279934/"
+        design: "Systematic review + meta-analysis of randomized controlled trials"
+        population: "33 RCTs; 51,145 community-dwelling adults >50"
+        intervention_or_exposure: "Calcium, vitamin D, or combined supplementation"
+        comparator: "Placebo or no treatment"
+        endpoint: "Fracture incidence (hip, nonvertebral, vertebral, total)"
+        result: "No significant association with lower fracture incidence, regardless of dose, sex, fracture history, dietary calcium, or baseline vitamin D"
+        source_role: systematic_review
+        evidence_tier: "Meta-analysis of RCTs with a clinical fracture endpoint (highest human-evidence tier)"
+        limitations: "Community-dwelling adults; supplements may still benefit institutionalized or clearly deficient populations (scoped, not the frozen unscoped claim)"
+      - citation: "US Preventive Services Task Force. Vitamin D, Calcium, or Combined Supplementation for the Primary Prevention of Fractures in Community-Dwelling Adults: Preventive Medication. JAMA 2018;319(15):1592-1599"
+        url: "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/vitamin-d-calcium-or-combined-supplementation-for-the-primary-prevention-of-fractures-in-adults-preventive-medication"
+        design: "Guideline recommendation (systematic evidence review)"
+        population: "Community-dwelling adults (postmenopausal women; men)"
+        intervention_or_exposure: "Daily calcium and/or vitamin D supplementation"
+        comparator: "No supplementation"
+        endpoint: "Primary fracture prevention; harms"
+        result: "Recommends AGAINST daily <=400 IU vitamin D + <=1000 mg calcium for primary fracture prevention in community-dwelling postmenopausal women (no net benefit); supplementation increases kidney stones"
+        source_role: regulatory_assessment
+        evidence_tier: "Guideline / authoritative assessment (not primary research)"
+        limitations: "Insufficient evidence for higher doses and for men"
+    access_date: "2026-08-16"
+    claim_access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: mechanism_vs_evidence
+    probes: "overclaim -> over-specific (mechanism) attractor; Shape-B routing positive control (real-mechanism bone variant)"
+  case_fingerprint: "fa2221a0080b6d19ec611f4daff6d879d939be0ceb5b411dceeeb8a5afb60c3f"

@@ -1,0 +1,101 @@
+id: study-forensics-054
+title: 'Study Forensics: ''May be comparable'' hedging that implies equivalence'
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: decorative_hedging
+ambiguity_level: high
+origin: synthetic_fixture
+suite_history:
+  - date: "2026-07-05"
+    phase: "Phase 4.9 taxonomy-precedence adjudication"
+    event: rule_first_adjudication_no_flip
+    trigger: "stable-alternative in Phase-5A 50x3 baseline — model read mechanism_vs_evidence 3/3"
+    decision: "keep primary label overclaim"
+    rationale: >
+      The taxonomy precedence rule (docs/taxonomy_precedence.md) lets a specific label
+      outrank generic overclaim only when its definitional trigger is genuinely present.
+      mechanism_vs_evidence requires a described biological mechanism / animal-preclinical
+      pathway used to imply human clinical benefit. case054 has in-vitro dissolution
+      (a surrogate endpoint), not a mechanism narrative; the taxonomy already routes
+      surrogate-endpoints-framed-as-clinical-outcomes to overclaim and excludes the
+      surrogate/biomarker-to-clinical gap from mechanism_vs_evidence. The core error is a
+      decorative hedge implying unproven equivalence = rhetorical inflation = overclaim.
+      Flipping would require stretching/expanding the category, which is not being done here.
+    anti_coevolution_note: >
+      Adjudicated against a stable 3/3 model reading. The taxonomy rule — not model
+      behavior — controlled the decision. Reference example of rule-first, anti-co-evolution
+      gold-label governance.
+    label_flip: false
+    prompt_changed: false
+prompt: |
+  A generic drug maker states its product 'may be comparable in effectiveness' to the branded original, then throughout the brochure describes them as interchangeable and urges switching to save money. The only data are in-vitro dissolution curves; no clinical equivalence study is cited.
+context: |
+  The single hedge 'may be comparable' is followed by messaging that treats the drugs as interchangeable. Decorative hedging: the qualifier does not constrain the implied equivalence claim. Borderline — the hedge gives a defensible alternate reading.
+expected_answer: overclaim
+reference_solution: |
+  A lone 'may be comparable' is contradicted by interchangeable framing and a switch recommendation, with only in-vitro dissolution data and no clinical equivalence trial. The hedge is decorative; the effective message is unproven equivalence — an overclaim.
+gold_label: overclaim
+gold_confidence: medium
+gold_case_type: borderline
+gold_justification: |
+  The hedge 'may be comparable' is immediately undercut by interchangeable framing and a switch recommendation on in-vitro-only data. The qualifier is decorative and the net claim (equivalence) exceeds the evidence, so the primary reading is overclaim.
+gold_alternative_reading: |
+  A lenient reading notes the explicit hedge 'may be' and that dissolution similarity is a legitimate (if weak) signal, so one could classify this as cautious/insufficient rather than overclaim. But the cumulative interchangeable framing plus a switch recommendation tips it into decorative-hedge overclaim.
+
+  REJECTED SPECIFIC-LABEL ALTERNATIVE — mechanism_vs_evidence: a strong model stably
+  read this as mechanism_vs_evidence (Phase-5A, 3/3), treating the in-vitro dissolution →
+  clinical-equivalence leap as an evidence-tier gap. Rejected as primary under the taxonomy
+  precedence rule (docs/taxonomy_precedence.md): mechanism_vs_evidence requires a described
+  biological mechanism / animal-preclinical pathway, which this case does not contain.
+  In-vitro dissolution is a surrogate endpoint, and surrogate-to-clinical framing is routed
+  to overclaim (Shape B is explicitly excluded from mechanism_vs_evidence). This is a
+  documented but rejected alternative reading, not a primary label; see suite_history.
+gold_summary: |
+  'May be comparable' is paired with interchangeable framing and a switch push on in-vitro-only data. Decorative hedging masking an equivalence overclaim (borderline).
+curator_notes: |
+  Borderline decorative-hedging case; genuinely debatable between overclaim and insufficient_evidence. Mirrors the case041 'potentially' hedge analysis. Discrimination: hard even for strong models.
+  SYNTHETIC FIXTURE: inspired by a common claim pattern; not a real citation or product.
+expected_findings:
+- finding: decorative_uncertainty
+  severity: major
+  confidence: high
+- finding: conclusion_exceeds_results
+  severity: moderate
+  confidence: medium
+gold_evidence_spans:
+- span: '''may be comparable in effectiveness'' ... describes them as interchangeable and urges switching'
+  why_it_matters: The hedge is contradicted by interchangeable framing and a switch push.
+  supports_finding: decorative_uncertainty
+- span: The only data are in-vitro dissolution curves; no clinical equivalence study is cited
+  why_it_matters: No clinical equivalence evidence supports interchangeability.
+  supports_finding: conclusion_exceeds_results
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+- keyword: decorative hedge
+  variants:
+  - may be comparable
+  - interchangeable
+  functional_descriptions:
+  - hedge does not constrain the implied equivalence
+- keyword: no equivalence study
+  variants:
+  - dissolution
+  - in-vitro
+  - no clinical
+  functional_descriptions:
+  - clinical equivalence never demonstrated
+common_errors:
+- accepting the hedge at face value
+- missing the interchangeable framing that voids the hedge
+expected_failure_modes:
+- accepting_hedged_overclaim
+- decorative_uncertainty_blindness
+discriminative_dimensions:
+- correctness
+- insight_depth
+- hedge_detection
+diagnostic_focus: Can the agent see through a decorative hedge that implies unproven equivalence?

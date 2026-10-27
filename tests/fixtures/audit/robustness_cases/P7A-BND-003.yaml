@@ -1,0 +1,182 @@
+id: P7A-BND-003
+title: "Boundary: 'a hand-grip test is the best predictor of death' (individual-prediction overreach)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: prognostic_overreach_superiority
+ambiguity_level: medium
+prompt: |
+  A health feature declares: "Forget blood pressure — a simple hand-grip test is the single best predictor of how long you will live. If your grip is weak, your risk of dying is dramatically higher. Squeeze a dynamometer and you can read your own life expectancy."
+
+  The source is the PURE study (Leong et al., Lancet 2015), a prospective cohort of about 139,691 adults across 17 countries followed for a median of roughly 4 years. After adjustment, each 5-kg decrease in grip strength was associated with a 16% higher risk of all-cause death (and ~17% higher cardiovascular and non-cardiovascular mortality, 7% higher myocardial infarction, 9% higher stroke). Grip strength was a stronger predictor of all-cause and cardiovascular mortality than systolic blood pressure in this cohort. The authors framed grip strength as a simple, inexpensive PROGNOSTIC marker; they did not claim grip strength causes longevity, nor that it individually forecasts a person's lifespan.
+context: |
+  Evidence tier: large multinational prospective cohort (observational, prognostic). The specific
+  finding "stronger predictor than systolic blood pressure" is supported. The public claim's error
+  is inflating a modest population-level hazard ratio (16% per 5 kg) into "THE single best
+  predictor," "dramatically higher" personal risk, and individual life-expectancy readout — a
+  prognostic/magnitude overreach, not a causal claim.
+expected_answer: "overclaim"
+reference_solution: |
+  The PURE cohort supports a modest population-level association (HR ~1.16 per 5-kg decrease) and
+  that grip out-predicted systolic BP in this dataset. The public claim overreaches by (a)
+  proclaiming grip the "single best predictor" (unsupported superiority beyond one cohort), (b)
+  turning a 16%-per-5-kg population HR into "dramatically higher" individual risk and a personal
+  "life expectancy" readout, and (c) certainty inflation. This is rhetorical/magnitude overreach of
+  a real association = overclaim. It is not correlation_vs_causation: the claim is explicitly about
+  PREDICTION, and prediction does not require or assert causation, so the causal-inference trigger
+  is absent.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: grip strength is THE single best predictor of lifespan; weak grip means
+     dramatically higher personal risk; an individual can "read your own life expectancy" from it.
+  2. What the evidence establishes: a modest population-level association (each 5-kg lower grip ~16%
+     higher all-cause mortality) and that grip out-predicted systolic BP in one cohort; framed by the
+     authors as a coarse prognostic marker, explicitly not causal and not an individual forecast.
+  3. Mismatch: a small population hazard ratio and a single-cohort comparison are inflated into
+     "single best predictor," "dramatically higher" individual risk, and a personal life-expectancy
+     readout.
+  4. Frozen label triggered: overclaim (superiority + magnitude + individual-prediction inflation of
+     a real association).
+  5. Why correlation_vs_causation is tempting: grip strength is an observational marker, so a
+     reviewer may reflexively flag correlation/causation.
+  6. Why precedence rejects it as primary: the claim makes a PREDICTIVE assertion, not a causal one
+     ("predictor," not "cause"); it does not say training grip extends life. Prediction from an
+     association is legitimate in principle, so the causal-inference trigger is absent; the defect is
+     over-extrapolating the strength/scope of the prediction = overclaim (docs/taxonomy_precedence.md
+     rule 2).
+  7. What would change the classification: had the claim said "build grip strength to live longer"
+     (an intervention/causal claim from observational data), correlation_vs_causation would be
+     triggered; had it stated the modest HR faithfully with prognostic caveats, it would be solid.
+gold_alternative_reading: |
+  Alternative: correlation_vs_causation. Plausible because grip strength is an observational marker
+  and confounded by underlying illness/frailty. It loses under precedence because the claim asserts
+  PREDICTION, not causation, and makes no interventional leap; the decisive defect is inflated
+  superiority/magnitude/individual-forecast, i.e. overclaim.
+gold_summary: |
+  A feature calls a hand-grip test "the single best predictor" of lifespan and a personal
+  life-expectancy readout. PURE supports only a modest HR (~1.16 per 5-kg) and single-cohort
+  superiority over systolic BP, framed as a coarse prognostic marker. The defect is prognostic /
+  magnitude / superiority overreach = overclaim; no causal claim is made, so it is not
+  correlation_vs_causation.
+curator_notes: |
+  Boundary family B1 (overclaim <-> correlation_vs_causation), overclaim direction. Sourced from
+  Leong et al. PURE (Lancet 2015). Deliberately keeps the claim PREDICTIVE (not interventional) so
+  the failure is overclaim, not causal inference. Independent proposition; no grip-strength case in
+  Class A. Gold frozen before any model output.
+expected_findings:
+  - finding: unsupported_superiority
+    severity: major
+    confidence: high
+    note: "'Single best predictor' overstates a single-cohort comparison"
+  - finding: individual_prediction_overreach
+    severity: major
+    confidence: high
+    note: "Population HR (~16% per 5 kg) turned into a personal life-expectancy readout"
+  - finding: magnitude_inflation
+    severity: moderate
+    confidence: medium
+    note: "'Dramatically higher' overstates a modest hazard ratio"
+gold_evidence_spans:
+  - span: "the single best predictor of how long you will live"
+    why_it_matters: "Unsupported superiority beyond one cohort's prognostic comparison."
+    supports_finding: unsupported_superiority
+  - span: "Squeeze a dynamometer and you can read your own life expectancy"
+    why_it_matters: "Turns a population association into an individual forecast."
+    supports_finding: individual_prediction_overreach
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "prediction not causation"
+    variants: ["prognostic marker", "predictor", "not a cause"]
+    functional_descriptions:
+      - "A predictive claim does not assert causation, so causal-inference critique does not apply"
+  - keyword: "population vs individual risk"
+    variants: ["hazard ratio", "16% per 5 kg", "personal life expectancy"]
+    functional_descriptions:
+      - "A modest population HR does not license an individual life-expectancy readout"
+common_errors:
+  - flagging correlation_vs_causation because the marker is observational
+  - accepting 'best predictor' from a single cohort
+  - treating a population HR as an individual forecast
+expected_failure_modes:
+  - overclaim_to_over_specific
+  - population_to_individual_leap
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent distinguish predictive overreach (overclaim) from a causal-inference error (correlation_vs_causation)?"
+origin: curated
+status: retired
+excluded_from_active_metrics: true
+superseded_by: P7A-BND-017
+suite_history:
+  - date: "2026-08-16"
+    phase: "Phase 7A boundary repair (post-audit, pre-model)"
+    event: retired_from_active_metrics
+    audit_reference: "analysis/phase7a_boundary/boundary_curator_gold_audit.md §2 (P7A-BND-003) / §6"
+    prior_family: B1
+    prior_gold: overclaim
+    prior_case_fingerprint: "4bb53f1b718f66ae9d504539255a92e9eb35fff2124b4770fe70ce0e50c0e591"
+    trigger: "role-separated Claude curator audit + real-source reconstruction: WEAK B1 boundary"
+    rationale: >
+      Objective, model-independent boundary-quality defect confirmed against the real public claim:
+      identifiable grip-strength media claims are PREDICTIVE ('the single best predictor of death'),
+      not causal/interventional, so correlation_vs_causation is only a reflex attractor, not a
+      genuinely plausible competing primary label. Gold-as-overclaim was defensible, but the case
+      does not exercise a real B1 causal-inference tension. Retired, not deleted; replaced by an
+      independent B1 case (P7A-BND-017) where correlation_vs_causation is a genuine attractor that
+      loses because causation is authoritatively established (IARC Group 1).
+    label_flip: false
+    hard_deleted: false
+    superseded_by: P7A-BND-017
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-003
+  case_family: boundary
+  boundary_family_id: B1
+  boundary: "overclaim <-> correlation_vs_causation"
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    >=2 plausible labels and a subtle discriminator: prediction vs causation. The observational
+    marker strongly invites correlation_vs_causation, and separating "best predictor" overreach from
+    a causal error requires care; large claim-evidence distance. Property-based tagging.
+  precedence_rationale: |
+    correlation_vs_causation requires a causal claim from a non-causal design. The claim is
+    predictive, not causal (no intervention, no "grip causes longevity"), so the specific trigger is
+    absent. The defect is inflated superiority/magnitude/individual-forecast = generic overclaim,
+    which remains primary under docs/taxonomy_precedence.md.
+  ambiguity_note: |
+    Difficult but determinate: overclaim is the single defensible primary; correlation_vs_causation
+    is tempting because the marker is observational but is not the disputed step (prediction != cause).
+  steelman_challenge: |
+    Strongest case the gold is wrong: grip strength is a confounded marker of illness/frailty, so a
+    reviewer could call the whole claim correlation_vs_causation. Counter-evidence weighed: the claim
+    never asserts causation or an intervention; PURE explicitly frames grip as prognostic. The
+    checkable overreach is superiority + individual forecast, independent of any causal question.
+    Resolution: gold remains overclaim.
+  provenance:
+    claim_source_title: "Health-media 'grip strength predicts your lifespan' feature"
+    claim_source_type: news_media_summary
+    claim_exact_span: "the single best predictor of how long you will live ... read your own life expectancy"
+    evidence_sources:
+      - citation: "Leong DP et al. Prognostic value of grip strength: findings from the PURE study. Lancet 2015;386(9990):266-273"
+        url: "https://pubmed.ncbi.nlm.nih.gov/25982160/"
+        design: "Prospective cohort (observational, prognostic)"
+        population: "~139,691 adults, 17 countries; median follow-up ~4 years"
+        intervention_or_exposure: "Handgrip strength (dynamometer)"
+        comparator: "Higher vs lower grip strength; comparison with systolic blood pressure as a predictor"
+        endpoint: "All-cause and cardiovascular mortality; MI; stroke"
+        result: "Each 5-kg decrease in grip ~16% higher all-cause mortality (also ~17% CV/non-CV mortality, 7% MI, 9% stroke); grip a stronger predictor of mortality than systolic BP in this cohort"
+        evidence_tier: "Large observational cohort (prognostic association)"
+        limitations: "Associational; authors framed grip as a coarse prognostic marker, not causal and not an individual forecast"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: correlation_vs_causation
+    probes: "overclaim -> over-specific (correlation) attractor"
+  case_fingerprint: "7dcbc82bea0920cdeaf91978bb4508255e4ff723c6760bc27d33ac4be183fe2b"

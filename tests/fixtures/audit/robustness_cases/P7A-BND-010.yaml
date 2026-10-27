@@ -1,0 +1,165 @@
+id: P7A-BND-010
+title: "Boundary: 'fasting regenerates your pancreas and reverses diabetes' (mouse regeneration to human)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: mechanism_vs_evidence
+trap_type: animal_mechanism_to_human_benefit
+ambiguity_level: low
+prompt: |
+  A diet program advertises: "Fasting regenerates your pancreas and reverses diabetes. By switching your body into fasting mode, you regrow the insulin-producing cells you've lost and cure the disease at its root — no drugs required."
+
+  The cited science is a 2017 study in Cell (Cheng et al., Longo lab). In MICE, cycles of a fasting-mimicking diet triggered a developmental pathway (stepwise Sox17/Pdx-1 then Ngn3-driven generation of new insulin-producing beta cells), restoring insulin secretion and glucose control in both type 1 and type 2 diabetes mouse models. The only human data were laboratory experiments on pancreatic cell CULTURES from donors, in which fasting-like conditions increased Ngn3 expression and insulin production. The authors explicitly stated the findings "warrant a larger FDA trial" — i.e. reversal of diabetes by fasting has not been demonstrated in human patients.
+context: |
+  Evidence tier: a mouse mechanistic/interventional study (Shape A/C: animal + preclinical pathway)
+  plus in-vitro human donor-cell experiments. A described regeneration PATHWAY (Ngn3-driven beta-cell
+  regeneration) shown in mice and in cultured cells is used to promise that human patients can
+  regenerate their pancreas and be cured of diabetes — a human clinical benefit not demonstrated in
+  any patient trial. This is the mechanism_vs_evidence trigger operating as the central failure.
+expected_answer: "mechanism_vs_evidence"
+reference_solution: |
+  A described biological regeneration pathway shown in MICE (and in cultured human donor cells) is
+  used to promise that human patients regrow beta cells and are cured of diabetes — a clinical benefit
+  not demonstrated in any human trial (the authors themselves call for a trial). This animal/preclinical
+  mechanism-to-human-benefit leap is the central defect = mechanism_vs_evidence (Shape A/C). A generic
+  overclaim reading also fits ("cure ... no drugs required"), but the specific mechanism-to-human
+  structure captures the core error.
+gold_label: mechanism_vs_evidence
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: fasting regenerates the human pancreas, regrows lost insulin-producing
+     cells, and cures/reverses diabetes at its root.
+  2. What the evidence establishes: in MICE, a fasting-mimicking diet drives Ngn3-based beta-cell
+     regeneration and reverses diabetes; in humans, only in-vitro donor-cell experiments — no patient
+     trial showing diabetes reversal (authors call for a trial).
+  3. Mismatch: an animal/preclinical regeneration mechanism is presented as an established human cure.
+  4. Frozen label triggered: mechanism_vs_evidence — a described biological (animal/preclinical)
+     pathway used to imply human clinical benefit not demonstrated (Shape A/C).
+  5. Why overclaim is tempting: "cure the disease ... no drugs required" is inflated, so a generic
+     overclaim reading is available.
+  6. Why precedence keeps the specific label primary: the decisive error is structural — an
+     animal/preclinical regeneration pathway extrapolated to a human cure with no patient-trial
+     evidence — exactly the mechanism_vs_evidence trigger, which outranks generic overclaim when
+     present and central (docs/taxonomy_precedence.md rule 1). overclaim is secondary.
+  7. What would change the classification: a human trial showing durable diabetes reversal by fasting
+     would support the claim; if the human evidence were a surrogate biomarker framed as a clinical
+     cure, it would route to overclaim (Shape B). Here the pathway is animal/preclinical, so Shape A/C
+     applies.
+gold_alternative_reading: |
+  Alternative: overclaim. Plausible because "cure ... no drugs required" is inflated. It is secondary;
+  it loses as PRIMARY because the decisive, structural defect is the animal/preclinical regeneration
+  mechanism extrapolated to a human cure without patient evidence — the mechanism_vs_evidence trigger
+  (Shape A/C).
+gold_summary: |
+  A diet program says fasting "regenerates your pancreas and reverses diabetes," citing mouse Ngn3
+  beta-cell regeneration and in-vitro human cells; no patient trial exists (authors call for one).
+  Animal/preclinical mechanism to human cure = mechanism_vs_evidence (overclaim secondary).
+curator_notes: |
+  Boundary family B2 (overclaim <-> mechanism_vs_evidence), mechanism_vs_evidence direction — a
+  second counter-directional anchor. Sourced from Cheng et al. 2017 (Cell). The in-vitro human
+  donor-cell work is preclinical (not a patient trial), so it does not convert the case into a
+  demonstrated human benefit; the animal/preclinical pathway is the basis being over-extrapolated.
+  Distinct domain (metabolic/diabetes) from all Class-A and from the senolytics case. Gold frozen
+  before any model output.
+expected_findings:
+  - finding: animal_mechanism_to_human_leap
+    severity: major
+    confidence: high
+    note: "Mouse (and in-vitro) regeneration pathway presented as a human cure"
+  - finding: human_benefit_not_demonstrated
+    severity: major
+    confidence: high
+    note: "No patient trial of diabetes reversal; authors explicitly call for one"
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+    note: "'Cure the disease at its root - no drugs required' is inflated (secondary overclaim)"
+gold_evidence_spans:
+  - span: "Fasting regenerates your pancreas and reverses diabetes"
+    why_it_matters: "Human clinical cure asserted from an animal/preclinical regeneration pathway."
+    supports_finding: animal_mechanism_to_human_leap
+  - span: "warrant a larger FDA trial"
+    why_it_matters: "The authors' own statement that the human clinical benefit is undemonstrated."
+    supports_finding: human_benefit_not_demonstrated
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "animal/preclinical pathway"
+    variants: ["mice", "Ngn3", "in vitro donor cells"]
+    functional_descriptions:
+      - "A regeneration pathway shown in mice and cultured cells is not a human cure"
+  - keyword: "no patient trial"
+    variants: ["warrant a trial", "not demonstrated", "cure not shown in patients"]
+    functional_descriptions:
+      - "Human diabetes reversal by fasting has not been demonstrated in patients"
+common_errors:
+  - defaulting to overclaim because 'cure' is inflated
+  - treating in-vitro donor-cell work as a human cure
+  - accepting mouse regeneration as human diabetes reversal
+expected_failure_modes:
+  - specific_to_overclaim
+  - animal_to_human_overreach
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+  - mechanism_quality
+diagnostic_focus: "Can the agent keep mechanism_vs_evidence primary when an animal/preclinical regeneration pathway is sold as a human cure?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-010
+  case_family: boundary
+  boundary_family_id: B2
+  boundary: "overclaim <-> mechanism_vs_evidence"
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    >=2 plausible labels, plus an evidence-tier wrinkle: in-vitro human donor-cell data are present
+    and could be mistaken for demonstrated human benefit (they are preclinical). Distinguishing the
+    animal/preclinical mechanism-to-human leap from generic overclaim, while correctly discounting
+    the in-vitro human work, requires care. Property-based tagging.
+  precedence_rationale: |
+    A described animal/preclinical pathway (Ngn3-driven beta-cell regeneration in mice, plus in-vitro
+    human cells) used to imply an undemonstrated human clinical cure is the mechanism_vs_evidence
+    trigger (Shape A/C). It is present and central, so under docs/taxonomy_precedence.md rule 1 it
+    outranks generic overclaim, which is retained as secondary. The in-vitro human work is preclinical
+    and does not establish a demonstrated human benefit.
+  ambiguity_note: |
+    Determinate: mechanism_vs_evidence is the single defensible primary; overclaim is a real secondary
+    reading. The in-vitro human data are a distractor, not a demonstrated human benefit.
+  steelman_challenge: |
+    Strongest case the gold is wrong: (a) the copy is inflated -> plain overclaim; (b) there IS human
+    data (donor cells), so maybe the mechanism-gap is closed. Counter-evidence weighed: the human data
+    are in-vitro/preclinical, not a patient trial, and the authors explicitly call for a trial, so the
+    human clinical benefit remains undemonstrated; the decisive structure is an animal/preclinical
+    pathway extrapolated to a human cure (Shape A/C). Resolution: gold remains mechanism_vs_evidence.
+  provenance:
+    claim_source_title: "Fasting-diet-program 'regenerate your pancreas / reverse diabetes' claim (built on Longo's fasting-mimicking-diet research)"
+    claim_source_url: "https://stemcell.keck.usc.edu/fasting-mimicking-diet-may-reverse-diabetes/"
+    claim_source_publisher: "USC Stem Cell ('Fasting-mimicking diet may reverse diabetes') documenting the research; commercialized/marketed via ProLon fasting-mimicking-diet ('regeneration', 'reverse') materials"
+    claim_source_date: "2017-02-23"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "The Cheng 2017 mouse/in-vitro study was communicated by USC as 'may reverse diabetes' and is the basis for fasting-diet-program marketing ('regenerate the pancreas / reverse diabetes'). The frozen span is the bounded, human-clinical-benefit-asserting version ('reverses diabetes ... cure the disease at its root - no drugs required') that leaps past mouse/in-vitro data."
+    claim_exact_span: "Fasting regenerates your pancreas and reverses diabetes ... regrow the insulin-producing cells you've lost and cure the disease at its root - no drugs required"
+    evidence_sources:
+      - citation: "Cheng CW, Villani V, Buono R, et al. Fasting-Mimicking Diet Promotes Ngn3-Driven Beta-Cell Regeneration to Reverse Diabetes. Cell 2017;168(5):775-788"
+        url: "https://www.cell.com/fulltext/S0092-8674(17)30130-7"
+        design: "Preclinical interventional study (mice) + in-vitro human donor-cell experiments"
+        population: "Type 1 and type 2 diabetes mouse models; cultured human donor pancreatic cells"
+        intervention_or_exposure: "Fasting-mimicking diet cycles"
+        comparator: "Non-fasted controls"
+        endpoint: "Beta-cell regeneration; insulin secretion; glucose homeostasis (in mice)"
+        result: "In mice, FMD drove Ngn3-based beta-cell regeneration and reversed diabetes; in human donor cells fasting-like conditions raised Ngn3/insulin expression"
+        source_role: primary_research
+        evidence_tier: "Animal (preclinical) + in-vitro human cells; no patient clinical trial"
+        limitations: "Authors state findings 'warrant a larger FDA trial'; human diabetes reversal not demonstrated in patients"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: mechanism_vs_evidence
+    most_plausible_competing_label: overclaim
+    probes: "counter-direction: specific gold that also looks like generic overclaim"
+  case_fingerprint: "3044e41de4be53a558ee376dc2bfd2530b3289c797902c030ede76da840806e1"

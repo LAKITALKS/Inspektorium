@@ -1,0 +1,168 @@
+id: P7A-ADV-016
+title: "Adversarial A8: 'more than 80% of dentists recommend Colgate' (a technically-true survey figure implying a preference it does not show)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: technically_true_misleading_statistic
+ambiguity_level: low
+prompt: |
+  A Colgate poster advertisement states: "More than 80% of dentists recommend Colgate. Colgate — used and recommended by most dentists."
+
+  The figure came from a survey in which dentists were asked to name the toothpaste brands they recommend and could list MORE THAN ONE brand. A competing brand was recommended by dentists almost as much as Colgate. The UK Advertising Standards Authority (ASA) upheld complaints (January 2007) and ruled the claim misleading, because readers would understand it to mean that 80% of dentists recommend Colgate over and above other brands — a preference/exclusivity the multiple-response survey did not show.
+context: |
+  Evidence tier: a survey statistic and an advertising regulator's upheld adjudication on how it was
+  framed. The number is technically true (more than 80% of dentists did name Colgate among their
+  recommendations), but the survey allowed multiple recommendations and a rival scored almost as high,
+  so it does not show that dentists prefer Colgate over other brands - which is what the ad implies. A
+  technically-true figure framed to imply a preference it does not establish is overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  "More than 80% of dentists recommend Colgate" is technically true, but the survey let dentists name
+  multiple brands and a competitor was recommended almost as much; the ASA upheld complaints and ruled
+  the claim misleading because readers would take it to mean dentists prefer Colgate over other brands,
+  which the data do not show. A technically-true statistic framed to imply an unshown preference is
+  overclaim. It is not correlation_vs_causation (no observational-to-causal design error is central) or
+  mechanism_vs_evidence (no mechanism-to-human leap).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: more than 80% of dentists recommend Colgate (over other brands), so it is the
+     toothpaste dentists trust most.
+  2. What the strongest evidence establishes: the survey allowed multiple brand recommendations and a
+     competitor was recommended almost as much; the ASA upheld complaints and ruled the framing
+     misleading because it implies a preference the data do not show.
+  3. Adversarial surface feature: the "80%" statistic is literally true and reads as an authoritative
+     professional endorsement.
+  4. Actual forensic mismatch: a multiple-response survey where a rival scores almost as high does not
+     show that dentists prefer Colgate; the framing implies an exclusivity/preference it lacks.
+  5. Primary frozen label: overclaim - a technically-true figure framed to imply an unshown preference.
+  6. Why: the defect is misleading framing/rhetorical inflation of an accurate number; no specific
+     structural trigger fires.
+  7. Strongest competing label: solid - the figure is genuinely accurate, so the claim looks
+     evidence-based.
+  8. Why it loses: the framing implies a dentist preference/exclusivity that the multiple-response survey
+     does not support (a rival scored almost as high), which the ASA found misleading - a true number
+     framed to mislead is overclaim.
+  9. What would change the verdict: a single-choice survey showing dentists preferentially recommend
+     Colgate over rivals would make the preference claim solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: the figure is literally accurate - more than 80% of
+  dentists did name Colgate - so the claim seems evidence-based. It loses because the survey allowed
+  multiple recommendations and a rival scored almost as high, so it does not show a dentist preference
+  for Colgate; the ASA upheld complaints and ruled the implication misleading. A true number framed to
+  imply an unshown preference is overclaim.
+gold_summary: |
+  'More than 80% of dentists recommend Colgate' is technically true but came from a multiple-response
+  survey where a rival scored almost as high; the ASA upheld complaints (Jan 2007) and ruled it
+  misleading for implying a preference the data do not show. A true statistic framed to imply an unshown
+  preference = overclaim (solid tempting).
+curator_notes: |
+  Adversarial family A8 (technically-true-but-misleading statistic). Real public claim (curator-verified,
+  WP-2 gold review): Colgate's poster claim "More than 80% of dentists recommend Colgate". Decisive fact:
+  the UK ASA UPHELD complaints (January 2007) and ruled the claim misleading because the survey allowed
+  multiple recommendations and a rival was recommended almost as much - so it does not show a preference.
+  Authoritative ASA adjudication now bound (regulatory_assessment). Distinct forensic mode from A8 Lipitor
+  (P7A-ADV-015; relative-vs-absolute risk) - here it is a biased-survey framing. Gold frozen before any
+  model output.
+expected_findings:
+  - finding: multiple_response_survey_implies_unshown_preference
+    severity: major
+    confidence: high
+    note: "Dentists could name multiple brands; a rival scored almost as high, so no preference shown"
+  - finding: regulator_found_misleading
+    severity: major
+    confidence: high
+    note: "ASA upheld complaints (Jan 2007) and ruled the '80% recommend Colgate' framing misleading"
+gold_evidence_spans:
+  - span: "More than 80% of dentists recommend Colgate"
+    why_it_matters: "A technically-true figure framed to imply a dentist preference/exclusivity."
+    supports_finding: multiple_response_survey_implies_unshown_preference
+  - span: "dentists were asked to name the toothpaste brands they recommend and could list MORE THAN ONE brand"
+    why_it_matters: "The multiple-response design means the figure does not show a preference for Colgate."
+    supports_finding: multiple_response_survey_implies_unshown_preference
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "biased survey framing"
+    variants: ["multiple brands", "rival recommended almost as much", "not a preference"]
+    functional_descriptions:
+      - "A multiple-response survey does not show a preference for one brand"
+  - keyword: "technically true, misleading"
+    variants: ["ASA upheld", "2007", "over and above other brands"]
+    functional_descriptions:
+      - "An accurate figure is framed to imply something it does not show"
+common_errors:
+  - accepting a literally-true survey statistic as showing a preference
+  - missing that a multiple-response survey cannot show exclusivity
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - misleading_statistic_missed
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a technically-true multiple-response survey figure framed to imply a dentist preference is overclaim, not solid?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-016
+  case_family: adversarial
+  adversarial_family_id: A8
+  adversarial_family: "numerically-correct value on wrong population / technically-true-but-misleading, hedges that do not repair the overclaim"
+  adversarial_mechanism: |
+    A literally-true survey statistic ("more than 80% of dentists recommend Colgate") is framed to imply
+    a dentist preference/exclusivity that it does not establish: the survey allowed multiple
+    recommendations and a rival was recommended almost as much. The surface pressure is that the figure is
+    accurate and reads as an authoritative professional endorsement. The pressure to resist: accepting a
+    technically-true statistic framed to imply something (a preference) the underlying design cannot show.
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) with one genuinely plausible alternate (solid, because the figure is literally
+    accurate); recognising that a multiple-response survey cannot show a preference decides it. A single
+    dominant defect and no competing specific trigger keep it at D2. Property-based.
+  precedence_rationale: |
+    No specific-label trigger fires: no observational dataset is read causally (rules out
+    correlation_vs_causation) and no animal/preclinical mechanism is extrapolated to humans (rules out
+    mechanism_vs_evidence). The defect is misleading framing of a technically-true statistic = overclaim,
+    per docs/taxonomy_precedence.md (residual/generic rhetorical-inflation rule).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting only because the figure is
+    literally accurate, but the framing implies a preference the survey design cannot support.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the statistic is genuinely accurate - more than 80% of dentists did
+    name Colgate - and dentist recommendation is a legitimate signal, so a reader could call the claim
+    solid. Counter-evidence weighed: the survey permitted multiple brand recommendations and a rival was
+    recommended almost as much, so it does not show a preference for Colgate; the ASA upheld complaints
+    (2007) and ruled the framing misleading. Both directions checked. Resolution: a true figure framed to
+    imply an unshown preference is overclaim.
+  provenance:
+    claim_source_title: "Colgate 'More than 80% of dentists recommend Colgate' poster claim and the UK ASA 2007 upheld adjudication"
+    claim_source_url: "https://marketinglaw.osborneclarke.com/retailing/colgates-80-of-dentists-recommend-claim-under-fire/"
+    claim_source_publisher: "Colgate-Palmolive ('More than 80% of dentists recommend Colgate' / 'used and recommended by most dentists' poster advertising); the claim and the UK Advertising Standards Authority ruling are documented in the advertising-law record"
+    claim_source_date: "advertising; ASA ruling January 2007"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Colgate ran a poster campaign claiming 'More than 80% of dentists recommend Colgate' and 'used and recommended by most dentists'. The figure came from a survey in which dentists could name multiple recommended brands, and a competitor was recommended almost as much. The UK Advertising Standards Authority upheld complaints in January 2007 and ruled the claim misleading because readers would take it to mean 80% recommend Colgate over and above other brands - a preference the survey did not support. The frozen span is the bounded '80% of dentists recommend Colgate' claim."
+    claim_exact_span: "More than 80% of dentists recommend Colgate. Colgate - used and recommended by most dentists"
+    evidence_sources:
+      - citation: "UK Advertising Standards Authority adjudication (upheld, January 2007) on Colgate 'More than 80% of dentists recommend Colgate' poster: survey permitted multiple brand recommendations, a competitor was recommended almost as much, claim ruled misleading for implying a preference over other brands (as documented/analysed by Osborne Clarke, marketinglaw)"
+        url: "https://marketinglaw.osborneclarke.com/retailing/colgates-80-of-dentists-recommend-claim-under-fire/"
+        design: "Advertising-regulator (ASA) upheld adjudication of a survey-based superiority claim"
+        population: "Surveyed dentists; consumers targeted by the poster advertising"
+        intervention_or_exposure: "'More than 80% of dentists recommend Colgate' survey-based advertising claim"
+        comparator: "Competing toothpaste brands (a rival recommended almost as much)"
+        endpoint: "Whether the survey shows a dentist preference for Colgate over other brands"
+        result: "ASA upheld complaints and ruled the claim misleading: the multiple-response survey (rival recommended almost as much) does not show that dentists recommend Colgate over and above other brands"
+        source_role: regulatory_assessment
+        evidence_tier: "Advertising-regulator adjudication (ASA, upheld, 2007)"
+        limitations: "Adjudicates the claim's support and reader meaning against the survey; documented via an advertising-law record of the ASA ruling"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "technically-true multiple-response survey figure framed to imply an unshown dentist preference"
+  case_fingerprint: "8f093928edae5384b97e19fcd39f856448ea215c5958a8d35d10be35c55f045b"

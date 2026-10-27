@@ -1,0 +1,167 @@
+id: P7A-ADV-013
+title: "Adversarial A7: red light therapy 'stimulates your mitochondria, so it reverses aging and heals your body' (plausible mechanism to implied human efficacy)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: mechanism_vs_evidence
+trap_type: mechanism_plausibility_to_human_efficacy
+ambiguity_level: low
+prompt: |
+  A red-light-therapy device is marketed: "Red and near-infrared light are absorbed by cytochrome c oxidase in your mitochondria, boosting ATP energy production. By supercharging your cells' energy, our panel reverses aging, heals your body, and restores youthful vitality — just 10 minutes a day."
+
+  The described mechanism is real at the cellular level: red/near-infrared photons are absorbed by cytochrome c oxidase and can increase mitochondrial ATP production in cells and animal tissue (photobiomodulation). But most of this evidence is in vitro and in animals. Broad human clinical benefits — reversing aging, "healing your body", restoring vitality — have not been demonstrated in adequate human trials; human clinical evidence exists only for narrow, specific uses and remains limited.
+context: |
+  Evidence tier: a genuine cellular/animal mechanism (photobiomodulation of cytochrome c oxidase ->
+  ATP) used to imply broad human clinical benefits that have not been demonstrated. The device's sweeping
+  anti-aging/healing claims rest on a biologically plausible, preclinically supported mechanism rather
+  than on human clinical outcomes. A described biological mechanism (largely preclinical) used to imply
+  undemonstrated human clinical benefit is the mechanism_vs_evidence trigger (Shape C).
+expected_answer: "mechanism_vs_evidence"
+reference_solution: |
+  The claim rests on a real, biologically plausible mechanism (red/near-infrared light -> cytochrome c
+  oxidase -> more ATP), shown mostly in vitro and in animals, and extrapolates it to broad human
+  benefits (reverse aging, heal the body) not demonstrated in adequate human trials. A plausible,
+  preclinically supported mechanism used to imply undemonstrated human clinical efficacy is
+  mechanism_vs_evidence (Shape C). Generic overclaim also fits, but the decisive structure is the
+  mechanism-to-human-efficacy leap.
+gold_label: mechanism_vs_evidence
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: because red/near-infrared light boosts mitochondrial ATP, the device reverses
+     aging, heals your body, and restores vitality in people.
+  2. What the strongest evidence establishes: photobiomodulation of cytochrome c oxidase can increase
+     ATP in cells and animal tissue (real mechanism, mostly preclinical); broad human clinical benefits
+     are not demonstrated (human evidence limited to narrow uses).
+  3. Adversarial surface feature: a specific, real, textbook cellular mechanism (cytochrome c oxidase,
+     ATP) makes the human benefit sound scientifically inevitable.
+  4. Actual forensic mismatch: a largely preclinical mechanism is extrapolated to sweeping human
+     clinical outcomes that have not been shown.
+  5. Primary frozen label: mechanism_vs_evidence - a described (preclinical) biological mechanism used
+     to imply undemonstrated human clinical benefit (Shape C).
+  6. Why precedence keeps it primary: the mechanism-to-human-efficacy structure is genuinely present and
+     central, so it outranks generic overclaim (docs/taxonomy_precedence.md rule 1).
+  7. Strongest competing label: overclaim - "reverses aging" is inflated marketing.
+  8. Why it loses: the load-bearing move is the mechanistic pathway extrapolated to human benefit, which
+     is the mechanism_vs_evidence trigger; overclaim is secondary.
+  9. What would change the verdict: adequate human trials showing the device reverses aging/heals would
+     make the claim solid; if it rested only on a human surrogate framed as clinical benefit it would be
+     overclaim (Shape B).
+gold_alternative_reading: |
+  Alternative: overclaim. Plausible because "reverses aging" and "heals your body" are rhetorically
+  inflated. It is the secondary reading; it loses as primary because the decisive, load-bearing move is
+  extrapolating a (largely preclinical) cellular mechanism to sweeping human clinical benefits - the
+  mechanism_vs_evidence trigger (Shape C).
+gold_summary: |
+  A red-light panel cites a real cellular mechanism (photobiomodulation -> ATP), shown mostly in
+  vitro/animals, to claim it reverses aging and heals the body in people - benefits not demonstrated in
+  humans. Plausible mechanism -> implied human efficacy = mechanism_vs_evidence (overclaim secondary).
+curator_notes: |
+  Adversarial family A7 (biologically plausible mechanism -> implied human efficacy). Real public claim:
+  red-light-therapy device marketing (mitochondria/ATP -> anti-aging/healing). Mechanism is genuine and
+  preclinically supported (cytochrome c oxidase photobiomodulation); broad human clinical benefit
+  unestablished. Distinct from A7 probiotics-mood (P7A-ADV-014) and from A2 metformin/spermidine (which
+  foreground a specific outcome-citation). Distinct from Boundary senolytics/fasting. Gold frozen before
+  any model output.
+expected_findings:
+  - finding: preclinical_mechanism_to_human_benefit
+    severity: major
+    confidence: high
+    note: "A largely in-vitro/animal ATP mechanism extrapolated to broad human benefits"
+  - finding: human_benefit_not_demonstrated
+    severity: major
+    confidence: high
+    note: "Reversing aging/healing not shown in adequate human trials; human evidence narrow/limited"
+gold_evidence_spans:
+  - span: "By supercharging your cells' energy, our panel reverses aging, heals your body, and restores youthful vitality"
+    why_it_matters: "Broad human clinical outcomes asserted from a cellular mechanism."
+    supports_finding: preclinical_mechanism_to_human_benefit
+  - span: "Broad human clinical benefits ... have not been demonstrated in adequate human trials"
+    why_it_matters: "The human clinical benefit is undemonstrated."
+    supports_finding: human_benefit_not_demonstrated
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "mechanism to efficacy"
+    variants: ["cytochrome c oxidase", "ATP", "in vitro/animal"]
+    functional_descriptions:
+      - "A real cellular mechanism does not establish broad human clinical benefit"
+  - keyword: "preclinical only"
+    variants: ["photobiomodulation", "no adequate human trials", "narrow uses"]
+    functional_descriptions:
+      - "Human clinical evidence is limited to narrow, specific uses"
+common_errors:
+  - treating a real cellular mechanism as proof of human benefit
+  - defaulting to overclaim because the marketing is inflated
+expected_failure_modes:
+  - mechanism_to_efficacy_overreach
+  - specific_to_overclaim
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+  - mechanism_quality
+diagnostic_focus: "Can the agent keep mechanism_vs_evidence primary when a real cellular mechanism (mostly preclinical) is extrapolated to broad human benefit?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-013
+  case_family: adversarial
+  adversarial_family_id: A7
+  adversarial_family: "biologically plausible mechanism -> implied human efficacy"
+  adversarial_mechanism: |
+    A genuine, textbook cellular mechanism (red/near-infrared light absorbed by cytochrome c oxidase,
+    increasing mitochondrial ATP), demonstrated mostly in vitro and in animals, is extrapolated to
+    sweeping human clinical outcomes (reverse aging, heal the body, restore vitality). The surface
+    pressure is that the mechanism is real and specific, making the human benefit sound scientifically
+    inevitable. The pressure to resist: accepting a plausible, largely preclinical mechanism as proof of
+    broad human clinical efficacy.
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (mechanism_vs_evidence) with one genuinely plausible alternate (overclaim, invited by
+    the inflated 'reverses aging' language); precedence decides. The mechanism-to-efficacy structure is
+    clear (Shape C) and the preclinical nature is stated, keeping it at D2. Property-based.
+  precedence_rationale: |
+    A described biological mechanism (photobiomodulation of cytochrome c oxidase -> ATP), largely
+    preclinical, used to imply an undemonstrated human clinical benefit is the mechanism_vs_evidence
+    trigger (Shape C: preclinical pathway to therapeutic promise). It is genuinely present and central,
+    so it outranks generic overclaim per docs/taxonomy_precedence.md rule 1; overclaim is secondary.
+  ambiguity_note: |
+    Determinate: mechanism_vs_evidence is the single defensible primary; overclaim is a real secondary
+    reading. Narrow, specific human uses with limited evidence do not establish the broad claim (not solid).
+  steelman_challenge: |
+    Strongest case the gold is wrong: photobiomodulation is a real phenomenon with FDA-cleared devices
+    for some narrow indications (e.g., certain pain/wound/hair-growth uses) and a plausible mechanism,
+    so a reader might call the claim solid or plain marketing hype (overclaim). Counter-evidence weighed:
+    the broad claims (reverse aging, heal the body) rest on a largely preclinical mechanism and are not
+    demonstrated in adequate human trials; human evidence is limited to narrow uses. Resolution: the
+    mechanism-to-human-efficacy leap is the core error; gold remains mechanism_vs_evidence.
+  provenance:
+    claim_source_title: "Photobiomodulation of Cytochrome c Oxidase ... (mechanism cited by red-light-therapy 'mitochondria -> reverse aging' device marketing)"
+    claim_source_url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8971717/"
+    claim_source_publisher: "Red-light-therapy / near-infrared panel manufacturers ('supercharge your mitochondria to reverse aging and heal your body'); the cellular mechanism is documented in the photobiomodulation literature"
+    claim_source_date: "2018-2026 (ongoing red-light-therapy device marketing)"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Consumer red-light and near-infrared therapy panels are marketed on the narrative that light absorbed by cytochrome c oxidase boosts mitochondrial ATP and thereby reverses aging, heals the body, and restores vitality. The cellular mechanism is genuine and demonstrated mostly in vitro and in animals; broad human clinical benefits are not established in adequate trials. The frozen span is the bounded mechanism-to-human-benefit proposition."
+    claim_exact_span: "By supercharging your cells' energy, our panel reverses aging, heals your body, and restores youthful vitality"
+    evidence_sources:
+      - citation: "Photobiomodulation of Cytochrome c Oxidase by Chronic Transcranial Laser in Young and Aged Brains (preclinical demonstration of the ATP/cytochrome c oxidase mechanism)"
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8971717/"
+        design: "Preclinical (animal) mechanistic study of photobiomodulation"
+        population: "Animal (rodent) brains, young and aged"
+        intervention_or_exposure: "Red/near-infrared light (photobiomodulation) on cytochrome c oxidase"
+        comparator: "Untreated/sham tissue"
+        endpoint: "Cytochrome c oxidase activity / mitochondrial energetics (mechanistic surrogate)"
+        result: "Photobiomodulation modulates cytochrome c oxidase and mitochondrial energetics in animal tissue (mechanism supported preclinically); does not establish broad human clinical benefit"
+        source_role: primary_research
+        evidence_tier: "Preclinical mechanistic evidence (animal)"
+        limitations: "Preclinical/mechanistic; broad human clinical benefits (anti-aging, healing) not demonstrated in adequate human trials; human evidence limited to narrow indications"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: mechanism_vs_evidence
+    most_plausible_competing_label: overclaim
+    probes: "biologically plausible (preclinical) mechanism extrapolated to broad human efficacy"
+  case_fingerprint: "cde0fa24209e929f7c7b068ddb6fb6b26f186a1fe71bf5123cd0f88f46a8d255"

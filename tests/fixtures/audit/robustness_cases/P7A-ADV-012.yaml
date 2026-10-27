@@ -1,0 +1,165 @@
+id: P7A-ADV-012
+title: "Adversarial A6: Listerine 'clinically proven as effective as floss' (comparator claim over-generalized beyond the studies)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: unsupported_superiority_missing_comparator
+ambiguity_level: low
+prompt: |
+  A Listerine advertising campaign claims: "Clinical studies prove Listerine antiseptic mouthwash is as effective as floss at fighting plaque and gingivitis between the teeth. Why floss? Just rinse."
+
+  In litigation over this campaign, a federal court (McNeil-PPC, Inc. v. Pfizer Inc., S.D.N.Y. 2005) issued a preliminary injunction, finding the "as effective as floss" claim false and misleading. The underlying studies were limited to people with only mild-to-moderate gingivitis (so the broad, unqualified claim was overbroad), the subjects had not flossed properly, and the studies' own authors had emphasized that people should continue to floss daily and did not suggest mouthwash be used instead of floss.
+context: |
+  Evidence tier: a comparator (floss) is present, but the equivalence claim is generalized far beyond
+  what the underlying studies support. The studies covered a narrow subgroup (mild-to-moderate
+  gingivitis, with questionable flossing) and their authors explicitly said not to substitute rinsing
+  for flossing; a court found the broad "as effective as floss" claim false and misleading. A comparator
+  claim overstated beyond the evidence is overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  Listerine claimed to be "as effective as floss", but the underlying studies were limited to
+  mild-to-moderate gingivitis (with improper flossing) and their authors said to keep flossing; a court
+  enjoined the claim as false and misleading. A comparator/equivalence claim generalized beyond the
+  studies that support it is overclaim. It is not correlation_vs_causation (the studies are
+  interventional) or mechanism_vs_evidence (no animal/preclinical-mechanism-to-human leap is central).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: Listerine rinse is as effective as flossing at fighting plaque and gingivitis,
+     so people can rinse instead of floss.
+  2. What the strongest evidence establishes: the supporting studies were limited to mild-to-moderate
+     gingivitis (with improper flossing), and their authors said to keep flossing; a court found the
+     broad equivalence claim false and misleading.
+  3. Adversarial surface feature: "clinical studies prove" plus a concrete comparator (floss) make the
+     equivalence claim look rigorously evidenced.
+  4. Actual forensic mismatch: the equivalence is generalized far beyond the narrow population and
+     conditions the studies covered; the comparator claim is overstated.
+  5. Primary frozen label: overclaim - a comparator/equivalence claim exceeding what the studies
+     support (over-generalized population and conclusion).
+  6. Why: the core defect is an overstated comparison; no specific structural trigger fires.
+  7. Strongest competing label: solid - the studies did show plaque/gingivitis reduction, so the claim
+     has an evidentiary basis.
+  8. Why it loses: the studies do not support the broad, unqualified "as effective as floss / just
+     rinse" claim (narrow subgroup, authors' caveats, court finding), so the claim exceeds the evidence
+     = overclaim.
+  9. What would change the verdict: broad, well-conducted trials showing rinsing equals flossing across
+     the general population would make the claim solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: real clinical studies did show Listerine reduces
+  plaque and gingivitis, so the claim has evidentiary support. It loses because the studies were limited
+  to mild-to-moderate gingivitis (with improper flossing) and their authors said to keep flossing, and
+  a court found the broad "as effective as floss" claim false and misleading - the comparator claim
+  exceeds the evidence = overclaim.
+gold_summary: |
+  Listerine claimed to be 'as effective as floss'; the supporting studies were limited to mild-moderate
+  gingivitis and their authors said to keep flossing, and a court enjoined the claim as false. A
+  comparator/equivalence claim over-generalized beyond its studies = overclaim (solid tempting).
+curator_notes: |
+  Adversarial family A6 (unsupported superiority / benchmark cherry-picking / missing comparator;
+  comparator overstatement variant). Real public claim: Pfizer's Listerine 'as effective as floss'
+  campaign (2004). Evidence: McNeil-PPC v. Pfizer, 351 F. Supp. 2d 226 (S.D.N.Y. 2005) preliminary
+  injunction. Distinct from A6 Nexium (P7A-ADV-011; rigged unequal-dose comparator) and all
+  Boundary/Class-A cases. Gold frozen before any model output.
+expected_findings:
+  - finding: comparator_claim_over_generalized
+    severity: major
+    confidence: high
+    note: "'As effective as floss' generalized beyond studies limited to mild-moderate gingivitis"
+  - finding: court_found_false_and_misleading
+    severity: major
+    confidence: high
+    note: "Federal court enjoined the claim; study authors said to keep flossing"
+gold_evidence_spans:
+  - span: "Listerine antiseptic mouthwash is as effective as floss at fighting plaque and gingivitis"
+    why_it_matters: "A broad equivalence claim the underlying narrow studies do not support."
+    supports_finding: comparator_claim_over_generalized
+  - span: "the studies' own authors had emphasized that people should continue to floss daily"
+    why_it_matters: "The cited studies do not support substituting rinsing for flossing."
+    supports_finding: court_found_false_and_misleading
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "over-generalized comparator"
+    variants: ["as effective as floss", "mild-to-moderate gingivitis", "overbroad"]
+    functional_descriptions:
+      - "An equivalence claim is generalized beyond the studies' narrow scope"
+  - keyword: "court finding"
+    variants: ["injunction", "false and misleading", "keep flossing"]
+    functional_descriptions:
+      - "A court found the broad equivalence claim false and misleading"
+common_errors:
+  - accepting 'clinical studies prove' as licensing a broad equivalence claim
+  - missing the narrow population the studies actually covered
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - comparator_overgeneralization
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a broad 'as effective as floss' equivalence claim exceeds narrow supporting studies = overclaim?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-012
+  case_family: adversarial
+  adversarial_family_id: A6
+  adversarial_family: "unsupported superiority / benchmark cherry-picking / missing comparator"
+  adversarial_mechanism: |
+    A comparator/equivalence claim ("as effective as floss") is generalized far beyond the narrow
+    studies that support it: the studies covered only mild-to-moderate gingivitis (with improper
+    flossing) and their authors told people to keep flossing. The surface pressure is "clinical studies
+    prove" plus a concrete, familiar comparator (floss), which make the equivalence look rigorously
+    evidenced. The pressure to resist: accepting an over-generalized comparator claim as established by
+    the narrow studies behind it.
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) with one genuinely plausible alternate (solid, because real studies did show
+    plaque/gingivitis reduction); recognising the over-generalization beyond the studies' narrow scope
+    decides it. A single dominant defect keeps it at D2. Property-based.
+  precedence_rationale: |
+    No specific-label trigger fires: the underlying studies are interventional (rules out
+    correlation_vs_causation) and no animal/preclinical mechanism is extrapolated to humans (rules out
+    mechanism_vs_evidence). The defect is an overstated comparator/equivalence claim exceeding its
+    evidence = overclaim, per docs/taxonomy_precedence.md (residual/generic rule).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting only because the studies
+    do show some real effect, but not the broad equivalence claimed.
+  steelman_challenge: |
+    Strongest case the gold is wrong: Listerine's antibacterial effect is real and clinical studies did
+    show reductions in plaque and gingivitis, so a reader might call faithful reporting solid.
+    Counter-evidence weighed: the studies were limited to mild-to-moderate gingivitis (subjects flossed
+    improperly), their authors emphasized continuing to floss, and a federal court found the broad "as
+    effective as floss" claim false and misleading. Both directions checked. Resolution: the comparator
+    claim exceeds the evidence; gold remains overclaim.
+  provenance:
+    claim_source_title: "McNeil-PPC, Inc. v. Pfizer Inc., 351 F. Supp. 2d 226 (S.D.N.Y. 2005) (enjoins Listerine 'as effective as floss' campaign)"
+    claim_source_url: "https://www.courtlistener.com/opinion/2407729/mcneil-ppc-inc-v-pfizer-inc/"
+    claim_source_publisher: "Pfizer (Listerine 'as effective as floss' / 'Why floss? Just rinse' advertising campaign, 2004); the claim and its judicial disposition are documented in the federal court opinion"
+    claim_source_date: "2004-2005"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Beginning in 2004, Pfizer advertised that Listerine is clinically proven to be as effective as floss at reducing plaque and gingivitis between the teeth, implying rinsing could replace flossing. Rival McNeil-PPC sued; the Southern District of New York issued a preliminary injunction (351 F. Supp. 2d 226, 2005), finding the claim false and misleading because the supporting studies were limited to mild-to-moderate gingivitis and their authors urged continued flossing. The frozen span is the bounded 'as effective as floss / just rinse' claim."
+    claim_exact_span: "Listerine antiseptic mouthwash is as effective as floss at fighting plaque and gingivitis between the teeth. Why floss? Just rinse"
+    evidence_sources:
+      - citation: "McNeil-PPC, Inc. v. Pfizer Inc., 351 F. Supp. 2d 226 (S.D.N.Y. 2005) (preliminary injunction)"
+        url: "https://www.courtlistener.com/opinion/2407729/mcneil-ppc-inc-v-pfizer-inc/"
+        design: "Federal court adjudication (Lanham Act false-advertising); assessment of the underlying clinical studies"
+        population: "General consumers vs the studies' mild-to-moderate gingivitis participants"
+        intervention_or_exposure: "Listerine antiseptic rinse as a substitute for flossing"
+        comparator: "Dental floss"
+        endpoint: "Plaque and gingivitis reduction between the teeth"
+        result: "'As effective as floss' claim found false and misleading and enjoined; supporting studies limited to mild-to-moderate gingivitis (improper flossing) and their authors urged continued flossing"
+        source_role: regulatory_assessment
+        evidence_tier: "Judicial false-advertising adjudication / evidence assessment"
+        limitations: "A court finding, not a new clinical trial; adjudicates the claim's support against the cited studies"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "comparator/equivalence claim over-generalized beyond the narrow studies that support it"
+  case_fingerprint: "dbbb7c7fa3d54465d469fd32c88a71c5110873321383f5d7a276bcf2e9a3da33"

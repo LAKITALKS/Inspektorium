@@ -1,0 +1,164 @@
+id: P7A-ADV-015
+title: "Adversarial A8: Lipitor '36% reduction in heart attacks' (true relative risk reduction hiding a ~1 percentage-point absolute reduction)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: relative_risk_without_absolute
+ambiguity_level: low
+prompt: |
+  A Lipitor advertisement headlines: "Lipitor reduces the risk of heart attack by 36%." A footnote adds: "That means in a large clinical study, 3% of patients taking a sugar pill had a heart attack compared to 2% of patients taking Lipitor."
+
+  The 36% figure is the RELATIVE risk reduction from the ASCOT-LLA trial (atorvastatin vs placebo in hypertensive patients with additional cardiovascular risk factors, stopped early). The event rates were about 1.9% with Lipitor versus 3.0% with placebo — an ABSOLUTE risk reduction of roughly 1.1 percentage points (about 1 in 90 over the trial). The prominent "36%" is numerically correct but conveys a far larger benefit than the absolute reduction; the small-print absolute figures do not repair the impression the headline creates.
+context: |
+  Evidence tier: a randomized trial reported two legitimate ways. The headline uses a technically-correct
+  relative risk reduction (36%) that makes the benefit look large, while the absolute reduction (~1.1
+  percentage points) is small and relegated to a footnote. The number is accurate but the framing
+  misleads; the hedge (fine print) does not repair the overstated impression. Technically-true-but-
+  misleading framing of a correct number is overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  The "36%" is a real relative risk reduction, but the absolute reduction is about 1.1 percentage points
+  (1.9% vs 3.0%). The headline's relative framing conveys a far larger benefit than the data support,
+  and the small-print absolute numbers do not repair that impression. A numerically-correct value framed
+  to mislead about the size of the benefit is overclaim. It is not correlation_vs_causation (the trial is
+  randomized) or mechanism_vs_evidence (no animal/preclinical-mechanism-to-human leap is central).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: Lipitor cuts your heart-attack risk by 36%.
+  2. What the strongest evidence establishes: in ASCOT-LLA the relative risk reduction was 36%, but the
+     absolute event rates were ~1.9% vs 3.0% - an absolute reduction of roughly 1.1 percentage points.
+  3. Adversarial surface feature: "36%" is accurate and impressive, and a footnote even gives the
+     absolute numbers, creating an appearance of full disclosure.
+  4. Actual forensic mismatch: the prominent relative figure conveys a much larger benefit than the
+     small absolute reduction; the fine-print hedge does not repair the overstated impression.
+  5. Primary frozen label: overclaim - a technically-correct number framed (relative, headline) to
+     overstate the benefit's magnitude.
+  6. Why: the defect is rhetorical/framing inflation of an accurate statistic; no specific structural
+     trigger fires.
+  7. Strongest competing label: solid - the 36% is real, the trial is randomized, and the absolute
+     numbers are disclosed, so the ad looks honest.
+  8. Why it loses: prominence of the relative figure with the absolute reduction (~1pp) buried conveys a
+     misleadingly large benefit; a correct number framed to mislead is overclaim, not solid.
+  9. What would change the verdict: leading with the absolute reduction (or number-needed-to-treat)
+     alongside the relative figure would make the reporting solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: the 36% relative risk reduction is accurate, the
+  trial is randomized, and the ad even footnotes the absolute rates (3% vs 2%), so it looks like honest
+  reporting. It loses because the headline's relative framing conveys a far larger benefit than the ~1.1
+  percentage-point absolute reduction, and the fine print does not repair that impression - a correct
+  number framed to mislead is overclaim.
+gold_summary: |
+  A Lipitor ad headlines a true 36% relative risk reduction while the absolute reduction is ~1.1
+  percentage points (1.9% vs 3.0%), disclosed only in small print. A correct number framed to overstate
+  the benefit = overclaim (solid tempting).
+curator_notes: |
+  Adversarial family A8 (numerically-correct value / technically-true-but-misleading, hedges that do not
+  repair). Real public claim: the Lipitor '36%' relative-risk-reduction advertisement (ASCOT-LLA).
+  Numbers verified against the FDA-approved label (1.9% vs 3.0%; 36% RRR). Forensic mode (relative-vs-
+  absolute framing) and proposition distinct from the LDL-surrogate cardiovascular cases in Class-A/
+  Boundary. Distinct from A8 Colgate (P7A-ADV-016). Gold frozen before any model output.
+expected_findings:
+  - finding: relative_risk_framing_overstates_benefit
+    severity: major
+    confidence: high
+    note: "Headline 36% relative reduction vs ~1.1 percentage-point absolute reduction"
+  - finding: hedge_does_not_repair
+    severity: moderate
+    confidence: high
+    note: "Small-print absolute numbers do not repair the overstated impression"
+gold_evidence_spans:
+  - span: "Lipitor reduces the risk of heart attack by 36%"
+    why_it_matters: "A true relative risk reduction framed to convey a far larger benefit."
+    supports_finding: relative_risk_framing_overstates_benefit
+  - span: "3% of patients taking a sugar pill had a heart attack compared to 2% of patients taking Lipitor"
+    why_it_matters: "The absolute reduction is ~1 percentage point, buried in a footnote."
+    supports_finding: hedge_does_not_repair
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "relative vs absolute risk"
+    variants: ["36% relative", "1.1 percentage points", "1.9% vs 3.0%"]
+    functional_descriptions:
+      - "A large relative reduction can correspond to a small absolute reduction"
+  - keyword: "decorative hedge"
+    variants: ["footnote", "small print", "does not repair"]
+    functional_descriptions:
+      - "Disclosing absolute numbers in fine print does not repair the headline impression"
+common_errors:
+  - accepting a true relative-risk figure as an honest summary of benefit size
+  - treating a fine-print hedge as repairing a misleading headline
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - relative_risk_inflation_missed
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a true 36% relative reduction framed as the headline (with a ~1pp absolute reduction in fine print) is overclaim, not solid?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-015
+  case_family: adversarial
+  adversarial_family_id: A8
+  adversarial_family: "numerically-correct value on wrong population / technically-true-but-misleading, hedges that do not repair the overclaim"
+  adversarial_mechanism: |
+    A numerically-correct statistic (a 36% relative risk reduction) is framed - prominent headline,
+    relative metric - to convey a far larger benefit than the ~1.1 percentage-point absolute reduction it
+    represents, while the absolute rates are relegated to a footnote that does not repair the impression.
+    The surface pressure is that the number is accurate and even partially disclosed, so the ad looks
+    honest. The pressure to resist: accepting a true-but-relatively-framed figure (with a decorative
+    hedge) as an honest summary of the benefit's magnitude.
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    The number is accurate and the absolute figures are disclosed, so a strong solid reading is
+    available; separating a true statistic from a misleading framing (relative vs absolute, and a hedge
+    that does not repair) requires quantitative discrimination. Property-based; D3.
+  precedence_rationale: |
+    No specific-label trigger fires: the trial is randomized (rules out correlation_vs_causation) and no
+    animal/preclinical mechanism is extrapolated to humans (rules out mechanism_vs_evidence). The defect
+    is framing/rhetorical inflation of a technically-correct number = overclaim, per docs/taxonomy_precedence.md
+    (residual/generic rule; decorative hedging that does not constrain the claim is an overclaim signal).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting because the figure is
+    accurate and the absolute rates are footnoted, but the headline framing overstates the benefit and
+    the hedge does not repair it.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the 36% relative risk reduction is genuinely correct, ASCOT-LLA is
+    a randomized trial, atorvastatin really does reduce heart attacks, and the ad even discloses the
+    absolute rates (3% vs 2%) - so a reader could call it solid, honest reporting. Counter-evidence
+    weighed: the headline uses the relative figure to convey a benefit far larger than the ~1.1
+    percentage-point absolute reduction, and the absolute numbers are buried in a footnote that does not
+    repair the impression. Resolution: a correct number framed to mislead about magnitude is overclaim.
+  provenance:
+    claim_source_title: "Lipitor (atorvastatin) FDA-approved label reporting ASCOT-LLA (documents the 36% relative risk reduction and the 1.9% vs 3.0% absolute rates behind the '36%' advertising)"
+    claim_source_url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/020702s042lbl.pdf"
+    claim_source_publisher: "Pfizer (Lipitor '36% reduction in risk of heart attack' advertising); the underlying ASCOT-LLA relative and absolute figures are documented in the FDA-approved prescribing information"
+    claim_source_date: "circa 2004-2008 (Lipitor advertising); ASCOT-LLA reported 2003"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "Pfizer advertised Lipitor as reducing the risk of heart attack by 36%, the relative risk reduction from the ASCOT-LLA trial (atorvastatin vs placebo in hypertensive patients with additional risk factors). The FDA-approved label documents the underlying event rates (about 1.9% with atorvastatin vs 3.0% with placebo), an absolute reduction of roughly 1.1 percentage points. The frozen span is the bounded '36%' headline plus its fine-print absolute figures."
+    claim_exact_span: "Lipitor reduces the risk of heart attack by 36% ... 3% of patients taking a sugar pill had a heart attack compared to 2% of patients taking Lipitor"
+    evidence_sources:
+      - citation: "Lipitor (atorvastatin calcium) FDA-approved prescribing information, reporting ASCOT-LLA (Sever PS, et al., Lancet 2003): 36% relative risk reduction; event rates 1.9% (atorvastatin) vs 3.0% (placebo), p=0.0005"
+        url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/020702s042lbl.pdf"
+        design: "Randomized, double-blind, placebo-controlled trial (ASCOT-LLA), reported in the FDA-approved label"
+        population: "Hypertensive patients with additional cardiovascular risk factors (ASCOT-LLA; trial stopped early)"
+        intervention_or_exposure: "Atorvastatin 10 mg/day"
+        comparator: "Placebo"
+        endpoint: "Nonfatal myocardial infarction and fatal coronary heart disease"
+        result: "36% relative risk reduction; absolute event rates ~1.9% (atorvastatin) vs 3.0% (placebo), an absolute reduction of ~1.1 percentage points"
+        source_role: regulatory_assessment
+        evidence_tier: "FDA-approved label documenting a randomized trial (relative and absolute figures)"
+        limitations: "Trial in a specific higher-risk population, stopped early; absolute benefit differs by baseline risk"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "technically-true relative risk reduction framed to overstate a small absolute benefit; hedge does not repair"
+  case_fingerprint: "f05d8c4949bff46491c85100170837019590106bd5b6a6a9bc7fff82b7322ed9"

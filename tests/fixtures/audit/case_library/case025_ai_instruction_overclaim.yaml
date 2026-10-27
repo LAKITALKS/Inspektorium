@@ -1,0 +1,67 @@
+id: study-forensics-025
+title: "Study Forensics: AI instruction outperforms human teachers"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: overclaim
+trap_type: media_inflated_overclaim
+ambiguity_level: low
+prompt: |
+  An opinionated business article argued that specialized AI systems are rapidly making human teachers obsolete. Citing pilot programs in the United States and United Kingdom, it claimed that students taught by AI outperform peers in physics, mathematics and literacy, with some reports suggesting a 65 percent rise in test scores. The article described a two-times learning effect, where an AI tutor purportedly taught material twice as effectively and in less time than active-learning classrooms. It concluded that the role of educators as the primary source of knowledge is being dismantled and that AI instruction represents a data-backed reality for all subjects.
+context: |
+  A media article that extrapolates from limited pilots to sweeping claims about AI
+  replacing teachers. No study design, sample sizes, or contexts are described.
+expected_answer: "overclaim"
+reference_solution: |
+  The article presents sweeping claims that AI instruction makes human teachers obsolete and delivers massive learning gains across subjects. It generalises from limited pilot programs without describing study design, sample size, or context, making this a clear overclaim.
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The narrative extrapolates from isolated pilots to a universal claim that AI instruction
+  is superior in all core subjects and implies the end of human teaching. No evidence is
+  provided to support the 65 percent test-score increase or to show that AI can replace
+  educators; thus the conclusion exceeds the evidence and constitutes unsupported
+  generalisation.
+gold_alternative_reading: null
+gold_summary: |
+  The article presents sweeping claims that AI instruction makes human teachers obsolete and delivers massive learning gains across subjects. It generalises from limited pilot programs and does not describe study design, sample size or context.
+curator_notes: |
+  Sharp overclaim case with clear rhetorical inflation. No ambiguity — the claims are
+  sweeping and the evidence base is thin. Good contrast to Case021 (solid education RCT).
+  Tests whether agents can identify media hype vs actual evidence.
+expected_findings:
+  - finding: conclusion_exceeds_results
+    severity: major
+    confidence: high
+  - finding: unsupported_generalization
+    severity: major
+    confidence: high
+gold_evidence_spans:
+  - span: "students taught by AI outperform peers in physics, mathematics and literacy, with some reports suggesting a 65 percent rise in test scores"
+    why_it_matters: "Key overclaim linking AI instruction to large performance gains without context or methodology."
+    supports_finding: unsupported_generalization
+  - span: "the role of educators as the primary source of knowledge is being dismantled and that AI instruction represents a data-backed reality for all subjects"
+    why_it_matters: "Sweeping conclusion extrapolating from limited evidence to universal claim."
+    supports_finding: conclusion_exceeds_results
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "unsupported generalization"
+    variants: ["all subjects", "data-backed reality", "obsolete"]
+    functional_descriptions:
+      - "the article extends limited pilot findings to universal claims"
+  - keyword: "no methodology"
+    variants: ["no study design", "no sample size", "citing pilot programs"]
+    functional_descriptions:
+      - "the evidence base is not described in sufficient detail"
+common_errors:
+  - accepting sweeping claims because they mention studies
+  - missing the absence of methodological detail
+expected_failure_modes:
+  - missing_overclaim
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent identify media-inflated overclaim in education/AI?"

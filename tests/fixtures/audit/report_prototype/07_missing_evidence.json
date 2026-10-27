@@ -1,0 +1,48 @@
+{
+  "claim": {
+    "claim_context": "SYNTHETIC illustration — not a real scientific or medical conclusion.",
+    "claim_source_reference": null,
+    "claim_text": "This wearable detects heart attacks before they happen."
+  },
+  "evidence": {
+    "evidence_items": [],
+    "evidence_sufficiency": "unknown",
+    "missing_human_evidence": true
+  },
+  "failure_modes": {
+    "detected": [
+      {
+        "mode": "unsupported_superiority_claim",
+        "rationale": "A predictive-detection claim is made with no cited evidence."
+      }
+    ]
+  },
+  "meta": {
+    "development_or_production_status": "development",
+    "generated_at": "2026-08-05T12:00:00+00:00",
+    "report_id": "FR-SYN-MISSEV-07",
+    "synthetic_fixture": true
+  },
+  "provenance": {
+    "analysis_source": "phase6_3 synthetic fixture",
+    "model": "SYNTHETIC-MODEL",
+    "prompt_contract_version": "SYNTHETIC-CONTRACT-0",
+    "provider": "synthetic",
+    "repository_commit": "5349ad0"
+  },
+  "reader_impact": {
+    "likely_reader_misunderstanding": "That the device reliably predicts heart attacks.",
+    "risk_level": "high",
+    "risk_rationale": "Users may rely on it instead of medical care."
+  },
+  "uncertainty": {
+    "missing_evidence": [
+      "Any validation study.",
+      "Sensitivity/specificity data."
+    ]
+  },
+  "verdict": {
+    "confidence": 0.72,
+    "predicted_label": "overclaim"
+  }
+}

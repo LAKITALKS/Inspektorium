@@ -1,0 +1,188 @@
+id: P7A-ADV-011
+title: "Adversarial A6: Nexium 'the better purple pill' vs Prilosec (superiority from an unequal-dose comparison; rigged comparator)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: unsupported_superiority_rigged_comparator
+ambiguity_level: low
+prompt: |
+  Advertising for Nexium (esomeprazole) positions it against Prilosec (omeprazole): "Nexium, the new purple pill, heals acid-reflux damage and relieves heartburn better than Prilosec. Ask your doctor to switch you to the better purple pill."
+
+  Esomeprazole is the single (S-) isomer of omeprazole, which is a mixture of the S- and R- isomers. The pivotal head-to-head healing trial (Kahrilas et al., Aliment Pharmacol Ther 2000) compared Nexium 40 mg against omeprazole 20 mg — unequal doses — and found erosive-oesophagitis healing at 8 weeks of 93.7% vs 84.2% (p<0.001). The advantage is real but was demonstrated only at unequal doses; at equivalent doses the difference narrows substantially, and for most patients with typical gastro-oesophageal reflux (symptom control) the drugs are broadly comparable. Nexium's clearest edge is in a pharmacodynamic surrogate (degree/duration of acid suppression), rather than a large clinically meaningful advantage for typical patients at fair comparison.
+context: |
+  Evidence tier: a randomized head-to-head healing trial and its dosing design. The claim asserts
+  clinical superiority over a competitor, but the pivotal comparison used unequal doses (Nexium 40 mg
+  vs omeprazole 20 mg); the ~9.5 percentage-point healing advantage (93.7% vs 84.2% at 8 weeks) was
+  demonstrated at those unequal doses, narrows substantially at equal doses, and the clearest edge is
+  an acid-suppression surrogate. A superiority claim resting on a rigged/unequal-dose comparator,
+  exceeding the fair-comparison difference, is overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  Nexium is marketed as clinically superior to Prilosec, but the pivotal healing superiority (93.7% vs
+  84.2% at 8 weeks, Kahrilas 2000) was demonstrated at unequal doses (esomeprazole 40 mg vs omeprazole
+  20 mg); at equivalent doses the difference narrows substantially and for typical reflux the drugs are
+  broadly comparable, with the clearest edge in an acid-suppression surrogate. A superiority/switch
+  claim that rests on a rigged (unequal-dose) comparator and exceeds the fair-comparison difference is
+  overclaim. It is not correlation_vs_causation (the trial is randomized) or mechanism_vs_evidence (no
+  animal/preclinical-mechanism-to-human leap is central).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: Nexium heals and relieves reflux clinically better than Prilosec; patients
+     should switch.
+  2. What the strongest evidence establishes: the pivotal healing superiority (93.7% vs 84.2% at 8
+     weeks, Kahrilas 2000) used unequal doses (esomeprazole 40 mg vs omeprazole 20 mg); at comparable
+     doses the difference narrows substantially, for typical reflux the drugs are broadly comparable,
+     and the clearest edge is an acid-suppression surrogate.
+  3. Adversarial surface feature: real trials and a genuine pharmacodynamic edge make the superiority
+     claim look evidence-based.
+  4. Actual forensic mismatch: the clinical superiority is not demonstrated at fair (equal-dose)
+     comparison; the marketed advantage exceeds the clinically meaningful difference.
+  5. Primary frozen label: overclaim - an unsupported superiority claim resting on a rigged/unequal
+     comparator.
+  6. Why: the core defect is a comparator-based superiority claim exceeding the evidence; no specific
+     structural trigger (causal-inference or mechanism-to-human) fires.
+  7. Strongest competing label: solid - Nexium is a real drug with a genuine acid-suppression edge, so
+     the claim seems evidence-based.
+  8. Why it loses: the head-to-head clinical superiority rests on an unequal-dose comparison (40 vs 20
+     mg); at equal doses the difference narrows substantially and the clearest edge is a surrogate, so
+     the marketed clinical-superiority/switch claim exceeds the fair-comparison difference = overclaim.
+  9. What would change the verdict: equal-dose head-to-head trials showing a clinically meaningful
+     healing/relief advantage would make the superiority claim solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: esomeprazole genuinely produces greater/longer acid
+  suppression and the pivotal trial did show significantly better 8-week healing (93.7% vs 84.2%), so a
+  reader could call the superiority claim solid. It loses because that trial compared unequal doses (40
+  vs 20 mg); at comparable doses the difference narrows substantially and the clearest edge is a
+  surrogate, so the marketed clinical-superiority/switch claim exceeds the fair-comparison evidence =
+  overclaim.
+gold_summary: |
+  Nexium is marketed as clinically better than Prilosec, but the pivotal healing superiority (93.7% vs
+  84.2%) came from a 40-vs-20 mg (unequal-dose) comparison; at equal doses it narrows substantially and
+  the clearest edge is an acid-suppression surrogate. Unsupported superiority via a rigged comparator
+  = overclaim (solid tempting).
+curator_notes: |
+  Adversarial family A6 (unsupported superiority / benchmark cherry-picking / missing comparator). Real
+  public claim: AstraZeneca's Nexium 'better purple pill' switch marketing against Prilosec. Decisive
+  documented fact (curator-verified, WP-2 gold review): the pivotal head-to-head healing trial
+  (Kahrilas 2000, Aliment Pharmacol Ther) compared esomeprazole 40 mg vs omeprazole 20 mg (unequal
+  doses), 8-week healing 93.7% vs 84.2% (p<0.001) — primary evidence now bound (primary_research). The
+  superiority is real but rests on an unequal-dose comparison and narrows at equal doses. Distinct from A6
+  Listerine (P7A-ADV-012) and all Boundary/Class-A cases. Gold frozen before any model output.
+expected_findings:
+  - finding: superiority_from_unequal_dose_comparison
+    severity: major
+    confidence: high
+    note: "Superiority claim rests on a 40 mg vs 20 mg (unequal-dose) comparison"
+  - finding: clinical_advantage_negligible_at_equal_dose
+    severity: major
+    confidence: high
+    note: "At comparable doses, clinical outcomes for typical reflux are essentially the same"
+gold_evidence_spans:
+  - span: "heals acid-reflux damage and relieves heartburn better than Prilosec"
+    why_it_matters: "Asserts clinical superiority that the fair (equal-dose) comparison does not support."
+    supports_finding: superiority_from_unequal_dose_comparison
+  - span: "the pivotal comparisons ... compared Nexium 40 mg against omeprazole 20 mg - unequal doses"
+    why_it_matters: "The comparator was rigged in Nexium's favour."
+    supports_finding: clinical_advantage_negligible_at_equal_dose
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "rigged comparator"
+    variants: ["40 mg vs 20 mg", "unequal doses", "same isomer"]
+    functional_descriptions:
+      - "Superiority is manufactured by comparing unequal doses"
+  - keyword: "surrogate vs clinical edge"
+    variants: ["acid suppression", "equivalent outcomes", "typical reflux"]
+    functional_descriptions:
+      - "Any real edge is a surrogate, not a clinically meaningful advantage"
+common_errors:
+  - accepting a superiority claim backed by real-but-unequal-dose trials
+  - treating an acid-suppression surrogate edge as clinical superiority
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - rigged_comparator_missed
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that a clinical superiority claim built on an unequal-dose comparison exceeds the evidence = overclaim?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-011
+  case_family: adversarial
+  adversarial_family_id: A6
+  adversarial_family: "unsupported superiority / benchmark cherry-picking / missing comparator"
+  adversarial_mechanism: |
+    A clinical superiority claim over a named competitor is built on a rigged comparator: the pivotal
+    head-to-head comparison used unequal doses (Nexium 40 mg vs omeprazole 20 mg), and any genuine edge
+    sits in an acid-suppression surrogate rather than a clinically meaningful outcome. The surface
+    pressure is that real randomized trials and a genuine pharmacodynamic difference make the superiority
+    claim look evidence-based. The pressure to resist: accepting a superiority claim whose comparator was
+    stacked (unequal doses) and whose advantage narrows substantially at fair comparison.
+  gold_status: frozen_pre_model
+  difficulty_tier: D3
+  difficulty_rationale: |
+    An evidence-tier conflict is central (a real acid-suppression surrogate edge and a real 8-week
+    healing difference at unequal doses versus a much smaller advantage at equal doses), and separating a
+    dose-inflated superiority from a genuine effect requires attention to the comparator design, raising
+    difficulty to D3. Property-based.
+  precedence_rationale: |
+    No specific-label trigger fires: the trials are randomized (rules out correlation_vs_causation) and
+    no animal/preclinical mechanism is extrapolated to humans (rules out mechanism_vs_evidence). The
+    defect is a comparator-based superiority claim exceeding the demonstrated clinical difference =
+    overclaim, per docs/taxonomy_precedence.md (residual/generic rhetorical-inflation rule).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting because Nexium has a real
+    surrogate edge and a real (unequal-dose) healing advantage, but neither establishes the marketed
+    clinical superiority at fair comparison.
+  steelman_challenge: |
+    Strongest case the gold is wrong: esomeprazole genuinely achieves greater and longer acid
+    suppression, the pivotal trial did show significantly better 8-week healing (93.7% vs 84.2%), and it
+    is a legitimately approved drug, so a reader might call the superiority claim solid. Counter-evidence
+    weighed: that pivotal trial compared unequal doses (esomeprazole 40 vs omeprazole 20 mg); the
+    advantage narrows substantially at equal doses and the clearest edge is a pharmacodynamic surrogate.
+    Both directions checked. Resolution: the marketed clinical-superiority/switch claim exceeds the
+    fair-comparison evidence; gold remains overclaim.
+  provenance:
+    claim_source_title: "Nexium (esomeprazole) vs Prilosec (omeprazole) - clinical comparison (documents the 'better purple pill' superiority marketing and the unequal-dose basis)"
+    claim_source_url: "https://www.drugs.com/compare/nexium-vs-omeprazole"
+    claim_source_publisher: "AstraZeneca (Nexium 'the purple pill' switch marketing against its own Prilosec); the superiority claim, the same-isomer relationship, and the clinical equivalence are documented in clinical references"
+    claim_source_date: "circa 2001 onward (Nexium launch marketing)"
+    claim_source_role: public_claim_source
+    claim_source_type: marketing_claim
+    claim_context: "As Prilosec's patent expired, AstraZeneca launched Nexium (the S-isomer of omeprazole) with heavy 'purple pill' marketing urging patients to switch to a supposedly better acid-reflux drug. The pivotal head-to-head healing trial (Kahrilas 2000) used Nexium 40 mg against omeprazole 20 mg (unequal doses), 8-week healing 93.7% vs 84.2%; the advantage narrows substantially at equal doses and the clearest edge is an acid-suppression surrogate. The frozen span is the bounded clinical-superiority switch claim."
+    claim_exact_span: "heals acid-reflux damage and relieves heartburn better than Prilosec. Ask your doctor to switch you to the better purple pill"
+    evidence_sources:
+      - citation: "Kahrilas PJ, Falk GW, Johnson DA, et al. Esomeprazole improves healing and symptom resolution as compared with omeprazole in reflux oesophagitis patients: a randomized controlled trial. Aliment Pharmacol Ther 2000;14(10):1249-1258 (PMID 11012468)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/11012468/"
+        design: "Randomized, double-blind, controlled head-to-head trial"
+        population: "Patients with reflux oesophagitis (erosive esophagitis)"
+        intervention_or_exposure: "Esomeprazole 40 mg once daily"
+        comparator: "Omeprazole 20 mg once daily (UNEQUAL doses)"
+        endpoint: "Healing of erosive/reflux oesophagitis at 8 weeks; symptom resolution"
+        result: "8-week healing 93.7% (esomeprazole 40 mg) vs 84.2% (omeprazole 20 mg), p<0.001 (life-table, ITT) - a real but modest advantage demonstrated at unequal doses"
+        source_role: primary_research
+        evidence_tier: "Randomized head-to-head clinical trial (pivotal superiority evidence)"
+        limitations: "Superiority demonstrated at unequal doses (40 mg vs 20 mg); the difference narrows substantially at equal doses; addresses healing/symptoms, with acid suppression as the surrogate edge"
+      - citation: "Clinical reference (Drugs.com): Nexium (esomeprazole) vs omeprazole - the same-isomer relationship and comparable clinical outcomes for typical GERD at equivalent dosing"
+        url: "https://www.drugs.com/compare/nexium-vs-omeprazole"
+        design: "Clinical reference summarising the class/dose context"
+        population: "Adults with GERD / erosive oesophagitis"
+        intervention_or_exposure: "Esomeprazole (Nexium), the S-isomer of omeprazole"
+        comparator: "Omeprazole (Prilosec)"
+        endpoint: "Symptom control at equivalent dosing"
+        result: "For most typical GERD patients, clinical outcomes at equivalent dosing are broadly comparable; the pivotal superiority rested on the unequal-dose (40 vs 20 mg) comparison"
+        source_role: secondary_discovery
+        evidence_tier: "Clinical reference (equal-dose / typical-patient context)"
+        limitations: "Secondary clinical reference; the load-bearing superiority evidence is the primary Kahrilas 2000 trial above"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "unsupported clinical superiority resting on a rigged (unequal-dose) comparator"
+  case_fingerprint: "1a191e3548bd5beb0fa68d4c999628062ecfeec530b07d4edced3739370908dc"

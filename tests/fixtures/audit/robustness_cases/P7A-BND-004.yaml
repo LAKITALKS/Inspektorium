@@ -1,0 +1,165 @@
+id: P7A-BND-004
+title: "Boundary: 'a daily drink protects your heart' (moderate-alcohol J-curve, abstainer bias)"
+domain: study_forensics
+difficulty: medium
+task_type: study_forensics
+task_family: correlation_vs_causation
+trap_type: confounded_causal_claim
+ambiguity_level: low
+prompt: |
+  A lifestyle column advises: "The evidence shows that a daily glass of wine protects your heart and helps you live longer. Moderate drinkers outlive teetotallers, so if you don't drink, consider starting — one drink a day is good for you."
+
+  The claim rests on the long-observed "J-curve": in many observational cohorts, moderate drinkers show lower mortality than non-drinkers. A 2023 systematic review and meta-analysis (Zhao et al., JAMA Network Open) of 107 cohort studies and more than 4.8 million participants found NO statistically significant reduction in all-cause mortality among low-volume drinkers (about one drink/day) compared with LIFETIME nondrinkers, once the analysis corrected for study biases. The apparent benefit in earlier studies is largely explained by the "abstainer/sick-quitter bias" — former drinkers and people who quit because of ill health were misclassified into the nondrinker reference group, making non-drinkers look unhealthy. No level of drinking was associated with longer life; risk rose above ~2 drinks/day (women) and ~3/day (men).
+context: |
+  Evidence tier: large meta-analysis of observational cohorts. The exposure-outcome design is
+  non-randomized and confounded; the reference group is corrupted by abstainer/sick-quitter bias.
+  The public claim converts this confounded association into a causal, prescriptive recommendation
+  ("protects your heart," "start drinking"). This is the correlation_vs_causation trigger operating
+  as the central failure.
+expected_answer: "correlation_vs_causation"
+reference_solution: |
+  The public claim makes a causal, prescriptive statement (moderate drinking "protects your heart,"
+  non-drinkers should "consider starting") from a NON-CAUSAL, confounded observational design. The
+  apparent J-curve benefit is explained by abstainer/sick-quitter bias (ill former drinkers
+  misclassified as non-drinkers); when corrected, low-volume drinking shows no mortality benefit.
+  The central forensic defect is inferring causation from a confounded association and recommending
+  action on that basis = correlation_vs_causation. (An overclaim reading also exists, but the causal
+  boundary crossing is the core error.)
+gold_label: correlation_vs_causation
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. What the claim asserts: a causal, prescriptive conclusion — a daily drink "protects your heart"
+     and non-drinkers should "consider starting."
+  2. What the evidence establishes: an observational association (J-curve) that disappears for
+     low-volume drinkers vs LIFETIME nondrinkers after correcting for abstainer/sick-quitter bias;
+     no protective effect once confounding is addressed.
+  3. Mismatch: a confounded, non-randomized association with a corrupted reference group is treated
+     as a causal effect and turned into behavioural advice.
+  4. Frozen label triggered: correlation_vs_causation — a causal claim (and policy/behaviour
+     recommendation) drawn from a non-causal, confounded design; the specific trigger is genuinely
+     present and captures the core error.
+  5. Why overclaim is tempting: "protects your heart / live longer" is also rhetorical inflation, so
+     a generic overclaim reading is available.
+  6. Why precedence keeps the specific label primary: the decisive failure is structural — causation
+     asserted from a confounded observational design with a biased comparator — exactly the
+     correlation_vs_causation definitional trigger, which outranks generic overclaim when present and
+     central (docs/taxonomy_precedence.md rule 1). overclaim is recorded as the secondary reading.
+  7. What would change the classification: if a randomized/Mendelian-randomization design had shown a
+     causal protective effect, the causal claim would be supported (solid); if the claim had merely
+     said "moderate drinkers tend to have lower mortality" without causal/prescriptive framing, it
+     would not cross the causal boundary.
+gold_alternative_reading: |
+  Alternative: overclaim. Plausible because "protects your heart / live longer" is rhetorical
+  inflation. It is the secondary reading; it loses as PRIMARY because the core, structural defect is
+  the causal inference from a confounded observational design (abstainer bias), which is precisely
+  the correlation_vs_causation trigger and captures the central error.
+gold_summary: |
+  A column tells non-drinkers to start because "a daily drink protects your heart." The J-curve is
+  observational and explained by abstainer/sick-quitter bias; a 2023 meta-analysis (107 studies,
+  4.8M+) found no low-volume mortality benefit after correction. Causal, prescriptive claim from a
+  confounded design = correlation_vs_causation (overclaim secondary).
+curator_notes: |
+  Boundary family B1 (overclaim <-> correlation_vs_causation), correlation_vs_causation direction —
+  a counter-directional (specific-that-also-looks-overclaim) anchor for the transition matrix.
+  Sourced from Zhao et al. 2023 (JAMA Network Open) and the abstainer-bias literature. The
+  causal/prescriptive framing is what crosses the boundary; a merely descriptive association would
+  not. Gold frozen before any model output.
+expected_findings:
+  - finding: correlation_as_causation
+    severity: major
+    confidence: high
+    note: "Causal, prescriptive claim from a confounded observational design"
+  - finding: confounding_reference_group_bias
+    severity: major
+    confidence: high
+    note: "Abstainer/sick-quitter bias corrupts the non-drinker comparator"
+  - finding: conclusion_exceeds_results
+    severity: moderate
+    confidence: medium
+    note: "'Protects your heart / start drinking' is also rhetorical inflation (secondary)"
+gold_evidence_spans:
+  - span: "a daily glass of wine protects your heart and helps you live longer"
+    why_it_matters: "Causal claim drawn from a confounded observational association."
+    supports_finding: correlation_as_causation
+  - span: "if you don't drink, consider starting"
+    why_it_matters: "Behavioural recommendation built on the non-causal design — the causal boundary crossing."
+    supports_finding: correlation_as_causation
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "abstainer bias"
+    variants: ["sick-quitter", "former drinkers", "reference group"]
+    functional_descriptions:
+      - "Ill former drinkers misclassified as non-drinkers create a spurious J-curve"
+  - keyword: "confounded observational design"
+    variants: ["non-randomized", "cohort", "no counterfactual"]
+    functional_descriptions:
+      - "Association cannot support a causal, prescriptive recommendation"
+common_errors:
+  - defaulting to overclaim because the wording is inflated
+  - accepting the J-curve as a causal protective effect
+  - missing abstainer/sick-quitter bias
+expected_failure_modes:
+  - specific_to_overclaim
+  - missing_confounders
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent hold correlation_vs_causation as primary when the causal boundary crossing is central, resisting the generic overclaim reading?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-BND-004
+  case_family: boundary
+  boundary_family_id: B1
+  boundary: "overclaim <-> correlation_vs_causation"
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (correlation_vs_causation) with a genuinely plausible alternate (overclaim);
+    precedence decides. The causal/prescriptive framing and the well-known abstainer bias make the
+    specific trigger clear, keeping this at D2 rather than D3. Property-based tagging.
+  precedence_rationale: |
+    The correlation_vs_causation trigger (causal claim from a confounded, non-causal design with a
+    biased comparator) is genuinely present and is the core error, so under
+    docs/taxonomy_precedence.md rule 1 it outranks the generic overclaim reading, which is retained
+    as secondary.
+  ambiguity_note: |
+    Difficult-but-determinate boundary: correlation_vs_causation is the single defensible primary;
+    overclaim is a real secondary reading, not an equal competitor.
+  steelman_challenge: |
+    Strongest case the gold is wrong: the inflated wording ("protects your heart / live longer")
+    could be read as plain overclaim. Counter-evidence weighed: the decisive, structural failure is
+    the causal inference from a confounded design (abstainer bias), documented by the 2023
+    correction; that is exactly the correlation_vs_causation trigger and is central, so the specific
+    label is primary with overclaim secondary. Resolution: gold remains correlation_vs_causation.
+  provenance:
+    claim_source_title: "'A daily glass of wine protects your heart' - the long-standing J-curve lifestyle claim"
+    claim_source_url: "https://www.heart.org/en/news/2019/05/24/drinking-red-wine-for-heart-health-read-this-before-you-toast"
+    claim_source_publisher: "American Heart Association News (documents and cautions against the claim); Mayo Clinic ('Red wine and resveratrol: Good for your heart?')"
+    claim_source_date: "2019-05-24"
+    claim_source_role: public_claim_source
+    claim_source_type: news_media_summary
+    claim_context: "The 'moderate/red wine is good for your heart, so a daily glass is beneficial' framing is a long-standing lifestyle/media claim built on the observational J-curve. The AHA and Mayo Clinic document it and explicitly advise NOT starting to drink for heart health; the frozen span is the bounded prescriptive 'protects your heart ... consider starting' proposition."
+    claim_exact_span: "a daily glass of wine protects your heart and helps you live longer ... if you don't drink, consider starting"
+    evidence_sources:
+      - citation: "Zhao J et al. Association Between Daily Alcohol Intake and Risk of All-Cause Mortality: A Systematic Review and Meta-analyses. JAMA Network Open 2023;6(3):e236185"
+        url: "https://pubmed.ncbi.nlm.nih.gov/37000449/"
+        design: "Systematic review + meta-analysis of prospective cohort studies (observational)"
+        population: "107 cohort studies; >4.8 million participants"
+        intervention_or_exposure: "Low-volume/moderate alcohol intake (~1 drink/day)"
+        comparator: "Lifetime nondrinkers (bias-corrected reference)"
+        endpoint: "All-cause mortality"
+        result: "No statistically significant mortality reduction for low-volume drinkers vs lifetime nondrinkers after adjusting for study biases; risk rose above ~2 drinks/day (women) and ~3/day (men); apparent J-curve attributed to abstainer/sick-quitter bias"
+        source_role: systematic_review
+        evidence_tier: "Meta-analysis of observational cohorts (confounded; corrupted reference group in earlier studies)"
+        limitations: "Non-randomized; residual confounding; earlier protective findings driven by misclassified former drinkers"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: correlation_vs_causation
+    most_plausible_competing_label: overclaim
+    probes: "counter-direction: specific gold that also looks like generic overclaim"
+  case_fingerprint: "bf57c20cedfa8596156873c625ab2369738dcb48801f474acbd7286d0809daa0"

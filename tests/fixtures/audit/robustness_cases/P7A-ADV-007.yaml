@@ -1,0 +1,164 @@
+id: P7A-ADV-007
+title: "Adversarial A4: 'everyone should go gluten-free to be healthier' (celiac-subgroup benefit generalized to the whole population)"
+domain: study_forensics
+difficulty: hard
+task_type: study_forensics
+task_family: overclaim
+trap_type: subgroup_to_general_population
+ambiguity_level: low
+prompt: |
+  A wellness article advises: "Gluten is inflaming your gut and dragging you down. Going gluten-free isn't just for people with celiac disease — everyone should cut gluten to lose weight, boost energy, and feel healthier."
+
+  A gluten-free diet is the necessary, effective treatment for celiac disease, an autoimmune condition affecting about 1% of people, and for the smaller group with diagnosed non-celiac gluten sensitivity or wheat allergy. For the general population without these conditions, there is no experimental evidence that a gluten-free diet promotes weight loss or improves health; reviews find no benefit for people without a gluten-related disorder, and gluten-free diets can raise the risk of nutritional deficiencies and cost more.
+context: |
+  Evidence tier: reviews of the gluten-free diet in celiac versus non-celiac populations. The claim
+  takes a benefit that is real and important for a specific subgroup (about 1% with celiac disease, plus
+  smaller groups with gluten sensitivity/allergy) and generalizes it to everyone. In the general
+  population there is no evidence of benefit and some risk. The defect is subgroup-to-general-population
+  extrapolation - a benefit real only in a studied subgroup asserted for the unstudied whole = overclaim.
+expected_answer: "overclaim"
+reference_solution: |
+  A gluten-free diet genuinely treats celiac disease (~1%) and helps smaller groups with gluten
+  sensitivity/allergy, but the article generalizes that benefit to "everyone", where there is no
+  evidence of benefit and some risk of nutritional deficiency. Extending a subgroup-specific benefit to
+  the whole population is overclaim (extrapolation to an unstudied population). It is not
+  correlation_vs_causation (no observational-to-causal design error is central) and not
+  mechanism_vs_evidence (no animal/preclinical mechanism is the basis).
+gold_label: overclaim
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  1. Exact proposition: everyone (not just people with celiac disease) should cut gluten to lose
+     weight, gain energy, and be healthier.
+  2. What the strongest evidence establishes: gluten-free eating is necessary/effective for celiac
+     disease (~1%) and helps diagnosed gluten sensitivity/wheat allergy; for the general population
+     there is no evidence of weight-loss/health benefit and some risk (nutritional deficiencies).
+  3. Adversarial surface feature: a real, well-known medical benefit (celiac) lends credibility to the
+     generalized claim, and "inflaming your gut" adds pseudo-mechanistic appeal.
+  4. Actual forensic mismatch: the benefit is specific to a small subgroup; extending it to everyone
+     is unsupported by evidence in the general population.
+  5. Primary frozen label: overclaim - extrapolation of a subgroup-specific benefit to an unstudied
+     general population.
+  6. Why: the core error is generalization beyond the evidenced population, which is the overclaim
+     signal; no specific structural trigger fires.
+  7. Strongest competing label: solid - a gluten-free diet really does benefit celiac patients, so the
+     claim contains a kernel of truth.
+  8. Why it loses: the claim's scope is "everyone", where evidence shows no benefit and some harm; a
+     partially-true benefit generalized beyond its population is overclaim, not solid.
+  9. What would change the verdict: restricting the advice to people with celiac disease / diagnosed
+     gluten disorders would make it solid.
+gold_alternative_reading: |
+  Alternative: solid. Strongest good-faith version: a gluten-free diet is genuinely beneficial (indeed
+  necessary) for celiac disease, so the claim is not baseless. It loses because the claim generalizes
+  that subgroup benefit to everyone, where evidence shows no benefit and some risk - the framing
+  exceeds the evidence for the population addressed = overclaim.
+gold_summary: |
+  A wellness article tells everyone to go gluten-free for weight/energy/health; the benefit is real
+  only for the ~1% with celiac disease (and smaller gluten-disorder groups), with no evidence of benefit
+  and some risk in the general population. Subgroup-to-general generalization = overclaim (solid tempting).
+curator_notes: |
+  Adversarial family A4 (subgroup -> general-population generalization). Real public claim: popular
+  'everyone should go gluten-free' wellness/diet messaging. Evidence: reviews showing no benefit for
+  non-celiac populations and real benefit confined to celiac (~1%) / diagnosed gluten disorders.
+  Distinct from A4 testosterone (P7A-ADV-008) and from Boundary population cases (aspirin 013). Gold
+  frozen before any model output.
+expected_findings:
+  - finding: subgroup_benefit_generalized
+    severity: major
+    confidence: high
+    note: "A benefit real for celiac (~1%) generalized to the whole population"
+  - finding: no_benefit_and_risk_in_general_population
+    severity: major
+    confidence: high
+    note: "No evidence of benefit and some risk (nutritional deficiency) for non-celiac people"
+gold_evidence_spans:
+  - span: "everyone should cut gluten to lose weight, boost energy, and feel healthier"
+    why_it_matters: "Generalizes a subgroup-specific benefit to the whole population."
+    supports_finding: subgroup_benefit_generalized
+  - span: "there is no experimental evidence that a gluten-free diet promotes weight loss or improves health"
+    why_it_matters: "No benefit demonstrated in the general population."
+    supports_finding: no_benefit_and_risk_in_general_population
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "subgroup to general"
+    variants: ["celiac 1%", "everyone", "unstudied population"]
+    functional_descriptions:
+      - "A benefit specific to celiac disease is extended to the whole population"
+  - keyword: "no general benefit"
+    variants: ["no experimental evidence", "nutritional deficiency", "cost"]
+    functional_descriptions:
+      - "The general population shows no benefit and some risk"
+common_errors:
+  - accepting a kernel-of-truth (celiac) claim as solid for everyone
+  - crediting a pseudo-mechanistic 'inflammation' framing
+expected_failure_modes:
+  - overclaim_read_as_solid
+  - subgroup_overgeneralization
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent see that generalizing a celiac-specific benefit to everyone is overclaim, not solid?"
+origin: curated
+status: active
+gold_status: frozen_pre_model
+robustness:
+  robustness_case_id: P7A-ADV-007
+  case_family: adversarial
+  adversarial_family_id: A4
+  adversarial_family: "subgroup -> general-population generalization"
+  adversarial_mechanism: |
+    A benefit that is real and important for a specific subgroup (celiac disease, ~1%) is generalized to
+    the entire population ("everyone should cut gluten"). The surface pressure is that the subgroup
+    benefit is genuinely true and medically endorsed, lending credibility to the generalization, plus a
+    pseudo-mechanistic 'inflammation' framing. The pressure to resist: extrapolating a subgroup-specific
+    benefit to an unstudied general population where evidence shows no benefit.
+  gold_status: frozen_pre_model
+  difficulty_tier: D2
+  difficulty_rationale: |
+    One primary (overclaim) with one genuinely plausible alternate (solid, invited by the real celiac
+    benefit); recognising the subgroup-to-general extrapolation decides it. No competing specific
+    trigger and a single dominant defect keep it at D2. Property-based.
+  precedence_rationale: |
+    No specific-label trigger is present: no observational dataset is read causally (rules out
+    correlation_vs_causation) and no animal/preclinical mechanism is the basis (rules out
+    mechanism_vs_evidence). The defect is generalization beyond the evidenced population = overclaim,
+    per docs/taxonomy_precedence.md (extrapolation to unstudied populations is an overclaim signal).
+  ambiguity_note: |
+    Determinate: overclaim is the single defensible primary; solid is tempting only because the claim
+    is true for the celiac subgroup, not for the general population it addresses.
+  steelman_challenge: |
+    Strongest case the gold is wrong: gluten-free eating is genuinely necessary and effective for celiac
+    disease and helps diagnosed non-celiac gluten sensitivity, so a reader might call the claim solid
+    or merely cautious. Counter-evidence weighed: reviews find no experimental evidence of benefit for
+    people without a gluten-related disorder and note risks (nutritional deficiencies, cost), and celiac
+    is ~1% of people; the claim addresses "everyone". Resolution: the subgroup-to-general extrapolation
+    exceeds the evidence for the population addressed; gold remains overclaim.
+  provenance:
+    claim_source_title: "Gluten-free diet: health benefits, risks (documents the popular 'everyone should go gluten-free' belief and its lack of general-population support)"
+    claim_source_url: "https://www.medicalnewstoday.com/articles/288406"
+    claim_source_publisher: "Popular wellness/diet media and celebrity-endorsed 'gluten-free is healthier for everyone' messaging; the belief and the evidence are documented in mainstream health media and reviews"
+    claim_source_date: "long-standing wellness-diet trend"
+    claim_source_role: public_claim_source
+    claim_source_type: news_media_summary
+    claim_context: "The belief that a gluten-free diet is healthier for everyone - promoting weight loss, energy, and reduced 'inflammation' - is a widespread wellness-diet claim endorsed by media and celebrities. Reviews and health media document that gluten-free eating is necessary for celiac disease (~1%) and helps diagnosed gluten sensitivity/allergy, but shows no benefit and some risk in the general population. The frozen span is the bounded 'everyone should cut gluten' generalization."
+    claim_exact_span: "Going gluten-free isn't just for people with celiac disease - everyone should cut gluten to lose weight, boost energy, and feel healthier"
+    evidence_sources:
+      - citation: "Niland B, Cash BD. Health Benefits and Adverse Effects of a Gluten-Free Diet in Non-Celiac Disease Patients; and related review 'Gluten Free Diet for the Management of Non Celiac Diseases: The Two Sides of the Coin'"
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7712796/"
+        design: "Review of gluten-free diet benefits/risks in celiac vs non-celiac populations"
+        population: "People with celiac disease/gluten disorders vs the general population"
+        intervention_or_exposure: "Gluten-free diet"
+        comparator: "Gluten-containing diet in people without a gluten-related disorder"
+        endpoint: "Weight, health outcomes, nutritional adequacy"
+        result: "Gluten-free diet is necessary for celiac disease (~1%); no evidence of benefit for the general population and potential nutritional-deficiency risk and higher cost"
+        source_role: systematic_review
+        evidence_tier: "Review of clinical and population evidence"
+        limitations: "Narrative/critical review; evidence base for non-celiac benefit is limited but consistently null"
+    access_date: "2026-08-16"
+  hypothesis_map:
+    gold: overclaim
+    most_plausible_competing_label: solid
+    probes: "subgroup (celiac) benefit generalized to the whole population where evidence shows no benefit"
+  case_fingerprint: "72f3e8732e705e9df2eaaadb1cf34c31feb88d4b8c059a4a10d4f340c5205ff5"

@@ -1,0 +1,74 @@
+id: study-forensics-033
+title: "Study Forensics: Randomized literacy program boosts children's reading"
+domain: study_forensics
+difficulty: easy
+task_type: study_forensics
+task_family: solid
+trap_type: overflagging_solid_study
+ambiguity_level: low
+prompt: |
+  A large-scale study investigated a literacy support program in which elementary school students received weekly supplementary instruction over two school years. Students were randomly assigned to either the program or regular instruction. By the end of the first year, participants' reading proficiency was on average two and a half months ahead of the comparison group, and this advantage was still detectable 26 months later. The researchers note that the effect remained stable across all age groups and that no systematic disadvantages were observed.
+context: |
+  Randomized controlled trial with clear intervention-control comparison, long-term
+  follow-up, and cautious reporting. The agent should recognize it as solid without
+  hallucinating weaknesses.
+expected_answer: "solid"
+reference_solution: |
+  A randomized controlled trial of a literacy program shows a 2.5-month reading advantage over controls that persists 26 months later. The study uses random assignment, reports measurable outcomes, and makes no overclaims. This is a clear solid case.
+gold_label: solid
+gold_confidence: high
+gold_case_type: clear
+gold_justification: |
+  The study was randomized, large-scale, and clearly compares intervention and control
+  groups. Results are reported as measurable gains in months of reading progress, and the
+  text remains cautious by only pointing to measured competency gains and their persistence.
+  A clear, robust case with no overclaim or mechanism gap.
+gold_alternative_reading: null
+gold_summary: |
+  Randomized literacy intervention study showing persistent reading gains. Cautious reporting with no overclaims.
+curator_notes: |
+  Imported from Dataset 6 (CaseE01). Originally German, translated to English for
+  consistency. Strong positive anchor for the solid category. Tests whether agents
+  correctly recognize clear improvements and cautious conclusions as solid without
+  hallucinating weaknesses. Based on Harvard CEPR MORE reading program research.
+expected_findings:
+  - finding: evidence_matches_claim
+    severity: minor
+    confidence: high
+  - finding: cautious_scope_control
+    severity: minor
+    confidence: high
+gold_evidence_spans:
+  - span: "randomly assigned to either the program or regular instruction"
+    why_it_matters: "Randomization ensures a fair comparison, supporting causal inference."
+    supports_finding: evidence_matches_claim
+  - span: "two and a half months ahead of the comparison group"
+    why_it_matters: "Concrete advantage over controls; supports the claim."
+    supports_finding: evidence_matches_claim
+  - span: "still detectable 26 months later"
+    why_it_matters: "Demonstrates sustainability of results without exaggeration."
+    supports_finding: cautious_scope_control
+evaluation:
+  method: auto
+  answer_match: contains
+key_insights:
+  - keyword: "randomised"
+    variants: ["randomized", "randomly assigned", "RCT"]
+    functional_descriptions:
+      - "the study uses random assignment, supporting causal claims"
+  - keyword: "long-term follow-up"
+    variants: ["26 months", "still detectable", "persistent"]
+    functional_descriptions:
+      - "effect persists over time, strengthening the evidence"
+common_errors:
+  - hallucinating major flaws in a solid study
+  - flagging the study as overclaim due to strong positive results
+expected_failure_modes:
+  - overclaiming
+  - false_positive_flagging
+discriminative_dimensions:
+  - correctness
+  - insight_depth
+diagnostic_focus: "Can the agent recognise a well-designed RCT with sustained effects as solid?"
+source_dataset: dataset_6
+source_id: CaseE01

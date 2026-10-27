@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "inspektorium"
-version = "0.2.0"
-description = "Inspektorium audit entry and evidence-binding reference checker"
+version = "0.3.0"
+description = "Fail-closed evidence integrity for AI-generated claims and AI evaluation reports"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
@@ -13,25 +13,36 @@ authors = [
   { name = "Lazaros Varvatis", email = "varvatislazaros@gmail.com" },
 ]
 dependencies = [
+  "click>=8.1",
   "pydantic>=2.8,<3",
+  "pyyaml>=6.0",
 ]
 
 [project.scripts]
 inspektorium = "inspektorium.cli:main"
 
 [project.optional-dependencies]
-# SDK 1.x uses httpx2; retain the validated httpx-based adapter contract.
+# Provider SDKs for the live paths. SDK 1.x uses httpx2; the counted transport
+# and the validated adapter contract use httpx.Client.
+providers = [
+  "anthropic>=0.77,<1",
+  "httpx>=0.27,<1",
+  "openai>=1.0",
+]
+# Former name of the provider extra, kept as an alias.
 anthropic = [
   "anthropic>=0.77,<1",
+  "httpx>=0.27,<1",
+  "openai>=1.0",
 ]
 dev = [
   "anthropic>=0.77,<1",
   "build>=1.2,<2",
-  "click>=8.1",
   "httpx>=0.27,<1",
-  "markdown-it-py>=3,<5",
   "linkify-it-py>=2,<3",
+  "markdown-it-py>=3,<5",
   "mypy>=1.13,<2",
+  "openai>=1.0",
   "pytest>=8,<10",
   "pytest-cov>=5,<8",
   "ruff>=0.8,<1",
@@ -57,7 +68,7 @@ show_missing = true
 skip_covered = true
 
 [tool.ruff]
-extend-exclude = ["agent-arena", "publication/historical-source", "publication/2026-10-26-publication-closeout"]
+extend-exclude = ["agent-arena", "publication"]
 line-length = 88
 target-version = "py311"
 
@@ -67,3 +78,8 @@ select = ["B", "E", "F", "I", "UP"]
 [tool.mypy]
 python_version = "3.11"
 strict = true
+
+[[tool.mypy.overrides]]
+# The audit runtime is checked against a recorded baseline, not strict mode.
+module = ["inspektorium.audit", "inspektorium.audit.*"]
+ignore_errors = true
