@@ -36,7 +36,7 @@ The exception are the provider adapters for named SDK providers, which `inspekto
 | `agent_arena.agent_loader` | research record (not shipped) |
 | `agent_arena.artifact_binding` | `inspektorium.audit.integrity.artifact_binding` |
 | `agent_arena.audit_trail` | `inspektorium.audit.integrity.audit_trail` |
-| `agent_arena.bounded_harness_mission`: `MissionError`, `read`, `atomic`, `BudgetLedger`, `MAX_ATTEMPT_MICROUSD`, `MAX_TOTAL_MICROUSD` | `inspektorium.audit.integrity.budget_ledger` (verbatim) |
+| `agent_arena.bounded_harness_mission`: `MissionError`, `read`, `atomic`, `BudgetLedger`, `MAX_ATTEMPT_MICROUSD`, `MAX_TOTAL_MICROUSD` | `inspektorium.audit.integrity.budget_ledger` (same code, reformatted) |
 | `agent_arena.claim_checker` | `inspektorium.audit.checks.claim_checker` |
 | `agent_arena.confidence_validity` | `inspektorium.audit.checks.confidence_validity` |
 | `agent_arena.consistency` | `inspektorium.audit.checks.consistency` |
@@ -113,6 +113,8 @@ Generated reports, help texts and identifiers name Inspektorium. These string va
 | Review notice in audit reports | `(agent-arena audit review)` | `(inspektorium audit review)` |
 | Release report and gate set | `agent_arena.phase7b_release_report/v2`, `agent_arena.phase7b.mandatory` | `inspektorium.audit.phase7b_release_report/v2`, `inspektorium.audit.phase7b.mandatory` |
 | Audit-trail default directory | `.agent_arena` | `.inspektorium` |
+| Audit-trail summary heading | `Agent Arena — Gen 6 Audit Trail Summary` | `Inspektorium — Gen 6 Audit Trail Summary` |
+| Audit-trail empty-log hint | `_No decisions recorded. Use \`agent-arena audit-log add\` to log decisions._` | `_No decisions recorded._` (the command was part of the removed legacy CLI) |
 | Synthetic-example banner of the forensic report | `SYNTHETIC EXAMPLE — not real Agent Arena performance` | `SYNTHETIC EXAMPLE — not real Inspektorium performance` |
 | Recorded-capture derivation schema (`scripts/extract_recorded_capture.py`) | `agent-arena-offline-capture-derivation/1.0` | `inspektorium-offline-capture-derivation/1.0` |
 | Provider install hint | `pip install 'agent-arena[providers]'` | `pip install 'inspektorium[providers]'` |
@@ -206,8 +208,8 @@ Whole test files moved to the research record, with their subject:
 
 Some retained tests also asserted on archived modules. Those assertions moved with the modules; every assertion on retained code stays:
 
-- `test_P1_a_second_analysis_is_flagged_and_never_a_complete_phase8_analysis` (eight cases) keeps its checks of the parser, the Phase-8 assessment and reconstruction; only the classification check of the archived study harness was dropped.
-- Thirteen functions in the frozen forensics and review acceptance, `test_forensics_pipeline.py`, `test_review_runtime.py`, `test_release_gate_consolidation.py` and `test_study_forensics.py` lost only their assertions on the legacy reports (`reporting`, `reporter`) or on `run_library` case discovery. The product renders audit reports with `inspektorium.audit.workflow.render`, which has its own tests.
+- `test_P1_a_second_analysis_is_flagged_and_never_a_complete_phase8_analysis` (eight cases) keeps its checks of the parser, the Phase-8 assessment and reconstruction. Only the classification check of the archived study harness was dropped.
+- Thirteen functions lost only their assertions on the legacy reports (`reporting`, `reporter`) or on `run_library` case discovery. They are in the frozen forensics and review acceptance, `test_forensics_pipeline.py`, `test_review_runtime.py`, `test_release_gate_consolidation.py` and `test_study_forensics.py`. The product renders audit reports with `inspektorium.audit.workflow.render`, which has its own tests.
 - `test_review_budget.py` keeps the run-record round trip under the name `test_runrecord_roundtrip_preserves_raw_and_positions`; its library-harness and legacy-report parts were dropped.
 
 The evidence package lists every function with fewer checks and every function no longer present ([test checks](../../evidence/v0.3.0-behavior/results/test-checks.txt)).
@@ -215,18 +217,18 @@ No expectation on a status, exit code, rejection, lock or binding was changed.
 
 ## Name check exceptions
 
-`git grep -n -i -E "agent[ _-]arena"` finds the former name in this page, in [history](../research/history.md), in historical `CHANGELOG.md` entries and in one `NOTICE` sentence.
-A wider scan for `agent` and `arena` with any or no separator, across line breaks, finds it in the files below as well.
+Besides this page, [history](../research/history.md), historical `CHANGELOG.md` entries and one `NOTICE` sentence, the former name appears only in the files below.
+`git grep -n -i -E "agent[ _-]arena"` finds all of them except the leak pattern, which a wider scan across separators and line breaks finds.
 Each is bound to earlier bytes, guards against a private path or compares with release 0.2.0:
 
 | File | Why the name stays |
 | --- | --- |
 | `tests/fixtures/audit/historical/live_smoke_20261011/*/authorization.json` | Inert public copies of two closed historical authorizations; `public_archive_bindings.json` records their SHA-256, and `tests/integration/test_workflow_live.py` checks it. The runtime pins the private originals |
-| `tests/fixtures/audit/historical/public_archive_bindings.json` | Verbatim extract of the research record's import index; its paths name the record's folders |
+| `tests/fixtures/audit/historical/public_archive_bindings.json` | Byte-identical to the 0.2.0 fixture of the same name; its rows were extracted from the research record's import index, and its paths name the record's folders |
 | `src/inspektorium/audit/schemas.py` (one docstring) | Embedded in the frozen live prompt `study_forensics_prompt/v3-phase8` |
 | `src/inspektorium/audit/forensics/forensic_report.py` (`AgentArena_IAA_Private`) and `tests/unit/test_forensic_report.py` | A leak pattern: the forensic-report loader rejects input that contains this private historical folder name, and the test proves the rejection |
 | `evidence/v0.1.1/addendum-20261024-e1-layout/` (two lines) | The v0.1.1 evidence package stays unchanged |
-| `evidence/v0.3.0-behavior/` (maps, environment record, logic diff and the comparison tools) | The package compares 0.3.0 with the 0.2.0 release, whose paths, wheel and identifiers carry the former name |
+| `evidence/v0.3.0-behavior/` (maps, environment record, logic diff, test checks and the comparison tools) | The package compares 0.3.0 with the 0.2.0 release, whose paths, wheel and identifiers carry the former name |
 
 ## Behavior comparison with 0.2.0
 
@@ -246,4 +248,12 @@ Two kinds of differences remain before masking, and both are allowed:
 - **Position order.** Reports list review positions sorted by a position ID that hashes the random run ID. Their order varies between runs of either release; the 0.2.0 baseline recordings happened to share one order.
 
 Names and versions in outputs differ as listed under [names in outputs](#names-in-outputs-and-identifiers).
-The audit-runtime logic is unchanged apart from those names: of the 37 modules that remain, 26 have identical code without imports and docstrings, and the others differ only in the changes this page lists.
+The audit-runtime logic is unchanged apart from those names: of the 37 modules that remain, 26 have identical code without imports and docstrings.
+The other eleven differ in the names and identifiers listed above and in these changes:
+
+- the package version lookup reads `inspektorium` instead of the former distribution;
+- `code_identity()` finds the runtime package through `inspektorium.audit` and still hashes every `*.py` file under it recursively;
+- `code_version()` hashes an explicit tuple `REVIEW_MODULES` instead of a file-name pattern, so a missing review module raises;
+- dead local assignments were removed in four checks modules; the narrative-edge check of `forecast_checker` keeps its call;
+
+[`logic-diff.txt`](../../evidence/v0.3.0-behavior/results/logic-diff.txt) is the complete, line-level list.

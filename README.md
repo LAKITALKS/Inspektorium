@@ -20,7 +20,7 @@ It is for people who audit model answers or evaluation reports and need every re
 
 - **Exact citation binding.** Every quotation and claim span must match the supplied text exactly at its stated character offsets.
 - **Fail-closed reportability.** A finding whose evidence fails a check is not reportable; the report shows the failure instead.
-- **Tamper-resistant report display.** Untrusted text cannot forge report lines, hide warnings or inject markup.
+- **Tamper-resistant report display.** In the tested renderers, untrusted text cannot forge report lines, hide warnings or inject markup ([limits](docs/evaluation/limitations.md#display)).
 - **Audit workflow with human review.** Hash-bound bundles, recorded human decisions and an explicit release step.
 
 ```mermaid

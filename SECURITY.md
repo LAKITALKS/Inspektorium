@@ -31,7 +31,7 @@ Inspektorium is a fail-closed integrity layer. A vulnerability is any way to mak
 - untrusted text that creates report structure, forges a status line or hides a warning;
 - a tampered bundle that `inspektorium audit inspect` reports as valid;
 - a release of a candidate that is blocked or has an open mandatory review;
-- a live model call through the `inspektorium` command without a valid authorization, or a write outside the chosen output directory.
+- a live model call through `inspektorium audit` without a valid authorization, or a write outside the chosen output directory.
 
 Documented limits are not vulnerabilities. They are listed in [limitations](docs/evaluation/limitations.md).
 An evaluator's wrong semantic judgment is such a limit: Inspektorium does not check meaning.

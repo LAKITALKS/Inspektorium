@@ -30,7 +30,8 @@ Evaluation behavior is unchanged. See the
 ### Names in outputs
 
 - Generated reports, help texts and identifiers name Inspektorium. Bundles record
-  the `inspektorium` package version. The migration guide lists every changed value.
+  the `inspektorium` package version. The migration guide lists the changed values, and the
+  logic comparison in `evidence/v0.3.0-behavior/` lists every code change.
 - Prompt versions and prompt bytes, status values, exit codes, control identifiers and gate versions
   are unchanged.
 

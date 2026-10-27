@@ -39,7 +39,7 @@ Run with provider variables unset. A release never needs a provider call.
 ## 3. Pull request and merge
 
 1. Open a pull request from the release branch to `main`.
-2. Wait until CI is green on the pull request.
+2. Wait until CI is green on the pull request. Link the pull request checks and the CI runs on `main` from [evidence](../evaluation/evidence.md#continuous-integration) before the merge.
 3. Merge with a merge commit, not a squash or rebase. `gh pr merge --merge` does this; the local equivalent is:
 
    ```sh
@@ -103,4 +103,4 @@ After publication, check the release as an anonymous user:
 3. Compare each download with the local build, byte for byte, and with the asset digest that GitHub shows.
 4. Install the downloaded wheel and, separately, the sdist into fresh environments. Repeat the checks of step 5.
 5. Read the release page without signing in. Every link in the notes must resolve.
-6. Before tagging, link the pull request checks and the CI runs on `main` from [evidence](../evaluation/evidence.md#continuous-integration); the release notes link the run of the tagged commit.
+6. Confirm that the release notes link the CI run of the tagged commit.

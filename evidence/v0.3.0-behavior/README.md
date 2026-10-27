@@ -14,9 +14,13 @@ Only names, versions, module-hash manifests and fields that vary between two run
 
 ## Method
 
-1. [`tools/golden.py`](tools/golden.py) records 79 steps per run: the five `inspect` examples in JSON and Markdown, on standard output and with `--output`; `validate`, `run --offline`, `inspect`, `review`, `release` and the inspection of each release for the positive, negative, unknown and long-hostile cases; the bytes of every bundle; and nine counter-checks.
+1. [`tools/golden.py`](tools/golden.py) records 79 steps per run.
+   They cover the five `inspect` examples in JSON and Markdown, on standard output and with `--output`.
+   They run `validate`, `run --offline`, `inspect`, `review` and `release` for the positive, negative, unknown and long-hostile cases, and inspect each release.
+   They also record the bytes of every bundle and nine counter-checks.
 2. Each release was recorded twice; 0.2.0 was recorded twice more for the position-order question below.
-3. [`tools/project.py`](tools/project.py) (projection version 1, written before any 0.3.0 run) keeps every decision value and masks run IDs, timestamps, run-derived fingerprints, package names, versions and the module-hash manifest.
+3. [`tools/project.py`](tools/project.py) is projection version 1, written before any 0.3.0 run.
+   It keeps every decision value and masks run IDs, timestamps, run-derived fingerprints, package names, versions and the module-hash manifest.
 4. [`tools/project2.py`](tools/project2.py) (version 2) adds two rules, explained below.
 5. [`tools/compare.py`](tools/compare.py) compares two projections step by step; [`tools/summarize.py`](tools/summarize.py) reduces them to one hash per step.
 
@@ -54,8 +58,12 @@ The four 0.2.0 recordings happened to share one order; this field was therefore 
 
 ### Code and tests
 
-- [`tools/logic_diff.py`](tools/logic_diff.py) compares every audit-runtime module of 0.2.0 with its 0.3.0 successor, without imports and docstrings.
-  Five modules moved to the research record. 26 of the remaining 37 are identical; the others differ only in names and identifiers, the package version lookup, dead assignments, f-strings without placeholders and the two code-binding functions ([logic diff](results/logic-diff.txt)).
+- [`tools/logic_diff.py`](tools/logic_diff.py) compares audit-runtime modules of 0.2.0 with their 0.3.0 successors, without imports and docstrings.
+  [`module_map.json`](tools/module_map.json) covers 42 of the 74 Python files of 0.2.0.
+  These are the 37 modules that remain and five that moved to the research record in the last step.
+  The other 32 files are the package `__init__` and the 31 modules archived first; the [migration guide](../../docs/development/migration-0.3.md#python-imports) lists all 36 archived modules.
+  26 of the 37 remaining modules are identical ([logic diff](results/logic-diff.txt)).
+  The others differ only in names and identifiers, the package version lookup, dead assignments and the two code-binding functions.
 - [`tools/test_checks.py`](tools/test_checks.py) counts the `assert` and `pytest.raises` checks of every retained test function.
   Every function with fewer checks lost only checks of archived modules; the functions and files no longer present tested archived modules ([test checks](results/test-checks.txt)).
 

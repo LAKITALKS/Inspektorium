@@ -78,7 +78,7 @@ No separate tag was created for runtime 1.0.2.
 
 - One distribution, `inspektorium` 0.3.0, declared in [pyproject.toml](../../pyproject.toml), with one command, `inspektorium`.
 - The former distribution `agent-arena` and its command `agent-arena` are removed. There is no compatibility shim.
-- The runtime is the subpackage `inspektorium.audit`, regrouped into `workflow`, `forensics`, `review`, `execution`, `integrity`, `checks` and `reports`.
+- The runtime is the subpackage `inspektorium.audit`, regrouped into `workflow`, `forensics`, `review`, `execution`, `integrity` and `checks`.
   The [architecture page](../development/architecture.md) maps the layout.
 - `src/inspektorium/core/` and `src/inspektorium/report/` are byte-identical to 0.2.0.
 - The study harness, modules that the audit command no longer reaches, their tests, study records and publication logs moved to the research record.
