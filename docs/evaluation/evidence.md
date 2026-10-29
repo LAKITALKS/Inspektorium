@@ -90,6 +90,16 @@ Remaining differences are names, versions, the module-hash manifest and the run-
 
 **It does not establish** anything about cases outside the recorded examples, or about live runs.
 
+## Judge replay of 2026-10-27
+
+The package [`evidence/judge-replay-2026-10-27/`](../../evidence/judge-replay-2026-10-27/README.md) replays the quotations of three LLM judges through `inspektorium inspect` of release 0.3.0.
+It follows a preregistration that was frozen before the runs.
+
+**It establishes** how the kernel judged these 43 quotations, with two positive and two negative controls.
+The fabricated quotation failed, as did three quotations with ordinary spaces where the source has thin spaces.
+
+**It does not establish** a detection or false-alarm rate. The cases are few, and the locator supplies the offsets ([limitations](../../evidence/judge-replay-2026-10-27/README.md#limitations)).
+
 ## Software tests
 
 The suite in [`tests/`](../../tests/) checks software behaviour: models, validation, display encoding, parsing, bundle binding, review and release.

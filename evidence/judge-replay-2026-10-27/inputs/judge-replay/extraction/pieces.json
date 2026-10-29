@@ -1,0 +1,389 @@
+[
+ {
+  "id": "grok-1A",
+  "judge": "grok",
+  "quote": "adjusted LSM difference, −0.3% [95% CI, −0.4% to −0.1%]",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-1B",
+  "judge": "grok",
+  "quote": "adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%]",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-2A",
+  "judge": "grok",
+  "quote": "The adjusted LSM difference between 5:2 MR and metformin was −0.3% (95% CI, −0.5% to 0.1%), and the adjusted LSM difference between 5:2 MR and empagliflozin was −0.4% (95% CI, −0.6% to 0.2%).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-2B-1",
+  "judge": "grok",
+  "quote": "adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%]",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-2B-2",
+  "judge": "grok",
+  "quote": "adjusted LSM difference, −0.4% [95% CI, −0.6% to −0.2%]",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 2,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-3A",
+  "judge": "grok",
+  "quote": "compared with the metformin (73.9% [99 of 34]; P = .002)",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 0,
+  "predicted_strict": "FAILED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-3B",
+  "judge": "grok",
+  "quote": "Of these 405 participants, 134 were randomized to the metformin group",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-4A",
+  "judge": "grok",
+  "quote": "the mean HbA1c reduction was 1.9%, greater than those achieved with metformin (0.3%) and empagliflozin (0.4%)",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-4B",
+  "judge": "grok",
+  "quote": "significantly greater than patients receiving metformin (LSM, −1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%]) and empagliflozin (LSM, −1.5% [SE, 0.2%]; adjusted LSM difference, −0.4% [95% CI, −0.6% to −0.2%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 0,
+  "predicted_strict": "FAILED",
+  "predicted_space_normalized": "FAILED"
+ },
+ {
+  "id": "grok-5A-p1",
+  "judge": "grok",
+  "quote": "In this study, 80.0% of patients reached this target with a 16-week 5:2 MR intervention.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-5A-p2",
+  "judge": "grok",
+  "quote": "indicating that the 5:2 MR approach significantly and sustainably improves HbA1c levels in patients with early type 2 diabetes.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-5B-p1",
+  "judge": "grok",
+  "quote": "individuals with an HbA1c of less than 6.5% for at least 6 months after the initiation of lifestyle interventions are considered to achieve diabetes remission.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-5B-p2",
+  "judge": "grok",
+  "quote": "We acknowledge that the duration of our intervention was less than the recommended minimum of 6 months.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-6A",
+  "judge": "grok",
+  "quote": "The 5:2 MR reduced blood pressure and total cholesterol and increased HDL-C levels",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "grok-6B",
+  "judge": "grok",
+  "quote": "patients in the 5:2 MR group had significant reduction in waist and hip circumference and systolic and diastolic blood pressure, but showed no notable differences in most metabolic markers, except for triglyceride and HDL-C, compared with patients receiving antidiabetic drugs",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-1A",
+  "judge": "astra",
+  "quote": "metformin (LSM, −1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.4% to −0.1%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-1B",
+  "judge": "astra",
+  "quote": "metformin (−1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-2A",
+  "judge": "astra",
+  "quote": "The adjusted LSM difference between 5:2 MR and metformin was −0.3% (95% CI, −0.5% to 0.1%),",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-2B",
+  "judge": "astra",
+  "quote": "metformin (−1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-3A",
+  "judge": "astra",
+  "quote": "and the adjusted LSM difference between 5:2 MR and empagliflozin was −0.4% (95% CI, −0.6% to 0.2%).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-3B",
+  "judge": "astra",
+  "quote": "empagliflozin (−1.5% [SE, 0.2%]; adjusted LSM difference, −0.4% [95% CI, −0.6% to −0.2%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-4A",
+  "judge": "astra",
+  "quote": "metformin (73.9% [99 of 34]; P = .002)",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 0,
+  "predicted_strict": "FAILED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "astra-4B",
+  "judge": "astra",
+  "quote": "Of these 405 participants, 134 were randomized to the metformin group, 136 to the empagliflozin group, and 135 to the 5:2 MR group, all included in the intention-to-treat analysis (Figure 1).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-1A",
+  "judge": "gemini",
+  "quote": "From baseline to week 16, participants in the 5:2 MR group showed the greatest reduction in HbA1c (least-squares mean [LSM], −1.9% [SE, 0.2%]), significantly greater than patients receiving metformin (LSM, −1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.4% to −0.1%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-1B",
+  "judge": "gemini",
+  "quote": "At week 16, patients in the 5:2 MR group showed the greatest reduction in HbA1c level (LSM, −1.9% [SE, 0.2%]), significantly greater than patients receiving metformin (−1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%])",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-2A",
+  "judge": "gemini",
+  "quote": "The adjusted LSM difference between 5:2 MR and metformin was −0.3% (95% CI, −0.5% to 0.1%), and the adjusted LSM difference between 5:2 MR and empagliflozin was −0.4% (95% CI, −0.6% to 0.2%).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-2B",
+  "judge": "gemini",
+  "quote": "At week 16, patients in the 5:2 MR group showed the greatest reduction in HbA1c level (LSM, −1.9% [SE, 0.2%]), significantly greater than patients receiving metformin (−1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%]) and empagliflozin (−1.5% [SE, 0.2%]; adjusted LSM difference, −0.4% [95% CI, −0.6% to −0.2%]) (Figure 2A; eTable 4 in Supplement 2).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-3A",
+  "judge": "gemini",
+  "quote": "More patients in the 5:2 MR group (88.9% [120 of 135]) achieved an HbA1c level less than 7% compared with the metformin (73.9% [99 of 34]; P = .002)",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 0,
+  "predicted_strict": "FAILED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-3B",
+  "judge": "gemini",
+  "quote": "Of these 405 participants, 134 were randomized to the metformin group, 136 to the empagliflozin group, and 135 to the 5:2 MR group, all included in the intention-to-treat analysis (Figure 1).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-4A",
+  "judge": "gemini",
+  "quote": "Our results found that after a 16-week intervention with the 5:2 MR, the mean HbA1c reduction was 1.9%, greater than those achieved with metformin (0.3%) and empagliflozin (0.4%).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-4B",
+  "judge": "gemini",
+  "quote": "At week 16, patients in the 5:2 MR group showed the greatest reduction in HbA1c level (LSM, −1.9% [SE, 0.2%]), significantly greater than patients receiving metformin (−1.6% [SE, 0.2%]; adjusted LSM difference, −0.3% [95% CI, −0.5% to −0.1%]) and empagliflozin (−1.5% [SE, 0.2%]; adjusted LSM difference, −0.4% [95% CI, −0.6% to −0.2%]) (Figure 2A; eTable 4 in Supplement 2).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-5A",
+  "judge": "gemini",
+  "quote": "The 5:2 MR approach (eFigure 2 in Supplement 2) means that, within 1 week, there were 2 nonconsecutive days on which meals are replaced.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-5B",
+  "judge": "gemini",
+  "quote": "On the remaining 5 days, participants chose their own breakfast and lunch but had 1 serving of Kang zhijun B for dinner and were encouraged to monitor their calorie intake.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-6A",
+  "judge": "gemini",
+  "quote": "Among individuals with obesity, 5:2 MR significantly reduced HbA1c compared with metformin (LSM difference, −0.4% [95% CI, –0.6% to –0.1%]) and empagliflozin (LSM difference, −0.4% [95% CI, –0.7% to –0.1%]) (Figure 2B).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-6B",
+  "judge": "gemini",
+  "quote": "B, Changes in HbA1c concentration from baseline to 16 weeks in patients with overweight or obesity.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-7A",
+  "judge": "gemini",
+  "quote": "The 5:2 MR reduced blood pressure and total cholesterol and increased HDL-C levels, consistent with previous studies indicating improved metabolic parameters with intermittent fasting and MR, suggesting a potential cardiovascular protective effect.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-7B",
+  "judge": "gemini",
+  "quote": "In addition, patients in the 5:2 MR group had significant reduction in waist and hip circumference and systolic and diastolic blood pressure, but showed no notable differences in most metabolic markers, except for triglyceride and HDL-C, compared with patients receiving antidiabetic drugs (eTable 4 in Supplement 2).",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-8A",
+  "judge": "gemini",
+  "quote": "Compared with 2 antidiabetic drugs, 5:2 MR showed more significant and sustained benefits in weight loss and waist circumference reduction.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-8B",
+  "judge": "gemini",
+  "quote": "Third, the 5:2 MR intervention’s short duration means its long-term efficacy, especially for newly diagnosed patients with type 2 diabetes and overweight or obesity remains to be confirmed.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-9A",
+  "judge": "gemini",
+  "quote": "Furthermore, at the end of the 8-week follow-up, 72 of 94 participants in the 5:2 MR group (76.6%) maintained an HbA1c level of less than 6.5%, indicating that the 5:2 MR approach significantly and sustainably improves HbA1c levels in patients with early type 2 diabetes.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-9B",
+  "judge": "gemini",
+  "quote": "We acknowledge that the duration of our intervention was less than the recommended minimum of 6 months.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-10A",
+  "judge": "gemini",
+  "quote": "Therefore, 5:2 MR may serve as an initial lifestyle intervention for patients with type 2 diabetes, providing an alternative to the use of metformin and empagliflozin medications.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ },
+ {
+  "id": "gemini-10B",
+  "judge": "gemini",
+  "quote": "First, it enrolled only patients not taking antidiabetic medication with a baseline HbA1c level of less than 9%, so the efficacy of 5:2 MR for those taking medication or with a greater baseline HbA1c needs further validation.",
+  "in_judge_answer": true,
+  "exact_occurrences_in_source": 1,
+  "predicted_strict": "PASSED",
+  "predicted_space_normalized": "PASSED"
+ }
+]

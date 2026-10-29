@@ -1,0 +1,17 @@
+{
+ "argv": [
+  "inspektorium",
+  "inspect",
+  "--input",
+  "input.json",
+  "--proposals",
+  "proposals.json",
+  "--format",
+  "json",
+  "--output",
+  "report.json"
+ ],
+ "exit_code": 0,
+ "stdout": "",
+ "stderr": ""
+}

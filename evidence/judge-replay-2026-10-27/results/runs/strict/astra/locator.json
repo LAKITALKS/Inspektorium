@@ -1,0 +1,74 @@
+{
+ "astra-1a": {
+  "method": "L1",
+  "evidence_start": 2352,
+  "evidence_end": 2442,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-1A",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-1b": {
+  "method": "L1",
+  "evidence_start": 14180,
+  "evidence_end": 14265,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-1B",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-2a": {
+  "method": "L1",
+  "evidence_start": 16264,
+  "evidence_end": 16355,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-2A",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-2b": {
+  "method": "L1",
+  "evidence_start": 14180,
+  "evidence_end": 14265,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-2B",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-3a": {
+  "method": "L1",
+  "evidence_start": 16356,
+  "evidence_end": 16455,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-3A",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-3b": {
+  "method": "L1",
+  "evidence_start": 14270,
+  "evidence_end": 14359,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-3B",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-4a": {
+  "method": "L2",
+  "evidence_start": 15264,
+  "evidence_end": 15302,
+  "l2_ratio": 0.9473684210526315,
+  "exact_occurrences_in_canonical_source": 0,
+  "piece_id": "astra-4A",
+  "quote_changed_by_normalize_text": false
+ },
+ "astra-4b": {
+  "method": "L1",
+  "evidence_start": 13201,
+  "evidence_end": 13392,
+  "l2_ratio": null,
+  "exact_occurrences_in_canonical_source": 1,
+  "piece_id": "astra-4B",
+  "quote_changed_by_normalize_text": false
+ }
+}

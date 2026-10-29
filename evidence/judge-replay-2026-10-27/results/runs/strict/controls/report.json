@@ -1,0 +1,121 @@
+{
+  "findings": [
+    {
+      "claim_end": 227,
+      "claim_id": "control-pos-1",
+      "claim_span_verified": true,
+      "claim_start": 0,
+      "claim_text": "Of the 509 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+      "deterministic_validation_status": "passed",
+      "evaluator_certainty": "medium",
+      "evidence_end": 13135,
+      "evidence_quote": "Of the 509 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+      "evidence_span_verified": true,
+      "evidence_start": 12908,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "supported",
+      "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+      "reportable_relation": "supported",
+      "source_id": "early-body",
+      "validation_issues": []
+    },
+    {
+      "claim_end": 408,
+      "claim_id": "control-pos-2",
+      "claim_span_verified": true,
+      "claim_start": 228,
+      "claim_text": "Two patients in the empagliflozin group experienced serious adverse events, including severe rash and hospitalization due to increased blood ketones, which resolved with treatment.",
+      "deterministic_validation_status": "passed",
+      "evaluator_certainty": "medium",
+      "evidence_end": 18714,
+      "evidence_quote": "Two patients in the empagliflozin group experienced serious adverse events, including severe rash and hospitalization due to increased blood ketones, which resolved with treatment.",
+      "evidence_span_verified": true,
+      "evidence_start": 18534,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "supported",
+      "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+      "reportable_relation": "supported",
+      "source_id": "early-body",
+      "validation_issues": []
+    },
+    {
+      "claim_end": 636,
+      "claim_id": "control-neg-1",
+      "claim_span_verified": true,
+      "claim_start": 409,
+      "claim_text": "Of the 508 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+      "deterministic_validation_status": "failed",
+      "evaluator_certainty": "medium",
+      "evidence_end": 13135,
+      "evidence_quote": "Of the 508 participants screened, 405 adults with type 2 diabetes (265 men [65.4%] and 140 women [34.6%]; mean [SD] age, 45.5 [11.0] years; mean [SD] BMI, 29.5 [4.1]; mean [SD] HbA1c level, 7.9% [0.6%]) were randomly allocated.",
+      "evidence_span_verified": false,
+      "evidence_start": 12908,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "supported",
+      "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+      "reportable_relation": null,
+      "source_id": "early-body",
+      "validation_issues": [
+        {
+          "code": "evidence_span_mismatch",
+          "message": "The proposed quote does not equal the canonical source span at the proposed offsets."
+        }
+      ]
+    },
+    {
+      "claim_end": 817,
+      "claim_id": "control-neg-2",
+      "claim_span_verified": true,
+      "claim_start": 637,
+      "claim_text": "Two patients in the empagliflozin group experienced serious adverse events, including severe rush and hospitalization due to increased blood ketones, which resolved with treatment.",
+      "deterministic_validation_status": "failed",
+      "evaluator_certainty": "medium",
+      "evidence_end": 18714,
+      "evidence_quote": "Two patients in the empagliflozin group experienced serious adverse events, including severe rush and hospitalization due to increased blood ketones, which resolved with treatment.",
+      "evidence_span_verified": false,
+      "evidence_start": 18534,
+      "evidence_sufficiency": "sufficient",
+      "proposed_relation": "supported",
+      "rationale": "Replay of a judge quotation; see PREREGISTRATION.md.",
+      "reportable_relation": null,
+      "source_id": "early-body",
+      "validation_issues": [
+        {
+          "code": "evidence_span_mismatch",
+          "message": "The proposed quote does not equal the canonical source span at the proposed offsets."
+        }
+      ]
+    }
+  ],
+  "fingerprints": {
+    "algorithm": "sha256",
+    "answer_sha256": "b5a23674a93eda9ee1fd2dd01a214e59743b6b318427771fe1af3b393ea33d48",
+    "canonical_bundle_sha256": "421a7d0acbbf4d47c5de1542a8fa969312d56b0624cd07a96ffe0dc588f99057",
+    "sources": [
+      {
+        "sha256": "21c7b323252951cee7afb767060b9b501895550a062129185f931e6000883952",
+        "source_id": "early-body"
+      }
+    ]
+  },
+  "generated_at": null,
+  "schema_version": "0.1",
+  "scope": {
+    "basis": "user_supplied_sources_only",
+    "limitations": [
+      "Citation validation confirms exact text and offsets, not semantic truth.",
+      "Evaluator-proposed relationships remain qualitative judgments.",
+      "The report does not assess source quality, completeness, or authority.",
+      "The report does not determine whether relevant evidence exists elsewhere.",
+      "The report does not provide domain-specific medical, legal, or safety conclusions.",
+      "The report does not assign a global score or answer-level label."
+    ],
+    "statement": "This report compares evaluator proposals with the answer and sources supplied for this inspection."
+  },
+  "summary": {
+    "citation_spans_verified": 2,
+    "claims_inspected": 4,
+    "reportable_findings": 2,
+    "validation_failures": 2
+  }
+}

@@ -1,0 +1,136 @@
+{
+ "environment": {
+  "python": "3.12.14",
+  "platform": "darwin",
+  "inspektorium_version": "0.3.0",
+  "installed_record_sha256": "3bf489e886f0194465db48a61a71f8d7fcb40f9c2fd240fbd41bf782018a7936",
+  "wheel_sha256": "d8e56b730c7a181bab1e80f35c798817d3a8cda071186ef362ddf30ef5ba2a92"
+ },
+ "network": {
+  "armed_records": 8,
+  "refused_operations": 0
+ },
+ "guard": {
+  "canary_passed": true,
+  "refused_canary_operations": 5
+ },
+ "exit_codes": {
+  "strict/grok": 0,
+  "strict/astra": 0,
+  "strict/gemini": 0,
+  "strict/controls": 0,
+  "normalized/grok": 0,
+  "normalized/astra": 0,
+  "normalized/gemini": 0,
+  "normalized/controls": 0
+ },
+ "relation": "supported",
+ "strict": {
+  "predicted": {
+   "PASSED": 39,
+   "FAILED": 4
+  },
+  "result": {
+   "PASSED": 39,
+   "FAILED": 4
+  },
+  "hits": 43,
+  "pieces": 43
+ },
+ "true_positive_grok_4B": {
+  "predicted": "FAILED",
+  "status": "FAILED",
+  "issue_codes": [
+   "evidence_span_mismatch"
+  ],
+  "exact_occurrences_in_canonical_source": 0
+ },
+ "typography": {
+  "grok-3A": {
+   "predicted": "FAILED",
+   "status": "FAILED",
+   "issue_codes": [
+    "evidence_span_mismatch"
+   ],
+   "differing_code_points": [
+    {
+     "offset_in_quote": 48,
+     "quote": "U+0020",
+     "source": "U+2009"
+    },
+    {
+     "offset_in_quote": 50,
+     "quote": "U+0020",
+     "source": "U+2009"
+    }
+   ]
+  },
+  "astra-4A": {
+   "predicted": "FAILED",
+   "status": "FAILED",
+   "issue_codes": [
+    "evidence_span_mismatch"
+   ],
+   "differing_code_points": [
+    {
+     "offset_in_quote": 30,
+     "quote": "U+0020",
+     "source": "U+2009"
+    },
+    {
+     "offset_in_quote": 32,
+     "quote": "U+0020",
+     "source": "U+2009"
+    }
+   ]
+  },
+  "gemini-3A": {
+   "predicted": "FAILED",
+   "status": "FAILED",
+   "issue_codes": [
+    "evidence_span_mismatch"
+   ],
+   "differing_code_points": [
+    {
+     "offset_in_quote": 140,
+     "quote": "U+0020",
+     "source": "U+2009"
+    },
+    {
+     "offset_in_quote": 142,
+     "quote": "U+0020",
+     "source": "U+2009"
+    }
+   ]
+  }
+ },
+ "normalized": {
+  "predicted": {
+   "PASSED": 42,
+   "FAILED": 1
+  },
+  "result": {
+   "PASSED": 42,
+   "FAILED": 1
+  },
+  "hits": 43,
+  "pieces": 43
+ },
+ "controls": {
+  "expected": "2 PASSED, 2 FAILED",
+  "strict": {
+   "control-pos-1": "PASSED",
+   "control-pos-2": "PASSED",
+   "control-neg-1": "FAILED",
+   "control-neg-2": "FAILED"
+  },
+  "normalized": {
+   "control-pos-1": "PASSED",
+   "control-pos-2": "PASSED",
+   "control-neg-1": "FAILED",
+   "control-neg-2": "FAILED"
+  },
+  "valid": true
+ },
+ "deviations": []
+}
