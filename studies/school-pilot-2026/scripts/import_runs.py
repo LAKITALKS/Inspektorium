@@ -9,6 +9,11 @@ counted: one code block around the whole answer is removed, and an error entry
 with an unknown category is marked while the run stays usable. Nothing else is
 repaired. The importer sets no pointers: a comment that lists no quote stays
 without one, whatever its text says.
+
+Metadata belongs to the operator, not to the tool. A run file with a missing
+field is rejected and the field is named, so that it can be added from the chat
+history. If that is impossible, the metadata file holds ``protocol_error`` with
+a reason instead. Such a run enters no measure and is not replaced.
 """
 
 from __future__ import annotations
@@ -17,6 +22,8 @@ import argparse
 import datetime
 import json
 import re
+import sys
+from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
@@ -34,6 +41,7 @@ ORIGINAL = "original"
 
 USABLE = "usable"
 FAILED = "failed"
+PROTOCOL_ERROR = "protocol_error"
 
 DELIVERED_VALID = "delivered_valid"
 DELIVERED_INVALID = "delivered_invalid"
@@ -66,6 +74,14 @@ class RunSetupError(RuntimeError):
     """The study setup is incomplete; this is not a failure of the model."""
 
 
+class MetadataRejected(RuntimeError):
+    """Run files have unusable metadata; each problem names the file and field."""
+
+    def __init__(self, problems: list[str]) -> None:
+        super().__init__("; ".join(problems))
+        self.problems = problems
+
+
 @dataclass(frozen=True)
 class Reference:
     """One evidence reference with its origin in both comparison modes."""
@@ -91,6 +107,13 @@ class Metadata:
 
 
 @dataclass(frozen=True)
+class ProtocolNote:
+    """The operator's statement that a field cannot be reconstructed."""
+
+    reason: str
+
+
+@dataclass(frozen=True)
 class ParsedOutput:
     """A readable output and what was tolerated to read it."""
 
@@ -111,6 +134,7 @@ class RunRecord:
     model_name: str | None = None
     chat_mode: str | None = None
     failure_reason: str | None = None
+    protocol_note: str | None = None
     code_fence_removed: bool = False
     grade: int | None = None
     comments: list[dict[str, Any]] = field(default_factory=list)
@@ -208,27 +232,43 @@ def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
     return ParsedOutput(value, fenced, frozenset(invalid))
 
 
-def read_metadata(path: Path) -> Metadata | None:
-    """Return the run's metadata, or None if it cannot be used."""
+def _field_problem(name: str, value: object) -> str | None:
+    if not isinstance(value, str) or not value.strip():
+        return f"missing field {name}"
+    parsers: dict[str, Callable[[str], object]] = {
+        "date": datetime.date.fromisoformat,
+        "time": datetime.time.fromisoformat,
+    }
+    if name in parsers:
+        try:
+            parsers[name](value)
+        except ValueError:
+            return f"field {name} cannot be read"
+    return None
 
+
+def read_metadata(path: Path, label: str) -> Metadata | ProtocolNote:
+    """Return the metadata or a protocol note; reject anything else by name."""
+
+    names = list(Metadata.__dataclass_fields__)
     if not path.is_file():
-        return None
+        raise MetadataRejected([f"{label}: no metadata file, needs {', '.join(names)}"])
     try:
         value = load_strict_json(path.read_bytes())
-    except StrictJSONError:
-        return None
+    except StrictJSONError as error:
+        raise MetadataRejected([f"{label}: not valid JSON"]) from error
     if not isinstance(value, dict):
-        return None
-    fields = {key: value.get(key) for key in Metadata.__dataclass_fields__}
-    texts = {key: item for key, item in fields.items() if isinstance(item, str)}
-    if len(texts) != len(fields) or not all(item.strip() for item in texts.values()):
-        return None
-    try:
-        datetime.date.fromisoformat(texts["date"])
-        datetime.time.fromisoformat(texts["time"])
-    except ValueError:
-        return None
-    return Metadata(**texts)
+        raise MetadataRejected([f"{label}: not a JSON object"])
+    if PROTOCOL_ERROR in value:
+        reason = value[PROTOCOL_ERROR]
+        if not isinstance(reason, str) or not reason.strip():
+            raise MetadataRejected([f"{label}: {PROTOCOL_ERROR} needs a reason"])
+        return ProtocolNote(reason)
+    problems = [_field_problem(name, value.get(name)) for name in names]
+    found = [f"{label}: {problem}" for problem in problems if problem is not None]
+    if found:
+        raise MetadataRejected(found)
+    return Metadata(**{name: value[name] for name in names})
 
 
 def _delivered(
@@ -293,15 +333,16 @@ def import_run(
 
     folder = runs / model / text_id / version
     identity = (model, text_id, version, repetition)
-    metadata = read_metadata(folder / f"{repetition}.meta.json")
-    stamp = {} if metadata is None else asdict(metadata)
+    meta_path = folder / f"{repetition}.meta.json"
+    metadata = read_metadata(meta_path, meta_path.relative_to(runs).as_posix())
+    if isinstance(metadata, ProtocolNote):
+        return RunRecord(*identity, PROTOCOL_ERROR, protocol_note=metadata.reason)
+    stamp = asdict(metadata)
 
     def failed(reason: str) -> RunRecord:
         return RunRecord(*identity, FAILED, **stamp, failure_reason=reason)
 
     answer = folder / f"{repetition}.json"
-    if metadata is None:
-        return failed("metadata_unusable")
     if not answer.is_file():
         return failed("no_output")
     parsed = read_output(answer.read_bytes(), schema)
@@ -321,6 +362,7 @@ def import_run(
         comments=[
             {
                 "index": index,
+                "text": comment["text"],
                 "scope": comment["scope"],
                 "criteria": comment["criteria"],
             }
@@ -330,7 +372,9 @@ def import_run(
             {
                 "index": index,
                 "sid": error["sid"],
+                "quote": error["quote"],
                 "category": error["category"],
+                "explanation": error["explanation"],
                 "invalid_category": index in parsed.invalid_categories,
             }
             for index, error in enumerate(output["errors"])
@@ -352,10 +396,20 @@ def discover(runs: Path) -> list[tuple[str, str, str, str]]:
 
 
 def import_all(runs: Path, banks: Path, schema: dict[str, Any]) -> list[RunRecord]:
-    return [
-        import_run(runs, model, text_id, version, repetition, banks, schema)
-        for model, text_id, version, repetition in discover(runs)
-    ]
+    """Import every attempted run; all metadata problems are named at once."""
+
+    records: list[RunRecord] = []
+    problems: list[str] = []
+    for model, text_id, version, repetition in discover(runs):
+        try:
+            records.append(
+                import_run(runs, model, text_id, version, repetition, banks, schema)
+            )
+        except MetadataRejected as rejected:
+            problems.extend(rejected.problems)
+    if problems:
+        raise MetadataRejected(problems)
+    return records
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -366,16 +420,24 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
     schema = json.loads(args.schema.read_text(encoding="utf-8"))
-    records = import_all(args.runs, args.banks, schema)
+    try:
+        records = import_all(args.runs, args.banks, schema)
+    except MetadataRejected as rejected:
+        print("REJECTED, nothing written:", file=sys.stderr)
+        for problem in rejected.problems:
+            print(f"  {problem}", file=sys.stderr)
+        return 1
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_bytes(dump_json([asdict(record) for record in records]))
     failures = sum(record.status == FAILED for record in records)
+    protocol = sum(record.status == PROTOCOL_ERROR for record in records)
     fences = sum(record.code_fence_removed for record in records)
     invalid = sum(
         error["invalid_category"] for record in records for error in record.errors
     )
     print(
         f"imported {len(records)} attempted runs, {failures} failures, "
+        f"{protocol} protocol errors, "
         f"{fences} code fences removed, {invalid} invalid categories"
     )
     return 0

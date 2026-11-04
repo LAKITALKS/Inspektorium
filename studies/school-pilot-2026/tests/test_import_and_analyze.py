@@ -239,24 +239,100 @@ def test_an_attempt_without_output_is_a_failure(lab: Lab) -> None:
 
 
 @pytest.mark.parametrize(
-    "meta",
+    ("meta", "named"),
     [
-        pytest.param(b"", id="empty"),
-        pytest.param(b'{"date": "2026-11-20"}', id="only-the-date"),
-        pytest.param(_meta(date="bald"), id="bad-date"),
-        pytest.param(_meta(time="spät"), id="bad-time"),
-        pytest.param(_meta(time=None), id="no-time"),
-        pytest.param(_meta(model_name=" "), id="blank-name"),
-        pytest.param(_meta(model_name=None), id="no-name"),
-        pytest.param(_meta(chat_mode=" "), id="blank-mode"),
-        pytest.param(_meta(chat_mode=None), id="no-mode"),
-        pytest.param(_meta(chat_mode=3), id="mode-not-text"),
-        pytest.param(b"[]", id="not-an-object"),
+        pytest.param(b"", "not valid JSON", id="empty"),
+        pytest.param(b"[]", "not a JSON object", id="not-an-object"),
+        pytest.param(_meta(date="bald"), "field date", id="bad-date"),
+        pytest.param(_meta(time="spät"), "field time", id="bad-time"),
+        pytest.param(_meta(time=None), "missing field time", id="no-time"),
+        pytest.param(_meta(date=None), "missing field date", id="no-date"),
+        pytest.param(
+            _meta(model_name=" "), "missing field model_name", id="blank-name"
+        ),
+        pytest.param(_meta(model_name=None), "missing field model_name", id="no-name"),
+        pytest.param(_meta(chat_mode=" "), "missing field chat_mode", id="blank-mode"),
+        pytest.param(_meta(chat_mode=None), "missing field chat_mode", id="no-mode"),
+        pytest.param(_meta(chat_mode=3), "missing field chat_mode", id="mode-not-text"),
     ],
 )
-def test_unusable_metadata_is_a_failure(lab: Lab, meta: bytes) -> None:
+def test_unusable_metadata_is_rejected_by_name(
+    lab: Lab, meta: bytes, named: str
+) -> None:
     lab.add(_output(), meta=meta)
-    assert lab.imported()[0].failure_reason == "metadata_unusable"
+    with pytest.raises(imp.MetadataRejected) as caught:
+        lab.imported()
+    assert named in str(caught.value)
+    assert "spiel/toy/original/1.meta.json" in str(caught.value)
+
+
+def test_a_run_without_a_metadata_file_is_rejected(lab: Lab) -> None:
+    lab.add(_output())
+    (lab.runs / "spiel/toy/original/1.meta.json").unlink()
+    with pytest.raises(imp.MetadataRejected, match="no metadata file") as caught:
+        lab.imported()
+    assert "chat_mode" in str(caught.value)
+
+
+def test_all_metadata_problems_are_named_at_once(lab: Lab) -> None:
+    lab.add(_output(), "1", meta=_meta(time=None, chat_mode=None))
+    lab.add(_output(), "2", meta=_meta(date=None))
+    lab.add(_output(), "3")
+    with pytest.raises(imp.MetadataRejected) as caught:
+        lab.imported()
+    assert len(caught.value.problems) == 3
+
+
+def test_a_rejected_import_writes_nothing(
+    lab: Lab, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    lab.add(_output(), meta=_meta(time=None))
+    out = tmp_path / "imported.json"
+    arguments = ["--runs", str(lab.runs), "--banks", str(lab.banks)]
+    assert imp.main([*arguments, "--schema", str(SCHEMA_PATH), "--out", str(out)]) == 1
+    assert "missing field time" in capsys.readouterr().err
+    assert not out.exists()
+
+
+def test_a_protocol_error_is_recorded_with_its_reason(lab: Lab) -> None:
+    lab.add(_output(), meta=json.dumps({"protocol_error": "Uhrzeit fehlt"}).encode())
+    run = lab.imported()[0]
+    assert (run.status, run.protocol_note) == (imp.PROTOCOL_ERROR, "Uhrzeit fehlt")
+    assert run.failure_reason is None
+
+
+@pytest.mark.parametrize("reason", ["", "  ", 3, None])
+def test_a_protocol_error_needs_a_reason(lab: Lab, reason: object) -> None:
+    lab.add(_output(), meta=json.dumps({"protocol_error": reason}).encode())
+    with pytest.raises(imp.MetadataRejected, match="needs a reason"):
+        lab.imported()
+
+
+def test_a_protocol_error_never_reads_the_output(lab: Lab) -> None:
+    lab.add(b"kein JSON", meta=json.dumps({"protocol_error": "x"}).encode())
+    assert lab.imported()[0].status == imp.PROTOCOL_ERROR
+
+
+def test_a_protocol_error_enters_no_measure(lab: Lab) -> None:
+    lab.add(_output([_comment(quotes=[("S1", "300 km")])], grade=2), "1")
+    lab.add(b"kein JSON", "2")
+    before = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    note = json.dumps({"protocol_error": "Modus fehlt"}).encode()
+    lab.add(_output([_comment(quotes=[("S1", "999 km")])], grade=6), "3", meta=note)
+    lab.add(b"kein JSON", "4", meta=note)
+    after = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert after.pop("protocol_errors") == 2
+    assert before.pop("protocol_errors") == 0
+    assert after == before
+
+
+def test_a_protocol_error_is_no_failure(lab: Lab) -> None:
+    lab.add(_output(), "1")
+    note = json.dumps({"protocol_error": "Datum fehlt"}).encode()
+    lab.add(_output(), "2", meta=note)
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["counts"]["failures"]["label"] == "0 von 1"
+    assert report["attempted_runs"] == 1
 
 
 def test_a_missing_bank_is_a_setup_error_not_a_model_failure(lab: Lab) -> None:
@@ -354,50 +430,54 @@ def test_the_failure_rate_counts_every_attempt(lab: Lab) -> None:
     report = _full_lab(lab)["spiel"]
     assert report["attempted_runs"] == 6
     assert report["usable_runs"] == 4
-    assert report["failure_rate"] == pytest.approx(2 / 6)
+    assert report["rates"]["failure_rate"] == pytest.approx(2 / 6)
 
 
 def test_a_run_without_a_quote_is_undefined_not_zero(lab: Lab) -> None:
     lab.add(_output([_comment(scope="global")]))
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    fidelity = report["quote_fidelity"]
+    fidelity = report["rates"]["quote_fidelity"]
     assert fidelity["strict"]["text"] is None
     assert fidelity["normalized"]["text_and_location"] is None
     rendered = an.render(report)
     assert isinstance(rendered, dict)
-    assert rendered["quote_fidelity"]["strict"]["text"] == "nicht definiert"
+    assert rendered["rates"]["quote_fidelity"]["strict"]["text"] == "nicht definiert"
 
 
 def test_an_undefined_run_leaves_the_mean_of_the_others_alone(lab: Lab) -> None:
     lab.add(_output([_comment(quotes=[("S1", "300 km")])]), "1")
     lab.add(_output([_comment(scope="global")]), "2")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["quote_fidelity"]["strict"]["text_and_location"] == 1.0
+    assert report["rates"]["quote_fidelity"]["strict"]["text_and_location"] == 1.0
 
 
 def test_failures_never_enter_the_quote_denominator(lab: Lab) -> None:
     lab.add(_output([_comment(quotes=[("S1", "300 km")])]), "1")
     lab.add(b"kein JSON", "2")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["quote_fidelity"]["strict"]["text_and_location"] == 1.0
-    assert report["failure_rate"] == 0.5
+    assert report["rates"]["quote_fidelity"]["strict"]["text_and_location"] == 1.0
+    assert report["rates"]["failure_rate"] == 0.5
 
 
 def test_quote_fidelity_counts_comment_and_error_quotes(lab: Lab) -> None:
-    fidelity = _full_lab(lab)["spiel"]["quote_fidelity"]
+    fidelity = _full_lab(lab)["spiel"]["rates"]["quote_fidelity"]
     assert fidelity["strict"]["text_and_location"] == pytest.approx((2 / 3 + 1 + 1) / 3)
 
 
 def test_text_only_fidelity_ignores_the_location(lab: Lab) -> None:
     lab.add(_output([_comment(quotes=[("S2", "300 km"), ("S1", "999 km")])]))
-    fidelity = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["quote_fidelity"]
+    fidelity = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["rates"][
+        "quote_fidelity"
+    ]
     assert fidelity["strict"]["text"] == 0.5
     assert fidelity["strict"]["text_and_location"] == 0.0
 
 
 def test_normalized_fidelity_differs_from_strict_on_a_final_mark(lab: Lab) -> None:
     lab.add(_output([_comment(quotes=[("S1", "fährt 300 km.")])]))
-    fidelity = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["quote_fidelity"]
+    fidelity = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["rates"][
+        "quote_fidelity"
+    ]
     assert fidelity["strict"]["text_and_location"] == 0.0
     assert fidelity["normalized"]["text_and_location"] == 1.0
 
@@ -413,13 +493,13 @@ def test_evidence_coverage_counts_all_comments(lab: Lab) -> None:
         )
     )
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["evidence_coverage"]["strict"] == pytest.approx(1 / 3)
+    assert report["rates"]["evidence_coverage"]["strict"] == pytest.approx(1 / 3)
 
 
 def test_evidence_coverage_is_undefined_without_comments(lab: Lab) -> None:
     lab.add(_output())
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["evidence_coverage"]["strict"] is None
+    assert report["rates"]["evidence_coverage"]["strict"] is None
 
 
 def test_criterion_fidelity_uses_the_corpus_annotation_of_the_quoted_sentence(
@@ -434,58 +514,92 @@ def test_criterion_fidelity_uses_the_corpus_annotation_of_the_quoted_sentence(
         )
     )
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["criterion_fidelity"] == 0.5
+    assert report["rates"]["criterion_fidelity"] == 0.5
 
 
 def test_criterion_fidelity_is_undefined_without_an_evidenced_comment(lab: Lab) -> None:
     lab.add(_output([_comment(scope="global", criteria=["K1"])]))
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["criterion_fidelity"] is None
+    assert report["rates"]["criterion_fidelity"] is None
 
 
 def test_criterion_coverage_compares_with_the_annotated_criteria(lab: Lab) -> None:
     lab.add(_output([_comment(scope="global", criteria=["K1", "K6"])]))
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["criterion_coverage"] == 0.5
+    assert report["rates"]["criterion_coverage"] == 0.5
 
 
-def test_grades_are_counted_per_text_and_model(lab: Lab) -> None:
-    report = _full_lab(lab)["spiel"]
-    assert report["grade_distribution"] == {"toy": {"2": 2, "4": 1, "5": 1}}
+def test_grades_are_kept_per_text_version_and_model(lab: Lab) -> None:
+    grades = _full_lab(lab)["spiel"]["grades"]
+    assert grades["toy"]["original"]["distribution"] == {"2": 2}
+    assert grades["toy"]["v1"]["distribution"] == {"4": 1, "5": 1}
+
+
+def test_a_grade_cell_gives_distribution_range_and_most_common_grade(lab: Lab) -> None:
+    for number, grade in enumerate((2, 2, 5), start=1):
+        lab.add(_output(grade=grade), str(number))
+    cell = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["grades"]["toy"]
+    assert cell["original"] == {
+        "usable_runs": 3,
+        "marked": False,
+        "distribution": {"2": 2, "5": 1},
+        "range": [2, 5],
+        "most_common": [2],
+    }
+
+
+def test_a_grade_cell_with_too_few_usable_runs_is_marked(lab: Lab) -> None:
+    lab.add(_output(grade=2), "1")
+    lab.add(_output(grade=3), "2")
+    lab.add(b"kein JSON", "3")
+    cell = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["grades"]["toy"]
+    assert cell["original"]["usable_runs"] == 2
+    assert cell["original"]["marked"] is True
+    assert cell["original"]["most_common"] == [2, 3]
+
+
+def test_a_grade_cell_without_a_usable_run_stays_visible(lab: Lab) -> None:
+    lab.add(b"kein JSON")
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)
+    cell = report["spiel"]["grades"]["toy"]["original"]
+    assert (cell["usable_runs"], cell["marked"], cell["range"]) == (0, True, None)
+    rendered = an.render(an.pilot_report(report))
+    assert isinstance(rendered, dict)
+    assert rendered["spiel"]["grades"]["toy"]["original"]["range"] == "nicht definiert"
 
 
 def test_detection_per_usable_and_per_attempted_run(lab: Lab) -> None:
     report = _full_lab(lab)["spiel"]
-    assert report["detection_per_usable_run"] == 0.5
-    assert report["detection_per_attempted_run"] == pytest.approx(1 / 3)
+    assert report["rates"]["detection_per_usable_run"] == 0.5
+    assert report["rates"]["detection_per_attempted_run"] == pytest.approx(1 / 3)
 
 
 def test_a_wrong_category_is_no_detection_and_stays_visible(lab: Lab) -> None:
     lab.add(_output(errors=[_error("S2", "30 Minuten", "Sprache")]), version="v1")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["detection_per_usable_run"] == 0.0
+    assert report["rates"]["detection_per_usable_run"] == 0.0
     assert report["wrong_category_hits"] == 1
 
 
 def test_a_right_category_with_an_invalid_quote_is_no_detection(lab: Lab) -> None:
     lab.add(_output(errors=[_error("S2", "99 Minuten", "Zahl")]), version="v1")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["detection_per_usable_run"] == 0.0
+    assert report["rates"]["detection_per_usable_run"] == 0.0
 
 
 def test_a_false_alarm_is_an_error_report_at_a_site_in_the_original(lab: Lab) -> None:
     lab.add(_output(errors=[_error("S2", "30 Minuten", "Faktum")]), "1")
     lab.add(_output(errors=[_error("S3", "sehr teuer", "Faktum")]), "2")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["false_alarm"] == 0.5
+    assert report["rates"]["false_alarm"] == 0.5
 
 
 def test_no_target_means_detection_and_false_alarm_are_undefined(lab: Lab) -> None:
     lab.add(_output())
     report = an.analyze(lab.records(), ANNOTATED, {})["spiel"]
-    assert report["detection_per_usable_run"] is None
-    assert report["detection_per_attempted_run"] is None
-    assert report["false_alarm"] is None
+    assert report["rates"]["detection_per_usable_run"] is None
+    assert report["rates"]["detection_per_attempted_run"] is None
+    assert report["rates"]["false_alarm"] is None
 
 
 def test_the_estimate_is_the_mean_per_text_not_the_pooled_mean() -> None:
@@ -502,7 +616,7 @@ def test_models_are_kept_apart(lab: Lab) -> None:
     lab.add(_output(grade=6), model="anderes")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)
     assert list(report) == ["anderes", "spiel"]
-    assert report["anderes"]["grade_distribution"] == {"toy": {"6": 1}}
+    assert report["anderes"]["grades"]["toy"]["original"]["most_common"] == [6]
 
 
 def test_the_report_counts_what_the_importer_tolerated(lab: Lab) -> None:
@@ -515,37 +629,117 @@ def test_the_report_counts_what_the_importer_tolerated(lab: Lab) -> None:
         "code_fences_removed": 1,
         "invalid_category_entries": 2,
     }
-    assert report["failure_rate"] == pytest.approx(1 / 3)
+    assert report["rates"]["failure_rate"] == pytest.approx(1 / 3)
 
 
 def test_an_unknown_category_is_no_detection(lab: Lab) -> None:
     lab.add(_output(errors=[_error("S2", "30 Minuten", "Grammatik")]), version="v1")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["detection_per_usable_run"] == 0.0
-    assert report["wrong_category_hits"] == 1
+    assert report["rates"]["detection_per_usable_run"] == 0.0
+    assert report["wrong_category_hits"] == 0
+    assert report["unknown_category"]["at_target_in_modified"] == 1
 
 
 def test_an_unknown_category_at_a_site_is_still_a_false_alarm(lab: Lab) -> None:
     lab.add(_output(errors=[_error("S2", "30 Minuten", "Grammatik")]))
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
-    assert report["false_alarm"] == 1.0
+    assert report["rates"]["false_alarm"] == 1.0
+
+
+def test_unknown_categories_count_as_unclear_by_place(lab: Lab) -> None:
+    lab.add(_output(errors=[_error("S2", "30 Minuten", "Grammatik")]))
+    lab.add(_output(errors=[_error("S2", "30 Minuten", "Stil")]), version="v1")
+    lab.add(_output(errors=[_error("S1", "300 km", "Stil")]), "2", version="v1")
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["unknown_category"] == {
+        "unclear_reports": 3,
+        "at_target_in_original": 1,
+        "at_target_in_modified": 1,
+        "elsewhere": 1,
+    }
+
+
+def test_the_counter_assumption_reverses_both_results(lab: Lab) -> None:
+    unknown = [_error("S2", "30 Minuten", "Grammatik")]
+    lab.add(_output(errors=unknown))
+    lab.add(_output(errors=unknown), version="v1")
+    counts = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["counts"]
+    assert counts["detection_per_usable_run"]["label"] == "0 von 1"
+    assert counts["false_alarm"]["label"] == "1 von 1"
+    counter = counts["counter_assumption"]
+    assert counter["detection_per_usable_run"]["label"] == "1 von 1"
+    assert counter["detection_per_attempted_run"]["label"] == "1 von 1"
+    assert counter["false_alarm"]["label"] == "0 von 1"
+
+
+def test_the_counter_assumption_still_needs_a_valid_quote(lab: Lab) -> None:
+    lab.add(_output(errors=[_error("S2", "99 Minuten", "Grammatik")]), version="v1")
+    counts = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["counts"]
+    assert counts["counter_assumption"]["detection_per_usable_run"]["count"] == 0
+
+
+def test_the_counter_assumption_leaves_a_known_category_alone(lab: Lab) -> None:
+    lab.add(_output(errors=[_error("S2", "30 Minuten", "Sprache")]), version="v1")
+    lab.add(_output(errors=[_error("S2", "30 Minuten", "Faktum")]))
+    counts = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["counts"]
+    counter = counts["counter_assumption"]
+    assert counter["detection_per_usable_run"] == counts["detection_per_usable_run"]
+    assert counter["false_alarm"] == counts["false_alarm"]
+
+
+def test_code_blocks_are_counted_per_chatbot(lab: Lab) -> None:
+    fenced = b"```json\n" + _output() + b"\n```"
+    lab.add(fenced, "1", model="eins")
+    lab.add(fenced, "2", model="eins")
+    lab.add(_output(), "1", model="zwei")
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)
+    assert report["eins"]["import_notes"]["code_fences_removed"] == 2
+    assert report["zwei"]["import_notes"]["code_fences_removed"] == 0
+
+
+def test_the_pilot_report_gives_counts_and_no_rates(lab: Lab) -> None:
+    report = an.pilot_report(_full_lab(lab))["spiel"]
+    assert "rates" not in report
+    counts = report["counts"]
+    assert counts["failures"] == {"count": 2, "of": 6, "label": "2 von 6"}
+    assert counts["quotes"]["strict"]["text_and_location"]["label"] == "4 von 5"
+    assert counts["evidence"]["strict"]["label"] == "1 von 4"
+    assert counts["detection_per_usable_run"]["label"] == "1 von 2"
+    assert counts["detection_per_attempted_run"]["label"] == "1 von 3"
+    assert counts["false_alarm"]["label"] == "0 von 2"
+
+
+def test_nothing_of_nothing_is_undefined_in_the_pilot_report(lab: Lab) -> None:
+    lab.add(_output())
+    counts = an.analyze(lab.records(), ANNOTATED, {})["spiel"]["counts"]
+    assert counts["quotes"]["strict"]["text"]["label"] == "nicht definiert"
+    assert counts["detection_per_usable_run"]["label"] == "nicht definiert"
+    assert counts["false_alarm"]["label"] == "nicht definiert"
+
+
+def test_counts_and_rates_agree_on_a_single_run(lab: Lab) -> None:
+    lab.add(_output([_comment(quotes=[("S1", "300 km"), ("S1", "999 km")])]))
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["counts"]["quotes"]["strict"]["text"]["label"] == "1 von 2"
+    assert report["rates"]["quote_fidelity"]["strict"]["text"] == 0.5
 
 
 def test_the_report_holds_the_twelve_measures(lab: Lab) -> None:
     report = _full_lab(lab)["spiel"]
+    counts = report["counts"]
     measures = [
-        report["failure_rate"],
-        report["quote_fidelity"]["strict"]["text"],
-        report["quote_fidelity"]["strict"]["text_and_location"],
-        report["quote_fidelity"]["normalized"]["text"],
-        report["quote_fidelity"]["normalized"]["text_and_location"],
-        report["evidence_coverage"],
-        report["criterion_fidelity"],
-        report["criterion_coverage"],
-        report["grade_distribution"],
-        report["detection_per_usable_run"],
-        report["detection_per_attempted_run"],
-        report["false_alarm"],
+        counts["failures"],
+        counts["quotes"]["strict"]["text"],
+        counts["quotes"]["strict"]["text_and_location"],
+        counts["quotes"]["normalized"]["text"],
+        counts["quotes"]["normalized"]["text_and_location"],
+        counts["evidence"],
+        counts["criterion_fidelity"],
+        counts["criterion_coverage"],
+        report["grades"],
+        counts["detection_per_usable_run"],
+        counts["detection_per_attempted_run"],
+        counts["false_alarm"],
     ]
     assert len(measures) == 12
 
@@ -576,4 +770,6 @@ def test_the_scripts_run_from_the_command_line(lab: Lab, tmp_path: Path) -> None
     arguments = ["--imported", str(imported), "--sentence-criteria", str(annotated)]
     arguments += ["--targets", str(targets), "--out", str(report)]
     assert an.main(arguments) == 0
-    assert json.loads(report.read_text("utf-8"))["spiel"]["usable_runs"] == 4
+    written = json.loads(report.read_text("utf-8"))["spiel"]
+    assert written["usable_runs"] == 4
+    assert "rates" not in written
