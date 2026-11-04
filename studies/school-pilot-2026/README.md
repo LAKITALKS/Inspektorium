@@ -9,7 +9,7 @@
 | Corpus, sentence banks, criteria | Done |
 | Draw of the study groups | Done |
 | Reference cases | Built and sealed, not run through any checker |
-| Quote checker, import, analysis, coding export | Built, tested on invented data only |
+| Quote checker, import, analysis, coding sheet | Built, tested on invented data only |
 | Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
 | Inserted errors | Proposed, not decided |
 | Run plan | Done; the prompt files do not exist yet |
@@ -174,7 +174,7 @@ The tests of this script use invented sentences only.
 
 `scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds the metadata of the [run protocol](#run-protocol). The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`.
 
-**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, or breaks the schema. Invalid JSON always stays a failure. Two exceptions apply, and nothing else is repaired.
+**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, or breaks the schema. Invalid JSON always stays a failure. Four exceptions apply, and nothing else is repaired.
 
 **Exception 1: code block.** One code block around the whole answer is removed, and the run is not a failure.
 
@@ -188,7 +188,11 @@ The tests of this script use invented sentences only.
 - The entry can never count as a detection.
 - A missing category, a category that is not a text and every other unknown value, such as a criterion `K9`, stay failures.
 
-**Counted.** Per chatbot, the analysis reports both exceptions under `import_notes`: `code_fences_removed` counts usable runs, and `invalid_category_entries` counts entries.
+**Exception 3: quote without a sentence number.** A quote or error report whose `sid` is missing, null or empty keeps the run usable. The quote counts in measure 2 only. A `sid` in any other wrong form stays a failure.
+
+**Exception 4: unknown criterion.** A criterion outside the grid keeps the run usable. The reference is marked with `id: null` and counts in measure 6 as outside the grid. A criterion written as its exact name from `data/criteria.json`, in any case, counts as its id. That list of names is the agreed list of spellings.
+
+**Counted.** Per chatbot, the analysis reports the first two exceptions under `import_notes` and the last two under `counts`: `code_fences_removed` counts usable runs, `invalid_category_entries` counts entries, and `quotes_without_sid` and the references in measure 6 count quotes and references.
 
 **Metadata.** A missing field is an operating error, not a failure of the tool.
 
@@ -209,52 +213,81 @@ The tests of this script use invented sentences only.
 
 `scripts/analyze.py` computes the measures per model. Its tests use invented outputs only. The numbers follow the study plan.
 
-| # | Measure | What the code computes | Undefined if |
-|---|---|---|---|
-| 1 | Failure rate | Failed runs among attempted runs | never |
-| 2 | Quote fidelity, text | Delivered quotes whose text occurs in the essay, strict and normalized | the run has no quote |
-| 3 | Quote fidelity, text and location | Delivered quotes whose text occurs in the claimed sentence, strict and normalized | the run has no quote |
-| 4 | Evidence coverage, overall | Comments, local and global, with at least one valid quote, strict and normalized | the run has no comment |
-| 5 | Evidence coverage, local | Not built; it needs human coding | |
-| 6 | Criterion fidelity | For comments with a valid quote: named criteria that the corpus annotation marks in a quoted sentence | no such comment names a criterion |
-| 7 | Criterion coverage | Criteria annotated in the text that some comment names | the text has none |
-| 8 | Grade variation | Originals only, per text and model: distribution, range, most common grade | no usable run |
-| 9 | Detection per usable run | Inserted errors found, among usable runs of modified versions | no target |
-| 10 | Detection per attempted run | As 9, with each failed run counted as finding nothing | no target |
-| 11 | False alarm | Usable runs of the original with an error report at a target sentence | no target for the text |
-| 12 | Unclear | Reports with an unknown category; reports that the coding cannot assign are not built yet | |
+| # | Measure | Count | Of | Undefined if |
+|---|---|---|---|---|
+| 1 | Failure rate | Failed runs | Attempted runs | never |
+| 2 | Quote fidelity, text | Quotes whose text occurs in the essay | Delivered quotes | no quote |
+| 3 | Quote fidelity, text and location | Quotes that occur in the claimed sentence | Delivered quotes with a sentence number | no such quote |
+| 4 | Evidence coverage, overall | Comments with at least one delivered quote, valid or not | All comments | no comment |
+| 5 | Evidence coverage, local | Not part of the pilot | | |
+| 6 | Criterion fidelity | References inside the grid | All criterion references | no reference |
+| 7 | Criterion coverage | Comments with at least one criterion reference | All comments | no comment |
+| 8 | Grade variation | Originals only, per text and model: distribution, range, most common grade | | no usable run |
+| 9 | Detection per usable run | Runs with a hit | Usable runs of the modified version | no trap |
+| 10 | Detection per attempted run | Runs with a hit | Attempted runs of the modified version | no trap |
+| 11 | False alarm | Runs with stage 1 and `ja` at the target | Usable runs of the original | no trap |
+| 12 | Unclear | Runs coded `unklar` | Coded runs | no trap |
 
-**These are not all agreed definitions yet.** Several measures differ from the study plan. The differences are listed for the maintainer and not changed; see [Open decisions](#open-decisions).
+Measures 2 and 3 are reported strict and normalized. They count quotes in comments and in error reports.
+
+**Also reported, without a measure of their own.**
+
+- `invalid_quotes` lists every quote that fails in at least one mode, one by one, with both results. A quote with silently corrected spelling is invalid in both modes and appears here.
+- `quotes_without_sid` counts quotes without a sentence number.
+- `ambiguous_quotes` counts quotes whose text occurs more than once in the essay.
+- `self_marked_global` counts comments the chatbot itself marks as global. It is descriptive only.
+- `misplaced_hits` counts runs with `ja` without stage 1.
+- `unknown_category` counts reports with an unknown category, by place.
 
 **Report.** The written report gives counts such as `2 von 9`; see [Adaptations for the pilot](#adaptations-for-the-pilot-anpassung-für-den-pilot). The mean per text stays in the code under `rates` for the main study. It is not part of the pilot's report.
 
-**Special cases.** A measure with an empty denominator is reported as `nicht definiert`. It is neither 0 nor 100 %, and it leaves any mean. Failed runs never enter the denominator of a quote measure. Protocol errors enter no measure.
-
-**Quotes counted.** Measures 2 and 3 count quotes in comments and in error reports.
-
-**Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another known category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
-
-**False alarm.** Target sentences are correct in the original, so an error report there is a false alarm. Any category counts, an unknown one too.
-
-**Unknown category.** The rules above are the main result: an unknown category is never a hit, and at a target sentence of the original it is a false alarm. Two additions keep the assumption visible:
-
-- `unknown_category` counts these reports as unclear, with their own number and split by place.
-- `counter_assumption` repeats detection and false alarm with the reverse assumption: a hit in a modified version, no false alarm in the original. Both results are reported.
+**Special cases.** A measure with an empty denominator is reported as `nicht definiert`. It is neither 0 nor 100 %, and it leaves any mean. Failed runs never enter the denominator of a quote measure, and they count as "not found" in measure 10 only. Protocol errors enter no measure.
 
 **Grades.** Measure 8 uses the originals only, with one cell per text and model. The grades of the modified versions are reported separately under `grades_modified`, with one cell per text, version and model. Each cell gives the distribution, the range, and the most common grade with its count. A cell with fewer than three usable runs is marked.
 
-## Blind coding export
+**Exploratory.** `annotation_agreement_count` compares criteria with the corpus annotation. It is exploratory and not part of the pilot's report.
 
-`scripts/export_for_coding.py` writes a sheet for coding the reports of usable runs.
+## Hit rule
 
-```bash
-python studies/school-pilot-2026/scripts/export_for_coding.py --imported <imported.json> --sheet <sheet.csv> --key <key.json>
+A trap is one inserted error per text. Its definition has this form and comes to `analyze.py` as a file:
+
+```json
+{"<text_id>": {"version": "veraendert", "type": "Zahl", "sids": ["S2"], "description": "..."}}
 ```
 
-- The sheet has one row per error report and comment, in random order, with empty columns `code` and `note`.
-- It holds no model name, date, time, chat mode or repetition number.
-- The key file leads each item back to its run. Keep it out of sight until the coding is done.
+The type is exactly one of `Zahl`, `Faktum`, `Widerspruch` and `Unsinn`. The target is one sentence; only a contradiction may name two. The analysis refuses any other form.
+
+**Stage 1 is mechanical.** A report passes if it names a target sentence and exactly the target type.
+
+**Stage 2 is human.** The coder answers one question per run: does a report describe the target error? The answer is `ja` with the number of the report, `nein` or `unklar`.
+
+| Situation | Modified version | Original |
+|---|---|---|
+| Stage 1 and `ja` for the same report | Hit | False alarm |
+| `ja` without stage 1 | No hit; counted as a hit under a wrong category or sentence | No false alarm; counted the same way |
+| `nein` | No hit | No false alarm; other criticism at the site does not count |
+| `unklar` | No hit; measure 12 | False alarm; measure 12 |
+| `ja` for a report at the target with an unknown category | No hit | False alarm |
+
+A hit needs no valid quote, because measures 2 and 3 measure quote fidelity.
+
+**Counter assumption.** `counter_assumption` repeats measures 9 to 11 with the last two rows reversed: a hit in the modified version, no false alarm in the original. Both results are reported.
+
+## Coding
+
+`scripts/export_for_coding.py` writes the coding sheet, and `analyze.py` reads it back.
+
+```bash
+python studies/school-pilot-2026/scripts/export_for_coding.py --imported <imported.json> --targets <traps.json> --sheet <sheet.csv> --key <key.json>
+python studies/school-pilot-2026/scripts/analyze.py --imported <imported.json> --targets <traps.json> --coding-sheet <sheet.csv> --coding-key <key.json> --out <report.json>
+```
+
+- The sheet has one row per run, in random order. A row shows all error reports of the run, numbered, and the target description of the text.
+- It shows neither the model nor the version nor the repetition.
+- The key file leads each row back to its run. Keep it out of sight until the coding is done.
+- A row without reports is already answered `nein`. A failed run looks the same, and its answer is not used.
 - The order comes from a new random value on each export. An existing sheet or key is never replaced, so a finished coding cannot lose its key.
+- The filled sheet is read back with comma or semicolon. A blank or impossible answer, or a missing or repeated row, stops the analysis and is named by row. Every usable run of a text with a trap needs an answer.
 - The text of the reports is not edited, so a chatbot that names itself stays recognizable. Text that a spreadsheet would run as a formula gets a leading apostrophe.
 
 ## Adaptations for the pilot (Anpassung für den Pilot)
@@ -265,7 +298,10 @@ The maintainer decided these differences from the main study's plan.
 - **Reporting.** The pilot is reported as a feasibility check: counts such as `2 von 9`, no rates with confidence intervals. This also holds for the component test, which reports `0 von n` and no error rate. Criterion A1 of the main study (at least 300 invalid quotes) is not claimed.
 - **Normalization.** The plan names NFC, line endings and HTML entities. The rule on final marks of 2026-11-04 comes on top. NFC and line endings are in the kernel. HTML entities are converted only when the sentence banks are built, in `convert_sentence`. The quote checker does not convert them in a quote, so a quote with `&lt;` does not match a `<` in the essay, in either mode. The three pilot texts contain no HTML entities.
 - **Reference cases.** The plan estimated about 200. There are 302: 211 for development and 91 held out.
-- **Second coding.** The pilot has no second person, so there is no second coding and no agreement between coders. This is a limit of the pilot. The [blind export](#blind-coding-export) supports the single coding.
+- **Second coding.** The pilot has no second person, so there is no second coding and no agreement between coders. This is a limit of the pilot. The [coding sheet](#coding) keeps the single coding blind.
+- **Stage 2.** All runs are coded, with one answer per run. So the check of a sample of non-hits falls away, and `ja` without stage 1 is reported separately. Measure 12 therefore counts runs, not reports.
+- **Measure 5.** It is not part of the pilot, because it needs human coding of local and global comments. This is a limit of the pilot. The report only gives the number of comments the chatbot itself marks as global.
+- **Silent corrections.** A quote with silently corrected spelling is invalid in both modes, unlike the plan says. All invalid quotes are listed one by one, without a measure of their own.
 
 ## Run protocol
 
@@ -302,12 +338,13 @@ These two stay unchanged until the held-out cases are evaluated:
 
 `tests/test_frozen_tools.py` fails if either one changes.
 
+With the preregistration, the commit of the whole study folder is recorded, without `runs/` and `sealed/`. Every later change to import, analysis or export code is a deviation and is named in the report.
+
 ## Open decisions
 
 These points are not settled here, and the tooling does not assume an answer.
 
 - **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
-- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
-- **Definitions.** The definitions were compared with the study plan on 2026-11-04. Measures 3 to 7 and 9 to 12 differ from it in some way. The maintainer decides each difference before the preregistration. Until then the code stays as it is.
+- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites, with exactly one type per trap. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
 
 **Writing task.** The prompt uses a marked paraphrase after Schaller et al., LREC 2026. The original wording is not available.
