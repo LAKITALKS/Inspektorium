@@ -1,0 +1,6 @@
+# The full corpus is never committed; scripts/fetch_genius.py restores it.
+data/external/
+# Held-out reference cases: only their hash in prereg/ is committed.
+sealed/
+# Chatbot outputs do not exist before the preregistration is published.
+runs/
