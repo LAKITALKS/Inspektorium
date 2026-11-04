@@ -26,6 +26,7 @@ META = {
     "time": "14:30",
     "model_name": "Spielmodell 1",
     "chat_mode": "Temporärer Chat",
+    "account_type": "Kostenlos",
 }
 
 
@@ -107,6 +108,7 @@ def test_a_clean_run_is_usable_with_its_metadata(lab: Lab) -> None:
     assert run.status == imp.USABLE
     assert (run.date, run.time) == ("2026-11-20", "14:30")
     assert (run.model_name, run.chat_mode) == ("Spielmodell 1", "Temporärer Chat")
+    assert run.account_type == "Kostenlos"
     assert (run.model, run.text_id, run.version, run.repetition) == (
         "spiel",
         "toy",
@@ -254,6 +256,12 @@ def test_an_attempt_without_output_is_a_failure(lab: Lab) -> None:
         pytest.param(_meta(chat_mode=" "), "missing field chat_mode", id="blank-mode"),
         pytest.param(_meta(chat_mode=None), "missing field chat_mode", id="no-mode"),
         pytest.param(_meta(chat_mode=3), "missing field chat_mode", id="mode-not-text"),
+        pytest.param(
+            _meta(account_type=None), "missing field account_type", id="no-account"
+        ),
+        pytest.param(
+            _meta(account_type=" "), "missing field account_type", id="blank-account"
+        ),
     ],
 )
 def test_unusable_metadata_is_rejected_by_name(
@@ -529,22 +537,25 @@ def test_criterion_coverage_compares_with_the_annotated_criteria(lab: Lab) -> No
     assert report["rates"]["criterion_coverage"] == 0.5
 
 
-def test_grades_are_kept_per_text_version_and_model(lab: Lab) -> None:
-    grades = _full_lab(lab)["spiel"]["grades"]
-    assert grades["toy"]["original"]["distribution"] == {"2": 2}
-    assert grades["toy"]["v1"]["distribution"] == {"4": 1, "5": 1}
+def test_measure_8_uses_the_original_and_the_modified_grades_stay_apart(
+    lab: Lab,
+) -> None:
+    report = _full_lab(lab)["spiel"]
+    assert report["grade_variation"]["toy"]["distribution"] == {"2": 2}
+    assert report["grades_modified"]["toy"]["v1"]["distribution"] == {"4": 1, "5": 1}
 
 
 def test_a_grade_cell_gives_distribution_range_and_most_common_grade(lab: Lab) -> None:
     for number, grade in enumerate((2, 2, 5), start=1):
         lab.add(_output(grade=grade), str(number))
-    cell = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["grades"]["toy"]
-    assert cell["original"] == {
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["grade_variation"]["toy"] == {
         "usable_runs": 3,
         "marked": False,
         "distribution": {"2": 2, "5": 1},
         "range": [2, 5],
         "most_common": [2],
+        "most_common_count": 2,
     }
 
 
@@ -552,20 +563,27 @@ def test_a_grade_cell_with_too_few_usable_runs_is_marked(lab: Lab) -> None:
     lab.add(_output(grade=2), "1")
     lab.add(_output(grade=3), "2")
     lab.add(b"kein JSON", "3")
-    cell = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["grades"]["toy"]
-    assert cell["original"]["usable_runs"] == 2
-    assert cell["original"]["marked"] is True
-    assert cell["original"]["most_common"] == [2, 3]
+    cell = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]["grade_variation"]
+    assert cell["toy"]["usable_runs"] == 2
+    assert cell["toy"]["marked"] is True
+    assert cell["toy"]["most_common"] == [2, 3]
+
+
+def test_a_modified_cell_with_too_few_usable_runs_is_marked_too(lab: Lab) -> None:
+    lab.add(_output(grade=2), version="v1")
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["grades_modified"]["toy"]["v1"]["marked"] is True
+    assert report["grade_variation"] == {}
 
 
 def test_a_grade_cell_without_a_usable_run_stays_visible(lab: Lab) -> None:
     lab.add(b"kein JSON")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)
-    cell = report["spiel"]["grades"]["toy"]["original"]
+    cell = report["spiel"]["grade_variation"]["toy"]
     assert (cell["usable_runs"], cell["marked"], cell["range"]) == (0, True, None)
     rendered = an.render(an.pilot_report(report))
     assert isinstance(rendered, dict)
-    assert rendered["spiel"]["grades"]["toy"]["original"]["range"] == "nicht definiert"
+    assert rendered["spiel"]["grade_variation"]["toy"]["range"] == "nicht definiert"
 
 
 def test_detection_per_usable_and_per_attempted_run(lab: Lab) -> None:
@@ -616,7 +634,7 @@ def test_models_are_kept_apart(lab: Lab) -> None:
     lab.add(_output(grade=6), model="anderes")
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)
     assert list(report) == ["anderes", "spiel"]
-    assert report["anderes"]["grades"]["toy"]["original"]["most_common"] == [6]
+    assert report["anderes"]["grade_variation"]["toy"]["most_common"] == [6]
 
 
 def test_the_report_counts_what_the_importer_tolerated(lab: Lab) -> None:
@@ -724,24 +742,27 @@ def test_counts_and_rates_agree_on_a_single_run(lab: Lab) -> None:
     assert report["rates"]["quote_fidelity"]["strict"]["text"] == 0.5
 
 
-def test_the_report_holds_the_twelve_measures(lab: Lab) -> None:
+def test_the_report_holds_the_measures_that_are_built(lab: Lab) -> None:
+    """Measure 5 needs human coding and is not built."""
+
     report = _full_lab(lab)["spiel"]
     counts = report["counts"]
-    measures = [
-        counts["failures"],
-        counts["quotes"]["strict"]["text"],
-        counts["quotes"]["strict"]["text_and_location"],
-        counts["quotes"]["normalized"]["text"],
-        counts["quotes"]["normalized"]["text_and_location"],
-        counts["evidence"],
-        counts["criterion_fidelity"],
-        counts["criterion_coverage"],
-        report["grades"],
-        counts["detection_per_usable_run"],
-        counts["detection_per_attempted_run"],
-        counts["false_alarm"],
-    ]
-    assert len(measures) == 12
+    measures = {
+        1: counts["failures"],
+        2: counts["quotes"]["strict"]["text"],
+        3: counts["quotes"]["strict"]["text_and_location"],
+        4: counts["evidence"],
+        6: counts["criterion_fidelity"],
+        7: counts["criterion_coverage"],
+        8: report["grade_variation"],
+        9: counts["detection_per_usable_run"],
+        10: counts["detection_per_attempted_run"],
+        11: counts["false_alarm"],
+        12: report["unknown_category"],
+    }
+    assert all(value is not None for value in measures.values())
+    assert counts["quotes"]["normalized"]["text"]
+    assert counts["quotes"]["normalized"]["text_and_location"]
 
 
 def test_the_scripts_run_from_the_command_line(lab: Lab, tmp_path: Path) -> None:

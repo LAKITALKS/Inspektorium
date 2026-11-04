@@ -1,4 +1,4 @@
-"""Compute the pilot's twelve measures from imported runs.
+"""Compute the pilot's measures from imported runs.
 
 The README defines each measure. The pilot is a feasibility check, so its report
 gives counts such as ``2 von 9``: see ``pilot_report``. The rates and the mean
@@ -242,7 +242,7 @@ def _as_count(count: Count) -> dict[str, Any]:
 
 
 def grade_cell(runs: Sequence[Run]) -> dict[str, Any]:
-    """Describe one cell of text, version and model."""
+    """Describe one cell of grades."""
 
     grades = [run["grade"] for run in runs if run["status"] == USABLE]
     counts = Counter(grades)
@@ -253,13 +253,27 @@ def grade_cell(runs: Sequence[Run]) -> dict[str, Any]:
         "distribution": {str(grade): counts[grade] for grade in sorted(counts)},
         "range": [min(grades), max(grades)] if grades else None,
         "most_common": sorted(grade for grade in counts if counts[grade] == top),
+        "most_common_count": top,
     }
 
 
-def _grades(runs: Sequence[Run]) -> dict[str, dict[str, dict[str, Any]]]:
+def grade_variation(runs: Sequence[Run]) -> dict[str, dict[str, Any]]:
+    """Measure 8: one cell per text, from the runs of the original only."""
+
+    texts: dict[str, list[Run]] = defaultdict(list)
+    for run in runs:
+        if run["version"] == ORIGINAL:
+            texts[run["text_id"]].append(run)
+    return {text_id: grade_cell(texts[text_id]) for text_id in sorted(texts)}
+
+
+def grades_modified(runs: Sequence[Run]) -> dict[str, dict[str, dict[str, Any]]]:
+    """Grades of the modified versions, reported apart from measure 8."""
+
     cells: dict[str, dict[str, list[Run]]] = defaultdict(lambda: defaultdict(list))
     for run in runs:
-        cells[run["text_id"]][run["version"]].append(run)
+        if run["version"] != ORIGINAL:
+            cells[run["text_id"]][run["version"]].append(run)
     return {
         text_id: {
             version: grade_cell(group) for version, group in sorted(versions.items())
@@ -348,7 +362,8 @@ def analyze_model(
             wrong_category_hits(run, _targets_of(run, targets))
             for run in usable_target_runs
         ),
-        "grades": _grades(runs),
+        "grade_variation": grade_variation(runs),
+        "grades_modified": grades_modified(runs),
         "counts": {
             "failures": _as_count((failures, len(runs))),
             "quotes": {

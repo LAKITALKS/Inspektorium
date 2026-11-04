@@ -2,7 +2,8 @@
 
 Layout: ``runs/<model>/<text_id>/<version>/<repetition>.json`` holds the answer
 exactly as received. ``<repetition>.meta.json`` next to it holds ``date``,
-``time``, ``model_name`` (the name the chat interface shows) and ``chat_mode``.
+``time``, ``model_name`` (the name the chat interface shows), ``chat_mode`` and
+``account_type``.
 
 A run that cannot be read counts as a failure. Two things are tolerated and
 counted: one code block around the whole answer is removed, and an error entry
@@ -104,6 +105,7 @@ class Metadata:
     time: str
     model_name: str
     chat_mode: str
+    account_type: str
 
 
 @dataclass(frozen=True)
@@ -133,6 +135,7 @@ class RunRecord:
     time: str | None = None
     model_name: str | None = None
     chat_mode: str | None = None
+    account_type: str | None = None
     failure_reason: str | None = None
     protocol_note: str | None = None
     code_fence_removed: bool = False
