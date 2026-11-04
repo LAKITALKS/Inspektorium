@@ -13,6 +13,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `ATTRIBUTION.md` | Source and license of the corpus | yes |
 | `data/criteria.json` | Criteria K1 to K7 | yes |
 | `data/external/` | Full corpus and all sentence banks | no |
+| `prereg/` | Seed, and later the preregistration | yes |
 | `scripts/` | Tools | yes |
 | `tests/` | Tests, run with `python -m pytest studies/school-pilot-2026/tests` | yes |
 
@@ -38,3 +39,20 @@ python studies/school-pilot-2026/scripts/genius_loader.py
 A bank has the form `{text_id, word_count, sentences: [{sid, text, start, end}], full_text}`.
 
 The header labels of the corpus lost their umlauts. `criteria.json` keeps them in `original_label` and adds a readable `name`.
+
+## Selection
+
+The procedure below was committed before its first run on the corpus, so the Git history shows that it was fixed before the result existed. Only unit tests on invented ids ran before that commit.
+
+**Participation rule.** A text takes part if it has at least 80 words and its annotation file has the layer `webanno.custom.Argument`.
+
+**Draw.** The seed is in [prereg/seed.txt](prereg/seed.txt). `scripts/select_texts.py` ranks every eligible text id by SHA-256 of `"<seed>:<text_id>"`. It then fills separate groups in this order:
+
+| Group | Size | Use |
+|---|---|---|
+| `pilot` | 3 | Pilot texts |
+| `component` | 20 | Reference cases for the component test |
+| `validation_holdout` | 20 | Kept for later validation |
+| `reserve` | the rest | Not touched |
+
+The script refuses to replace an existing draw with a different one.
