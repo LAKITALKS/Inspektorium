@@ -13,8 +13,10 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `ATTRIBUTION.md` | Source and license of the corpus | yes |
 | `data/criteria.json` | Criteria K1 to K7 | yes |
 | `data/external/` | Full corpus and all sentence banks | no |
+| `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, and later the preregistration | yes |
+| `sealed/` | Held-out reference cases; only their hash is committed | no |
 | `scripts/` | Tools | yes |
 | `tests/` | Tests, run with `python -m pytest studies/school-pilot-2026/tests` | yes |
 
@@ -59,3 +61,30 @@ The procedure below was committed before its first run on the corpus, so the Git
 The script refuses to replace an existing draw with a different one.
 
 The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and `component` are copied to [data/selected/](data/selected/README.md); the other groups are id lists.
+
+## Reference cases
+
+`scripts/make_reference_cases.py` builds cases with known answers from the 20 `component` texts. A case is `{case_id, text_id, claimed_sid, quote, type, expected_strict, expected_normalized}`. Each text gets up to two cases per type, from different sentences where possible.
+
+| Type | What it is | Strict | Normalized |
+|---|---|---|---|
+| `valid_exact` | Literal part of the sentence, right sentence number | valid | valid |
+| `wrong_location` | Literal part, wrong sentence number | invalid | invalid |
+| `altered_number` | One number changed; only if the text has a free-standing number | invalid | invalid |
+| `altered_word` | One word replaced by another word of the same text | invalid | invalid |
+| `fabricated` | A sentence from a `reserve` text, claimed as a sentence of this text | invalid | invalid |
+| `case_change` | Capitalization of one word changed | invalid | invalid |
+| `format_variant` | Only a space or quotation mark changed | invalid | valid |
+| `punctuation_added` | Literal part with one `.`, `!` or `?` added at the end | invalid | valid |
+
+**No omitted-mark variant.** A quote that merely lacks the final mark of its sentence is a literal part of that sentence. Strict mode accepts it, so it cannot carry the label `invalid`. `punctuation_added` therefore only adds a mark.
+
+**Labels are constructed, not measured.** The generator imports neither the kernel nor `scripts/check_quotes.py`. It keeps a candidate only if plain substring logic confirms the expected values of its type. That logic restates the rules of this README in the generator on purpose, so the tool under test does not grade itself. It also covers the rule on final marks: a candidate that this rule would make valid in normalized mode is dropped from the `invalid` types.
+
+**Split.** Within each type, cases are ranked by SHA-256 of `"<seed>:split:<case_id>"`. The first 70 % go to development, the rest are held out. The split is by case, not by text, so a text can appear in both parts.
+
+**Sealed part.** `sealed/holdout_cases.json` is ignored by Git. Its SHA-256 is in [prereg/holdout_sha256.txt](prereg/holdout_sha256.txt), and the counts are in [prereg/reference_cases_summary.json](prereg/reference_cases_summary.json).
+
+**Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them. All other `reserve` texts stay unread.
+
+**Not run.** Neither the kernel nor the quote checker has been applied to these cases. That is the measurement after the preregistration.

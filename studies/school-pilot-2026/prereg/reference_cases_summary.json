@@ -1,0 +1,48 @@
+{
+  "development": 211,
+  "held_out": 91,
+  "by_type": {
+    "valid_exact": {
+      "development": 28,
+      "held_out": 12
+    },
+    "wrong_location": {
+      "development": 28,
+      "held_out": 12
+    },
+    "altered_number": {
+      "development": 15,
+      "held_out": 7
+    },
+    "altered_word": {
+      "development": 28,
+      "held_out": 12
+    },
+    "fabricated": {
+      "development": 28,
+      "held_out": 12
+    },
+    "case_change": {
+      "development": 28,
+      "held_out": 12
+    },
+    "format_variant": {
+      "development": 28,
+      "held_out": 12
+    },
+    "punctuation_added": {
+      "development": 28,
+      "held_out": 12
+    }
+  },
+  "reserve_texts_opened_for_fabricated": [
+    "1000_Verk_T1-rev",
+    "1145_Verk_T1-Rev",
+    "291_Verk_T1",
+    "329_Verk_T1",
+    "904_Verk_T1-rev",
+    "922_Verk_T1-rev",
+    "982_Verk_T1-rev",
+    "996_Verk_T1-rev"
+  ]
+}

@@ -15,6 +15,7 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 STUDY_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_ANNOTATIONS = STUDY_ROOT / "data" / "external" / "genius" / "annotations"
@@ -87,6 +88,26 @@ class Annotation:
     has_argument_layer: bool
     criterion_labels: tuple[str, ...]
     sentence_criteria: dict[str, list[str]]
+
+
+def bank_from_dict(data: dict[str, Any]) -> SentenceBank:
+    """Rebuild a bank from its JSON form."""
+
+    return SentenceBank(
+        text_id=data["text_id"],
+        word_count=data["word_count"],
+        sentences=tuple(
+            Sentence(item["sid"], item["text"], item["start"], item["end"])
+            for item in data["sentences"]
+        ),
+        full_text=data["full_text"],
+    )
+
+
+def read_bank(path: Path) -> SentenceBank:
+    """Read one sentence bank file."""
+
+    return bank_from_dict(json.loads(path.read_text(encoding="utf-8")))
 
 
 def convert_sentence(raw: str) -> str:
