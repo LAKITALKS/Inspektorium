@@ -12,6 +12,7 @@
 | Quote checker, import, analysis, coding export | Built, tested on invented data only |
 | Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
 | Inserted errors | Proposed, not decided |
+| Run plan | Done; the prompt files do not exist yet |
 | Chatbot runs | Not started |
 
 ## Purpose
@@ -27,7 +28,8 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/external/` | Full corpus and all sentence banks | no |
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
-| `prereg/` | Seed, drawn groups, and later the preregistration | yes |
+| `prereg/` | Seed, drawn groups, run plan, and later the preregistration | yes |
+| `runs/` | Chatbot outputs and prepared files | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots | yes |
 | `schemas/` | JSON Schema for the chatbot output | yes |
@@ -205,28 +207,30 @@ The tests of this script use invented sentences only.
 
 ## Analysis
 
-`scripts/analyze.py` computes twelve measures per model. Its tests use invented outputs only.
+`scripts/analyze.py` computes the measures per model. Its tests use invented outputs only. The numbers follow the study plan.
 
-| # | Measure | Definition | Undefined if |
+| # | Measure | What the code computes | Undefined if |
 |---|---|---|---|
 | 1 | Failure rate | Failed runs among attempted runs | never |
-| 2 | Quote fidelity, strict, text | Delivered quotes whose text occurs in the essay | the run has no quote |
-| 3 | Quote fidelity, strict, text and location | Delivered quotes whose text occurs in the claimed sentence | the run has no quote |
-| 4 | Quote fidelity, normalized, text | As 2, in normalized mode | the run has no quote |
-| 5 | Quote fidelity, normalized, text and location | As 3, in normalized mode | the run has no quote |
-| 6 | Evidence coverage overall | Comments, local and global, with at least one valid quote; reported for both modes | the run has no comment |
-| 7 | Criterion fidelity | For comments with a valid quote: named criteria that the corpus annotation marks in a quoted sentence | no such comment names a criterion |
-| 8 | Criterion coverage | Criteria annotated in the text that some comment names | the text has none |
-| 9 | Grade distribution | Count of each grade per text and model | no usable run |
-| 10 | Detection per usable run | Inserted errors found, among usable runs of modified versions | no target |
-| 11 | Detection per attempted run | As 10, with each failed run counted as finding nothing | no target |
-| 12 | False alarm | Usable runs of the original with an error report at a target sentence | no target for the text |
+| 2 | Quote fidelity, text | Delivered quotes whose text occurs in the essay, strict and normalized | the run has no quote |
+| 3 | Quote fidelity, text and location | Delivered quotes whose text occurs in the claimed sentence, strict and normalized | the run has no quote |
+| 4 | Evidence coverage, overall | Comments, local and global, with at least one valid quote, strict and normalized | the run has no comment |
+| 5 | Evidence coverage, local | Not built; it needs human coding | |
+| 6 | Criterion fidelity | For comments with a valid quote: named criteria that the corpus annotation marks in a quoted sentence | no such comment names a criterion |
+| 7 | Criterion coverage | Criteria annotated in the text that some comment names | the text has none |
+| 8 | Grade variation | Originals only, per text and model: distribution, range, most common grade | no usable run |
+| 9 | Detection per usable run | Inserted errors found, among usable runs of modified versions | no target |
+| 10 | Detection per attempted run | As 9, with each failed run counted as finding nothing | no target |
+| 11 | False alarm | Usable runs of the original with an error report at a target sentence | no target for the text |
+| 12 | Unclear | Reports with an unknown category; reports that the coding cannot assign are not built yet | |
+
+**These are not all agreed definitions yet.** Several measures differ from the study plan. The differences are listed for the maintainer and not changed; see [Open decisions](#open-decisions).
 
 **Report.** The written report gives counts such as `2 von 9`; see [Adaptations for the pilot](#adaptations-for-the-pilot-anpassung-für-den-pilot). The mean per text stays in the code under `rates` for the main study. It is not part of the pilot's report.
 
 **Special cases.** A measure with an empty denominator is reported as `nicht definiert`. It is neither 0 nor 100 %, and it leaves any mean. Failed runs never enter the denominator of a quote measure. Protocol errors enter no measure.
 
-**Quotes counted.** Measures 2 to 5 count quotes in comments and in error reports.
+**Quotes counted.** Measures 2 and 3 count quotes in comments and in error reports.
 
 **Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another known category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
 
@@ -237,7 +241,7 @@ The tests of this script use invented sentences only.
 - `unknown_category` counts these reports as unclear, with their own number and split by place.
 - `counter_assumption` repeats detection and false alarm with the reverse assumption: a hit in a modified version, no false alarm in the original. Both results are reported.
 
-**Grades.** Each cell is one text, version and model. It gives the distribution, the range and the most common grade. A cell with fewer than three usable runs is marked.
+**Grades.** Measure 8 uses the originals only, with one cell per text and model. The grades of the modified versions are reported separately under `grades_modified`, with one cell per text, version and model. Each cell gives the distribution, the range, and the most common grade with its count. A cell with fewer than three usable runs is marked.
 
 ## Blind coding export
 
@@ -257,7 +261,7 @@ python studies/school-pilot-2026/scripts/export_for_coding.py --imported <import
 
 The maintainer decided these differences from the main study's plan.
 
-- **Repetitions.** Three per version, the original included. The main study plans ten. A grade cell is marked if fewer than three runs are usable. Krippendorff's alpha is not computed; the pilot reports the distribution, the range and the most common grade.
+- **Repetitions.** Three per version, the original included, for 54 runs. The main study plans ten for the originals. A grade cell is marked if fewer than three runs are usable. Krippendorff's alpha is not computed; the pilot reports the distribution, the range and the most common grade.
 - **Reporting.** The pilot is reported as a feasibility check: counts such as `2 von 9`, no rates with confidence intervals. This also holds for the component test, which reports `0 von n` and no error rate. Criterion A1 of the main study (at least 300 invalid quotes) is not claimed.
 - **Normalization.** The plan names NFC, line endings and HTML entities. The rule on final marks of 2026-11-04 comes on top. NFC and line endings are in the kernel. HTML entities are converted only when the sentence banks are built, in `convert_sentence`. The quote checker does not convert them in a quote, so a quote with `&lt;` does not match a `<` in the essay, in either mode. The three pilot texts contain no HTML entities.
 - **Reference cases.** The plan estimated about 200. There are 302: 211 for development and 91 held out.
@@ -267,18 +271,36 @@ The maintainer decided these differences from the main study's plan.
 
 **Test subjects.** ChatGPT, Gemini and Grok. Mistral and Claude are not test subjects.
 
-**Repetitions.** Three per version, the original included.
+**Runs.** 54 in total: 3 texts, 2 versions (the original and one modified version), 3 chatbots, 3 repetitions. The maintainer does them by hand in the chat windows, without automation.
 
-**Each run** uses a new private or temporary chat, without memory and without custom instructions.
+**Chatbot condition.** Each run uses the default model and the default settings of the interface, in a new temporary or private chat, without memory and without custom instructions. The model selector, thinking modes and tool settings stay unchanged. Account type and displayed model are recorded per run.
+
+**Run plan.** [prereg/laufplan.csv](prereg/laufplan.csv) has one row per run with its number, day, chatbot, prompt file, target file and metadata file. `scripts/make_run_plan.py` mixes the order with the seed from `prereg/seed.txt`. Every chatbot has nine runs on each of the two days, and the repetitions of one text and version fall on both days.
+
+The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. The prompt files named in the plan do not exist yet, because they need the marking guide and the inserted errors. They stay out of Git.
 
 **Metadata.** Each run has these fields in `<repetition>.meta.json`. All of them are entered before the prompt is sent.
 
 | Field | Content |
 |---|---|
-| `model_name` | Model name as the chat interface shows it |
+| `model_name` | Model as the chat interface displays it |
 | `date` | Date, `YYYY-MM-DD` |
 | `time` | Time, `HH:MM` |
 | `chat_mode` | Chat mode used, as the chat interface calls it |
+| `account_type` | Kontoart: the kind of account used, for example free or paid |
+
+## Frozen tools
+
+The held-out file can be rebuilt from public inputs, because the generator has no secret and no random part. So its secrecy protects nothing. What protects the test is that the tools under test do not change.
+
+These two stay unchanged until the held-out cases are evaluated:
+
+| Tool | Git id |
+|---|---|
+| `src/` (tree) | `0afbc0115f904d6408b1b8196af4e019678d3c56` |
+| `scripts/check_quotes.py` (blob) | `2a3368683da37db01ae6487dc75cf552c6bfa9e0` |
+
+`tests/test_frozen_tools.py` fails if either one changes.
 
 ## Open decisions
 
@@ -286,6 +308,6 @@ These points are not settled here, and the tooling does not assume an answer.
 
 - **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
 - **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
-- **Definitions.** The definitions of the measures were written from the study brief. They have not been compared with the audit report yet. That comparison must happen before the preregistration, above all for measures 6 to 8 and 10 to 12.
+- **Definitions.** The definitions were compared with the study plan on 2026-11-04. Measures 3 to 7 and 9 to 12 differ from it in some way. The maintainer decides each difference before the preregistration. Until then the code stays as it is.
 
 **Writing task.** The prompt uses a marked paraphrase after Schaller et al., LREC 2026. The original wording is not available.
