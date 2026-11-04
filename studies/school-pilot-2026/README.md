@@ -9,7 +9,7 @@
 | Corpus, sentence banks, criteria | Done |
 | Draw of the study groups | Done |
 | Reference cases | Built and sealed, not run through any checker |
-| Quote checker, import, analysis | Built, tested on invented data only |
+| Quote checker, import, analysis, coding export | Built, tested on invented data only |
 | Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
 | Inserted errors | Proposed, not decided |
 | Chatbot runs | Not started |
@@ -80,6 +80,27 @@ The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and 
 
 The list was added after the draw, and the groups are unchanged. The eight texts stay in the group `reserve`, so the draw and the sealed hash stay reproducible. Because the file now differs from a fresh draw, `select_texts.py` refuses to run again. The test that repeats the draw compares everything except this list.
 
+**Checking the draw from outside.** Use a fresh checkout of the commit that made the draw. There, `selection.json` has no later marking, so `select_texts.py` runs and refuses any result that differs.
+
+```bash
+git clone https://github.com/LAKITALKS/Inspektorium.git
+cd Inspektorium
+git checkout 129f9b5
+python3 studies/school-pilot-2026/scripts/fetch_genius.py
+python3 studies/school-pilot-2026/scripts/genius_loader.py
+python3 studies/school-pilot-2026/scripts/select_texts.py
+git status --short
+```
+
+The draw is confirmed if `select_texts.py` ends without an error and `git status --short` prints nothing. The scripts need only the standard library. On a Python build without system certificates, `fetch_genius.py` also needs the package `certifi`.
+
+Two more commands show that the procedure came first and that the groups stayed the same. The first prints nothing. The second, once this study is merged, shows only the added list.
+
+```bash
+git diff b9c0aaa 129f9b5 -- studies/school-pilot-2026/scripts/select_texts.py studies/school-pilot-2026/prereg/seed.txt
+git diff 129f9b5 origin/main -- studies/school-pilot-2026/prereg/selection.json
+```
+
 ## Reference cases
 
 `scripts/make_reference_cases.py` builds cases with known answers from the 20 `component` texts. A case is `{case_id, text_id, claimed_sid, quote, type, expected_strict, expected_normalized}`. Each text gets up to two cases per type, from different sentences where possible.
@@ -104,6 +125,8 @@ The list was added after the draw, and the groups are unchanged. The eight texts
 **Sealed part.** `sealed/holdout_cases.json` is ignored by Git. Its SHA-256 is in [prereg/holdout_sha256.txt](prereg/holdout_sha256.txt), and the counts are in [prereg/reference_cases_summary.json](prereg/reference_cases_summary.json).
 
 **The folder `sealed/` is off limits.** It is not opened, read or changed, and no test or analysis uses it. It is opened only at the final check, after the maintainer's release. For the same reason, the generator refuses to replace an existing sealed file. Nothing in this repository verifies the hash before that check.
+
+Before the folder was closed on 2026-11-04, the generator wrote the file, and a hash check and a test read it by machine. Its content was not displayed.
 
 **Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them, and later samples exclude them (see [Selection](#selection)). All other `reserve` texts stay unread.
 
@@ -149,7 +172,7 @@ The tests of this script use invented sentences only.
 
 `scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds the metadata of the [run protocol](#run-protocol). The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`.
 
-**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, breaks the schema, or has unusable metadata. Invalid JSON always stays a failure. Two exceptions apply, and nothing else is repaired.
+**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, or breaks the schema. Invalid JSON always stays a failure. Two exceptions apply, and nothing else is repaired.
 
 **Exception 1: code block.** One code block around the whole answer is removed, and the run is not a failure.
 
@@ -163,7 +186,13 @@ The tests of this script use invented sentences only.
 - The entry can never count as a detection.
 - A missing category, a category that is not a text and every other unknown value, such as a criterion `K9`, stay failures.
 
-**Counted.** Per model, the analysis reports both exceptions under `import_notes`: `code_fences_removed` counts usable runs, and `invalid_category_entries` counts entries.
+**Counted.** Per chatbot, the analysis reports both exceptions under `import_notes`: `code_fences_removed` counts usable runs, and `invalid_category_entries` counts entries.
+
+**Metadata.** A missing field is an operating error, not a failure of the tool.
+
+- The import rejects a run file with a missing or unreadable field and names the file and the field. It writes nothing until all such files are fixed.
+- The operator adds the field from the chat history.
+- If a field cannot be reconstructed, the metadata file holds `protocol_error` with a reason. Such a run counts separately as a protocol error. It enters no measure, its output is not read, and it is not replaced.
 
 **No assignment.** The importer sets no pointers and assigns nothing afterwards. Each reference keeps its origin, separately for both modes:
 
@@ -193,23 +222,56 @@ The tests of this script use invented sentences only.
 | 11 | Detection per attempted run | As 10, with each failed run counted as finding nothing | no target |
 | 12 | False alarm | Usable runs of the original with an error report at a target sentence | no target for the text |
 
-**Estimate.** The estimate is the mean per text: the runs of a text are averaged first, then the texts.
+**Report.** The written report gives counts such as `2 von 9`; see [Adaptations for the pilot](#adaptations-for-the-pilot-anpassung-für-den-pilot). The mean per text stays in the code under `rates` for the main study. It is not part of the pilot's report.
 
-**Special cases.** An undefined rate is reported as `nicht definiert`. It is neither 0 nor 100 %, and it leaves the mean. Failed runs never enter the denominator of a quote measure.
+**Special cases.** A measure with an empty denominator is reported as `nicht definiert`. It is neither 0 nor 100 %, and it leaves any mean. Failed runs never enter the denominator of a quote measure. Protocol errors enter no measure.
 
 **Quotes counted.** Measures 2 to 5 count quotes in comments and in error reports.
 
-**Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
+**Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another known category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
 
 **False alarm.** Target sentences are correct in the original, so an error report there is a false alarm. Any category counts, an unknown one too.
+
+**Unknown category.** The rules above are the main result: an unknown category is never a hit, and at a target sentence of the original it is a false alarm. Two additions keep the assumption visible:
+
+- `unknown_category` counts these reports as unclear, with their own number and split by place.
+- `counter_assumption` repeats detection and false alarm with the reverse assumption: a hit in a modified version, no false alarm in the original. Both results are reported.
+
+**Grades.** Each cell is one text, version and model. It gives the distribution, the range and the most common grade. A cell with fewer than three usable runs is marked.
+
+## Blind coding export
+
+`scripts/export_for_coding.py` writes a sheet for coding the reports of usable runs.
+
+```bash
+python studies/school-pilot-2026/scripts/export_for_coding.py --imported <imported.json> --sheet <sheet.csv> --key <key.json>
+```
+
+- The sheet has one row per error report and comment, in random order, with empty columns `code` and `note`.
+- It holds no model name, date, time, chat mode or repetition number.
+- The key file leads each item back to its run. Keep it out of sight until the coding is done.
+- The order comes from a new random value on each export. An existing sheet or key is never replaced, so a finished coding cannot lose its key.
+- The text of the reports is not edited, so a chatbot that names itself stays recognizable. Text that a spreadsheet would run as a formula gets a leading apostrophe.
+
+## Adaptations for the pilot (Anpassung für den Pilot)
+
+The maintainer decided these differences from the main study's plan.
+
+- **Repetitions.** Three per version, the original included. The main study plans ten. A grade cell is marked if fewer than three runs are usable. Krippendorff's alpha is not computed; the pilot reports the distribution, the range and the most common grade.
+- **Reporting.** The pilot is reported as a feasibility check: counts such as `2 von 9`, no rates with confidence intervals. This also holds for the component test, which reports `0 von n` and no error rate. Criterion A1 of the main study (at least 300 invalid quotes) is not claimed.
+- **Normalization.** The plan names NFC, line endings and HTML entities. The rule on final marks of 2026-11-04 comes on top. NFC and line endings are in the kernel. HTML entities are converted only when the sentence banks are built, in `convert_sentence`. The quote checker does not convert them in a quote, so a quote with `&lt;` does not match a `<` in the essay, in either mode. The three pilot texts contain no HTML entities.
+- **Reference cases.** The plan estimated about 200. There are 302: 211 for development and 91 held out.
+- **Second coding.** The pilot has no second person, so there is no second coding and no agreement between coders. This is a limit of the pilot. The [blind export](#blind-coding-export) supports the single coding.
 
 ## Run protocol
 
 **Test subjects.** ChatGPT, Gemini and Grok. Mistral and Claude are not test subjects.
 
+**Repetitions.** Three per version, the original included.
+
 **Each run** uses a new private or temporary chat, without memory and without custom instructions.
 
-**Metadata.** Each run has these fields in `<repetition>.meta.json`. A run without all of them counts as a failure.
+**Metadata.** Each run has these fields in `<repetition>.meta.json`. All of them are entered before the prompt is sent.
 
 | Field | Content |
 |---|---|
@@ -223,8 +285,7 @@ The tests of this script use invented sentences only.
 These points are not settled here, and the tooling does not assume an answer.
 
 - **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
-- **Repetitions.** Proposed: three per version.
-- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
-- **Definitions.** The definitions of the measures were written from the study brief, without access to audit report 2. They have not been compared with its table yet. That comparison must happen before the preregistration, above all for measures 6 to 8 and 10 to 12.
+- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
+- **Definitions.** The definitions of the measures were written from the study brief. They have not been compared with the audit report yet. That comparison must happen before the preregistration, above all for measures 6 to 8 and 10 to 12.
 
 **Writing task.** The prompt uses a marked paraphrase after Schaller et al., LREC 2026. The original wording is not available.
