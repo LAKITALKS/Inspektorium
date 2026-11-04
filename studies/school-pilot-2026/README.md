@@ -17,6 +17,8 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, and later the preregistration | yes |
 | `sealed/` | Held-out reference cases; only their hash is committed | no |
+| `prompts/` | Prompt template for the chatbots | yes |
+| `schemas/` | JSON Schema for the chatbot output | yes |
 | `scripts/` | Tools | yes |
 | `tests/` | Tests, run with `python -m pytest studies/school-pilot-2026/tests` | yes |
 
@@ -88,3 +90,34 @@ The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and 
 **Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them. All other `reserve` texts stay unread.
 
 **Not run.** Neither the kernel nor the quote checker has been applied to these cases. That is the measurement after the preregistration.
+
+## Quote check
+
+`scripts/check_quotes.py` checks a quote with a sentence number against a sentence bank. The sentence number selects a character range through `start` and `end`. The script looks for the quote inside that range, and the Inspektorium kernel (`validate_finding`) then confirms exact text and offsets. The kernel is used unchanged. It has its say in both modes, and the check only passes if it agrees.
+
+The result reports two things separately: whether the text occurs anywhere in the essay (`text_valid`), and whether it occurs inside the claimed sentence (`location_valid`).
+
+| Comparison rule | Strict | Normalized |
+|---|---|---|
+| Kernel normalization: Unicode NFC, line endings to LF | yes | yes |
+| Every Unicode whitespace character counts as one ASCII space | no | yes |
+| Typographic quotation marks count as straight ones | no | yes |
+| One final `.`, `!` or `?` of the quote is ignored | no | yes |
+
+**Whitespace.** Every character for which Python's `str.isspace()` is true is replaced by one space, character by character. Runs are not merged, so a doubled space stays a difference. Zero-width characters are not whitespace.
+
+**Quotation marks.** `„ “ ” ‟ « »` count as `"`, and `‚ ‘ ’ ‛ ‹ ›` count as `'`. This is applied to the essay and to the quote.
+
+**Final mark.** In normalized mode, one `.`, `!` or `?` at the very end of the quote is ignored in the comparison. The rule applies to the quote only, to one mark only and to these three marks only. Two marks, a comma, a mark followed by a space or a mark inside the quote all stay differences. It repairs nothing else: a changed word, number or capital letter stays invalid, and so does a wrong sentence number.
+
+This rule was added on 2026-11-04, before the preregistration, after a newspaper quote outside this corpus was rejected in strict mode only because of an added full stop.
+
+**An omitted final mark needs no rule.** A quote that lacks the final mark of its sentence is a literal part of that sentence and is valid in both modes.
+
+**Rejected in both modes.** A quote is invalid if it has no letter or digit, names an unknown sentence or runs across two sentences. A bank whose offsets or canonical form are wrong stops the check with an error.
+
+The tests of this script use invented sentences only.
+
+## Prompt and output format
+
+[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholders for the writing task and the marking guide are open; their wording must not be invented.
