@@ -93,7 +93,7 @@ The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and 
 
 ## Quote check
 
-`scripts/check_quotes.py` checks a quote with a sentence number against a sentence bank. The sentence number selects a character range through `start` and `end`. The script looks for the quote inside that range, and the Inspektorium kernel (`validate_finding`) then confirms exact text and offsets. The kernel is used unchanged. It has its say in both modes, and the check only passes if it agrees.
+`scripts/check_quotes.py` checks a quote with a sentence number against a sentence bank. The sentence number selects a character range through `start` and `end`. The script looks for the quote inside that range, and the Inspektorium kernel (`validate_finding`) then confirms exact text and offsets. The kernel is used unchanged, and in both modes the check passes only if the kernel confirms the span.
 
 The result reports two things separately: whether the text occurs anywhere in the essay (`text_valid`), and whether it occurs inside the claimed sentence (`location_valid`).
 
@@ -121,3 +121,47 @@ The tests of this script use invented sentences only.
 ## Prompt and output format
 
 [prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholders for the writing task and the marking guide are open; their wording must not be invented.
+
+## Import
+
+`scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds `date` and `model_name`, the name the chat interface shows. The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`.
+
+**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, breaks the schema, or has unusable metadata. Nothing is repaired, so an answer in a code fence or with text around the JSON is a failure. One value outside a vocabulary, such as an unknown category, makes the whole run a failure.
+
+**No assignment.** The importer sets no pointers and assigns nothing afterwards. Each reference keeps its origin, separately for both modes:
+
+| Origin | Meaning |
+|---|---|
+| `delivered_valid` | A quote was delivered and holds with its location |
+| `delivered_invalid` | A quote was delivered and does not hold |
+| `missing` | A local comment without a quote |
+| `global_comment` | A global comment without a quote |
+
+## Analysis
+
+`scripts/analyze.py` computes twelve measures per model. Its tests use invented outputs only.
+
+| # | Measure | Definition | Undefined if |
+|---|---|---|---|
+| 1 | Failure rate | Failed runs among attempted runs | never |
+| 2 | Quote fidelity, strict, text | Delivered quotes whose text occurs in the essay | the run has no quote |
+| 3 | Quote fidelity, strict, text and location | Delivered quotes whose text occurs in the claimed sentence | the run has no quote |
+| 4 | Quote fidelity, normalized, text | As 2, in normalized mode | the run has no quote |
+| 5 | Quote fidelity, normalized, text and location | As 3, in normalized mode | the run has no quote |
+| 6 | Evidence coverage overall | Comments, local and global, with at least one valid quote; reported for both modes | the run has no comment |
+| 7 | Criterion fidelity | For comments with a valid quote: named criteria that the corpus annotation marks in a quoted sentence | no such comment names a criterion |
+| 8 | Criterion coverage | Criteria annotated in the text that some comment names | the text has none |
+| 9 | Grade distribution | Count of each grade per text and model | no usable run |
+| 10 | Detection per usable run | Inserted errors found, among usable runs of modified versions | no target |
+| 11 | Detection per attempted run | As 10, with each failed run counted as finding nothing | no target |
+| 12 | False alarm | Usable runs of the original with an error report at a target sentence | no target for the text |
+
+**Estimate.** The estimate is the mean per text: the runs of a text are averaged first, then the texts.
+
+**Special cases.** An undefined rate is reported as `nicht definiert`. It is neither 0 nor 100 %, and it leaves the mean. Failed runs never enter the denominator of a quote measure.
+
+**Quotes counted.** Measures 2 to 5 count quotes in comments and in error reports.
+
+**Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
+
+**False alarm.** Target sentences are correct in the original, so an error report there is a false alarm. Any category counts.
