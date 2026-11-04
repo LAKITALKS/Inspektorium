@@ -2,6 +2,18 @@
 
 **No measurement has been run.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The publication of the preregistration is planned for 2026-11-13, and nothing is measured before it.
 
+## Status
+
+| Part | State |
+|---|---|
+| Corpus, sentence banks, criteria | Done |
+| Draw of the study groups | Done |
+| Reference cases | Built and sealed, not run through any checker |
+| Quote checker, import, analysis | Built, tested on invented data only |
+| Prompt | Template; the writing task and the marking guide are open |
+| Inserted errors | Proposed, not decided |
+| Chatbot runs | Not started |
+
 ## Purpose
 
 The pilot will ask how reliably AI grading assistants comment on and grade student essays. It uses real student texts from the open GENIUS Keylog Corpus. The sources are listed in [ATTRIBUTION.md](ATTRIBUTION.md).
@@ -165,3 +177,14 @@ The tests of this script use invented sentences only.
 **Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
 
 **False alarm.** Target sentences are correct in the original, so an error report there is a false alarm. Any category counts.
+
+## Open decisions
+
+These points are not settled here, and the tooling does not assume an answer.
+
+- **Writing task.** Its wording is not in `annotations.zip`, which holds only the 262 annotation files. The study paper and the corpus repository were not consulted, because this build allowed one download only. The wording must come from a source and must not be invented.
+- **Marking guide.** The maintainer supplies its wording.
+- **Chatbots.** Proposed: ChatGPT, Gemini and Mistral. Claude is not a test subject.
+- **Repetitions.** Proposed: three per version.
+- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sealed part.
+- **Definitions.** The definitions of the measures were written from the study brief, without access to audit report 2. Before the preregistration they must be compared with its table, above all measures 6 to 8 and 10 to 12.

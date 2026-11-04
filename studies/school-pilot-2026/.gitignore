@@ -4,3 +4,5 @@ data/external/
 sealed/
 # Chatbot outputs do not exist before the preregistration is published.
 runs/
+# Candidate error sites stay private until the maintainer decides.
+prereg/injection_proposals.md
