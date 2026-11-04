@@ -1,0 +1,49 @@
+{
+  "text_id": "340_Verk_T1",
+  "word_count": 142,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Die Treibhausgasemissionen des Personenverkehrs sollen drastisch reduziert werden, um die Klimaneutralität zu erreichen.",
+      "start": 0,
+      "end": 120
+    },
+    {
+      "sid": "S2",
+      "text": "Deswegen sollen Benzin- und Dieselmotoren ab 2035 verboten werden und auf Akkumulatoren, Wasserstoff oder E-Fuels umgestiegen werden.",
+      "start": 121,
+      "end": 254
+    },
+    {
+      "sid": "S3",
+      "text": "Ich persönlich würde den Wasserstoff bbevorzugen, weil dabei nur Wasser freigesetzt wird und nicht wie bei den anderen zum Beispiel Kohlenstoffdioxid, was dann wieder schädlich für das Klima ist.",
+      "start": 255,
+      "end": 450
+    },
+    {
+      "sid": "S4",
+      "text": "Außerdem ist der betrieb bei Wasdserstoff mit einer Tankdauer von 3 Minuten sehr gering und die Reichweite von 700km sehr hoch.",
+      "start": 451,
+      "end": 578
+    },
+    {
+      "sid": "S5",
+      "text": "Bei E-Fuels ist der Betrieb genau identisch zu Wasserstoff, dennoch wird dabei Kohlenstoffdioxid ausgestossen, was die Umwelt belastet.",
+      "start": 579,
+      "end": 714
+    },
+    {
+      "sid": "S6",
+      "text": "Bei den Akkumulatoren ist der Betreib mit einer Ladedauer von 30 Minuten noch zu verkraften, aber die Reichweite mit 400km ist sehr gering, im Vergleich zu den anderen Optionen.",
+      "start": 715,
+      "end": 892
+    },
+    {
+      "sid": "S7",
+      "text": "Bei der Produktion der Akkumulatoren wird zudem viel Kohlenstoffdioxid freigesetzt und sie sind nicht erneuerbar.",
+      "start": 893,
+      "end": 1006
+    }
+  ],
+  "full_text": "Die Treibhausgasemissionen des Personenverkehrs sollen drastisch reduziert werden, um die Klimaneutralität zu erreichen. Deswegen sollen Benzin- und Dieselmotoren ab 2035 verboten werden und auf Akkumulatoren, Wasserstoff oder E-Fuels umgestiegen werden. Ich persönlich würde den Wasserstoff bbevorzugen, weil dabei nur Wasser freigesetzt wird und nicht wie bei den anderen zum Beispiel Kohlenstoffdioxid, was dann wieder schädlich für das Klima ist. Außerdem ist der betrieb bei Wasdserstoff mit einer Tankdauer von 3 Minuten sehr gering und die Reichweite von 700km sehr hoch. Bei E-Fuels ist der Betrieb genau identisch zu Wasserstoff, dennoch wird dabei Kohlenstoffdioxid ausgestossen, was die Umwelt belastet. Bei den Akkumulatoren ist der Betreib mit einer Ladedauer von 30 Minuten noch zu verkraften, aber die Reichweite mit 400km ist sehr gering, im Vergleich zu den anderen Optionen. Bei der Produktion der Akkumulatoren wird zudem viel Kohlenstoffdioxid freigesetzt und sie sind nicht erneuerbar."
+}

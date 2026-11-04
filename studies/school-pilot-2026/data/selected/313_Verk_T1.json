@@ -1,0 +1,61 @@
+{
+  "text_id": "313_Verk_T1",
+  "word_count": 103,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "In den letzten Jahren ist um die Energieträger von Autos eine große Diskussion ausgebrochen.",
+      "start": 0,
+      "end": 92
+    },
+    {
+      "sid": "S2",
+      "text": "Es gibt verschiedene Möglichkeiten, das Problem zu lösen.",
+      "start": 93,
+      "end": 150
+    },
+    {
+      "sid": "S3",
+      "text": "Meiner Meinung nach sollte man auf die Akkumulatoren setzen.",
+      "start": 151,
+      "end": 211
+    },
+    {
+      "sid": "S4",
+      "text": "Die drei realistischsten Möglichkeiten für Energieträger sind: E Fuels, Akkumulatoren und Wasserstoff.",
+      "start": 212,
+      "end": 314
+    },
+    {
+      "sid": "S5",
+      "text": "Um jetzt die beste dieser Varianten zu finden, werden Testergebnisse und Erfahrungsberichte ausgewertet.",
+      "start": 315,
+      "end": 419
+    },
+    {
+      "sid": "S6",
+      "text": "So entstehen wichtige Werte wie der Wirkungsgrad, der Emissionswert, aber auch Informationen zur Verfügbarkeit.",
+      "start": 420,
+      "end": 531
+    },
+    {
+      "sid": "S7",
+      "text": "Beim Wirkungsgrad ist ein hoher prozentualer Wert zu erstreben.",
+      "start": 532,
+      "end": 595
+    },
+    {
+      "sid": "S8",
+      "text": "Während Wasserstoff und E Fuels etwa 20% Wirkungsgrad haben, wird bei Akkumulatoren über zwei drittel der Energie wirksam genutzt.",
+      "start": 596,
+      "end": 726
+    },
+    {
+      "sid": "S9",
+      "text": "Daher empfehle ich die Akkumulatoren.",
+      "start": 727,
+      "end": 764
+    }
+  ],
+  "full_text": "In den letzten Jahren ist um die Energieträger von Autos eine große Diskussion ausgebrochen. Es gibt verschiedene Möglichkeiten, das Problem zu lösen. Meiner Meinung nach sollte man auf die Akkumulatoren setzen. Die drei realistischsten Möglichkeiten für Energieträger sind: E Fuels, Akkumulatoren und Wasserstoff. Um jetzt die beste dieser Varianten zu finden, werden Testergebnisse und Erfahrungsberichte ausgewertet. So entstehen wichtige Werte wie der Wirkungsgrad, der Emissionswert, aber auch Informationen zur Verfügbarkeit. Beim Wirkungsgrad ist ein hoher prozentualer Wert zu erstreben. Während Wasserstoff und E Fuels etwa 20% Wirkungsgrad haben, wird bei Akkumulatoren über zwei drittel der Energie wirksam genutzt. Daher empfehle ich die Akkumulatoren."
+}

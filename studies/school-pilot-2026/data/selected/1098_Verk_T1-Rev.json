@@ -1,0 +1,61 @@
+{
+  "text_id": "1098_Verk_T1-Rev",
+  "word_count": 109,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Die Treibhausemissionen sollen schon lang im Personenverkehr reduziert werde.",
+      "start": 0,
+      "end": 77
+    },
+    {
+      "sid": "S2",
+      "text": "Es gibt drei Verschiedene, schon gut ausgebaute Möglichkeiten dies zu tun.",
+      "start": 78,
+      "end": 152
+    },
+    {
+      "sid": "S3",
+      "text": "Diese sind Akkumulatoren, welche aus wiederaufladbaren elektronischen Zellen bestehen, Wasserstoff und E-Fuels.",
+      "start": 153,
+      "end": 264
+    },
+    {
+      "sid": "S4",
+      "text": "Meiner Meinung nach ist die Methode der E-Fuels die beste.",
+      "start": 265,
+      "end": 323
+    },
+    {
+      "sid": "S5",
+      "text": "Im folgenden werde ich meine Meinung belegen.",
+      "start": 324,
+      "end": 369
+    },
+    {
+      "sid": "S6",
+      "text": "Die E-Fuels sind eine gute Möglichkeit schnell und mit trozdem viel Reichweite zu tanken.",
+      "start": 370,
+      "end": 459
+    },
+    {
+      "sid": "S7",
+      "text": "Sie benötigen 3 min Tankdauer und können damit 700 km fahren.",
+      "start": 460,
+      "end": 521
+    },
+    {
+      "sid": "S8",
+      "text": "Im Gegensatz dazu brauchen die Akkumulatoren 30 min und können damit nur 400 km fahren.",
+      "start": 522,
+      "end": 609
+    },
+    {
+      "sid": "S9",
+      "text": "Wasserstoff hat jedoch die gleiche Tankdauer und Reichweite wie E-Fuels, doch um diesen Kraftstoff zu nutzen werden nur Kleinstanferigungen hergestellt.",
+      "start": 610,
+      "end": 762
+    }
+  ],
+  "full_text": "Die Treibhausemissionen sollen schon lang im Personenverkehr reduziert werde. Es gibt drei Verschiedene, schon gut ausgebaute Möglichkeiten dies zu tun. Diese sind Akkumulatoren, welche aus wiederaufladbaren elektronischen Zellen bestehen, Wasserstoff und E-Fuels. Meiner Meinung nach ist die Methode der E-Fuels die beste. Im folgenden werde ich meine Meinung belegen. Die E-Fuels sind eine gute Möglichkeit schnell und mit trozdem viel Reichweite zu tanken. Sie benötigen 3 min Tankdauer und können damit 700 km fahren. Im Gegensatz dazu brauchen die Akkumulatoren 30 min und können damit nur 400 km fahren. Wasserstoff hat jedoch die gleiche Tankdauer und Reichweite wie E-Fuels, doch um diesen Kraftstoff zu nutzen werden nur Kleinstanferigungen hergestellt."
+}

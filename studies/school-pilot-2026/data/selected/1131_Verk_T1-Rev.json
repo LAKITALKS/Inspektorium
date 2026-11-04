@@ -1,0 +1,37 @@
+{
+  "text_id": "1131_Verk_T1-Rev",
+  "word_count": 86,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Im politischen Ramen wird aktuell viel über ein Verbrenerverbot diskutiert.",
+      "start": 0,
+      "end": 75
+    },
+    {
+      "sid": "S2",
+      "text": "Konkret beraten wird ein Umstieg auf Autos mit Akkumulatoren, Wasserstoff oder E-Fuels (synthetische Kraftstoffe).",
+      "start": 76,
+      "end": 190
+    },
+    {
+      "sid": "S3",
+      "text": "Welches ist die beste Alternative?",
+      "start": 191,
+      "end": 225
+    },
+    {
+      "sid": "S4",
+      "text": "Schaut man sich den Aspekt der Energiespeicherung an, wird deutlich das Wasserstoffautos in dieser Hinsicht am besten abschneiden.",
+      "start": 226,
+      "end": 356
+    },
+    {
+      "sid": "S5",
+      "text": "Das liegt daran, dass Wasserstoff die höchste Energiedichte mit 120Mj/kg hat im Vergleich von 0, 88 MJ/kg bei Akkumulatoren und 46 MJ/kg bei E-Fuels und können somit nicht nur eine größere Reichweite bereitstellen, sondern haben auch eine geringere Masse.",
+      "start": 357,
+      "end": 612
+    }
+  ],
+  "full_text": "Im politischen Ramen wird aktuell viel über ein Verbrenerverbot diskutiert. Konkret beraten wird ein Umstieg auf Autos mit Akkumulatoren, Wasserstoff oder E-Fuels (synthetische Kraftstoffe). Welches ist die beste Alternative? Schaut man sich den Aspekt der Energiespeicherung an, wird deutlich das Wasserstoffautos in dieser Hinsicht am besten abschneiden. Das liegt daran, dass Wasserstoff die höchste Energiedichte mit 120Mj/kg hat im Vergleich von 0, 88 MJ/kg bei Akkumulatoren und 46 MJ/kg bei E-Fuels und können somit nicht nur eine größere Reichweite bereitstellen, sondern haben auch eine geringere Masse."
+}

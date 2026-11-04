@@ -13,7 +13,8 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `ATTRIBUTION.md` | Source and license of the corpus | yes |
 | `data/criteria.json` | Criteria K1 to K7 | yes |
 | `data/external/` | Full corpus and all sentence banks | no |
-| `prereg/` | Seed, and later the preregistration | yes |
+| `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
+| `prereg/` | Seed, drawn groups, and later the preregistration | yes |
 | `scripts/` | Tools | yes |
 | `tests/` | Tests, run with `python -m pytest studies/school-pilot-2026/tests` | yes |
 
@@ -56,3 +57,5 @@ The procedure below was committed before its first run on the corpus, so the Git
 | `reserve` | the rest | Not touched |
 
 The script refuses to replace an existing draw with a different one.
+
+The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and `component` are copied to [data/selected/](data/selected/README.md); the other groups are id lists.

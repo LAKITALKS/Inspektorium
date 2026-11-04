@@ -1,0 +1,37 @@
+{
+  "text_id": "296_Verk_T1",
+  "word_count": 94,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Wasserstoff ist ein guter Energietraeger, da die Herstellung einfach ist und dabei keine sch'dlichen Stoffe oder aehnliches entstehen.",
+      "start": 0,
+      "end": 134
+    },
+    {
+      "sid": "S2",
+      "text": "Das Produkt, welches dabei entsteht, Wasser ist auch nicht schaedlich.",
+      "start": 135,
+      "end": 205
+    },
+    {
+      "sid": "S3",
+      "text": "Bei den anderen beiden Energietraegern, bei denen chemische Reaktionen genutyt werden, ist das aufwendiger und man weiss nicht was da dahinter steckt.",
+      "start": 206,
+      "end": 356
+    },
+    {
+      "sid": "S4",
+      "text": "Dass Wasserstoff nur in einigen Autos verwendet werden kann, sehe ich nicht als Problem an, da dieses einheitliche yu weniger Problemen f[hren koennte.",
+      "start": 357,
+      "end": 508
+    },
+    {
+      "sid": "S5",
+      "text": "Ob das so gut ist, dass bei E Fuels die stoffe aus der Atmosphaere genommen werden, kann ich mir nicht vorstellen.",
+      "start": 509,
+      "end": 623
+    }
+  ],
+  "full_text": "Wasserstoff ist ein guter Energietraeger, da die Herstellung einfach ist und dabei keine sch'dlichen Stoffe oder aehnliches entstehen. Das Produkt, welches dabei entsteht, Wasser ist auch nicht schaedlich. Bei den anderen beiden Energietraegern, bei denen chemische Reaktionen genutyt werden, ist das aufwendiger und man weiss nicht was da dahinter steckt. Dass Wasserstoff nur in einigen Autos verwendet werden kann, sehe ich nicht als Problem an, da dieses einheitliche yu weniger Problemen f[hren koennte. Ob das so gut ist, dass bei E Fuels die stoffe aus der Atmosphaere genommen werden, kann ich mir nicht vorstellen."
+}

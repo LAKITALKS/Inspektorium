@@ -1,0 +1,43 @@
+{
+  "text_id": "327_Verk_T1",
+  "word_count": 95,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Um die Treibhausemissionen des Personenverkehrs reduzieren zu können und die Klimaneutrailität zu erreichen, werden Akkumulatoren empfohlen.",
+      "start": 0,
+      "end": 140
+    },
+    {
+      "sid": "S2",
+      "text": "Diese gelten als klimaneutral, sofern elektrische Energie aus erneuerbaren Energien genutzt wird.",
+      "start": 141,
+      "end": 238
+    },
+    {
+      "sid": "S3",
+      "text": "Könnte die Verfügbarkeit der Akkumulatoren ein Problem in Zukunft darstellen?",
+      "start": 239,
+      "end": 316
+    },
+    {
+      "sid": "S4",
+      "text": "Als erstes Argument gilt es anzuführen, dass Akkumalator betriebene Autos bereits in Massenproduktion von fast allen Herstellern produziert und bereits verkauft werden.",
+      "start": 317,
+      "end": 485
+    },
+    {
+      "sid": "S5",
+      "text": "Sodass es für uns in Zukunft keinen größeren Aufwand mehr geben wird, da die Ressourcen schon vorhanden sind.",
+      "start": 486,
+      "end": 595
+    },
+    {
+      "sid": "S6",
+      "text": "Doch reicht der Gesamtwirkungsgrad der Akkumulatoren für das Autofahren und kann es Benzin und Diesel effizient ersetzten?",
+      "start": 596,
+      "end": 718
+    }
+  ],
+  "full_text": "Um die Treibhausemissionen des Personenverkehrs reduzieren zu können und die Klimaneutrailität zu erreichen, werden Akkumulatoren empfohlen. Diese gelten als klimaneutral, sofern elektrische Energie aus erneuerbaren Energien genutzt wird. Könnte die Verfügbarkeit der Akkumulatoren ein Problem in Zukunft darstellen? Als erstes Argument gilt es anzuführen, dass Akkumalator betriebene Autos bereits in Massenproduktion von fast allen Herstellern produziert und bereits verkauft werden. Sodass es für uns in Zukunft keinen größeren Aufwand mehr geben wird, da die Ressourcen schon vorhanden sind. Doch reicht der Gesamtwirkungsgrad der Akkumulatoren für das Autofahren und kann es Benzin und Diesel effizient ersetzten?"
+}
