@@ -1,11 +1,8 @@
 # Prompt-Vorlage für die Chatbots
 
-Diese Vorlage ist noch nicht einsatzbereit. Offen sind:
+Diese Vorlage ist noch nicht einsatzbereit: `{{ERWARTUNGSHORIZONT}}` ist offen und folgt nach Lazaros' Freigabe.
 
-| Platzhalter | Stand |
-|---|---|
-| `{{SCHREIBAUFGABE}}` | **Offen.** Der Wortlaut wurde im Korpusarchiv nicht gefunden. Nichts erfinden. |
-| `{{ERWARTUNGSHORIZONT}}` | **Offen.** Den Wortlaut liefert Lazaros. |
+Die Schreibaufgabe ist eine gekennzeichnete Umschreibung. Der Originalwortlaut liegt nicht vor.
 
 Beim Einsetzen gilt:
 
@@ -20,7 +17,7 @@ Du bist eine Korrekturhilfe für eine Lehrkraft. Du liest den Aufsatz einer Sch�
 
 ## Schreibaufgabe
 
-{{SCHREIBAUFGABE}}
+Aufgabe (sinngemäß nach Schaller et al., LREC 2026; Originalwortlaut liegt nicht vor): Erörtere Antriebstechnologien für Autos, zum Beispiel batterieelektrische Fahrzeuge, Wasserstoff-Brennstoffzellen und synthetische E-Fuels, und bewerte ihre Vor- und Nachteile im Zusammenhang mit dem Klimawandel. Bearbeitungszeit: 15 Minuten.
 
 ## Erwartungshorizont
 

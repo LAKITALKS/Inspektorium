@@ -8,6 +8,14 @@ from pathlib import Path
 
 import pytest
 
+WRITING_TASK = (
+    "Aufgabe (sinngemäß nach Schaller et al., LREC 2026; Originalwortlaut liegt "
+    "nicht vor): Erörtere Antriebstechnologien für Autos, zum Beispiel "
+    "batterieelektrische Fahrzeuge, Wasserstoff-Brennstoffzellen und synthetische "
+    "E-Fuels, und bewerte ihre Vor- und Nachteile im Zusammenhang mit dem "
+    "Klimawandel. Bearbeitungszeit: 15 Minuten."
+)
+
 
 @pytest.fixture(scope="module")
 def prompt(study_root: Path) -> str:
@@ -24,11 +32,15 @@ def schema(study_root: Path) -> dict[str, dict[str, dict[str, object]]]:
 
 def test_the_prompt_has_exactly_the_agreed_placeholders(prompt: str) -> None:
     assert set(re.findall(r"\{\{(\w+)\}\}", prompt)) == {
-        "SCHREIBAUFGABE",
         "ERWARTUNGSHORIZONT",
         "SATZBANK",
         "AUSGABESCHEMA",
     }
+
+
+def test_the_writing_task_is_the_marked_paraphrase(prompt: str) -> None:
+    sent = prompt.split("\n---\n", maxsplit=1)[1]
+    assert WRITING_TASK in sent
 
 
 def test_the_prompt_keeps_the_agreed_role_and_the_json_only_request(
