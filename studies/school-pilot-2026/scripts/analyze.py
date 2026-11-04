@@ -1,28 +1,43 @@
-"""Compute the pilot's measures from imported runs.
+"""Compute the pilot's measures from imported runs and the filled coding sheet.
 
 The README defines each measure. The pilot is a feasibility check, so its report
 gives counts such as ``2 von 9``: see ``pilot_report``. The rates and the mean
 per text stay here for the main study and are not part of that report.
 
-A rate with an empty denominator is undefined, neither 0 nor 100 %, and is left
-out of the means. Failed runs never enter the denominator of a quote measure.
-Protocol errors enter no measure at all.
+A measure with an empty denominator is undefined, neither 0 nor 100 %. Failed
+runs never enter the denominator of a quote measure. Protocol errors enter no
+measure at all.
+
+A trap is one inserted error per text: ``{version, type, sids, description}``.
+Stage 1 is mechanical: a report names a target sentence and exactly the target
+type. Stage 2 is the coder's answer from the filled sheet.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter, defaultdict
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from functools import partial
 from pathlib import Path
 from typing import Any
 
+from export_for_coding import (
+    ANSWER_NO,
+    ANSWER_UNCLEAR,
+    Code,
+    CodingError,
+    RunKey,
+    read_codes,
+    run_key,
+)
 from genius_loader import dump_json
 from import_runs import (
     DELIVERED_INVALID,
     DELIVERED_VALID,
+    DELIVERED_WITHOUT_SID,
     FAILED,
     ORIGINAL,
     PROTOCOL_ERROR,
@@ -33,13 +48,54 @@ UNDEFINED = "nicht definiert"
 MODES = ("strict", "normalized")
 MIN_USABLE_RUNS = 3
 """A grade cell with fewer usable runs is marked."""
+TRAP_TYPES = ("Zahl", "Faktum", "Widerspruch", "Unsinn")
+_SID = re.compile(r"S[1-9][0-9]*")
+
+CONFIRMED = "confirmed"
+"""Stage 1 and ``ja`` for the same report."""
+UNKNOWN_CATEGORY = "unknown_category"
+"""``ja`` for a report at the target sentence with an unknown category."""
+MISPLACED = "misplaced"
+"""``ja`` without stage 1: a hit under a wrong category or sentence."""
+UNCLEAR = "unclear"
+NOT_DESCRIBED = "not_described"
 
 Run = Mapping[str, Any]
+Trap = Mapping[str, Any]
+Traps = Mapping[str, Trap]
+Codes = Mapping[RunKey, Code]
 Annotated = Mapping[str, Mapping[str, list[str]]]
-Targets = Mapping[str, Mapping[str, list[dict[str, Any]]]]
-"""Text id, then version, then ``{sid, accepted_categories}`` for each error."""
 Count = tuple[int, int]
 """How many of how many."""
+
+
+class TrapError(ValueError):
+    """A trap definition breaks the agreed form."""
+
+
+def validate_traps(traps: Traps) -> None:
+    """Refuse a trap that does not have exactly one type and a clear place.
+
+    Only a contradiction may span two sentences.
+    """
+
+    for text_id, trap in traps.items():
+        sids = trap.get("sids")
+        if trap.get("type") not in TRAP_TYPES:
+            raise TrapError(f"{text_id}: type must be one of {TRAP_TYPES}")
+        if not isinstance(sids, list) or not all(
+            isinstance(sid, str) and _SID.fullmatch(sid) for sid in sids
+        ):
+            raise TrapError(f"{text_id}: sids must be a list of sentence numbers")
+        allowed = 2 if trap["type"] == "Widerspruch" else 1
+        if not 1 <= len(sids) <= allowed:
+            raise TrapError(f"{text_id}: {trap['type']} allows {allowed} sentence(s)")
+        version = trap.get("version")
+        if not isinstance(version, str) or not version or version == ORIGINAL:
+            raise TrapError(f"{text_id}: version must name the modified version")
+        description = trap.get("description")
+        if not isinstance(description, str) or not description.strip():
+            raise TrapError(f"{text_id}: the description is missing")
 
 
 def _ratio(count: Count) -> float | None:
@@ -59,166 +115,152 @@ def mean_per_text(values: Mapping[str, list[float | None]]) -> float | None:
 
 
 def _delivered(run: Run) -> list[Mapping[str, Any]]:
-    return [
-        item
-        for item in run["references"]
-        if item["origin_strict"] in (DELIVERED_VALID, DELIVERED_INVALID)
-    ]
+    delivered = (DELIVERED_VALID, DELIVERED_INVALID, DELIVERED_WITHOUT_SID)
+    return [item for item in run["references"] if item["origin_strict"] in delivered]
 
 
 def quote_count(run: Run, mode: str, with_location: bool) -> Count:
-    """Delivered quotes that hold, of all delivered quotes."""
+    """Measures 2 and 3: delivered quotes that hold.
+
+    A quote without a sentence number counts in measure 2 only.
+    """
 
     delivered = _delivered(run)
-    hits: list[bool]
-    if with_location:
-        hits = [item[f"origin_{mode}"] == DELIVERED_VALID for item in delivered]
-    else:
-        hits = [item[f"text_valid_{mode}"] is True for item in delivered]
-    return sum(hits), len(hits)
+    if not with_location:
+        return sum(item[f"text_valid_{mode}"] is True for item in delivered), len(
+            delivered
+        )
+    located = [item for item in delivered if item["sid"] is not None]
+    return sum(item[f"origin_{mode}"] == DELIVERED_VALID for item in located), len(
+        located
+    )
 
 
-def quote_fidelity(run: Run, mode: str, with_location: bool) -> float | None:
-    """Share of delivered quotes that hold; undefined without a quote."""
-
+def _quote_rate(run: Run, mode: str, with_location: bool) -> float | None:
     return _ratio(quote_count(run, mode, with_location))
 
 
-def _valid_comment_sids(run: Run, mode: str) -> dict[int, set[str]]:
-    sids: dict[int, set[str]] = defaultdict(set)
-    for item in run["references"]:
-        if item["owner"] == "comment" and item[f"origin_{mode}"] == DELIVERED_VALID:
-            sids[item["owner_index"]].add(item["sid"])
-    return sids
+def _holds(item: Mapping[str, Any], mode: str) -> bool:
+    if item["sid"] is None:
+        return bool(item[f"text_valid_{mode}"])
+    return bool(item[f"origin_{mode}"] == DELIVERED_VALID)
 
 
-def coverage_count(run: Run, mode: str) -> Count:
-    """Comments with at least one valid quote, of all comments."""
+def invalid_quotes(usable: Sequence[Run]) -> list[dict[str, Any]]:
+    """List every quote that fails in at least one mode, one by one."""
 
-    return len(_valid_comment_sids(run, mode)), len(run["comments"])
+    listed: list[dict[str, Any]] = []
+    for run in usable:
+        for item in _delivered(run):
+            strict, normalized = _holds(item, "strict"), _holds(item, "normalized")
+            if strict and normalized:
+                continue
+            listed.append(
+                {
+                    "text_id": run["text_id"],
+                    "version": run["version"],
+                    "repetition": run["repetition"],
+                    "owner": item["owner"],
+                    "owner_index": item["owner_index"],
+                    "sid": item["sid"],
+                    "quote": item["quote"],
+                    "valid_strict": strict,
+                    "valid_normalized": normalized,
+                }
+            )
+    return listed
 
 
-def evidence_coverage(run: Run, mode: str) -> float | None:
-    """Share of all comments with at least one valid quote."""
+def coverage_count(run: Run) -> Count:
+    """Measure 4: comments with at least one delivered quote, of all comments."""
 
-    return _ratio(coverage_count(run, mode))
+    with_quote = {
+        item["owner_index"] for item in _delivered(run) if item["owner"] == "comment"
+    }
+    return len(with_quote), len(run["comments"])
 
 
-def criterion_fidelity_count(run: Run, annotated: Annotated) -> Count:
-    """Criteria of evidenced comments that the corpus marks there.
+def global_comment_count(run: Run) -> Count:
+    """Comments the chatbot itself marks as global; descriptive only."""
 
-    Only comments with a valid quote (normalized) count, because only they
-    point at a sentence the corpus annotation can confirm.
+    marked = sum(comment["scope"] == "global" for comment in run["comments"])
+    return marked, len(run["comments"])
+
+
+def criterion_grid_count(run: Run) -> Count:
+    """Measure 6: criterion references inside the grid, of all references."""
+
+    references = [ref for comment in run["comments"] for ref in comment["criteria"]]
+    return sum(ref["id"] is not None for ref in references), len(references)
+
+
+def criterion_reference_count(run: Run) -> Count:
+    """Measure 7: comments with at least one criterion reference, of all comments."""
+
+    return sum(bool(comment["criteria"]) for comment in run["comments"]), len(
+        run["comments"]
+    )
+
+
+def annotation_agreement_count(run: Run, annotated: Annotated) -> Count:
+    """Exploratory, not reported: references the corpus annotation confirms.
+
+    Only comments with a valid quote (normalized) count, because only they point
+    at a sentence the annotation can confirm.
     """
 
     sentences = annotated.get(run["text_id"])
     if sentences is None:
         return 0, 0
-    sids_by_comment = _valid_comment_sids(run, "normalized")
+    sids: dict[int, set[str]] = defaultdict(set)
+    for item in run["references"]:
+        if item["owner"] == "comment" and item["origin_normalized"] == DELIVERED_VALID:
+            sids[item["owner_index"]].add(item["sid"])
     confirmed: list[bool] = []
     for comment in run["comments"]:
-        sids = sids_by_comment.get(comment["index"], set())
-        if not sids:
-            continue
-        marked = {kid for sid in sids for kid in sentences.get(sid, [])}
-        confirmed += [criterion in marked for criterion in comment["criteria"]]
+        quoted = sids.get(comment["index"], set())
+        if quoted:
+            marked = {kid for sid in quoted for kid in sentences.get(sid, [])}
+            confirmed += [ref["id"] in marked for ref in comment["criteria"]]
     return sum(confirmed), len(confirmed)
 
 
-def criterion_fidelity(run: Run, annotated: Annotated) -> float | None:
-    """Share of criteria of evidenced comments that the corpus marks there."""
+def passes_stage_1(error: Mapping[str, Any], trap: Trap) -> bool:
+    """A report at a target sentence with exactly the target type."""
 
-    return _ratio(criterion_fidelity_count(run, annotated))
-
-
-def criterion_coverage_count(run: Run, annotated: Annotated) -> Count:
-    """Criteria annotated in the text that a comment names."""
-
-    sentences = annotated.get(run["text_id"])
-    if sentences is None:
-        return 0, 0
-    marked = {kid for kids in sentences.values() for kid in kids}
-    named = {kid for comment in run["comments"] for kid in comment["criteria"]}
-    return len(marked & named), len(marked)
+    return bool(error["sid"] in trap["sids"] and error["category"] == trap["type"])
 
 
-def criterion_coverage(run: Run, annotated: Annotated) -> float | None:
-    """Share of the criteria annotated in the text that a comment names."""
+def coded_outcome(run: Run, trap: Trap, code: Code) -> str:
+    """Combine stage 1 and the coder's answer for one usable run."""
 
-    return _ratio(criterion_coverage_count(run, annotated))
+    if code.answer == ANSWER_NO:
+        return NOT_DESCRIBED
+    if code.answer == ANSWER_UNCLEAR:
+        return UNCLEAR
+    assert code.report is not None
+    error = run["errors"][code.report - 1]
+    if passes_stage_1(error, trap):
+        return CONFIRMED
+    if error["invalid_category"] and error["sid"] in trap["sids"]:
+        return UNKNOWN_CATEGORY
+    return MISPLACED
 
 
-def _reference_of_error(run: Run, index: int) -> Mapping[str, Any]:
-    return next(
-        item
-        for item in run["references"]
-        if item["owner"] == "error" and item["owner_index"] == index
+def is_hit(outcome: str, counter_assumption: bool = False) -> bool:
+    """Measures 9 and 10. Unclear cases count only under the counter assumption."""
+
+    return outcome == CONFIRMED or (
+        counter_assumption and outcome in (UNCLEAR, UNKNOWN_CATEGORY)
     )
 
 
-def _category_counts(
-    error: Mapping[str, Any], target: Mapping[str, Any], counter_assumption: bool
-) -> bool:
-    if error["invalid_category"]:
-        return counter_assumption
-    return error["category"] in target["accepted_categories"]
+def is_false_alarm(outcome: str, counter_assumption: bool = False) -> bool:
+    """Measure 11. Unclear cases count unless the counter assumption holds."""
 
-
-def _detected(
-    run: Run, target: Mapping[str, Any], counter_assumption: bool = False
-) -> bool:
-    """Right sentence, a valid quote and an accepted category.
-
-    An unknown category is never a hit. Under the counter assumption it is.
-    """
-
-    return any(
-        error["sid"] == target["sid"]
-        and _category_counts(error, target, counter_assumption)
-        and _reference_of_error(run, error["index"])["origin_normalized"]
-        == DELIVERED_VALID
-        for error in run["errors"]
+    return outcome == CONFIRMED or (
+        not counter_assumption and outcome in (UNCLEAR, UNKNOWN_CATEGORY)
     )
-
-
-def detection_count(
-    run: Run, targets: list[dict[str, Any]], counter_assumption: bool = False
-) -> Count:
-    """Inserted errors this run found; a failed run found none."""
-
-    if run["status"] == FAILED:
-        return 0, len(targets)
-    found = sum(_detected(run, item, counter_assumption) for item in targets)
-    return found, len(targets)
-
-
-def wrong_category_hits(run: Run, targets: list[dict[str, Any]]) -> int:
-    """Reports on a target sentence with a known category it does not accept."""
-
-    return sum(
-        error["sid"] == target["sid"]
-        and not error["invalid_category"]
-        and error["category"] not in target["accepted_categories"]
-        for error in run["errors"]
-        for target in targets
-    )
-
-
-def false_alarm_count(
-    run: Run, sites: set[str], counter_assumption: bool = False
-) -> Count:
-    """1 of 1 if an original text gets an error report at a correct target site.
-
-    Any category counts. Under the counter assumption, an unknown one does not.
-    """
-
-    if not sites:
-        return 0, 0
-    alarmed = any(
-        error["sid"] in sites and not (counter_assumption and error["invalid_category"])
-        for error in run["errors"]
-    )
-    return int(alarmed), 1
 
 
 def _per_text(
@@ -293,75 +335,109 @@ def import_notes(usable: Sequence[Run]) -> dict[str, int]:
     }
 
 
-def _targets_of(run: Run, targets: Targets) -> list[dict[str, Any]]:
-    return list(targets.get(run["text_id"], {}).get(run["version"], []))
-
-
-def _sites(text_id: str, targets: Targets) -> set[str]:
-    return {
-        target["sid"]
-        for entries in targets.get(text_id, {}).values()
-        for target in entries
-    }
-
-
-def unknown_category_reports(usable: Sequence[Run], targets: Targets) -> dict[str, int]:
-    """Count reports with an unknown category; they are unclear, by place."""
+def unknown_category_reports(usable: Sequence[Run], traps: Traps) -> dict[str, int]:
+    """Count reports with an unknown category, by place."""
 
     places = {"at_target_in_original": 0, "at_target_in_modified": 0, "elsewhere": 0}
     for run in usable:
-        sites = _sites(run["text_id"], targets)
+        trap = traps.get(run["text_id"])
+        sids = trap["sids"] if trap else []
         for error in run["errors"]:
             if not error["invalid_category"]:
                 continue
-            if error["sid"] not in sites:
+            if error["sid"] not in sids:
                 places["elsewhere"] += 1
             elif run["version"] == ORIGINAL:
                 places["at_target_in_original"] += 1
             else:
                 places["at_target_in_modified"] += 1
-    return {"unclear_reports": sum(places.values()), **places}
+    return {"reports": sum(places.values()), **places}
+
+
+def _outcomes(usable: Sequence[Run], traps: Traps, codes: Codes) -> dict[RunKey, str]:
+    """Combine both stages for every usable run of a text with a trap."""
+
+    outcomes: dict[RunKey, str] = {}
+    missing: list[str] = []
+    for run in usable:
+        trap = traps.get(run["text_id"])
+        if trap is None:
+            continue
+        code = codes.get(run_key(run))
+        if code is None:
+            missing.append("/".join(run_key(run)))
+        else:
+            outcomes[run_key(run)] = coded_outcome(run, trap, code)
+    if missing:
+        raise CodingError([f"{name}: run has no code" for name in missing])
+    return outcomes
 
 
 def analyze_model(
-    all_runs: Sequence[Run], annotated: Annotated, targets: Targets
+    all_runs: Sequence[Run],
+    traps: Traps,
+    codes: Codes,
+    annotated: Annotated | None = None,
 ) -> dict[str, Any]:
     """Compute all measures for one model."""
 
     runs = [run for run in all_runs if run["status"] != PROTOCOL_ERROR]
     usable = [run for run in runs if run["status"] == USABLE]
-    originals = [run for run in usable if run["version"] == ORIGINAL]
-    target_runs = [run for run in runs if _targets_of(run, targets)]
-    usable_target_runs = [run for run in target_runs if run["status"] == USABLE]
+    outcomes = _outcomes(usable, traps, codes)
 
-    def found(run: Run, counter_assumption: bool = False) -> Count:
-        return detection_count(run, _targets_of(run, targets), counter_assumption)
+    def has_trap(run: Run) -> bool:
+        return run["text_id"] in traps
 
-    def alarm(run: Run, counter_assumption: bool = False) -> Count:
-        return false_alarm_count(
-            run, _sites(run["text_id"], targets), counter_assumption
+    def is_modified(run: Run) -> bool:
+        return has_trap(run) and run["version"] == traps[run["text_id"]]["version"]
+
+    modified_attempted = [run for run in runs if is_modified(run)]
+    modified_usable = [run for run in usable if is_modified(run)]
+    originals = [run for run in usable if has_trap(run) and run["version"] == ORIGINAL]
+    coded = [run for run in usable if run_key(run) in outcomes]
+
+    def hits(selection: Sequence[Run], counter_assumption: bool) -> Count:
+        found = sum(
+            run_key(run) in outcomes
+            and is_hit(outcomes[run_key(run)], counter_assumption)
+            for run in selection
         )
+        return found, len(selection)
 
-    def counts(with_counter_assumption: bool) -> dict[str, Any]:
-        find = partial(found, counter_assumption=with_counter_assumption)
-        ring = partial(alarm, counter_assumption=with_counter_assumption)
+    def alarms(counter_assumption: bool) -> Count:
+        rung = sum(
+            is_false_alarm(outcomes[run_key(run)], counter_assumption)
+            for run in originals
+        )
+        return rung, len(originals)
+
+    def trap_counts(counter_assumption: bool) -> dict[str, Any]:
         return {
-            "detection_per_usable_run": _as_count(_pooled(usable_target_runs, find)),
-            "detection_per_attempted_run": _as_count(_pooled(target_runs, find)),
-            "false_alarm": _as_count(_pooled(originals, ring)),
+            "detection_per_usable_run": _as_count(
+                hits(modified_usable, counter_assumption)
+            ),
+            "detection_per_attempted_run": _as_count(
+                hits(modified_attempted, counter_assumption)
+            ),
+            "false_alarm": _as_count(alarms(counter_assumption)),
         }
 
+    def outcome_count(kind: str, selection: Iterable[Run]) -> int:
+        return sum(outcomes.get(run_key(run)) == kind for run in selection)
+
+    delivered = [item for run in usable for item in _delivered(run)]
     failures = sum(run["status"] == FAILED for run in runs)
-    return {
+    report: dict[str, Any] = {
         "attempted_runs": len(runs),
         "usable_runs": len(usable),
         "protocol_errors": len(all_runs) - len(runs),
         "import_notes": import_notes(usable),
-        "unknown_category": unknown_category_reports(usable, targets),
-        "wrong_category_hits": sum(
-            wrong_category_hits(run, _targets_of(run, targets))
-            for run in usable_target_runs
-        ),
+        "unknown_category": unknown_category_reports(usable, traps),
+        "misplaced_hits": {
+            "in_modified": outcome_count(MISPLACED, modified_usable),
+            "in_original": outcome_count(MISPLACED, originals),
+        },
+        "invalid_quotes": invalid_quotes(usable),
         "grade_variation": grade_variation(runs),
         "grades_modified": grades_modified(runs),
         "counts": {
@@ -383,72 +459,73 @@ def analyze_model(
                 }
                 for mode in MODES
             },
-            "evidence": {
-                mode: _as_count(_pooled(usable, partial(coverage_count, mode=mode)))
-                for mode in MODES
-            },
-            "criterion_fidelity": _as_count(
-                _pooled(usable, partial(criterion_fidelity_count, annotated=annotated))
-            ),
-            "criterion_coverage": _as_count(
-                _pooled(usable, partial(criterion_coverage_count, annotated=annotated))
-            ),
-            **counts(with_counter_assumption=False),
-            "counter_assumption": counts(with_counter_assumption=True),
+            "quotes_without_sid": sum(item["sid"] is None for item in delivered),
+            "ambiguous_quotes": sum(item["ambiguous"] for item in delivered),
+            "evidence": _as_count(_pooled(usable, coverage_count)),
+            "self_marked_global": _as_count(_pooled(usable, global_comment_count)),
+            "criterion_fidelity": _as_count(_pooled(usable, criterion_grid_count)),
+            "criterion_coverage": _as_count(_pooled(usable, criterion_reference_count)),
+            **trap_counts(counter_assumption=False),
+            "unclear": _as_count((outcome_count(UNCLEAR, coded), len(coded))),
+            "counter_assumption": trap_counts(counter_assumption=True),
         },
         "rates": {
             "failure_rate": _per_text(runs, lambda r: float(r["status"] == FAILED)),
             "quote_fidelity": {
                 mode: {
                     "text": _per_text(
-                        usable, partial(quote_fidelity, mode=mode, with_location=False)
+                        usable, partial(_quote_rate, mode=mode, with_location=False)
                     ),
                     "text_and_location": _per_text(
-                        usable, partial(quote_fidelity, mode=mode, with_location=True)
+                        usable, partial(_quote_rate, mode=mode, with_location=True)
                     ),
                 }
                 for mode in MODES
             },
-            "evidence_coverage": {
-                mode: _per_text(usable, partial(evidence_coverage, mode=mode))
-                for mode in MODES
-            },
+            "evidence_coverage": _per_text(usable, lambda r: _ratio(coverage_count(r))),
             "criterion_fidelity": _per_text(
-                usable, lambda r: criterion_fidelity(r, annotated)
+                usable, lambda r: _ratio(criterion_grid_count(r))
             ),
             "criterion_coverage": _per_text(
-                usable, lambda r: criterion_coverage(r, annotated)
+                usable, lambda r: _ratio(criterion_reference_count(r))
             ),
-            "detection_per_usable_run": _per_text(
-                usable_target_runs, lambda r: _ratio(found(r))
-            ),
-            "detection_per_attempted_run": _per_text(
-                target_runs, lambda r: _ratio(found(r))
-            ),
-            "false_alarm": _per_text(originals, lambda r: _ratio(alarm(r))),
         },
     }
+    if annotated is not None:
+        report["exploratory"] = {
+            "annotation_agreement": _as_count(
+                _pooled(
+                    usable, partial(annotation_agreement_count, annotated=annotated)
+                )
+            )
+        }
+    return report
 
 
 def analyze(
-    records: Sequence[Run], annotated: Annotated, targets: Targets
+    records: Sequence[Run],
+    traps: Traps,
+    codes: Codes,
+    annotated: Annotated | None = None,
 ) -> dict[str, dict[str, Any]]:
     """Compute all measures for each model."""
 
+    validate_traps(traps)
     models: dict[str, list[Run]] = defaultdict(list)
     for record in records:
         models[record["model"]].append(record)
     return {
-        model: analyze_model(runs, annotated, targets)
+        model: analyze_model(runs, traps, codes, annotated)
         for model, runs in sorted(models.items())
     }
 
 
 def pilot_report(report: Mapping[str, Mapping[str, Any]]) -> dict[str, dict[str, Any]]:
-    """Keep what the pilot reports: counts, never rates."""
+    """Keep what the pilot reports: counts, no rates, nothing exploratory."""
 
+    hidden = ("rates", "exploratory")
     return {
-        model: {key: value for key, value in results.items() if key != "rates"}
+        model: {key: value for key, value in results.items() if key not in hidden}
         for model, results in report.items()
     }
 
@@ -466,15 +543,18 @@ def render(value: object) -> object:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--imported", type=Path, required=True)
-    parser.add_argument("--sentence-criteria", type=Path, required=True)
     parser.add_argument("--targets", type=Path, required=True)
+    parser.add_argument("--coding-sheet", type=Path, required=True)
+    parser.add_argument("--coding-key", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
     records = json.loads(args.imported.read_text(encoding="utf-8"))
-    annotated = json.loads(args.sentence_criteria.read_text(encoding="utf-8"))
-    targets = json.loads(args.targets.read_text(encoding="utf-8"))
-    report = analyze(records, annotated, targets)
-    args.out.write_bytes(dump_json(render(pilot_report(report))))
+    traps = json.loads(args.targets.read_text(encoding="utf-8"))
+    key = json.loads(args.coding_key.read_text(encoding="utf-8"))
+    codes = read_codes(args.coding_sheet.read_bytes(), key, records)
+    args.out.write_bytes(
+        dump_json(render(pilot_report(analyze(records, traps, codes))))
+    )
     return 0
 
 

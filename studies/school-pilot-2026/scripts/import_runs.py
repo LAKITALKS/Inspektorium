@@ -5,11 +5,12 @@ exactly as received. ``<repetition>.meta.json`` next to it holds ``date``,
 ``time``, ``model_name`` (the name the chat interface shows), ``chat_mode`` and
 ``account_type``.
 
-A run that cannot be read counts as a failure. Two things are tolerated and
-counted: one code block around the whole answer is removed, and an error entry
-with an unknown category is marked while the run stays usable. Nothing else is
-repaired. The importer sets no pointers: a comment that lists no quote stays
-without one, whatever its text says.
+A run that cannot be read counts as a failure. A few things are tolerated and
+counted: one code block around the whole answer is removed, an error entry with
+an unknown category is marked, a quote without a sentence number stays a quote,
+and an unknown criterion is marked as outside the grid. In each case the run
+stays usable. Nothing else is repaired. The importer sets no pointers: a comment
+that lists no quote stays without one, whatever its text says.
 
 Metadata belongs to the operator, not to the tool. A run file with a missing
 field is rejected and the field is named, so that it can be added from the chat
@@ -26,18 +27,21 @@ import re
 import sys
 from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from check_quotes import check_quote
+from check_quotes import FINAL_MARKS, check_quote, normalize_for_comparison
 from genius_loader import SentenceBank, dump_json, read_bank
 
+from inspektorium.core.normalization import normalize_text
 from inspektorium.core.strict_json import StrictJSONError, load_strict_json
 
 STUDY_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SCHEMA = STUDY_ROOT / "schemas" / "output.schema.json"
 DEFAULT_RUNS = STUDY_ROOT / "runs"
 DEFAULT_BANKS = STUDY_ROOT / "data" / "selected"
+CRITERIA_PATH = STUDY_ROOT / "data" / "criteria.json"
 ORIGINAL = "original"
 
 USABLE = "usable"
@@ -46,6 +50,7 @@ PROTOCOL_ERROR = "protocol_error"
 
 DELIVERED_VALID = "delivered_valid"
 DELIVERED_INVALID = "delivered_invalid"
+DELIVERED_WITHOUT_SID = "delivered_without_sid"
 MISSING = "missing"
 GLOBAL_COMMENT = "global_comment"
 
@@ -69,6 +74,12 @@ _CODE_FENCE = re.compile(
     r"\s*```(?:json)?[ \t]*\r?\n(.*)\r?\n```\s*", re.DOTALL | re.IGNORECASE
 )
 _CATEGORY_PROBLEM = re.compile(r"\$\.errors\[(\d+)\]\.category: outside the vocabulary")
+_CRITERION_PROBLEM = re.compile(
+    r"\$\.comments\[\d+\]\.criteria\[\d+\]: outside the vocabulary"
+)
+_SID_PROBLEM = re.compile(
+    r"\$\.(?:comments\[\d+\]\.quotes\[\d+\]|errors\[\d+\])\.sid: missing"
+)
 
 
 class RunSetupError(RuntimeError):
@@ -95,6 +106,8 @@ class Reference:
     origin_normalized: str
     text_valid_strict: bool | None
     text_valid_normalized: bool | None
+    ambiguous: bool = False
+    """The quoted text occurs more than once in the essay."""
 
 
 @dataclass(frozen=True)
@@ -213,11 +226,34 @@ def remove_code_fence(raw: bytes) -> tuple[bytes, bool]:
     return match.group(1).encode("utf-8"), True
 
 
+def _drop_empty_sids(value: object) -> None:
+    """Treat an empty sentence number like a missing one."""
+
+    if not isinstance(value, dict):
+        return
+    entries: list[object] = []
+    comments = value.get("comments")
+    errors = value.get("errors")
+    if isinstance(comments, list):
+        for comment in comments:
+            if isinstance(comment, dict) and isinstance(comment.get("quotes"), list):
+                entries.extend(comment["quotes"])
+    if isinstance(errors, list):
+        entries.extend(errors)
+    for entry in entries:
+        if not isinstance(entry, dict) or "sid" not in entry:
+            continue
+        sid = entry["sid"]
+        if sid is None or (isinstance(sid, str) and not sid.strip()):
+            del entry["sid"]
+
+
 def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
     """Return the decoded output, or None if it is not readable as agreed.
 
-    An unknown category of an error entry is the only schema violation that a
-    run survives. Every other violation, in any entry, makes the run a failure.
+    Three schema violations leave a run usable: an unknown category of an error
+    entry, an unknown criterion, and a missing sentence number. Every other
+    violation, in any entry, makes the run a failure.
     """
 
     content, fenced = remove_code_fence(raw)
@@ -225,12 +261,17 @@ def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
         value = load_strict_json(content)
     except StrictJSONError:
         return None
+    _drop_empty_sids(value)
     invalid: set[int] = set()
     for problem in schema_problems(value, schema):
         match = _CATEGORY_PROBLEM.fullmatch(problem)
-        if match is None:
+        if match is not None:
+            invalid.add(int(match.group(1)))
+        elif (
+            _CRITERION_PROBLEM.fullmatch(problem) is None
+            and _SID_PROBLEM.fullmatch(problem) is None
+        ):
             return None
-        invalid.add(int(match.group(1)))
     assert isinstance(value, dict)
     return ParsedOutput(value, fenced, frozenset(invalid))
 
@@ -274,22 +315,37 @@ def read_metadata(path: Path, label: str) -> Metadata | ProtocolNote:
     return Metadata(**{name: value[name] for name in names})
 
 
+def _is_ambiguous(bank: SentenceBank, quote: str) -> bool:
+    """Whether the quoted text occurs more than once in the essay."""
+
+    source = normalize_for_comparison(bank.full_text)
+    form = normalize_for_comparison(normalize_text(quote))
+    if form not in source and form[-1:] in FINAL_MARKS:
+        form = form[:-1]
+    return bool(form.strip()) and source.count(form) > 1
+
+
 def _delivered(
-    bank: SentenceBank, owner: str, index: int, sid: str, quote: str
+    bank: SentenceBank, owner: str, index: int, sid: str | None, quote: str
 ) -> Reference:
-    strict = check_quote(bank, sid, quote, "strict")
-    normalized = check_quote(bank, sid, quote, "normalized")
+    strict = check_quote(bank, sid or "", quote, "strict")
+    normalized = check_quote(bank, sid or "", quote, "normalized")
+
+    def origin(valid: bool) -> str:
+        if sid is None:
+            return DELIVERED_WITHOUT_SID
+        return DELIVERED_VALID if valid else DELIVERED_INVALID
+
     return Reference(
         owner=owner,
         owner_index=index,
         sid=sid,
         quote=quote,
-        origin_strict=DELIVERED_VALID if strict.location_valid else DELIVERED_INVALID,
-        origin_normalized=(
-            DELIVERED_VALID if normalized.location_valid else DELIVERED_INVALID
-        ),
+        origin_strict=origin(strict.location_valid),
+        origin_normalized=origin(normalized.location_valid),
         text_valid_strict=strict.text_valid,
         text_valid_normalized=normalized.text_valid,
+        ambiguous=_is_ambiguous(bank, quote),
     )
 
 
@@ -307,13 +363,31 @@ def build_references(output: dict[str, Any], bank: SentenceBank) -> list[Referen
             references.append(_no_quote(index, comment["scope"]))
         for item in comment["quotes"]:
             references.append(
-                _delivered(bank, "comment", index, item["sid"], item["quote"])
+                _delivered(bank, "comment", index, item.get("sid"), item["quote"])
             )
     for index, error in enumerate(output["errors"]):
         references.append(
-            _delivered(bank, "error", index, error["sid"], error["quote"])
+            _delivered(bank, "error", index, error.get("sid"), error["quote"])
         )
     return references
+
+
+@lru_cache(maxsize=1)
+def criterion_spellings() -> dict[str, str]:
+    """Map every agreed spelling to its id: the ids and the names of the grid."""
+
+    criteria = json.loads(CRITERIA_PATH.read_text(encoding="utf-8"))["criteria"]
+    spellings: dict[str, str] = {}
+    for item in criteria:
+        spellings[item["id"].casefold()] = item["id"]
+        spellings[item["name"].casefold()] = item["id"]
+    return spellings
+
+
+def resolve_criterion(value: str) -> dict[str, str | None]:
+    """Keep a criterion reference; ``id`` is None outside the grid."""
+
+    return {"value": value, "id": criterion_spellings().get(value.strip().casefold())}
 
 
 def bank_path(banks: Path, text_id: str, version: str) -> Path:
@@ -367,14 +441,14 @@ def import_run(
                 "index": index,
                 "text": comment["text"],
                 "scope": comment["scope"],
-                "criteria": comment["criteria"],
+                "criteria": [resolve_criterion(item) for item in comment["criteria"]],
             }
             for index, comment in enumerate(output["comments"])
         ],
         errors=[
             {
                 "index": index,
-                "sid": error["sid"],
+                "sid": error.get("sid"),
                 "quote": error["quote"],
                 "category": error["category"],
                 "explanation": error["explanation"],
