@@ -172,6 +172,17 @@ def _grade_distribution(usable: Sequence[Run]) -> dict[str, dict[str, int]]:
     }
 
 
+def import_notes(usable: Sequence[Run]) -> dict[str, int]:
+    """Count what the importer tolerated, so that it stays visible."""
+
+    return {
+        "code_fences_removed": sum(run["code_fence_removed"] for run in usable),
+        "invalid_category_entries": sum(
+            error["invalid_category"] for run in usable for error in run["errors"]
+        ),
+    }
+
+
 def _targets_of(run: Run, targets: Targets) -> list[dict[str, Any]]:
     return list(targets.get(run["text_id"], {}).get(run["version"], []))
 
@@ -215,6 +226,7 @@ def analyze_model(
     return {
         "attempted_runs": len(runs),
         "usable_runs": len(usable),
+        "import_notes": import_notes(usable),
         "failure_rate": _per_text(runs, lambda r: float(r["status"] == FAILED)),
         "quote_fidelity": fidelity,
         "evidence_coverage": {

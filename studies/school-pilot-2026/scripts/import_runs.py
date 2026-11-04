@@ -1,22 +1,23 @@
-"""Import chatbot outputs without repairing or assigning anything.
+"""Import chatbot outputs without assigning anything afterwards.
 
 Layout: ``runs/<model>/<text_id>/<version>/<repetition>.json`` holds the answer
-exactly as received. ``<repetition>.meta.json`` next to it holds ``date`` and
-``model_name``, the model's name as the chat interface shows it.
+exactly as received. ``<repetition>.meta.json`` next to it holds ``date``,
+``time``, ``model_name`` (the name the chat interface shows) and ``chat_mode``.
 
-A run that cannot be read counts as a failure. The importer sets no pointers:
-a comment that lists no quote stays without one, whatever its text says.
-Nothing is extracted from surrounding prose, so an answer in a code fence or
-with a sentence around the JSON is a failure too.
+A run that cannot be read counts as a failure. Two things are tolerated and
+counted: one code block around the whole answer is removed, and an error entry
+with an unknown category is marked while the run stays usable. Nothing else is
+repaired. The importer sets no pointers: a comment that lists no quote stays
+without one, whatever its text says.
 """
 
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import re
 from dataclasses import asdict, dataclass, field
-from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -55,6 +56,10 @@ _SCHEMA_KEYWORDS = frozenset(
     }
 )
 _META_NAME = re.compile(r"\.meta\.json$")
+_CODE_FENCE = re.compile(
+    r"\s*```(?:json)?[ \t]*\r?\n(.*)\r?\n```\s*", re.DOTALL | re.IGNORECASE
+)
+_CATEGORY_PROBLEM = re.compile(r"\$\.errors\[(\d+)\]\.category: outside the vocabulary")
 
 
 class RunSetupError(RuntimeError):
@@ -76,15 +81,37 @@ class Reference:
 
 
 @dataclass(frozen=True)
+class Metadata:
+    """What is recorded for every attempted run."""
+
+    date: str
+    time: str
+    model_name: str
+    chat_mode: str
+
+
+@dataclass(frozen=True)
+class ParsedOutput:
+    """A readable output and what was tolerated to read it."""
+
+    value: dict[str, Any]
+    code_fence_removed: bool
+    invalid_categories: frozenset[int]
+
+
+@dataclass(frozen=True)
 class RunRecord:
     model: str
     text_id: str
     version: str
     repetition: str
-    date: str | None
-    model_name: str | None
     status: str
+    date: str | None = None
+    time: str | None = None
+    model_name: str | None = None
+    chat_mode: str | None = None
     failure_reason: str | None = None
+    code_fence_removed: bool = False
     grade: int | None = None
     comments: list[dict[str, Any]] = field(default_factory=list)
     errors: list[dict[str, Any]] = field(default_factory=list)
@@ -141,21 +168,48 @@ def schema_problems(
     return problems
 
 
-def read_output(raw: bytes, schema: dict[str, Any]) -> dict[str, Any] | None:
-    """Return the decoded output, or None if it is not readable as agreed."""
+def remove_code_fence(raw: bytes) -> tuple[bytes, bool]:
+    """Remove one code block around the whole answer; change nothing else.
+
+    The fences must stand on their own lines, and nothing but whitespace may
+    stand outside them. Text around the block, or a second block, stays in the
+    answer, and the strict JSON decoder then rejects it.
+    """
 
     try:
-        value = load_strict_json(raw)
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        return raw, False
+    match = _CODE_FENCE.fullmatch(text)
+    if match is None:
+        return raw, False
+    return match.group(1).encode("utf-8"), True
+
+
+def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
+    """Return the decoded output, or None if it is not readable as agreed.
+
+    An unknown category of an error entry is the only schema violation that a
+    run survives. Every other violation, in any entry, makes the run a failure.
+    """
+
+    content, fenced = remove_code_fence(raw)
+    try:
+        value = load_strict_json(content)
     except StrictJSONError:
         return None
-    if schema_problems(value, schema):
-        return None
+    invalid: set[int] = set()
+    for problem in schema_problems(value, schema):
+        match = _CATEGORY_PROBLEM.fullmatch(problem)
+        if match is None:
+            return None
+        invalid.add(int(match.group(1)))
     assert isinstance(value, dict)
-    return value
+    return ParsedOutput(value, fenced, frozenset(invalid))
 
 
-def read_metadata(path: Path) -> tuple[str, str] | None:
-    """Return date and model name, or None if the metadata cannot be used."""
+def read_metadata(path: Path) -> Metadata | None:
+    """Return the run's metadata, or None if it cannot be used."""
 
     if not path.is_file():
         return None
@@ -165,14 +219,16 @@ def read_metadata(path: Path) -> tuple[str, str] | None:
         return None
     if not isinstance(value, dict):
         return None
-    day, name = value.get("date"), value.get("model_name")
-    if not isinstance(day, str) or not isinstance(name, str) or not name.strip():
+    fields = {key: value.get(key) for key in Metadata.__dataclass_fields__}
+    texts = {key: item for key, item in fields.items() if isinstance(item, str)}
+    if len(texts) != len(fields) or not all(item.strip() for item in texts.values()):
         return None
     try:
-        date.fromisoformat(day)
+        datetime.date.fromisoformat(texts["date"])
+        datetime.time.fromisoformat(texts["time"])
     except ValueError:
         return None
-    return day, name
+    return Metadata(**texts)
 
 
 def _delivered(
@@ -238,28 +294,29 @@ def import_run(
     folder = runs / model / text_id / version
     identity = (model, text_id, version, repetition)
     metadata = read_metadata(folder / f"{repetition}.meta.json")
-    day, name = metadata if metadata is not None else (None, None)
+    stamp = {} if metadata is None else asdict(metadata)
 
     def failed(reason: str) -> RunRecord:
-        return RunRecord(*identity, day, name, FAILED, failure_reason=reason)
+        return RunRecord(*identity, FAILED, **stamp, failure_reason=reason)
 
     answer = folder / f"{repetition}.json"
     if metadata is None:
         return failed("metadata_unusable")
     if not answer.is_file():
         return failed("no_output")
-    output = read_output(answer.read_bytes(), schema)
-    if output is None:
+    parsed = read_output(answer.read_bytes(), schema)
+    if parsed is None:
         return failed("unreadable_output")
+    output = parsed.value
 
     path = bank_path(banks, text_id, version)
     if not path.is_file():
         raise RunSetupError(f"no sentence bank for {text_id} / {version}")
     return RunRecord(
         *identity,
-        day,
-        name,
         USABLE,
+        **stamp,
+        code_fence_removed=parsed.code_fence_removed,
         grade=output["grade"],
         comments=[
             {
@@ -270,7 +327,12 @@ def import_run(
             for index, comment in enumerate(output["comments"])
         ],
         errors=[
-            {"index": index, "sid": error["sid"], "category": error["category"]}
+            {
+                "index": index,
+                "sid": error["sid"],
+                "category": error["category"],
+                "invalid_category": index in parsed.invalid_categories,
+            }
             for index, error in enumerate(output["errors"])
         ],
         references=build_references(output, read_bank(path)),
@@ -308,7 +370,14 @@ def main(argv: list[str] | None = None) -> int:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_bytes(dump_json([asdict(record) for record in records]))
     failures = sum(record.status == FAILED for record in records)
-    print(f"imported {len(records)} attempted runs, {failures} failures")
+    fences = sum(record.code_fence_removed for record in records)
+    invalid = sum(
+        error["invalid_category"] for record in records for error in record.errors
+    )
+    print(
+        f"imported {len(records)} attempted runs, {failures} failures, "
+        f"{fences} code fences removed, {invalid} invalid categories"
+    )
     return 0
 
 

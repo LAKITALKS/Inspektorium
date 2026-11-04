@@ -21,7 +21,17 @@ SENTENCES = [
 ]
 ANNOTATED = {"toy": {"S1": ["K1"], "S2": ["K1", "K4"], "S3": ["K4"]}}
 TARGETS = {"toy": {"v1": [{"sid": "S2", "accepted_categories": ["Zahl"]}]}}
-META = {"date": "2026-11-20", "model_name": "Spielmodell 1"}
+META = {
+    "date": "2026-11-20",
+    "time": "14:30",
+    "model_name": "Spielmodell 1",
+    "chat_mode": "Temporärer Chat",
+}
+
+
+def _meta(**changes: object) -> bytes:
+    fields: dict[str, object] = {**META, **changes}
+    return json.dumps({k: v for k, v in fields.items() if v is not None}).encode()
 
 
 def _comment(
@@ -95,7 +105,8 @@ def test_a_clean_run_is_usable_with_its_metadata(lab: Lab) -> None:
     lab.add(_output([_comment(quotes=[("S1", "fährt 300 km")])]))
     run = lab.imported()[0]
     assert run.status == imp.USABLE
-    assert (run.date, run.model_name) == ("2026-11-20", "Spielmodell 1")
+    assert (run.date, run.time) == ("2026-11-20", "14:30")
+    assert (run.model_name, run.chat_mode) == ("Spielmodell 1", "Temporärer Chat")
     assert (run.model, run.text_id, run.version, run.repetition) == (
         "spiel",
         "toy",
@@ -111,7 +122,6 @@ def test_a_clean_run_is_usable_with_its_metadata(lab: Lab) -> None:
         pytest.param(b"", id="empty"),
         pytest.param(b"Hier ist meine Bewertung.", id="prose"),
         pytest.param(b"not json {", id="broken"),
-        pytest.param(b'```json\n{"grade": 3}\n```', id="code-fence"),
         pytest.param(b'{"grade": 3, "comments": [], "errors": [], "x": 1}', id="extra"),
         pytest.param(b'{"grade": 3, "comments": []}', id="missing-key"),
         pytest.param(
@@ -124,7 +134,14 @@ def test_a_clean_run_is_usable_with_its_metadata(lab: Lab) -> None:
         pytest.param(_output([_comment(scope="partly")]), id="bad-scope"),
         pytest.param(_output([_comment(criteria=["K8"])]), id="bad-criterion"),
         pytest.param(
-            _output(errors=[_error("S1", "x", "Grammatik")]), id="bad-category"
+            b'{"grade": 3, "comments": [], "errors": '
+            b'[{"sid": "S1", "quote": "x", "category": 7, "explanation": "y"}]}',
+            id="category-not-text",
+        ),
+        pytest.param(
+            b'{"grade": 3, "comments": [], "errors": '
+            b'[{"sid": "S1", "quote": "x", "explanation": "y"}]}',
+            id="category-missing",
         ),
         pytest.param(_output([_comment(quotes=[("1", "x")])]), id="bad-sid"),
         pytest.param(_output([_comment(quotes=[("S1\n", "x")])]), id="sid-newline"),
@@ -137,6 +154,85 @@ def test_an_unreadable_output_is_a_failure(lab: Lab, raw: bytes) -> None:
     assert run.references == []
 
 
+@pytest.mark.parametrize(
+    "wrap",
+    [
+        pytest.param("```json\n{}\n```", id="json-fence"),
+        pytest.param("```JSON\n{}\n```", id="upper-case-tag"),
+        pytest.param("```\n{}\n```", id="plain-fence"),
+        pytest.param("```json\r\n{}\r\n```\r\n", id="windows-line-ends"),
+        pytest.param("\n  ```json  \n{}\n```\n\n", id="outer-whitespace"),
+    ],
+)
+def test_one_enclosing_code_block_is_removed(lab: Lab, wrap: str) -> None:
+    body = _output([_comment(quotes=[("S1", "300 km")])]).decode()
+    lab.add(wrap.replace("{}", body).encode())
+    run = lab.imported()[0]
+    assert (run.status, run.code_fence_removed) == (imp.USABLE, True)
+    assert run.references[0].origin_strict == imp.DELIVERED_VALID
+
+
+def test_an_answer_without_a_code_block_is_not_marked(lab: Lab) -> None:
+    lab.add(_output())
+    run = lab.imported()[0]
+    assert (run.status, run.code_fence_removed) == (imp.USABLE, False)
+
+
+def test_backticks_inside_a_comment_survive_the_removal(lab: Lab) -> None:
+    body = _output([_comment(text="Siehe ``` hier.")]).decode()
+    lab.add(f"```json\n{body}\n```".encode())
+    assert lab.imported()[0].status == imp.USABLE
+
+
+@pytest.mark.parametrize(
+    "raw",
+    [
+        pytest.param(b'```json\n{"grade": 3,\n```', id="broken-json-in-block"),
+        pytest.param(b"```json\n```", id="empty-block"),
+        pytest.param(b"```json\nkein JSON\n```", id="prose-in-block"),
+        pytest.param(b"Hier ist es:\n```json\n%s\n```", id="text-before"),
+        pytest.param(b"```json\n%s\n```\nViel Erfolg!", id="text-after"),
+        pytest.param(b"```json\n%s\n```\n```json\n%s\n```", id="two-blocks"),
+        pytest.param(b"```json %s ```", id="fence-on-one-line"),
+        pytest.param(b"```python\n%s\n```", id="other-language"),
+        pytest.param(b"```json\n%s", id="no-closing-fence"),
+        pytest.param(b"~~~json\n%s\n~~~", id="other-fence"),
+    ],
+)
+def test_invalid_json_stays_a_failure(lab: Lab, raw: bytes) -> None:
+    body = _output()
+    lab.add(raw.replace(b"%s", body))
+    run = lab.imported()[0]
+    assert (run.status, run.failure_reason) == (imp.FAILED, "unreadable_output")
+    assert run.code_fence_removed is False
+
+
+def test_an_unknown_category_marks_the_entry_and_keeps_the_run(lab: Lab) -> None:
+    errors = [_error("S1", "300 km", "Grammatik"), _error("S2", "30 Minuten", "Zahl")]
+    lab.add(_output(errors=errors))
+    run = lab.imported()[0]
+    assert run.status == imp.USABLE
+    assert [entry["invalid_category"] for entry in run.errors] == [True, False]
+    assert run.errors[0]["category"] == "Grammatik"
+
+
+def test_a_marked_entry_keeps_its_quote_check(lab: Lab) -> None:
+    lab.add(_output(errors=[_error("S1", "300 km", "Grammatik")]))
+    assert lab.imported()[0].references[0].origin_strict == imp.DELIVERED_VALID
+
+
+def test_an_unknown_category_saves_no_other_violation(lab: Lab) -> None:
+    payload = json.loads(_output(errors=[_error("S1", "x", "Grammatik")]))
+    payload["errors"][0]["extra"] = 1
+    lab.add(json.dumps(payload).encode())
+    assert lab.imported()[0].status == imp.FAILED
+
+
+def test_an_unknown_criterion_stays_a_failure(lab: Lab) -> None:
+    lab.add(_output([_comment(criteria=["K9"])], [_error("S1", "x", "Grammatik")]))
+    assert lab.imported()[0].status == imp.FAILED
+
+
 def test_an_attempt_without_output_is_a_failure(lab: Lab) -> None:
     lab.add(None)
     assert lab.imported()[0].failure_reason == "no_output"
@@ -146,9 +242,15 @@ def test_an_attempt_without_output_is_a_failure(lab: Lab) -> None:
     "meta",
     [
         pytest.param(b"", id="empty"),
-        pytest.param(b'{"date": "2026-11-20"}', id="no-name"),
-        pytest.param(b'{"date": "bald", "model_name": "x"}', id="bad-date"),
-        pytest.param(b'{"date": "2026-11-20", "model_name": " "}', id="blank-name"),
+        pytest.param(b'{"date": "2026-11-20"}', id="only-the-date"),
+        pytest.param(_meta(date="bald"), id="bad-date"),
+        pytest.param(_meta(time="spät"), id="bad-time"),
+        pytest.param(_meta(time=None), id="no-time"),
+        pytest.param(_meta(model_name=" "), id="blank-name"),
+        pytest.param(_meta(model_name=None), id="no-name"),
+        pytest.param(_meta(chat_mode=" "), id="blank-mode"),
+        pytest.param(_meta(chat_mode=None), id="no-mode"),
+        pytest.param(_meta(chat_mode=3), id="mode-not-text"),
         pytest.param(b"[]", id="not-an-object"),
     ],
 )
@@ -401,6 +503,32 @@ def test_models_are_kept_apart(lab: Lab) -> None:
     report = an.analyze(lab.records(), ANNOTATED, TARGETS)
     assert list(report) == ["anderes", "spiel"]
     assert report["anderes"]["grade_distribution"] == {"toy": {"6": 1}}
+
+
+def test_the_report_counts_what_the_importer_tolerated(lab: Lab) -> None:
+    body = _output(errors=[_error("S1", "x", "Grammatik"), _error("S2", "y", "Stil")])
+    lab.add(b"```json\n" + body + b"\n```", "1")
+    lab.add(_output(errors=[_error("S1", "x", "Zahl")]), "2")
+    lab.add(b"```json\nkein JSON\n```", "3")
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["import_notes"] == {
+        "code_fences_removed": 1,
+        "invalid_category_entries": 2,
+    }
+    assert report["failure_rate"] == pytest.approx(1 / 3)
+
+
+def test_an_unknown_category_is_no_detection(lab: Lab) -> None:
+    lab.add(_output(errors=[_error("S2", "30 Minuten", "Grammatik")]), version="v1")
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["detection_per_usable_run"] == 0.0
+    assert report["wrong_category_hits"] == 1
+
+
+def test_an_unknown_category_at_a_site_is_still_a_false_alarm(lab: Lab) -> None:
+    lab.add(_output(errors=[_error("S2", "30 Minuten", "Grammatik")]))
+    report = an.analyze(lab.records(), ANNOTATED, TARGETS)["spiel"]
+    assert report["false_alarm"] == 1.0
 
 
 def test_the_report_holds_the_twelve_measures(lab: Lab) -> None:
