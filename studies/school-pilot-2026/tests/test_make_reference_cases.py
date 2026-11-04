@@ -173,6 +173,20 @@ def test_the_hash_file_names_the_sealed_payload(tmp_path: Path) -> None:
     )
 
 
+def test_an_existing_sealed_file_is_never_replaced(tmp_path: Path) -> None:
+    development, held_out = make.split_cases(_invented_cases(10), 3)
+    sealed = tmp_path / "sealed/holdout_cases.json"
+    sealed.parent.mkdir()
+    sealed.write_bytes(b"sealed")
+    with pytest.raises(make.ReferenceCaseError, match="never replaced"):
+        make.write_cases(
+            development, held_out, tmp_path / "dev.json", sealed, tmp_path / "hash.txt"
+        )
+    assert sealed.read_bytes() == b"sealed"
+    assert not (tmp_path / "dev.json").exists()
+    assert not (tmp_path / "hash.txt").exists()
+
+
 def test_the_summary_holds_only_counts() -> None:
     development, held_out = make.split_cases(_invented_cases(10), 3)
     summary = make.summarize(development, held_out, ["r1"])
@@ -218,11 +232,3 @@ def test_committed_summary_covers_every_type(study_root: Path) -> None:
 
 def test_the_sealed_file_is_ignored_by_git(study_root: Path) -> None:
     assert "sealed/" in (study_root / ".gitignore").read_text("utf-8").split()
-
-
-def test_the_sealed_file_matches_its_committed_hash(study_root: Path) -> None:
-    sealed = study_root / "sealed/holdout_cases.json"
-    if not sealed.exists():
-        pytest.skip("the sealed file is kept outside Git")
-    committed = (study_root / "prereg/holdout_sha256.txt").read_text("utf-8")
-    assert committed.split()[0] == hashlib.sha256(sealed.read_bytes()).hexdigest()

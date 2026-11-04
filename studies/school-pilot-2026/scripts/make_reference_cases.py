@@ -418,8 +418,14 @@ def write_cases(
     sealed_path: Path,
     hash_path: Path,
 ) -> str:
-    """Write both parts and return the SHA-256 of the sealed file."""
+    """Write both parts and return the SHA-256 of the sealed file.
 
+    An existing sealed file is never replaced. The check only asks whether the
+    path exists; it does not open the file.
+    """
+
+    if sealed_path.exists():
+        raise ReferenceCaseError("an existing sealed file is never replaced")
     dev_path.parent.mkdir(parents=True, exist_ok=True)
     dev_path.write_bytes(_as_json(development))
     payload = _as_json(held_out)

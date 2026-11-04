@@ -9,6 +9,7 @@ import fetch_genius
 import genius_loader
 import pytest
 import select_texts as select
+from reserve import USED_FOR_FABRICATED as USED_MARKER
 
 
 @pytest.fixture(scope="module")
@@ -71,6 +72,19 @@ def test_the_draw_is_reproducible_from_the_corpus(
 ) -> None:
     corpus = genius_loader.load_corpus(annotations_dir)
     seed = select.read_seed(study_root / "prereg/seed.txt")
-    assert select.build_selection(corpus, seed, fetch_genius.EXPECTED_SHA256) == (
-        selection
-    )
+    drawn = {key: value for key, value in selection.items() if key != USED_MARKER}
+    assert select.build_selection(corpus, seed, fetch_genius.EXPECTED_SHA256) == drawn
+
+
+def test_the_selection_holds_only_the_draw_and_the_marking(
+    selection: dict[str, object],
+) -> None:
+    assert set(selection) == {
+        "seed",
+        "corpus_sha256",
+        "annotation_files",
+        "eligible_texts",
+        "rule",
+        "groups",
+        USED_MARKER,
+    }

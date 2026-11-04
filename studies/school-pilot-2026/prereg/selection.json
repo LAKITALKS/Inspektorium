@@ -167,5 +167,15 @@
       "1108_Verk_T1-Rev",
       "1107_Verk_T1-Rev"
     ]
-  }
+  },
+  "used_for_fabricated": [
+    "1000_Verk_T1-rev",
+    "1145_Verk_T1-Rev",
+    "291_Verk_T1",
+    "329_Verk_T1",
+    "904_Verk_T1-rev",
+    "922_Verk_T1-rev",
+    "982_Verk_T1-rev",
+    "996_Verk_T1-rev"
+  ]
 }
