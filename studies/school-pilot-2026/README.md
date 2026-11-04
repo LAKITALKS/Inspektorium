@@ -10,7 +10,7 @@
 | Draw of the study groups | Done |
 | Reference cases | Built and sealed, not run through any checker |
 | Quote checker, import, analysis | Built, tested on invented data only |
-| Prompt | Template; the writing task and the marking guide are open |
+| Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
 | Inserted errors | Proposed, not decided |
 | Chatbot runs | Not started |
 
@@ -28,13 +28,13 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, and later the preregistration | yes |
-| `sealed/` | Held-out reference cases; only their hash is committed | no |
+| `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots | yes |
 | `schemas/` | JSON Schema for the chatbot output | yes |
 | `scripts/` | Tools | yes |
 | `tests/` | Tests, run with `python -m pytest studies/school-pilot-2026/tests` | yes |
 
-Tests that need the corpus skip when it has not been fetched.
+Tests that need the corpus skip when it has not been fetched. CI runs these tests through `testpaths`, without the corpus.
 
 ## Restore the data
 
@@ -76,6 +76,10 @@ The script refuses to replace an existing draw with a different one.
 
 The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and `component` are copied to [data/selected/](data/selected/README.md); the other groups are id lists.
 
+**Used reserve texts.** The `fabricated` cases took sentences from eight `reserve` texts. `selection.json` lists these texts under `used_for_fabricated`, and every later sample excludes them. A later sample must draw from `available_reserve` in `scripts/reserve.py`, which refuses a selection without this list.
+
+The list was added after the draw, and the groups are unchanged. The eight texts stay in the group `reserve`, so the draw and the sealed hash stay reproducible. Because the file now differs from a fresh draw, `select_texts.py` refuses to run again. The test that repeats the draw compares everything except this list.
+
 ## Reference cases
 
 `scripts/make_reference_cases.py` builds cases with known answers from the 20 `component` texts. A case is `{case_id, text_id, claimed_sid, quote, type, expected_strict, expected_normalized}`. Each text gets up to two cases per type, from different sentences where possible.
@@ -99,9 +103,16 @@ The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and 
 
 **Sealed part.** `sealed/holdout_cases.json` is ignored by Git. Its SHA-256 is in [prereg/holdout_sha256.txt](prereg/holdout_sha256.txt), and the counts are in [prereg/reference_cases_summary.json](prereg/reference_cases_summary.json).
 
-**Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them. All other `reserve` texts stay unread.
+**The folder `sealed/` is off limits.** It is not opened, read or changed, and no test or analysis uses it. It is opened only at the final check, after the maintainer's release. For the same reason, the generator refuses to replace an existing sealed file. Nothing in this repository verifies the hash before that check.
+
+**Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them, and later samples exclude them (see [Selection](#selection)). All other `reserve` texts stay unread.
 
 **Not run.** Neither the kernel nor the quote checker has been applied to these cases. That is the measurement after the preregistration.
+
+**Known limits.** The maintainer accepted both.
+
+- **`format_variant` tests changed spaces.** All development cases of this type change a space. The selected texts hold one straight quotation mark in total, so the rule for typographic quotation marks is in effect tested on invented sentences only.
+- **The 70/30 split is by case.** A text can appear in the development part and in the held-out part, so the two parts are not independent.
 
 ## Quote check
 
@@ -136,9 +147,23 @@ The tests of this script use invented sentences only.
 
 ## Import
 
-`scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds `date` and `model_name`, the name the chat interface shows. The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`.
+`scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds the metadata of the [run protocol](#run-protocol). The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`.
 
-**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, breaks the schema, or has unusable metadata. Nothing is repaired, so an answer in a code fence or with text around the JSON is a failure. One value outside a vocabulary, such as an unknown category, makes the whole run a failure.
+**Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, breaks the schema, or has unusable metadata. Invalid JSON always stays a failure. Two exceptions apply, and nothing else is repaired.
+
+**Exception 1: code block.** One code block around the whole answer is removed, and the run is not a failure.
+
+- The opening fence is ` ``` ` or ` ```json ` in any case, and the closing fence is ` ``` `. Each stands on its own line.
+- Only whitespace may stand outside the block.
+- Text around the block, a second block, another language tag or invalid JSON inside the block stays a failure.
+
+**Exception 2: unknown category.** An error entry whose category is a text outside the vocabulary gets the mark `invalid_category` (ungültige Kategorie), and the run stays usable.
+
+- The quote of the entry is checked as usual.
+- The entry can never count as a detection.
+- A missing category, a category that is not a text and every other unknown value, such as a criterion `K9`, stay failures.
+
+**Counted.** Per model, the analysis reports both exceptions under `import_notes`: `code_fences_removed` counts usable runs, and `invalid_category_entries` counts entries.
 
 **No assignment.** The importer sets no pointers and assigns nothing afterwards. Each reference keeps its origin, separately for both modes:
 
@@ -176,15 +201,30 @@ The tests of this script use invented sentences only.
 
 **Detection.** An inserted error counts as found if an error report names its sentence, delivers a valid quote in normalized mode and uses an accepted category. A report with the right sentence but another category is no detection; `wrong_category_hits` keeps it visible. Comparing a report with the accepted descriptions needs human judgment and is not part of this script.
 
-**False alarm.** Target sentences are correct in the original, so an error report there is a false alarm. Any category counts.
+**False alarm.** Target sentences are correct in the original, so an error report there is a false alarm. Any category counts, an unknown one too.
+
+## Run protocol
+
+**Test subjects.** ChatGPT, Gemini and Grok. Mistral and Claude are not test subjects.
+
+**Each run** uses a new private or temporary chat, without memory and without custom instructions.
+
+**Metadata.** Each run has these fields in `<repetition>.meta.json`. A run without all of them counts as a failure.
+
+| Field | Content |
+|---|---|
+| `model_name` | Model name as the chat interface shows it |
+| `date` | Date, `YYYY-MM-DD` |
+| `time` | Time, `HH:MM` |
+| `chat_mode` | Chat mode used, as the chat interface calls it |
 
 ## Open decisions
 
 These points are not settled here, and the tooling does not assume an answer.
 
-- **Writing task.** Its wording is not in `annotations.zip`, which holds only the 262 annotation files. The study paper and the corpus repository were not consulted, because this build allowed one download only. The wording must come from a source and must not be invented.
-- **Marking guide.** The maintainer supplies its wording.
-- **Chatbots.** Proposed: ChatGPT, Gemini and Mistral. Claude is not a test subject.
+- **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
 - **Repetitions.** Proposed: three per version.
-- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sealed part.
-- **Definitions.** The definitions of the measures were written from the study brief, without access to audit report 2. Before the preregistration they must be compared with its table, above all measures 6 to 8 and 10 to 12.
+- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
+- **Definitions.** The definitions of the measures were written from the study brief, without access to audit report 2. They have not been compared with its table yet. That comparison must happen before the preregistration, above all for measures 6 to 8 and 10 to 12.
+
+**Writing task.** The prompt uses a marked paraphrase after Schaller et al., LREC 2026. The original wording is not available.
