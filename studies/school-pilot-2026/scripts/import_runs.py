@@ -41,7 +41,7 @@ from inspektorium.core.strict_json import StrictJSONError, load_strict_json
 STUDY_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SCHEMA = STUDY_ROOT / "schemas" / "output.schema.json"
 DEFAULT_RUNS = STUDY_ROOT / "runs"
-DEFAULT_BANKS = STUDY_ROOT / "data" / "selected"
+DEFAULT_BANKS = STUDY_ROOT / "runs" / "banks"
 CRITERIA_PATH = STUDY_ROOT / "data" / "criteria.json"
 ORIGINAL = "original"
 

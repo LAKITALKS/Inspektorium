@@ -7,8 +7,9 @@ SHA-256, not from a random generator.
 Every chatbot works on both days. Each chatbot has the same number of runs per
 day, and the repetitions of one text and version are spread over both days.
 
-The prompt files named in the plan do not exist yet. They need the marking guide
-and the inserted errors, and they stay out of Git like everything below ``runs/``.
+The prompt files named in the plan do not exist yet. ``make_prompts.py`` writes
+them from the marking guide and the inserted errors, and they stay out of Git like
+everything below ``runs/``.
 """
 
 from __future__ import annotations

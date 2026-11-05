@@ -4,8 +4,9 @@ Diese Vorlage ist noch nicht einsatzbereit: `{{ERWARTUNGSHORIZONT}}` ist offen u
 
 Die Schreibaufgabe ist eine gekennzeichnete Umschreibung. Der Originalwortlaut liegt nicht vor.
 
-Beim Einsetzen gilt:
+`scripts/make_prompts.py` füllt die Vorlage. Beim Einsetzen gilt:
 
+- `{{ERWARTUNGSHORIZONT}}` kommt aus der Datei, die das Skript als Parameter erhält.
 - `{{SATZBANK}}` wird je Text aus der Satzbank gefüllt: eine Zeile je Satz in der Form `[S1] Satztext`.
 - `{{AUSGABESCHEMA}}` wird durch den Inhalt von `schemas/output.schema.json` ersetzt.
 

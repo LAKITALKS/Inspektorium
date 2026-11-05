@@ -1,0 +1,29 @@
+{
+  "beispiel_a": {
+    "version": "veraendert",
+    "type": "Zahl",
+    "sids": ["S2"],
+    "description": "Erfundenes Beispiel: Die Ladezeit im Satz ist zu kurz.",
+    "edits": [
+      {"sid": "S2", "from": "30 Minuten", "to": "3 Minuten"}
+    ]
+  },
+  "beispiel_b": {
+    "version": "veraendert",
+    "type": "Widerspruch",
+    "sids": ["S1", "S3"],
+    "description": "Erfundenes Beispiel: Der letzte Satz widerspricht dem ersten.",
+    "edits": [
+      {"sid": "S3", "from": "bleibt der Bus billiger", "to": "bleibt die Bahn billiger"}
+    ]
+  },
+  "beispiel_c": {
+    "version": "veraendert",
+    "type": "Faktum",
+    "sids": ["S1"],
+    "description": "Erfundenes Beispiel: Die Sonne geht nicht im Westen auf.",
+    "edits": [
+      {"sid": "S1", "from": "im Osten", "to": "im Westen"}
+    ]
+  }
+}
