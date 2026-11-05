@@ -9,7 +9,7 @@
 | Corpus, sentence banks, criteria | Done |
 | Draw of the study groups | Done |
 | Reference cases | Built and sealed, not run through any checker |
-| Quote checker, import, analysis, coding sheet | Built, tested on invented data only |
+| Quote checker, import, analysis, coding sheet, prompt generator | Built, tested on invented data only |
 | Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
 | Inserted errors | Proposed, not decided |
 | Run plan | Done; the prompt files do not exist yet |
@@ -29,7 +29,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, run plan, and later the preregistration | yes |
-| `runs/` | Chatbot outputs and prepared files | no |
+| `runs/` | Chatbot outputs, prepared files, prompt files and the sentence banks of both versions | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots | yes |
 | `schemas/` | JSON Schema for the chatbot output | yes |
@@ -168,11 +168,27 @@ The tests of this script use invented sentences only.
 
 ## Prompt and output format
 
-[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholders for the writing task and the marking guide are open; their wording must not be invented.
+[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholder for the marking guide is open; its wording must not be invented.
+
+**Prompt files.** `scripts/make_prompts.py` writes the six prompt files that the run plan names: three texts, each as the original and as the modified version.
+
+```bash
+python studies/school-pilot-2026/scripts/make_prompts.py --guide <marking-guide.md> --traps <traps.json>
+```
+
+- **Inputs.** The marking guide and the trap file are paths on the command line. Neither has a default, and the script opens only the files it is given.
+- **Content.** Only the part of the template below its line is sent. Each sentence stands on its own line as `[S1] Satztext`.
+- **Modified version.** It is the original plus the `edits` of the trap file; see [Hit rule](#hit-rule). The sentence numbers are the same in both versions.
+- **Difference check.** The script compares the two banks sentence by sentence and the two finished prompts line by line. It stops if anything differs apart from the defined passages, or if a defined change is missing.
+- **Output.** The prompts go to `runs/prompts/`, and the banks of both versions go to `runs/banks/`, where the import reads them. All of them stay out of Git, because the modified texts would show the inserted errors before the measurement.
+- **Repeatable.** The same inputs give the same bytes. Nothing uses the clock or chance.
+- **No overwriting.** The script writes everything or nothing. A different existing file is never replaced, so a prompt that was already sent cannot change.
+
+Its tests use invented texts and the example file `tests/fixtures/example_traps.json`. One more test runs the committed plan and banks with a placeholder as the edit.
 
 ## Import
 
-`scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds the metadata of the [run protocol](#run-protocol). The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`.
+`scripts/import_runs.py` reads `runs/<model>/<text_id>/<version>/<repetition>.json`. The file holds the answer exactly as received. `<repetition>.meta.json` next to it holds the metadata of the [run protocol](#run-protocol). The version `original` uses the bank `<text_id>.json`, and any other version uses `<text_id>.<version>.json`. Both lie in `runs/banks/`, where `make_prompts.py` writes them. The import stops if a bank is missing there.
 
 **Failures.** A run is a failure if its output is missing, is not exactly one strict JSON value, or breaks the schema. Invalid JSON always stays a failure. Four exceptions apply, and nothing else is repaired.
 
@@ -188,11 +204,15 @@ The tests of this script use invented sentences only.
 - The entry can never count as a detection.
 - A missing category, a category that is not a text and every other unknown value, such as a criterion `K9`, stay failures.
 
-**Exception 3: quote without a sentence number.** A quote or error report whose `sid` is missing, null or empty keeps the run usable. The quote counts in measure 2 only. A `sid` in any other wrong form stays a failure.
+**Exception 3: sentence number.** The agreed form is `S3`. A wrong number is never treated more strictly than a missing one.
+
+- `3` is rewritten to `S3`, and every rewrite is counted. The number is then checked like `S3`.
+- Any other form counts as a missing number, for example null, an empty text, `s3`, `S03`, `Satz 3` or a JSON number.
+- A quote or error report without a number keeps the run usable. The quote counts in measure 2 and in `quotes_without_sid` only, and the report cannot pass stage 1.
 
 **Exception 4: unknown criterion.** A criterion outside the grid keeps the run usable. The reference is marked with `id: null` and counts in measure 6 as outside the grid. A criterion written as its exact name from `data/criteria.json`, in any case, counts as its id. That list of names is the agreed list of spellings.
 
-**Counted.** Per chatbot, the analysis reports the first two exceptions under `import_notes` and the last two under `counts`: `code_fences_removed` counts usable runs, `invalid_category_entries` counts entries, and `quotes_without_sid` and the references in measure 6 count quotes and references.
+**Counted.** Per chatbot, the analysis reports three things under `import_notes`: `code_fences_removed` counts usable runs, `sids_rewritten` counts rewritten numbers in usable runs, and `invalid_category_entries` counts entries. Under `counts`, `quotes_without_sid` counts quotes, and measure 6 counts the references outside the grid.
 
 **Metadata.** A missing field is an operating error, not a failure of the tool.
 
@@ -233,7 +253,7 @@ Measures 2 and 3 are reported strict and normalized. They count quotes in commen
 **Also reported, without a measure of their own.**
 
 - `invalid_quotes` lists every quote that fails in at least one mode, one by one, with both results. A quote with silently corrected spelling is invalid in both modes and appears here.
-- `quotes_without_sid` counts quotes without a sentence number.
+- `quotes_without_sid` counts quotes without a sentence number, including numbers in a form other than `S3` and `3`.
 - `ambiguous_quotes` counts quotes whose text occurs more than once in the essay.
 - `self_marked_global` counts comments the chatbot itself marks as global. It is descriptive only.
 - `misplaced_hits` counts runs with `ja` without stage 1.
@@ -249,15 +269,17 @@ Measures 2 and 3 are reported strict and normalized. They count quotes in commen
 
 ## Hit rule
 
-A trap is one inserted error per text. Its definition has this form and comes to `analyze.py` as a file:
+A trap is one inserted error per text. Its definition has this form and comes to `analyze.py` and `make_prompts.py` as a file:
 
 ```json
-{"<text_id>": {"version": "veraendert", "type": "Zahl", "sids": ["S2"], "description": "..."}}
+{"<text_id>": {"version": "veraendert", "type": "Zahl", "sids": ["S2"], "description": "...", "edits": [{"sid": "S2", "from": "...", "to": "..."}]}}
 ```
 
 The type is exactly one of `Zahl`, `Faktum`, `Widerspruch` and `Unsinn`. The target is one sentence; only a contradiction may name two. The analysis refuses any other form.
 
-**Stage 1 is mechanical.** A report passes if it names a target sentence and exactly the target type.
+`edits` says how the modified version arises, and only `make_prompts.py` reads it. An edit replaces one passage by one line of text. The passage must occur exactly once in a target sentence. A sentence takes one edit only, and no sentence is added or removed. A contradiction may edit one of its two sentences or both.
+
+**Stage 1 is mechanical.** A report passes if it names a target sentence and exactly the target type. A report without a sentence number cannot pass.
 
 **Stage 2 is human.** The coder answers one question per run: does a report describe the target error? The answer is `ja` with the number of the report, `nein` or `unklar`.
 
@@ -271,7 +293,7 @@ The type is exactly one of `Zahl`, `Faktum`, `Widerspruch` and `Unsinn`. The tar
 
 A hit needs no valid quote, because measures 2 and 3 measure quote fidelity.
 
-**Counter assumption.** `counter_assumption` repeats measures 9 to 11 with the last two rows reversed: a hit in the modified version, no false alarm in the original. Both results are reported.
+**Counter assumption.** `counter_assumption` repeats measures 9 to 11 with the last two rows reversed: a hit in the modified version, no false alarm in the original. Both results are reported. A report with an unknown category away from the target stays `ja` without stage 1 in both results.
 
 ## Coding
 
@@ -313,7 +335,7 @@ The maintainer decided these differences from the main study's plan.
 
 **Run plan.** [prereg/laufplan.csv](prereg/laufplan.csv) has one row per run with its number, day, chatbot, prompt file, target file and metadata file. `scripts/make_run_plan.py` mixes the order with the seed from `prereg/seed.txt`. Every chatbot has nine runs on each of the two days, and the repetitions of one text and version fall on both days.
 
-The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. The prompt files named in the plan do not exist yet, because they need the marking guide and the inserted errors. They stay out of Git.
+The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. The prompt files named in the plan do not exist yet, because they need the marking guide and the inserted errors. `scripts/make_prompts.py` writes them once both are decided, and they stay out of Git.
 
 **Metadata.** Each run has these fields in `<repetition>.meta.json`. All of them are entered before the prompt is sent.
 
