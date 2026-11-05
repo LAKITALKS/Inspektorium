@@ -153,11 +153,6 @@ def test_a_clean_run_is_usable_with_its_metadata(lab: Lab) -> None:
             id="criterion-not-text",
         ),
         pytest.param(
-            b'{"grade": 3, "errors": [], "comments": [{"text": "x", "scope": "local", '
-            b'"quotes": [{"sid": 3, "quote": "x"}], "criteria": []}]}',
-            id="sid-not-text",
-        ),
-        pytest.param(
             b'{"grade": 3, "comments": [], "errors": '
             b'[{"sid": "S1", "quote": "x", "category": 7, "explanation": "y"}]}',
             id="category-not-text",
@@ -167,8 +162,6 @@ def test_a_clean_run_is_usable_with_its_metadata(lab: Lab) -> None:
             b'[{"sid": "S1", "quote": "x", "explanation": "y"}]}',
             id="category-missing",
         ),
-        pytest.param(_output([_comment(quotes=[("1", "x")])]), id="bad-sid"),
-        pytest.param(_output([_comment(quotes=[("S1\n", "x")])]), id="sid-newline"),
     ],
 )
 def test_an_unreadable_output_is_a_failure(lab: Lab, raw: bytes) -> None:
@@ -274,11 +267,117 @@ def test_an_unknown_criterion_saves_no_other_violation(lab: Lab) -> None:
     assert lab.imported()[0].status == imp.FAILED
 
 
-@pytest.mark.parametrize("sid", [None, "", "  "], ids=["null", "empty", "blank"])
-def test_a_quote_without_a_number_keeps_the_run_usable(
-    lab: Lab, sid: str | None
-) -> None:
-    lab.add(_output([_comment(quotes=[(sid, "300 km")])]))
+OTHER_SID_FORMS = [
+    pytest.param(None, id="null"),
+    pytest.param("", id="empty"),
+    pytest.param("  ", id="blank"),
+    pytest.param("s1", id="lower-case"),
+    pytest.param("S01", id="leading-zero-with-letter"),
+    pytest.param("01", id="leading-zero"),
+    pytest.param("S0", id="sentence-zero"),
+    pytest.param("0", id="zero"),
+    pytest.param("S 1", id="inner-space"),
+    pytest.param(" S1", id="leading-space"),
+    pytest.param("1 ", id="trailing-space"),
+    pytest.param("S1\n", id="newline-with-letter"),
+    pytest.param("1\n", id="newline"),
+    pytest.param("[S1]", id="brackets"),
+    pytest.param("Satz 1", id="word"),
+    pytest.param("S1, S2", id="two-numbers"),
+    pytest.param("١", id="arabic-digit"),
+    pytest.param("１", id="fullwidth-digit"),
+    pytest.param(1, id="number"),
+    pytest.param(1.5, id="decimal"),
+    pytest.param(True, id="boolean"),
+    pytest.param(["S1"], id="list"),
+    pytest.param({"sid": "S1"}, id="object"),
+]
+
+
+def _with_sids(comment_sid: object = "S1", error_sid: object = "S1") -> bytes:
+    payload = json.loads(
+        _output(
+            [_comment(quotes=[("S1", "300 km")])],
+            [_error("S1", "300 km", "Zahl")],
+        )
+    )
+    payload["comments"][0]["quotes"][0]["sid"] = comment_sid
+    payload["errors"][0]["sid"] = error_sid
+    return json.dumps(payload).encode()
+
+
+def test_a_number_in_the_agreed_form_is_not_rewritten(lab: Lab) -> None:
+    lab.add(_with_sids())
+    run = lab.imported()[0]
+    assert run.sids_rewritten == 0
+    assert [item.sid for item in run.references] == ["S1", "S1"]
+
+
+def test_a_bare_number_becomes_the_agreed_form_and_is_counted(lab: Lab) -> None:
+    lab.add(_with_sids("1", "1"))
+    run = lab.imported()[0]
+    assert (run.status, run.sids_rewritten) == (imp.USABLE, 2)
+    assert [item.sid for item in run.references] == ["S1", "S1"]
+    assert [item.origin_strict for item in run.references] == [imp.DELIVERED_VALID] * 2
+    assert run.errors[0]["sid"] == "S1"
+
+
+def test_a_rewritten_number_is_still_checked_against_its_sentence(lab: Lab) -> None:
+    lab.add(_with_sids("2", "99"))
+    run = lab.imported()[0]
+    assert run.sids_rewritten == 2
+    assert [item.origin_strict for item in run.references] == [
+        imp.DELIVERED_INVALID,
+        imp.DELIVERED_INVALID,
+    ]
+
+
+@pytest.mark.parametrize("sid", OTHER_SID_FORMS)
+def test_any_other_form_counts_as_a_missing_number(lab: Lab, sid: object) -> None:
+    lab.add(_with_sids(sid, sid))
+    run = lab.imported()[0]
+    assert (run.status, run.sids_rewritten) == (imp.USABLE, 0)
+    for reference in run.references:
+        assert reference.sid is None
+        assert reference.origin_strict == imp.DELIVERED_WITHOUT_SID
+        assert reference.text_valid_strict is True
+    assert run.errors[0]["sid"] is None
+
+
+def test_another_form_counts_only_in_measure_2(lab: Lab) -> None:
+    lab.add(_with_sids("Satz 1", "1"))
+    counts = _report(lab, {}, {})["counts"]
+    assert counts["quotes"]["strict"]["text"]["label"] == "2 von 2"
+    assert counts["quotes"]["strict"]["text_and_location"]["label"] == "1 von 1"
+    assert counts["quotes_without_sid"] == 1
+
+
+def test_a_rewrite_saves_no_other_violation(lab: Lab) -> None:
+    payload = json.loads(_with_sids("1", "1"))
+    payload["errors"][0]["extra"] = 1
+    lab.add(json.dumps(payload).encode())
+    run = lab.imported()[0]
+    assert (run.status, run.sids_rewritten) == (imp.FAILED, 0)
+
+
+def test_rewrites_are_counted_per_chatbot(lab: Lab) -> None:
+    lab.add(_with_sids("1", "1"), "1", model="eins")
+    lab.add(_with_sids("2", "S2"), "2", model="eins")
+    lab.add(_with_sids(), "1", model="zwei")
+    lab.add(_with_sids("Satz 1", None), "2", model="zwei")
+    report = an.analyze(lab.records(), {}, {})
+    assert report["eins"]["import_notes"]["sids_rewritten"] == 3
+    assert report["zwei"]["import_notes"]["sids_rewritten"] == 0
+
+
+def test_a_failed_run_adds_no_rewrite_to_the_report(lab: Lab) -> None:
+    raw = _with_sids("1", "1").replace(b'"grade": 3', b'"grade": 9')
+    lab.add(raw)
+    assert _report(lab, {}, {})["import_notes"]["sids_rewritten"] == 0
+
+
+def test_a_quote_without_a_number_keeps_the_run_usable(lab: Lab) -> None:
+    lab.add(_output([_comment(quotes=[(None, "300 km")])]))
     run = lab.imported()[0]
     reference = run.references[0]
     assert run.status == imp.USABLE
@@ -755,6 +854,19 @@ def test_a_hit_needs_stage_1_and_ja_for_the_same_report(lab: Lab) -> None:
     assert counts["detection_per_usable_run"]["label"] == "1 von 1"
 
 
+def test_a_rewritten_number_can_pass_stage_1(lab: Lab) -> None:
+    _one_report(lab, _error("2", "30 Minuten", "Zahl"))
+    counts = _report(lab, TRAPS, _code("1", "v1", "ja", 1))["counts"]
+    assert counts["detection_per_usable_run"]["label"] == "1 von 1"
+
+
+def test_a_number_in_another_form_cannot_pass_stage_1(lab: Lab) -> None:
+    _one_report(lab, _error("Satz 2", "30 Minuten", "Zahl"))
+    report = _report(lab, TRAPS, _code("1", "v1", "ja", 1))
+    assert report["counts"]["detection_per_usable_run"]["label"] == "0 von 1"
+    assert report["misplaced_hits"]["in_modified"] == 1
+
+
 def test_ja_for_another_report_is_no_hit(lab: Lab) -> None:
     lab.add(
         _output(
@@ -856,6 +968,23 @@ def test_a_coded_unknown_category_follows_the_same_two_views(lab: Lab) -> None:
     assert counter["false_alarm"]["label"] == "0 von 1"
 
 
+def test_an_unknown_category_away_from_the_target_stays_misplaced_in_both_views(
+    lab: Lab,
+) -> None:
+    unknown = _error("S1", "300 km", "Grammatik")
+    _one_report(lab, unknown)
+    _one_report(lab, unknown, ORIGINAL_VERSION)
+    codes = {**_code("1", "v1", "ja", 1), **_code("1", ORIGINAL_VERSION, "ja", 1)}
+    report = _report(lab, TRAPS, codes)
+    counts = report["counts"]
+    counter = counts["counter_assumption"]
+    assert counts["detection_per_usable_run"]["label"] == "0 von 1"
+    assert counter["detection_per_usable_run"]["label"] == "0 von 1"
+    assert counts["false_alarm"]["label"] == "0 von 1"
+    assert counter["false_alarm"]["label"] == "0 von 1"
+    assert report["misplaced_hits"] == {"in_modified": 1, "in_original": 1}
+
+
 def test_an_unknown_category_coded_nein_changes_nothing(lab: Lab) -> None:
     _one_report(lab, _error("S2", "30 Minuten", "Grammatik"), ORIGINAL_VERSION)
     counts = _report(lab, TRAPS, _code("1", ORIGINAL_VERSION))["counts"]
@@ -949,6 +1078,7 @@ def test_the_report_counts_what_the_importer_tolerated(lab: Lab) -> None:
     report = _report(lab)
     assert report["import_notes"] == {
         "code_fences_removed": 1,
+        "sids_rewritten": 0,
         "invalid_category_entries": 2,
     }
     assert report["counts"]["failures"]["label"] == "1 von 3"

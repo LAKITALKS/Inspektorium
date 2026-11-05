@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 from collections import Counter, defaultdict
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from functools import partial
@@ -41,6 +40,7 @@ from import_runs import (
     FAILED,
     ORIGINAL,
     PROTOCOL_ERROR,
+    SID_FORM,
     USABLE,
 )
 
@@ -49,7 +49,6 @@ MODES = ("strict", "normalized")
 MIN_USABLE_RUNS = 3
 """A grade cell with fewer usable runs is marked."""
 TRAP_TYPES = ("Zahl", "Faktum", "Widerspruch", "Unsinn")
-_SID = re.compile(r"S[1-9][0-9]*")
 
 CONFIRMED = "confirmed"
 """Stage 1 and ``ja`` for the same report."""
@@ -84,7 +83,7 @@ def validate_traps(traps: Traps) -> None:
         if trap.get("type") not in TRAP_TYPES:
             raise TrapError(f"{text_id}: type must be one of {TRAP_TYPES}")
         if not isinstance(sids, list) or not all(
-            isinstance(sid, str) and _SID.fullmatch(sid) for sid in sids
+            isinstance(sid, str) and SID_FORM.fullmatch(sid) for sid in sids
         ):
             raise TrapError(f"{text_id}: sids must be a list of sentence numbers")
         allowed = 2 if trap["type"] == "Widerspruch" else 1
@@ -329,6 +328,7 @@ def import_notes(usable: Sequence[Run]) -> dict[str, int]:
 
     return {
         "code_fences_removed": sum(run["code_fence_removed"] for run in usable),
+        "sids_rewritten": sum(run["sids_rewritten"] for run in usable),
         "invalid_category_entries": sum(
             error["invalid_category"] for run in usable for error in run["errors"]
         ),

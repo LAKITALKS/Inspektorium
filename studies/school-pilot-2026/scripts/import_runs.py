@@ -7,10 +7,11 @@ exactly as received. ``<repetition>.meta.json`` next to it holds ``date``,
 
 A run that cannot be read counts as a failure. A few things are tolerated and
 counted: one code block around the whole answer is removed, an error entry with
-an unknown category is marked, a quote without a sentence number stays a quote,
-and an unknown criterion is marked as outside the grid. In each case the run
-stays usable. Nothing else is repaired. The importer sets no pointers: a comment
-that lists no quote stays without one, whatever its text says.
+an unknown category is marked, a sentence number ``3`` becomes ``S3``, a sentence
+number in any other form counts as missing, a quote without a sentence number
+stays a quote, and an unknown criterion is marked as outside the grid. In each
+case the run stays usable. Nothing else is repaired. The importer sets no
+pointers: a comment that lists no quote stays without one, whatever its text says.
 
 Metadata belongs to the operator, not to the tool. A run file with a missing
 field is rejected and the field is named, so that it can be added from the chat
@@ -69,6 +70,9 @@ _SCHEMA_KEYWORDS = frozenset(
         "maximum",
     }
 )
+SID_FORM = re.compile(r"S[1-9][0-9]*")
+"""The agreed form of a sentence number."""
+_BARE_SID = re.compile(r"[1-9][0-9]*")
 _META_NAME = re.compile(r"\.meta\.json$")
 _CODE_FENCE = re.compile(
     r"\s*```(?:json)?[ \t]*\r?\n(.*)\r?\n```\s*", re.DOTALL | re.IGNORECASE
@@ -135,6 +139,7 @@ class ParsedOutput:
     value: dict[str, Any]
     code_fence_removed: bool
     invalid_categories: frozenset[int]
+    sids_rewritten: int = 0
 
 
 @dataclass(frozen=True)
@@ -152,6 +157,7 @@ class RunRecord:
     failure_reason: str | None = None
     protocol_note: str | None = None
     code_fence_removed: bool = False
+    sids_rewritten: int = 0
     grade: int | None = None
     comments: list[dict[str, Any]] = field(default_factory=list)
     errors: list[dict[str, Any]] = field(default_factory=list)
@@ -226,11 +232,11 @@ def remove_code_fence(raw: bytes) -> tuple[bytes, bool]:
     return match.group(1).encode("utf-8"), True
 
 
-def _drop_empty_sids(value: object) -> None:
-    """Treat an empty sentence number like a missing one."""
+def _sid_entries(value: object) -> list[dict[str, Any]]:
+    """List the quotes and error reports that hold a sentence number."""
 
     if not isinstance(value, dict):
-        return
+        return []
     entries: list[object] = []
     comments = value.get("comments")
     errors = value.get("errors")
@@ -240,20 +246,35 @@ def _drop_empty_sids(value: object) -> None:
                 entries.extend(comment["quotes"])
     if isinstance(errors, list):
         entries.extend(errors)
-    for entry in entries:
-        if not isinstance(entry, dict) or "sid" not in entry:
-            continue
+    return [entry for entry in entries if isinstance(entry, dict) and "sid" in entry]
+
+
+def _settle_sids(value: object) -> int:
+    """Bring sentence numbers to the agreed form; return how many were rewritten.
+
+    ``S3`` stays and ``3`` becomes ``S3``. Any other form is dropped, so that the
+    entry counts like one without a number. A wrong number is never stricter than
+    a missing one.
+    """
+
+    rewritten = 0
+    for entry in _sid_entries(value):
         sid = entry["sid"]
-        if sid is None or (isinstance(sid, str) and not sid.strip()):
+        if isinstance(sid, str) and _BARE_SID.fullmatch(sid):
+            entry["sid"] = f"S{sid}"
+            rewritten += 1
+        elif not (isinstance(sid, str) and SID_FORM.fullmatch(sid)):
             del entry["sid"]
+    return rewritten
 
 
 def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
     """Return the decoded output, or None if it is not readable as agreed.
 
     Three schema violations leave a run usable: an unknown category of an error
-    entry, an unknown criterion, and a missing sentence number. Every other
-    violation, in any entry, makes the run a failure.
+    entry, an unknown criterion, and a missing sentence number, which also stands
+    for a number in a wrong form. Every other violation, in any entry, makes the
+    run a failure.
     """
 
     content, fenced = remove_code_fence(raw)
@@ -261,7 +282,7 @@ def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
         value = load_strict_json(content)
     except StrictJSONError:
         return None
-    _drop_empty_sids(value)
+    rewritten = _settle_sids(value)
     invalid: set[int] = set()
     for problem in schema_problems(value, schema):
         match = _CATEGORY_PROBLEM.fullmatch(problem)
@@ -273,7 +294,7 @@ def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
         ):
             return None
     assert isinstance(value, dict)
-    return ParsedOutput(value, fenced, frozenset(invalid))
+    return ParsedOutput(value, fenced, frozenset(invalid), rewritten)
 
 
 def _field_problem(name: str, value: object) -> str | None:
@@ -435,6 +456,7 @@ def import_run(
         USABLE,
         **stamp,
         code_fence_removed=parsed.code_fence_removed,
+        sids_rewritten=parsed.sids_rewritten,
         grade=output["grade"],
         comments=[
             {
@@ -509,13 +531,15 @@ def main(argv: list[str] | None = None) -> int:
     failures = sum(record.status == FAILED for record in records)
     protocol = sum(record.status == PROTOCOL_ERROR for record in records)
     fences = sum(record.code_fence_removed for record in records)
+    rewritten = sum(record.sids_rewritten for record in records)
     invalid = sum(
         error["invalid_category"] for record in records for error in record.errors
     )
     print(
         f"imported {len(records)} attempted runs, {failures} failures, "
         f"{protocol} protocol errors, "
-        f"{fences} code fences removed, {invalid} invalid categories"
+        f"{fences} code fences removed, {rewritten} sentence numbers rewritten, "
+        f"{invalid} invalid categories"
     )
     return 0
 
