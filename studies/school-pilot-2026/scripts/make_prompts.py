@@ -16,14 +16,20 @@ the files it is given. It writes the prompts and the banks of both versions belo
 ``runs/``, which stays out of Git, and it writes everything or nothing. It never
 replaces a different file, so a prompt that was already sent cannot change. The
 result depends on the inputs alone: nothing here uses the clock or chance.
+
+``runs/manifest.json`` records the SHA-256 of the guide, the trap file, all banks
+and all prompts, and the commit of this script. A script that differs from its
+commit writes nothing, because the manifest could not name it.
 """
 
 from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import io
 import re
+import subprocess
 import sys
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
@@ -40,6 +46,9 @@ STUDY_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TEMPLATE = STUDY_ROOT / "prompts" / "grading_prompt_de.md"
 DEFAULT_SOURCE_BANKS = STUDY_ROOT / "data" / "selected"
 RUN_BANKS = Path("runs") / "banks"
+RUN_PROMPTS = "runs/prompts/"
+MANIFEST = "runs/manifest.json"
+THIS_SCRIPT = Path(__file__).resolve()
 PROMPT_COUNT = 6
 SENT_PART_MARK = "\n---\n"
 EDIT_KEYS = {"sid", "from", "to"}
@@ -281,6 +290,61 @@ def build_files(
     return built
 
 
+def _sha256(content: bytes) -> str:
+    return hashlib.sha256(content).hexdigest()
+
+
+def _git(folder: Path, *arguments: str) -> str:
+    try:
+        result = subprocess.run(
+            ["git", *arguments],
+            cwd=folder,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError as error:
+        raise PromptError("Git cannot run, so the script has no commit") from error
+    if result.returncode != 0:
+        raise PromptError("the script is not in a Git checkout")
+    return result.stdout.strip()
+
+
+def script_commit(script: Path = THIS_SCRIPT) -> str:
+    """Return the last commit of the script; a differing copy is refused."""
+
+    folder, name = script.parent, script.name
+    if _git(folder, "status", "--porcelain", "--", name):
+        raise PromptError(f"{name} differs from its commit")
+    commit = _git(folder, "log", "-1", "--format=%H", "--", name)
+    if not commit:
+        raise PromptError(f"{name} has no commit")
+    return commit
+
+
+def build_manifest(
+    files: Mapping[str, bytes], guide: str, traps: str, commit: str
+) -> bytes:
+    """Name every input and result by hash; these values go into the prereg."""
+
+    def digests(folder: str) -> dict[str, str]:
+        return {
+            name: _sha256(content)
+            for name, content in sorted(files.items())
+            if name.startswith(folder)
+        }
+
+    return dump_json(
+        {
+            "script_commit": commit,
+            "guide_sha256": _sha256(guide.encode("utf-8")),
+            "traps_sha256": _sha256(traps.encode("utf-8")),
+            "banks": digests(f"{RUN_BANKS.as_posix()}/"),
+            "prompts": digests(RUN_PROMPTS),
+        }
+    )
+
+
 def write_files(files: Mapping[str, bytes], root: Path) -> None:
     """Write everything or nothing; a different existing file stays."""
 
@@ -315,20 +379,26 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=STUDY_ROOT)
     args = parser.parse_args(argv)
     try:
+        commit = script_commit()
         files = prompt_files(_read(args.plan))
+        guide, traps = _read(args.guide), _read(args.traps)
         built = build_files(
             files,
             args.banks,
-            read_traps(_read(args.traps)),
-            _read(args.guide),
+            read_traps(traps),
+            guide,
             _read(args.template),
             _read(args.schema),
         )
-        write_files(built, args.root)
+        manifest = build_manifest(built, guide, traps, commit)
+        write_files({**built, MANIFEST: manifest}, args.root)
     except (PromptError, TrapError) as refused:
         print(f"REFUSED, nothing written: {refused}", file=sys.stderr)
         return 1
-    print(f"wrote {len(files)} prompts and {len(built) - len(files)} sentence banks")
+    print(
+        f"wrote {len(files)} prompts, {len(built) - len(files)} sentence banks "
+        f"and {MANIFEST}"
+    )
     return 0
 
 

@@ -6,3 +6,5 @@ sealed/
 runs/
 # Candidate error sites stay private until the maintainer decides.
 prereg/injection_proposals.md
+prereg/injection_proposals_v2.md
+prereg/traps_draft.json

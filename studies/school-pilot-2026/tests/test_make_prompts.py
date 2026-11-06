@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import shutil
+import subprocess
 import unicodedata
 from collections.abc import Callable
 from dataclasses import asdict
@@ -54,6 +56,8 @@ TEMPLATE = (
     "Kopf für Menschen.\n\n---\n\nRolle.\n\n{{ERWARTUNGSHORIZONT}}\n\n"
     "## Aufsatz\n\n{{SATZBANK}}\n\n## Ende\n\n{{AUSGABESCHEMA}}\n"
 )
+SCRIPT_COMMIT = "c" * 40
+real_script_commit = mp.script_commit
 Traps = dict[str, dict[str, Any]]
 
 
@@ -119,6 +123,13 @@ class Bench:
         }
 
 
+@pytest.fixture(autouse=True)
+def fixed_script_commit(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The commit of the working copy is not what these tests are about."""
+
+    monkeypatch.setattr(mp, "script_commit", lambda: SCRIPT_COMMIT)
+
+
 @pytest.fixture
 def bench(tmp_path: Path) -> Bench:
     return Bench(tmp_path)
@@ -137,9 +148,11 @@ def _refused(bench: Bench, capsys: pytest.CaptureFixture[str], reason: str) -> N
     assert not bench.output.exists()
 
 
-def test_the_example_inputs_give_six_prompts_and_six_banks(bench: Bench) -> None:
+def test_the_example_inputs_give_six_prompts_six_banks_and_a_manifest(
+    bench: Bench,
+) -> None:
     assert bench.run() == 0
-    assert sorted(bench.written()) == sorted(
+    expected = [
         f"runs/{folder}/{text_id}{suffix}"
         for text_id in SENTENCES
         for folder, suffix in (
@@ -148,15 +161,16 @@ def test_the_example_inputs_give_six_prompts_and_six_banks(bench: Bench) -> None
             ("banks", ".json"),
             ("banks", ".veraendert.json"),
         )
-    )
+    ]
+    assert sorted(bench.written()) == sorted([*expected, "runs/manifest.json"])
 
 
 def test_the_prompts_are_exactly_the_files_of_the_plan(bench: Bench) -> None:
     assert bench.run() == 0
     named = mp.prompt_files(bench.plan.read_text("utf-8"))
-    assert sorted(named.values()) == [
+    assert sorted(named.values()) == sorted(
         name for name in bench.written() if name.startswith("runs/prompts/")
-    ]
+    )
 
 
 def test_the_result_is_the_same_in_every_run(tmp_path: Path) -> None:
@@ -274,6 +288,7 @@ def test_the_import_reads_the_written_banks_and_ignores_the_new_folders(
         ],
         "errors": [],
     }
+    assert (runs / "manifest.json").is_file()
     (folder / "1.json").write_text(json.dumps(answer), "utf-8")
     (folder / "1.meta.json").write_text(
         json.dumps(
@@ -297,8 +312,195 @@ def test_the_analysis_accepts_the_same_trap_file(bench: Bench) -> None:
     an.validate_traps(bench.read_traps())
 
 
-def test_the_written_files_stay_out_of_git(study_root: Path) -> None:
-    assert "runs/" in (study_root / ".gitignore").read_text("utf-8").split()
+def _sha256(content: bytes) -> str:
+    return hashlib.sha256(content).hexdigest()
+
+
+def _manifest(bench: Bench) -> dict[str, Any]:
+    loaded: dict[str, Any] = json.loads(
+        (bench.output / "runs/manifest.json").read_text("utf-8")
+    )
+    return loaded
+
+
+def test_the_manifest_names_every_input_and_result_by_hash(bench: Bench) -> None:
+    assert bench.run() == 0
+    written = bench.written()
+    manifest = _manifest(bench)
+    assert set(manifest) == {
+        "script_commit",
+        "guide_sha256",
+        "traps_sha256",
+        "banks",
+        "prompts",
+    }
+    assert manifest["script_commit"] == SCRIPT_COMMIT
+    assert manifest["guide_sha256"] == _sha256(bench.guide.read_bytes())
+    assert manifest["traps_sha256"] == _sha256(bench.traps.read_bytes())
+    for key, folder in (("banks", "runs/banks/"), ("prompts", "runs/prompts/")):
+        expected = {
+            name: _sha256(content)
+            for name, content in written.items()
+            if name.startswith(folder)
+        }
+        assert len(expected) == 6
+        assert manifest[key] == expected
+
+
+def test_the_manifest_hashes_the_guide_as_a_file_not_as_inserted(bench: Bench) -> None:
+    bench.guide.write_bytes(b"\n\n  Text mit Rand.  \n\n")
+    assert bench.run() == 0
+    assert _manifest(bench)["guide_sha256"] == _sha256(bench.guide.read_bytes())
+
+
+def test_a_changed_guide_changes_the_manifest(tmp_path: Path) -> None:
+    (tmp_path / "eins").mkdir()
+    (tmp_path / "zwei").mkdir()
+    first, second = Bench(tmp_path / "eins"), Bench(tmp_path / "zwei")
+    second.guide.write_text("Ein anderer Text.", "utf-8")
+    assert first.run() == 0
+    assert second.run() == 0
+    assert _manifest(first)["guide_sha256"] != _manifest(second)["guide_sha256"]
+    assert _manifest(first)["prompts"] != _manifest(second)["prompts"]
+
+
+def test_the_manifest_holds_no_local_path(bench: Bench) -> None:
+    assert bench.run() == 0
+    written = (bench.output / "runs/manifest.json").read_text("utf-8")
+    assert str(bench.root) not in written
+
+
+def test_a_new_script_commit_does_not_replace_the_manifest(
+    bench: Bench,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    assert bench.run() == 0
+    before = bench.written()
+    monkeypatch.setattr(mp, "script_commit", lambda: "d" * 40)
+    assert bench.run() == 1
+    assert "different files already exist" in capsys.readouterr().err
+    assert bench.written() == before
+
+
+def test_a_script_without_a_commit_writes_nothing(
+    bench: Bench,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def refused() -> str:
+        raise mp.PromptError("make_prompts.py differs from its commit")
+
+    monkeypatch.setattr(mp, "script_commit", refused)
+    _refused(bench, capsys, "differs from its commit")
+
+
+def _git(folder: Path, *arguments: str) -> str:
+    identity = ("-c", "user.name=Test", "-c", "user.email=test@example.invalid")
+    return subprocess.run(
+        ["git", *identity, *arguments],
+        cwd=folder,
+        capture_output=True,
+        text=True,
+        check=True,
+    ).stdout.strip()
+
+
+@pytest.fixture
+def repository(tmp_path: Path) -> Path:
+    """A small repository with the script in one commit; returns the script."""
+
+    _git(tmp_path, "init", "-q")
+    script = tmp_path / "werkzeug.py"
+    script.write_text("# Fassung eins\n", "utf-8")
+    _git(tmp_path, "add", "werkzeug.py")
+    _git(tmp_path, "commit", "-q", "-m", "eins")
+    return script
+
+
+def test_the_script_commit_is_the_commit_of_a_clean_script(repository: Path) -> None:
+    assert real_script_commit(repository) == _git(
+        repository.parent, "rev-parse", "HEAD"
+    )
+
+
+def test_a_later_commit_of_another_file_keeps_the_script_commit(
+    repository: Path,
+) -> None:
+    folder = repository.parent
+    expected = _git(folder, "rev-parse", "HEAD")
+    (folder / "anderes.txt").write_text("x", "utf-8")
+    _git(folder, "add", "anderes.txt")
+    _git(folder, "commit", "-q", "-m", "zwei")
+    assert real_script_commit(repository) == expected
+
+
+def test_a_later_commit_of_the_script_is_the_new_commit(repository: Path) -> None:
+    folder = repository.parent
+    repository.write_text("# Fassung zwei\n", "utf-8")
+    _git(folder, "add", "werkzeug.py")
+    _git(folder, "commit", "-q", "-m", "zwei")
+    assert real_script_commit(repository) == _git(folder, "rev-parse", "HEAD")
+
+
+def test_a_changed_script_has_no_commit(repository: Path) -> None:
+    repository.write_text("# Geändert\n", "utf-8")
+    with pytest.raises(mp.PromptError, match="differs from its commit"):
+        real_script_commit(repository)
+
+
+def test_a_staged_change_has_no_commit(repository: Path) -> None:
+    repository.write_text("# Geändert\n", "utf-8")
+    _git(repository.parent, "add", "werkzeug.py")
+    with pytest.raises(mp.PromptError, match="differs from its commit"):
+        real_script_commit(repository)
+
+
+def test_an_untracked_script_has_no_commit(repository: Path) -> None:
+    other = repository.parent / "neu.py"
+    other.write_text("# Neu\n", "utf-8")
+    with pytest.raises(mp.PromptError, match="differs from its commit"):
+        real_script_commit(other)
+
+
+def test_an_ignored_script_has_no_commit(repository: Path) -> None:
+    folder = repository.parent
+    (folder / ".gitignore").write_text("verborgen.py\n", "utf-8")
+    hidden = folder / "verborgen.py"
+    hidden.write_text("# Verborgen\n", "utf-8")
+    with pytest.raises(mp.PromptError, match="has no commit"):
+        real_script_commit(hidden)
+
+
+def test_a_script_outside_git_has_no_commit(tmp_path: Path) -> None:
+    script = tmp_path / "werkzeug.py"
+    script.write_text("# Ohne Git\n", "utf-8")
+    with pytest.raises(mp.PromptError, match="not in a Git checkout"):
+        real_script_commit(script)
+
+
+def test_a_missing_git_is_refused(
+    repository: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    def no_git(*_: object, **__: object) -> None:
+        raise FileNotFoundError("git")
+
+    monkeypatch.setattr(subprocess, "run", no_git)
+    with pytest.raises(mp.PromptError, match="Git cannot run"):
+        real_script_commit(repository)
+
+
+@pytest.mark.parametrize(
+    "ignored",
+    [
+        "runs/",
+        "prereg/injection_proposals.md",
+        "prereg/injection_proposals_v2.md",
+        "prereg/traps_draft.json",
+    ],
+)
+def test_private_files_stay_out_of_git(study_root: Path, ignored: str) -> None:
+    assert ignored in (study_root / ".gitignore").read_text("utf-8").split()
 
 
 def test_the_guide_and_the_traps_have_no_default_path(

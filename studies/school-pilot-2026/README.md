@@ -29,7 +29,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, run plan, and later the preregistration | yes |
-| `runs/` | Chatbot outputs, prepared files, prompt files and the sentence banks of both versions | no |
+| `runs/` | Chatbot outputs, prepared files, prompt files, the sentence banks of both versions and the manifest | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots | yes |
 | `schemas/` | JSON Schema for the chatbot output | yes |
@@ -181,7 +181,8 @@ python studies/school-pilot-2026/scripts/make_prompts.py --guide <marking-guide.
 - **Modified version.** It is the original plus the `edits` of the trap file; see [Hit rule](#hit-rule). The sentence numbers are the same in both versions.
 - **Difference check.** The script compares the two banks sentence by sentence and the two finished prompts line by line. It stops if anything differs apart from the defined passages, or if a defined change is missing.
 - **Output.** The prompts go to `runs/prompts/`, and the banks of both versions go to `runs/banks/`, where the import reads them. All of them stay out of Git, because the modified texts would show the inserted errors before the measurement.
-- **Repeatable.** The same inputs give the same bytes. Nothing uses the clock or chance.
+- **Manifest.** `runs/manifest.json` records the SHA-256 of the guide, the trap file, all banks and all prompts, and the commit of the script. These values go into the preregistration. A script that differs from its commit writes nothing, because the manifest could not name it.
+- **Repeatable.** The same inputs and the same script commit give the same bytes. Nothing uses the clock or chance.
 - **No overwriting.** The script writes everything or nothing. A different existing file is never replaced, so a prompt that was already sent cannot change.
 
 Its tests use invented texts and the example file `tests/fixtures/example_traps.json`. One more test runs the committed plan and banks with a placeholder as the edit.
@@ -204,15 +205,16 @@ Its tests use invented texts and the example file `tests/fixtures/example_traps.
 - The entry can never count as a detection.
 - A missing category, a category that is not a text and every other unknown value, such as a criterion `K9`, stay failures.
 
-**Exception 3: sentence number.** The agreed form is `S3`. A wrong number is never treated more strictly than a missing one.
+**Exception 3: sentence number.** The agreed form is `S3`. A wrong number is never treated more strictly than a missing one, because the pilot measures evidence, not JSON types.
 
-- `3` is rewritten to `S3`, and every rewrite is counted. The number is then checked like `S3`.
-- Any other form counts as a missing number, for example null, an empty text, `s3`, `S03`, `Satz 3` or a JSON number.
+- The text `"3"`, the JSON number `3` and the text `"[S3]"` are rewritten to `S3`. `"[S3]"` is the spelling of the prompt. Every rewrite is counted by its form, and the import keeps the original under `sid_rewrites`. The number is then checked like `S3`.
+- Only a positive whole number counts as a number. `true`, `false`, `3.0`, `0` and negative values are another form.
+- Any other form counts as a missing number, for example null, an empty text, `s3`, `S03`, `[3]` or `Satz 3`.
 - A quote or error report without a number keeps the run usable. The quote counts in measure 2 and in `quotes_without_sid` only, and the report cannot pass stage 1.
 
 **Exception 4: unknown criterion.** A criterion outside the grid keeps the run usable. The reference is marked with `id: null` and counts in measure 6 as outside the grid. A criterion written as its exact name from `data/criteria.json`, in any case, counts as its id. That list of names is the agreed list of spellings.
 
-**Counted.** Per chatbot, the analysis reports three things under `import_notes`: `code_fences_removed` counts usable runs, `sids_rewritten` counts rewritten numbers in usable runs, and `invalid_category_entries` counts entries. Under `counts`, `quotes_without_sid` counts quotes, and measure 6 counts the references outside the grid.
+**Counted.** Per chatbot, the analysis reports three things under `import_notes`: `code_fences_removed` counts usable runs, `sids_rewritten` counts rewritten numbers in usable runs, in total and by form (`text`, `number`, `brackets`), and `invalid_category_entries` counts entries. Under `counts`, `quotes_without_sid` counts quotes, and measure 6 counts the references outside the grid.
 
 **Metadata.** A missing field is an operating error, not a failure of the tool.
 
@@ -253,7 +255,7 @@ Measures 2 and 3 are reported strict and normalized. They count quotes in commen
 **Also reported, without a measure of their own.**
 
 - `invalid_quotes` lists every quote that fails in at least one mode, one by one, with both results. A quote with silently corrected spelling is invalid in both modes and appears here.
-- `quotes_without_sid` counts quotes without a sentence number, including numbers in a form other than `S3` and `3`.
+- `quotes_without_sid` counts quotes without a sentence number, including numbers in a form other than the agreed ones.
 - `ambiguous_quotes` counts quotes whose text occurs more than once in the essay.
 - `self_marked_global` counts comments the chatbot itself marks as global. It is descriptive only.
 - `misplaced_hits` counts runs with `ja` without stage 1.
@@ -272,14 +274,14 @@ Measures 2 and 3 are reported strict and normalized. They count quotes in commen
 A trap is one inserted error per text. Its definition has this form and comes to `analyze.py` and `make_prompts.py` as a file:
 
 ```json
-{"<text_id>": {"version": "veraendert", "type": "Zahl", "sids": ["S2"], "description": "...", "edits": [{"sid": "S2", "from": "...", "to": "..."}]}}
+{"<text_id>": {"version": "veraendert", "type": "Zahl", "accepted_categories": ["Zahl", "Widerspruch"], "sids": ["S2"], "description": "...", "edits": [{"sid": "S2", "from": "...", "to": "..."}]}}
 ```
 
-The type is exactly one of `Zahl`, `Faktum`, `Widerspruch` and `Unsinn`. The target is one sentence; only a contradiction may name two. The analysis refuses any other form.
+The type is exactly one of `Zahl`, `Faktum`, `Widerspruch` and `Unsinn`, and it stays for the reports. `accepted_categories` lists one or two of these four, and the type is one of them. The target is one sentence; only a trap of the type `Widerspruch` may name two. The analysis refuses any other form.
 
 `edits` says how the modified version arises, and only `make_prompts.py` reads it. An edit replaces one passage by one line of text. The passage must occur exactly once in a target sentence. A sentence takes one edit only, and no sentence is added or removed. A contradiction may edit one of its two sentences or both.
 
-**Stage 1 is mechanical.** A report passes if it names a target sentence and exactly the target type. A report without a sentence number cannot pass.
+**Stage 1 is mechanical.** A report passes if it names a target sentence and a category from `accepted_categories`. A report without a sentence number cannot pass.
 
 **Stage 2 is human.** The coder answers one question per run: does a report describe the target error? The answer is `ja` with the number of the report, `nein` or `unklar`.
 
@@ -325,6 +327,15 @@ The maintainer decided these differences from the main study's plan.
 - **Measure 5.** It is not part of the pilot, because it needs human coding of local and global comments. This is a limit of the pilot. The report only gives the number of comments the chatbot itself marks as global.
 - **Silent corrections.** A quote with silently corrected spelling is invalid in both modes, unlike the plan says. All invalid quotes are listed one by one, without a measure of their own.
 
+## Changes before preregistration
+
+These changes were made before the preregistration, while the tools were being checked.
+
+- **Sentence numbers.** The agreed spellings `"3"`, `3` and `"[S3]"` become `S3`, and each rewrite is counted by its form. Every other form counts as a missing number, so a wrong number no longer makes a run a failure. See exception 3 under [Import](#import).
+- **Accepted categories.** Stage 1 first asked for exactly one category. A trap now names one or two accepted categories, because some errors fit two of them: a wrong number that contradicts a statement in the same text can accept `Zahl` and `Widerspruch`. The type of the trap stays for the reports. See [Hit rule](#hit-rule).
+- **Prompt files and banks.** `scripts/make_prompts.py` builds the modified version from the trap file and writes all prompts, the banks of both versions and a manifest below `runs/`. The import now reads the banks from `runs/banks/`, because a quote must be checked against the text that was sent. See [Prompt and output format](#prompt-and-output-format).
+- **Task material.** The prompts describe the task in own words and do not contain the material table. Whether and how the table may be used is still being clarified.
+
 ## Run protocol
 
 **Test subjects.** ChatGPT, Gemini and Grok. Mistral and Claude are not test subjects.
@@ -360,13 +371,15 @@ These two stay unchanged until the held-out cases are evaluated:
 
 `tests/test_frozen_tools.py` fails if either one changes.
 
-With the preregistration, the commit of the whole study folder is recorded, without `runs/` and `sealed/`. Every later change to import, analysis or export code is a deviation and is named in the report.
+With the preregistration, the commit of the whole study folder is recorded, without `runs/` and `sealed/`. Every later change to import, analysis, export or prompt generator code is a deviation and is named in the report. So is every change to the files behind `--guide` and `--traps` after the preregistration.
+
+`runs/` stays out of Git until the results are published. The maintainer, Lazaros Varvatis, backs up the folder.
 
 ## Open decisions
 
 These points are not settled here, and the tooling does not assume an answer.
 
 - **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
-- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md`. That file stays out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites, with exactly one type per trap. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
+- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md` and `prereg/injection_proposals_v2.md`, with a draft of the trap file in `prereg/traps_draft.json`. These files stay out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites, with one type and one or two accepted categories per trap. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
 
 **Writing task.** The prompt uses a marked paraphrase after Schaller et al., LREC 2026. The original wording is not available.
