@@ -7,11 +7,12 @@ exactly as received. ``<repetition>.meta.json`` next to it holds ``date``,
 
 A run that cannot be read counts as a failure. A few things are tolerated and
 counted: one code block around the whole answer is removed, an error entry with
-an unknown category is marked, a sentence number ``3`` becomes ``S3``, a sentence
-number in any other form counts as missing, a quote without a sentence number
-stays a quote, and an unknown criterion is marked as outside the grid. In each
-case the run stays usable. Nothing else is repaired. The importer sets no
-pointers: a comment that lists no quote stays without one, whatever its text says.
+an unknown category is marked, a sentence number written ``"3"``, ``3`` or
+``"[S3]"`` becomes ``S3``, a sentence number in any other form counts as missing,
+a quote without a sentence number stays a quote, and an unknown criterion is
+marked as outside the grid. In each case the run stays usable. Nothing else is
+repaired. The importer sets no pointers: a comment that lists no quote stays
+without one, whatever its text says.
 
 Metadata belongs to the operator, not to the tool. A run file with a missing
 field is rejected and the field is named, so that it can be added from the chat
@@ -73,6 +74,14 @@ _SCHEMA_KEYWORDS = frozenset(
 SID_FORM = re.compile(r"S[1-9][0-9]*")
 """The agreed form of a sentence number."""
 _BARE_SID = re.compile(r"[1-9][0-9]*")
+_BRACKETED_SID = re.compile(r"\[S[1-9][0-9]*\]")
+SID_FORM_TEXT = "text"
+"""The digits alone as a text: ``"3"``."""
+SID_FORM_NUMBER = "number"
+"""A positive whole JSON number: ``3``."""
+SID_FORM_BRACKETS = "brackets"
+"""The spelling of the prompt: ``"[S3]"``."""
+SID_REWRITE_FORMS = (SID_FORM_TEXT, SID_FORM_NUMBER, SID_FORM_BRACKETS)
 _META_NAME = re.compile(r"\.meta\.json$")
 _CODE_FENCE = re.compile(
     r"\s*```(?:json)?[ \t]*\r?\n(.*)\r?\n```\s*", re.DOTALL | re.IGNORECASE
@@ -139,7 +148,7 @@ class ParsedOutput:
     value: dict[str, Any]
     code_fence_removed: bool
     invalid_categories: frozenset[int]
-    sids_rewritten: int = 0
+    sid_rewrites: tuple[dict[str, Any], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -157,7 +166,7 @@ class RunRecord:
     failure_reason: str | None = None
     protocol_note: str | None = None
     code_fence_removed: bool = False
-    sids_rewritten: int = 0
+    sid_rewrites: list[dict[str, Any]] = field(default_factory=list)
     grade: int | None = None
     comments: list[dict[str, Any]] = field(default_factory=list)
     errors: list[dict[str, Any]] = field(default_factory=list)
@@ -249,23 +258,42 @@ def _sid_entries(value: object) -> list[dict[str, Any]]:
     return [entry for entry in entries if isinstance(entry, dict) and "sid" in entry]
 
 
-def _settle_sids(value: object) -> int:
-    """Bring sentence numbers to the agreed form; return how many were rewritten.
+def _rewritten_sid(sid: object) -> tuple[str, str] | None:
+    """Return the agreed form and the kind of a rewritable number, else None.
 
-    ``S3`` stays and ``3`` becomes ``S3``. Any other form is dropped, so that the
-    entry counts like one without a number. A wrong number is never stricter than
-    a missing one.
+    Only a positive whole number counts as a number. ``True`` is an ``int`` in
+    Python and a truth value in the answer, so the exact type decides.
     """
 
-    rewritten = 0
+    if type(sid) is int and sid > 0:
+        return f"S{sid}", SID_FORM_NUMBER
+    if isinstance(sid, str) and _BARE_SID.fullmatch(sid):
+        return f"S{sid}", SID_FORM_TEXT
+    if isinstance(sid, str) and _BRACKETED_SID.fullmatch(sid):
+        return sid[1:-1], SID_FORM_BRACKETS
+    return None
+
+
+def _settle_sids(value: object) -> tuple[dict[str, Any], ...]:
+    """Bring sentence numbers to the agreed form; return the rewrites.
+
+    ``S3`` stays. ``"3"``, ``3`` and ``"[S3]"`` become ``S3``, and each rewrite
+    keeps its original. Any other form is dropped, so that the entry counts like
+    one without a number. A wrong number is never stricter than a missing one.
+    """
+
+    rewrites: list[dict[str, Any]] = []
     for entry in _sid_entries(value):
         sid = entry["sid"]
-        if isinstance(sid, str) and _BARE_SID.fullmatch(sid):
-            entry["sid"] = f"S{sid}"
-            rewritten += 1
+        rewritten = _rewritten_sid(sid)
+        if rewritten is not None:
+            entry["sid"] = rewritten[0]
+            rewrites.append(
+                {"original": sid, "sid": rewritten[0], "form": rewritten[1]}
+            )
         elif not (isinstance(sid, str) and SID_FORM.fullmatch(sid)):
             del entry["sid"]
-    return rewritten
+    return tuple(rewrites)
 
 
 def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
@@ -282,7 +310,7 @@ def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
         value = load_strict_json(content)
     except StrictJSONError:
         return None
-    rewritten = _settle_sids(value)
+    rewrites = _settle_sids(value)
     invalid: set[int] = set()
     for problem in schema_problems(value, schema):
         match = _CATEGORY_PROBLEM.fullmatch(problem)
@@ -294,7 +322,7 @@ def read_output(raw: bytes, schema: dict[str, Any]) -> ParsedOutput | None:
         ):
             return None
     assert isinstance(value, dict)
-    return ParsedOutput(value, fenced, frozenset(invalid), rewritten)
+    return ParsedOutput(value, fenced, frozenset(invalid), rewrites)
 
 
 def _field_problem(name: str, value: object) -> str | None:
@@ -456,7 +484,7 @@ def import_run(
         USABLE,
         **stamp,
         code_fence_removed=parsed.code_fence_removed,
-        sids_rewritten=parsed.sids_rewritten,
+        sid_rewrites=list(parsed.sid_rewrites),
         grade=output["grade"],
         comments=[
             {
@@ -531,7 +559,7 @@ def main(argv: list[str] | None = None) -> int:
     failures = sum(record.status == FAILED for record in records)
     protocol = sum(record.status == PROTOCOL_ERROR for record in records)
     fences = sum(record.code_fence_removed for record in records)
-    rewritten = sum(record.sids_rewritten for record in records)
+    rewritten = sum(len(record.sid_rewrites) for record in records)
     invalid = sum(
         error["invalid_category"] for record in records for error in record.errors
     )

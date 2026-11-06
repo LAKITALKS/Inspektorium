@@ -29,11 +29,13 @@ TRAPS = {
     "toy": {
         "version": "v1",
         "type": "Zahl",
+        "accepted_categories": ["Zahl"],
         "sids": ["S2"],
         "description": "Die Ladezeit im Satz ist falsch.",
     }
 }
 ORIGINAL_VERSION = "original"
+NO_REWRITES = {"count": 0, "by_form": {"text": 0, "number": 0, "brackets": 0}}
 META = {
     "date": "2026-11-20",
     "time": "14:30",
@@ -281,14 +283,24 @@ OTHER_SID_FORMS = [
     pytest.param("1 ", id="trailing-space"),
     pytest.param("S1\n", id="newline-with-letter"),
     pytest.param("1\n", id="newline"),
-    pytest.param("[S1]", id="brackets"),
+    pytest.param("[1]", id="brackets-without-letter"),
+    pytest.param("[S01]", id="brackets-with-leading-zero"),
+    pytest.param("[S0]", id="brackets-with-sentence-zero"),
+    pytest.param("[s1]", id="brackets-lower-case"),
+    pytest.param("[S 1]", id="brackets-inner-space"),
+    pytest.param(" [S1]", id="brackets-leading-space"),
+    pytest.param("[[S1]]", id="brackets-doubled"),
+    pytest.param("[S1", id="bracket-not-closed"),
     pytest.param("Satz 1", id="word"),
     pytest.param("S1, S2", id="two-numbers"),
     pytest.param("١", id="arabic-digit"),
     pytest.param("１", id="fullwidth-digit"),
-    pytest.param(1, id="number"),
+    pytest.param(0, id="number-zero"),
+    pytest.param(-1, id="number-negative"),
+    pytest.param(1.0, id="whole-decimal"),
     pytest.param(1.5, id="decimal"),
-    pytest.param(True, id="boolean"),
+    pytest.param(True, id="true"),
+    pytest.param(False, id="false"),
     pytest.param(["S1"], id="list"),
     pytest.param({"sid": "S1"}, id="object"),
 ]
@@ -309,23 +321,35 @@ def _with_sids(comment_sid: object = "S1", error_sid: object = "S1") -> bytes:
 def test_a_number_in_the_agreed_form_is_not_rewritten(lab: Lab) -> None:
     lab.add(_with_sids())
     run = lab.imported()[0]
-    assert run.sids_rewritten == 0
+    assert run.sid_rewrites == []
     assert [item.sid for item in run.references] == ["S1", "S1"]
 
 
-def test_a_bare_number_becomes_the_agreed_form_and_is_counted(lab: Lab) -> None:
-    lab.add(_with_sids("1", "1"))
+@pytest.mark.parametrize(
+    ("original", "form"),
+    [
+        pytest.param("1", imp.SID_FORM_TEXT, id="digits-as-text"),
+        pytest.param(1, imp.SID_FORM_NUMBER, id="json-number"),
+        pytest.param("[S1]", imp.SID_FORM_BRACKETS, id="prompt-spelling"),
+    ],
+)
+def test_an_agreed_spelling_becomes_the_agreed_form_and_keeps_its_original(
+    lab: Lab, original: object, form: str
+) -> None:
+    lab.add(_with_sids(original, original))
     run = lab.imported()[0]
-    assert (run.status, run.sids_rewritten) == (imp.USABLE, 2)
+    assert run.status == imp.USABLE
+    assert run.sid_rewrites == [{"original": original, "sid": "S1", "form": form}] * 2
+    assert type(run.sid_rewrites[0]["original"]) is type(original)
     assert [item.sid for item in run.references] == ["S1", "S1"]
     assert [item.origin_strict for item in run.references] == [imp.DELIVERED_VALID] * 2
     assert run.errors[0]["sid"] == "S1"
 
 
 def test_a_rewritten_number_is_still_checked_against_its_sentence(lab: Lab) -> None:
-    lab.add(_with_sids("2", "99"))
+    lab.add(_with_sids("[S2]", 99))
     run = lab.imported()[0]
-    assert run.sids_rewritten == 2
+    assert len(run.sid_rewrites) == 2
     assert [item.origin_strict for item in run.references] == [
         imp.DELIVERED_INVALID,
         imp.DELIVERED_INVALID,
@@ -336,7 +360,7 @@ def test_a_rewritten_number_is_still_checked_against_its_sentence(lab: Lab) -> N
 def test_any_other_form_counts_as_a_missing_number(lab: Lab, sid: object) -> None:
     lab.add(_with_sids(sid, sid))
     run = lab.imported()[0]
-    assert (run.status, run.sids_rewritten) == (imp.USABLE, 0)
+    assert (run.status, run.sid_rewrites) == (imp.USABLE, [])
     for reference in run.references:
         assert reference.sid is None
         assert reference.origin_strict == imp.DELIVERED_WITHOUT_SID
@@ -345,7 +369,7 @@ def test_any_other_form_counts_as_a_missing_number(lab: Lab, sid: object) -> Non
 
 
 def test_another_form_counts_only_in_measure_2(lab: Lab) -> None:
-    lab.add(_with_sids("Satz 1", "1"))
+    lab.add(_with_sids("Satz 1", 1))
     counts = _report(lab, {}, {})["counts"]
     assert counts["quotes"]["strict"]["text"]["label"] == "2 von 2"
     assert counts["quotes"]["strict"]["text_and_location"]["label"] == "1 von 1"
@@ -353,27 +377,30 @@ def test_another_form_counts_only_in_measure_2(lab: Lab) -> None:
 
 
 def test_a_rewrite_saves_no_other_violation(lab: Lab) -> None:
-    payload = json.loads(_with_sids("1", "1"))
+    payload = json.loads(_with_sids(1, "[S1]"))
     payload["errors"][0]["extra"] = 1
     lab.add(json.dumps(payload).encode())
     run = lab.imported()[0]
-    assert (run.status, run.sids_rewritten) == (imp.FAILED, 0)
+    assert (run.status, run.sid_rewrites) == (imp.FAILED, [])
 
 
 def test_rewrites_are_counted_per_chatbot(lab: Lab) -> None:
-    lab.add(_with_sids("1", "1"), "1", model="eins")
-    lab.add(_with_sids("2", "S2"), "2", model="eins")
+    lab.add(_with_sids("1", 1), "1", model="eins")
+    lab.add(_with_sids("[S2]", "S2"), "2", model="eins")
     lab.add(_with_sids(), "1", model="zwei")
     lab.add(_with_sids("Satz 1", None), "2", model="zwei")
     report = an.analyze(lab.records(), {}, {})
-    assert report["eins"]["import_notes"]["sids_rewritten"] == 3
-    assert report["zwei"]["import_notes"]["sids_rewritten"] == 0
+    assert report["eins"]["import_notes"]["sids_rewritten"] == {
+        "count": 3,
+        "by_form": {"text": 1, "number": 1, "brackets": 1},
+    }
+    assert report["zwei"]["import_notes"]["sids_rewritten"] == NO_REWRITES
 
 
 def test_a_failed_run_adds_no_rewrite_to_the_report(lab: Lab) -> None:
     raw = _with_sids("1", "1").replace(b'"grade": 3', b'"grade": 9')
     lab.add(raw)
-    assert _report(lab, {}, {})["import_notes"]["sids_rewritten"] == 0
+    assert _report(lab, {}, {})["import_notes"]["sids_rewritten"] == NO_REWRITES
 
 
 def test_a_quote_without_a_number_keeps_the_run_usable(lab: Lab) -> None:
@@ -855,7 +882,9 @@ def test_a_hit_needs_stage_1_and_ja_for_the_same_report(lab: Lab) -> None:
 
 
 def test_a_rewritten_number_can_pass_stage_1(lab: Lab) -> None:
-    _one_report(lab, _error("2", "30 Minuten", "Zahl"))
+    payload = json.loads(_output(errors=[_error("S2", "30 Minuten", "Zahl")]))
+    payload["errors"][0]["sid"] = 2
+    lab.add(json.dumps(payload).encode(), version="v1")
     counts = _report(lab, TRAPS, _code("1", "v1", "ja", 1))["counts"]
     assert counts["detection_per_usable_run"]["label"] == "1 von 1"
 
@@ -865,6 +894,51 @@ def test_a_number_in_another_form_cannot_pass_stage_1(lab: Lab) -> None:
     report = _report(lab, TRAPS, _code("1", "v1", "ja", 1))
     assert report["counts"]["detection_per_usable_run"]["label"] == "0 von 1"
     assert report["misplaced_hits"]["in_modified"] == 1
+
+
+TWO_CATEGORIES = {
+    "toy": {**TRAPS["toy"], "accepted_categories": ["Zahl", "Widerspruch"]}
+}
+
+
+def test_a_trap_with_two_accepted_categories_is_valid() -> None:
+    an.validate_traps(TWO_CATEGORIES)
+
+
+@pytest.mark.parametrize("category", ["Zahl", "Widerspruch"])
+def test_either_accepted_category_passes_stage_1(lab: Lab, category: str) -> None:
+    _one_report(lab, _error("S2", "30 Minuten", category))
+    report = _report(lab, TWO_CATEGORIES, _code("1", "v1", "ja", 1))
+    assert report["counts"]["detection_per_usable_run"]["label"] == "1 von 1"
+    assert report["misplaced_hits"]["in_modified"] == 0
+
+
+@pytest.mark.parametrize("category", ["Zahl", "Widerspruch"])
+def test_either_accepted_category_can_be_a_false_alarm(lab: Lab, category: str) -> None:
+    _one_report(lab, _error("S2", "30 Minuten", category), ORIGINAL_VERSION)
+    report = _report(lab, TWO_CATEGORIES, _code("1", ORIGINAL_VERSION, "ja", 1))
+    assert report["counts"]["false_alarm"]["label"] == "1 von 1"
+
+
+def test_a_category_outside_the_list_does_not_pass_stage_1(lab: Lab) -> None:
+    _one_report(lab, _error("S2", "30 Minuten", "Faktum"))
+    report = _report(lab, TWO_CATEGORIES, _code("1", "v1", "ja", 1))
+    assert report["counts"]["detection_per_usable_run"]["label"] == "0 von 1"
+    assert report["misplaced_hits"]["in_modified"] == 1
+
+
+def test_an_accepted_category_elsewhere_does_not_pass_stage_1(lab: Lab) -> None:
+    _one_report(lab, _error("S1", "300 km", "Widerspruch"))
+    report = _report(lab, TWO_CATEGORIES, _code("1", "v1", "ja", 1))
+    assert report["counts"]["detection_per_usable_run"]["label"] == "0 von 1"
+    assert report["misplaced_hits"]["in_modified"] == 1
+
+
+def test_the_list_decides_stage_1_not_the_type(lab: Lab) -> None:
+    traps = {"toy": {**TRAPS["toy"], "type": "Zahl", "accepted_categories": ["Zahl"]}}
+    _one_report(lab, _error("S2", "30 Minuten", "Widerspruch"))
+    report = _report(lab, traps, _code("1", "v1", "ja", 1))
+    assert report["counts"]["detection_per_usable_run"]["label"] == "0 von 1"
 
 
 def test_ja_for_another_report_is_no_hit(lab: Lab) -> None:
@@ -911,7 +985,12 @@ def test_ja_without_stage_1_is_reported_apart(lab: Lab, error: dict[str, str]) -
 def test_stage_1_takes_a_report_at_either_sentence_of_a_contradiction(lab: Lab) -> None:
     traps = {
         **TRAPS,
-        "toy": {**TRAPS["toy"], "type": "Widerspruch", "sids": ["S1", "S2"]},
+        "toy": {
+            **TRAPS["toy"],
+            "type": "Widerspruch",
+            "accepted_categories": ["Widerspruch"],
+            "sids": ["S1", "S2"],
+        },
     }
     _one_report(lab, _error("S1", "300 km", "Widerspruch"))
     counts = _report(lab, traps, _code("1", "v1", "ja", 1))["counts"]
@@ -1041,6 +1120,36 @@ def test_no_trap_leaves_the_trap_measures_undefined(lab: Lab) -> None:
         pytest.param({"sids": ["S1", "S2"]}, "allows 1", id="two-sites-for-a-number"),
         pytest.param({"sids": []}, "allows 1", id="no-site"),
         pytest.param({"sids": ["1"]}, "sentence numbers", id="malformed-site"),
+        pytest.param(
+            {"accepted_categories": None}, "one or two", id="no-accepted-categories"
+        ),
+        pytest.param(
+            {"accepted_categories": "Zahl"}, "one or two", id="categories-not-a-list"
+        ),
+        pytest.param({"accepted_categories": []}, "one or two", id="empty-categories"),
+        pytest.param(
+            {"accepted_categories": ["Zahl", "Faktum", "Unsinn"]},
+            "one or two",
+            id="three-categories",
+        ),
+        pytest.param(
+            {"accepted_categories": ["Zahl", "Sprache"]},
+            "one or two",
+            id="category-outside-the-list",
+        ),
+        pytest.param(
+            {"accepted_categories": ["Zahl", "Zahl"]},
+            "one or two",
+            id="category-repeated",
+        ),
+        pytest.param(
+            {"accepted_categories": ["Zahl", ["Faktum"]]},
+            "one or two",
+            id="category-not-a-text",
+        ),
+        pytest.param(
+            {"accepted_categories": ["Faktum"]}, "hold the type", id="type-not-accepted"
+        ),
         pytest.param({"version": "original"}, "modified version", id="original"),
         pytest.param({"description": " "}, "description", id="blank-description"),
     ],
@@ -1055,7 +1164,12 @@ def test_a_trap_outside_the_agreed_form_is_refused(
 
 
 def test_a_contradiction_may_not_span_three_sentences(lab: Lab) -> None:
-    trap = {**TRAPS["toy"], "type": "Widerspruch", "sids": ["S1", "S2", "S3"]}
+    trap = {
+        **TRAPS["toy"],
+        "type": "Widerspruch",
+        "accepted_categories": ["Widerspruch"],
+        "sids": ["S1", "S2", "S3"],
+    }
     with pytest.raises(an.TrapError, match="allows 2"):
         an.analyze(lab.records(), {"toy": trap}, {})
 
@@ -1078,7 +1192,7 @@ def test_the_report_counts_what_the_importer_tolerated(lab: Lab) -> None:
     report = _report(lab)
     assert report["import_notes"] == {
         "code_fences_removed": 1,
-        "sids_rewritten": 0,
+        "sids_rewritten": NO_REWRITES,
         "invalid_category_entries": 2,
     }
     assert report["counts"]["failures"]["label"] == "1 von 3"

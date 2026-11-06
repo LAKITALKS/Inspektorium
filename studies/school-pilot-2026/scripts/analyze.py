@@ -8,9 +8,10 @@ A measure with an empty denominator is undefined, neither 0 nor 100 %. Failed
 runs never enter the denominator of a quote measure. Protocol errors enter no
 measure at all.
 
-A trap is one inserted error per text: ``{version, type, sids, description}``.
-Stage 1 is mechanical: a report names a target sentence and exactly the target
-type. Stage 2 is the coder's answer from the filled sheet.
+A trap is one inserted error per text:
+``{version, type, accepted_categories, sids, description}``. Stage 1 is
+mechanical: a report names a target sentence and an accepted category. The type
+stays for the reports. Stage 2 is the coder's answer from the filled sheet.
 """
 
 from __future__ import annotations
@@ -41,6 +42,7 @@ from import_runs import (
     ORIGINAL,
     PROTOCOL_ERROR,
     SID_FORM,
+    SID_REWRITE_FORMS,
     USABLE,
 )
 
@@ -49,6 +51,7 @@ MODES = ("strict", "normalized")
 MIN_USABLE_RUNS = 3
 """A grade cell with fewer usable runs is marked."""
 TRAP_TYPES = ("Zahl", "Faktum", "Widerspruch", "Unsinn")
+MAX_ACCEPTED_CATEGORIES = 2
 
 CONFIRMED = "confirmed"
 """Stage 1 and ``ja`` for the same report."""
@@ -73,9 +76,10 @@ class TrapError(ValueError):
 
 
 def validate_traps(traps: Traps) -> None:
-    """Refuse a trap that does not have exactly one type and a clear place.
+    """Refuse a trap without one type, a clear place and its accepted categories.
 
-    Only a contradiction may span two sentences.
+    Only a contradiction may span two sentences. The accepted categories are one
+    or two of the trap types, and the type itself is one of them.
     """
 
     for text_id, trap in traps.items():
@@ -95,6 +99,18 @@ def validate_traps(traps: Traps) -> None:
         description = trap.get("description")
         if not isinstance(description, str) or not description.strip():
             raise TrapError(f"{text_id}: the description is missing")
+        accepted = trap.get("accepted_categories")
+        if (
+            not isinstance(accepted, list)
+            or not 1 <= len(accepted) <= MAX_ACCEPTED_CATEGORIES
+            or not all(category in TRAP_TYPES for category in accepted)
+            or len(set(accepted)) != len(accepted)
+        ):
+            raise TrapError(
+                f"{text_id}: accepted_categories must list one or two trap types"
+            )
+        if trap["type"] not in accepted:
+            raise TrapError(f"{text_id}: accepted_categories must hold the type")
 
 
 def _ratio(count: Count) -> float | None:
@@ -225,9 +241,12 @@ def annotation_agreement_count(run: Run, annotated: Annotated) -> Count:
 
 
 def passes_stage_1(error: Mapping[str, Any], trap: Trap) -> bool:
-    """A report at a target sentence with exactly the target type."""
+    """A report at a target sentence with an accepted category."""
 
-    return bool(error["sid"] in trap["sids"] and error["category"] == trap["type"])
+    return bool(
+        error["sid"] in trap["sids"]
+        and error["category"] in trap["accepted_categories"]
+    )
 
 
 def coded_outcome(run: Run, trap: Trap, code: Code) -> str:
@@ -323,12 +342,18 @@ def grades_modified(runs: Sequence[Run]) -> dict[str, dict[str, dict[str, Any]]]
     }
 
 
-def import_notes(usable: Sequence[Run]) -> dict[str, int]:
+def import_notes(usable: Sequence[Run]) -> dict[str, Any]:
     """Count what the importer tolerated, so that it stays visible."""
 
+    forms = Counter(
+        rewrite["form"] for run in usable for rewrite in run["sid_rewrites"]
+    )
     return {
         "code_fences_removed": sum(run["code_fence_removed"] for run in usable),
-        "sids_rewritten": sum(run["sids_rewritten"] for run in usable),
+        "sids_rewritten": {
+            "count": sum(forms.values()),
+            "by_form": {form: forms[form] for form in SID_REWRITE_FORMS},
+        },
         "invalid_category_entries": sum(
             error["invalid_category"] for run in usable for error in run["errors"]
         ),

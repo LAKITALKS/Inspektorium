@@ -266,7 +266,7 @@ def test_the_import_reads_the_written_banks_and_ignores_the_new_folders(
     runs = bench.output / "runs"
     folder = runs / "chatgpt/beispiel_a/veraendert"
     folder.mkdir(parents=True)
-    quote = {"sid": "2", "quote": "in 3 Minuten"}
+    quote = {"sid": "[S2]", "quote": "in 3 Minuten"}
     answer = {
         "grade": 3,
         "comments": [
@@ -336,6 +336,7 @@ def test_the_committed_plan_and_banks_give_six_prompts(
         traps[text_id] = {
             "version": "veraendert",
             "type": "Unsinn",
+            "accepted_categories": ["Unsinn"],
             "sids": ["S1"],
             "description": "Platzhalter.",
             "edits": [{"sid": "S1", "from": first.text, "to": "Platzhalter."}],
