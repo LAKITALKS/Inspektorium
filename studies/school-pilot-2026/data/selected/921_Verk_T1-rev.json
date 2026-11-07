@@ -1,0 +1,25 @@
+{
+  "text_id": "921_Verk_T1-rev",
+  "word_count": 87,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Die Förderung der Wasserstoff Energieträger ist von Vorteil da Sie erstmals eine viel bessere Reichweite als Akkumulatoren haben (Akkum. : 400km; Wasserst. : 700km; E-Fuels: 700km) Obwohl Wasserstoff und E-Fuels die selbe Reichweite haben, wäre die Förderung von Wasserstoff meiner Meinung nach sinnvoller da die Geräuschemissonen bessere Werte aufweisen mit 57dB bei 30km und bei E-Fuels 61dB bei 30km.",
+      "start": 0,
+      "end": 403
+    },
+    {
+      "sid": "S2",
+      "text": "Dies mag kein großer Unterschied sein doch in der Umsetzung und in der Realität wird das einen erheblichen Einfluss erzeugen da zB.",
+      "start": 404,
+      "end": 535
+    },
+    {
+      "sid": "S3",
+      "text": "Weniger Lautsträkeschutz maßnahmen gezogen werden müssen.",
+      "start": 536,
+      "end": 593
+    }
+  ],
+  "full_text": "Die Förderung der Wasserstoff Energieträger ist von Vorteil da Sie erstmals eine viel bessere Reichweite als Akkumulatoren haben (Akkum. : 400km; Wasserst. : 700km; E-Fuels: 700km) Obwohl Wasserstoff und E-Fuels die selbe Reichweite haben, wäre die Förderung von Wasserstoff meiner Meinung nach sinnvoller da die Geräuschemissonen bessere Werte aufweisen mit 57dB bei 30km und bei E-Fuels 61dB bei 30km. Dies mag kein großer Unterschied sein doch in der Umsetzung und in der Realität wird das einen erheblichen Einfluss erzeugen da zB. Weniger Lautsträkeschutz maßnahmen gezogen werden müssen."
+}

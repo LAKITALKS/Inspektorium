@@ -1,0 +1,31 @@
+{
+  "text_id": "284_Verk_T1",
+  "word_count": 83,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "In der Zukunft sollen wir als Alternative zu Benzin -und Dieselmotoren verboten werden.",
+      "start": 0,
+      "end": 87
+    },
+    {
+      "sid": "S2",
+      "text": "Es wird beraten und besprochen ob ein Umstieg auf Akkumulatoren, Wasserstoff oder E-Fuels gefördert werden soll.",
+      "start": 88,
+      "end": 200
+    },
+    {
+      "sid": "S3",
+      "text": "Akkumulatoren sind eine gute Alternative zu Benzin und Diesel, da ein Elektromotor fest eingebaut wird, daher werden keine Stoffe in die Luft freigesetzt.",
+      "start": 201,
+      "end": 355
+    },
+    {
+      "sid": "S4",
+      "text": "E-Fuels hingegen benutzt man für den Verbrennungsmotoren diese sind lauter als zum Bespiel E-Autos, wa sgut an den E-Fuels ist das sie genauso viel Kohlenstoffdioxid entnommen wird, wie bei der Verbrennung.",
+      "start": 356,
+      "end": 562
+    }
+  ],
+  "full_text": "In der Zukunft sollen wir als Alternative zu Benzin -und Dieselmotoren verboten werden. Es wird beraten und besprochen ob ein Umstieg auf Akkumulatoren, Wasserstoff oder E-Fuels gefördert werden soll. Akkumulatoren sind eine gute Alternative zu Benzin und Diesel, da ein Elektromotor fest eingebaut wird, daher werden keine Stoffe in die Luft freigesetzt. E-Fuels hingegen benutzt man für den Verbrennungsmotoren diese sind lauter als zum Bespiel E-Autos, wa sgut an den E-Fuels ist das sie genauso viel Kohlenstoffdioxid entnommen wird, wie bei der Verbrennung."
+}

@@ -1,0 +1,49 @@
+{
+  "text_id": "254_Verk_T1",
+  "word_count": 138,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Beim Thema Klimawandel geht es darum, dass die Erde immer wärmer wird, weil wir zu viele Treibhausgase in die Luft blasen.",
+      "start": 0,
+      "end": 122
+    },
+    {
+      "sid": "S2",
+      "text": "Diese Gase entstehen vor allem, wenn wir fossile Energieträger wie Kohle, Öl und Gas verbrennen.",
+      "start": 123,
+      "end": 219
+    },
+    {
+      "sid": "S3",
+      "text": "Diese Energien sind praktisch, aber schlecht fürs Klima, weil sie viel CO₂ erzeugen, was die Erderwärmung vorantreibt.",
+      "start": 220,
+      "end": 338
+    },
+    {
+      "sid": "S4",
+      "text": "Erneuerbare Energien wie Wind, Sonne oder Wasser sind dagegen viel besser für den Klimawandel, weil sie kaum CO₂ ausstoßen.",
+      "start": 339,
+      "end": 462
+    },
+    {
+      "sid": "S5",
+      "text": "Das bedeutet, dass wir, wenn wir auf diese Energien umsteigen, weniger die Erde aufheizen und die Auswirkungen des Klimawandels verringern können.",
+      "start": 463,
+      "end": 609
+    },
+    {
+      "sid": "S6",
+      "text": "Wenn wir also weiterhin auf Kohle, Öl und Gas setzen, wird die Erde immer wärmer und das führt zu extremen Wetterereignissen wie Hitzewellen, Überschwemmungen und stärkeren Stürmen.",
+      "start": 610,
+      "end": 791
+    },
+    {
+      "sid": "S7",
+      "text": "Wenn wir aber erneuerbare Energien nutzen, können wir die Erderwärmung bremsen und die Erde für zukünftige Generationen bewahren.",
+      "start": 792,
+      "end": 921
+    }
+  ],
+  "full_text": "Beim Thema Klimawandel geht es darum, dass die Erde immer wärmer wird, weil wir zu viele Treibhausgase in die Luft blasen. Diese Gase entstehen vor allem, wenn wir fossile Energieträger wie Kohle, Öl und Gas verbrennen. Diese Energien sind praktisch, aber schlecht fürs Klima, weil sie viel CO₂ erzeugen, was die Erderwärmung vorantreibt. Erneuerbare Energien wie Wind, Sonne oder Wasser sind dagegen viel besser für den Klimawandel, weil sie kaum CO₂ ausstoßen. Das bedeutet, dass wir, wenn wir auf diese Energien umsteigen, weniger die Erde aufheizen und die Auswirkungen des Klimawandels verringern können. Wenn wir also weiterhin auf Kohle, Öl und Gas setzen, wird die Erde immer wärmer und das führt zu extremen Wetterereignissen wie Hitzewellen, Überschwemmungen und stärkeren Stürmen. Wenn wir aber erneuerbare Energien nutzen, können wir die Erderwärmung bremsen und die Erde für zukünftige Generationen bewahren."
+}

@@ -1,0 +1,47 @@
+{
+  "layer": "webanno.custom.Argument",
+  "criteria": [
+    {
+      "id": "K1",
+      "original_label": "KriteriumJahresertragEnergiedichte",
+      "name": "Jahresertrag/Energiedichte",
+      "prompt_name": "Energiedichte"
+    },
+    {
+      "id": "K2",
+      "original_label": "KriteriumLebensdauerVerfgbarkeit",
+      "name": "Lebensdauer/Verfügbarkeit",
+      "prompt_name": "Verfügbarkeit"
+    },
+    {
+      "id": "K3",
+      "original_label": "KriteriumLokaleEmissionenGeruschemissionen",
+      "name": "Lokale Emissionen/Geräuschemissionen",
+      "prompt_name": "Lokale Emissionen/Geräuschemissionen"
+    },
+    {
+      "id": "K4",
+      "original_label": "KriteriumPreisBetrieb",
+      "name": "Preis/Betrieb",
+      "prompt_name": "Betrieb"
+    },
+    {
+      "id": "K5",
+      "original_label": "KriteriumTreibhausgasemissionen",
+      "name": "Treibhausgasemissionen",
+      "prompt_name": "Treibhausgasemissionen"
+    },
+    {
+      "id": "K6",
+      "original_label": "KriteriumWirkungsgrad",
+      "name": "Wirkungsgrad",
+      "prompt_name": "Wirkungsgrad"
+    },
+    {
+      "id": "K7",
+      "original_label": "KriteriumSonstiges",
+      "name": "Sonstiges",
+      "prompt_name": "Sonstiges"
+    }
+  ]
+}

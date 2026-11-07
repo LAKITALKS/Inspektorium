@@ -1,0 +1,55 @@
+{
+  "text_id": "348_Verk_T1",
+  "word_count": 113,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "In der heutigen Argumentaton geht es um Akkumaltoren, Wasserstoff und E-Fuels.",
+      "start": 0,
+      "end": 78
+    },
+    {
+      "sid": "S2",
+      "text": "Akkumaltoren sind wiederaufladbare Zellen, deren hauptbestandteil Lithium ist.",
+      "start": 79,
+      "end": 157
+    },
+    {
+      "sid": "S3",
+      "text": "Sie werden in verschiedene Autos eingebaut, und können zu Laden an das Stromnetz angeschlossen werden.",
+      "start": 158,
+      "end": 260
+    },
+    {
+      "sid": "S4",
+      "text": "Die andere Methode wäre Wasserstoff, den man nur in ganz bestimmten Autos verwenden kann.",
+      "start": 261,
+      "end": 350
+    },
+    {
+      "sid": "S5",
+      "text": "Die letzte Methode sind E-Fuels, die aus Kohlenwasserstoff bestehen.",
+      "start": 351,
+      "end": 419
+    },
+    {
+      "sid": "S6",
+      "text": "Meiner Meinung nach wäre Wasserstoff die sinnvollste Variante aus den 3 Beispielen, da sie am Umweltfreundlichsten sind und der Rohstoff Wasser natürlich begrenzt ist, jedoch nicht mehr als das Lithium.",
+      "start": 420,
+      "end": 622
+    },
+    {
+      "sid": "S7",
+      "text": "Bekanntlich werden nämlich viele Bäume gerohdet, um das Litium zu gewinnen.",
+      "start": 623,
+      "end": 698
+    },
+    {
+      "sid": "S8",
+      "text": "Auch wenn Wasser ein begrenzter Stoff ist, ist er nicht so gefährdet wie das Litium.",
+      "start": 699,
+      "end": 783
+    }
+  ],
+  "full_text": "In der heutigen Argumentaton geht es um Akkumaltoren, Wasserstoff und E-Fuels. Akkumaltoren sind wiederaufladbare Zellen, deren hauptbestandteil Lithium ist. Sie werden in verschiedene Autos eingebaut, und können zu Laden an das Stromnetz angeschlossen werden. Die andere Methode wäre Wasserstoff, den man nur in ganz bestimmten Autos verwenden kann. Die letzte Methode sind E-Fuels, die aus Kohlenwasserstoff bestehen. Meiner Meinung nach wäre Wasserstoff die sinnvollste Variante aus den 3 Beispielen, da sie am Umweltfreundlichsten sind und der Rohstoff Wasser natürlich begrenzt ist, jedoch nicht mehr als das Lithium. Bekanntlich werden nämlich viele Bäume gerohdet, um das Litium zu gewinnen. Auch wenn Wasser ein begrenzter Stoff ist, ist er nicht so gefährdet wie das Litium."
+}

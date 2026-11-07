@@ -1,0 +1,43 @@
+{
+  "text_id": "336_Verk_T1",
+  "word_count": 111,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Neue Energieträger für zukunftige Autos: In der folgenden Argumentation handelt es sich um die Reduzierung der Treibhausgasemissionen, um die Klimaneutralität zu erreichen.",
+      "start": 0,
+      "end": 172
+    },
+    {
+      "sid": "S2",
+      "text": "Aus diesem Grund fordern einige Politiker und Politikerinnen, dass ab dem Jahr 2035 Autos mit Benzin- und Dieselmotor verboten werden sollen.",
+      "start": 173,
+      "end": 314
+    },
+    {
+      "sid": "S3",
+      "text": "Zum Vorschlag stehen drei folgende klimaneutrale Energieträgern, bei denen erneuerbare Energie genutzt werden.",
+      "start": 315,
+      "end": 425
+    },
+    {
+      "sid": "S4",
+      "text": "Einmal haben wir Akkumulatoren, die auch als wiederaufladbare elektrochemische Zellen bezeichnet werden.",
+      "start": 426,
+      "end": 530
+    },
+    {
+      "sid": "S5",
+      "text": "Sie können ganz einfach ans Stromnetz angeschlossen werden, um ihre Batterie zu laden, jedoch können Akkumulatoren nur in speziell konzipierten Autos genutzt werden.",
+      "start": 531,
+      "end": 696
+    },
+    {
+      "sid": "S6",
+      "text": "Sobald sie in diese Autos eingebaut wurden, betreiben sie einen Elektromotor, ohne dabei Stoffe frei in die Natur zu setzen.",
+      "start": 697,
+      "end": 821
+    }
+  ],
+  "full_text": "Neue Energieträger für zukunftige Autos: In der folgenden Argumentation handelt es sich um die Reduzierung der Treibhausgasemissionen, um die Klimaneutralität zu erreichen. Aus diesem Grund fordern einige Politiker und Politikerinnen, dass ab dem Jahr 2035 Autos mit Benzin- und Dieselmotor verboten werden sollen. Zum Vorschlag stehen drei folgende klimaneutrale Energieträgern, bei denen erneuerbare Energie genutzt werden. Einmal haben wir Akkumulatoren, die auch als wiederaufladbare elektrochemische Zellen bezeichnet werden. Sie können ganz einfach ans Stromnetz angeschlossen werden, um ihre Batterie zu laden, jedoch können Akkumulatoren nur in speziell konzipierten Autos genutzt werden. Sobald sie in diese Autos eingebaut wurden, betreiben sie einen Elektromotor, ohne dabei Stoffe frei in die Natur zu setzen."
+}

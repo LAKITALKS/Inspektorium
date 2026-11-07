@@ -1,0 +1,55 @@
+{
+  "text_id": "289_Verk_T1",
+  "word_count": 130,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "E-fuels sind mit eine der besten Energieträger in Autos, weil sie die Vorteile von knventionellen Verbrennern mit umweltfreundlichkeit verbinden.",
+      "start": 0,
+      "end": 145
+    },
+    {
+      "sid": "S2",
+      "text": "Bei der Produktion von e-fuels wird Co2 aus der Atmosphäre gespeichert, um dann später wieder genutzt zu werden.",
+      "start": 146,
+      "end": 258
+    },
+    {
+      "sid": "S3",
+      "text": "Diese Umwandlung läuft dabei von allen drei Obtionen am effektifsten ab.",
+      "start": 259,
+      "end": 331
+    },
+    {
+      "sid": "S4",
+      "text": "Mit nur 7, 8 Tonnen Co2 Äquivalente werden für die selbe Menge an Kraftstoff am wernigstn Co2 ausgestoßen.",
+      "start": 332,
+      "end": 438
+    },
+    {
+      "sid": "S5",
+      "text": "Auch wenn die anderen Optionen beim Gesamtwirkungsgrad am schlechtesten mit nur 15-20% sind wird dies durch das andere ausgeglichen.",
+      "start": 439,
+      "end": 571
+    },
+    {
+      "sid": "S6",
+      "text": "Mit ihrer änlichhkeit zu üblichen Verbrennern, die auch Tanken, kann die selbe Infrastrucktur genutzt werden.",
+      "start": 572,
+      "end": 681
+    },
+    {
+      "sid": "S7",
+      "text": "Bei den Wasserstoff Autos macht die Verfügbarkeit und die Gefahr des leicht entzündbaaren Wasserstoff probleme.",
+      "start": 682,
+      "end": 793
+    },
+    {
+      "sid": "S8",
+      "text": "Für den normale Gebrauch ist die Reichweite wichtig, die bei dn elektroautos am schlechtesten ist.",
+      "start": 794,
+      "end": 892
+    }
+  ],
+  "full_text": "E-fuels sind mit eine der besten Energieträger in Autos, weil sie die Vorteile von knventionellen Verbrennern mit umweltfreundlichkeit verbinden. Bei der Produktion von e-fuels wird Co2 aus der Atmosphäre gespeichert, um dann später wieder genutzt zu werden. Diese Umwandlung läuft dabei von allen drei Obtionen am effektifsten ab. Mit nur 7, 8 Tonnen Co2 Äquivalente werden für die selbe Menge an Kraftstoff am wernigstn Co2 ausgestoßen. Auch wenn die anderen Optionen beim Gesamtwirkungsgrad am schlechtesten mit nur 15-20% sind wird dies durch das andere ausgeglichen. Mit ihrer änlichhkeit zu üblichen Verbrennern, die auch Tanken, kann die selbe Infrastrucktur genutzt werden. Bei den Wasserstoff Autos macht die Verfügbarkeit und die Gefahr des leicht entzündbaaren Wasserstoff probleme. Für den normale Gebrauch ist die Reichweite wichtig, die bei dn elektroautos am schlechtesten ist."
+}
