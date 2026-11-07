@@ -159,6 +159,23 @@ def _column_names(lines: list[str]) -> list[str]:
     return names
 
 
+def column_values(lines: list[str], column: str) -> set[str]:
+    """Return the labels of one annotation column, without their span numbers."""
+
+    columns = _column_names(lines)
+    if column not in columns:
+        return set()
+    position = columns.index(column)
+    found: set[str] = set()
+    for line in lines:
+        cells = line.split("\t")[3:]
+        if _TOKEN_ID.match(line) is not None and position < len(cells):
+            found |= {
+                re.sub(r"\[\d+\]$", "", cell) for cell in cells[position].split("|")
+            }
+    return found - _EMPTY_CELLS
+
+
 def sentence_criteria(lines: list[str]) -> dict[str, list[str]]:
     """Map each sentence id to the criteria the corpus annotators marked in it."""
 

@@ -82,6 +82,26 @@ The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and 
 
 The list was added after the draw, and the groups are unchanged. The eight texts stay in the group `reserve`, so the draw and the sealed hash stay reproducible. Because the file now differs from a fresh draw, `select_texts.py` refuses to run again. The test that repeats the draw compares everything except this list.
 
+**Replacing pilot texts.** Most texts of the corpus have no conclusion, and neither have `327_Verk_T1` and `975_Verk_T1-rev`. A grade for a complete argument needs texts with one. `1081_Verk_T1-Rev` has one and stays. `scripts/replace_pilot_texts.py` replaces the other two. The rule below was committed before that script first ran on the corpus.
+
+A `reserve` text can replace a pilot text if it meets all of these conditions:
+
+| Condition | Note |
+|---|---|
+| It is in `available_reserve` | So it is none of the eight texts of the `fabricated` cases |
+| It meets the participation rule: at least 80 words and the layer `webanno.custom.Argument` | |
+| Its annotation has the label `Schluss` in the column `webanno.custom.Struktur\|Struktur` | The word in the essay does not count |
+| It has the same task as `1081_Verk_T1-Rev` | Excludes nothing here: all 262 files have the task `Verk_T1` |
+| No version of it is in `pilot`, `component` or `validation_holdout`, judged by the number before `_Verk` | Excludes nothing here: no number occurs twice |
+
+`reserve` is stored in the order of the original draw, and the script checks that. So the first two texts that meet the rule are taken, and there is no new seed. Two versions of one text never both enter the pilot.
+
+**Privacy check.** The texts that are next are read in that order. A text with names of persons, schools or places that could identify its writer is skipped, and the next one is taken. The script accepts no other choice: it writes only if the cleared texts are exactly the ones the rule takes after the skips. A skip records a kind of name, never the name itself.
+
+**Plausibility check.** 33 of the 262 annotation files have the label, and the script stops at any other count. A word search without regard to case finds 36, because three essays use the word without the label. [tests/test_replace_pilot_texts.py](tests/test_replace_pilot_texts.py) checks both numbers and the two conditions that exclude nothing on the corpus.
+
+The groups keep the draw. The result is the added marking `pilot_replacement` in `selection.json`, and `current_pilot` in `scripts/reserve.py` gives the texts the pilot uses. `available_reserve` also leaves out the texts that the replacement took or passed over.
+
 **Checking the draw from outside.** Use a fresh checkout of the commit that made the draw. There, `selection.json` has no later marking, so `select_texts.py` runs and refuses any result that differs.
 
 ```bash

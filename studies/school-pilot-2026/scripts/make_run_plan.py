@@ -24,6 +24,7 @@ from pathlib import Path
 
 from genius_loader import dump_json
 from import_runs import ORIGINAL, Metadata
+from reserve import current_pilot
 from select_texts import read_seed, write_once
 
 STUDY_ROOT = Path(__file__).resolve().parents[1]
@@ -154,7 +155,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=STUDY_ROOT)
     args = parser.parse_args(argv)
     selection = json.loads(args.selection.read_text(encoding="utf-8"))
-    plan = build_plan(selection["groups"]["pilot"], read_seed(args.seed_file))
+    plan = build_plan(current_pilot(selection), read_seed(args.seed_file))
     write_once(plan_bytes(plan), args.plan)
     created = prepare_files(plan, args.root)
     print(f"planned {len(plan)} runs, created {created} empty files")
