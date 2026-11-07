@@ -10,7 +10,7 @@
 | Draw of the study groups | Done; two pilot texts replaced under a committed rule |
 | Reference cases | Built and sealed, not run through any checker |
 | Quote checker, import, analysis, coding sheet, prompt generator | Built, tested on invented data only |
-| Prompt | Template; the file with the task and the marking guide is open |
+| Prompt | Template and the released file with the task and the marking guide |
 | Inserted errors | Proposed, not decided |
 | Run plan | Done; the prompt files do not exist yet |
 | Chatbot runs | Not started |
@@ -31,7 +31,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `prereg/` | Seed, drawn groups, run plan, and later the preregistration | yes |
 | `runs/` | Chatbot outputs, prepared files, prompt files, the sentence banks of both versions and the manifest | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
-| `prompts/` | Prompt template for the chatbots | yes |
+| `prompts/` | Prompt template for the chatbots, and the task with the marking guide | yes |
 | `schemas/` | JSON Schema for the chatbot output | yes |
 | `scripts/` | Tools | yes |
 | `tests/` | Tests, run with `python -m pytest studies/school-pilot-2026/tests` | yes |
@@ -199,7 +199,9 @@ The tests of this script use invented sentences only.
 
 ## Prompt and output format
 
-[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholder under the heading `## Aufgabe und Erwartungshorizont` is open; its wording must not be invented.
+[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. [prompts/aufgabe_und_erwartungshorizont_de.md](prompts/aufgabe_und_erwartungshorizont_de.md) holds the task and the marking guide. It is the file behind `--guide`, it fills the placeholder under the heading `## Aufgabe und Erwartungshorizont`, and the maintainer released its wording.
+
+**Task.** The file gives the task in own words, because the original wording is not available. The material table is missing: the prompt names the criteria of the material but none of its values, and it tells the chatbot that it does not have the material. The class level is left out, because it could not be verified.
 
 **Criterion names.** The prompt lists K1 to K7 by their `prompt_name` from `data/criteria.json`. Three names of the grid have two parts, and only one part fits the transport task, as the words in the corpus show. K3 keeps both parts, because both occur.
 
@@ -293,6 +295,8 @@ Its tests use invented texts and the example file `tests/fixtures/example_traps.
 
 Measures 2 and 3 are reported strict and normalized. They count quotes in comments and in error reports.
 
+**Expected ceilings.** Measures 4 and 7 can stay below 100 % even for flawless answers. The marking guide asks for a comment on the whole text without a quote when something is missing, and comments on A1, A4 and A5 often have no criterion K1 to K7. Measure 5 is the fair counterpart to measure 4, because it counts local comments only. The pilot does not compute it; see [Adaptations for the pilot](#adaptations-for-the-pilot-anpassung-für-den-pilot).
+
 **Also reported, without a measure of their own.**
 
 - `invalid_quotes` lists every quote that fails in at least one mode, one by one, with both results. A quote with silently corrected spelling is invalid in both modes and appears here.
@@ -378,7 +382,7 @@ These changes were made before the preregistration, while the tools were being c
 - **Sentence numbers.** The agreed spellings `"3"`, `3` and `"[S3]"` become `S3`, and each rewrite is counted by its form. Every other form counts as a missing number, so a wrong number no longer makes a run a failure. See exception 3 under [Import](#import).
 - **Accepted categories.** Stage 1 first asked for exactly one category. A trap now names one or two accepted categories, because some errors fit two of them: a wrong number that contradicts a statement in the same text can accept `Zahl` and `Widerspruch`. The type of the trap stays for the reports. See [Hit rule](#hit-rule).
 - **Prompt files and banks.** `scripts/make_prompts.py` builds the modified version from the trap file and writes all prompts, the banks of both versions and a manifest below `runs/`. The import now reads the banks from `runs/banks/`, because a quote must be checked against the text that was sent. See [Prompt and output format](#prompt-and-output-format).
-- **Task material.** The prompts describe the task in own words and do not contain the material table. Whether and how the table may be used is still being clarified.
+- **Task material.** The prompts describe the task in own words, do not contain the material table and leave out the class level. The pilot runs without the table.
 - **Criterion names.** The prompt now shows `Energiedichte`, `Verfügbarkeit` and `Betrieb` for K1, K2 and K4, because the other part of these names does not fit the transport task. The import accepts old and new names. See [Prompt and output format](#prompt-and-output-format).
 - **Writing task.** The prompt section is now `## Aufgabe und Erwartungshorizont`. The task stands in the file behind `--guide`, and the template no longer holds a task of its own, so that it appears once. There is no further placeholder.
 
@@ -392,7 +396,7 @@ These changes were made before the preregistration, while the tools were being c
 
 **Run plan.** [prereg/laufplan.csv](prereg/laufplan.csv) has one row per run with its number, day, chatbot, prompt file, target file and metadata file. `scripts/make_run_plan.py` mixes the order with the seed from `prereg/seed.txt`. Every chatbot has nine runs on each of the two days, and the repetitions of one text and version fall on both days.
 
-The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. The prompt files named in the plan do not exist yet, because they need the marking guide and the inserted errors. `scripts/make_prompts.py` writes them once both are decided, and they stay out of Git.
+The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. The prompt files named in the plan do not exist yet, because they need the inserted errors. `scripts/make_prompts.py` writes them once those are decided, and they stay out of Git.
 
 **Metadata.** Each run has these fields in `<repetition>.meta.json`. All of them are entered before the prompt is sent.
 
@@ -425,7 +429,4 @@ With the preregistration, the commit of the whole study folder is recorded, with
 
 These points are not settled here, and the tooling does not assume an answer.
 
-- **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
 - **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md` and `prereg/injection_proposals_v2.md`, with a draft of the trap file in `prereg/traps_draft.json`. These files stay out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites, with one type and one or two accepted categories per trap. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
-
-**Writing task.** The file behind `--guide` describes it in own words. The original wording is not available.

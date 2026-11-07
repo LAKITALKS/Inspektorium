@@ -1,8 +1,8 @@
 # Prompt-Vorlage für die Chatbots
 
-Diese Vorlage ist noch nicht einsatzbereit: `{{ERWARTUNGSHORIZONT}}` ist offen und folgt nach Lazaros' Freigabe.
+Der Erwartungshorizont ist freigegeben und steht in [aufgabe_und_erwartungshorizont_de.md](aufgabe_und_erwartungshorizont_de.md). Diese Datei wird dem Skript als `--guide` übergeben.
 
-Die Aufgabe steht in eigenen Worten in der Datei hinter `--guide`, zusammen mit dem Erwartungshorizont. Der Originalwortlaut liegt nicht vor.
+Die Aufgabe steht dort in eigenen Worten, zusammen mit dem Erwartungshorizont. Der Originalwortlaut liegt nicht vor.
 
 `scripts/make_prompts.py` füllt die Vorlage. Beim Einsetzen gilt:
 
