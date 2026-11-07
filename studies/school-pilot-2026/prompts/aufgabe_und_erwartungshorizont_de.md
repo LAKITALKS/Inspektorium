@@ -19,17 +19,19 @@ Eine sehr gute Argumentation erfüllt sechs Anforderungen:
 | A3 Vollständiger Vergleich | bei jedem behandelten Kriterium alle drei Energieträger | bei einem Teil der Kriterien fehlen Energieträger | bei keinem Kriterium alle drei Energieträger |
 | A4 Relevanz | erklärt, warum die Kriterien für die eigenen Behauptungen wichtig sind | nur bei einzelnen Kriterien oder nur behauptet | keine Erklärung |
 | A5 Gewichtung | vergleicht, welche Kriterien für die Entscheidung schwerer wiegen | nur angedeutet | kein Vergleich |
-| A6 Sachliche Richtigkeit | Angaben treffen fachlich zu und widersprechen sich nicht | einzelne sachliche Fehler oder Widersprüche, auf denen die Position nicht wesentlich beruht | die Position beruht wesentlich auf falschen Angaben |
+| A6 Sachliche Richtigkeit | Angaben treffen fachlich zu und widersprechen sich nicht | einzelne sachliche Fehler oder Widersprüche, auf denen die Position nicht wesentlich beruht | die Position beruht wesentlich auf falschen Angaben oder Widersprüchen |
 
 ### Notenstufen
 
+Jede Anforderung bringt Punkte: erfüllt 2, teilweise erfüllt 1, nicht erfüllt 0. Höchstens sind 12 Punkte möglich.
+
 Mindestanforderung für die Noten 1 bis 4: Eine Position ist erkennbar und wird mit mindestens einem Kriterium begründet.
 
-- **1 (sehr gut):** Alle sechs Anforderungen sind erfüllt.
-- **2 (gut):** Keine Anforderung ist nicht erfüllt, höchstens eine ist nur teilweise erfüllt.
-- **3 (befriedigend):** Zwei Anforderungen sind nur teilweise erfüllt oder eine ist nicht erfüllt; alle übrigen sind erfüllt.
-- **4 (ausreichend):** Die Mindestanforderung ist erfüllt, die Lücken gehen aber über Note 3 hinaus.
-- **5 (mangelhaft):** Die Mindestanforderung ist nicht erfüllt, eine Auseinandersetzung mit den Energieträgern ist aber erkennbar.
+- **1 (sehr gut):** 12 Punkte.
+- **2 (gut):** 10 oder 11 Punkte.
+- **3 (befriedigend):** 8 oder 9 Punkte.
+- **4 (ausreichend):** 6 oder 7 Punkte.
+- **5 (mangelhaft):** höchstens 5 Punkte, oder die Mindestanforderung ist nicht erfüllt; eine Auseinandersetzung mit den Energieträgern ist aber erkennbar.
 - **6 (ungenügend):** Eine Auseinandersetzung mit der Aufgabe ist nicht erkennbar.
 
 ### Hinweise zur Bewertung
