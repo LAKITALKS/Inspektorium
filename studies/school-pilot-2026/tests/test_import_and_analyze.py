@@ -262,6 +262,33 @@ def test_a_criterion_named_in_full_counts_as_its_id(lab: Lab) -> None:
     assert lab.imported()[0].comments[0]["criteria"][0]["id"] == "K6"
 
 
+@pytest.mark.parametrize(
+    ("spelling", "criterion"),
+    [
+        pytest.param("Energiedichte", "K1", id="prompt-name-k1"),
+        pytest.param(" verfügbarkeit ", "K2", id="prompt-name-k2"),
+        pytest.param("BETRIEB", "K4", id="prompt-name-k4"),
+        pytest.param("Jahresertrag/Energiedichte", "K1", id="old-name-k1"),
+        pytest.param("Lebensdauer/Verfügbarkeit", "K2", id="old-name-k2"),
+        pytest.param("Preis/Betrieb", "K4", id="old-name-k4"),
+        pytest.param("Lokale Emissionen/Geräuschemissionen", "K3", id="unchanged"),
+    ],
+)
+def test_old_and_new_names_count_as_the_criterion(
+    lab: Lab, spelling: str, criterion: str
+) -> None:
+    lab.add(_output([_comment(criteria=[spelling])]))
+    assert lab.imported()[0].comments[0]["criteria"][0]["id"] == criterion
+
+
+@pytest.mark.parametrize("spelling", ["Jahresertrag", "Lebensdauer", "Preis"])
+def test_the_dropped_part_of_a_name_stays_outside_the_grid(
+    lab: Lab, spelling: str
+) -> None:
+    lab.add(_output([_comment(criteria=[spelling])]))
+    assert lab.imported()[0].comments[0]["criteria"][0]["id"] is None
+
+
 def test_an_unknown_criterion_saves_no_other_violation(lab: Lab) -> None:
     payload = json.loads(_output([_comment(criteria=["K9"])]))
     payload["comments"][0]["extra"] = 1

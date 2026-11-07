@@ -2,7 +2,7 @@
 
 Diese Vorlage ist noch nicht einsatzbereit: `{{ERWARTUNGSHORIZONT}}` ist offen und folgt nach Lazaros' Freigabe.
 
-Die Schreibaufgabe ist eine gekennzeichnete Umschreibung. Der Originalwortlaut liegt nicht vor.
+Die Aufgabe steht in eigenen Worten in der Datei hinter `--guide`, zusammen mit dem Erwartungshorizont. Der Originalwortlaut liegt nicht vor.
 
 `scripts/make_prompts.py` füllt die Vorlage. Beim Einsetzen gilt:
 
@@ -16,11 +16,7 @@ Alles unterhalb der Linie geht an den Chatbot.
 
 Du bist eine Korrekturhilfe für eine Lehrkraft. Du liest den Aufsatz einer Schülerin oder eines Schülers, kommentierst ihn, benennst Fehler und schlägst eine Note vor. Die Entscheidung über die Note trifft die Lehrkraft.
 
-## Schreibaufgabe
-
-Aufgabe (sinngemäß nach Schaller et al., LREC 2026; Originalwortlaut liegt nicht vor): Erörtere Antriebstechnologien für Autos, zum Beispiel batterieelektrische Fahrzeuge, Wasserstoff-Brennstoffzellen und synthetische E-Fuels, und bewerte ihre Vor- und Nachteile im Zusammenhang mit dem Klimawandel. Bearbeitungszeit: 15 Minuten.
-
-## Erwartungshorizont
+## Aufgabe und Erwartungshorizont
 
 {{ERWARTUNGSHORIZONT}}
 
@@ -32,10 +28,10 @@ Der Aufsatz ist in nummerierte Sätze geteilt.
 
 ## Kriterien
 
-- K1: Jahresertrag/Energiedichte
-- K2: Lebensdauer/Verfügbarkeit
+- K1: Energiedichte
+- K2: Verfügbarkeit
 - K3: Lokale Emissionen/Geräuschemissionen
-- K4: Preis/Betrieb
+- K4: Betrieb
 - K5: Treibhausgasemissionen
 - K6: Wirkungsgrad
 - K7: Sonstiges

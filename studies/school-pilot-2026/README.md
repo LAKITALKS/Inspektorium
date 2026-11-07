@@ -10,7 +10,7 @@
 | Draw of the study groups | Done; two pilot texts replaced under a committed rule |
 | Reference cases | Built and sealed, not run through any checker |
 | Quote checker, import, analysis, coding sheet, prompt generator | Built, tested on invented data only |
-| Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
+| Prompt | Template; the file with the task and the marking guide is open |
 | Inserted errors | Proposed, not decided |
 | Run plan | Done; the prompt files do not exist yet |
 | Chatbot runs | Not started |
@@ -57,7 +57,7 @@ python studies/school-pilot-2026/scripts/genius_loader.py
 
 A bank has the form `{text_id, word_count, sentences: [{sid, text, start, end}], full_text}`.
 
-The header labels of the corpus lost their umlauts. `criteria.json` keeps them in `original_label` and adds a readable `name`.
+The header labels of the corpus lost their umlauts. `criteria.json` keeps them in `original_label` and adds a readable `name`. It also holds the `prompt_name` that the prompt shows; see [Prompt and output format](#prompt-and-output-format).
 
 ## Selection
 
@@ -199,7 +199,17 @@ The tests of this script use invented sentences only.
 
 ## Prompt and output format
 
-[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholder for the marking guide is open; its wording must not be invented.
+[prompts/grading_prompt_de.md](prompts/grading_prompt_de.md) is the German prompt template. [schemas/output.schema.json](schemas/output.schema.json) defines the output. The placeholder under the heading `## Aufgabe und Erwartungshorizont` is open; its wording must not be invented.
+
+**Criterion names.** The prompt lists K1 to K7 by their `prompt_name` from `data/criteria.json`. Three names of the grid have two parts, and only one part fits the transport task, as the words in the corpus show. K3 keeps both parts, because both occur.
+
+| Id | `name` | `prompt_name` | Words of the part that stays | Words of the part that goes |
+|---|---|---|---|---|
+| K1 | Jahresertrag/Energiedichte | Energiedichte | 43 | 0 |
+| K2 | Lebensdauer/Verfügbarkeit | Verfügbarkeit | 44 | 0 |
+| K4 | Preis/Betrieb | Betrieb | 170 | 2 |
+
+The table counts the words marked with the criterion in all 262 annotation files that contain one of the listed stems. The stems and the counts per stem are in `test_the_word_counts_behind_the_prompt_names` in [tests/test_genius_loader.py](tests/test_genius_loader.py). This is a rough count and only supports the choice of the name.
 
 **Prompt files.** `scripts/make_prompts.py` writes the six prompt files that the run plan names: three texts, each as the original and as the modified version.
 
@@ -208,7 +218,7 @@ python studies/school-pilot-2026/scripts/make_prompts.py --guide <marking-guide.
 ```
 
 - **Inputs.** The marking guide and the trap file are paths on the command line. Neither has a default, and the script opens only the files it is given.
-- **Content.** Only the part of the template below its line is sent. Each sentence stands on its own line as `[S1] Satztext`.
+- **Content.** Only the part of the template below its line is sent. Each sentence stands on its own line as `[S1] Satztext`. The file behind `--guide` holds the task in own words and the marking guide, and it fills the section `## Aufgabe und Erwartungshorizont`.
 - **Modified version.** It is the original plus the `edits` of the trap file; see [Hit rule](#hit-rule). The sentence numbers are the same in both versions.
 - **Difference check.** The script compares the two banks sentence by sentence and the two finished prompts line by line. It stops if anything differs apart from the defined passages, or if a defined change is missing.
 - **Output.** The prompts go to `runs/prompts/`, and the banks of both versions go to `runs/banks/`, where the import reads them. All of them stay out of Git, because the modified texts would show the inserted errors before the measurement.
@@ -243,7 +253,7 @@ Its tests use invented texts and the example file `tests/fixtures/example_traps.
 - Any other form counts as a missing number, for example null, an empty text, `s3`, `S03`, `[3]` or `Satz 3`.
 - A quote or error report without a number keeps the run usable. The quote counts in measure 2 and in `quotes_without_sid` only, and the report cannot pass stage 1.
 
-**Exception 4: unknown criterion.** A criterion outside the grid keeps the run usable. The reference is marked with `id: null` and counts in measure 6 as outside the grid. A criterion written as its exact name from `data/criteria.json`, in any case, counts as its id. That list of names is the agreed list of spellings.
+**Exception 4: unknown criterion.** A criterion outside the grid keeps the run usable. The reference is marked with `id: null` and counts in measure 6 as outside the grid. A criterion written as its exact `name` or `prompt_name` from `data/criteria.json`, in any case, counts as its id. These two lists are the agreed spellings. The dropped part of a name alone, such as `Preis`, stays outside the grid.
 
 **Counted.** Per chatbot, the analysis reports three things under `import_notes`: `code_fences_removed` counts usable runs, `sids_rewritten` counts rewritten numbers in usable runs, in total and by form (`text`, `number`, `brackets`), and `invalid_category_entries` counts entries. Under `counts`, `quotes_without_sid` counts quotes, and measure 6 counts the references outside the grid.
 
@@ -369,6 +379,8 @@ These changes were made before the preregistration, while the tools were being c
 - **Accepted categories.** Stage 1 first asked for exactly one category. A trap now names one or two accepted categories, because some errors fit two of them: a wrong number that contradicts a statement in the same text can accept `Zahl` and `Widerspruch`. The type of the trap stays for the reports. See [Hit rule](#hit-rule).
 - **Prompt files and banks.** `scripts/make_prompts.py` builds the modified version from the trap file and writes all prompts, the banks of both versions and a manifest below `runs/`. The import now reads the banks from `runs/banks/`, because a quote must be checked against the text that was sent. See [Prompt and output format](#prompt-and-output-format).
 - **Task material.** The prompts describe the task in own words and do not contain the material table. Whether and how the table may be used is still being clarified.
+- **Criterion names.** The prompt now shows `Energiedichte`, `Verfügbarkeit` and `Betrieb` for K1, K2 and K4, because the other part of these names does not fit the transport task. The import accepts old and new names. See [Prompt and output format](#prompt-and-output-format).
+- **Writing task.** The prompt section is now `## Aufgabe und Erwartungshorizont`. The task stands in the file behind `--guide`, and the template no longer holds a task of its own, so that it appears once. There is no further placeholder.
 
 ## Run protocol
 
@@ -416,4 +428,4 @@ These points are not settled here, and the tooling does not assume an answer.
 - **Marking guide.** It follows after the maintainer's release. The placeholder stays until then.
 - **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md` and `prereg/injection_proposals_v2.md`, with a draft of the trap file in `prereg/traps_draft.json`. These files stay out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites, with one type and one or two accepted categories per trap. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
 
-**Writing task.** The prompt uses a marked paraphrase after Schaller et al., LREC 2026. The original wording is not available.
+**Writing task.** The file behind `--guide` describes it in own words. The original wording is not available.

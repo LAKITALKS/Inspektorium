@@ -147,10 +147,80 @@ def test_corpus_criteria_are_the_seven_expected_ones(
 ) -> None:
     criteria = loader.build_criteria(corpus)
     assert criteria["criteria"] == [
-        {"id": cid, "original_label": label, "name": name}
+        {
+            "id": cid,
+            "original_label": label,
+            "name": name,
+            "prompt_name": loader.PROMPT_NAMES.get(cid, name),
+        }
         for cid, label, name in loader.CRITERIA
     ]
     assert len(loader.CRITERIA) == 7
+
+
+def _marked_words(lines: list[str], feature: str) -> list[str]:
+    """Return the words that carry a value of one criterion, in lower case."""
+
+    columns = loader._column_names(lines)
+    column = f"{loader.ARGUMENT_LAYER}|{feature}"
+    if column not in columns:
+        return []
+    position = columns.index(column)
+    words: list[str] = []
+    for line in lines:
+        cells = line.split("\t")
+        if re.match(r"\d+-\d+\t", line) and position + 3 < len(cells):
+            values = {
+                re.sub(r"\[\d+\]$", "", part) for part in cells[position + 3].split("|")
+            }
+            if values - {"_", "*"}:
+                words.append(cells[2].casefold())
+    return words
+
+
+def test_a_span_without_a_value_for_the_criterion_does_not_count() -> None:
+    lines = (HEADER + BODY).split("\n")
+    assert _marked_words(lines, "KriteriumPreisBetrieb") == ["erster"]
+    assert _marked_words(lines, "KriteriumWirkungsgrad") == []
+    assert _marked_words(lines, "KriteriumFehlt") == []
+
+
+CRITERION_WORDS = {
+    "KriteriumJahresertragEnergiedichte": {"energiedichte": 43, "jahresertrag": 0},
+    "KriteriumLebensdauerVerfgbarkeit": {
+        "verfügbar": 28,
+        "massenfertigung": 10,
+        "kleinserie": 6,
+        "lebensdauer": 0,
+    },
+    "KriteriumLokaleEmissionenGeruschemissionen": {
+        "emission": 15,
+        "abgas": 4,
+        "geräusch": 13,
+        "laut": 11,
+    },
+    "KriteriumPreisBetrieb": {
+        "reichweite": 66,
+        "lade": 56,
+        "tank": 39,
+        "betrieb": 9,
+        "preis": 0,
+        "kosten": 0,
+        "teuer": 2,
+        "günstig": 0,
+    },
+}
+
+
+def test_the_word_counts_behind_the_prompt_names(annotations_dir: Path) -> None:
+    """Words that contain a stem, among the words marked with the criterion."""
+
+    paths = sorted(annotations_dir.glob("*.tsv"))
+    files = [loader.read_lines(path) for path in paths]
+    for feature, expected in CRITERION_WORDS.items():
+        words = [word for lines in files for word in _marked_words(lines, feature)]
+        found = {stem: sum(stem in word for word in words) for stem in expected}
+        assert found == expected
 
 
 def test_token_sentence_numbers_match_the_text_lines(
@@ -179,4 +249,10 @@ def test_committed_criteria_match_the_loader(study_root: Path) -> None:
     ]
     assert [item["original_label"] for item in committed["criteria"]] == [
         label for _, label, _ in loader.CRITERIA
+    ]
+    assert [item["prompt_name"] for item in committed["criteria"]] == [
+        loader.PROMPT_NAMES.get(cid, name) for cid, _, name in loader.CRITERIA
+    ]
+    assert [item["name"] for item in committed["criteria"]] == [
+        name for _, _, name in loader.CRITERIA
     ]

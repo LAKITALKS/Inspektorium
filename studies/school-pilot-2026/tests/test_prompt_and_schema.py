@@ -8,14 +8,6 @@ from pathlib import Path
 
 import pytest
 
-WRITING_TASK = (
-    "Aufgabe (sinngemäß nach Schaller et al., LREC 2026; Originalwortlaut liegt "
-    "nicht vor): Erörtere Antriebstechnologien für Autos, zum Beispiel "
-    "batterieelektrische Fahrzeuge, Wasserstoff-Brennstoffzellen und synthetische "
-    "E-Fuels, und bewerte ihre Vor- und Nachteile im Zusammenhang mit dem "
-    "Klimawandel. Bearbeitungszeit: 15 Minuten."
-)
-
 
 @pytest.fixture(scope="module")
 def prompt(study_root: Path) -> str:
@@ -38,9 +30,17 @@ def test_the_prompt_has_exactly_the_agreed_placeholders(prompt: str) -> None:
     }
 
 
-def test_the_writing_task_is_the_marked_paraphrase(prompt: str) -> None:
+def test_the_task_and_the_guide_share_one_section(prompt: str) -> None:
     sent = prompt.split("\n---\n", maxsplit=1)[1]
-    assert WRITING_TASK in sent
+    assert "## Aufgabe und Erwartungshorizont\n\n{{ERWARTUNGSHORIZONT}}\n" in sent
+
+
+def test_the_template_states_no_task_of_its_own(prompt: str) -> None:
+    """The task stands in the guide file; a second one could contradict it."""
+
+    sent = prompt.split("\n---\n", maxsplit=1)[1]
+    assert "Schreibaufgabe" not in sent
+    assert sent.count("Aufgabe") == 1
 
 
 def test_the_prompt_keeps_the_agreed_role_and_the_json_only_request(
@@ -55,7 +55,13 @@ def test_the_prompt_keeps_the_agreed_role_and_the_json_only_request(
 def test_the_prompt_lists_every_criterion(prompt: str, study_root: Path) -> None:
     criteria = json.loads((study_root / "data/criteria.json").read_text("utf-8"))
     for item in criteria["criteria"]:
-        assert f"- {item['id']}: {item['name']}\n" in prompt
+        assert f"- {item['id']}: {item['prompt_name']}\n" in prompt
+
+
+def test_the_prompt_uses_only_the_fitting_part_of_a_double_name(prompt: str) -> None:
+    for part in ("Jahresertrag", "Lebensdauer", "Preis"):
+        assert part not in prompt
+    assert "- K3: Lokale Emissionen/Geräuschemissionen\n" in prompt
 
 
 def test_the_prompt_does_not_reveal_inserted_errors(prompt: str) -> None:

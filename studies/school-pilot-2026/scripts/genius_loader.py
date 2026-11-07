@@ -47,6 +47,9 @@ CRITERIA: tuple[tuple[str, str, str], ...] = (
     ("K7", "KriteriumSonstiges", "Sonstiges"),
 )
 _CRITERION_ID_BY_LABEL = {label: cid for cid, label, _ in CRITERIA}
+# Some names of the grid cover more than the transport task. The prompt uses the
+# part that fits it; every other criterion keeps its name.
+PROMPT_NAMES = {"K1": "Energiedichte", "K2": "Verfügbarkeit", "K4": "Betrieb"}
 
 
 class CorpusError(ValueError):
@@ -232,7 +235,12 @@ def build_criteria(corpus: list[Annotation]) -> dict[str, object]:
     return {
         "layer": ARGUMENT_LAYER,
         "criteria": [
-            {"id": cid, "original_label": label, "name": name}
+            {
+                "id": cid,
+                "original_label": label,
+                "name": name,
+                "prompt_name": PROMPT_NAMES.get(cid, name),
+            }
             for cid, label, name in CRITERIA
         ],
     }

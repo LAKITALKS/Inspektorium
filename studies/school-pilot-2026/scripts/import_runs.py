@@ -423,13 +423,14 @@ def build_references(output: dict[str, Any], bank: SentenceBank) -> list[Referen
 
 @lru_cache(maxsize=1)
 def criterion_spellings() -> dict[str, str]:
-    """Map every agreed spelling to its id: the ids and the names of the grid."""
+    """Map every agreed spelling to its id: ids, names and prompt names."""
 
     criteria = json.loads(CRITERIA_PATH.read_text(encoding="utf-8"))["criteria"]
     spellings: dict[str, str] = {}
     for item in criteria:
         spellings[item["id"].casefold()] = item["id"]
         spellings[item["name"].casefold()] = item["id"]
+        spellings[item["prompt_name"].casefold()] = item["id"]
     return spellings
 
 
