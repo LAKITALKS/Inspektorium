@@ -20,6 +20,7 @@ import make_prompts as mp
 import make_run_plan as plan_module
 import pytest
 from check_quotes import check_quote
+from reserve import current_pilot
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 SENTENCES = {
@@ -527,7 +528,7 @@ def test_the_committed_plan_and_banks_give_six_prompts(
     plan = (study_root / "prereg/laufplan.csv").read_text("utf-8")
     files = mp.prompt_files(plan)
     selection = json.loads((study_root / "prereg/selection.json").read_text("utf-8"))
-    pilot = selection["groups"]["pilot"]
+    pilot = current_pilot(selection)
     assert sorted(files) == sorted(
         (text_id, version) for text_id in pilot for version in plan_module.VERSIONS
     )

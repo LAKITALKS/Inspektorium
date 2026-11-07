@@ -33,8 +33,9 @@ def test_the_committed_reserve_loses_the_marked_texts(
     selection: dict[str, Any],
 ) -> None:
     available = rs.available_reserve(selection)
-    assert len(available) == len(selection["groups"]["reserve"]) - 8
+    assert len(available) == len(selection["groups"]["reserve"]) - 8 - 2
     assert set(available).isdisjoint(selection[rs.USED_FOR_FABRICATED])
+    assert set(available).isdisjoint(rs.current_pilot(selection))
 
 
 def test_the_group_itself_keeps_the_marked_texts(selection: dict[str, Any]) -> None:

@@ -12,6 +12,7 @@ import import_runs as imp
 import make_run_plan as plan_module
 import pytest
 import select_texts
+from reserve import current_pilot
 
 TEXTS = ["t1", "t2", "t3"]
 SCHEMA = json.loads(
@@ -137,10 +138,10 @@ def test_the_plan_cannot_be_redrawn(
         select_texts.write_once(plan_module.plan_bytes(other), target)
 
 
-def test_the_committed_plan_matches_the_pilot_group(study_root: Path) -> None:
-    groups = json.loads((study_root / "prereg/selection.json").read_text("utf-8"))
+def test_the_committed_plan_matches_the_current_pilot(study_root: Path) -> None:
+    selection = json.loads((study_root / "prereg/selection.json").read_text("utf-8"))
     seed = select_texts.read_seed(study_root / "prereg/seed.txt")
-    expected = plan_module.build_plan(groups["groups"]["pilot"], seed)
+    expected = plan_module.build_plan(current_pilot(selection), seed)
     committed = (study_root / "prereg/laufplan.csv").read_bytes()
     assert committed == plan_module.plan_bytes(expected)
 

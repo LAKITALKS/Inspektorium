@@ -177,5 +177,47 @@
     "922_Verk_T1-rev",
     "982_Verk_T1-rev",
     "996_Verk_T1-rev"
-  ]
+  ],
+  "pilot_replacement": {
+    "reason": "The replaced texts have no conclusion zone.",
+    "rule": {
+      "pool": "available_reserve",
+      "order": "stored order of the draw",
+      "min_words": 80,
+      "required_layer": "webanno.custom.Argument",
+      "conclusion_column": "webanno.custom.Struktur|Struktur",
+      "conclusion_label": "Schluss",
+      "same_task_as": "1081_Verk_T1-Rev",
+      "no_version_of_a_text_in": [
+        "pilot",
+        "component",
+        "validation_holdout"
+      ],
+      "privacy_reasons": [
+        "person",
+        "school",
+        "place"
+      ]
+    },
+    "kept": [
+      "1081_Verk_T1-Rev"
+    ],
+    "replacements": [
+      {
+        "text_id": "298_Verk_T1",
+        "replaces": "327_Verk_T1",
+        "reserve_place": 1,
+        "word_count": 97,
+        "sentences": 7
+      },
+      {
+        "text_id": "950_Verk_T1-rev",
+        "replaces": "975_Verk_T1-rev",
+        "reserve_place": 16,
+        "word_count": 145,
+        "sentences": 9
+      }
+    ],
+    "privacy_skips": []
+  }
 }

@@ -7,7 +7,7 @@
 | Part | State |
 |---|---|
 | Corpus, sentence banks, criteria | Done |
-| Draw of the study groups | Done |
+| Draw of the study groups | Done; two pilot texts replaced under a committed rule |
 | Reference cases | Built and sealed, not run through any checker |
 | Quote checker, import, analysis, coding sheet, prompt generator | Built, tested on invented data only |
 | Prompt | Template; the writing task is a marked paraphrase, the marking guide is open |
@@ -27,7 +27,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/criteria.json` | Criteria K1 to K7 | yes |
 | `data/external/` | Full corpus and all sentence banks | no |
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
-| `data/selected/` | Sentence banks of `pilot` and `component`, marked in their README | yes |
+| `data/selected/` | Sentence banks of `pilot`, `component` and the two replacements, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, run plan, and later the preregistration | yes |
 | `runs/` | Chatbot outputs, prepared files, prompt files, the sentence banks of both versions and the manifest | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
@@ -76,11 +76,11 @@ The procedure below was committed before its first run on the corpus, so the Git
 
 The script refuses to replace an existing draw with a different one.
 
-The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and `component` are copied to [data/selected/](data/selected/README.md); the other groups are id lists.
+The draw is in [prereg/selection.json](prereg/selection.json). Only `pilot` and `component` are copied to [data/selected/](data/selected/README.md), together with the two replacements below; the other groups are id lists.
 
 **Used reserve texts.** The `fabricated` cases took sentences from eight `reserve` texts. `selection.json` lists these texts under `used_for_fabricated`, and every later sample excludes them. A later sample must draw from `available_reserve` in `scripts/reserve.py`, which refuses a selection without this list.
 
-The list was added after the draw, and the groups are unchanged. The eight texts stay in the group `reserve`, so the draw and the sealed hash stay reproducible. Because the file now differs from a fresh draw, `select_texts.py` refuses to run again. The test that repeats the draw compares everything except this list.
+The list was added after the draw, and the groups are unchanged. The eight texts stay in the group `reserve`, so the draw and the sealed hash stay reproducible. Because the file now differs from a fresh draw, `select_texts.py` refuses to run again. The test that repeats the draw compares everything except the added markings.
 
 **Replacing pilot texts.** Most texts of the corpus have no conclusion, and neither have `327_Verk_T1` and `975_Verk_T1-rev`. A grade for a complete argument needs texts with one. `1081_Verk_T1-Rev` has one and stays. `scripts/replace_pilot_texts.py` replaces the other two. The rule below was committed before that script first ran on the corpus.
 
@@ -102,6 +102,17 @@ A `reserve` text can replace a pilot text if it meets all of these conditions:
 
 The groups keep the draw. The result is the added marking `pilot_replacement` in `selection.json`, and `current_pilot` in `scripts/reserve.py` gives the texts the pilot uses. `available_reserve` also leaves out the texts that the replacement took or passed over.
 
+**Result.**
+
+| Replaced | Replacement | Place in `reserve` | Words | Sentences |
+|---|---|---|---|---|
+| `327_Verk_T1` | `298_Verk_T1` | 1 | 97 | 7 |
+| `975_Verk_T1-rev` | `950_Verk_T1-rev` | 16 | 145 | 9 |
+
+Both replacements were read for the privacy check, and neither holds such a name, so no text was skipped. 19 texts met the rule. The test `test_the_replacement_is_what_the_rule_gives` in [tests/test_committed_selection.py](tests/test_committed_selection.py) runs the rule again on the corpus and compares the marking.
+
+`327_Verk_T1` and `975_Verk_T1-rev` stay in the group `pilot`, marked as replaced, and their banks stay in `data/selected/`. The new run plan replaced the old one, which stays in the Git history. No run had been made: the 72 prepared files of these two texts were still blank, and they were removed from `runs/`.
+
 **Checking the draw from outside.** Use a fresh checkout of the commit that made the draw. There, `selection.json` has no later marking, so `select_texts.py` runs and refuses any result that differs.
 
 ```bash
@@ -116,7 +127,7 @@ git status --short
 
 The draw is confirmed if `select_texts.py` ends without an error and `git status --short` prints nothing. The scripts need only the standard library. On a Python build without system certificates, `fetch_genius.py` also needs the package `certifi`.
 
-Two more commands show that the procedure came first and that the groups stayed the same. The first prints nothing. The second, once this study is merged, shows only the added list.
+Two more commands show that the procedure came first and that the groups stayed the same. The first prints nothing. The second, once this study is merged, shows only the two added markings.
 
 ```bash
 git diff b9c0aaa 129f9b5 -- studies/school-pilot-2026/scripts/select_texts.py studies/school-pilot-2026/prereg/seed.txt
@@ -150,7 +161,7 @@ git diff 129f9b5 origin/main -- studies/school-pilot-2026/prereg/selection.json
 
 Before the folder was closed on 2026-11-04, the generator wrote the file, and a hash check and a test read it by machine. Its content was not displayed.
 
-**Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them, and later samples exclude them (see [Selection](#selection)). All other `reserve` texts stay unread.
+**Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them, and later samples exclude them (see [Selection](#selection)). Two more `reserve` texts became pilot texts. No other `reserve` text was displayed; [Changes before preregistration](#changes-before-preregistration) says what was read by machine.
 
 **Not run.** Neither the kernel nor the quote checker has been applied to these cases. That is the measurement after the preregistration.
 
@@ -351,6 +362,9 @@ The maintainer decided these differences from the main study's plan.
 
 These changes were made before the preregistration, while the tools were being checked.
 
+- **Pilot texts.** `327_Verk_T1` and `975_Verk_T1-rev` have no conclusion, like most texts of the corpus, and rating a complete argument needs one. Under a rule committed before the draw, they were replaced by the first two texts of `available_reserve` with the label `Schluss`: `298_Verk_T1` and `950_Verk_T1-rev`. `1081_Verk_T1-Rev` stays. The conditions on the task and on the text number exclude nothing on this corpus and stay part of the rule. See [Selection](#selection).
+- **Limit of the pilot texts.** The pilot texts are chosen on purpose among texts with a conclusion. They are not representative of the corpus.
+- **What was read for the replacement.** All 262 annotation files were read by machine for totals. Only totals and three words were displayed, two of them from `reserve`. When the rule ran, the ids and counts of the first four candidates were displayed, and the privacy check read the text of the first two. The draw leaves no choice, so this reading cannot have influenced the selection.
 - **Sentence numbers.** The agreed spellings `"3"`, `3` and `"[S3]"` become `S3`, and each rewrite is counted by its form. Every other form counts as a missing number, so a wrong number no longer makes a run a failure. See exception 3 under [Import](#import).
 - **Accepted categories.** Stage 1 first asked for exactly one category. A trap now names one or two accepted categories, because some errors fit two of them: a wrong number that contradicts a statement in the same text can accept `Zahl` and `Widerspruch`. The type of the trap stays for the reports. See [Hit rule](#hit-rule).
 - **Prompt files and banks.** `scripts/make_prompts.py` builds the modified version from the trap file and writes all prompts, the banks of both versions and a manifest below `runs/`. The import now reads the banks from `runs/banks/`, because a quote must be checked against the text that was sent. See [Prompt and output format](#prompt-and-output-format).
