@@ -34,6 +34,8 @@ Mindestanforderung für die Noten 1 bis 4: Eine Position ist erkennbar und wird 
 - **5 (mangelhaft):** höchstens 5 Punkte, oder die Mindestanforderung ist nicht erfüllt; eine Auseinandersetzung mit den Energieträgern ist aber erkennbar.
 - **6 (ungenügend):** Eine Auseinandersetzung mit der Aufgabe ist nicht erkennbar.
 
+**Obergrenzen:** Ist eine Anforderung nicht erfüllt, ist die beste mögliche Note 3 (befriedigend). Ist A2 oder A6 nicht erfüllt, ist die beste mögliche Note 4 (ausreichend). Ergeben die Punkte eine schlechtere Note, gilt diese.
+
 ### Hinweise zur Bewertung
 
 - Bewertet wird die Argumentation. Rechtschreibung, Zeichensetzung und Stil fließen nicht in die Note ein.
