@@ -1,0 +1,67 @@
+{
+  "text_id": "973_Verk_T1-rev",
+  "word_count": 118,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Politiker wollen die CO2 Emissionen verringern und raten somit dazu, auf Autos ohne Verbrennungsmotor umzusteigen.",
+      "start": 0,
+      "end": 114
+    },
+    {
+      "sid": "S2",
+      "text": "Dafür gibt es 3 Varianten, Autos mit Akkumulatoren, Autos, die mithilfe von Wasserstoff betrieben werden und Autos mit sythetischen Kraftstoffen (E-Fuels).",
+      "start": 115,
+      "end": 270
+    },
+    {
+      "sid": "S3",
+      "text": "Doch welches Auto ist vor dem Hintergrund des Klimawandels am effektivesten?",
+      "start": 271,
+      "end": 347
+    },
+    {
+      "sid": "S4",
+      "text": "Diese Frage wird im Folgenden diskutiert.",
+      "start": 348,
+      "end": 389
+    },
+    {
+      "sid": "S5",
+      "text": "Wenn man die Energieträger nur vor dem Aspekt des KLimawandels vergleicht sind die E-Fuels am effektivsten.",
+      "start": 390,
+      "end": 497
+    },
+    {
+      "sid": "S6",
+      "text": "Ein wesentlicher Unterschied der Energieträger liegt im Gesamtwirkungsgrad.",
+      "start": 498,
+      "end": 573
+    },
+    {
+      "sid": "S7",
+      "text": "Dort schneiden die Akkumulatoren am besten ab.",
+      "start": 574,
+      "end": 620
+    },
+    {
+      "sid": "S8",
+      "text": "Doch diese verursachen wesentlich mehr CO2 Emissionen, als die E-Fuels.",
+      "start": 621,
+      "end": 692
+    },
+    {
+      "sid": "S9",
+      "text": "IM gegensatz zu diesen verbrauchen sie 13, 1t Co2 bei der produktion, die E-Fuels nur 7, 8t.",
+      "start": 693,
+      "end": 785
+    },
+    {
+      "sid": "S10",
+      "text": "Sie sind also für die umwelt besser.",
+      "start": 786,
+      "end": 822
+    }
+  ],
+  "full_text": "Politiker wollen die CO2 Emissionen verringern und raten somit dazu, auf Autos ohne Verbrennungsmotor umzusteigen. Dafür gibt es 3 Varianten, Autos mit Akkumulatoren, Autos, die mithilfe von Wasserstoff betrieben werden und Autos mit sythetischen Kraftstoffen (E-Fuels). Doch welches Auto ist vor dem Hintergrund des Klimawandels am effektivesten? Diese Frage wird im Folgenden diskutiert. Wenn man die Energieträger nur vor dem Aspekt des KLimawandels vergleicht sind die E-Fuels am effektivsten. Ein wesentlicher Unterschied der Energieträger liegt im Gesamtwirkungsgrad. Dort schneiden die Akkumulatoren am besten ab. Doch diese verursachen wesentlich mehr CO2 Emissionen, als die E-Fuels. IM gegensatz zu diesen verbrauchen sie 13, 1t Co2 bei der produktion, die E-Fuels nur 7, 8t. Sie sind also für die umwelt besser."
+}

@@ -1,0 +1,10 @@
+# The full corpus is never committed; scripts/fetch_genius.py restores it.
+data/external/
+# Held-out reference cases: only their hash in prereg/ is committed.
+sealed/
+# Chatbot outputs do not exist before the preregistration is published.
+runs/
+# Candidate error sites stay private until the maintainer decides.
+prereg/injection_proposals.md
+prereg/injection_proposals_v2.md
+prereg/traps_draft.json

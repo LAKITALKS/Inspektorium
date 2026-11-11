@@ -1,0 +1,31 @@
+{
+  "text_id": "962_Verk_T1-rev",
+  "word_count": 81,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Der Umstieg auf Autos mit anderen Energieträgern als Benzin oder Diesel ist wichtig für das Klima, aber welcher Energieträger ist da der Beste?",
+      "start": 0,
+      "end": 143
+    },
+    {
+      "sid": "S2",
+      "text": "Am Klimaneutralsten wäre es, auf Motoren mit Akkumulatoren umzusteigen.",
+      "start": 144,
+      "end": 215
+    },
+    {
+      "sid": "S3",
+      "text": "Der Gesamtwirkungsgrad ist bei Akkumulatoren am förderlichsten, bei ihnen wird die Chemische Energie in 64-70% Bewegungsenergie umgewandelt und somit kann am Meisten genutzt werden, da bei Wasserstoff nur 25-28% genutz werden kann und bei E-Fuels nur 15-20%.",
+      "start": 216,
+      "end": 474
+    },
+    {
+      "sid": "S4",
+      "text": "Die Zeit war viel zu kurz um mehr ordentliche Argumente zu notieren.",
+      "start": 475,
+      "end": 543
+    }
+  ],
+  "full_text": "Der Umstieg auf Autos mit anderen Energieträgern als Benzin oder Diesel ist wichtig für das Klima, aber welcher Energieträger ist da der Beste? Am Klimaneutralsten wäre es, auf Motoren mit Akkumulatoren umzusteigen. Der Gesamtwirkungsgrad ist bei Akkumulatoren am förderlichsten, bei ihnen wird die Chemische Energie in 64-70% Bewegungsenergie umgewandelt und somit kann am Meisten genutzt werden, da bei Wasserstoff nur 25-28% genutz werden kann und bei E-Fuels nur 15-20%. Die Zeit war viel zu kurz um mehr ordentliche Argumente zu notieren."
+}

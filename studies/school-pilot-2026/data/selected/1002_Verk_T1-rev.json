@@ -1,0 +1,55 @@
+{
+  "text_id": "1002_Verk_T1-rev",
+  "word_count": 108,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Die Frage, ist welchen Energieträger man für Autos verwendet, wenn die herkömmlichen Energieträger Diesel und Benzin 2035 verboten werden.",
+      "start": 0,
+      "end": 138
+    },
+    {
+      "sid": "S2",
+      "text": "Es gibt drei allternative Energieträger, die einen ersatzt zu den herkömmlichen darstellen könnten.",
+      "start": 139,
+      "end": 238
+    },
+    {
+      "sid": "S3",
+      "text": "Es handelt sich um Akkumulatoren, Wasserstoff und E- Fuels.",
+      "start": 239,
+      "end": 298
+    },
+    {
+      "sid": "S4",
+      "text": "In dieser Argumentation werden die Vorteile, die die empfolenen E- Fuls mit sich bringen behandelt.",
+      "start": 299,
+      "end": 398
+    },
+    {
+      "sid": "S5",
+      "text": "Im vergleich zu Wasserstoff und Akkumulatoren sind E- Fuels vorteilhafter für unsere Umwelt und haben auch abgesehen davon noch Vorteile für unsere Wirtschaft.",
+      "start": 399,
+      "end": 558
+    },
+    {
+      "sid": "S6",
+      "text": "E- Fuels können in konvertionellen Autos mit Verbrennungsmotor genutzt werden.",
+      "start": 559,
+      "end": 637
+    },
+    {
+      "sid": "S7",
+      "text": "Akkumulatoren jedoch nur in extra für diesen Energieträger konzipierten Autos verwendet werden.",
+      "start": 638,
+      "end": 733
+    },
+    {
+      "sid": "S8",
+      "text": "Es müssten viele neue Autos produziert werden.",
+      "start": 734,
+      "end": 780
+    }
+  ],
+  "full_text": "Die Frage, ist welchen Energieträger man für Autos verwendet, wenn die herkömmlichen Energieträger Diesel und Benzin 2035 verboten werden. Es gibt drei allternative Energieträger, die einen ersatzt zu den herkömmlichen darstellen könnten. Es handelt sich um Akkumulatoren, Wasserstoff und E- Fuels. In dieser Argumentation werden die Vorteile, die die empfolenen E- Fuls mit sich bringen behandelt. Im vergleich zu Wasserstoff und Akkumulatoren sind E- Fuels vorteilhafter für unsere Umwelt und haben auch abgesehen davon noch Vorteile für unsere Wirtschaft. E- Fuels können in konvertionellen Autos mit Verbrennungsmotor genutzt werden. Akkumulatoren jedoch nur in extra für diesen Energieträger konzipierten Autos verwendet werden. Es müssten viele neue Autos produziert werden."
+}

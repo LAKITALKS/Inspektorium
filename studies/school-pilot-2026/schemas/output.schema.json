@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Output of a grading assistant in the school pilot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["grade", "comments", "errors"],
+  "properties": {
+    "grade": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "scope", "quotes", "criteria"],
+        "properties": {
+          "text": { "type": "string" },
+          "scope": { "type": "string", "enum": ["local", "global"] },
+          "quotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["sid", "quote"],
+              "properties": {
+                "sid": { "type": "string", "pattern": "^S[1-9][0-9]*$" },
+                "quote": { "type": "string" }
+              }
+            }
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["K1", "K2", "K3", "K4", "K5", "K6", "K7"]
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sid", "quote", "category", "explanation"],
+        "properties": {
+          "sid": { "type": "string", "pattern": "^S[1-9][0-9]*$" },
+          "quote": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["Zahl", "Faktum", "Widerspruch", "Unsinn", "Sprache", "Sonstiges"]
+          },
+          "explanation": { "type": "string" }
+        }
+      }
+    }
+  }
+}

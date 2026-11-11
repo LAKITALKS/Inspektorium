@@ -1,0 +1,49 @@
+{
+  "text_id": "975_Verk_T1-rev",
+  "word_count": 152,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Es wird in der Politik diskutiert welcher Energieträger als primärer Ersatz für fossile Brennstoffe in Autos genutzt werden soll.",
+      "start": 0,
+      "end": 129
+    },
+    {
+      "sid": "S2",
+      "text": "Die zur Diskusion stehende Energieträger sind Akkumulatoren, Wasserstoff und E-Fuels.",
+      "start": 130,
+      "end": 215
+    },
+    {
+      "sid": "S3",
+      "text": "Wenn man die Energiedichte von den Energiträger miteinander vergleicht so sticht Wasserstoff heraus mit der dreifachen Dichte wie der nächstsbeste, wobei Akkumulatoren die niedrigste Dichte haben.",
+      "start": 216,
+      "end": 412
+    },
+    {
+      "sid": "S4",
+      "text": "Dennoch ist es gefährlich viel Wasserstoff in einem Auto zu lagern, da es zu einem unter hohen Druck steht um möglichst viel auf kleinen Raum zu lagern und zum anderen ist es brennbar.",
+      "start": 413,
+      "end": 597
+    },
+    {
+      "sid": "S5",
+      "text": "Der Vorteil an Akkumulatoren ist, dass man sie fast überall aufladen kann, weil die Infrastruktur zum großen Teil schon besteht und sie nur elektrische Energie zum aufladen benötigen.",
+      "start": 598,
+      "end": 781
+    },
+    {
+      "sid": "S6",
+      "text": "Wasserstoff und E-Fuels bräuchten hingegen neue Speicher an Tankstellen und zudem müssten sie mithilfe von Schwertransporten regelmäßig an die Tankstellen geliefert werden.",
+      "start": 782,
+      "end": 954
+    },
+    {
+      "sid": "S7",
+      "text": "Zudem müssen Wasserstoff und E-Fuels an bestimmten Anlagen produziert und von dort transportiert werden.",
+      "start": 955,
+      "end": 1059
+    }
+  ],
+  "full_text": "Es wird in der Politik diskutiert welcher Energieträger als primärer Ersatz für fossile Brennstoffe in Autos genutzt werden soll. Die zur Diskusion stehende Energieträger sind Akkumulatoren, Wasserstoff und E-Fuels. Wenn man die Energiedichte von den Energiträger miteinander vergleicht so sticht Wasserstoff heraus mit der dreifachen Dichte wie der nächstsbeste, wobei Akkumulatoren die niedrigste Dichte haben. Dennoch ist es gefährlich viel Wasserstoff in einem Auto zu lagern, da es zu einem unter hohen Druck steht um möglichst viel auf kleinen Raum zu lagern und zum anderen ist es brennbar. Der Vorteil an Akkumulatoren ist, dass man sie fast überall aufladen kann, weil die Infrastruktur zum großen Teil schon besteht und sie nur elektrische Energie zum aufladen benötigen. Wasserstoff und E-Fuels bräuchten hingegen neue Speicher an Tankstellen und zudem müssten sie mithilfe von Schwertransporten regelmäßig an die Tankstellen geliefert werden. Zudem müssen Wasserstoff und E-Fuels an bestimmten Anlagen produziert und von dort transportiert werden."
+}

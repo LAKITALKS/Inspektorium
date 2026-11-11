@@ -1,0 +1,1901 @@
+[
+  {
+    "case_id": "1002_Verk_T1-rev.altered_word.1",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "empfolenen E- noch mit",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.altered_word.2",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S7",
+    "quote": "jedoch nur in extra für diesen Autos",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.case_change.1",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "argumentation werden die Vorteile, die die",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.case_change.2",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "akkumulatoren, Wasserstoff und E- Fuels.",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.fabricated.2",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "Jedocvh wird wasserstoff hoch emfindlich auf sauerstoff durch die verbndung von den atomen kann es zu einer hoch explosion kommen, da die hauptkraftquelle des autos aus wasser stoff gewonnen wird.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.format_variant.1",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S7",
+    "quote": "extra für diesen Energieträger konzipierten Autos verwendet werden.",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.punctuation_added.1",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "die empfolenen E- Fuls.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.punctuation_added.2",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S5",
+    "quote": "haben auch abgesehen davon noch Vorteile?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.valid_exact.1",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S5",
+    "quote": "haben auch abgesehen davon",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.wrong_location.1",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "abgesehen davon noch Vorteile für unsere",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1002_Verk_T1-rev.wrong_location.2",
+    "text_id": "1002_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Es müssten viele neue Autos produziert werden.",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.altered_number.2",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "Sie benötigen 4 min Tankdauer",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.altered_word.1",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S5",
+    "quote": "folgenden werde ich Meiner Meinung",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.altered_word.2",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S8",
+    "quote": "brauchen die Akkumulatoren 30 min und Kleinstanferigungen damit",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.case_change.2",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S8",
+    "quote": "dazu brauchen die Akkumulatoren 30 min und Können",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.fabricated.1",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S9",
+    "quote": "Daran sieht man ganz deutlich, dass Akkumulatoren die wirksamste und effizienteste Methode wären, unabhängig von Kriterien, wie Energiedichte oder Geräuschemissionen.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.fabricated.2",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S5",
+    "quote": "Auffällig ist da, dass Akkumulatoren deutlich weniger MJ/kg besitzen als der Rest.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.format_variant.2",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S2",
+    "quote": "Verschiedene, schon gut ausgebaute Möglichkeiten dies zu tun.",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.punctuation_added.1",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S9",
+    "quote": "und Reichweite wie E-Fuels, doch um diesen Kraftstoff.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.valid_exact.1",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S9",
+    "quote": "E-Fuels, doch um diesen Kraftstoff zu nutzen werden",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1098_Verk_T1-Rev.wrong_location.2",
+    "text_id": "1098_Verk_T1-Rev",
+    "claimed_sid": "S8",
+    "quote": "gute Möglichkeit schnell und mit trozdem viel Reichweite",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.altered_number.1",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S4",
+    "quote": "setzen ca 8, 8 t",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.altered_word.2",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S1",
+    "quote": "und Dieselmotoren Energieträgern werden",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.case_change.1",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S8",
+    "quote": "da energiedichte und auc betrieb Eine grosse rolle",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.case_change.2",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S5",
+    "quote": "hergestellt werden, was gut Für die",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.format_variant.2",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "Dadurch würden mehr leute",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.punctuation_added.1",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S9",
+    "quote": "dem ziel der klimaneutralisierung näher?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.punctuation_added.2",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "würden mehr leute aaud e flues wechseln.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.valid_exact.1",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S4",
+    "quote": "setzen ca 7, 8 t CO2",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.valid_exact.2",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "würden mehr leute aaud e flues wechseln würden.",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1099_Verk_T1-Rev.wrong_location.2",
+    "text_id": "1099_Verk_T1-Rev",
+    "claimed_sid": "S3",
+    "quote": "sind geräuschemissionen angenehm, was es attraktiver",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.altered_word.1",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S3",
+    "quote": "ist die beste deutlich?",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.case_change.1",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S1",
+    "quote": "viel über Ein Verbrenerverbot diskutiert.",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.case_change.2",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S5",
+    "quote": "Hat im Vergleich von 0,",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.fabricated.1",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S4",
+    "quote": "Politikerinnen und Politiker fordern, dass Neuwagen mit einem Benzin- und Dieselmotor ab 2035 verboten werden sollen.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.fabricated.2",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S1",
+    "quote": "Insgesamt lässt sich sagen, dass Akkumulatoren eine sehr effiziente undgehörschonende Weise wären, den nahverkehr zu otimieren und dafür zu sorgen, dass die Klimaneutralität eine Schritt näher rückt.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.format_variant.2",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S2",
+    "quote": "wird ein Umstieg auf Autos mit",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.punctuation_added.2",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S1",
+    "quote": "politischen Ramen wird aktuell viel über ein Verbrenerverbot!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1131_Verk_T1-Rev.valid_exact.1",
+    "text_id": "1131_Verk_T1-Rev",
+    "claimed_sid": "S4",
+    "quote": "wird deutlich das Wasserstoffautos in dieser Hinsicht",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.altered_number.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S1",
+    "quote": "Dieselmotor ab 2036 verboten werden.",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.altered_word.1",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S8",
+    "quote": "eigentlich liegt jeder Hersteller herstellen und",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.altered_word.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S1",
+    "quote": "Neuwagen mit dass oder",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.case_change.1",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S2",
+    "quote": "Kraftstoff Sind die Akkumulatoren, welche",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.case_change.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "die Akkumulatoren sehr Schnell",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.fabricated.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S6",
+    "quote": "E Fuels sind meiner Meinung nach somit sehr Effizient und sollten gefördert werden.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.format_variant.1",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S6",
+    "quote": "Also wird weniger Energie in die",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.format_variant.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S3",
+    "quote": "einen sehr hohen Gesamtwirkungsgrad haben.",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.punctuation_added.1",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S3",
+    "quote": "Akkumulatoren sollte man fördern da sie zu einem?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.punctuation_added.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "die Akkumulatoren sehr schnell hergsestellt werden können, dass.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.valid_exact.1",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S7",
+    "quote": "Akkumulatoren sehr schnell hergsestellt",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "1132_Verk_T1-Rev.wrong_location.2",
+    "text_id": "1132_Verk_T1-Rev",
+    "claimed_sid": "S6",
+    "quote": "MAssen hergesttelt wird kann es",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.altered_word.1",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "weniger die Erde immer und die",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.altered_word.2",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S7",
+    "quote": "und die Erde für zukünftige Generationen Generationen.",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.case_change.1",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "dagegen viel Besser für den Klimawandel, weil",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.fabricated.1",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Die Anrtwort darauf ist wie so häufig ganz einfach: im Altag.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.fabricated.2",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Nur damit noch mehr Lizium abgebaut werden muss damit dieser Planent immer weiter untergeht, da sollte man lieber erst das Erdöl aufbrauchen und diesen Elektro Bums kann man ja auch erst später bentzten wenn kein Erdöl mehr da ist.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.format_variant.2",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Das bedeutet, dass wir, wenn wir auf",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "254_Verk_T1.punctuation_added.1",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "wir also weiterhin auf Kohle, Öl und Gas?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "254_Verk_T1.punctuation_added.2",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "die Erde immer wärmer wird, weil wir.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "254_Verk_T1.wrong_location.1",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Sonne oder Wasser sind dagegen viel besser",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "254_Verk_T1.wrong_location.2",
+    "text_id": "254_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "setzen, wird die Erde immer wärmer und das",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "284_Verk_T1.case_change.1",
+    "text_id": "284_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Benzin und diesel, da",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "284_Verk_T1.case_change.2",
+    "text_id": "284_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Akkumulatoren, Wasserstoff Oder E-Fuels gefördert werden",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "284_Verk_T1.format_variant.2",
+    "text_id": "284_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "sollen wir als Alternative zu",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "284_Verk_T1.valid_exact.1",
+    "text_id": "284_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "sind lauter als zum Bespiel",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "284_Verk_T1.wrong_location.2",
+    "text_id": "284_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "Wasserstoff oder E-Fuels gefördert werden",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.altered_number.1",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "Mit nur 8, 8 Tonnen",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.altered_number.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "mit nur 16-20% sind wird",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.altered_word.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Diese Atmosphäre läuft dabei von allen drei Obtionen",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.case_change.1",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S7",
+    "quote": "Wasserstoff Autos macht die Verfügbarkeit und die gefahr",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.fabricated.1",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "Dazu hat man eine höhere Tankdauer und Reichweite bzw.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.fabricated.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "Im folgenden werde ich auf dies Stellungnhemen.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.format_variant.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "die selbe Menge an Kraftstoff am wernigstn Co2",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "289_Verk_T1.punctuation_added.1",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "E-fuels sind mit eine der besten Energieträger in.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "289_Verk_T1.punctuation_added.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "den normale Gebrauch ist die Reichweite!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "289_Verk_T1.valid_exact.1",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "die bei dn elektroautos am",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "289_Verk_T1.valid_exact.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "änlichhkeit zu üblichen Verbrennern, die",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "289_Verk_T1.wrong_location.1",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "sind wird dies durch das",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "289_Verk_T1.wrong_location.2",
+    "text_id": "289_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Verbrennern, die auch Tanken, kann die",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "296_Verk_T1.case_change.1",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "dabei keine sch'dlichen Stoffe Oder aehnliches entstehen.",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "296_Verk_T1.fabricated.2",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Daran sieht man ganz deutlich, dass Akkumulatoren die wirksamste und effizienteste Methode wären, unabhängig von Kriterien, wie Energiedichte oder Geräuschemissionen.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "296_Verk_T1.format_variant.2",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "der Atmosphaere genommen werden, kann ich mir nicht",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "296_Verk_T1.punctuation_added.1",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "aus der Atmosphaere genommen werden, kann.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "296_Verk_T1.punctuation_added.2",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "ist und dabei keine!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "296_Verk_T1.valid_exact.1",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "da dieses einheitliche yu",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "296_Verk_T1.valid_exact.2",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "kann ich mir nicht vorstellen.",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "296_Verk_T1.wrong_location.1",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Fuels die stoffe aus der Atmosphaere genommen werden,",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "296_Verk_T1.wrong_location.2",
+    "text_id": "296_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "man weiss nicht was",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "313_Verk_T1.altered_number.1",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "Fuels etwa 21% Wirkungsgrad haben,",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "313_Verk_T1.altered_word.2",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Testergebnisse Möglichkeiten, das Problem zu lösen.",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "313_Verk_T1.case_change.1",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S7",
+    "quote": "Beim Wirkungsgrad ist Ein",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "313_Verk_T1.case_change.2",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "wichtige Werte wie der Wirkungsgrad, der emissionswert,",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "313_Verk_T1.fabricated.1",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "Im folgenden wird die aussicht auf drei Energieträger.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "313_Verk_T1.format_variant.2",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Möglichkeiten, das Problem zu",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "313_Verk_T1.punctuation_added.1",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Meiner Meinung nach sollte man auf die Akkumulatoren.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "313_Verk_T1.punctuation_added.2",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S7",
+    "quote": "Wirkungsgrad ist ein hoher prozentualer?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "313_Verk_T1.valid_exact.1",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S7",
+    "quote": "Beim Wirkungsgrad ist ein hoher prozentualer Wert zu",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "313_Verk_T1.valid_exact.2",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "drittel der Energie wirksam",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "313_Verk_T1.wrong_location.1",
+    "text_id": "313_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "ein hoher prozentualer Wert zu",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.altered_word.1",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "Autos: In der folgenden ganz handelt es",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.altered_word.2",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "ohne dabei Stoffe frei in die denen zu",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.case_change.1",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Akkumulatoren nur In speziell konzipierten",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.case_change.2",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "akkumulatoren, die auch als wiederaufladbare elektrochemische Zellen bezeichnet",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.fabricated.1",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "Um das zu vermeiden, gibt es mehrere Optionen, welche im folgenden Text näher erläutern werde, Akkumulatoren, Wasserstoff und E-Fuels.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.fabricated.2",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "Wasserstoff autos wirken auf die erde keinerlei gefahren und sind sehr gut für die umwelt.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "336_Verk_T1.format_variant.1",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Grund fordern einige Politiker und Politikerinnen,",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "336_Verk_T1.format_variant.2",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "eingebaut wurden, betreiben sie einen Elektromotor,",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "336_Verk_T1.punctuation_added.1",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Energieträgern, bei denen erneuerbare Energie?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "336_Verk_T1.valid_exact.1",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "nur in speziell konzipierten Autos genutzt",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "336_Verk_T1.valid_exact.2",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "betreiben sie einen Elektromotor,",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "336_Verk_T1.wrong_location.2",
+    "text_id": "336_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Energieträgern, bei denen erneuerbare Energie genutzt",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "340_Verk_T1.altered_number.1",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "Dieselmotoren ab 2036 verboten werden",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "340_Verk_T1.altered_number.2",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "Tankdauer von 4 Minuten sehr",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "340_Verk_T1.altered_word.2",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "weil Akkumulatoren nur Wasser freigesetzt wird",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "340_Verk_T1.fabricated.2",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "Dies kann ds menschliche Gehör bereits weiter entlasten und ist leiser als E-Fuels in Autos, d diese bei etwa 61dB bei 30km/h liegen.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "340_Verk_T1.format_variant.1",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "gering, im Vergleich zu den anderen",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "340_Verk_T1.punctuation_added.1",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "einer Ladedauer von 30 Minuten noch!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "340_Verk_T1.punctuation_added.2",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S2",
+    "quote": "2035 verboten werden und auf Akkumulatoren, Wasserstoff oder?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "340_Verk_T1.valid_exact.1",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "Ladedauer von 30 Minuten noch zu verkraften,",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "340_Verk_T1.wrong_location.1",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "von 30 Minuten noch zu",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "340_Verk_T1.wrong_location.2",
+    "text_id": "340_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "der Produktion der Akkumulatoren",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "344_Verk_T1.altered_word.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S9",
+    "quote": "Es kann nur in speziell angefertigten Autos speziell",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "344_Verk_T1.case_change.1",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Sind wiederaufladbare elektrochemische Zellen.",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "344_Verk_T1.case_change.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S9",
+    "quote": "Es kann nur in speziell Angefertigten Autos genuzt",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "344_Verk_T1.fabricated.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Hierbei schneiden die Akkumulatoren am besten ab mit einem Wirkungsgrad von 64-70%.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "344_Verk_T1.format_variant.1",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S4",
+    "quote": "Umstiegs-Möglichkeiten hat Vor- aber",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "344_Verk_T1.format_variant.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S12",
+    "quote": "dass Kohlenstoff bei der",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "344_Verk_T1.punctuation_added.1",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "Bei Wasserstoff ist es ähnlich!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "344_Verk_T1.punctuation_added.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S7",
+    "quote": "kein Stoff frei gesetzt und ist somit sehr!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "344_Verk_T1.valid_exact.1",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "Treibhaugasemissionen sollen reduziert werden, um Klimaneuraler zu werden.",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "344_Verk_T1.valid_exact.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S10",
+    "quote": "Wasser, wodurch die Umwelt bei zu Großem",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "344_Verk_T1.wrong_location.1",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "soll auf Akkumulatoren, Wasserstoff oder",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "344_Verk_T1.wrong_location.2",
+    "text_id": "344_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Wasserstoff ist es ähnlich.",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "348_Verk_T1.altered_word.1",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Die letzte Methode Litium E-Fuels, die aus Kohlenwasserstoff",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "348_Verk_T1.fabricated.1",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Akkumulatoren sind die bester alternative für die neutralität in der verkehrs politik sie ist aufladbar auch von zuhause aus +und ist nicht gefährlich da sie nicht mit strom versorgt werden welches mann auch im haushalt üpberall findet.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "348_Verk_T1.fabricated.2",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S5",
+    "quote": "Akkumulatoren sind ideal für Massenfertigungen geeignet, das macht sie enorm wirksam.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "348_Verk_T1.format_variant.1",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "Wasser natürlich begrenzt ist, jedoch nicht",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "348_Verk_T1.format_variant.2",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "so gefährdet wie das",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "348_Verk_T1.punctuation_added.1",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S8",
+    "quote": "ist, ist er nicht so gefährdet wie das.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "348_Verk_T1.punctuation_added.2",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S1",
+    "quote": "es um Akkumaltoren, Wasserstoff und E-Fuels!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "348_Verk_T1.valid_exact.2",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S6",
+    "quote": "Meinung nach wäre Wasserstoff die sinnvollste",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "348_Verk_T1.wrong_location.1",
+    "text_id": "348_Verk_T1",
+    "claimed_sid": "S3",
+    "quote": "Akkumaltoren sind wiederaufladbare Zellen, deren hauptbestandteil Lithium",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.altered_number.1",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "benzinmotor ab 2036.",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.altered_word.1",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "zwar nur in speziell konzipierten mehr",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.altered_word.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "wirklich die treibhausgasemissionen des alternative",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.case_change.1",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S5",
+    "quote": "jedoch die Herstellung des für Den Akkumulatoren",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.case_change.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "eingebautwerden, wird Jedoch mit Strom aufgeladen und",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.fabricated.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "Die Anrtwort darauf ist wie so häufig ganz einfach: im Altag.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.format_variant.1",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "der Akkumulator, desto mehr treibhausgase",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "915_Verk_T1-rev.format_variant.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Vorschläge für alternative Energieträger, wie zum Beispiel Akkumulatoren.",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "915_Verk_T1-rev.punctuation_added.1",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Vorschläge für alternative Energieträger, wie zum Beispiel Akkumulatoren!",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "915_Verk_T1-rev.punctuation_added.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S5",
+    "quote": "Das problem ist jedoch die Herstellung des für?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "915_Verk_T1-rev.valid_exact.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "Je größer der Akkumulator, desto mehr",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "915_Verk_T1-rev.wrong_location.1",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "Akkumulator kann zwar nur in speziell konzipierten Autos",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "915_Verk_T1-rev.wrong_location.2",
+    "text_id": "915_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "ein Verbot von Neuwagen mit",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "921_Verk_T1-rev.altered_word.1",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "der Unterschied wird das einen",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "921_Verk_T1-rev.altered_word.2",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "Reichweite ist von Vorteil",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "921_Verk_T1-rev.fabricated.1",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "Ein wichtiges Kriterium was gestellt wird ist die Energiedichte, welche für eine gerinere Masse und eine höhere Reichweite sorgen kann.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "921_Verk_T1-rev.fabricated.2",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Akkumulatoren, Wasserstoff und E-Fuels sind beliebte Alternatieven für Diesel und Benzin.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "921_Verk_T1-rev.format_variant.1",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "mit 57dB bei 30km und bei E-Fuels 61dB",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "921_Verk_T1-rev.format_variant.2",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Dies mag kein großer Unterschied",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "921_Verk_T1-rev.punctuation_added.2",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "Weniger Lautsträkeschutz maßnahmen gezogen werden müssen?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "921_Verk_T1-rev.valid_exact.1",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "Weniger Lautsträkeschutz maßnahmen gezogen werden",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "921_Verk_T1-rev.valid_exact.2",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "Vorteil da Sie erstmals eine viel bessere",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "921_Verk_T1-rev.wrong_location.1",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "erheblichen Einfluss erzeugen da",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "921_Verk_T1-rev.wrong_location.2",
+    "text_id": "921_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "maßnahmen gezogen werden müssen.",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.altered_number.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "Treibhausgasemissionen von 8, 8 t",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.altered_number.2",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S9",
+    "quote": "von 13, 7 t hat,",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.altered_word.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "Eine die E-Fuels auf, welche die geringsen Treibhausgasemissionen",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.case_change.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "Der Klimawandel Schreitet voran, die",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.case_change.2",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "Von 7, 8 t aufweisen.",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.fabricated.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S5",
+    "quote": "Zum Beispiel werden sie ganze Motoren von den Maschienen die heutzutage im Bergbau genutzten nie durch Elektromotoren ersetzt werden können das kein Elektromotor auf dieser Welt bis jetzt stark genug ist Bergbauarbeiten duchführen zu können.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.fabricated.2",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "In den aufgeführten Kategorien überliegen sie den anderen Optionen.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.format_variant.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S7",
+    "quote": "vor allem in der",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "943_Verk_T1-rev.format_variant.2",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "Die Treibhausgasemissionen sollen durch z.",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "943_Verk_T1-rev.punctuation_added.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "welche die geringsen Treibhausgasemissionen von 7, 8.",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "943_Verk_T1-rev.valid_exact.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "Wassersoff oder E-Fuels eingdämmt",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "943_Verk_T1-rev.valid_exact.2",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "Treibhausgasemissionen sollen durch z.",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "943_Verk_T1-rev.wrong_location.1",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "E-Fuels auf, welche die geringsen Treibhausgasemissionen von",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "943_Verk_T1-rev.wrong_location.2",
+    "text_id": "943_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "allem in der Herstellung sehr hohe Treibhausgasemissionen auf.",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.altered_number.1",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "sie nur 8, 8t (CO2-Äquilvalente)",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.altered_number.2",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "gerademal bei 15-29%.",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.altered_word.1",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "auf Autos mit Akkumulatoren, wichtges",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.altered_word.2",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "und E-Fuels sind Gestamtwirkungsgrad bei",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.case_change.2",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "Autos mit Akkumulatoren, Wasserstoff Oder E-Fuels ist",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.fabricated.2",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "Ein weiterer wichtiger Punkt, insbesondere in bezug auf den klimawandel sind die Treibhausgasemissionen bei der Produktion.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "956_Verk_T1-rev.format_variant.1",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "ist ein wichtges Thema der",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "956_Verk_T1-rev.punctuation_added.1",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "ist ein wichtges Thema der Menschheit?",
+    "type": "punctuation_added",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "956_Verk_T1-rev.wrong_location.1",
+    "text_id": "956_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "Poliktiern gefordert wird, Neuwagen",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.altered_number.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "Wasserstoff nur 26-28% genutz werden",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.altered_word.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "ist bei Akkumulatoren am förderlichsten, bei ihnen Benzin",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.altered_word.2",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Am Energie wäre es, auf Motoren mit Akkumulatoren",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.case_change.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S1",
+    "quote": "wichtig für Das Klima, aber",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.fabricated.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "Nun erstmal zur Definition: Wasserstoff ist ein Reinstoff, der unter Standardtbedingungen als gas vorliegt.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.fabricated.2",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "Akkumulatoren, Wasserstoff und E-Fuels sind beliebte Alternatieven für Diesel und Benzin.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "962_Verk_T1-rev.format_variant.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "zu kurz um mehr ordentliche Argumente zu notieren.",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "962_Verk_T1-rev.valid_exact.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "um mehr ordentliche Argumente zu",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "962_Verk_T1-rev.valid_exact.2",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "werden, da bei Wasserstoff nur 25-28%",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "962_Verk_T1-rev.wrong_location.1",
+    "text_id": "962_Verk_T1-rev",
+    "claimed_sid": "S4",
+    "quote": "Am Klimaneutralsten wäre es, auf Motoren mit",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.altered_number.1",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S9",
+    "quote": "E-Fuels nur 8, 8t.",
+    "type": "altered_number",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.altered_word.1",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "Sie sind Doch für die",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.altered_word.2",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "vor dem Hintergrund des Autos am",
+    "type": "altered_word",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.case_change.1",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S3",
+    "quote": "Auto ist vor dem Hintergrund des klimawandels am",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.case_change.2",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "sie sind also für die umwelt besser.",
+    "type": "case_change",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.fabricated.1",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "Dabei stellt sich die Frage: WO sollte man da anfangen?",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.fabricated.2",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S7",
+    "quote": "Hierbei schneiden die Akkumulatoren am besten ab mit einem Wirkungsgrad von 64-70%.",
+    "type": "fabricated",
+    "expected_strict": false,
+    "expected_normalized": false
+  },
+  {
+    "case_id": "973_Verk_T1-rev.format_variant.1",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S10",
+    "quote": "also für die umwelt",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "973_Verk_T1-rev.format_variant.2",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "betrieben werden und Autos mit sythetischen Kraftstoffen (E-Fuels).",
+    "type": "format_variant",
+    "expected_strict": false,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "973_Verk_T1-rev.valid_exact.1",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S2",
+    "quote": "gibt es 3 Varianten, Autos mit Akkumulatoren, Autos,",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "973_Verk_T1-rev.valid_exact.2",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S6",
+    "quote": "Ein wesentlicher Unterschied der",
+    "type": "valid_exact",
+    "expected_strict": true,
+    "expected_normalized": true
+  },
+  {
+    "case_id": "973_Verk_T1-rev.wrong_location.2",
+    "text_id": "973_Verk_T1-rev",
+    "claimed_sid": "S5",
+    "quote": "diese verursachen wesentlich mehr CO2",
+    "type": "wrong_location",
+    "expected_strict": false,
+    "expected_normalized": false
+  }
+]

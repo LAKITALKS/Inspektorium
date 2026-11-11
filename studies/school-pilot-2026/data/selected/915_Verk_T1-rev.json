@@ -1,0 +1,43 @@
+{
+  "text_id": "915_Verk_T1-rev",
+  "word_count": 87,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Einige Politikerinnen und Politiker fordern ein Verbot von Neuwagen mit einem Diesel-oder benzinmotor ab 2035.",
+      "start": 0,
+      "end": 110
+    },
+    {
+      "sid": "S2",
+      "text": "Es gibt bereits Vorschläge für alternative Energieträger, wie zum Beispiel Akkumulatoren.",
+      "start": 111,
+      "end": 200
+    },
+    {
+      "sid": "S3",
+      "text": "Doch können diese Energieträger wirklich die treibhausgasemissionen des Personalverkehrs reduzieren, um die Klimaneutralität zu erreichen?",
+      "start": 201,
+      "end": 339
+    },
+    {
+      "sid": "S4",
+      "text": "Der Akkumulator kann zwar nur in speziell konzipierten Autos mit Elektromotor eingebautwerden, wird jedoch mit Strom aufgeladen und erzeugt so keine Abgase beim Fahren.",
+      "start": 340,
+      "end": 508
+    },
+    {
+      "sid": "S5",
+      "text": "Das problem ist jedoch die Herstellung des für den Akkumulatoren notwendigen Stoffes Lithium.",
+      "start": 509,
+      "end": 602
+    },
+    {
+      "sid": "S6",
+      "text": "Je größer der Akkumulator, desto mehr treibhausgase werden emittiert.",
+      "start": 603,
+      "end": 672
+    }
+  ],
+  "full_text": "Einige Politikerinnen und Politiker fordern ein Verbot von Neuwagen mit einem Diesel-oder benzinmotor ab 2035. Es gibt bereits Vorschläge für alternative Energieträger, wie zum Beispiel Akkumulatoren. Doch können diese Energieträger wirklich die treibhausgasemissionen des Personalverkehrs reduzieren, um die Klimaneutralität zu erreichen? Der Akkumulator kann zwar nur in speziell konzipierten Autos mit Elektromotor eingebautwerden, wird jedoch mit Strom aufgeladen und erzeugt so keine Abgase beim Fahren. Das problem ist jedoch die Herstellung des für den Akkumulatoren notwendigen Stoffes Lithium. Je größer der Akkumulator, desto mehr treibhausgase werden emittiert."
+}

@@ -1,0 +1,79 @@
+{
+  "text_id": "344_Verk_T1",
+  "word_count": 123,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Treibhaugasemissionen sollen reduziert werden, um Klimaneuraler zu werden.",
+      "start": 0,
+      "end": 74
+    },
+    {
+      "sid": "S2",
+      "text": "Dazu sollen normale Autos abgeschafft werden.",
+      "start": 75,
+      "end": 120
+    },
+    {
+      "sid": "S3",
+      "text": "Es soll auf Akkumulatoren, Wasserstoff oder E-Fuels, also synthetische Kraftstoffe umgetsiegen werden.",
+      "start": 121,
+      "end": 223
+    },
+    {
+      "sid": "S4",
+      "text": "Jedes dieser Umstiegs-Möglichkeiten hat Vor- aber auch Nachteile.",
+      "start": 224,
+      "end": 289
+    },
+    {
+      "sid": "S5",
+      "text": "Akkumulatoren als Beispiel, sind wiederaufladbare elektrochemische Zellen.",
+      "start": 290,
+      "end": 364
+    },
+    {
+      "sid": "S6",
+      "text": "Ein Nachteil ist, dass sie nur in spezielle dafür angepasste Autos eingebaut werden können.",
+      "start": 365,
+      "end": 456
+    },
+    {
+      "sid": "S7",
+      "text": "Jedoch wird bei Akkumulatoren kein Stoff frei gesetzt und ist somit sehr Umweltschonend.",
+      "start": 457,
+      "end": 545
+    },
+    {
+      "sid": "S8",
+      "text": "Bei Wasserstoff ist es ähnlich.",
+      "start": 546,
+      "end": 577
+    },
+    {
+      "sid": "S9",
+      "text": "Es kann nur in speziell angefertigten Autos genuzt werden.",
+      "start": 578,
+      "end": 636
+    },
+    {
+      "sid": "S10",
+      "text": "Hier entsteht jedoch Wasser, wodurch die Umwelt bei zu Großem Wasserstoff-Auto Nutzen auch belastet wird.",
+      "start": 637,
+      "end": 742
+    },
+    {
+      "sid": "S11",
+      "text": "Bei E-Fuels ist ein Vorteil, dass es bei normalen konventionellen Autos einfach genutzt werden kann.",
+      "start": 743,
+      "end": 843
+    },
+    {
+      "sid": "S12",
+      "text": "Nachteilig ist hierbeijedoch, dass Kohlenstoff bei der Verbrennungsreaktion im Motor ensteht.",
+      "start": 844,
+      "end": 937
+    }
+  ],
+  "full_text": "Treibhaugasemissionen sollen reduziert werden, um Klimaneuraler zu werden. Dazu sollen normale Autos abgeschafft werden. Es soll auf Akkumulatoren, Wasserstoff oder E-Fuels, also synthetische Kraftstoffe umgetsiegen werden. Jedes dieser Umstiegs-Möglichkeiten hat Vor- aber auch Nachteile. Akkumulatoren als Beispiel, sind wiederaufladbare elektrochemische Zellen. Ein Nachteil ist, dass sie nur in spezielle dafür angepasste Autos eingebaut werden können. Jedoch wird bei Akkumulatoren kein Stoff frei gesetzt und ist somit sehr Umweltschonend. Bei Wasserstoff ist es ähnlich. Es kann nur in speziell angefertigten Autos genuzt werden. Hier entsteht jedoch Wasser, wodurch die Umwelt bei zu Großem Wasserstoff-Auto Nutzen auch belastet wird. Bei E-Fuels ist ein Vorteil, dass es bei normalen konventionellen Autos einfach genutzt werden kann. Nachteilig ist hierbeijedoch, dass Kohlenstoff bei der Verbrennungsreaktion im Motor ensteht."
+}

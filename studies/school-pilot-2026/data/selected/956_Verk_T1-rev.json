@@ -1,0 +1,43 @@
+{
+  "text_id": "956_Verk_T1-rev",
+  "word_count": 83,
+  "sentences": [
+    {
+      "sid": "S1",
+      "text": "Klimawandel ist ein wichtges Thema der Menschheit.",
+      "start": 0,
+      "end": 50
+    },
+    {
+      "sid": "S2",
+      "text": "Daher finde ich es gut, dass von Poliktiern gefordert wird, Neuwagen mit Benzin und Diesel ab 2035 zu verbieten.",
+      "start": 51,
+      "end": 163
+    },
+    {
+      "sid": "S3",
+      "text": "Die Beratung für ein Umstieg auf Autos mit Akkumulatoren, Wasserstoff oder E-Fuels ist auch von Vorteil.",
+      "start": 164,
+      "end": 268
+    },
+    {
+      "sid": "S4",
+      "text": "Sofern es um Treibhausgas geht, wären E-Fuels vom größeren Vorteil, da sie nur 7, 8t (CO2-Äquilvalente) ausschütten, aber Wasserstoff und Akkumulatoren jedoch fast doppelt so viel.",
+      "start": 269,
+      "end": 449
+    },
+    {
+      "sid": "S5",
+      "text": "Vom Gestamtwirkungsgrad ist jedoch ein Akkumulator besser (64-70%).",
+      "start": 450,
+      "end": 517
+    },
+    {
+      "sid": "S6",
+      "text": "Wasserstof und E-Fuels sind gerademal bei 15-28%.",
+      "start": 518,
+      "end": 567
+    }
+  ],
+  "full_text": "Klimawandel ist ein wichtges Thema der Menschheit. Daher finde ich es gut, dass von Poliktiern gefordert wird, Neuwagen mit Benzin und Diesel ab 2035 zu verbieten. Die Beratung für ein Umstieg auf Autos mit Akkumulatoren, Wasserstoff oder E-Fuels ist auch von Vorteil. Sofern es um Treibhausgas geht, wären E-Fuels vom größeren Vorteil, da sie nur 7, 8t (CO2-Äquilvalente) ausschütten, aber Wasserstoff und Akkumulatoren jedoch fast doppelt so viel. Vom Gestamtwirkungsgrad ist jedoch ein Akkumulator besser (64-70%). Wasserstof und E-Fuels sind gerademal bei 15-28%."
+}
