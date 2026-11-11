@@ -1,6 +1,6 @@
 # School pilot 2026: testbench
 
-**No measurement has been run.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI follows.
+**No measurement has been run.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI is [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848).
 
 ## Status
 
@@ -13,7 +13,7 @@
 | Prompt | Template and the released file with the task and the marking guide |
 | Inserted errors | Decided; definitions and coding notes kept outside the repository, their hashes in [prereg/sealed_sha256.txt](prereg/sealed_sha256.txt) |
 | Run plan | Done; the prompt files are written below `runs/`, outside Git |
-| Preregistration | Done on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md); frozen study state commit `bfcd872`; DOI follows |
+| Preregistration | Done on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md); frozen study state commit `bfcd872`; DOI [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848) |
 | Chatbot runs | Not started |
 
 ## Purpose
@@ -29,7 +29,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/external/` | Full corpus and all sentence banks | no |
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot`, `component` and the two replacements, marked in their README | yes |
-| `prereg/` | Seed, drawn groups, run plan, hashes of the trap definitions and coding notes, and later the preregistration | yes |
+| `prereg/` | Seed, drawn groups, run plan, hashes of the trap definitions and coding notes, and the preregistration | yes |
 | `runs/` | Chatbot outputs, prepared files, prompt files, the sentence banks of both versions and the manifest | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots, and the task with the marking guide | yes |
