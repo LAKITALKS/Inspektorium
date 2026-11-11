@@ -1,6 +1,6 @@
 # School pilot 2026: testbench
 
-**No measurement has been run.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The publication of the preregistration is planned for 2026-11-13, and nothing is measured before it.
+**No measurement has been run.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI follows.
 
 ## Status
 
@@ -13,6 +13,7 @@
 | Prompt | Template and the released file with the task and the marking guide |
 | Inserted errors | Decided; definitions and coding notes kept outside the repository, their hashes in [prereg/sealed_sha256.txt](prereg/sealed_sha256.txt) |
 | Run plan | Done; the prompt files are written below `runs/`, outside Git |
+| Preregistration | Done on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md); frozen study state commit `bfcd872`; DOI follows |
 | Chatbot runs | Not started |
 
 ## Purpose
