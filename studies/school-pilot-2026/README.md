@@ -11,8 +11,8 @@
 | Reference cases | Built and sealed, not run through any checker |
 | Quote checker, import, analysis, coding sheet, prompt generator | Built, tested on invented data only |
 | Prompt | Template and the released file with the task and the marking guide |
-| Inserted errors | Proposed, not decided |
-| Run plan | Done; the prompt files do not exist yet |
+| Inserted errors | Decided; definitions and coding notes kept outside the repository, their hashes in [prereg/sealed_sha256.txt](prereg/sealed_sha256.txt) |
+| Run plan | Done; the prompt files are written below `runs/`, outside Git |
 | Chatbot runs | Not started |
 
 ## Purpose
@@ -28,7 +28,7 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/external/` | Full corpus and all sentence banks | no |
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot`, `component` and the two replacements, marked in their README | yes |
-| `prereg/` | Seed, drawn groups, run plan, and later the preregistration | yes |
+| `prereg/` | Seed, drawn groups, run plan, hashes of the trap definitions and coding notes, and later the preregistration | yes |
 | `runs/` | Chatbot outputs, prepared files, prompt files, the sentence banks of both versions and the manifest | no |
 | `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots, and the task with the marking guide | yes |
@@ -396,7 +396,7 @@ These changes were made before the preregistration, while the tools were being c
 
 **Run plan.** [prereg/laufplan.csv](prereg/laufplan.csv) has one row per run with its number, day, chatbot, prompt file, target file and metadata file. `scripts/make_run_plan.py` mixes the order with the seed from `prereg/seed.txt`. Every chatbot has nine runs on each of the two days, and the repetitions of one text and version fall on both days.
 
-The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. The prompt files named in the plan do not exist yet, because they need the inserted errors. `scripts/make_prompts.py` writes them once those are decided, and they stay out of Git.
+The script also prepares one empty, named output file and one blank metadata form per run under `runs/`. It never touches an existing file. The import rejects blank forms, so a run that was not done cannot pass as one. `scripts/make_prompts.py` wrote the prompt files named in the plan after the inserted errors were decided. They stay out of Git, and `runs/manifest.json` names them by hash.
 
 **Metadata.** Each run has these fields in `<repetition>.meta.json`. All of them are entered before the prompt is sent.
 
@@ -427,6 +427,6 @@ With the preregistration, the commit of the whole study folder is recorded, with
 
 ## Open decisions
 
-These points are not settled here, and the tooling does not assume an answer.
+No decision is open.
 
-- **Inserted errors.** The candidate sites are in `prereg/injection_proposals.md` and `prereg/injection_proposals_v2.md`, with a draft of the trap file in `prereg/traps_draft.json`. These files stay out of Git, because this repository is public and the sites would be visible before the measurement. The maintainer decides the sites, with one type and one or two accepted categories per trap. An error goes only where the original was verified as correct beforehand; otherwise the site is dropped. Figures from the task material cannot be verified without that material. The final definitions will go to `sealed/`, and only their SHA-256 will be committed.
+- **Inserted errors.** Decided by the maintainer: one trap per pilot text, each with one type and one or two accepted categories. The rule for the choice was that an error goes only where the original was verified as correct beforehand; otherwise the site is dropped. The maintainer keeps the trap definitions and the coding notes for them outside the repository, because this repository is public and the sites would be visible before the measurement. Only their SHA-256 are committed, in [prereg/sealed_sha256.txt](prereg/sealed_sha256.txt). The candidate sites in `prereg/injection_proposals.md` and `prereg/injection_proposals_v2.md` and the draft `prereg/traps_draft.json` stay out of Git as well.
