@@ -1,6 +1,6 @@
 # School pilot 2026: testbench
 
-**No measurement has been run.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI is [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848).
+**The chatbot runs were done on 23 and 24 Nov 2026; coding and analysis are pending.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI is [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848).
 
 ## Status
 
@@ -14,7 +14,7 @@
 | Inserted errors | Decided; definitions and coding notes kept outside the repository, their hashes in [prereg/sealed_sha256.txt](prereg/sealed_sha256.txt) |
 | Run plan | Done; the prompt files are written below `runs/`, outside Git |
 | Preregistration | Done on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md); frozen study state commit `bfcd872`; DOI [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848) |
-| Chatbot runs | Not started |
+| Chatbot runs | Done on 23 and 24 Nov 2026, 54 of 54; see prereg/deviations_2026-11-25.md |
 
 ## Purpose
 
