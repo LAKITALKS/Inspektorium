@@ -51,3 +51,8 @@ These notes were written before any result was viewed.
 - **Grade resolution.** The grades are whole grades from 1 to 6. Fluctuation across a grade boundary can look like a full-grade jump, and differences within a grade stay invisible.
 - **Snapshot.** The results refer to the models as displayed on 23 and 24 November 2026; the displayed names are recorded per run. The results do not transfer to other model versions or to school grading tools.
 - **Blinding of the coding.** Identifiers are hidden, but the coder built the inserted errors and may recognise the version from quoted wording. The statement of the preregistration that the coding is "blind to chatbot and version" is therefore too strong. This is a limitation.
+
+## Addendum, 2026-11-25 17:27
+
+- **Grok.** 17 of 18 answers parse as captured. One answer is wrapped in a single code block and parses after the preregistered exception (one enclosing code block is removed). Section 4 said "18 of 18 answers parse as captured"; that was imprecise. No result changes.
+- **Capture helper.** All three versions of `lauf.py` are archived outside the repository, with SHA-256 identical to section 1. The first version (`aa023f94...`) was restored from the day-1 version by removing the reset function that had been added in between; its SHA-256 is identical, so it is byte-identical to the version used. All three will be published with the results.
