@@ -1,0 +1,121 @@
+{
+  "part": "development",
+  "cases_sha256": "1ca9eaf1fc78fa8db17b63bcdbf6e741abc3f6ac08fdcd988348cbcdb51b36e6",
+  "frozen": {
+    "commit": "afadc4767d98020426eb63146da77cdeaaffd612",
+    "src_tree": "0afbc0115f904d6408b1b8196af4e019678d3c56",
+    "check_quotes_blob": "2a3368683da37db01ae6487dc75cf552c6bfa9e0"
+  },
+  "python": "3.11.7",
+  "total": {
+    "strict": {
+      "cases": 211,
+      "false_accept": 0,
+      "false_reject": 0
+    },
+    "normalized": {
+      "cases": 211,
+      "false_accept": 0,
+      "false_reject": 0
+    }
+  },
+  "by_type": {
+    "altered_word": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "case_change": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "fabricated": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "format_variant": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "punctuation_added": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "valid_exact": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "wrong_location": {
+      "strict": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 28,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    },
+    "altered_number": {
+      "strict": {
+        "cases": 15,
+        "false_accept": 0,
+        "false_reject": 0
+      },
+      "normalized": {
+        "cases": 15,
+        "false_accept": 0,
+        "false_reject": 0
+      }
+    }
+  },
+  "deviations": []
+}

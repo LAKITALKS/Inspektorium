@@ -1,6 +1,6 @@
 # School pilot 2026: testbench
 
-**The chatbot runs were done on 23 and 24 Nov 2026; coding and analysis are pending.** This folder holds data, tools and tests for a small preregistered pilot. It contains no results. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI is [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848).
+**The chatbot runs were done on 23 and 24 Nov 2026; coding and analysis are pending.** This folder holds data, tools and tests for a small preregistered pilot. It contains the results of the component test, but no results of the chatbot runs. The pilot was preregistered on 2026-11-11 in [prereg/preregistration.md](prereg/preregistration.md). The frozen study state is commit `bfcd872`. The DOI is [10.5281/zenodo.24131848](https://doi.org/10.5281/zenodo.24131848).
 
 ## Status
 
@@ -8,7 +8,7 @@
 |---|---|
 | Corpus, sentence banks, criteria | Done |
 | Draw of the study groups | Done; two pilot texts replaced under a committed rule |
-| Reference cases | Built and sealed, not run through any checker |
+| Reference cases | Run on 2026-11-25: 0 deviations in both parts and both modes; see [Reference cases](#reference-cases) |
 | Quote checker, import, analysis, coding sheet, prompt generator | Built, tested on invented data only |
 | Prompt | Template and the released file with the task and the marking guide |
 | Inserted errors | Decided; definitions and coding notes kept outside the repository, their hashes in [prereg/sealed_sha256.txt](prereg/sealed_sha256.txt) |
@@ -30,8 +30,9 @@ The pilot will ask how reliably AI grading assistants comment on and grade stude
 | `data/reference_cases_dev.json` | Development part of the reference cases | yes |
 | `data/selected/` | Sentence banks of `pilot`, `component` and the two replacements, marked in their README | yes |
 | `prereg/` | Seed, drawn groups, run plan, hashes of the trap definitions and coding notes, and the preregistration | yes |
+| `results/component_test/` | Counts of the component test on the reference cases | yes |
 | `runs/` | Chatbot outputs, prepared files, prompt files, the sentence banks of both versions and the manifest | no |
-| `sealed/` | Held-out reference cases, off limits; only their hash is committed | no |
+| `sealed/` | Held-out reference cases, opened on 2026-11-25 after the hash check; only their hash is committed | no |
 | `prompts/` | Prompt template for the chatbots, and the task with the marking guide | yes |
 | `schemas/` | JSON Schema for the chatbot output | yes |
 | `scripts/` | Tools | yes |
@@ -158,13 +159,33 @@ git diff 129f9b5 origin/main -- studies/school-pilot-2026/prereg/selection.json
 
 **Sealed part.** `sealed/holdout_cases.json` is ignored by Git. Its SHA-256 is in [prereg/holdout_sha256.txt](prereg/holdout_sha256.txt), and the counts are in [prereg/reference_cases_summary.json](prereg/reference_cases_summary.json).
 
-**The folder `sealed/` is off limits.** It is not opened, read or changed, and no test or analysis uses it. It is opened only at the final check, after the maintainer's release. For the same reason, the generator refuses to replace an existing sealed file. Nothing in this repository verifies the hash before that check.
+**The folder `sealed/` was off limits until the final check.** It was not opened, read or changed, and no test or analysis used it. For the same reason, the generator refuses to replace an existing sealed file. On 2026-11-25 the maintainer released it for the final check. `scripts/run_reference_cases.py` verifies the hash before it reads a case.
 
 Before the folder was closed on 2026-11-04, the generator wrote the file, and a hash check and a test read it by machine. Its content was not displayed.
 
 **Use of the reserve.** `fabricated` needs foreign sentences, so eight `reserve` texts are opened for it. The summary names them, and later samples exclude them (see [Selection](#selection)). Two more `reserve` texts became pilot texts. No other `reserve` text was displayed; [Changes before preregistration](#changes-before-preregistration) says what was read by machine.
 
-**Not run.** Neither the kernel nor the quote checker has been applied to these cases. That is the measurement after the preregistration.
+**Run on 2026-11-25.** `scripts/run_reference_cases.py` checked every case in both modes with the frozen quote checker and compared `location_valid` with the expected value. The runner was committed (`afadc47`) before it was run on any case. It stops if a frozen tool differs or if the SHA-256 of the case file is not the given one. The development part ran first. Then the SHA-256 of the sealed part was checked against the preregistration, and it matched. Only then was the sealed part opened and run.
+
+| Part | Mode | Accepted, although constructed as invalid | Rejected, although constructed as valid |
+|---|---|---|---|
+| Development, 211 cases | strict | 0 of 183 | 0 of 28 |
+| Development, 211 cases | normalized | 0 of 127 | 0 of 84 |
+| Held out, 91 cases | strict | 0 of 79 | 0 of 12 |
+| Held out, 91 cases | normalized | 0 of 55 | 0 of 36 |
+
+There were 0 deviations in each of the eight types, in both parts and in both modes. The counts are in [development.json](results/component_test/development.json) and [held_out.json](results/component_test/held_out.json); they name no case text.
+
+As a control, the expected values of all development cases were inverted, and the runner's evaluation counted 422 of 422 checks as deviations. This control ran once, outside the runner's command line.
+
+The test shows that the checker applies the rules correctly, not that the rules themselves are the right ones.
+
+To repeat the run from the repository root:
+
+```bash
+python studies/school-pilot-2026/scripts/run_reference_cases.py --part development --cases studies/school-pilot-2026/data/reference_cases_dev.json --out development.json
+python studies/school-pilot-2026/scripts/run_reference_cases.py --part held_out --cases studies/school-pilot-2026/sealed/holdout_cases.json --sha256 290116c15e4dd5642a653af88d2544b18c0e452455b8caee38dbc5570a2d1a6a --out held_out.json
+```
 
 **Known limits.** The maintainer accepted both.
 
